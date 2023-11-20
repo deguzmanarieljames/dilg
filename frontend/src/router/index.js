@@ -1,60 +1,85 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Dashboard from '../views/EmpAdmin/AdDashboard.vue'
-import DatabasePPE from '../views/EmpAdmin/AdDatabasePPE.vue'
-import RCPPE from '../views/EmpAdmin/AdRCPPE.vue'
-import IIRUP from '../views/EmpAdmin/AdIIRUP.vue'
-import Sticker from '../views/EmpAdmin/AdSticker.vue'
-import LedgerCard from '../views/EmpAdmin/AdLedgerCard.vue'
-import Receipt from '../views/EmpAdmin/AdReceipt.vue'
-import TransferReport from '../views/EmpAdmin/AdTransferReport.vue'
-import RLSDDP from '../views/EmpAdmin/AdRLSDDP.vue'
+import AdDashboard from '../views/AdminView/AdDashboard.vue'
+import AdAckReceipt from '../views/AdminView/AdAckReceipt.vue'
+import AdDatabasePPE from '../views/AdminView/AdDatabasePPE.vue'
+import AdLedgerCard from '../views/AdminView/AdLedgerCard.vue'
+import AdPropertyCard from '../views/AdminView/AdPropertyCard.vue'
+import AdPropertySticker from '../views/AdminView/AdPropertySticker.vue'
+import AdRLSDDP from '../views/AdminView/AdRLSDDP.vue'
+import AdServiceable from '../views/AdminView/AdServiceable.vue'
+import AdTransferReport from '../views/AdminView/AdTransferReport.vue'
+import AdUnserviceable from '../views/AdminView/AdUnserviceable.vue'
+import AdWorkspace from '../views/AdminView/AdWorkspace.vue'
+import SignupView from '../views/SignupView.vue'
+import SigninView from '../views/SigninView.vue'
+
 
 const routes = [
   {
     path: '/',
-    name: 'Dashboard',
-    component: Dashboard
+    name: 'SigninView',
+    component: SigninView
+  },
+  {
+    path: '/signup',
+    name: 'SignupView',
+    component: SignupView
+  },
+  {
+    path: '/dashboard',
+    name: 'AdDashboard',
+    component: AdDashboard
   },
   {
     path: '/databaseppe',
-    name: 'DatabasePPE',
-    component: DatabasePPE
+    name: 'AdDatabasePPE',
+    component: AdDatabasePPE
   },
   {
-    path: '/rcppe',
-    name: 'RCPPE',
-    component: RCPPE
+    path: '/serviceable',
+    name: 'AdServiceable',
+    component: AdServiceable
   },
   {
-    path: '/iirup',
-    name: 'IIRUP',
-    component: IIRUP
+    path: '/unserviceable',
+    name: 'AdUnserviceable',
+    component: AdUnserviceable
   },
   {
-    path: '/sticker',
-    name: 'Sticker',
-    component: Sticker
+    path: '/propertysticker',
+    name: 'AdPropertySticker',
+    component: AdPropertySticker
   },
   {
     path: '/ledgercard',
-    name: 'LedgerCard',
-    component: LedgerCard
+    name: 'AdLedgerCard',
+    component: AdLedgerCard
   },
   {
-    path: '/receipt',
-    name: 'Receipt',
-    component: Receipt
+    path: '/propertycard',
+    name: 'AdPropertyCard',
+    component: AdPropertyCard
+  },
+  {
+    path: '/ackreceipt',
+    name: 'AdAckReceipt',
+    component: AdAckReceipt
   },
   {
     path: '/transferreport',
-    name: 'TransferReport',
-    component: TransferReport
+    name: 'AdTransferReport',
+    component: AdTransferReport
   },
   {
     path: '/rlsddp',
-    name: 'RLSDDP',
-    component: RLSDDP
+    name: 'AdRLSDDP',
+    component: AdRLSDDP
   },
+  {
+    path: '/workspace',
+    name: 'AdWorkspace',
+    component: AdWorkspace
+  }
 ]
 
 const router = createRouter({
