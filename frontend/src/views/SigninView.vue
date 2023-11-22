@@ -39,15 +39,15 @@
 
                           <div class="col-12">
                           <label for="password" class="form-label">Password</label>
-                          <input type="text" name="password" class="form-control" id="password" v-model="password" required>
-                          <div class="invalid-feedback">Please enter your password!</div>
+                                <input type="text" name="password" class="form-control" v-model="password" required>
+                                <div class="invalid-feedback">Please enter your password!</div>
                           </div>
 
                           <div class="col-12">
                           <button class="btn btn-primary w-100" type="submit">Login</button>
                           </div>
                           <div class="col-12">
-                          <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
+                          <p class="small mb-0">Don't have account? <a href="signup">Create an account</a></p>
                           </div>
                       </form>
 
@@ -77,15 +77,15 @@
 
 
 <script>
-import router from '@/router'; 
 import axios from 'axios';
+import router from '@/router'
 
   export default {
       data() {
           return{
-              username: "",
-              password: "",
-              errorMsg: [],
+              username: '',
+              password: '',
+              message: [],
           }
       },
       methods: {
@@ -94,7 +94,14 @@ import axios from 'axios';
                 username: this.username,
                 password: this.password
             });
-            console.log(signdata.data);
+            this.message = signdata.data.msg;
+            if(signdata.data.msg === 'okay'){
+                sessionStorage.setItem("token", signdata.data.token);
+                router.push('/dashboard');
+            }else{
+                alert("Wrong credentials"); 
+                router.push('/');
+            }
         }
       }
   }

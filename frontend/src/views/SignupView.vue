@@ -24,33 +24,44 @@
                           <p class="text-center small">Enter your personal details to create account</p>
                       </div>
 
-                      <form class="row g-3 needs-validation" novalidate>
-                          <div class="col-12">
-                          <label for="yourName" class="form-label">Your Name</label>
-                          <input type="text" name="name" class="form-control" id="yourName" required>
-                          <div class="invalid-feedback">Please, enter your name!</div>
-                          </div>
+                      <form class="row g-3 needs-validation" @submit.prevent="signup">
 
+                          <div v-if="message === 'error'">Invalid response</div>
                           <div class="col-12">
-                          <label for="yourEmail" class="form-label">Your Email</label>
-                          <input type="email" name="email" class="form-control" id="yourEmail" required>
-                          <div class="invalid-feedback">Please enter a valid Email adddress!</div>
-                          </div>
-
-                          <div class="col-12">
-                          <label for="yourUsername" class="form-label">Username</label>
+                          <label for="username" class="form-label">Username</label>
                           <div class="input-group has-validation">
                               <span class="input-group-text" id="inputGroupPrepend">@</span>
-                              <input type="text" name="username" class="form-control" id="yourUsername" required>
+                              <input type="text" name="username" class="form-control" id="username" v-model="username" required>
                               <div class="invalid-feedback">Please choose a username.</div>
                           </div>
                           </div>
 
                           <div class="col-12">
-                          <label for="yourPassword" class="form-label">Password</label>
-                          <input type="password" name="password" class="form-control" id="yourPassword" required>
+                          <label for="email" class="form-label">Your Email</label>
+                          <input type="email" name="email" class="form-control" id="email" v-model="email" required>
+                          <div class="invalid-feedback">Please enter a valid Email adddress!</div>
+                          </div>
+
+                          <div class="col-12">
+                          <label for="usertype" class="form-label">User Type</label>
+                          <input type="usertype" name="usertype" class="form-control" id="usertype" v-model="usertype" required>
+                          <div class="invalid-feedback">Please enter a the user type!</div>
+                          </div>
+
+                          <div class="col-12">
+                          <label for="password" class="form-label">Password</label>
+                          <input type="password" name="password" class="form-control" id="password" v-model="password" required>
                           <div class="invalid-feedback">Please enter your password!</div>
                           </div>
+
+                          <div class="col-12">
+                          <label for="passwordConfirm" class="form-label">Confirm Password</label>
+                          <input type="password" name="passwordConfirm" class="form-control" id="passwordConfirm" v-model="passwordConfirm" required>
+                          <div class="invalid-feedback">Please enter your password!</div>
+                          </div>
+
+
+                          <div v-if="message === 'passwordMismatch'">Passwords do not match</div>
 
                           <div class="col-12">
                           <div class="form-check">
@@ -63,7 +74,7 @@
                           <button class="btn btn-primary w-100" type="submit">Create Account</button>
                           </div>
                           <div class="col-12">
-                          <p class="small mb-0">Already have an account? <a href="pages-login.html">Log in</a></p>
+                          <p class="small mb-0">Already have an account? <a href="/">Log in</a></p>
                           </div>
                       </form>
 
@@ -88,3 +99,46 @@
       </main><!-- End #main -->
   </div>
 </template>
+
+
+<script> 
+  import router from '@/router'; 
+  import axios from 'axios'; 
+
+  export default { 
+
+    data() { 
+      return { 
+        username: '', 
+        email: '',
+        usertype: '',
+        password: '', 
+        passwordConfirm: '', 
+        message: [], 
+      }; 
+
+    }, 
+
+    methods: { 
+      async signup() { 
+        if (this.password === this.passwordConfirm) { 
+          const data = await axios.post("signup", { 
+            username: this.username,
+            email: this.email,
+            usertype: this.usertype,
+            password: this.password 
+          }); 
+
+          this.message = data.data.msg; 
+          if (data.data.msg === 'okay') { 
+            // sessionStorage.setItem("jwt", data.data.token) 
+            alert("Registered successfully"); 
+            router.push('/'); 
+          } 
+        } else { 
+          this.message = "passwordMismatch"; 
+        } 
+      } 
+    }
+  }; 
+</script> 

@@ -6,7 +6,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <a href="/dashboard" class="logo d-flex align-items-center">
           <img src="./img/logo1.png" alt="">
-          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 210%;">
+          <span class="d-none d-lg-block" style="font-family:'Times New Roman', Times, serif; font-size: 210%;">
             <i>DILG<sup style="font-size: 70%;">ence</sup></i>
           </span>
         </a>
@@ -133,7 +133,7 @@
         <li class="nav-heading">Home</li>
   
         <li class="nav-item">
-          <a class="nav-link collapsed" href="/dashboard">
+          <a class="nav-link " href="/dashboard">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
           </a>
@@ -143,7 +143,7 @@
         <li class="nav-heading">Pages</li>
   
         <li class="nav-item">
-          <a class="nav-link " href="databaseppe">
+          <a class="nav-link collapsed" href="databaseppe">
             <i class="bi bi-clipboard-data"></i>
             <span>Database PPE</span>
           </a>
@@ -205,13 +205,14 @@
         </li><!-- End Forms Nav -->
   
         <li class="nav-heading">input</li>
-
+  
         <li class="nav-item">
-        <a class="nav-link collapsed" href="/workspace">
+          <a class="nav-link collapsed" href="/workspace">
             <i class="bi bi-folder-plus"></i>
             <span>Workspace</span>
-        </a>
+          </a>
         </li><!-- End Dashboard Nav -->
+    
   
       </ul>
   
@@ -224,105 +225,156 @@
   
   
       <main id="main" class="main">
-
-        <div class="pagetitle">
-        <h1>Data Tables</h1>
+  
+      <div class="pagetitle">
+        <h1>Dashboard</h1>
         <nav>
-            <ol class="breadcrumb">
+          <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-            <li class="breadcrumb-item">Tables</li>
-            <li class="breadcrumb-item active">Data</li>
-            </ol>
+            <li class="breadcrumb-item active">Dashboard</li>
+          </ol>
         </nav>
-        </div><!-- End Page Title -->
-
-        <section class="section">
+      </div><!-- End Page Title -->
+  
+      <section class="section dashboard">
         <div class="row">
-            <div class="col-lg-12">
-
-            <div class="card">
-                <div class="card-body">
-                <h5 class="card-title">Datatables</h5>
-                <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more examples</a>.</p>
-
-                <!-- Table with stripped rows -->
-                <table class="table datatable">
-                    <thead>
-                    <tr>
-                        <th>Entity</th>
-                        <th>Particulars</th>
-                        <th>Classification</th>
-                        <th data-type="date" data-format="YYYY/DD/MM">Date Recorded</th>
-                        <th>Code</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="info in info">
-                        <td scope="row">{{ info.entityname }}</td>
-                        <td scope="row">{{ info.particulars }}</td>
-                        <td scope="row">{{ info.classification }}</td>
-                        <td scope="row">{{ info.created_at }}</td>
-                        <td scope="row">{{ info.code }}</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <!-- End Table with stripped rows -->
-
+  
+          <!-- Left side columns -->
+          <div class="col-lg-8">
+            <div class="row">
+  
+              <!-- Reports -->
+              <div class="col-12">
+                <div class="card">
+  
+                  <div class="filter">
+                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                      <li class="dropdown-header text-start">
+                        <h6>Filter</h6>
+                      </li>
+  
+                      <li><a class="dropdown-item" href="#">Today</a></li>
+                      <li><a class="dropdown-item" href="#">This Month</a></li>
+                      <li><a class="dropdown-item" href="#">This Year</a></li>
+                    </ul>
+                  </div>
+  
+                  <div class="card-body">
+                    <h5 class="card-title">Property Acquired <span>/Today</span></h5>
+  
+                    <!-- Line Chart -->
+                    <div id="reportsChart"></div>
+  
+  
+                  </div>
+  
                 </div>
+              </div><!-- End Reports -->
+  
+  
+  
             </div>
-
-            </div>
+          </div><!-- End Left side columns -->
+  
+          <!-- Right side columns -->
+          <div class="col-lg-4">
+  
+            <!-- Recent Activity -->
+            <div class="card">
+              <div class="filter">
+                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                  <li class="dropdown-header text-start">
+                    <h6>Filter</h6>
+                  </li>
+  
+                  <li><a class="dropdown-item" href="#">Today</a></li>
+                  <li><a class="dropdown-item" href="#">This Month</a></li>
+                  <li><a class="dropdown-item" href="#">This Year</a></li>
+                </ul>
+              </div>
+  
+              <div class="card-body">
+                <h5 class="card-title">Recent Request</h5>
+  
+                <div class="activity">
+  
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">32 min</div>
+                    <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
+                    <div class="activity-content">
+                      Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
+                    </div>
+                  </div><!-- End activity item-->
+  
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">56 min</div>
+                    <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
+                    <div class="activity-content">
+                      Voluptatem blanditiis blanditiis eveniet
+                    </div>
+                  </div><!-- End activity item-->
+  
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">2 hrs</div>
+                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
+                    <div class="activity-content">
+                      Voluptates corrupti molestias voluptatem
+                    </div>
+                  </div><!-- End activity item-->
+  
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">1 day</div>
+                    <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
+                    <div class="activity-content">
+                      Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
+                    </div>
+                  </div><!-- End activity item-->
+  
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">2 days</div>
+                    <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
+                    <div class="activity-content">
+                      Est sit eum reiciendis exercitationem
+                    </div>
+                  </div><!-- End activity item-->
+  
+                  <div class="activity-item d-flex">
+                    <div class="activite-label">4 weeks</div>
+                    <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
+                    <div class="activity-content">
+                      Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
+                    </div>
+                  </div><!-- End activity item-->
+  
+                </div>
+  
+              </div>
+            </div><!-- End Recent Activity -->
+  
+  
+          </div><!-- End Right side columns -->
+  
         </div>
-        </section>
-
-        </main><!-- End #main -->
-
-        <!-- ======= Footer ======= -->
-        <footer id="footer" class="footer">
-        <div class="copyright">
+      </section>
+  
+      </main><!-- End #main -->
+  
+      <!-- ======= Footer ======= -->
+      <footer id="footer" class="footer">
+      <div class="copyright">
         &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-        </div>
-        <div class="credits">
+      </div>
+      <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-        </div>
-        </footer><!-- End Footer -->
-
-        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+      </div>
+      </footer><!-- End Footer -->
+  
+      <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     </div>
   </template>
-
-
-<script>
-
-// Components
-import axios from 'axios'
-
-export default{
-  data(){
-      return{
-          info:[],
-          entityname: "",
-          particulars: "",
-          classification: "",
-          code: "",
-      }
-  },
-  created(){
-      this.getInfo()
-  },
-  methods:{
-        async getInfo(){
-              try {
-                  const inf = await axios.get('getData');
-                  this.info = inf.data;
-              } catch (error) {
-                  console.log(error);
-              }
-          },
-  }
-}
-</script>

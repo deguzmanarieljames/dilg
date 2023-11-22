@@ -37,19 +37,43 @@ class SigninController extends ResourceController
     { 
       $user = new SigninModel(); 
       $username = $this->request->getVar('username'); 
-       $password = $this->request->getVar('password'); 
-       $data = $user->where('username', $username)->first(); 
+      $password = $this->request->getVar('password'); 
+      $data = $user->where('username', $username)->first(); 
 
        if($data){ 
          $pass = $data['password']; 
          $authenticatePassword = password_verify($password, $pass); 
          if($authenticatePassword){ 
-           return $this->respond(['msg' => 'okay'], 200); 
+           return $this->respond(['msg' => 'okay', 'token,' => $data['token']]); 
          }else{ 
-           return $this->respond(['msg' => 'error'], 200); 
+           return $this->respond(['msg' => 'error']); 
          } 
        }else{
-            return $this->respond(['msg' => 'no user found'], 200); 
+            return $this->respond(['msg' => 'no user found']); 
        }
+    }
+
+    public function signup()
+    {
+      $user = new SigninModel(); 
+      $token = $this->verification(50); 
+      $data = [ 
+        'username' => $this->request->getVar('username'),
+        'email' => $this->request->getVar('email'),
+        'usertype' => $this->request->getVar('usertype'),
+        'password' => password_hash($this->request->getVar('password'),PASSWORD_DEFAULT), 
+        'token' => $token
+      ]; 
+      $u = $user->save($data); 
+      if($u){ 
+        return $this->respond(['msg' => 'okay', 'token' =>$token]); 
+      }else{ 
+        return $this->respond(['msg' => 'failed']); 
+      } 
     } 
+    public function verification($length){ 
+        $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'; 
+        return substr(str_shuffle($str_result), 
+        0, $length); 
+      } 
 }
