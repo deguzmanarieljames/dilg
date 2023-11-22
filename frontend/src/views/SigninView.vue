@@ -97,7 +97,11 @@ import router from '@/router'
             this.message = signdata.data.msg;
             if(signdata.data.msg === 'okay'){
                 sessionStorage.setItem("token", signdata.data.token);
-                router.push('/dashboard');
+                if(signdata.data.usertype === 'admin'){
+                    router.push('/dashboard');
+                }else if(signdata.data.usertype === 'user'){
+                    router.push('/empdashboard');
+                }
             }else{
                 alert("Wrong credentials"); 
                 router.push('/');

@@ -36,17 +36,18 @@ class SigninController extends ResourceController
     public function signin() 
     { 
       $user = new SigninModel(); 
-      $username = $this->request->getVar('username'); 
+      $username = $this->request->getVar('username');
+      $usertpye = $this->request->getVar('usertype');
       $password = $this->request->getVar('password'); 
-      $data = $user->where('username', $username)->first(); 
+      $data = $user->where('username', $username)->first();
 
-       if($data){ 
+       if($data){
          $pass = $data['password']; 
          $authenticatePassword = password_verify($password, $pass); 
          if($authenticatePassword){ 
-           return $this->respond(['msg' => 'okay', 'token,' => $data['token']]); 
+           return $this->respond(['msg' => 'okay', 'token,' => $data['token'], 'usertype' => $data['usertype']]); 
          }else{ 
-           return $this->respond(['msg' => 'error']); 
+           return $this->respond(['msg' => 'Incorrect Pasword']); 
          } 
        }else{
             return $this->respond(['msg' => 'no user found']); 

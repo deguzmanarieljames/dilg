@@ -34,58 +34,67 @@ const routes = [
     path: '/dashboard',
     name: 'AdDashboard',
     component: AdDashboard,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/databaseppe',
     name: 'AdDatabasePPE',
-    component: AdDatabasePPE
-    
+    component: AdDatabasePPE,
+    meta: {requireAuth: true}
   },
   {
     path: '/serviceable',
     name: 'AdServiceable',
-    component: AdServiceable
+    component: AdServiceable,
+    meta: {requireAuth: true}
   },
   {
     path: '/unserviceable',
     name: 'AdUnserviceable',
-    component: AdUnserviceable
+    component: AdUnserviceable,
+    meta: {requireAuth: true}
   },
   {
     path: '/propertysticker',
     name: 'AdPropertySticker',
-    component: AdPropertySticker
+    component: AdPropertySticker,
+    meta: {requireAuth: true}
   },
   {
     path: '/ledgercard',
     name: 'AdLedgerCard',
-    component: AdLedgerCard
+    component: AdLedgerCard,
+    meta: {requireAuth: true}
   },
   {
     path: '/propertycard',
     name: 'AdPropertyCard',
-    component: AdPropertyCard
+    component: AdPropertyCard,
+    meta: {requireAuth: true}
   },
   {
     path: '/ackreceipt',
     name: 'AdAckReceipt',
-    component: AdAckReceipt
+    component: AdAckReceipt,
+    meta: {requireAuth: true}
   },
   {
     path: '/transferreport',
     name: 'AdTransferReport',
-    component: AdTransferReport
+    component: AdTransferReport,
+    meta: {requireAuth: true}
   },
   {
     path: '/rlsddp',
     name: 'AdRLSDDP',
-    component: AdRLSDDP
+    component: AdRLSDDP,
+    meta: {requireAuth: true}
   },
   {
     path: '/workspace',
     name: 'AdWorkspace',
-    component: AdWorkspace
+    component: AdWorkspace,
+    meta: {requireAuth: true}
   },
 
 
@@ -94,7 +103,8 @@ const routes = [
   {
     path: '/empdashboard',
     name: 'Empempdashboard',
-    component: EmpDashboard
+    component: EmpDashboard,
+    meta: {requireAuth: true}
   },
 
 ]
