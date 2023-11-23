@@ -126,7 +126,7 @@
         <li class="nav-heading">Home</li>
   
         <li class="nav-item">
-          <a class="nav-link " href="/empdashboard">
+          <a class="nav-link collapsed" href="/empdashboard">
             <i class="bi bi-grid"></i>
             <span>Dashboard</span>
           </a>
@@ -193,7 +193,7 @@
         <li class="nav-heading">input</li>
   
         <li class="nav-item">
-          <a class="nav-link collapsed" href="/emprequest">
+          <a class="nav-link " href="/emprequest">
             <i class="bi bi-folder-plus"></i>
             <span>Request Equipment</span>
           </a>

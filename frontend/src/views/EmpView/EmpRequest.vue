@@ -1,5 +1,5 @@
 <template>
-    <EmployeeDashboard />
+    <EmployeeRequest />
     <ScriptStyle />
   </template>
   
@@ -7,14 +7,14 @@
   import { defineComponent } from 'vue';
   
   // Components
-  import EmployeeDashboard from '../../components/Employee/EmployeeDashboard.vue';
+  import EmployeeRequest from '../../components/Employee/EmployeeRequest.vue';
   import ScriptStyle from '../../components/ScriptStyle.vue';
   
   export default defineComponent({
-    name: 'EmpDashboard',
+    name: 'EmpRequest',
   
     components: {
-      EmployeeDashboard, ScriptStyle,
+      EmployeeRequest, ScriptStyle,
     },
   });
   </script>
