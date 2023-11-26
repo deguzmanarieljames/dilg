@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class SigninModel extends Model
+class VerifyModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'signin';
+    protected $table            = 'userverification';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['username', 'fullname', 'position', 'email', 'password', 'token', 'usertype', 'status'];
+    protected $allowedFields    = ['fullname', 'position', 'status', 'created_at'];
 
     // Dates
     protected $useTimestamps = false;

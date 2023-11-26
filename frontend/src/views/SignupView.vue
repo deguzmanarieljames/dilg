@@ -39,6 +39,18 @@
                           </div>
 
                           <div class="col-12">
+                          <label for="fullname" class="form-label">Your Fullname</label>
+                          <input type="fullname" name="fullname" class="form-control" id="fullname" v-model="fullname" required>
+                          <div class="invalid-feedback">Please enter your full name!</div>
+                          </div>
+
+                          <div class="col-12">
+                          <label for="position" class="form-label">Your Position</label>
+                          <input type="position" name="position" class="form-control" id="position" v-model="position" required>
+                          <div class="invalid-feedback">Please enter your full name!</div>
+                          </div>
+
+                          <div class="col-12">
                           <label for="email" class="form-label">Your Email</label>
                           <input type="email" name="email" class="form-control" id="email" v-model="email" required>
                           <div class="invalid-feedback">Please enter a valid Email adddress!</div>
@@ -59,7 +71,7 @@
                           <div class="col-12">
                           <label for="passwordConfirm" class="form-label">Confirm Password</label>
                           <input type="password" name="passwordConfirm" class="form-control" id="passwordConfirm" v-model="passwordConfirm" required>
-                          <div class="invalid-feedback">Please enter your password!</div>
+                          <div class="invalid-feedback">Please enter the same password above!</div>
                           </div>
 
 
@@ -112,6 +124,8 @@
     data() { 
       return { 
         username: '', 
+        fullname: '',
+        position: '',
         email: '',
         usertype: '',
         password: '', 
@@ -126,6 +140,8 @@
         if (this.password === this.passwordConfirm) { 
           const data = await axios.post("signup", { 
             username: this.username,
+            fullname: this.fullname,
+            position: this.position,
             email: this.email,
             usertype: this.usertype,
             password: this.password 

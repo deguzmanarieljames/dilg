@@ -6,7 +6,7 @@
       <div class="d-flex align-items-center justify-content-between">
         <a href="/empdashboard" class="logo d-flex align-items-center">
           <img src="./img/logo1.png" alt="">
-          <span class="d-none d-lg-block" style="font-family:'Times New Roman', Times, serif; font-size: 210%;">
+          <span class="d-none d-lg-block" style="font-family:Times New Roman, Times, serif; font-size: 210%;">
             <i>DILG<sup style="font-size: 70%;">ence</sup></i>
           </span>
         </a>
@@ -247,29 +247,23 @@
                   </div>
   
                   <div class="card-body">
-                    <h5 class="card-title">Property Acquisition <span>/gaining possession to a property or equipment by the government</span></h5>
-                                  <!-- Table with hoverable rows -->
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">Entity</th>
-                    <th scope="col">Particulars</th>
-                    <th scope="col">Classification</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="info in info">
-                    <td scope="row">{{ info.entityname }}</td>
-                    <td scope="row">{{ info.particulars }}</td>
-                    <td scope="row">{{ info.classification }}</td>
-                    <td scope="row">{{ info.code }}</td>
-                    <td><button @click="deleteRecord(info.id)" class="btn btn-danger">Delete</button></td>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- End Table with hoverable rows -->  
+                    <h5 class="card-title">Property Acquisition Request Form<span>/gaining possession to a property or equipment by the government</span></h5>
+
+                                  <!-- Vertical Form -->
+                    <form class="row g-3" @submit.prevent="save">
+                      <div class="col-12">
+                        <label for="entityname" class="form-label">Entity Name</label>
+                        <input type="text" class="form-control" id="entityname" v-model="entityname">
+                      </div>
+                      <div class="input-group">
+                      <span class="input-group-text">Write here the description</span>
+                      <textarea class="form-control" aria-label="With textarea" v-model="description"></textarea>
+                    </div>
+                      <div class="text-center">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        <button type="reset" class="btn btn-secondary">Reset</button>
+                      </div>
+                    </form><!-- Vertical Form -->
   
                   </div>
   
@@ -388,11 +382,34 @@
 <script>
 
 export default {
+    data(){
+        return{
+            entityname: "",
+            description: "",
+        }
+    },
     methods: {
       async logout(){
         sessionStorage.removeItem('token');
         this.$router.push('/');
-      }
+      },
+      async send_request(){
+        try {
+          const ins = await axios.post('send_request', {
+              entityname: this.entityname,
+              description: this.description
+          });
+              this.entityname = "",
+              this.description = ""
+          
+          this.$emit('data-saved');
+        } catch (error) {
+          
+        }
+      },
     }
   }
   </script>
+
+
+

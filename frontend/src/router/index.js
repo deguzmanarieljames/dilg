@@ -12,6 +12,8 @@ import AdServiceable from '../views/AdminView/AdServiceable.vue'
 import AdTransferReport from '../views/AdminView/AdTransferReport.vue'
 import AdUnserviceable from '../views/AdminView/AdUnserviceable.vue'
 import AdWorkspace from '../views/AdminView/AdWorkspace.vue'
+import AdUserverify from '../views/AdminView/AdUserverify.vue'
+import AdInventory from '../views/AdminView/AdInventory.vue'
 import SignupView from '../views/SignupView.vue'
 import SigninView from '../views/SigninView.vue'
 
@@ -95,6 +97,18 @@ const routes = [
     path: '/workspace',
     name: 'AdWorkspace',
     component: AdWorkspace,
+    //meta: {requireAuth: true}
+  },
+  {
+    path: '/inventory',
+    name: 'AdInventory',
+    component: AdInventory,
+    //meta: {requireAuth: true}
+  },
+  {
+    path: '/userverify',
+    name: 'AdUserverify',
+    component: AdUserverify,
     //meta: {requireAuth: true}
   },
 

@@ -300,7 +300,7 @@
               </div>
   
               <div class="card-body">
-                <h5 class="card-title">Recent Request</h5>
+                <h5 class="card-title">Pending Request</h5>
   
                 <div class="activity">
   
@@ -392,7 +392,14 @@ export default {
       async logout(){
         sessionStorage.removeItem('token');
         this.$router.push('/');
-      }
+      },
+      /*async created(){
+        const signdata = await axios.get('user', {
+          headers: {
+            
+          }
+        });
+      } */
     }
   }
   </script>

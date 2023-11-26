@@ -1,0 +1,455 @@
+CRITICAL - 2023-11-26 08:14:59 --> Attempt to read property "id" on null
+in APPPATH\Controllers\SigninController.php on line 89.
+ 1 APPPATH\Controllers\SigninController.php(89): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on null', 'C:\\laragon\\www\\dilg\\backend\\app\\Controllers\\SigninController.php', 89)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->getVerify()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-26 08:15:16 --> Attempt to read property "id" on null
+in APPPATH\Controllers\SigninController.php on line 89.
+ 1 APPPATH\Controllers\SigninController.php(89): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on null', 'C:\\laragon\\www\\dilg\\backend\\app\\Controllers\\SigninController.php', 89)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->getVerify()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-26 08:15:32 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\SigninController.php on line 97.
+ 1 APPPATH\Controllers\SigninController.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\dilg\\backend\\app\\Controllers\\SigninController.php', 97)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-26 08:15:33 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\SigninController.php on line 97.
+ 1 APPPATH\Controllers\SigninController.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\dilg\\backend\\app\\Controllers\\SigninController.php', 97)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-26 08:15:33 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\SigninController.php on line 97.
+ 1 APPPATH\Controllers\SigninController.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\dilg\\backend\\app\\Controllers\\SigninController.php', 97)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-26 08:15:33 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\SigninController.php on line 97.
+ 1 APPPATH\Controllers\SigninController.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\dilg\\backend\\app\\Controllers\\SigninController.php', 97)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-26 08:15:54 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\SigninController.php on line 97.
+ 1 APPPATH\Controllers\SigninController.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\dilg\\backend\\app\\Controllers\\SigninController.php', 97)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-26 08:15:55 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\SigninController.php on line 97.
+ 1 APPPATH\Controllers\SigninController.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\dilg\\backend\\app\\Controllers\\SigninController.php', 97)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-26 08:15:55 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\SigninController.php on line 97.
+ 1 APPPATH\Controllers\SigninController.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\dilg\\backend\\app\\Controllers\\SigninController.php', 97)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-26 08:15:55 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\SigninController.php on line 97.
+ 1 APPPATH\Controllers\SigninController.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\dilg\\backend\\app\\Controllers\\SigninController.php', 97)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-11-26 08:16:20 --> Undefined property: stdClass::$status
+in APPPATH\Controllers\SigninController.php on line 97.
+ 1 APPPATH\Controllers\SigninController.php(97): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$status', 'C:\\laragon\\www\\dilg\\backend\\app\\Controllers\\SigninController.php', 97)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-26 08:49:26 --> mysqli_sql_exception: Column 'empemail' cannot be null in C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `userver...', 0)
+#1 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `userver...')
+#2 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `userver...')
+#3 C:\laragon\www\dilg\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userver...', Array, false)
+#4 C:\laragon\www\dilg\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\app\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', Array)
+#8 C:\laragon\www\dilg\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+#9 C:\laragon\www\dilg\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#10 C:\laragon\www\dilg\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-26 08:49:26 --> Column 'empemail' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userverification` SET `status` = :status:
+WHERE `userverification`.`id` IN :userverification.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-26 08:49:28 --> mysqli_sql_exception: Column 'empemail' cannot be null in C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `userver...', 0)
+#1 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `userver...')
+#2 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `userver...')
+#3 C:\laragon\www\dilg\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userver...', Array, false)
+#4 C:\laragon\www\dilg\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\app\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', Array)
+#8 C:\laragon\www\dilg\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+#9 C:\laragon\www\dilg\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#10 C:\laragon\www\dilg\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-26 08:49:28 --> Column 'empemail' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userverification` SET `status` = :status:
+WHERE `userverification`.`id` IN :userverification.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-26 08:49:28 --> mysqli_sql_exception: Column 'empemail' cannot be null in C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `userver...', 0)
+#1 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `userver...')
+#2 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `userver...')
+#3 C:\laragon\www\dilg\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userver...', Array, false)
+#4 C:\laragon\www\dilg\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\app\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', Array)
+#8 C:\laragon\www\dilg\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+#9 C:\laragon\www\dilg\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#10 C:\laragon\www\dilg\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-26 08:49:28 --> Column 'empemail' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userverification` SET `status` = :status:
+WHERE `userverification`.`id` IN :userverification.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-26 08:49:28 --> mysqli_sql_exception: Column 'empemail' cannot be null in C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `userver...', 0)
+#1 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `userver...')
+#2 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `userver...')
+#3 C:\laragon\www\dilg\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userver...', Array, false)
+#4 C:\laragon\www\dilg\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\app\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', Array)
+#8 C:\laragon\www\dilg\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+#9 C:\laragon\www\dilg\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#10 C:\laragon\www\dilg\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-26 08:49:28 --> Column 'empemail' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userverification` SET `status` = :status:
+WHERE `userverification`.`id` IN :userverification.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-26 08:49:28 --> mysqli_sql_exception: Column 'empemail' cannot be null in C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `userver...', 0)
+#1 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `userver...')
+#2 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `userver...')
+#3 C:\laragon\www\dilg\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userver...', Array, false)
+#4 C:\laragon\www\dilg\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\app\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', Array)
+#8 C:\laragon\www\dilg\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+#9 C:\laragon\www\dilg\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#10 C:\laragon\www\dilg\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-26 08:49:29 --> Column 'empemail' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userverification` SET `status` = :status:
+WHERE `userverification`.`id` IN :userverification.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-26 08:49:29 --> mysqli_sql_exception: Column 'empemail' cannot be null in C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `userver...', 0)
+#1 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `userver...')
+#2 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `userver...')
+#3 C:\laragon\www\dilg\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userver...', Array, false)
+#4 C:\laragon\www\dilg\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\app\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', Array)
+#8 C:\laragon\www\dilg\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+#9 C:\laragon\www\dilg\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#10 C:\laragon\www\dilg\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-26 08:49:29 --> Column 'empemail' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userverification` SET `status` = :status:
+WHERE `userverification`.`id` IN :userverification.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-26 08:49:29 --> mysqli_sql_exception: Column 'empemail' cannot be null in C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `userver...', 0)
+#1 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `userver...')
+#2 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `userver...')
+#3 C:\laragon\www\dilg\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userver...', Array, false)
+#4 C:\laragon\www\dilg\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\app\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', Array)
+#8 C:\laragon\www\dilg\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+#9 C:\laragon\www\dilg\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#10 C:\laragon\www\dilg\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-26 08:49:29 --> Column 'empemail' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userverification` SET `status` = :status:
+WHERE `userverification`.`id` IN :userverification.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-26 08:49:31 --> mysqli_sql_exception: Column 'empemail' cannot be null in C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `userver...', 0)
+#1 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `userver...')
+#2 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `userver...')
+#3 C:\laragon\www\dilg\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userver...', Array, false)
+#4 C:\laragon\www\dilg\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\app\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', Array)
+#8 C:\laragon\www\dilg\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+#9 C:\laragon\www\dilg\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#10 C:\laragon\www\dilg\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-26 08:49:31 --> Column 'empemail' cannot be null
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userverification` SET `status` = :status:
+WHERE `userverification`.`id` IN :userverification.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\SigninController.php(106): CodeIgniter\Model->update('7', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-26 08:51:28 --> mysqli_sql_exception: Can't update table 'userverification' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `userver...', 0)
+#1 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `userver...')
+#2 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `userver...')
+#3 C:\laragon\www\dilg\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userver...', Array, false)
+#4 C:\laragon\www\dilg\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\app\Controllers\SigninController.php(106): CodeIgniter\Model->update('8', Array)
+#8 C:\laragon\www\dilg\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+#9 C:\laragon\www\dilg\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#10 C:\laragon\www\dilg\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-26 08:51:28 --> Can't update table 'userverification' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userverification` SET `status` = :status:
+WHERE `userverification`.`id` IN :userverification.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\SigninController.php(106): CodeIgniter\Model->update('8', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-26 08:51:34 --> mysqli_sql_exception: Can't update table 'userverification' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `userver...', 0)
+#1 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `userver...')
+#2 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `userver...')
+#3 C:\laragon\www\dilg\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userver...', Array, false)
+#4 C:\laragon\www\dilg\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\app\Controllers\SigninController.php(106): CodeIgniter\Model->update('8', Array)
+#8 C:\laragon\www\dilg\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+#9 C:\laragon\www\dilg\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#10 C:\laragon\www\dilg\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-26 08:51:34 --> Can't update table 'userverification' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userverification` SET `status` = :status:
+WHERE `userverification`.`id` IN :userverification.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\SigninController.php(106): CodeIgniter\Model->update('8', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-26 08:51:34 --> mysqli_sql_exception: Can't update table 'userverification' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `userver...', 0)
+#1 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `userver...')
+#2 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `userver...')
+#3 C:\laragon\www\dilg\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userver...', Array, false)
+#4 C:\laragon\www\dilg\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\app\Controllers\SigninController.php(106): CodeIgniter\Model->update('8', Array)
+#8 C:\laragon\www\dilg\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+#9 C:\laragon\www\dilg\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#10 C:\laragon\www\dilg\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-26 08:51:34 --> Can't update table 'userverification' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userverification` SET `status` = :status:
+WHERE `userverification`.`id` IN :userverification.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\SigninController.php(106): CodeIgniter\Model->update('8', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-26 08:51:34 --> mysqli_sql_exception: Can't update table 'userverification' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `userver...', 0)
+#1 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `userver...')
+#2 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `userver...')
+#3 C:\laragon\www\dilg\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userver...', Array, false)
+#4 C:\laragon\www\dilg\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\app\Controllers\SigninController.php(106): CodeIgniter\Model->update('8', Array)
+#8 C:\laragon\www\dilg\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+#9 C:\laragon\www\dilg\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#10 C:\laragon\www\dilg\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-26 08:51:34 --> Can't update table 'userverification' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userverification` SET `status` = :status:
+WHERE `userverification`.`id` IN :userverification.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\SigninController.php(106): CodeIgniter\Model->update('8', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-26 08:51:35 --> mysqli_sql_exception: Can't update table 'userverification' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `userver...', 0)
+#1 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `userver...')
+#2 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `userver...')
+#3 C:\laragon\www\dilg\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userver...', Array, false)
+#4 C:\laragon\www\dilg\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\app\Controllers\SigninController.php(106): CodeIgniter\Model->update('8', Array)
+#8 C:\laragon\www\dilg\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+#9 C:\laragon\www\dilg\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#10 C:\laragon\www\dilg\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-26 08:51:35 --> Can't update table 'userverification' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userverification` SET `status` = :status:
+WHERE `userverification`.`id` IN :userverification.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\SigninController.php(106): CodeIgniter\Model->update('8', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2023-11-26 08:51:35 --> mysqli_sql_exception: Can't update table 'userverification' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `userver...', 0)
+#1 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `userver...')
+#2 C:\laragon\www\dilg\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `userver...')
+#3 C:\laragon\www\dilg\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userver...', Array, false)
+#4 C:\laragon\www\dilg\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\app\Controllers\SigninController.php(106): CodeIgniter\Model->update('8', Array)
+#8 C:\laragon\www\dilg\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+#9 C:\laragon\www\dilg\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#10 C:\laragon\www\dilg\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\public\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2023-11-26 08:51:35 --> Can't update table 'userverification' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `userverification` SET `status` = :status:
+WHERE `userverification`.`id` IN :userverification.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\SigninController.php(106): CodeIgniter\Model->update('8', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

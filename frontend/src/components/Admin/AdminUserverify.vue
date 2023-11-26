@@ -200,7 +200,7 @@
         <li class="nav-heading">input</li>
 
         <li class="nav-item">
-        <a class="nav-link " href="/workspace">
+        <a class="nav-link collapsed" href="/workspace">
             <i class="bi bi-folder-plus"></i>
             <span>Workspace</span>
         </a>
@@ -214,16 +214,16 @@
             <span>Inventory</span>
           </a>
         </li>
-
+        
         <li class="nav-heading">Security</li>
 
         <li class="nav-item">
-          <a class="nav-link collapsed" href="/userverify">
+        <a class="nav-link " href="/userverify">
             <i class="bi bi-folder-plus"></i>
             <span>User Verification</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-    
+        </a>
+        </li>
+                
   
       </ul>
   
@@ -242,7 +242,7 @@
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-            <li class="breadcrumb-item active">Workspace</li>
+            <li class="breadcrumb-item active">User Verification</li>
           </ol>
         </nav>
       </div><!-- End Page Title -->
@@ -257,31 +257,6 @@
 
 
 
-
-
-              <!-- Vertical Form -->
-              <form class="row g-3" @submit.prevent="save">
-                <div class="col-12">
-                  <label for="entityname" class="form-label">Entity Name</label>
-                  <input type="text" class="form-control" id="entityname" v-model="entityname">
-                </div>
-                <div class="col-12">
-                  <label for="particulars" class="form-label">Particulars</label>
-                  <input type="text" class="form-control" id="particulars" v-model="particulars">
-                </div>
-                <div class="col-12">
-                  <label for="classification" class="form-label">Classification</label>
-                  <input type="text" class="form-control" id="classification" v-model="classification">
-                </div>
-                <div class="col-12">
-                  <label for="code" class="form-label">Code</label>
-                  <input type="text" class="form-control" id="code" v-model="code">
-                </div>
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-                </div>
-              </form><!-- Vertical Form -->
 
             </div>
           </div>
@@ -301,20 +276,21 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
-                    <th scope="col">Entity</th>
-                    <th scope="col">Particulars</th>
-                    <th scope="col">Classification</th>
-                    <th scope="col">Code</th>
+                    <th scope="col">Full Name</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Date/Time</th>
+                    <th scope="col">Status</th>
                     <th scope="col">Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="info in info">
-                    <td scope="row">{{ info.entityname }}</td>
-                    <td scope="row">{{ info.particulars }}</td>
-                    <td scope="row">{{ info.classification }}</td>
-                    <td scope="row">{{ info.code }}</td>
-                    <td><button @click="deleteRecord(info.id)" class="btn btn-danger">Delete</button></td>
+                  <tr v-for="item in info" :key="item.id">
+                    <td scope="row">{{ item.fullname }}</td>
+                    <td scope="row">{{ item.position }}</td>
+                    <td scope="row">{{ item.created_at }}</td>
+                    <td scope="row">{{ item.status }}</td>
+                    <button @click="updateStatus(item.id, 'Approved')" class="btn btn-success">Approve</button>
+                    <button @click="updateStatus(item.id, 'Declined')" class="btn btn-danger">Decline</button>
                   </tr>
                 </tbody>
               </table>
@@ -357,10 +333,10 @@ export default{
   data(){
       return{
           info:[],
-          entityname: "",
-          particulars: "",
-          classification: "",
-          code: "",
+          fullname: "",
+          position: "",
+          created_at: "",
+          status: "",
       }
   },
   created(){
@@ -378,47 +354,22 @@ export default{
       }, */
       async getInfo(){
           try {
-              const inf = await axios.get('getData');
+              const inf = await axios.get('getVerify');
               this.info = inf.data;
           } catch (error) {
               console.log(error);
           }
       },
-
-      async save(){
-        try {
-          const ins = await axios.post('save', {
-              entityname: this.entityname,
-              particulars: this.particulars,
-              classification: this.classification,
-              code: this.code,
-          });
-              this.entityname = "",
-              this.particulars = "",
-              this.classification = "",
-              this.code = "",
-          
-          this.$emit('data-saved');
-          this.getInfo();
-        } catch (error) {
-          
-        }
-      },
-      
-      async deleteRecord(recordId){
-        const confirm = window.confirm("Are you sure that you want to delete this record?");
-        if(confirm){
-          const ins = await axios.post('del', {
-            id: recordId,
-        });
-        this.getInfo();
-        }
-      },
-
-      async logout(){
-          sessionStorage.removeItem('token');
-          this.$router.push('/');
+      async updateStatus(id, newStatus) {
+      try {
+        const response = await axios.post('updateStatus', { id, status: newStatus });
+        console.log(response.data); // Log the response for debugging
+        this.getInfo(); // Refresh the data after update
+      } catch (error) {
+        console.error(error);
       }
+    },
+      
   }
 }
 </script>

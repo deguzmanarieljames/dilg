@@ -204,6 +204,24 @@
             <i class="bi bi-folder-plus"></i>
             <span>Workspace</span>
         </a>
+        </li>
+
+        <li class="nav-heading">Stocks</li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/inventory">
+            <i class="bi bi-folder-plus"></i>
+            <span>Inventory</span>
+          </a>
+        </li>
+
+        <li class="nav-heading">Security</li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/userverify">
+            <i class="bi bi-folder-plus"></i>
+            <span>User Verification</span>
+          </a>
         </li><!-- End Dashboard Nav -->
   
     

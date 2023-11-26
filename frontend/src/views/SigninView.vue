@@ -84,6 +84,7 @@ import router from '@/router'
       data() {
           return{
               username: '',
+              status:'',
               password: '',
               message: [],
           }
@@ -92,15 +93,23 @@ import router from '@/router'
         async signin(){
             const signdata = await axios.post("signin",{
                 username: this.username,
+                status: this.status,
                 password: this.password
             });
             this.message = signdata.data.msg;
             if(signdata.data.msg === 'okay'){
-                sessionStorage.setItem("token", signdata.data.token);
                 if(signdata.data.usertype === 'admin'){
+                    sessionStorage.setItem("token", signdata.data.token);
                     router.push('/dashboard');
                 }else if(signdata.data.usertype === 'user'){
-                    router.push('/empdashboard');
+                    if(signdata.data.status === 'Approved'){
+                        sessionStorage.setItem("token", signdata.data.token);
+                        router.push('/empdashboard');
+                    }else if(signdata.data.status === 'Declined'){
+                        alert('Your account has been declined!');
+                    }else{
+                        alert('Your account has not yet been approved!');
+                    }
                 }
             }else{
                 alert("Wrong credentials"); 
