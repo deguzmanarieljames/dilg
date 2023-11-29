@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class DatabasePPEModel extends Model
+class InventoryModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'databaseppe';
+    protected $table            = 'inventoryppe';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['entityname', 'particulars', 'classification', 'empfullname', 'code'];
+    protected $allowedFields    = ['entityname', 'particulars', 'classification', 'code', 'quantity', 'arrival', 'status', 'image', 'created_at'];
 
     // Dates
     protected $useTimestamps = false;

@@ -56,11 +56,11 @@
                           <div class="invalid-feedback">Please enter a valid Email adddress!</div>
                           </div>
 
-                          <div class="col-12">
+                          <!-- <div class="col-12">
                           <label for="usertype" class="form-label">User Type</label>
                           <input type="usertype" name="usertype" class="form-control" id="usertype" v-model="usertype" required>
                           <div class="invalid-feedback">Please enter a the user type!</div>
-                          </div>
+                          </div> -->
 
                           <div class="col-12">
                           <label for="password" class="form-label">Password</label>
@@ -127,7 +127,6 @@
         fullname: '',
         position: '',
         email: '',
-        usertype: '',
         password: '', 
         passwordConfirm: '', 
         message: [], 
@@ -143,7 +142,6 @@
             fullname: this.fullname,
             position: this.position,
             email: this.email,
-            usertype: this.usertype,
             password: this.password 
           }); 
 

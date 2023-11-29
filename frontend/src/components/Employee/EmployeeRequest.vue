@@ -53,13 +53,13 @@
   
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
               <img src="./img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <span class="d-none d-md-block dropdown-toggle ps-2">A. De Guzman</span>
+              <span class="d-none d-md-block dropdown-toggle ps-2">{{ getStoredFullName }}</span>
             </a><!-- End Profile Iamge Icon -->
   
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>Ariel James De Guzman</h6>
-                <span>Web Designer</span>
+                <h6>{{ getStoredFullName }}</h6>
+                <span>{{ getStoredPosition }}</span>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -250,10 +250,14 @@
                     <h5 class="card-title">Property Acquisition Request Form<span>/gaining possession to a property or equipment by the government</span></h5>
 
                                   <!-- Vertical Form -->
-                    <form class="row g-3" @submit.prevent="save">
+                    <form class="row g-3" @submit.prevent="send_request">
+                      <!-- <div class="col-12">
+                        <label for="empfullname" class="form-label">Employee Name</label>
+                        <input type="text" class="form-control" id="empfullname" v-model="empfullname">
+                      </div> -->
                       <div class="col-12">
-                        <label for="entityname" class="form-label">Entity Name</label>
-                        <input type="text" class="form-control" id="entityname" v-model="entityname">
+                        <label for="particulars" class="form-label">Particulars</label>
+                        <input type="text" class="form-control" id="particulars" v-model="particulars">
                       </div>
                       <div class="input-group">
                       <span class="input-group-text">Write here the description</span>
@@ -297,54 +301,21 @@
                 <h5 class="card-title">Recent Request</h5>
   
                 <div class="activity">
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">32 min</div>
-                    <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                    <div class="activity-content">
-                      Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">56 min</div>
-                    <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                    <div class="activity-content">
-                      Voluptatem blanditiis blanditiis eveniet
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">2 hrs</div>
-                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                    <div class="activity-content">
-                      Voluptates corrupti molestias voluptatem
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">1 day</div>
-                    <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                    <div class="activity-content">
-                      Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">2 days</div>
-                    <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                    <div class="activity-content">
-                      Est sit eum reiciendis exercitationem
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">4 weeks</div>
-                    <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                    <div class="activity-content">
-                      Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                    </div>
-                  </div><!-- End activity item-->
+                  <table class="table table-borderless">
+                <thead>
+                  <tr>
+                    <th scope="col">Time</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="info in info">
+                    
+                    <td scope="row">{{ info.particulars }}</td>
+
+                    
+                  </tr>
+                </tbody>
+              </table>
   
                 </div>
   
@@ -381,32 +352,80 @@
 
 <script>
 
-export default {
+import axios from 'axios'
+
+export default{
     data(){
         return{
-            entityname: "",
+            info:[],
+            particulars: "",
             description: "",
-        }
+            // empfullname: ""
+        };
     },
+    created(){
+      this.getReq();
+    },
+
+
+    computed:{
+      getStoredFullName() {
+        // Retrieve full name from session storage
+        return sessionStorage.getItem("fullname");
+      },
+      getStoredPosition() {
+        return sessionStorage.getItem("position");
+      }
+    },
+
+
+    mounted() {
+      // Retrieve employee name from session storage and set it to empfullname
+      const storedEmpFullName = sessionStorage.getItem("fullname");
+
+      if (storedEmpFullName) {
+        this.empfullname = storedEmpFullName;
+      }
+    },
+
+
+
     methods: {
+
       async logout(){
         sessionStorage.removeItem('token');
+        sessionStorage.removeItem('fullname');
+        sessionStorage.removeItem('position');
         this.$router.push('/');
       },
+
+      async getReq(){
+          try {
+              const inf = await axios.get('getReq');
+              this.info = inf.data;
+          } catch (error) {
+              console.log(error);
+          }
+      },
+
       async send_request(){
         try {
           const ins = await axios.post('send_request', {
-              entityname: this.entityname,
+              empfullname: this.empfullname,
+              particulars: this.particulars,
               description: this.description
           });
-              this.entityname = "",
+              this.particulars = "",
               this.description = ""
           
           this.$emit('data-saved');
+          this.getReq();
         } catch (error) {
           
         }
       },
+
+
     }
   }
   </script>

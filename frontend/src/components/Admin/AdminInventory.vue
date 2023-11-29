@@ -287,13 +287,13 @@
                 <label for="status" class="form-label">Status</label>
                 <input type="text" class="form-control" id="status" v-model="status">
               </div>
-              <div class="col-12">
+              <!-- <div class="col-12">
                 <label for="image" class="form-label">Image</label>
                 <input type="text" class="form-control" id="image" v-model="image">
-              </div>
+              </div> -->
               <div class="col-12">
-                <label for="classification" class="form-label">Classification</label>
-                <input type="text" class="form-control" id="classification" v-model="classification">
+                <label for="arrival" class="form-label">Arrival</label>
+                <input type="datetime-local" class="form-control" id="arrival" v-model="arrival">
               </div>
               <div class="text-center">
                 <button type="submit" class="btn btn-primary">Submit</button>
@@ -325,22 +325,22 @@
                   <th scope="col">Classification</th>
                   <th scope="col">Code</th>
                   <th scope="col">Qty</th>
-                  <th scope="col">arrival</th>
-                  <th scope="col">status</th>
+                  <th scope="col">Arrival</th>
+                  <th scope="col">Status</th>
                   <th scope="col">Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="info in info">
-                  <td scope="row">{{ info.image }}</td>
-                  <td scope="row">{{ info.entityname }}</td>
-                  <td scope="row">{{ info.particulars }}</td>
-                  <td scope="row">{{ info.classification }}</td>
-                  <td scope="row">{{ info.code }}</td>
-                  <td scope="row">{{ info.quantity }}</td>
-                  <td scope="row">{{ info.arrival }}</td>
-                  <td scope="row">{{ info.status }}</td>
-                  <td><button @click="deleteRecord(info.id)" class="btn btn-danger">Delete</button></td>
+                <tr v-for="inv in inventory">
+                  <td scope="row">{{ inv.image }}</td>
+                  <td scope="row">{{ inv.entityname }}</td>
+                  <td scope="row">{{ inv.particulars }}</td>
+                  <td scope="row">{{ inv.classification }}</td>
+                  <td scope="row">{{ inv.code }}</td>
+                  <td scope="row">{{ inv.quantity }}</td>
+                  <td scope="row">{{ inv.arrival }}</td>
+                  <td scope="row">{{ inv.status }}</td>
+                  <td><button @click="deleteRecord(inv.id)" class="btn btn-danger">Delete</button></td>
                 </tr>
               </tbody>
             </table>
@@ -382,15 +382,19 @@ import axios from 'axios'
 export default{
 data(){
     return{
-        info:[],
+        inventory:[],
         entityname: "",
         particulars: "",
         classification: "",
         code: "",
+        quantity: "",
+        arrival: "",
+        status: "",
+        image: null
     }
 },
 created(){
-    this.getInfo()
+    this.getInventory()
 },
 methods:{
     /*async deleteRecord(recordId){
@@ -399,13 +403,13 @@ methods:{
             await axios.post("del", {
             id: recordId,
         });
-        this.getInfo();
+        this.getInventory();
         }
     }, */
-    async getInfo(){
+    async getInventory(){
         try {
-            const inf = await axios.get('getData');
-            this.info = inf.data;
+            const inv = await axios.get('getInventory');
+            this.inventory = inv.data;
         } catch (error) {
             console.log(error);
         }
@@ -413,19 +417,25 @@ methods:{
 
     async save(){
       try {
-        const ins = await axios.post('save', {
+        const inv = await axios.post('saveInventory', {
             entityname: this.entityname,
             particulars: this.particulars,
             classification: this.classification,
             code: this.code,
+            quantity: this.quantity,
+            arrival: this.arrival,
+            status: this.status,
         });
             this.entityname = "",
             this.particulars = "",
             this.classification = "",
             this.code = "",
+            this.quantity = "",
+            this.arrival = "",
+            this.status = ""
         
         this.$emit('data-saved');
-        this.getInfo();
+        this.getInventory();
       } catch (error) {
         
       }
@@ -434,10 +444,10 @@ methods:{
     async deleteRecord(recordId){
       const confirm = window.confirm("Are you sure that you want to delete this record?");
       if(confirm){
-        const ins = await axios.post('del', {
+        const ins = await axios.post('delInventory', {
           id: recordId,
       });
-      this.getInfo();
+      this.getInventory();
       }
     },
 

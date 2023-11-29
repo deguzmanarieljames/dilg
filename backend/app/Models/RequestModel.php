@@ -4,16 +4,16 @@ namespace App\Models;
 
 use CodeIgniter\Model;
 
-class EmployeeModel extends Model
+class RequestModel extends Model
 {
     protected $DBGroup          = 'default';
-    protected $table            = 'employees';
+    protected $table            = 'requestppe';
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = [];
+    protected $allowedFields    = ['empfullname', 'particulars', 'description', 'status', 'created_at'];
 
     // Dates
     protected $useTimestamps = false;

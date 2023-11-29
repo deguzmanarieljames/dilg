@@ -38,6 +38,8 @@ class SigninController extends ResourceController
     { 
       $user = new SigninModel(); 
       $username = $this->request->getVar('username');
+      $fullname = $this->request->getVar('fullname');
+      $position = $this->request->getVar('position');
       $usertpye = $this->request->getVar('usertype');
       $password = $this->request->getVar('password'); 
       $status = $this->request->getVar('status');
@@ -47,7 +49,7 @@ class SigninController extends ResourceController
         $pass = $data['password']; 
         $authenticatePassword = password_verify($password, $pass); 
         if($authenticatePassword){ 
-          return $this->respond(['msg' => 'okay', 'token,' => $data['token'], 'usertype' => $data['usertype'], 'status' => $data['status']]);
+          return $this->respond(['msg' => 'okay', 'token' => $data['token'], 'fullname' => $data['fullname'], 'position' => $data['position'], 'usertype' => $data['usertype'], 'status' => $data['status']]);
         }else{ 
           return $this->respond(['msg' => 'Incorrect Pasword']);
         } 
@@ -65,7 +67,6 @@ class SigninController extends ResourceController
         'fullname' => $this->request->getVar('fullname'),
         'position' => $this->request->getVar('position'),
         'email' => $this->request->getVar('email'),
-        'usertype' => $this->request->getVar('usertype'),
         'password' => password_hash($this->request->getVar('password'),PASSWORD_DEFAULT), 
         'token' => $token
       ]; 

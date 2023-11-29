@@ -274,6 +274,10 @@
                   <input type="text" class="form-control" id="classification" v-model="classification">
                 </div>
                 <div class="col-12">
+                  <label for="empfullname" class="form-label">Fullname</label>
+                  <input type="text" class="form-control" id="empfullname" v-model="empfullname">
+                </div>
+                <div class="col-12">
                   <label for="code" class="form-label">Code</label>
                   <input type="text" class="form-control" id="code" v-model="code">
                 </div>
@@ -304,6 +308,7 @@
                     <th scope="col">Entity</th>
                     <th scope="col">Particulars</th>
                     <th scope="col">Classification</th>
+                    <th scope="col">Fullname</th>
                     <th scope="col">Code</th>
                     <th scope="col">Action</th>
                   </tr>
@@ -313,6 +318,7 @@
                     <td scope="row">{{ info.entityname }}</td>
                     <td scope="row">{{ info.particulars }}</td>
                     <td scope="row">{{ info.classification }}</td>
+                    <td scope="row">{{ info.empfullname }}</td>
                     <td scope="row">{{ info.code }}</td>
                     <td><button @click="deleteRecord(info.id)" class="btn btn-danger">Delete</button></td>
                   </tr>
@@ -360,6 +366,7 @@ export default{
           entityname: "",
           particulars: "",
           classification: "",
+          empfullname: "",
           code: "",
       }
   },
@@ -391,11 +398,13 @@ export default{
               entityname: this.entityname,
               particulars: this.particulars,
               classification: this.classification,
+              empfullname: this.empfullname,
               code: this.code,
           });
               this.entityname = "",
               this.particulars = "",
               this.classification = "",
+              this.empfullname = "",
               this.code = "",
           
           this.$emit('data-saved');

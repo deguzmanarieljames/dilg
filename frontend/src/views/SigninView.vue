@@ -84,6 +84,8 @@ import router from '@/router'
       data() {
           return{
               username: '',
+              fullname: '',
+              position: '',
               status:'',
               password: '',
               message: [],
@@ -93,6 +95,8 @@ import router from '@/router'
         async signin(){
             const signdata = await axios.post("signin",{
                 username: this.username,
+                fullname: this.fullname,
+                position: this.position,
                 status: this.status,
                 password: this.password
             });
@@ -104,6 +108,8 @@ import router from '@/router'
                 }else if(signdata.data.usertype === 'user'){
                     if(signdata.data.status === 'Approved'){
                         sessionStorage.setItem("token", signdata.data.token);
+                        sessionStorage.setItem("fullname", signdata.data.fullname);
+                        sessionStorage.setItem("position", signdata.data.position);
                         router.push('/empdashboard');
                     }else if(signdata.data.status === 'Declined'){
                         alert('Your account has been declined!');
