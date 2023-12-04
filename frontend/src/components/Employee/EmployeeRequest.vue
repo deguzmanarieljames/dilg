@@ -367,7 +367,6 @@ export default{
       this.getReq();
     },
 
-
     computed:{
       getStoredFullName() {
         // Retrieve full name from session storage

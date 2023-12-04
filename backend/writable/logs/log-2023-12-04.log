@@ -1,0 +1,112 @@
+CRITICAL - 2023-12-04 01:15:10 --> Call to undefined method App\Models\InventoryModel::getStatus
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(51): CodeIgniter\Model->__call('getStatus', [])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:15:22 --> Call to undefined method App\Models\InventoryModel::getStatus
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(51): CodeIgniter\Model->__call('getStatus', [])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:15:22 --> Call to undefined method App\Models\InventoryModel::getStatus
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(51): CodeIgniter\Model->__call('getStatus', [])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:16:28 --> Undefined variable $status
+in APPPATH\Controllers\DatabasePPEController.php on line 51.
+ 1 APPPATH\Controllers\DatabasePPEController.php(51): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $status', 'C:\\laragon\\www\\dilg\\backend\\app\\Controllers\\DatabasePPEController.php', 51)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:17:27 --> Undefined variable $status
+in APPPATH\Controllers\DatabasePPEController.php on line 51.
+ 1 APPPATH\Controllers\DatabasePPEController.php(51): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $status', 'C:\\laragon\\www\\dilg\\backend\\app\\Controllers\\DatabasePPEController.php', 51)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:20:16 --> Call to undefined method App\Models\InventoryModel::getStatusByParticulars
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(54): CodeIgniter\Model->__call('getStatusByParticulars', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:20:17 --> Call to undefined method App\Models\InventoryModel::getStatusByParticulars
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(54): CodeIgniter\Model->__call('getStatusByParticulars', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:20:17 --> Call to undefined method App\Models\InventoryModel::getStatusByParticulars
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(54): CodeIgniter\Model->__call('getStatusByParticulars', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:20:24 --> Call to undefined method App\Models\InventoryModel::getStatusByParticulars
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(54): CodeIgniter\Model->__call('getStatusByParticulars', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:20:24 --> Call to undefined method App\Models\InventoryModel::getStatusByParticulars
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(54): CodeIgniter\Model->__call('getStatusByParticulars', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:23:49 --> Call to undefined method App\Models\InventoryModel::getStatusByParticulars
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(54): CodeIgniter\Model->__call('getStatusByParticulars', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:23:49 --> Call to undefined method App\Models\InventoryModel::getStatusByParticulars
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(54): CodeIgniter\Model->__call('getStatusByParticulars', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:23:49 --> Call to undefined method App\Models\InventoryModel::getStatusByParticulars
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(54): CodeIgniter\Model->__call('getStatusByParticulars', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:23:49 --> Call to undefined method App\Models\InventoryModel::getStatusByParticulars
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(54): CodeIgniter\Model->__call('getStatusByParticulars', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:25:25 --> Call to undefined method App\Models\InventoryModel::getStatusByParticulars
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(54): CodeIgniter\Model->__call('getStatusByParticulars', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-04 01:25:34 --> Call to undefined method App\Models\InventoryModel::getStatusByParticulars
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(54): CodeIgniter\Model->__call('getStatusByParticulars', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

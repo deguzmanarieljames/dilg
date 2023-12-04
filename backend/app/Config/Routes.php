@@ -32,3 +32,6 @@ $routes->post('/updateStatus', 'SigninController::updateStatus');
 
 $routes->post('/send_request', 'RequestController::send_request');
 $routes->get('/getReq', 'RequestController::getReq');
+
+$routes->get('/getEmployee', 'DatabasePPEController::getEmployee');
+$routes->get('/getEmployees', 'DatabasePPEController::getEmployees');

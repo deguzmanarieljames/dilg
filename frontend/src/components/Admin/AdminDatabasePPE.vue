@@ -263,8 +263,9 @@
                         <th>Entity</th>
                         <th>Particulars</th>
                         <th>Classification</th>
-                        <th data-type="date" data-format="YYYY/DD/MM">Date Recorded</th>
+                        <th>Assigned</th>
                         <th>Code</th>
+                        <th data-type="date" data-format="YYYY/DD/MM">Date Recorded</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -272,8 +273,9 @@
                         <td scope="row">{{ info.entityname }}</td>
                         <td scope="row">{{ info.particulars }}</td>
                         <td scope="row">{{ info.classification }}</td>
-                        <td scope="row">{{ info.created_at }}</td>
+                        <td scope="row">{{ info.empfullname }}</td>
                         <td scope="row">{{ info.code }}</td>
+                        <td scope="row">{{ info.created_at }}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -319,6 +321,7 @@ export default{
           entityname: "",
           particulars: "",
           classification: "",
+          empfullname: "",
           code: "",
       }
   },

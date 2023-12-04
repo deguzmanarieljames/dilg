@@ -273,14 +273,22 @@
                   <label for="classification" class="form-label">Classification</label>
                   <input type="text" class="form-control" id="classification" v-model="classification">
                 </div>
-                <div class="col-12">
+                <!-- <div class="col-12">
                   <label for="empfullname" class="form-label">Fullname</label>
                   <input type="text" class="form-control" id="empfullname" v-model="empfullname">
-                </div>
+                </div> -->
                 <div class="col-12">
+                  <label for="empfullname" class="form-label">Employee</label>
+                  <select class="form-select" v-model="empfullname">
+                    <option value="" disabled>Select Employee</option>
+                    <option v-for="employee in employees">{{ employee.empfullname }}</option>
+                  </select>
+                </div>
+
+                <!-- <div class="col-12">
                   <label for="code" class="form-label">Code</label>
                   <input type="text" class="form-control" id="code" v-model="code">
-                </div>
+                </div> -->
                 <div class="text-center">
                   <button type="submit" class="btn btn-primary">Submit</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>
@@ -368,6 +376,12 @@ export default{
           classification: "",
           empfullname: "",
           code: "",
+          // selectedEmployee: "",
+          employees: [],
+          // selectedEmployeeDetails: null
+
+          quantity: "",
+          
       }
   },
   created(){
@@ -392,26 +406,92 @@ export default{
           }
       },
 
-      async save(){
+      async getInventory(){
         try {
-          const ins = await axios.post('save', {
-              entityname: this.entityname,
-              particulars: this.particulars,
-              classification: this.classification,
-              empfullname: this.empfullname,
-              code: this.code,
-          });
-              this.entityname = "",
-              this.particulars = "",
-              this.classification = "",
-              this.empfullname = "",
-              this.code = "",
-          
-          this.$emit('data-saved');
-          this.getInfo();
+            const inv = await axios.get('getInventory');
+            this.inventory = inv.data;
         } catch (error) {
-          
+            console.log(error);
         }
+    },
+
+      // async save() {
+      //   try {
+      //     const generatedCode = await this.generateUniqueCode();
+
+      //     const response = await axios.post('save', {
+      //       entityname: this.entityname,
+      //       particulars: this.particulars,
+      //       classification: this.classification,
+      //       empfullname: this.empfullname,
+      //       code: generatedCode.data,
+      //     });
+
+      //     console.log('Server response:', response.data);
+      //     // Clear the code only after successfully saving the record
+      //     this.entityname = "";
+      //     this.particulars = "";
+      //     this.classification = "";
+      //     this.empfullname = "";
+      //     this.code = "";
+
+      //     this.$emit('data-saved');
+      //     this.getInfo();
+      //   } catch (error) {
+      //     console.error(error);
+      //   }
+      // },
+
+      async save() {
+  try {
+    const generatedCode = await this.generateUniqueCode();
+
+    const response = await axios.post('save', {
+      entityname: this.entityname,
+      particulars: this.particulars,
+      classification: this.classification,
+      empfullname: this.empfullname,
+      code: generatedCode.data,
+    });
+
+    console.log('Server response:', response.data);
+
+    // Check if the response indicates a successful save
+    if (response.status === 200) {
+      // Clear the form fields after successfully saving the record
+      this.entityname = "";
+      this.particulars = "";
+      this.classification = "";
+      this.empfullname = "";
+      this.code = "";
+
+      this.$emit('data-saved');
+      this.getInfo();
+    } else {
+      // Handle unsuccessful save (optional)
+      console.error('Save failed:', response.data);
+    }
+  } catch (error) {
+    console.error('Error during save:', error);
+  }
+},
+
+
+
+      async generateUniqueCode() {
+          let generatedCode;
+          do {
+            // Call the code_gen endpoint on the server
+            const response = await axios.post('code_gen', { length: 8 });
+            generatedCode = response.data;
+          } while (this.codeExists(generatedCode));
+
+          return generatedCode;
+      },
+
+      codeExists(code) {
+        // Check if the generated code already exists in the info array
+        return this.info.some(item => item.code === code);
       },
       
       async deleteRecord(recordId){
@@ -427,7 +507,35 @@ export default{
       async logout(){
           sessionStorage.removeItem('token');
           this.$router.push('/');
-      }
-  }
+      },
+
+      // async fetchEmployeeDetails() {
+      // // Use the CodeIgniter API endpoint to fetch employee details based on the selectedEmployee
+      //   if (this.selectedEmployee) {
+      //     try {
+      //       const response = await fetch(`http://dilg.test/backend/public/getEmployee/${this.selectedEmployee}`);
+      //       const data = await response.json();
+      //       this.selectedEmployeeDetails = data;
+      //     } catch (error) {
+      //       console.error('Error fetching employee details', error);
+      //     }
+      //   } else {
+      //     this.selectedEmployeeDetails = null;
+      //   }
+      // },
+      async fetchEmployeeNames() {
+        // Use the CodeIgniter API endpoint to fetch the list of employee names
+        try {
+          const response = await fetch('http://dilg.test/backend/public/getEmployees');
+          const data = await response.json();
+          this.employees = data;
+        } catch (error) {
+          console.error('Error fetching employee names', error);
+        }
+      },
+  },
+  mounted() {
+    this.fetchEmployeeNames();
+  },
 }
 </script>
