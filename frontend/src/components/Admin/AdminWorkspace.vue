@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed;">
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
   
@@ -241,7 +241,7 @@
         <h1>Workspace</h1>
         <nav>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item"><a href="/workspace">Input</a></li>
             <li class="breadcrumb-item active">Workspace</li>
           </ol>
         </nav>
@@ -249,68 +249,103 @@
   
         <section class="section">
         <div class="row">
-            <div class="col-lg-12">
 
+          <div class="col-lg-6">
               <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Vertical Form</h5>
+              <div class="card-body">
+                <h5 class="card-title">Procurement</h5>
 
 
 
 
 
-              <!-- Vertical Form -->
-              <form class="row g-3" @submit.prevent="save">
-                <div class="col-12">
-                  <label for="entityname" class="form-label">Entity Name</label>
-                  <input type="text" class="form-control" id="entityname" v-model="entityname">
-                </div>
-                <div class="col-12">
-                  <label for="particulars" class="form-label">Particulars</label>
-                  <input type="text" class="form-control" id="particulars" v-model="particulars">
-                </div>
-                <div class="col-12">
-                  <label for="classification" class="form-label">Classification</label>
-                  <input type="text" class="form-control" id="classification" v-model="classification">
-                </div>
-                <!-- <div class="col-12">
-                  <label for="empfullname" class="form-label">Fullname</label>
-                  <input type="text" class="form-control" id="empfullname" v-model="empfullname">
-                </div> -->
-                <div class="col-12">
-                  <label for="empfullname" class="form-label">Employee</label>
-                  <select class="form-select" v-model="empfullname">
-                    <option value="" disabled>Select Employee</option>
-                    <option v-for="employee in employees">{{ employee.empfullname }}</option>
-                  </select>
-                </div>
+                <!-- Vertical Form -->
+                <form class="row g-3" @submit.prevent="save">
+                  <div class="col-12">
+                    <label for="entityname" class="form-label">Entity Name</label>
+                    <input type="text" class="form-control" id="entityname" v-model="entityname">
+                  </div>
+                  <div class="col-12">
+                    <label for="particulars" class="form-label">Particulars</label>
+                    <input type="text" class="form-control" id="particulars" v-model="particulars">
+                  </div>
+                  <div class="col-12">
+                    <label for="classification" class="form-label">Classification</label>
+                    <input type="text" class="form-control" id="classification" v-model="classification">
+                  </div>
+                  <!-- <div class="col-12">
+                    <label for="empfullname" class="form-label">Fullname</label>
+                    <input type="text" class="form-control" id="empfullname" v-model="empfullname">
+                  </div> -->
+                  <div class="col-12">
+                    <label for="empfullname" class="form-label">Employee</label>
+                    <select class="form-select" v-model="empfullname">
+                      <option value="" disabled>Select Employee</option>
+                      <option v-for="employee in employees">{{ employee.empfullname }}</option>
+                    </select>
+                  </div>
 
-                <!-- <div class="col-12">
-                  <label for="code" class="form-label">Code</label>
-                  <input type="text" class="form-control" id="code" v-model="code">
-                </div> -->
-                <div class="text-center">
-                  <button type="submit" class="btn btn-primary">Submit</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-                </div>
-              </form><!-- Vertical Form -->
+                  <!-- <div class="col-12">
+                    <label for="code" class="form-label">Code</label>
+                    <input type="text" class="form-control" id="code" v-model="code">
+                  </div> -->
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="reset" class="btn btn-secondary">Reset</button>
+                  </div>
+                </form><!-- Vertical Form -->
+
+              </div>
+            </div>
+            </div>
+
+            <div class="col-lg-6" style="font-size: small;">
+              <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">Request</h5>
+
+                <!-- Table with hoverable rows -->
+                <table class="table table-hover datatable">
+                  <thead>
+                    <tr>
+                      <th scope="col">Entity</th>
+                      <th scope="col">Particulars</th>
+                      <th scope="col">Classification</th>
+                      <th scope="col">Code</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="inv in inventory">
+                      <td scope="row">{{ inv.image }}</td>
+                      <td scope="row">{{ inv.entityname }}</td>
+                      <td scope="row">{{ inv.particulars }}</td>
+                      <td scope="row">{{ inv.classification }}</td>
+                      <td scope="row">{{ inv.code }}</td>
+                      <td scope="row">{{ inv.quantity }}</td>
+                      <td scope="row">{{ inv.arrival }}</td>
+                      <td scope="row">{{ inv.status }}</td>
+                      <td><button @click="deleteRecord(inv.id)" class="btn btn-danger">Delete</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- End Table with hoverable rows -->
+
+              </div>
+              </div>
+
 
             </div>
-          </div>
 
-            </div>
-
-            <div class="col-lg-12">
+            <div class="col-lg-16">
 
 
 
-
-            <div class="card">
+            <div class="card" style="font-size: medium;">
             <div class="card-body">
-              <h5 class="card-title">Table with hoverable rows</h5>
-
+              <h5 class="card-title">Data Table</h5>
+              <hr>
               <!-- Table with hoverable rows -->
-              <table class="table table-hover">
+              <table class="table table-hover datatable">
                 <thead>
                   <tr>
                     <th scope="col">Entity</th>
@@ -380,7 +415,7 @@ export default{
           employees: [],
           // selectedEmployeeDetails: null
 
-          quantity: "",
+          message: [],
           
       }
   },
@@ -415,6 +450,45 @@ export default{
         }
     },
 
+      async save() {
+        try {
+          const generatedCode = await this.generateUniqueCode();
+
+          const response = await axios.post('save', {
+            entityname: this.entityname,
+            particulars: this.particulars,
+            classification: this.classification,
+            empfullname: this.empfullname,
+            code: generatedCode.data,
+          });
+          this.message = response.data.msg;
+          if(response.data.msg === 'Cannot save data. Inventory status is inactive.'){
+            alert('Cannot save data. Inventory status is inactive.');
+          }
+          else if(response.data.msg === 'Cannot save data. No matching inventory record found.'){
+            alert('Cannot save data. No matching inventory record found.');
+          }
+
+          console.log('Server response:', response.data);
+          // Clear the code only after successfully saving the record
+          this.entityname = "";
+          this.particulars = "";
+          this.classification = "";
+          this.empfullname = "";
+          this.code = "";
+
+          this.$emit('data-saved');
+          this.getInfo();
+        } catch (error) {
+          console.error(error);
+          this.entityname = "";
+          this.particulars = "";
+          this.classification = "";
+          this.empfullname = "";
+          this.code = "";
+        }
+      },
+
       // async save() {
       //   try {
       //     const generatedCode = await this.generateUniqueCode();
@@ -428,53 +502,36 @@ export default{
       //     });
 
       //     console.log('Server response:', response.data);
-      //     // Clear the code only after successfully saving the record
-      //     this.entityname = "";
-      //     this.particulars = "";
-      //     this.classification = "";
-      //     this.empfullname = "";
-      //     this.code = "";
 
-      //     this.$emit('data-saved');
-      //     this.getInfo();
+      //     // Check if the response indicates a successful save
+      //     if (response.status === 200) {
+      //       // Clear the form fields after successfully saving the record
+      //       this.entityname = "";
+      //       this.particulars = "";
+      //       this.classification = "";
+      //       this.empfullname = "";
+      //       this.code = "";
+
+      //       this.$emit('data-saved');
+      //       this.getInfo();
+      //     } else {
+      //       // Handle unsuccessful save (optional)
+      //       console.error('Save failed:', response.data);
+      //     }
       //   } catch (error) {
-      //     console.error(error);
+      //     // Log detailed error information
+      //     console.error('Error during save:', error);
+      //     if (error.response) {
+      //       console.error('Response data:', error.response.data);
+      //       console.error('Response status:', error.response.status);
+      //     } else if (error.request) {
+      //       console.error('No response received. Request:', error.request);
+      //     } else {
+      //       console.error('Error message:', error.message);
+      //     }
       //   }
       // },
 
-      async save() {
-  try {
-    const generatedCode = await this.generateUniqueCode();
-
-    const response = await axios.post('save', {
-      entityname: this.entityname,
-      particulars: this.particulars,
-      classification: this.classification,
-      empfullname: this.empfullname,
-      code: generatedCode.data,
-    });
-
-    console.log('Server response:', response.data);
-
-    // Check if the response indicates a successful save
-    if (response.status === 200) {
-      // Clear the form fields after successfully saving the record
-      this.entityname = "";
-      this.particulars = "";
-      this.classification = "";
-      this.empfullname = "";
-      this.code = "";
-
-      this.$emit('data-saved');
-      this.getInfo();
-    } else {
-      // Handle unsuccessful save (optional)
-      console.error('Save failed:', response.data);
-    }
-  } catch (error) {
-    console.error('Error during save:', error);
-  }
-},
 
 
 

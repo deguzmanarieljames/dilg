@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed;">
       <!-- ======= Header ======= -->
       <header id="header" class="header fixed-top d-flex align-items-center">
 

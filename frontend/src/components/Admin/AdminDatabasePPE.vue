@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed;">
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
   
@@ -237,7 +237,7 @@
       <main id="main" class="main">
 
         <div class="pagetitle">
-        <h1>Data Tables</h1>
+        <h1>Database - Property, Plant and Equipment</h1>
         <nav>
             <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
@@ -253,9 +253,8 @@
 
             <div class="card">
                 <div class="card-body">
-                <h5 class="card-title">Datatables</h5>
-                <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable. Check for <a href="https://fiduswriter.github.io/simple-datatables/demos/" target="_blank">more examples</a>.</p>
-
+                <h5 class="card-title">Acquisition</h5>
+                <p> Refers to the act of gaining possession to a property or equipment by the government.</p>
                 <!-- Table with stripped rows -->
                 <table class="table datatable">
                     <thead>

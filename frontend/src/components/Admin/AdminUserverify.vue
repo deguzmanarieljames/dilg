@@ -1,5 +1,5 @@
 <template>
-    <div id="app">
+<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed;">
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
   
@@ -238,10 +238,10 @@
       <main id="main" class="main">
   
       <div class="pagetitle">
-        <h1>Workspace</h1>
+        <h1>User Verification</h1>
         <nav>
           <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
+            <li class="breadcrumb-item"><a href="/userverify">Security</a></li>
             <li class="breadcrumb-item active">User Verification</li>
           </ol>
         </nav>

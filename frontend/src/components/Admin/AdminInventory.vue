@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed;">
       <!-- ======= Header ======= -->
       <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -238,22 +238,22 @@
     <main id="main" class="main">
 
     <div class="pagetitle">
-      <h1>Workspace</h1>
+      <h1>Inventory</h1>
       <nav>
         <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-          <li class="breadcrumb-item active">Workspace</li>
+          <li class="breadcrumb-item"><a href="/inventory">Stocks</a></li>
+          <li class="breadcrumb-item active">Inventory</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
 
       <section class="section">
       <div class="row">
-          <div class="col-lg-12">
+          <div class="col-lg-4">
 
             <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Vertical Form</h5>
+            <h5 class="card-title">Add Item</h5>
 
 
 
@@ -273,19 +273,11 @@
                 <label for="classification" class="form-label">Classification</label>
                 <input type="text" class="form-control" id="classification" v-model="classification">
               </div>
-              <div class="col-12">
-                <label for="code" class="form-label">Code</label>
-                <input type="text" class="form-control" id="code" v-model="code">
-              </div>
 
 
               <div class="col-12">
                 <label for="quantity" class="form-label">Quantity</label>
                 <input type="text" class="form-control" id="quantity" v-model="quantity">
-              </div>
-              <div class="col-12">
-                <label for="status" class="form-label">Status</label>
-                <input type="text" class="form-control" id="status" v-model="status">
               </div>
               <!-- <div class="col-12">
                 <label for="image" class="form-label">Image</label>
@@ -305,25 +297,24 @@
         </div>
 
           </div>
-
-          <div class="col-lg-12">
+ 
+          <div class="col-lg-8" style="font-size: medium;">
 
 
 
 
           <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Table with hoverable rows</h5>
+            <h5 class="card-title">Stocks</h5>
 
             <!-- Table with hoverable rows -->
-            <table class="table table-hover">
+            <table class="table table-hover datatable">
               <thead>
                 <tr>
                   <th scope="col">Image</th>
                   <th scope="col">Entity</th>
                   <th scope="col">Particulars</th>
                   <th scope="col">Classification</th>
-                  <th scope="col">Code</th>
                   <th scope="col">Qty</th>
                   <th scope="col">Arrival</th>
                   <th scope="col">Status</th>
@@ -336,7 +327,6 @@
                   <td scope="row">{{ inv.entityname }}</td>
                   <td scope="row">{{ inv.particulars }}</td>
                   <td scope="row">{{ inv.classification }}</td>
-                  <td scope="row">{{ inv.code }}</td>
                   <td scope="row">{{ inv.quantity }}</td>
                   <td scope="row">{{ inv.arrival }}</td>
                   <td scope="row">{{ inv.status }}</td>
@@ -348,6 +338,7 @@
 
           </div>
         </div>
+        
 
           </div>
       </div>
@@ -386,7 +377,6 @@ data(){
         entityname: "",
         particulars: "",
         classification: "",
-        code: "",
         quantity: "",
         arrival: "",
         status: "",
@@ -421,18 +411,14 @@ methods:{
             entityname: this.entityname,
             particulars: this.particulars,
             classification: this.classification,
-            code: this.code,
             quantity: this.quantity,
             arrival: this.arrival,
-            status: this.status,
         });
             this.entityname = "",
             this.particulars = "",
             this.classification = "",
-            this.code = "",
             this.quantity = "",
             this.arrival = "",
-            this.status = ""
         
         this.$emit('data-saved');
         this.getInventory();

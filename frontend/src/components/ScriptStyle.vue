@@ -10,7 +10,6 @@
 @import '@/assets/vendor/remixicon/remixicon.css';
 @import '@/assets/vendor/simple-datatables/style.css';
 @import '@/assets/css/style.css';
-
 </style>
 <template>
 
@@ -18,7 +17,6 @@
 
 
 <script>
-import Cookies from "js-cookie";
   export default {
     name: "DashboardStyle",
 
