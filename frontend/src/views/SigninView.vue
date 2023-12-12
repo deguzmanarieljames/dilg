@@ -108,8 +108,8 @@ import router from '@/router'
                 }else if(signdata.data.usertype === 'user'){
                     if(signdata.data.status === 'Approved'){
                         sessionStorage.setItem("token", signdata.data.token);
-                        sessionStorage.setItem("fullname", signdata.data.fullname);
-                        sessionStorage.setItem("position", signdata.data.position);
+                        // sessionStorage.setItem("fullname", signdata.data.fullname);
+                        // sessionStorage.setItem("position", signdata.data.position);
                         router.push('/empdashboard');
                     }else if(signdata.data.status === 'Declined'){
                         alert('Your account has been declined!');

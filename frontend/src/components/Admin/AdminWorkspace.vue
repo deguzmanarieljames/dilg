@@ -250,7 +250,7 @@
         <section class="section">
         <div class="row">
 
-          <div class="col-lg-6">
+          <div class="col-lg-4">
               <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Procurement</h5>
@@ -299,31 +299,26 @@
             </div>
             </div>
 
-            <div class="col-lg-6" style="font-size: small;">
+            <div class="col-lg-8" style="font-size: small;">
               <div class="card">
               <div class="card-body">
                 <h5 class="card-title">Request</h5>
 
                 <!-- Table with hoverable rows -->
-                <table class="table table-hover datatable">
+                <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">Entity</th>
+                      <th scope="col">Employee</th>
                       <th scope="col">Particulars</th>
-                      <th scope="col">Classification</th>
-                      <th scope="col">Code</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="inv in inventory">
-                      <td scope="row">{{ inv.image }}</td>
-                      <td scope="row">{{ inv.entityname }}</td>
-                      <td scope="row">{{ inv.particulars }}</td>
-                      <td scope="row">{{ inv.classification }}</td>
-                      <td scope="row">{{ inv.code }}</td>
-                      <td scope="row">{{ inv.quantity }}</td>
-                      <td scope="row">{{ inv.arrival }}</td>
-                      <td scope="row">{{ inv.status }}</td>
+                    <tr v-for="req in request">
+                      <td scope="row">{{ req.empfullname }}</td>
+                      <td scope="row">{{ req.particulars }}</td>
+                      <td scope="row">{{ req.description }}</td>
                       <td><button @click="deleteRecord(inv.id)" class="btn btn-danger">Delete</button></td>
                     </tr>
                   </tbody>
@@ -357,13 +352,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="info in info">
-                    <td scope="row">{{ info.entityname }}</td>
-                    <td scope="row">{{ info.particulars }}</td>
-                    <td scope="row">{{ info.classification }}</td>
-                    <td scope="row">{{ info.empfullname }}</td>
-                    <td scope="row">{{ info.code }}</td>
-                    <td><button @click="deleteRecord(info.id)" class="btn btn-danger">Delete</button></td>
+                  <tr v-for="infos in info">
+                    <td scope="row">{{ infos.entityname }}</td>
+                    <td scope="row">{{ infos.particulars }}</td>
+                    <td scope="row">{{ infos.classification }}</td>
+                    <td scope="row">{{ infos.empfullname }}</td>
+                    <td scope="row">{{ infos.code }}</td>
+                    <td><button @click="deleteRecord(infos.id)" class="btn btn-danger">Delete</button></td>
                   </tr>
                 </tbody>
               </table>
@@ -406,6 +401,8 @@ export default{
   data(){
       return{
           info:[],
+          req:[],
+          requests:[],
           entityname: "",
           particulars: "",
           classification: "",
@@ -421,6 +418,7 @@ export default{
   },
   created(){
       this.getInfo()
+      this.getReq()
   },
   methods:{
       /*async deleteRecord(recordId){
@@ -432,6 +430,16 @@ export default{
           this.getInfo();
           }
       }, */
+      async getReq(){
+          try {
+              const req = await axios.get('getReq');
+              this.request = req.data;
+          } catch (error) {
+              console.log(error);
+          }
+      },
+
+
       async getInfo(){
           try {
               const inf = await axios.get('getData');
@@ -558,13 +566,23 @@ export default{
             id: recordId,
         });
         this.getInfo();
+        this.getReq();
         }
       },
 
-      async logout(){
-          sessionStorage.removeItem('token');
-          this.$router.push('/');
-      },
+      async logout() {
+      // Remove token from the session storage
+      sessionStorage.removeItem('token');
+
+      // Broadcast the logout event to other tabs
+      sessionStorage.setItem('logoutEvent', JSON.stringify({ timestamp: Date.now() }));
+
+      // Notify the service worker to perform logout across all tabs
+      navigator.serviceWorker.controller.postMessage({ type: 'logout' });
+
+      // Optional: Navigate to the login page after clearing the token
+      this.$router.push('/');
+    },
 
       // async fetchEmployeeDetails() {
       // // Use the CodeIgniter API endpoint to fetch employee details based on the selectedEmployee

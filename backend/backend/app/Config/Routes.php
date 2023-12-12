@@ -19,6 +19,7 @@ $routes->post('/del', 'DatabasePPEController::del');
 $routes->get('/getInventory', 'DatabasePPEController::getInventory');
 $routes->post('/saveInventory', 'DatabasePPEController::saveInventory');
 $routes->post('/delInventory', 'DatabasePPEController::delInventory');
+$routes->match(['get', 'post'], '/getReq', 'DatabasePPEController::getReq');
 
 // SECURITY SIGNIN/SIGNUP
 $routes->match(['post', 'get'],'/signin', 'SigninController::signin');
@@ -31,7 +32,9 @@ $routes->post('/updateStatus', 'SigninController::updateStatus');
 // EMPLOYEE
 
 $routes->post('/send_request', 'RequestController::send_request');
-$routes->get('/getReq', 'RequestController::getReq');
+$routes->match(['get', 'post'], '/users/(:any)', 'RequestController::users/$1');
+$routes->match(['get', 'post'], '/getReq', 'RequestController::getReq');
+// $routes->get('/getUser', 'DatabasePPEController::getUser');
 
 $routes->get('/getEmployee', 'DatabasePPEController::getEmployee');
 $routes->get('/getEmployees', 'DatabasePPEController::getEmployees');

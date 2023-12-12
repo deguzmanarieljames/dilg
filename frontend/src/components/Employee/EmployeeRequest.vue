@@ -50,16 +50,15 @@
           </li><!-- End Messages Nav -->
   
           <li class="nav-item dropdown pe-3">
-  
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
               <img src="./img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <span class="d-none d-md-block dropdown-toggle ps-2">{{ getStoredFullName }}</span>
-            </a><!-- End Profile Iamge Icon -->
-  
+              <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
+            </a><!-- End Profile Image Icon -->
+
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>{{ getStoredFullName }}</h6>
-                <span>{{ getStoredPosition }}</span>
+                <h6>{{ infos.fullname }}</h6>
+                <span>{{ infos.position }}</span>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -257,11 +256,11 @@
                       </div> -->
                       <div class="col-12">
                         <label for="particulars" class="form-label">Particulars</label>
-                        <input type="text" class="form-control" id="particulars" v-model="particulars">
+                        <input type="text" class="form-control" id="particulars" v-model="particulars" required>
                       </div>
                       <div class="input-group">
                       <span class="input-group-text">Write here the description</span>
-                      <textarea class="form-control" aria-label="With textarea" v-model="description"></textarea>
+                      <textarea class="form-control" aria-label="With textarea" v-model="description" required></textarea>
                     </div>
                       <div class="text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>
@@ -284,40 +283,34 @@
   
             <!-- Recent Activity -->
             <div class="card">
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-  
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
   
               <div class="card-body">
                 <h5 class="card-title">Recent Request</h5>
   
-                <div class="activity">
-                  <table class="table table-borderless">
-                <thead>
-                  <tr>
-                    <th scope="col">Time</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="info in info">
-                    
-                    <td scope="row">{{ info.particulars }}</td>
-
-                    
-                  </tr>
-                </tbody>
-              </table>
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">Employee</th>
+                      <th scope="col">Particulars</th>
+                      <th scope="col">Description</th>
+                      <th scope="col">Date</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr v-for="inf in info">
+                      <td scope="row">{{ inf.empfullname }}</td>
+                      <td scope="row">{{ inf.particulars }}</td>
+                      <td scope="row">{{ inf.description }}</td>
+                      <td scope="row">{{ inf.created_at }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <!-- <h1>Hello</h1>
+                <div v-if="fullname && position">
+                  <h2>Welcome, {{ fullname }}</h2>
+                  <p>Your Position: {{ position }}</p>
+                </div> -->
   
-                </div>
   
               </div>
             </div><!-- End Recent Activity -->
@@ -357,39 +350,109 @@ import axios from 'axios'
 export default{
     data(){
         return{
+            infos:[],
             info:[],
+            empfullname: "",
             particulars: "",
             description: "",
-            // empfullname: ""
+            token: '',
         };
     },
     created(){
       this.getReq();
+      this.user();
     },
 
-    computed:{
-      getStoredFullName() {
-        // Retrieve full name from session storage
-        return sessionStorage.getItem("fullname");
-      },
-      getStoredPosition() {
-        return sessionStorage.getItem("position");
-      }
-    },
+    async created() {
+    // Call the user function to get user information
+    await this.user();
 
-
-    mounted() {
-      // Retrieve employee name from session storage and set it to empfullname
-      const storedEmpFullName = sessionStorage.getItem("fullname");
-
-      if (storedEmpFullName) {
-        this.empfullname = storedEmpFullName;
-      }
-    },
-
-
+    // Call the getReq function with the user's ID to get filtered data
+    await this.getReq(this.infos.fullname);
+},
 
     methods: {
+
+      async getReq(id) {
+        try {
+            const inf = await axios.get(`getReq?id=${id}`);
+            this.info = inf.data;
+        } catch (error) {
+            console.log(error);
+        }
+    },
+
+
+
+      // async getReq(){
+      //     try {
+      //         await this.user();
+      //         const inf = await axios.get('getReq');
+      //         this.info = inf.data;
+      //     } catch (error) {
+      //         console.log(error);
+      //     }
+      // },
+
+      async user(){
+        try{
+          const id= sessionStorage.getItem("token")
+          const response = await axios.get(`/users/${id}`, {
+            id:id
+          })
+          this.infos = response.data;
+
+        }catch(error){
+          console.log(error);
+        }
+      },
+
+
+
+      // async getReq() {
+      //     try {
+      //       await this.user();
+      //       const empfullname = this.infos.fullname;
+
+      //       // Use the new endpoint to fetch records based on the user's full name
+      //       const inf = await axios.get('getReq', {
+      //         params: { id: empfullname },
+      //       });
+
+      //       this.info = inf.data;
+      //     } catch (error) {
+      //       console.log(error);
+      //     }
+      //   },
+      // mounted() {
+      //   this.getReq();
+      // },
+
+      async send_request() {
+        try {
+          await this.user();
+          const ins = await axios.post('send_request', {
+            empfullname: this.infos.fullname,
+            particulars: this.particulars,
+            description: this.description
+          });
+
+          // Clear the form fields after a successful request
+          this.empfullname = "";
+          this.particulars = "";
+          this.description = "";
+
+          this.$emit('data-saved');
+          this.getReq();
+        } catch (error) {
+          // Handle errors
+          console.error(error);
+          this.empfullname = "";
+          this.particulars = "";
+          this.description = "";
+          this.getReq();
+        }
+      },
 
       async logout(){
         sessionStorage.removeItem('token');
@@ -397,33 +460,6 @@ export default{
         sessionStorage.removeItem('position');
         this.$router.push('/');
       },
-
-      async getReq(){
-          try {
-              const inf = await axios.get('getReq');
-              this.info = inf.data;
-          } catch (error) {
-              console.log(error);
-          }
-      },
-
-      async send_request(){
-        try {
-          const ins = await axios.post('send_request', {
-              empfullname: this.empfullname,
-              particulars: this.particulars,
-              description: this.description
-          });
-              this.particulars = "",
-              this.description = ""
-          
-          this.$emit('data-saved');
-          this.getReq();
-        } catch (error) {
-          
-        }
-      },
-
 
     }
   }

@@ -317,11 +317,11 @@ export default{
   data(){
       return{
           info:[],
-          entityname: "",
-          particulars: "",
-          classification: "",
-          empfullname: "",
-          code: "",
+          // entityname: "",
+          // particulars: "",
+          // classification: "",
+          // empfullname: "",
+          // code: "",
       }
   },
   created(){

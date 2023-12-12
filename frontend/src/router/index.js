@@ -16,6 +16,7 @@ import AdUserverify from '../views/AdminView/AdUserverify.vue'
 import AdInventory from '../views/AdminView/AdInventory.vue'
 import SignupView from '../views/SignupView.vue'
 import SigninView from '../views/SigninView.vue'
+import LandingPage from '../views/LandingPage.vue'
 
 //EMPLOYEE
 import EmpDashboard from '../views/EmpView/EmpDashboard.vue'
@@ -25,6 +26,11 @@ const routes = [
   //ADMIN ROUTES
   {
     path: '/',
+    name: 'LandingPage',
+    component: LandingPage
+  },
+  {
+    path: '/signin',
     name: 'SigninView',
     component: SigninView
   },

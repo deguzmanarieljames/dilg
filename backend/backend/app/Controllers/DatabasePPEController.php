@@ -2,12 +2,13 @@
 
 namespace App\Controllers;
 
-use App\Controllers\BaseController;
+// use App\Controllers\RequestController;
 use CodeIgniter\RestFul\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\DatabasePPEModel;
 use App\Models\InventoryModel;
 use App\Models\EmployeeModel;
+use App\Models\RequestModel;
 
 class DatabasePPEController extends ResourceController
 {
@@ -162,4 +163,15 @@ class DatabasePPEController extends ResourceController
     }
 
 
+    public function getReq()
+    {
+        $main = new RequestModel();
+        $data = $main->findAll();
+        // log_message('info', json_encode($data)); // Log the response
+        return $this->respond($data, 200);
+    }
+
 }
+
+
+
