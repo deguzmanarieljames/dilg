@@ -13,7 +13,7 @@ class SigninModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['username', 'fullname', 'position', 'email', 'password', 'token', 'usertype', 'status'];
+    protected $allowedFields    = ['username', 'fullname', 'position', 'email', 'password', 'token', 'usertype', 'status', 'verify'];
 
     // Dates
     protected $useTimestamps = false;
@@ -38,4 +38,18 @@ class SigninModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    public function updateVerifyColumn($token)
+    {
+        $user = $this->where('token', $token)->first();
+
+        if ($user) {
+            $data = ['verify' => 'Successful'];
+            $this->update(['id' => $user['id']], $data);
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

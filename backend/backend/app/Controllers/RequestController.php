@@ -74,4 +74,35 @@ class RequestController extends ResourceController
         $rin = $main->save($data);
         return $this->respond($rin, 200);
     }
+
+    public function approveRecord($id)
+    {
+        $model = new RequestModel();
+        $model->update($id, ['status' => 'Approved']);
+        return $this->respondUpdated(['message' => 'Record approved successfully']);
+    }
+    
+    // Function to handle declining
+    public function declineRecord($id)
+    {
+        $model = new RequestModel();
+        $model->update($id, ['status' => 'Declined']);
+        return $this->respondUpdated(['message' => 'Record declined successfully']);
+    }
+    
+    // Function to handle deletion
+    public function deleteRecord($id)
+    {
+        $model = new RequestModel();
+        
+        // Check if the record exists before deleting
+        $existingRecord = $model->find($id);
+        
+        if (!$existingRecord) {
+            return $this->respond(['message' => 'Record not found'], 404);
+        }
+    
+        $model->delete($id);
+        return $this->respondDeleted(['message' => 'Record deleted successfully']);
+    }
 }

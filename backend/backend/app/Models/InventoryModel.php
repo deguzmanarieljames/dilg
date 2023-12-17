@@ -38,4 +38,29 @@ class InventoryModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+
+    public function saveInventory($data)
+    {
+        // your save logic here
+        return $this->insert($data);
+    }
+
+    public function updateInventory($id, $data)
+    {
+        // your update logic here
+        return $this->update($id, $data);
+    }
+
+    public function delInventory($id)
+    {
+        // your delete logic here
+        return $this->delete($id);
+    }
+
+    public function getInventory()
+    {
+        // your get logic here
+        return $this->findAll();
+    }
 }

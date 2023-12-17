@@ -251,20 +251,6 @@
         <div class="row">
             <div class="col-lg-12">
 
-              <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Vertical Form</h5>
-
-
-
-
-            </div>
-          </div>
-
-            </div>
-
-            <div class="col-lg-12">
-
 
 
 
@@ -289,8 +275,12 @@
                     <td scope="row">{{ item.position }}</td>
                     <td scope="row">{{ item.created_at }}</td>
                     <td scope="row">{{ item.status }}</td>
-                    <button @click="updateStatus(item.id, 'Approved')" class="btn btn-success">Approve</button>
-                    <button @click="updateStatus(item.id, 'Declined')" class="btn btn-danger">Decline</button>
+                    <td scope="row">
+                      <div>
+                        <button @click="updateStatus(item.id, 'Approved')" class="btn btn-success">Approve</button>
+                        <button @click="updateStatus(item.id, 'Declined')" class="btn btn-danger">Decline</button>
+                      </div>
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -361,13 +351,17 @@ export default{
           }
       },
       async updateStatus(id, newStatus) {
-      try {
-        const response = await axios.post('updateStatus', { id, status: newStatus });
-        console.log(response.data); // Log the response for debugging
-        this.getInfo(); // Refresh the data after update
-      } catch (error) {
-        console.error(error);
-      }
+        try {
+      const response = await axios.post('updateStatus', { id, status: newStatus });
+        if (response.status === 200) {
+            console.log(response.data);
+            this.getInfo();
+        } else {
+            console.error('Error updating status:', response.data.error);
+        }
+    } catch (error) {
+        console.error('Network error:', error.message);
+    }
     },
       
   }

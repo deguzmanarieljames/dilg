@@ -13,10 +13,19 @@ use App\Models\RequestModel;
 class DatabasePPEController extends ResourceController
 {
 
+    use ResponseTrait;
+
+    protected $model;
+
     // DATABASE PPE MODEL
     public function index()
     {
         //
+    }
+
+    public function __construct()
+    {
+        $this->model = new InventoryModel();
     }
 
     public function getData()
@@ -103,6 +112,21 @@ class DatabasePPEController extends ResourceController
         return !empty($existingCodes);
     }
 
+    public function updateInventory()
+    {
+        $id = $this->request->getPost('id');
+        $data = $this->request->getPost();
+        
+        // Add validation if needed
+
+        $result = $this->model->updateInventory($id, $data);
+
+        return $this->respond(['status' => 'success', 'message' => 'Record updated successfully']);
+    }
+
+
+
+
     public function del(){
         $json = $this->request->getJSON();  
         $id = $json->id;
@@ -154,6 +178,18 @@ class DatabasePPEController extends ResourceController
         return $this->respond($rin, 200);
     }
 
+    // public function saveInventory()
+    // {
+    //     $data = $this->request->getPost();
+        
+    //     // Add validation if needed
+
+    //     $result = $this->model->saveInventory($data);
+
+    //     return $this->respondCreated(['status' => 'success', 'message' => 'Record saved successfully']);
+    // }
+
+
     public function delInventory(){
         $json = $this->request->getJSON();  
         $id = $json->id;
@@ -171,7 +207,67 @@ class DatabasePPEController extends ResourceController
         return $this->respond($data, 200);
     }
 
-}
 
+    public function fetchData($id)
+    {
+        $user = new DatabasePPEModel();
+        $data = $user->where('id', $id)->first();
+        return $this->respond($data, 200);
+    }
+
+    public function updateDateReturned($id)
+    {
+        $model = new DatabasePPEModel();
+        $data = $model->find($id);
+
+        if ($data) {
+            // Modify the date_returned field
+            $currentDate = date('Y-m-d');
+            $data['date_returned'] = $currentDate;
+
+            // Attempt to update the record in the database
+            $updated = $model->update($id, $data);
+
+            if ($updated) {
+                return $this->respond(['message' => 'Date returned updated successfully']);
+            } else {
+                return $this->failServerError('Failed to update the record');
+            }
+        } else {
+            return $this->failNotFound('Data not found');
+        }
+    }
+
+    public function approveRecord($id)
+    {
+        $model = new RequestModel();
+        $model->update($id, ['status' => 'Approved']);
+        return $this->respondUpdated(['message' => 'Record approved successfully']);
+    }
+    
+    // Function to handle declining
+    public function declineRecord($id)
+    {
+        $model = new RequestModel();
+        $model->update($id, ['status' => 'Declined']);
+        return $this->respondUpdated(['message' => 'Record declined successfully']);
+    }
+    
+    // Function to handle deletion
+    public function deleteRecord($id)
+    {
+        $model = new RequestModel();
+        
+        // Check if the record exists before deleting
+        $existingRecord = $model->find($id);
+        
+        if (!$existingRecord) {
+            return $this->respond(['message' => 'Record not found'], 404);
+        }
+    
+        $model->delete($id);
+        return $this->respondDeleted(['message' => 'Record deleted successfully']);
+    }
+}
 
 

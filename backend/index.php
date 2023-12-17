@@ -85,6 +85,10 @@ $app->setContext($context);
 
 $app->run();
 
+// Set the error_reporting level to catch all errors.
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // Save Config Cache
 // $factoriesCache->save('config');
 // ^^^ Uncomment this line if you want to use Config Caching.

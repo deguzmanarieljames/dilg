@@ -11,10 +11,11 @@
   import ScriptStyle from '../../components/ScriptStyle.vue';
   
   export default defineComponent({
-    name: 'AdAckReceipt',
+    name: 'AdDashboard',
   
     components: {
       AdminAckReceipt, ScriptStyle,
     },
   });
   </script>
+  

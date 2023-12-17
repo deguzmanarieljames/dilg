@@ -38,4 +38,23 @@ class RequestModel extends Model
     protected $afterFind      = [];
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
+
+    public function approvedRepord($data)
+    {
+        // your save logic here
+        return $this->update($id, $data);
+    }
+
+    public function declineRecord($id, $data)
+    {
+        // your update logic here
+        return $this->update($id, $data);
+    }
+
+    public function deleteRecord($id)
+    {
+        // your delete logic here
+        return $this->delete($id);
+    }
+
 }

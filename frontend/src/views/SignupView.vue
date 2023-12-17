@@ -147,14 +147,27 @@
 
           this.message = data.data.msg; 
           if (data.data.msg === 'okay') { 
-            // sessionStorage.setItem("jwt", data.data.token) 
-            alert("Registered successfully"); 
-            router.push('/'); 
+            this.sendVerificationEmail(data.data.token);
+            alert('Registered successfully. Check your email for verification.');
+            router.push('/');
           } 
         } else { 
           this.message = "passwordMismatch"; 
         } 
-      } 
+      },
+
+      async sendVerificationEmail(token) {
+        const response = await axios.post('send-verification-email', {
+          email: this.email,
+          token: token,
+        });
+        
+        if (response.data.msg === 'emailSent') {
+          alert('Verification email sent. Please check your inbox.');
+        } else {
+          alert('Failed to send verification email.');
+        }
+      },
     }
   }; 
 </script> 

@@ -53,13 +53,13 @@
   
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
               <img src="./img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <span class="d-none d-md-block dropdown-toggle ps-2">A. De Guzman</span>
-            </a><!-- End Profile Iamge Icon -->
-  
+              <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
+            </a><!-- End Profile Image Icon -->
+
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>Ariel James De Guzman</h6>
-                <span>Web Designer</span>
+                <h6>{{ infos.fullname }}</h6>
+                <span>{{ infos.position }}</span>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -226,7 +226,7 @@
         <div class="row">
   
           <!-- Left side columns -->
-          <div class="col-lg-8">
+          <div class="col-lg-12">
             <div class="row">
   
               <!-- Reports -->
@@ -249,26 +249,37 @@
                   <div class="card-body">
                     <h5 class="card-title">Property Acquisition <span>/gaining possession to a property or equipment by the government</span></h5>
                                   <!-- Table with hoverable rows -->
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">Entity</th>
-                    <th scope="col">Particulars</th>
-                    <th scope="col">Classification</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="info in info">
-                    <td scope="row">{{ info.entityname }}</td>
-                    <td scope="row">{{ info.particulars }}</td>
-                    <td scope="row">{{ info.classification }}</td>
-                    <td scope="row">{{ info.code }}</td>
-                    <td><button @click="deleteRecord(info.id)" class="btn btn-danger">Delete</button></td>
-                  </tr>
-                </tbody>
-              </table>
+                                  <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Image</th>
+                        <th>Entity</th>
+                        <th>Particulars</th>
+                        <th>Classification</th>
+                        <th>Assigned</th>
+                        <th>Code</th>
+                        <th>Status</th>
+                        <th datatype="date" data-format="YYYY/DD/MM">Date Recorded</th>
+                        <th>Date Returned</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="info in info" :key="info.id">
+                      <td scope="row">
+                        <img :src="generateQRCodeUrl(info.id)" alt="">
+                      </td>
+                        <td scope="row">{{ info.entityname }}</td>
+                        <td scope="row">{{ info.particulars }}</td>
+                        <td scope="row">{{ info.classification }}</td>
+                        <td scope="row">{{ info.empfullname }}</td>
+                        <td scope="row">{{ info.code }}</td>
+                        <td scope="row">{{ info.status }}</td>
+                        <td scope="row">{{ info.created_at }}</td>
+                        <td scope="row">{{ info.date_returned }}</td>
+
+                    </tr>
+                    </tbody>
+                </table>
               <!-- End Table with hoverable rows -->  
   
                   </div>
@@ -281,114 +292,100 @@
             </div>
           </div><!-- End Left side columns -->
   
-          <!-- Right side columns -->
-          <div class="col-lg-4">
-  
-            <!-- Recent Activity -->
-            <div class="card">
-              <div class="filter">
-                <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                  <li class="dropdown-header text-start">
-                    <h6>Filter</h6>
-                  </li>
-  
-                  <li><a class="dropdown-item" href="#">Today</a></li>
-                  <li><a class="dropdown-item" href="#">This Month</a></li>
-                  <li><a class="dropdown-item" href="#">This Year</a></li>
-                </ul>
-              </div>
-  
-              <div class="card-body">
-                <h5 class="card-title">Pending Request</h5>
-  
-                <div class="activity">
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">32 min</div>
-                    <i class='bi bi-circle-fill activity-badge text-success align-self-start'></i>
-                    <div class="activity-content">
-                      Quia quae rerum <a href="#" class="fw-bold text-dark">explicabo officiis</a> beatae
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">56 min</div>
-                    <i class='bi bi-circle-fill activity-badge text-danger align-self-start'></i>
-                    <div class="activity-content">
-                      Voluptatem blanditiis blanditiis eveniet
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">2 hrs</div>
-                    <i class='bi bi-circle-fill activity-badge text-primary align-self-start'></i>
-                    <div class="activity-content">
-                      Voluptates corrupti molestias voluptatem
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">1 day</div>
-                    <i class='bi bi-circle-fill activity-badge text-info align-self-start'></i>
-                    <div class="activity-content">
-                      Tempore autem saepe <a href="#" class="fw-bold text-dark">occaecati voluptatem</a> tempore
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">2 days</div>
-                    <i class='bi bi-circle-fill activity-badge text-warning align-self-start'></i>
-                    <div class="activity-content">
-                      Est sit eum reiciendis exercitationem
-                    </div>
-                  </div><!-- End activity item-->
-  
-                  <div class="activity-item d-flex">
-                    <div class="activite-label">4 weeks</div>
-                    <i class='bi bi-circle-fill activity-badge text-muted align-self-start'></i>
-                    <div class="activity-content">
-                      Dicta dolorem harum nulla eius. Ut quidem quidem sit quas
-                    </div>
-                  </div><!-- End activity item-->
-  
-                </div>
-  
-              </div>
-            </div><!-- End Recent Activity -->
-  
-  
-          </div><!-- End Right side columns -->
   
         </div>
       </section>
   
       </main><!-- End #main -->
-  
-      <!-- ======= Footer ======= -->
-      <footer id="footer" class="footer">
-      <div class="copyright">
-        &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-      </footer><!-- End Footer -->
-  
-      <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-    </div>
+   </div>
   </template>
 
 
 
 <script>
+import axios from 'axios'
+import QRCode from 'qrcode-generator';
 
 export default {
+  data(){
+        return{
+            infos:[],
+            info:[],
+            empfullname: "",
+            particulars: "",
+            token: '',
+            entityname: '',
+            classification: '',
+            code: '',
+            status: '',
+            created_at: '',
+            date_returned: '',
+            video: null,
+            resultElement: null,
+            startButton: null,
+            stopButton: null,
+            isCameraOn: false,
+            stream: null,
+            qrCodeData: null,
+        };
+    },
+    created(){
+      this.user();
+    },
+
+    async created() {
+    // Call the user function to get user information
+    await this.user()
+    await this.getInfo(this.infos.fullname)
+
+},
     methods: {
+
+      
+      onDecode(result) {
+          this.scannedId = result;
+          // Implement any additional logic after scanning the QR code
+        },
+        // generateQRCodeUrl(id) {
+        //   return `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${id}`;
+        // },
+
+        generateQRCodeUrl(id) {
+          // Use qrcode-generator to generate QR code
+          const typeNumber = 0;
+          const errorCorrectionLevel = 'L';
+          const qr = QRCode(typeNumber, errorCorrectionLevel);
+          qr.addData(id);
+          qr.make();
+
+          // Convert QR code data to a data URL
+          const imageUrl = qr.createDataURL();
+
+          return imageUrl;
+        },
+
+      async getInfo(){
+              try {
+                  const inf = await axios.get('getData');
+                  this.info = inf.data;
+              } catch (error) {
+                  console.log(error);
+              }
+          },
+
+      async user(){
+        try{
+          const id= sessionStorage.getItem("token")
+          const response = await axios.get(`/users/${id}`, {
+            id:id
+          })
+          this.infos = response.data;
+
+        }catch(error){
+          console.log(error);
+        }
+      },
+
       async logout(){
         sessionStorage.removeItem('token');
         this.$router.push('/');

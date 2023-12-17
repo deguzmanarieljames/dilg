@@ -1,3 +1,55 @@
+<style scoped>
+#qr-video {
+  width: 500px;
+  height: 500px;
+}
+#qr-result {
+  margin-top: 10px;
+}
+table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 600px) {
+      table, tr, td {
+        display: block;
+      }
+
+      td {
+        border: none;
+        position: relative;
+      }
+
+      td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+
+      /* Make the table scrollable on smaller screens */
+      table {
+        overflow-y: auto;
+      }
+    }
+</style>
+
+
 <template>
 <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed;">
         <!-- ======= Header ======= -->
@@ -249,41 +301,61 @@
 
         <section class="section">
         <div class="row">
-            <div class="col-lg-12">
+            <div class="col-lg-6">
 
-            <div class="card">
+            </div>
+        </div>
+
+        
+        <div class="row">
+              <div class="col-lg-12">
+                <div class="card">
                 <div class="card-body">
                 <h5 class="card-title">Acquisition</h5>
                 <p> Refers to the act of gaining possession to a property or equipment by the government.</p>
                 <!-- Table with stripped rows -->
-                <table class="table datatable">
+                <div style="overflow-y: auto;">
+                  <table class="table">
                     <thead>
                     <tr>
+                        <th>Image</th>
                         <th>Entity</th>
                         <th>Particulars</th>
                         <th>Classification</th>
                         <th>Assigned</th>
                         <th>Code</th>
-                        <th data-type="date" data-format="YYYY/DD/MM">Date Recorded</th>
+                        <th>Status</th>
+                        <th datatype="date" data-format="YYYY/DD/MM">Date Recorded</th>
+                        <th>Date Returned</th>
+                        <th>Action</th>
                     </tr>
                     </thead>
                     <tbody>
-                    <tr v-for="info in info">
+                    <tr v-for="info in info" :key="info.id">
+                      <td scope="row">
+                        <img :src="generateQRCodeUrl(info.id)" alt="" style="width: 200px; height: 200px;">
+                      </td>
                         <td scope="row">{{ info.entityname }}</td>
                         <td scope="row">{{ info.particulars }}</td>
                         <td scope="row">{{ info.classification }}</td>
                         <td scope="row">{{ info.empfullname }}</td>
                         <td scope="row">{{ info.code }}</td>
+                        <td scope="row">{{ info.status }}</td>
                         <td scope="row">{{ info.created_at }}</td>
+                        <td scope="row">{{ info.date_returned }}</td>
+                        <div>
+                          <button @click="generatePDF">Generate PDF</button>
+                        </div>
+
                     </tr>
                     </tbody>
                 </table>
+                </div>
                 <!-- End Table with stripped rows -->
 
                 </div>
             </div>
-
-            </div>
+        </div>
         </div>
         </section>
 
@@ -312,8 +384,15 @@
 
 // Components
 import axios from 'axios'
+import QrcodeStream from "vue-qrcode-reader";
+import jsQR from "jsqr";
+import QRCode from 'qrcode-generator';
+import html2pdf from 'html2pdf.js';
 
 export default{
+  components: {
+    QrcodeStream,
+  },
   data(){
       return{
           info:[],
@@ -322,12 +401,94 @@ export default{
           // classification: "",
           // empfullname: "",
           // code: "",
+          video: null,
+          resultElement: null,
+          startButton: null,
+          stopButton: null,
+          isCameraOn: false,
+          stream: null,
+          qrCodeData: null,
       }
+  },
+  mounted() {
+    this.video = document.getElementById("qr-video");
+    this.resultElement = document.getElementById("qr-result");
+    this.startButton = document.getElementById("start-camera");
+    this.stopButton = document.getElementById("stop-camera");
   },
   created(){
       this.getInfo()
   },
   methods:{
+        generatePDF() {
+          // Get the data for a specific record (you might need to modify this logic)
+         // Change this to the desired record ID
+          const record = this.info.find(info => info.id);
+
+          // Generate HTML content for the PDF based on the specific record
+          if (record) {
+              // Generate HTML content for the PDF based on the specific record
+              const htmlContent = `
+                <div>
+                  <h2>Record Details</h2>
+                  <p>Entity: ${record.entityname}</p>
+                  <p>Particulars: ${record.particulars}</p>
+                  <p>Classification: ${record.classification}</p>
+                  <!-- Add more fields as needed -->
+                </div>
+              `;
+
+              // Options for PDF generation
+              const pdfOptions = {
+                margin: 10,
+                filename: 'record_details.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+              };
+
+              // Generate PDF using html2pdf
+              html2pdf().from(htmlContent).set(pdfOptions).outputPdf(pdf => {
+                // Save or open the PDF file as needed
+                const blob = new Blob([pdf], { type: 'application/pdf' });
+                const link = document.createElement('a');
+                link.href = window.URL.createObjectURL(blob);
+                link.download = pdfOptions.filename;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+              });
+            } else {
+              // Handle the case where the record is not found
+              console.error(`Record with ID ${recordId} not found.`);
+            }
+                  },
+
+
+        onDecode(result) {
+          this.scannedId = result;
+          // Implement any additional logic after scanning the QR code
+        },
+        // generateQRCodeUrl(id) {
+        //   return `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${id}`;
+        // },
+
+        generateQRCodeUrl(id) {
+          // Use qrcode-generator to generate QR code
+          const typeNumber = 0;
+          const errorCorrectionLevel = 'L';
+          const qr = QRCode(typeNumber, errorCorrectionLevel);
+          qr.addData(id);
+          qr.make();
+
+          // Convert QR code data to a data URL
+          const imageUrl = qr.createDataURL();
+
+          return imageUrl;
+        },
+        deleteRecord(id) {
+          // Implement your delete logic here
+        },
         async getInfo(){
               try {
                   const inf = await axios.get('getData');
@@ -340,7 +501,132 @@ export default{
         async logout(){
               sessionStorage.removeItem('token');
               this.$router.push('/');
+        },
+
+
+
+
+
+        startCamera() {
+        navigator.mediaDevices
+        .getUserMedia({ video: { facingMode: "environment" } })
+        .then((videoStream) => {
+          this.stream = videoStream;
+          this.video.srcObject = this.stream;
+          this.video.play();
+          this.isCameraOn = true;
+          this.startButton.style.display = "none";
+          this.stopButton.style.display = "inline-block";
+          this.tick();
+        })
+        .catch((error) => {
+          console.error("Error accessing camera:", error);
+        });
+        },
+        stopCamera() {
+          if (this.stream) {
+            const tracks = this.stream.getTracks();
+            tracks.forEach((track) => track.stop());
+            
+            if (this.video) {
+              this.video.pause();
+              this.video.srcObject = null;
+              this.isCameraOn = false;
+
+              if (this.startButton && this.startButton.style) {
+                this.startButton.style.display = "inline-block";
+              }
+
+              if (this.stopButton && this.stopButton.style) {
+                this.stopButton.style.display = "none";
+              }
+            }
+          }
+        },
+        tick() {
+        if (this.video.readyState === this.video.HAVE_ENOUGH_DATA) {
+          const canvasElement = document.createElement("canvas");
+          canvasElement.width = this.video.videoWidth;
+          canvasElement.height = this.video.videoHeight;
+          const canvas = canvasElement.getContext("2d");
+          canvas.drawImage(
+            this.video,
+            0,
+            0,
+            canvasElement.width,
+            canvasElement.height
+          );
+          const imageData = canvas.getImageData(
+            0,
+            0,
+            canvasElement.width,
+            canvasElement.height
+          );
+          const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+          if (code && code.data !== this.qrCodeData) {
+            this.qrCodeData = code.data;
+            this.resultElement.innerHTML = "QR Code detected: " + code.data;
+            this.fetchDataFromServer();
+
+            // Continue scanning after processing each frame
+            this.tick();
+          }
         }
+        if (this.isCameraOn) {
+          requestAnimationFrame(this.tick);
+        }
+      },
+
+      fetchDataFromServer() {
+          axios.get(`/fetch_data/${this.qrCodeData}`)
+              .then((response) => {
+                  const data = response.data;
+                  const displayElement = document.getElementById("display-data");
+
+                  if (data && Object.keys(data).length > 0) {
+                      const fields = [
+                          'entityname',
+                          'particulars',
+                          'classification',
+                          'code',
+                          'empfullname',
+                          'status',
+                          'created_at',
+                          'date_returned'
+                          // Add more fields as needed
+                      ];
+
+                      // Update the date_returned field with the current date
+                      data.date_returned = new Date().toISOString().split('T')[0];
+
+                      // Perform the updateDateReturned call here if needed
+                      this.updateDateReturned();
+
+                      const htmlContent = fields.map(field => `<p>${field.replace('_', ' ').toUpperCase()}: ${data[field]}</p>`).join('');
+                      displayElement.innerHTML = htmlContent;
+                  } else {
+                      displayElement.innerHTML = `<p>No data found for ID: ${this.qrCodeData}</p>`;
+                  }
+              })
+              .catch((error) => {
+                  console.error("Error fetching data:", error);
+              });
+      },
+
+      updateDateReturned() {
+        axios.post(`/update_date_returned/${this.qrCodeData}`, {
+          date_returned: new Date().toISOString().split('T')[0]
+        })
+        .then((response) => {
+          console.log(response.data);
+          console.log("Date returned updated successfully");
+          // You can perform additional actions here if needed
+        })
+        .catch((error) => {
+          console.error("Error updating date returned:", error);
+        });
+      },
           
   }
 }

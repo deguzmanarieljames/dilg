@@ -225,7 +225,7 @@
         <div class="row">
   
           <!-- Left side columns -->
-          <div class="col-lg-8">
+          <div class="col-lg-6">
             <div class="row">
   
               <!-- Reports -->
@@ -279,7 +279,7 @@
           </div><!-- End Left side columns -->
   
           <!-- Right side columns -->
-          <div class="col-lg-4">
+          <div class="col-lg-6">
   
             <!-- Recent Activity -->
             <div class="card">
@@ -290,7 +290,6 @@
                 <table class="table">
                   <thead>
                     <tr>
-                      <th scope="col">Employee</th>
                       <th scope="col">Particulars</th>
                       <th scope="col">Description</th>
                       <th scope="col">Date</th>
@@ -298,7 +297,6 @@
                   </thead>
                   <tbody>
                     <tr v-for="inf in info">
-                      <td scope="row">{{ inf.empfullname }}</td>
                       <td scope="row">{{ inf.particulars }}</td>
                       <td scope="row">{{ inf.description }}</td>
                       <td scope="row">{{ inf.created_at }}</td>
@@ -362,6 +360,7 @@ export default{
       this.getReq();
       this.user();
     },
+
 
     async created() {
     // Call the user function to get user information
@@ -456,8 +455,6 @@ export default{
 
       async logout(){
         sessionStorage.removeItem('token');
-        sessionStorage.removeItem('fullname');
-        sessionStorage.removeItem('position');
         this.$router.push('/');
       },
 

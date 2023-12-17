@@ -311,15 +311,19 @@
                       <th scope="col">Employee</th>
                       <th scope="col">Particulars</th>
                       <th scope="col">Description</th>
+                      <th scope="col">Status</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr v-for="req in request">
+                    <tr v-for="req in requests" :key="req.id">
                       <td scope="row">{{ req.empfullname }}</td>
                       <td scope="row">{{ req.particulars }}</td>
                       <td scope="row">{{ req.description }}</td>
-                      <td><button @click="deleteRecord(inv.id)" class="btn btn-danger">Delete</button></td>
+                      <td scope="row">{{ req.status }}</td>
+                      <td><button @click="approveRecord(req.id)" class="btn btn-success">Approve</button></td>
+                        <td><button @click="declineRecord(req.id)" class="btn btn-danger">Decline</button></td>
+                        <!-- <td><button @click="deleteRecord(req.id)" class="btn btn-warning">Delete</button></td> -->
                     </tr>
                   </tbody>
                 </table>
@@ -340,7 +344,7 @@
               <h5 class="card-title">Data Table</h5>
               <hr>
               <!-- Table with hoverable rows -->
-              <table class="table table-hover datatable">
+              <!-- <table class="table table-hover datatable">
                 <thead>
                   <tr>
                     <th scope="col">Entity</th>
@@ -361,7 +365,7 @@
                     <td><button @click="deleteRecord(infos.id)" class="btn btn-danger">Delete</button></td>
                   </tr>
                 </tbody>
-              </table>
+              </table> -->
               <!-- End Table with hoverable rows -->
 
             </div>
@@ -432,8 +436,8 @@ export default{
       }, */
       async getReq(){
           try {
-              const req = await axios.get('getReq');
-              this.request = req.data;
+              const req = await axios.get('getReqAdmin');
+              this.requests = req.data;
           } catch (error) {
               console.log(error);
           }
@@ -570,19 +574,10 @@ export default{
         }
       },
 
-      async logout() {
-      // Remove token from the session storage
-      sessionStorage.removeItem('token');
-
-      // Broadcast the logout event to other tabs
-      sessionStorage.setItem('logoutEvent', JSON.stringify({ timestamp: Date.now() }));
-
-      // Notify the service worker to perform logout across all tabs
-      navigator.serviceWorker.controller.postMessage({ type: 'logout' });
-
-      // Optional: Navigate to the login page after clearing the token
-      this.$router.push('/');
-    },
+      async logout(){
+          sessionStorage.removeItem('token');
+          this.$router.push('/');
+      },
 
       // async fetchEmployeeDetails() {
       // // Use the CodeIgniter API endpoint to fetch employee details based on the selectedEmployee
@@ -601,13 +596,86 @@ export default{
       async fetchEmployeeNames() {
         // Use the CodeIgniter API endpoint to fetch the list of employee names
         try {
-          const response = await fetch('http://dilg.test/backend/public/getEmployees');
+          const response = await fetch('http://dilg.test/backend/getEmployees');
           const data = await response.json();
           this.employees = data;
         } catch (error) {
           console.error('Error fetching employee names', error);
         }
       },
+
+
+      async approveRecord(id) {
+      try {
+        // Assuming you have an API endpoint for approving records
+        const response = await fetch(`/api/request/approve/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+            // Add any additional headers if needed
+          }
+        });
+
+        if (response.ok) {
+          // Update the status in the frontend
+          const index = this.requests.findIndex(req => req.id === id);
+          this.$set(this.requests, index, { ...this.requests[index], status: 'Approved' });
+
+          console.log('Record approved successfully');
+        } else {
+          console.error('Failed to approve record');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    },
+    async declineRecord(id) {
+      try {
+        // Assuming you have an API endpoint for declining records
+        const response = await fetch(`/api/request/decline/${id}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json'
+            // Add any additional headers if needed
+          }
+        });
+
+        if (response.ok) {
+          // Update the status in the frontend
+          const index = this.requests.findIndex(req => req.id === id);
+          this.$set(this.requests, index, { ...this.requests[index], status: 'Declined' });
+
+          console.log('Record declined successfully');
+        } else {
+          console.error('Failed to decline record');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    },
+    async deleteRecord(id) {
+      try {
+        // Assuming you have an API endpoint for deleting records
+        const response = await fetch(`/api/request/delete/${id}`, {
+          method: 'DELETE',
+          headers: {
+            'Content-Type': 'application/json'
+            // Add any additional headers if needed
+          }
+        });
+
+        if (response.ok) {
+          // Remove the record from the frontend
+          this.requests = this.requests.filter(req => req.id !== id);
+
+          console.log('Record deleted successfully');
+        } else {
+          console.error('Failed to delete record');
+        }
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    }
   },
   mounted() {
     this.fetchEmployeeNames();

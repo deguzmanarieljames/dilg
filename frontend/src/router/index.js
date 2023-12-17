@@ -18,9 +18,12 @@ import SignupView from '../views/SignupView.vue'
 import SigninView from '../views/SigninView.vue'
 import LandingPage from '../views/LandingPage.vue'
 
+
 //EMPLOYEE
 import EmpDashboard from '../views/EmpView/EmpDashboard.vue'
 import EmpRequest from '../views/EmpView/EmpRequest.vue'
+import EmpServiceable from '../views/EmpView/EmpServiceable.vue'
+import EmpUnserviceable from '../views/EmpView/EmpUnserviceable.vue'
 
 const routes = [
   //ADMIN ROUTES
@@ -123,7 +126,7 @@ const routes = [
   //EMPLOYEE ROUTES
   {
     path: '/empdashboard',
-    name: 'Empempdashboard',
+    name: 'Empdashboard',
     component: EmpDashboard,
     //meta: {requireAuth: true}
   },
@@ -131,6 +134,18 @@ const routes = [
     path: '/emprequest',
     name: 'EmpRequest',
     component: EmpRequest,
+    //meta: {requireAuth: true}
+  },
+  {
+    path: '/empserviceable',
+    name: 'EmpServiceable',
+    component: EmpServiceable,
+    //meta: {requireAuth: true}
+  },
+  {
+    path: '/empunserviceable',
+    name: 'EmpUnserviceable',
+    component: EmpUnserviceable,
     //meta: {requireAuth: true}
   },
 

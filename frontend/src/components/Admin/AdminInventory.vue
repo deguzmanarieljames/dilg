@@ -288,8 +288,9 @@
                 <input type="datetime-local" class="form-control" id="arrival" v-model="arrival">
               </div>
               <div class="text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
+                  <button v-if="status !== 'update'" type="submit" class="btn btn-primary" @click="saveOrUpdate">Submit</button>
+                  <button v-if="status === 'update'" type="submit" class="btn btn-success" @click="saveOrUpdate">Update</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
               </div>
             </form><!-- Vertical Form -->
 
@@ -307,8 +308,7 @@
           <div class="card-body">
             <h5 class="card-title">Stocks</h5>
 
-            <!-- Table with hoverable rows -->
-            <table class="table table-hover datatable">
+            <!-- <table class="table table-hover datatable">
               <thead>
                 <tr>
                   <th scope="col">Image</th>
@@ -323,7 +323,7 @@
               </thead>
               <tbody>
                 <tr v-for="inv in inventory">
-                  <td scope="row">{{ inv.image }}</td>
+                  <td scope="row"><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data={{ inv.id }}" alt=""></td>
                   <td scope="row">{{ inv.entityname }}</td>
                   <td scope="row">{{ inv.particulars }}</td>
                   <td scope="row">{{ inv.classification }}</td>
@@ -333,8 +333,34 @@
                   <td><button @click="deleteRecord(inv.id)" class="btn btn-danger">Delete</button></td>
                 </tr>
               </tbody>
-            </table>
-            <!-- End Table with hoverable rows -->
+            </table> -->
+
+            <qrcode-stream @decode="onDecode" />
+              <table>
+                <thead>
+                  <tr>
+                    <th scope="col">Entity</th>
+                    <th scope="col">Particulars</th>
+                    <th scope="col">Classification</th>
+                    <th scope="col">Qty</th>
+                    <th scope="col">Arrival</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="inv in inventory" :key="inv.id">
+                    <td scope="row">{{ inv.entityname }}</td>
+                    <td scope="row">{{ inv.particulars }}</td>
+                    <td scope="row">{{ inv.classification }}</td>
+                    <td scope="row">{{ inv.quantity }}</td>
+                    <td scope="row">{{ inv.arrival }}</td>
+                    <td scope="row">{{ inv.status }}</td>
+                    <td><button @click="updateRecord(inv.id)" class="btn btn-warning">Update</button></td>
+                    <td><button @click="deleteRecord(inv.id)" class="btn btn-danger">Delete</button></td>
+                  </tr>
+                </tbody>
+              </table>
 
           </div>
         </div>
@@ -387,6 +413,9 @@ created(){
     this.getInventory()
 },
 methods:{
+    deleteRecord(id) {
+      // Implement your delete logic here
+    },
     /*async deleteRecord(recordId){
         const confirm = window.confirm("are you sure you want to delete this?");
         if (confirm){
@@ -426,6 +455,53 @@ methods:{
         
       }
     },
+
+    async saveOrUpdate() {
+    if (this.status === "update") {
+        await this.updateRecord();
+    } else {
+        await this.save();
+    }
+    },
+
+    async updateRecord() {
+        try {
+            const inv = await axios.post('updateInventory', {
+                id: this.id,
+                entityname: this.entityname,
+                particulars: this.particulars,
+                classification: this.classification,
+                quantity: this.quantity,
+                arrival: this.arrival,
+            });
+            this.resetForm();
+            this.status = ""; // reset status after update
+            this.getInventory();
+        } catch (error) {
+            console.error(error);
+        }
+    },
+
+    resetForm() {
+    this.entityname = "";
+    this.particulars = "";
+    this.classification = "";
+    this.quantity = "";
+    this.arrival = "";
+},
+    updateRecord(recordId) {
+    // set status to update and statusId to the record id
+    this.status = "update";
+    this.statusId = recordId;
+
+    // fetch the record details and set them to the form
+    const record = this.inventory.find(inv => inv.id === recordId);
+    this.entityname = record.entityname;
+    this.particulars = record.particulars;
+    this.classification = record.classification;
+    this.quantity = record.quantity;
+    this.arrival = record.arrival;
+},
     
     async deleteRecord(recordId){
       const confirm = window.confirm("Are you sure that you want to delete this record?");

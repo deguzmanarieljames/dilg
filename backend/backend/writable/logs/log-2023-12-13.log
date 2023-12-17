@@ -1,0 +1,329 @@
+CRITICAL - 2023-12-13 22:29:44 --> Undefined property: App\Controllers\DatabasePPEController::$DatabasePPEModel
+in APPPATH\Controllers\DatabasePPEController.php on line 178.
+ 1 APPPATH\Controllers\DatabasePPEController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\DatabasePPEController::$DatabasePPEModel', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:30:16 --> Undefined property: App\Controllers\DatabasePPEController::$DatabasePPEModel
+in APPPATH\Controllers\DatabasePPEController.php on line 178.
+ 1 APPPATH\Controllers\DatabasePPEController.php(178): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\DatabasePPEController::$DatabasePPEModel', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 178)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:33:49 --> Too few arguments to function App\Controllers\DatabasePPEController::getData(), 0 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\DatabasePPEController.php on line 29.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:34:13 --> Undefined property: App\Controllers\DatabasePPEController::$DatabasePPEModel
+in APPPATH\Controllers\DatabasePPEController.php on line 183.
+ 1 APPPATH\Controllers\DatabasePPEController.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\DatabasePPEController::$DatabasePPEModel', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 183)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:34:32 --> Undefined property: App\Controllers\DatabasePPEController::$DatabasePPEModel
+in APPPATH\Controllers\DatabasePPEController.php on line 183.
+ 1 APPPATH\Controllers\DatabasePPEController.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\DatabasePPEController::$DatabasePPEModel', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 183)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:34:51 --> Call to undefined method App\Controllers\DatabasePPEController::DatabasePPEModel()
+in APPPATH\Controllers\DatabasePPEController.php on line 183.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:35:03 --> syntax error, unexpected token "->"
+in APPPATH\Controllers\DatabasePPEController.php on line 183.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\DatabasePPEController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\DatabasePPEController')
+ 4 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\DatabasePPEController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:35:27 --> Undefined property: App\Controllers\DatabasePPEController::$DatabasePPEModel
+in APPPATH\Controllers\DatabasePPEController.php on line 183.
+ 1 APPPATH\Controllers\DatabasePPEController.php(183): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\DatabasePPEController::$DatabasePPEModel', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 183)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:36:15 --> Call to undefined method App\Models\DatabasePPEModel::getData
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(189): CodeIgniter\Model->__call('getData', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:37:02 --> Call to undefined method App\Models\DatabasePPEModel::getData
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(188): CodeIgniter\Model->__call('getData', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:37:03 --> Call to undefined method App\Models\DatabasePPEModel::getData
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(188): CodeIgniter\Model->__call('getData', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:37:22 --> Call to undefined method App\Models\DatabasePPEModel::getData
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(188): CodeIgniter\Model->__call('getData', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:37:36 --> Call to undefined method App\Models\DatabasePPEModel::getData
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(188): CodeIgniter\Model->__call('getData', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(null)
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:44:35 --> Call to undefined method App\Models\DatabasePPEModel::getData
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(189): CodeIgniter\Model->__call('getData', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:46:11 --> Cannot use object of type App\Models\DatabasePPEModel as array
+in APPPATH\Controllers\DatabasePPEController.php on line 194.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:46:12 --> Cannot use object of type App\Models\DatabasePPEModel as array
+in APPPATH\Controllers\DatabasePPEController.php on line 194.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:46:47 --> Cannot use object of type App\Models\DatabasePPEModel as array
+in APPPATH\Controllers\DatabasePPEController.php on line 194.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:46:47 --> Cannot use object of type App\Models\DatabasePPEModel as array
+in APPPATH\Controllers\DatabasePPEController.php on line 194.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:49:34 --> Undefined array key "particulars"
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "particulars"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:49:53 --> Undefined array key "empfullname"
+in APPPATH\Controllers\DatabasePPEController.php on line 196.
+ 1 APPPATH\Controllers\DatabasePPEController.php(196): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "empfullname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 196)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:50:00 --> Undefined array key "particulars"
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "particulars"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:50:10 --> Undefined array key "particulars"
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "particulars"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(Object(App\Models\DatabasePPEModel))
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:50:11 --> Undefined array key "particulars"
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "particulars"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(Object(App\Models\DatabasePPEModel))
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:50:11 --> Undefined array key "particulars"
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "particulars"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(Object(App\Models\DatabasePPEModel))
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:50:12 --> Undefined array key "particulars"
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "particulars"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(Object(App\Models\DatabasePPEModel))
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:50:23 --> Undefined array key "particulars"
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "particulars"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(Object(App\Models\DatabasePPEModel))
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:50:24 --> Undefined array key "particulars"
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "particulars"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(Object(App\Models\DatabasePPEModel))
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:50:24 --> Undefined array key "particulars"
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "particulars"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(Object(App\Models\DatabasePPEModel))
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:50:24 --> Undefined array key "particulars"
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "particulars"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(Object(App\Models\DatabasePPEModel))
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:50:24 --> Undefined array key "particulars"
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "particulars"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(Object(App\Models\DatabasePPEModel))
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:51:25 --> Undefined variable $data
+in APPPATH\Controllers\DatabasePPEController.php on line 192.
+ 1 APPPATH\Controllers\DatabasePPEController.php(192): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 192)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(Object(App\Models\DatabasePPEModel))
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:51:34 --> Undefined variable $data
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(Object(App\Models\DatabasePPEModel))
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:51:45 --> Undefined variable $data
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(Object(App\Models\DatabasePPEModel))
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:51:45 --> Undefined variable $data
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(Object(App\Models\DatabasePPEModel))
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:51:49 --> Undefined array key "particulars"
+in APPPATH\Controllers\DatabasePPEController.php on line 195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "particulars"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData(Object(App\Models\DatabasePPEModel))
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:54:36 --> Call to undefined method App\Models\DatabasePPEModel::getDataById
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(184): CodeIgniter\Model->__call('getDataById', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:55:00 --> Call to undefined method App\Models\DatabasePPEModel::getDataById
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(184): CodeIgniter\Model->__call('getDataById', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:56:45 --> Call to undefined method App\Models\DatabasePPEModel::getDataById
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(184): CodeIgniter\Model->__call('getDataById', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:56:46 --> Call to undefined method App\Models\DatabasePPEModel::getDataById
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(184): CodeIgniter\Model->__call('getDataById', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:57:24 --> Call to undefined method App\Models\DatabasePPEModel::getDataById
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(184): CodeIgniter\Model->__call('getDataById', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 22:57:25 --> Call to undefined method App\Models\DatabasePPEModel::getDataById
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(184): CodeIgniter\Model->__call('getDataById', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 23:01:55 --> syntax error, unexpected token "public"
+in APPPATH\Controllers\DatabasePPEController.php on line 189.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\DatabasePPEController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\DatabasePPEController')
+ 4 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\DatabasePPEController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 23:02:27 --> Call to undefined method App\Models\DatabasePPEModel::getDataById
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(193): CodeIgniter\Model->__call('getDataById', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 23:02:48 --> Call to undefined method App\Models\DatabasePPEModel::getDataById
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Controllers\DatabasePPEController.php(193): CodeIgniter\Model->__call('getDataById', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 23:04:15 --> Call to undefined method App\Models\DatabasePPEModel::enableQueryLog
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Models\DatabasePPEModel.php(45): CodeIgniter\Model->__call('enableQueryLog', [])
+ 2 APPPATH\Controllers\DatabasePPEController.php(180): App\Models\DatabasePPEModel->getDataById('22')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 23:04:16 --> Call to undefined method App\Models\DatabasePPEModel::enableQueryLog
+in SYSTEMPATH\Model.php on line 873.
+ 1 APPPATH\Models\DatabasePPEModel.php(45): CodeIgniter\Model->__call('enableQueryLog', [])
+ 2 APPPATH\Controllers\DatabasePPEController.php(180): App\Models\DatabasePPEModel->getDataById('22')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2023-12-13 23:04:48 --> Call to undefined method CodeIgniter\Database\MySQLi\Connection::enableQueryLog()
+in APPPATH\Models\DatabasePPEModel.php on line 48.
+ 1 APPPATH\Controllers\DatabasePPEController.php(180): App\Models\DatabasePPEModel->getDataById('22')
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('22')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
