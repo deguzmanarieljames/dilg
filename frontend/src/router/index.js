@@ -25,8 +25,15 @@ import EmpRequest from '../views/EmpView/EmpRequest.vue'
 import EmpServiceable from '../views/EmpView/EmpServiceable.vue'
 import EmpUnserviceable from '../views/EmpView/EmpUnserviceable.vue'
 
+
+import CallTestView from '../views/CallTestView.vue'
+
 const routes = [
   //ADMIN ROUTES
+  {
+    path: '/test',
+    component: CallTestView
+  },
   {
     path: '/',
     name: 'LandingPage',
@@ -46,79 +53,79 @@ const routes = [
     path: '/dashboard',
     name: 'AdDashboard',
     component: AdDashboard,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/databaseppe',
     name: 'AdDatabasePPE',
     component: AdDatabasePPE,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/serviceable',
     name: 'AdServiceable',
     component: AdServiceable,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/unserviceable',
     name: 'AdUnserviceable',
     component: AdUnserviceable,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/propertysticker',
     name: 'AdPropertySticker',
     component: AdPropertySticker,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/ledgercard',
     name: 'AdLedgerCard',
     component: AdLedgerCard,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/propertycard',
     name: 'AdPropertyCard',
     component: AdPropertyCard,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/ackreceipt',
     name: 'AdAckReceipt',
     component: AdAckReceipt,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/transferreport',
     name: 'AdTransferReport',
     component: AdTransferReport,
-    meta: {requireAuth: true}
+meta: {requireAuth: true}
   },
   {
     path: '/rlsddp',
     name: 'AdRLSDDP',
     component: AdRLSDDP,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/workspace',
     name: 'AdWorkspace',
     component: AdWorkspace,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/inventory',
     name: 'AdInventory',
     component: AdInventory,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/userverify',
     name: 'AdUserverify',
     component: AdUserverify,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
 
 
@@ -128,25 +135,25 @@ const routes = [
     path: '/empdashboard',
     name: 'Empdashboard',
     component: EmpDashboard,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/emprequest',
     name: 'EmpRequest',
     component: EmpRequest,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/empserviceable',
     name: 'EmpServiceable',
     component: EmpServiceable,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/empunserviceable',
     name: 'EmpUnserviceable',
     component: EmpUnserviceable,
-    //meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
 
 ]

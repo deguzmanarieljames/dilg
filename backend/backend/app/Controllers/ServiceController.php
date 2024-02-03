@@ -23,6 +23,31 @@ class ServiceController extends ResourceController
         // var_dump($data);
     }
 
+    // public function getData()
+    // {
+    //     $main = new DatabasePPEModel();
+    //     $data = $main->findAll();
+    //     return $this->respond($data, 200);
+    // }
+
+    public function getDataUser()
+    {
+        $main = new DatabasePPEModel();
+        
+        // Retrieve user data to get the fullname
+        $id = $this->request->getVar('id');
+        $user = new SigninModel();
+        $userData = $user->where('fullname', $id)->first();
+        
+        if ($userData) {
+            $fullname = $userData['fullname'];
+            $data = $main->where('empfullname', $fullname)->findAll();
+            return $this->respond($data, 200);
+        } else {
+            return $this->respond(['error' => 'User not found' , 'fullname' => $id], 404);
+        }
+    }
+
 
     public function getDataServiceable()
     {

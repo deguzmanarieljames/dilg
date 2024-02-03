@@ -58,11 +58,17 @@ $routes->get('/getDataServiceable', 'ServiceController::getDataServiceable');
 $routes->get('/getDataUnserviceable', 'ServiceController::getDataUnserviceable');
 $routes->get('/getUserDataServiceable', 'ServiceController::getuserDataServiceable');
 $routes->get('/getuserDataUnserviceable', 'ServiceController::getUserDataUnserviceable');
-
-
+$routes->get('/getDataUser', 'ServiceController::getDataUser');
 
 # REQUEST PPE
 $routes->match(['get', 'post'], '/api/request/decline/(:any)', 'DatabasePPEController::declineRecord/$1');
 $routes->match(['get', 'post'], '/api/request/approve/(:any)', 'DatabasePPEController::approveRecord/$1');
 $routes->match(['get', 'post'], '/api/request/delete/(:any)', 'DatabasePPEController::deleteRecord/$1');
+
+
+
+
+
+
+
 

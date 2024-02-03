@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" style="background-image: url('./img/good.png'); background-size: cover; background-attachment: fixed;">
       <main>
           <div class="container">
 
@@ -39,7 +39,7 @@
 
                           <div class="col-12">
                           <label for="password" class="form-label">Password</label>
-                                <input type="text" name="password" class="form-control" v-model="password" required>
+                                <input type="password" name="password" class="form-control" v-model="password" required>
                                 <div class="invalid-feedback">Please enter your password!</div>
                           </div>
 

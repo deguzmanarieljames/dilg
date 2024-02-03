@@ -352,17 +352,21 @@ export default{
       },
       async updateStatus(id, newStatus) {
         try {
-      const response = await axios.post('updateStatus', { id, status: newStatus });
-        if (response.status === 200) {
-            console.log(response.data);
-            this.getInfo();
-        } else {
-            console.error('Error updating status:', response.data.error);
+          const response = await axios.post('updateStatus', { id, status: newStatus });
+            if (response.status === 200) {
+                console.log(response.data);
+                this.getInfo();
+            } else {
+                console.error('Error updating status:', response.data.error);
+            }
+        } catch (error) {
+            console.error('Network error:', error.message);
         }
-    } catch (error) {
-        console.error('Network error:', error.message);
-    }
-    },
+        },
+        async logout(){
+          sessionStorage.removeItem('token');
+          this.$router.push('/');
+        }
       
   }
 }

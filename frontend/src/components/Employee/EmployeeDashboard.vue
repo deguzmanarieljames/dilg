@@ -364,9 +364,9 @@ export default {
           return imageUrl;
         },
 
-      async getInfo(){
+      async getInfo(id){
               try {
-                  const inf = await axios.get('getData');
+                  const inf = await axios.get(`getDataUser?id=${id}`);
                   this.info = inf.data;
               } catch (error) {
                   console.log(error);

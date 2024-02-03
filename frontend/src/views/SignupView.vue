@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" style="background-image: url('./img/good.png'); background-size: cover; background-attachment: fixed;">
       <main>
           <div class="container">
 
