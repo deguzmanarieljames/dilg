@@ -25,7 +25,7 @@ $routes->get('/getInventory', 'DatabasePPEController::getInventory');
 $routes->post('/saveInventory', 'DatabasePPEController::saveInventory');
 $routes->post('/delInventory', 'DatabasePPEController::delInventory');
 $routes->get('/getReqAdmin', 'DatabasePPEController::getReq');
-$routes->match(['post', 'get'], '/updateInventory', 'DatabasePPEController::updateInventory');
+$routes->match(['get', 'post'], '/updateInventory/(:any)', 'DatabasePPEController::updateInventory/$1');
 
 // SECURITY SIGNIN/SIGNUP
 $routes->match(['post', 'get'],'/signin', 'SigninController::signin');

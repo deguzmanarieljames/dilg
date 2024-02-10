@@ -112,17 +112,65 @@ class DatabasePPEController extends ResourceController
         return !empty($existingCodes);
     }
 
-    public function updateInventory()
+    public function updateInventory($statusId)
     {
-        $id = $this->request->getPost('id');
-        $data = $this->request->getPost();
-        
-        // Add validation if needed
-
-        $result = $this->model->updateInventory($id, $data);
-
-        return $this->respond(['status' => 'success', 'message' => 'Record updated successfully']);
+        // Load the model
+        $json = $this->request->getJSON();
+        $id = $statusId;
+     
+        // Retrieve data from the request
+        $data = [
+            'entityname' => $json->entityname,
+            'particulars' => $json->particulars,
+            'classification' => $json->classification,
+            'quantity' => $json->quantity,
+            'arrival' => $json->arrival
+        ];
+        // $data = [
+        //     'entityname' => $this->request->getPost('entityname'),
+        //     'particulars' => $this->request->getPost('particulars'),
+        //     'classification' => $this->request->getPost('classification'),
+        //     'quantity' => $this->request->getPost('quantity'),
+        //     'arrival' => $this->request->getPost('arrival')
+        // ];
+    
+        $model = new InventoryModel();
+        // Perform the update operation
+        $result = $model->update($id, $data);
+    
+        if ($result) {
+            return $this->respond(['status' => 'success', 'message' => 'Record updated successfully', 'entityname' => $data]);
+        } else {
+            // Handle the case where the update fails
+            return $this->respond(['status' => 'error', 'message' => 'Failed to update record'], 500);
+        }
     }
+    
+
+    // public function updateDateReturned($id)
+    // {
+    //     $model = new DatabasePPEModel();
+    //     $data = $model->find($id);
+
+    //     if ($data) {
+    //         // Modify the date_returned field
+    //         $currentDate = date('Y-m-d');
+    //         $data['date_returned'] = $currentDate;
+
+    //         // Attempt to update the record in the database
+    //         $updated = $model->update($id, $data);
+
+    //         if ($updated) {
+    //             return $this->respond(['message' => 'Date returned updated successfully']);
+    //         } else {
+    //             return $this->failServerError('Failed to update the record');
+    //         }
+    //     } else {
+    //         return $this->failNotFound('Data not found');
+    //     }
+    // }
+    
+    
 
 
 

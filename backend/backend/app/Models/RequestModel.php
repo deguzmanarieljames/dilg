@@ -13,7 +13,7 @@ class RequestModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['empfullname', 'particulars', 'description', 'status', 'created_at'];
+    protected $allowedFields    = ['empfullname', 'particulars', 'description', 'status', 'message', 'created_at'];
 
     // Dates
     protected $useTimestamps = false;

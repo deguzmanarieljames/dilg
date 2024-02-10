@@ -316,40 +316,40 @@ table {
                 <!-- Table with stripped rows -->
                 <div style="overflow-y: auto;">
                   <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Entity</th>
-                        <th>Particulars</th>
-                        <th>Classification</th>
-                        <th>Assigned</th>
-                        <th>Code</th>
-                        <th>Status</th>
-                        <th datatype="date" data-format="YYYY/DD/MM">Date Recorded</th>
-                        <th>Date Returned</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="info in info" :key="info.id">
-                      <td scope="row">
-                        <img :src="generateQRCodeUrl(info.id)" alt="" style="width: 200px; height: 200px;">
-                      </td>
-                        <td scope="row">{{ info.entityname }}</td>
-                        <td scope="row">{{ info.particulars }}</td>
-                        <td scope="row">{{ info.classification }}</td>
-                        <td scope="row">{{ info.empfullname }}</td>
-                        <td scope="row">{{ info.code }}</td>
-                        <td scope="row">{{ info.status }}</td>
-                        <td scope="row">{{ info.created_at }}</td>
-                        <td scope="row">{{ info.date_returned }}</td>
-                        <div>
-                          <button @click="generatePDF">Generate PDF</button>
-                        </div>
-
-                    </tr>
-                    </tbody>
-                </table>
+                <!-- Table header -->
+                <thead>
+                  <tr>
+                    <th>Entity</th>
+                    <th>Particulars</th>
+                    <th>Classification</th>
+                    <th>Assigned</th>
+                    <th>Code</th>
+                    <th>Status</th>
+                    <th>Date Recorded</th>
+                    <th>Date Returned</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <!-- Table rows -->
+                  <tr v-for="info in info" :key="info.id" @click="selectRecord(info)">
+                    <!-- <td scope="row">
+                      <img :src="generateQRCodeUrl(info.id)" alt="" style="width: 200px; height: 200px;">
+                    </td> -->
+                    <td scope="row">{{ info.entityname }}</td>
+                    <td scope="row">{{ info.particulars }}</td>
+                    <td scope="row">{{ info.classification }}</td>
+                    <td scope="row">{{ info.empfullname }}</td>
+                    <td scope="row">{{ info.code }}</td>
+                    <td scope="row">{{ info.status }}</td>
+                    <td scope="row">{{ info.created_at }}</td>
+                    <td scope="row">{{ info.date_returned }}</td>
+                    <td scope="row">
+                      <button @click="generatePDF">Generate PDF</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
                 </div>
                 <!-- End Table with stripped rows -->
 
@@ -357,6 +357,30 @@ table {
             </div>
         </div>
         </div>
+
+          <!-- Modal component to display selected record -->
+          <div class="modal" v-if="selectedInfo">
+            <div class="modal-content">
+              <span class="close" @click="selectedInfo = null">&times;</span>
+              <div class="row">
+                <div class="col-lg-6">
+                  <img :src="generateQRCodeUrl(selectedInfo.id)" alt="" style="width: 100%; height: auto;">
+                </div>
+                <div class="col-lg-6">
+                  <h3>{{ selectedInfo.entityname }}</h3>
+                  <h3>{{ selectedInfo.particulars }}</h3>
+                  <h3>{{ selectedInfo.classification }}</h3>
+                  <h3>{{ selectedInfo.empfullname }}</h3>
+                  <h3>{{ selectedInfo.code }}</h3>
+                  <h3>{{ selectedInfo.status }}</h3>
+                  <h3>{{ selectedInfo.date_returned }}</h3>
+                  <!-- Display other details of the selected record -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </section>
 
         </main><!-- End #main -->
@@ -408,6 +432,8 @@ export default{
           isCameraOn: false,
           stream: null,
           qrCodeData: null,
+          infos: [], // Assuming you have data for your table
+          selectedInfo: null // Store the selected record
       }
   },
   mounted() {
@@ -420,6 +446,10 @@ export default{
       this.getInfo()
   },
   methods:{
+        selectRecord(info) {
+          this.selectedInfo = info; // Set the selected record
+        },
+
         generatePDF() {
           // Get the data for a specific record (you might need to modify this logic)
          // Change this to the desired record ID
@@ -469,13 +499,13 @@ export default{
           this.scannedId = result;
           // Implement any additional logic after scanning the QR code
         },
-        // generateQRCodeUrl(id) {
-        //   return `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${id}`;
-        // },
+        generateQRCodeUrl(id) {
+          return `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${id}`;
+        },
 
         generateQRCodeUrl(id) {
           // Use qrcode-generator to generate QR code
-          const typeNumber = 0;
+          const typeNumber = 2;
           const errorCorrectionLevel = 'L';
           const qr = QRCode(typeNumber, errorCorrectionLevel);
           qr.addData(id);
@@ -631,4 +661,76 @@ export default{
   }
 }
 </script>
+
+<style>
+/* CSS styles for modal */
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  animation-name: modal-animation;
+  animation-duration: 0.5s;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%; /* Adjust the width to fit smaller screens */
+  max-width: 600px; /* Max width to ensure readability on larger screens */
+  animation-name: modal-content-animation;
+  animation-duration: 0.5s;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes modal-animation {
+  from {
+    top: -100%;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes modal-content-animation {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) { /* Adjust for smaller screens */
+  .modal-content {
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+  }
+}
+</style>
+
+
 

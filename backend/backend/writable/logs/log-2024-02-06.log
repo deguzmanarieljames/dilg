@@ -1,0 +1,51 @@
+CRITICAL - 2024-02-06 06:10:21 --> syntax error, unexpected token "=>"
+in APPPATH\Controllers\DatabasePPEController.php on line 123.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\DatabasePPEController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\DatabasePPEController')
+ 4 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\DatabasePPEController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-06 06:22:56 --> Undefined variable $json
+in APPPATH\Controllers\DatabasePPEController.php on line 123.
+ 1 APPPATH\Controllers\DatabasePPEController.php(123): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $json', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 123)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('80')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-06 06:23:36 --> Undefined variable $json
+in APPPATH\Controllers\DatabasePPEController.php on line 124.
+ 1 APPPATH\Controllers\DatabasePPEController.php(124): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $json', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 124)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('80')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-06 06:24:19 --> Undefined variable $json
+in APPPATH\Controllers\DatabasePPEController.php on line 124.
+ 1 APPPATH\Controllers\DatabasePPEController.php(124): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $json', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 124)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('80')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-06 06:24:48 --> Undefined variable $json
+in APPPATH\Controllers\DatabasePPEController.php on line 124.
+ 1 APPPATH\Controllers\DatabasePPEController.php(124): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $json', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 124)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('80')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-06 06:25:02 --> Undefined variable $json
+in APPPATH\Controllers\DatabasePPEController.php on line 124.
+ 1 APPPATH\Controllers\DatabasePPEController.php(124): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $json', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 124)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('80')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-06 06:25:54 --> Undefined property: App\Controllers\DatabasePPEController::$json
+in APPPATH\Controllers\DatabasePPEController.php on line 124.
+ 1 APPPATH\Controllers\DatabasePPEController.php(124): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\DatabasePPEController::$json', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 124)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('80')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

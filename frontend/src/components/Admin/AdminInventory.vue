@@ -260,24 +260,24 @@
 
 
             <!-- Vertical Form -->
-            <form class="row g-3" @submit.prevent="save">
+            <form class="row g-3" @submit.prevent="saveOrUpdate">
               <div class="col-12">
                 <label for="entityname" class="form-label">Entity Name</label>
-                <input type="text" class="form-control" id="entityname" v-model="entityname">
+                <input type="text" class="form-control" id="entityname" v-model="entityname" required>
               </div>
               <div class="col-12">
                 <label for="particulars" class="form-label">Particulars</label>
-                <input type="text" class="form-control" id="particulars" v-model="particulars">
+                <input type="text" class="form-control" id="particulars" v-model="particulars" required>
               </div>
               <div class="col-12">
                 <label for="classification" class="form-label">Classification</label>
-                <input type="text" class="form-control" id="classification" v-model="classification">
+                <input type="text" class="form-control" id="classification" v-model="classification" required>
               </div>
 
 
               <div class="col-12">
                 <label for="quantity" class="form-label">Quantity</label>
-                <input type="text" class="form-control" id="quantity" v-model="quantity">
+                <input type="text" class="form-control" id="quantity" v-model="quantity" required>
               </div>
               <!-- <div class="col-12">
                 <label for="image" class="form-label">Image</label>
@@ -285,11 +285,11 @@
               </div> -->
               <div class="col-12">
                 <label for="arrival" class="form-label">Arrival</label>
-                <input type="datetime-local" class="form-control" id="arrival" v-model="arrival">
+                <input type="datetime-local" class="form-control" id="arrival" v-model="arrival" required>
               </div>
               <div class="text-center">
-                  <button v-if="status !== 'update'" type="submit" class="btn btn-primary" @click="saveOrUpdate">Submit</button>
-                  <button v-if="status === 'update'" type="submit" class="btn btn-success" @click="saveOrUpdate">Update</button>
+                  <button v-if="status !== 'update'" type="submit" class="btn btn-primary">Submit</button>
+                  <button v-if="status === 'update'" type="submit" class="btn btn-success">Update</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>
               </div>
             </form><!-- Vertical Form -->
@@ -356,7 +356,7 @@
                     <td scope="row">{{ inv.quantity }}</td>
                     <td scope="row">{{ inv.arrival }}</td>
                     <td scope="row">{{ inv.status }}</td>
-                    <td><button @click="updateRecord(inv.id)" class="btn btn-warning">Update</button></td>
+                    <td><button @click="placeRecord(inv.id)" class="btn btn-warning">Update</button></td>
                     <td><button @click="deleteRecord(inv.id)" class="btn btn-danger">Delete</button></td>
                   </tr>
                 </tbody>
@@ -399,6 +399,7 @@ import axios from 'axios'
 export default{
 data(){
     return{
+        id: "",
         inventory:[],
         entityname: "",
         particulars: "",
@@ -406,7 +407,9 @@ data(){
         quantity: "",
         arrival: "",
         status: "",
-        image: null
+        image: null,
+        status: "",
+        statusId: ""
     }
 },
 created(){
@@ -443,53 +446,53 @@ methods:{
             quantity: this.quantity,
             arrival: this.arrival,
         });
-            this.entityname = "",
-            this.particulars = "",
-            this.classification = "",
-            this.quantity = "",
-            this.arrival = "",
+        this.resetForm();
         
         this.$emit('data-saved');
         this.getInventory();
       } catch (error) {
         
       }
+      console.log("Hello");
     },
 
     async saveOrUpdate() {
     if (this.status === "update") {
         await this.updateRecord();
     } else {
-        await this.save();
+      await this.save();
     }
     },
 
     async updateRecord() {
-        try {
-            const inv = await axios.post('updateInventory', {
-                id: this.id,
-                entityname: this.entityname,
-                particulars: this.particulars,
-                classification: this.classification,
-                quantity: this.quantity,
-                arrival: this.arrival,
-            });
+    try {
+        const data = {
+            id: this.statusId,
+            entityname: this.entityname,
+            particulars: this.particulars,
+            classification: this.classification,
+            quantity: this.quantity,
+            arrival: this.arrival,
+        };
+
+        const response = await axios.post(`/updateInventory/${this.statusId}`, data);
+        
+        if (response.data.status === 'success') {
             this.resetForm();
             this.status = ""; // reset status after update
             this.getInventory();
-        } catch (error) {
-            console.error(error);
+            console.log("Hi");
+            console.log(this.statusId); // Accessing statusId from component's state
+            console.log(data);
+        } else {
+            console.error("Failed to update record:", response.data.message);
         }
-    },
-
-    resetForm() {
-    this.entityname = "";
-    this.particulars = "";
-    this.classification = "";
-    this.quantity = "";
-    this.arrival = "";
+    } catch (error) {
+        console.error("Error updating record:", error);
+    }
 },
-    updateRecord(recordId) {
+
+placeRecord(recordId) {
     // set status to update and statusId to the record id
     this.status = "update";
     this.statusId = recordId;
@@ -501,7 +504,20 @@ methods:{
     this.classification = record.classification;
     this.quantity = record.quantity;
     this.arrival = record.arrival;
+
+    console.log(recordId);
 },
+
+
+
+    resetForm() {
+            this.entityname = "";
+            this.particulars = "";
+            this.classification = "";
+            this.quantity = "";
+            this.arrival = "";
+        },
+
     
     async deleteRecord(recordId){
       const confirm = window.confirm("Are you sure that you want to delete this record?");

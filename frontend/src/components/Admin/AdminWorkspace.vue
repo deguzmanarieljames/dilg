@@ -312,6 +312,7 @@
                       <th scope="col">Particulars</th>
                       <th scope="col">Description</th>
                       <th scope="col">Status</th>
+                      <th scope="col">Message</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -321,9 +322,10 @@
                       <td scope="row">{{ req.particulars }}</td>
                       <td scope="row">{{ req.description }}</td>
                       <td scope="row">{{ req.status }}</td>
+                      <td scope="row">{{ req.message }}</td>
                       <td><button @click="approveRecord(req.id)" class="btn btn-success">Approve</button></td>
                         <td><button @click="declineRecord(req.id)" class="btn btn-danger">Decline</button></td>
-                        <!-- <td><button @click="deleteRecord(req.id)" class="btn btn-warning">Delete</button></td> -->
+                        <!-- <td><button @click="deleteRecord(req.id)" class="btn btn-warning">Message</button></td> -->
                     </tr>
                   </tbody>
                 </table>
