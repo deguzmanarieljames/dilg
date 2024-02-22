@@ -75,34 +75,72 @@ class RequestController extends ResourceController
         return $this->respond($rin, 200);
     }
 
-    public function approveRecord($id)
-    {
-        $model = new RequestModel();
-        $model->update($id, ['status' => 'Approved']);
-        return $this->respondUpdated(['message' => 'Record approved successfully']);
-    }
+    // public function approveRecord($id)
+    // {
+    //     $model = new RequestModel();
+    //     $model->update($id, ['status' => 'Approved']);
+    //     return $this->respondUpdated(['message' => 'Record approved successfully']);
+    // }
     
-    // Function to handle declining
-    public function declineRecord($id)
-    {
-        $model = new RequestModel();
-        $model->update($id, ['status' => 'Declined']);
-        return $this->respondUpdated(['message' => 'Record declined successfully']);
-    }
+    // // Function to handle declining
+    // public function declineRecord($id)
+    // {
+    //     $model = new RequestModel();
+    //     $model->update($id, ['status' => 'Declined']);
+    //     return $this->respondUpdated(['message' => 'Record declined successfully']);
+    // }
     
-    // Function to handle deletion
-    public function deleteRecord($id)
+    // // Function to handle deletion
+    // public function deleteRecord($id)
+    // {
+    //     $model = new RequestModel();
+        
+    //     // Check if the record exists before deleting
+    //     $existingRecord = $model->find($id);
+        
+    //     if (!$existingRecord) {
+    //         return $this->respond(['message' => 'Record not found'], 404);
+    //     }
+    
+    //     $model->delete($id);
+    //     return $this->respondDeleted(['message' => 'Record deleted successfully']);
+    // }
+
+    // public function updatereqStatus()
+    // {
+    //     $requestData = $this->request->getJSON();
+    //     $id = $requestData->id;
+    //     $newStatus = $requestData->status; // Added this line to get the new status
+
+    //     $allowedStatuses = ['Declined', 'Approved']; // Define allowed statuses
+
+    //     if (!in_array($newStatus, $allowedStatuses)) {
+    //         return $this->respond(['error' => 'Invalid status'], 400);
+    //     }
+
+    //     $verifyModel = new RequestModel();
+    //     $verifyModel->update($id, ['status' => $newStatus]);
+
+    //     return $this->respond(['message' => 'Status updated successfully'], 200);
+    // }
+
+
+    public function updatereqStatus()
     {
-        $model = new RequestModel();
-        
-        // Check if the record exists before deleting
-        $existingRecord = $model->find($id);
-        
-        if (!$existingRecord) {
-            return $this->respond(['message' => 'Record not found'], 404);
+        $requestData = $this->request->getJSON();
+        $id = $requestData->id;
+        $newStatus = $requestData->status; // Added this line to get the new status
+        $feedback = $requestData->feedback; // Added this line to get feedback
+
+        $allowedStatuses = ['Declined', 'Approved']; // Define allowed statuses
+
+        if (!in_array($newStatus, $allowedStatuses)) {
+            return $this->respond(['error' => 'Invalid status'], 400);
         }
-    
-        $model->delete($id);
-        return $this->respondDeleted(['message' => 'Record deleted successfully']);
+
+        $verifyModel = new RequestModel();
+        $verifyModel->update($id, ['status' => $newStatus, 'feedback' => $feedback]); // Include feedback in the update
+
+        return $this->respond(['message' => 'Status updated successfully', $feedback], 200);
     }
 }

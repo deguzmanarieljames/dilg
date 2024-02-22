@@ -63,4 +63,27 @@ class InventoryModel extends Model
         // your get logic here
         return $this->findAll();
     }
+
+        public function isNewRecordAdded()
+    {
+        // Get the latest record from the table
+        $latestRecord = $this->orderBy('created_at', 'desc')
+                             ->first();
+
+        if ($latestRecord) {
+            // Here you can compare the latest record's creation time with a known time
+            // For example, you might have a timestamp indicating the last check
+            $lastCheckedTime = strtotime('2024-01-01 00:00:00');
+
+            // Convert the latest record's creation time to a timestamp
+            $latestRecordTime = strtotime($latestRecord['created_at']);
+
+            // If the latest record is newer than the last check, consider it new
+            if ($latestRecordTime > $lastCheckedTime) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }

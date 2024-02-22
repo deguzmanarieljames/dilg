@@ -1,12 +1,12 @@
 <template>
-<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed;">
+<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
       <!-- ======= Header ======= -->
       <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="/dashboard" class="logo d-flex align-items-center">
         <img src="./img/logo1.png" alt="">
-        <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 210%;">
+        <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 210%; color: rgb(42, 43, 72);">
           <i>DILG<sup style="font-size: 70%;">ence</sup></i>
         </span>
       </a>
@@ -215,6 +215,15 @@
         </a>
       </li>
 
+      <li class="nav-heading">Ordering</li>
+    
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/ordering">
+            <i class="bi bi-folder-plus"></i>
+            <span>Ordering</span>
+          </a>
+        </li>
+
       <li class="nav-heading">Security</li>
 
       <li class="nav-item">
@@ -260,7 +269,7 @@
 
 
             <!-- Vertical Form -->
-            <form class="row g-3" @submit.prevent="saveOrUpdate">
+            <form class="row g-3" enctype="multipart/form-data">
               <div class="col-12">
                 <label for="entityname" class="form-label">Entity Name</label>
                 <input type="text" class="form-control" id="entityname" v-model="entityname" required>
@@ -273,23 +282,27 @@
                 <label for="classification" class="form-label">Classification</label>
                 <input type="text" class="form-control" id="classification" v-model="classification" required>
               </div>
-
-
+              <div class="col-12">
+                <label for="camera" class="form-label">Capture Image</label>
+                <video id="camera" width="320" height="240" autoplay></video>
+                <a @click="startCamera" class="btn btn-primary">{{ cameraStarted ? 'Stop Camera' : 'Start Camera' }}</a>
+                <a @click="captureImage" class="btn btn-success" :disabled="!cameraStarted">Capture</a>
+              </div>
+              <div class="col-12">
+                <label class="form-label">Preview</label>
+                <img :src="capturedImage" alt="Captured Image" v-if="capturedImage">
+              </div>
               <div class="col-12">
                 <label for="quantity" class="form-label">Quantity</label>
                 <input type="text" class="form-control" id="quantity" v-model="quantity" required>
               </div>
-              <!-- <div class="col-12">
-                <label for="image" class="form-label">Image</label>
-                <input type="text" class="form-control" id="image" v-model="image">
-              </div> -->
               <div class="col-12">
                 <label for="arrival" class="form-label">Arrival</label>
                 <input type="datetime-local" class="form-control" id="arrival" v-model="arrival" required>
               </div>
               <div class="text-center">
-                  <button v-if="status !== 'update'" type="submit" class="btn btn-primary">Submit</button>
-                  <button v-if="status === 'update'" type="submit" class="btn btn-success">Update</button>
+                  <button @click="saveOrUpdate" v-if="status !== 'update'" type="submit" class="btn btn-primary">Submit</button>
+                  <button @click="saveOrUpdate" v-if="status === 'update'" type="submit" class="btn btn-success">Update</button>
                   <button type="reset" class="btn btn-secondary">Reset</button>
               </div>
             </form><!-- Vertical Form -->
@@ -336,9 +349,10 @@
             </table> -->
 
             <qrcode-stream @decode="onDecode" />
-              <table>
-                <thead>
+              <table class="table datatable">
+                <thead style="width: 100%;">
                   <tr>
+                    <th scope="col">Image</th>
                     <th scope="col">Entity</th>
                     <th scope="col">Particulars</th>
                     <th scope="col">Classification</th>
@@ -350,14 +364,15 @@
                 </thead>
                 <tbody>
                   <tr v-for="inv in inventory" :key="inv.id">
+                    <td scope="row"><img :src="inv.image" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
                     <td scope="row">{{ inv.entityname }}</td>
                     <td scope="row">{{ inv.particulars }}</td>
                     <td scope="row">{{ inv.classification }}</td>
                     <td scope="row">{{ inv.quantity }}</td>
                     <td scope="row">{{ inv.arrival }}</td>
                     <td scope="row">{{ inv.status }}</td>
-                    <td><button @click="placeRecord(inv.id)" class="btn btn-warning">Update</button></td>
-                    <td><button @click="deleteRecord(inv.id)" class="btn btn-danger">Delete</button></td>
+                    <td><button @click="placeRecord(inv.id)" class="btn btn-warning">Update</button>
+                    <button @click="deleteRecord(inv.id)" class="btn btn-danger">Delete</button></td>
                   </tr>
                 </tbody>
               </table>
@@ -371,20 +386,6 @@
       </section>
 
     </main><!-- End #main -->
-
-    <!-- ======= Footer ======= -->
-    <footer id="footer" class="footer">
-    <div class="copyright">
-      &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-    </div>
-    <div class="credits">
-      <!-- All the links in the footer should remain intact. -->
-      <!-- You can delete the links only if you purchased the pro version. -->
-      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-    </div>
-    </footer><!-- End Footer -->
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
   </div>
@@ -409,13 +410,67 @@ data(){
         status: "",
         image: null,
         status: "",
-        statusId: ""
+        statusId: "",
+        mediaStream: null,
+        cameraStarted: false,
+        capturedImage: null,
+        imageDataUrl: "",
+        cameraButtonText: 'Start Camera'
     }
 },
 created(){
     this.getInventory()
 },
 methods:{
+  async startCamera() {
+    const videoElement = document.getElementById('camera');
+    if (!this.cameraStarted) {
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+          videoElement.srcObject = stream;
+          this.mediaStream = stream;
+          this.cameraStarted = true;
+          this.cameraButtonText = 'Stop Camera';
+        } catch (error) {
+          console.error('Error accessing camera:', error);
+        }
+      } else {
+        console.error('getUserMedia is not supported');
+      }
+    } else {
+      // Stop the camera
+      if (this.mediaStream) {
+        this.mediaStream.getTracks().forEach(track => {
+          track.stop();
+        });
+      }
+      this.cameraStarted = false;
+      this.cameraButtonText = 'Start Camera';
+    }
+  },
+    captureImage() {
+      if (!this.cameraStarted) {
+        console.error('Camera not started yet');
+        return;
+      }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = 320;
+      canvas.height = 240;
+      const context = canvas.getContext('2d');
+      context.drawImage(document.getElementById('camera'), 0, 0, 320, 240);
+      const imageDataUrl = canvas.toDataURL('image/png');
+
+      // Set the captured image for preview
+      this.capturedImage = imageDataUrl;
+    },
+
+    // handleImageUpload() {
+    //   const file = this.$refs.image.files[0]; // Get the selected file
+    //   // this.image = URL.createObjectURL(file); // Display the image preview in the UI
+    // },
+
     deleteRecord(id) {
       // Implement your delete logic here
     },
@@ -432,58 +487,181 @@ methods:{
         try {
             const inv = await axios.get('getInventory');
             this.inventory = inv.data;
+            console.log(this.inventory);
         } catch (error) {
             console.log(error);
         }
     },
 
-    async save(){
-      try {
-        const inv = await axios.post('saveInventory', {
-            entityname: this.entityname,
-            particulars: this.particulars,
-            classification: this.classification,
-            quantity: this.quantity,
-            arrival: this.arrival,
-        });
-        this.resetForm();
+    // async save(){
+    //   try {
+    //     const inv = await axios.post('saveInventory', {
+    //         entityname: this.entityname,
+    //         particulars: this.particulars,
+    //         classification: this.classification,
+    //         quantity: this.quantity,
+    //         arrival: this.arrival,
+    //     });
+    //     this.resetForm();
+    //     this.$emit('data-saved');
+    //     this.getInventory();
+
+    //     await axios.post('/triggerNotification')
+    //         .then(response => {
+    //             console.log('Notification triggered successfully');
+    //         })
+    //         .catch(error => {
+    //             console.error('Error triggering notification:', error);
+    //         });
         
+    //   } catch (error) {
+        
+    //   }
+    //   console.log("Hello");
+    // },
+
+    async save() {
+      try {
+        if (!this.capturedImage) {
+          console.error('No image captured yet');
+          return;
+        }
+
+        // Convert the captured image to a file
+        const blob = await fetch(this.capturedImage).then(res => res.blob());
+        const file = new File([blob], `image_${Date.now()}.png`, { type: 'image/png' });
+
+        // Create a FormData object and append the captured image file
+        const formData = new FormData();
+        formData.append('image', file);
+
+        // Append other form data
+        formData.append('entityname', this.entityname);
+        formData.append('particulars', this.particulars);
+        formData.append('classification', this.classification);
+        formData.append('quantity', this.quantity);
+        formData.append('arrival', this.arrival);
+
+        // Now you can submit the formData to your backend endpoint using Axios or any other method
+        await axios.post('/saveInventory', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        });
+
+        this.resetForm();
         this.$emit('data-saved');
         this.getInventory();
+
+        await axios.post('/triggerNotification')
+          .then(response => {
+            console.log('Notification triggered successfully');
+          })
+          .catch(error => {
+            console.error('Error triggering notification:', error);
+          });
+
+        // Now you can submit the formData to your backend endpoint using Axios or any other method
+        // Example using Axios:
+        // await axios.post('/your-backend-endpoint', formData);
+
       } catch (error) {
-        
+        console.error('Error saving:', error);
       }
-      console.log("Hello");
     },
+    dataURLtoFile(dataUrl) {
+      const binary = atob(dataUrl.split(',')[1]);
+      const array = [];
+      for (let i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
+      }
+      return new File([new Uint8Array(array)], 'image.png', { type: 'image/png' });
+    },
+    beforeDestroy() {
+    if (this.mediaStream) {
+      this.mediaStream.getTracks().forEach(track => {
+        track.stop();
+      });
+    }
+  },
+
+    // async save() {
+    //   try {
+    //     // Retrieve the selected image file
+    //     const imageFile = this.$refs.image.files[0];
+
+    //     // Use FormData to send both text and file data
+    //     const formData = new FormData();
+    //     formData.append('entityname', this.entityname);
+    //     formData.append('particulars', this.particulars);
+    //     formData.append('classification', this.classification);
+    //     formData.append('quantity', this.quantity);
+    //     formData.append('arrival', this.arrival);
+    //     formData.append('image', imageFile);
+
+    //     // Send data using axios.post with FormData
+    //     const inv = await axios.post('saveInventory', formData, {
+    //       headers: {
+    //         'Content-Type': 'multipart/form-data',
+    //       },
+    //     });
+
+    //     this.resetForm();
+    //     this.$emit('data-saved');
+    //     this.getInventory();
+
+    //     await axios.post('/triggerNotification')
+    //       .then(response => {
+    //         console.log('Notification triggered successfully');
+    //       })
+    //       .catch(error => {
+    //         console.error('Error triggering notification:', error);
+    //       });
+
+    //   } catch (error) {
+    //     console.error('Error saving data:', error);
+    //   }
+    // },
 
     async saveOrUpdate() {
-    if (this.status === "update") {
-        await this.updateRecord();
-    } else {
-      await this.save();
-    }
+      if (this.status === "update") {
+          await this.updateRecord();
+      } else {
+        await this.save();
+      }
     },
+
 
     async updateRecord() {
     try {
-        const data = {
-            id: this.statusId,
-            entityname: this.entityname,
-            particulars: this.particulars,
-            classification: this.classification,
-            quantity: this.quantity,
-            arrival: this.arrival,
-        };
+        const formData = new FormData();
 
-        const response = await axios.post(`/updateInventory/${this.statusId}`, data);
-        
+        // Append the updated data
+        formData.append('id', this.statusId);
+        formData.append('entityname', this.entityname);
+        formData.append('particulars', this.particulars);
+        formData.append('classification', this.classification);
+        formData.append('quantity', this.quantity);
+        formData.append('arrival', this.arrival);
+
+        // If a new image is captured, append it to the form data
+        if (this.capturedImage) {
+            const blob = await fetch(this.capturedImage).then(res => res.blob());
+            const file = new File([blob], `image_${Date.now()}.png`, { type: 'image/png' });
+            formData.append('image', file);
+        }
+
+        const response = await axios.post(`/updateInventory/${this.statusId}`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+
         if (response.data.status === 'success') {
             this.resetForm();
             this.status = ""; // reset status after update
             this.getInventory();
-            console.log("Hi");
-            console.log(this.statusId); // Accessing statusId from component's state
-            console.log(data);
+            console.log("Record updated successfully");
         } else {
             console.error("Failed to update record:", response.data.message);
         }
@@ -491,6 +669,35 @@ methods:{
         console.error("Error updating record:", error);
     }
 },
+
+
+//     async updateRecord() {
+//     try {
+//         const data = {
+//             id: this.statusId,
+//             entityname: this.entityname,
+//             particulars: this.particulars,
+//             classification: this.classification,
+//             quantity: this.quantity,
+//             arrival: this.arrival,
+//         };
+
+//         const response = await axios.post(`/updateInventory/${this.statusId}`, data);
+        
+//         if (response.data.status === 'success') {
+//             this.resetForm();
+//             this.status = ""; // reset status after update
+//             this.getInventory();
+//             console.log("Hi");
+//             console.log(this.statusId); // Accessing statusId from component's state
+//             console.log(data);
+//         } else {
+//             console.error("Failed to update record:", response.data.message);
+//         }
+//     } catch (error) {
+//         console.error("Error updating record:", error);
+//     }
+// },
 
 placeRecord(recordId) {
     // set status to update and statusId to the record id
@@ -504,6 +711,7 @@ placeRecord(recordId) {
     this.classification = record.classification;
     this.quantity = record.quantity;
     this.arrival = record.arrival;
+    this.capturedImage = record.image;
 
     console.log(recordId);
 },
@@ -516,6 +724,8 @@ placeRecord(recordId) {
             this.classification = "";
             this.quantity = "";
             this.arrival = "";
+            this.cameraStarted = false;
+            this.capturedImage = null;
         },
 
     
@@ -533,6 +743,13 @@ placeRecord(recordId) {
         sessionStorage.removeItem('token');
         this.$router.push('/');
     }
-}
+},
+beforeDestroy() {
+    if (this.mediaStream) {
+      this.mediaStream.getTracks().forEach(track => {
+        track.stop();
+      });
+    }
+  },
 }
 </script>

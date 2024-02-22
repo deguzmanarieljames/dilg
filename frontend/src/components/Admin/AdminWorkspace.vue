@@ -1,12 +1,12 @@
 <template>
-<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed;">
+<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
   
       <div class="d-flex align-items-center justify-content-between">
         <a href="/dashboard" class="logo d-flex align-items-center">
           <img src="./img/logo1.png" alt="">
-          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 210%;">
+          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 210%; color: rgb(42, 43, 72);">
             <i>DILG<sup style="font-size: 70%;">ence</sup></i>
           </span>
         </a>
@@ -215,6 +215,15 @@
           </a>
         </li>
 
+        <li class="nav-heading">Ordering</li>
+    
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/ordering">
+            <i class="bi bi-folder-plus"></i>
+            <span>Ordering</span>
+          </a>
+        </li>
+
         <li class="nav-heading">Security</li>
 
         <li class="nav-item">
@@ -304,6 +313,28 @@
               <div class="card-body">
                 <h5 class="card-title">Request</h5>
 
+                    <!-- Modal -->
+                    <div class="modal" v-if="showModal">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title">Provide Feedback</h5>
+                            <button type="button" class="close" @click="closeModal">
+                              <span>&times;</span>
+                            </button>
+                          </div>
+                          <div class="modal-body">
+                            <label for="feedbackInput">Feedback:</label>
+                            <textarea id="feedbackInput" v-model="feedback" class="form-control"></textarea>
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" @click="closeModal">Close</button>
+                            <button type="button" class="btn btn-primary" @click="submitFeedback">Submit</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
                 <!-- Table with hoverable rows -->
                 <table class="table">
                   <thead>
@@ -312,7 +343,7 @@
                       <th scope="col">Particulars</th>
                       <th scope="col">Description</th>
                       <th scope="col">Status</th>
-                      <th scope="col">Message</th>
+                      <th scope="col">Feedback</th>
                       <th scope="col">Action</th>
                     </tr>
                   </thead>
@@ -322,9 +353,9 @@
                       <td scope="row">{{ req.particulars }}</td>
                       <td scope="row">{{ req.description }}</td>
                       <td scope="row">{{ req.status }}</td>
-                      <td scope="row">{{ req.message }}</td>
-                      <td><button @click="approveRecord(req.id)" class="btn btn-success">Approve</button></td>
-                        <td><button @click="declineRecord(req.id)" class="btn btn-danger">Decline</button></td>
+                      <td scope="row">{{ req.feedback }}</td>
+                      <td><button @click="updatereqStatus(req.id, 'Approved')" class="btn btn-success">Approve</button></td>
+                        <td><button @click="updatereqStatus(req.id, 'Declined')" class="btn btn-danger">Decline</button></td>
                         <!-- <td><button @click="deleteRecord(req.id)" class="btn btn-warning">Message</button></td> -->
                     </tr>
                   </tbody>
@@ -333,6 +364,7 @@
 
               </div>
               </div>
+              
 
 
             </div>
@@ -379,20 +411,6 @@
   
       </main><!-- End #main -->
   
-      <!-- ======= Footer ======= -->
-      <footer id="footer" class="footer">
-      <div class="copyright">
-        &copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
-      </footer><!-- End Footer -->
-  
       <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
     </div>
   </template>
@@ -419,7 +437,8 @@ export default{
           // selectedEmployeeDetails: null
 
           message: [],
-          
+          showModal: false,
+          feedback: ''
       }
   },
   created(){
@@ -427,6 +446,36 @@ export default{
       this.getReq()
   },
   methods:{
+    updatereqStatus(id, newStatus) {
+      // Show the modal
+      this.showModal = true;
+      // Save the id and newStatus for later use
+      this.requestId = id;
+      this.newStatus = newStatus;
+    },
+    closeModal() {
+      // Close the modal and reset feedback
+      this.showModal = false;
+      this.feedback = '';
+    },
+    async submitFeedback() {
+      try {
+        const response = await axios.post('updatereqStatus', {
+          id: this.requestId,
+          status: this.newStatus,
+          feedback: this.feedback
+        });
+        if (response.status === 200) {
+          console.log(response.data);
+          this.getReq();
+          this.closeModal(); // Close the modal after successful submission
+        } else {
+          console.error('Error updating status:', response.data.error);
+        }
+      } catch (error) {
+        console.error('Network error:', error.message);
+      }
+    },
       /*async deleteRecord(recordId){
           const confirm = window.confirm("are you sure you want to delete this?");
           if (confirm){
@@ -440,6 +489,9 @@ export default{
           try {
               const req = await axios.get('getReqAdmin');
               this.requests = req.data;
+
+
+            
           } catch (error) {
               console.log(error);
           }
@@ -607,77 +659,116 @@ export default{
       },
 
 
-      async approveRecord(id) {
-      try {
-        // Assuming you have an API endpoint for approving records
-        const response = await fetch(`/api/request/approve/${id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-            // Add any additional headers if needed
-          }
-        });
+    //   async approveRecord(id) {
+    //   try {
+    //     // Assuming you have an API endpoint for approving records
+    //     const response = await fetch(`/api/request/approve/${id}`, {
+    //       method: 'PUT',
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //         // Add any additional headers if needed
+    //       }
+    //     });
 
-        if (response.ok) {
-          // Update the status in the frontend
-          const index = this.requests.findIndex(req => req.id === id);
-          this.$set(this.requests, index, { ...this.requests[index], status: 'Approved' });
+    //     if (response.ok) {
+    //       // Update the status in the frontend
+    //       const index = this.requests.findIndex(req => req.id === id);
+    //       this.$set(this.requests, index, { ...this.requests[index], status: 'Approved' });
 
-          console.log('Record approved successfully');
-        } else {
-          console.error('Failed to approve record');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    },
-    async declineRecord(id) {
-      try {
-        // Assuming you have an API endpoint for declining records
-        const response = await fetch(`/api/request/decline/${id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json'
-            // Add any additional headers if needed
-          }
-        });
+    //       console.log('Record approved successfully');
+    //     } else {
+    //       console.error('Failed to approve record');
+    //     }
+    //   } catch (error) {
+    //     console.error('Error:', error);
+    //   }
+    // },
+    // async declineRecord(id) {
+    //   try {
+    //     // Assuming you have an API endpoint for declining records
+    //     const response = await fetch(`/api/request/decline/${id}`, {
+    //       method: 'PUT',
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //         // Add any additional headers if needed
+    //       }
+    //     });
 
-        if (response.ok) {
-          // Update the status in the frontend
-          const index = this.requests.findIndex(req => req.id === id);
-          this.$set(this.requests, index, { ...this.requests[index], status: 'Declined' });
+    //     if (response.ok) {
+    //       // Update the status in the frontend
+    //       const index = this.requests.findIndex(req => req.id === id);
+    //       this.$set(this.requests, index, { ...this.requests[index], status: 'Declined' });
 
-          console.log('Record declined successfully');
-        } else {
-          console.error('Failed to decline record');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    },
-    async deleteRecord(id) {
-      try {
-        // Assuming you have an API endpoint for deleting records
-        const response = await fetch(`/api/request/delete/${id}`, {
-          method: 'DELETE',
-          headers: {
-            'Content-Type': 'application/json'
-            // Add any additional headers if needed
-          }
-        });
+    //       console.log('Record declined successfully');
+    //     } else {
+    //       console.error('Failed to decline record');
+    //     }
+    //   } catch (error) {
+    //     console.error('Error:', error);
+    //   }
+    // },
+    // async deleteRecord(id) {
+    //   try {
+    //     // Assuming you have an API endpoint for deleting records
+    //     const response = await fetch(`/api/request/delete/${id}`, {
+    //       method: 'DELETE',
+    //       headers: {
+    //         'Content-Type': 'application/json'
+    //         // Add any additional headers if needed
+    //       }
+    //     });
 
-        if (response.ok) {
-          // Remove the record from the frontend
-          this.requests = this.requests.filter(req => req.id !== id);
+    //     if (response.ok) {
+    //       // Remove the record from the frontend
+    //       this.requests = this.requests.filter(req => req.id !== id);
 
-          console.log('Record deleted successfully');
-        } else {
-          console.error('Failed to delete record');
-        }
-      } catch (error) {
-        console.error('Error:', error);
-      }
-    }
+    //       console.log('Record deleted successfully');
+    //     } else {
+    //       console.error('Failed to delete record');
+    //     }
+    //   } catch (error) {
+    //     console.error('Error:', error);
+    //   }
+    // },
+    
+
+//     async updatereqStatus(id, newStatus) {
+//     try {
+//         let feedback = ''; // Initialize feedback variable
+//         // Prompt the user for feedback before approving or disapproving
+//         if (newStatus === 'Approved' || newStatus === 'Declined') {
+//             feedback = prompt('Please provide feedback:'); // Show prompt for feedback
+//             if (feedback === null) return; // If user cancels, do nothing
+//         }
+
+//         const response = await axios.post('updatereqStatus', { id, status: newStatus, feedback });
+//         if (response.status === 200) {
+//             console.log(response.data);
+//             this.getReq();
+//         } else {
+//             console.error('Error updating status:', response.data.error);
+//         }
+//     } catch (error) {
+//         console.error('Network error:', error.message);
+//     }
+// },
+
+    // async updatereqStatus(id, newStatus) {
+    //     try {
+    //       const response = await axios.post('updatereqStatus', { id, status: newStatus });
+    //         if (response.status === 200) {
+    //             console.log(response.data);
+    //             this.getReq();
+    //         } else {
+    //             console.error('Error updating status:', response.data.error);
+    //         }
+    //     } catch (error) {
+    //         console.error('Network error:', error.message);
+    //     }
+    //   },
+
+
+
   },
   mounted() {
     this.fetchEmployeeNames();

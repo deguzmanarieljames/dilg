@@ -1,0 +1,216 @@
+CRITICAL - 2024-02-18 12:35:05 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:35:09 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:35:26 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:36:04 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:37:05 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:37:12 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:37:42 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:37:51 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:38:16 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:38:20 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:40:26 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:42:37 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:42:43 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:42:47 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:43:36 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\public/uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\public/uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\public/uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:43:50 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\../uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\../uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\../uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:44:16 --> file_get_contents(C:\laragon\www\dilg\backend\backend\writable\..public/uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 219.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'file_get_contents(C:\\laragon\\www\\dilg\\backend\\backend\\writable\\..public/uploads/1708256893_0bc3562ae36c4ede0518.png): Failed to open stream: No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 219)
+ 2 APPPATH\Controllers\DatabasePPEController.php(219): file_get_contents('C:\\laragon\\www\\dilg\\backend\\backend\\writable\\..public/uploads/1708256893_0bc3562ae36c4ede0518.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:44:58 --> Failed to parse JSON string. Error: Malformed UTF-8 characters, possibly incorrectly encoded
+in SYSTEMPATH\Format\JSONFormatter.php on line 41.
+ 1 SYSTEMPATH\Format\JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8 characters, possibly incorrectly encoded')
+ 2 SYSTEMPATH\API\ResponseTrait.php(345): CodeIgniter\Format\JSONFormatter->format([...])
+ 3 SYSTEMPATH\API\ResponseTrait.php(98): App\Controllers\DatabasePPEController->format([...])
+ 4 APPPATH\Controllers\DatabasePPEController.php(222): App\Controllers\DatabasePPEController->respond([...], 200)
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:56:54 --> Failed to parse JSON string. Error: Malformed UTF-8 characters, possibly incorrectly encoded
+in SYSTEMPATH\Format\JSONFormatter.php on line 41.
+ 1 SYSTEMPATH\Format\JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8 characters, possibly incorrectly encoded')
+ 2 SYSTEMPATH\API\ResponseTrait.php(345): CodeIgniter\Format\JSONFormatter->format([...])
+ 3 SYSTEMPATH\API\ResponseTrait.php(98): App\Controllers\DatabasePPEController->format([...])
+ 4 APPPATH\Controllers\DatabasePPEController.php(222): App\Controllers\DatabasePPEController->respond([...], 200)
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:57:18 --> Failed to parse JSON string. Error: Malformed UTF-8 characters, possibly incorrectly encoded
+in SYSTEMPATH\Format\JSONFormatter.php on line 41.
+ 1 SYSTEMPATH\Format\JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8 characters, possibly incorrectly encoded')
+ 2 SYSTEMPATH\API\ResponseTrait.php(345): CodeIgniter\Format\JSONFormatter->format([...])
+ 3 SYSTEMPATH\API\ResponseTrait.php(98): App\Controllers\DatabasePPEController->format([...])
+ 4 APPPATH\Controllers\DatabasePPEController.php(222): App\Controllers\DatabasePPEController->respond([...], 200)
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:57:21 --> Failed to parse JSON string. Error: Malformed UTF-8 characters, possibly incorrectly encoded
+in SYSTEMPATH\Format\JSONFormatter.php on line 41.
+ 1 SYSTEMPATH\Format\JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8 characters, possibly incorrectly encoded')
+ 2 SYSTEMPATH\API\ResponseTrait.php(345): CodeIgniter\Format\JSONFormatter->format([...])
+ 3 SYSTEMPATH\API\ResponseTrait.php(98): App\Controllers\DatabasePPEController->format([...])
+ 4 APPPATH\Controllers\DatabasePPEController.php(222): App\Controllers\DatabasePPEController->respond([...], 200)
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 12:57:41 --> Failed to parse JSON string. Error: Malformed UTF-8 characters, possibly incorrectly encoded
+in SYSTEMPATH\Format\JSONFormatter.php on line 41.
+ 1 SYSTEMPATH\Format\JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8 characters, possibly incorrectly encoded')
+ 2 SYSTEMPATH\API\ResponseTrait.php(345): CodeIgniter\Format\JSONFormatter->format([...])
+ 3 SYSTEMPATH\API\ResponseTrait.php(98): App\Controllers\DatabasePPEController->format([...])
+ 4 APPPATH\Controllers\DatabasePPEController.php(222): App\Controllers\DatabasePPEController->respond([...], 200)
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 13:05:03 --> Failed to parse JSON string. Error: Malformed UTF-8 characters, possibly incorrectly encoded
+in SYSTEMPATH\Format\JSONFormatter.php on line 41.
+ 1 SYSTEMPATH\Format\JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8 characters, possibly incorrectly encoded')
+ 2 SYSTEMPATH\API\ResponseTrait.php(345): CodeIgniter\Format\JSONFormatter->format([...])
+ 3 SYSTEMPATH\API\ResponseTrait.php(98): App\Controllers\DatabasePPEController->format([...])
+ 4 APPPATH\Controllers\DatabasePPEController.php(222): App\Controllers\DatabasePPEController->respond([...], 200)
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 13:05:06 --> Failed to parse JSON string. Error: Malformed UTF-8 characters, possibly incorrectly encoded
+in SYSTEMPATH\Format\JSONFormatter.php on line 41.
+ 1 SYSTEMPATH\Format\JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8 characters, possibly incorrectly encoded')
+ 2 SYSTEMPATH\API\ResponseTrait.php(345): CodeIgniter\Format\JSONFormatter->format([...])
+ 3 SYSTEMPATH\API\ResponseTrait.php(98): App\Controllers\DatabasePPEController->format([...])
+ 4 APPPATH\Controllers\DatabasePPEController.php(222): App\Controllers\DatabasePPEController->respond([...], 200)
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-18 13:05:19 --> Failed to parse JSON string. Error: Malformed UTF-8 characters, possibly incorrectly encoded
+in SYSTEMPATH\Format\JSONFormatter.php on line 41.
+ 1 SYSTEMPATH\Format\JSONFormatter.php(41): CodeIgniter\Format\Exceptions\FormatException::forInvalidJSON('Malformed UTF-8 characters, possibly incorrectly encoded')
+ 2 SYSTEMPATH\API\ResponseTrait.php(345): CodeIgniter\Format\JSONFormatter->format([...])
+ 3 SYSTEMPATH\API\ResponseTrait.php(98): App\Controllers\DatabasePPEController->format([...])
+ 4 APPPATH\Controllers\DatabasePPEController.php(222): App\Controllers\DatabasePPEController->respond([...], 200)
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getInventory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

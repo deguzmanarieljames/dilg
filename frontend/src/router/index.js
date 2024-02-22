@@ -14,6 +14,9 @@ import AdUnserviceable from '../views/AdminView/AdUnserviceable.vue'
 import AdWorkspace from '../views/AdminView/AdWorkspace.vue'
 import AdUserverify from '../views/AdminView/AdUserverify.vue'
 import AdInventory from '../views/AdminView/AdInventory.vue'
+import AdOrdering from '../views/AdminView/AdOrdering.vue'
+import AdOrderPending from '../views/AdminView/AdOrderPending.vue'
+import AdOrderIncoming from '../views/AdminView/AdOrderIncoming.vue'
 import SignupView from '../views/SignupView.vue'
 import SigninView from '../views/SigninView.vue'
 import LandingPage from '../views/LandingPage.vue'
@@ -101,7 +104,7 @@ const routes = [
     path: '/transferreport',
     name: 'AdTransferReport',
     component: AdTransferReport,
-meta: {requireAuth: true}
+    meta: {requireAuth: true}
   },
   {
     path: '/rlsddp',
@@ -119,6 +122,24 @@ meta: {requireAuth: true}
     path: '/inventory',
     name: 'AdInventory',
     component: AdInventory,
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/ordering',
+    name: 'AdOrdering',
+    component: AdOrdering,
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/orderpending',
+    name: 'AdOrderPending',
+    component: AdOrderPending,
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/orderincoming',
+    name: 'AdOrderIncoming',
+    component: AdOrderIncoming,
     meta: {requireAuth: true}
   },
   {

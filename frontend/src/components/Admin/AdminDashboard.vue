@@ -1,12 +1,12 @@
 <template>
-<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed;">
+<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
       <!-- ======= Header ======= -->
       <header id="header" class="header fixed-top d-flex align-items-center">
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="/dashboard" class="logo d-flex align-items-center">
         <img src="./img/logo1.png" alt="">
-        <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 210%;">
+        <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 210%; color: rgb(42, 43, 72);">
           <i>DILG<sup style="font-size: 70%;">ence</sup></i>
         </span>
       </a>
@@ -214,6 +214,15 @@
           <span>Inventory</span>
         </a>
       </li>
+
+      <li class="nav-heading">Ordering</li>
+    
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/ordering">
+            <i class="bi bi-folder-plus"></i>
+            <span>Ordering</span>
+          </a>
+        </li>
       
       <li class="nav-heading">Security</li>
 

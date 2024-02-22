@@ -1,0 +1,117 @@
+CRITICAL - 2024-02-16 00:27:12 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 00:27:12 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:07:42 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:08:45 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:09:18 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:09:30 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:09:52 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:10:22 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:12:06 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:12:36 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:16:39 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:17:01 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:17:11 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:23:14 --> Call to a member function isValid() on null
+in APPPATH\Controllers\DatabasePPEController.php on line 218.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:23:20 --> Call to a member function isValid() on null
+in APPPATH\Controllers\DatabasePPEController.php on line 218.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:26:06 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-16 01:26:11 --> Attempt to read property "entityname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 228.
+ 1 APPPATH\Controllers\DatabasePPEController.php(228): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "entityname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 228)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

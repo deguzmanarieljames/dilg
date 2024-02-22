@@ -1,0 +1,49 @@
+CRITICAL - 2024-02-10 15:26:41 --> Undefined property: stdClass::$message
+in APPPATH\Controllers\RequestController.php on line 133.
+ 1 APPPATH\Controllers\RequestController.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$message', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\RequestController.php', 133)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RequestController->updatereqStatus('')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-10 15:26:43 --> Undefined property: stdClass::$message
+in APPPATH\Controllers\RequestController.php on line 133.
+ 1 APPPATH\Controllers\RequestController.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$message', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\RequestController.php', 133)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RequestController->updatereqStatus('')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-10 15:29:33 --> Undefined property: stdClass::$message
+in APPPATH\Controllers\RequestController.php on line 133.
+ 1 APPPATH\Controllers\RequestController.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$message', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\RequestController.php', 133)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RequestController->updatereqStatus('')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-10 15:29:37 --> Undefined property: stdClass::$message
+in APPPATH\Controllers\RequestController.php on line 133.
+ 1 APPPATH\Controllers\RequestController.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$message', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\RequestController.php', 133)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RequestController->updatereqStatus('')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-10 15:29:42 --> Undefined property: stdClass::$message
+in APPPATH\Controllers\RequestController.php on line 133.
+ 1 APPPATH\Controllers\RequestController.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$message', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\RequestController.php', 133)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RequestController->updatereqStatus('')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-10 15:30:12 --> Undefined property: stdClass::$message
+in APPPATH\Controllers\RequestController.php on line 133.
+ 1 APPPATH\Controllers\RequestController.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$message', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\RequestController.php', 133)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RequestController->updatereqStatus('')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-02-10 15:31:23 --> Undefined property: stdClass::$message
+in APPPATH\Controllers\RequestController.php on line 133.
+ 1 APPPATH\Controllers\RequestController.php(133): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$message', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\RequestController.php', 133)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RequestController->updatereqStatus('')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
