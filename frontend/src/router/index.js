@@ -19,7 +19,7 @@ import AdOrderPending from '../views/AdminView/AdOrderPending.vue'
 import AdOrderIncoming from '../views/AdminView/AdOrderIncoming.vue'
 import SignupView from '../views/SignupView.vue'
 import SigninView from '../views/SigninView.vue'
-import LandingPage from '../views/LandingPage.vue'
+import LandingPage2 from '../views/Interface/LandingPage2.vue'
 
 
 //EMPLOYEE
@@ -27,20 +27,18 @@ import EmpDashboard from '../views/EmpView/EmpDashboard.vue'
 import EmpRequest from '../views/EmpView/EmpRequest.vue'
 import EmpServiceable from '../views/EmpView/EmpServiceable.vue'
 import EmpUnserviceable from '../views/EmpView/EmpUnserviceable.vue'
+import EmpProfile from '../views/EmpView/EmpProfile.vue'
 
+//OFFICER
 
-import CallTestView from '../views/CallTestView.vue'
+import OffAdmin from '../views/OfficerView/OffAdmin.vue'
 
 const routes = [
   //ADMIN ROUTES
   {
-    path: '/test',
-    component: CallTestView
-  },
-  {
     path: '/',
-    name: 'LandingPage',
-    component: LandingPage
+    name: 'LandingPage2',
+    component: LandingPage2
   },
   {
     path: '/signin',
@@ -174,6 +172,20 @@ const routes = [
     path: '/empunserviceable',
     name: 'EmpUnserviceable',
     component: EmpUnserviceable,
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/empprofile',
+    name: 'EmpProfile',
+    component: EmpProfile,
+    meta: {requireAuth: true}
+  },
+
+
+  {
+    path: '/offadmin',
+    name: 'OffAdmin',
+    component: OffAdmin,
     meta: {requireAuth: true}
   },
 

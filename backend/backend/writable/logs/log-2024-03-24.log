@@ -1,0 +1,32 @@
+CRITICAL - 2024-03-24 08:34:02 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1709698896_3098646cc923a453545a.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 51.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709698896_3098646cc923a453545a.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 51)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(51): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709698896_3098646cc923a453545a.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('16')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-24 08:36:08 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1709698896_3098646cc923a453545a.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 51.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709698896_3098646cc923a453545a.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 51)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(51): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709698896_3098646cc923a453545a.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('16')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-24 08:36:21 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1709698896_3098646cc923a453545a.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 51.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709698896_3098646cc923a453545a.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 51)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(51): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709698896_3098646cc923a453545a.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('16')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-24 08:38:57 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1709698896_3098646cc923a453545a.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 51.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709698896_3098646cc923a453545a.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 51)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(51): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709698896_3098646cc923a453545a.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('16')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

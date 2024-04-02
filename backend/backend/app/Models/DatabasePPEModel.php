@@ -13,7 +13,7 @@ class DatabasePPEModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['entityname', 'particulars', 'classification', 'empfullname', 'code', 'status', 'created_at', 'date_returned'];
+    protected $allowedFields    = ['particulars', 'empfullname', 'status', 'created_at', 'date_returned'];
 
     // Dates
     protected $useTimestamps = false;
@@ -39,3 +39,5 @@ class DatabasePPEModel extends Model
     protected $beforeDelete   = [];
     protected $afterDelete    = [];
 }
+
+

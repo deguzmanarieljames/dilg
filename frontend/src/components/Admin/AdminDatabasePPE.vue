@@ -324,19 +324,23 @@ table {
                 <p> Refers to the act of gaining possession to a property or equipment by the government.</p>
                 <!-- Table with stripped rows -->
                 <div style="overflow-y: auto;">
-                  <table class="table">
+                  <table class="table datatable">
                 <!-- Table header -->
                 <thead>
                   <tr>
+                    <th>Image</th>
                     <th>Entity</th>
-                    <th>Particulars</th>
                     <th>Classification</th>
-                    <th>Assigned</th>
                     <th>Code</th>
+                    <th>Article</th>
+                    <th>Particulars</th>
+                    <th>Model No.</th>
+                    <th>Serial No.</th>
+                    <th>Description</th>
+                    <th>Employee</th>
                     <th>Status</th>
                     <th>Date Recorded</th>
                     <th>Date Returned</th>
-                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -345,17 +349,19 @@ table {
                     <!-- <td scope="row">
                       <img :src="generateQRCodeUrl(info.id)" alt="" style="width: 200px; height: 200px;">
                     </td> -->
+                    <td scope="row"><img :src="info.image" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
                     <td scope="row">{{ info.entityname }}</td>
-                    <td scope="row">{{ info.particulars }}</td>
                     <td scope="row">{{ info.classification }}</td>
-                    <td scope="row">{{ info.empfullname }}</td>
                     <td scope="row">{{ info.code }}</td>
+                    <td scope="row">{{ info.article }}</td>
+                    <td scope="row">{{ info.particulars }}</td>
+                    <td scope="row">{{ info.modelno }}</td>
+                    <td scope="row">{{ info.serialno }}</td>
+                    <td scope="row">{{ info.fulldescription }}</td>
+                    <td scope="row">{{ info.empfullname }}</td>
                     <td scope="row">{{ info.status }}</td>
                     <td scope="row">{{ info.created_at }}</td>
                     <td scope="row">{{ info.date_returned }}</td>
-                    <td scope="row">
-                      <button @click="generatePDF">Generate PDF</button>
-                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -376,13 +382,18 @@ table {
                   <img :src="generateQRCodeUrl(selectedInfo.id)" alt="" style="width: 100%; height: auto;">
                 </div>
                 <div class="col-lg-6">
-                  <h3>{{ selectedInfo.entityname }}</h3>
-                  <h3>{{ selectedInfo.particulars }}</h3>
-                  <h3>{{ selectedInfo.classification }}</h3>
-                  <h3>{{ selectedInfo.empfullname }}</h3>
-                  <h3>{{ selectedInfo.code }}</h3>
-                  <h3>{{ selectedInfo.status }}</h3>
-                  <h3>{{ selectedInfo.date_returned }}</h3>
+                  <h6>{{ selectedInfo.entityname }}</h6>
+                  <h6>{{ selectedInfo.classification }}</h6>
+                    <h6>{{ selectedInfo.code }}</h6>
+                    <h6>{{ selectedInfo.article }}</h6>
+                    <h6>{{ selectedInfo.particulars }}</h6>
+                    <h6>{{ selectedInfo.modelno }}</h6>
+                    <h6>{{ selectedInfo.serialno }}</h6>
+                    <h6>{{ selectedInfo.fulldescription }}</h6>
+                    <h6>{{ selectedInfo.empfullname }}</h6>
+                    <h6>{{ selectedInfo.status }}</h6>
+                    <h6>{{ selectedInfo.created_at }}</h6>
+                    <h6>{{ selectedInfo.date_returned }}</h6>
                   <!-- Display other details of the selected record -->
                 </div>
               </div>
@@ -403,14 +414,12 @@ table {
 
 // Components
 import axios from 'axios'
-import QrcodeStream from "vue-qrcode-reader";
 import jsQR from "jsqr";
 import QRCode from 'qrcode-generator';
 import html2pdf from 'html2pdf.js';
 
 export default{
   components: {
-    QrcodeStream,
   },
   data(){
       return{
@@ -430,12 +439,6 @@ export default{
           infos: [], // Assuming you have data for your table
           selectedInfo: null // Store the selected record
       }
-  },
-  mounted() {
-    this.video = document.getElementById("qr-video");
-    this.resultElement = document.getElementById("qr-result");
-    this.startButton = document.getElementById("start-camera");
-    this.stopButton = document.getElementById("stop-camera");
   },
   created(){
       this.getInfo()
@@ -516,7 +519,7 @@ export default{
         },
         async getInfo(){
               try {
-                  const inf = await axios.get('getData');
+                  const inf = await axios.get('getdata');
                   this.info = inf.data;
               } catch (error) {
                   console.log(error);
@@ -527,131 +530,6 @@ export default{
               sessionStorage.removeItem('token');
               this.$router.push('/');
         },
-
-
-
-
-
-        startCamera() {
-        navigator.mediaDevices
-        .getUserMedia({ video: { facingMode: "environment" } })
-        .then((videoStream) => {
-          this.stream = videoStream;
-          this.video.srcObject = this.stream;
-          this.video.play();
-          this.isCameraOn = true;
-          this.startButton.style.display = "none";
-          this.stopButton.style.display = "inline-block";
-          this.tick();
-        })
-        .catch((error) => {
-          console.error("Error accessing camera:", error);
-        });
-        },
-        stopCamera() {
-          if (this.stream) {
-            const tracks = this.stream.getTracks();
-            tracks.forEach((track) => track.stop());
-            
-            if (this.video) {
-              this.video.pause();
-              this.video.srcObject = null;
-              this.isCameraOn = false;
-
-              if (this.startButton && this.startButton.style) {
-                this.startButton.style.display = "inline-block";
-              }
-
-              if (this.stopButton && this.stopButton.style) {
-                this.stopButton.style.display = "none";
-              }
-            }
-          }
-        },
-        tick() {
-        if (this.video.readyState === this.video.HAVE_ENOUGH_DATA) {
-          const canvasElement = document.createElement("canvas");
-          canvasElement.width = this.video.videoWidth;
-          canvasElement.height = this.video.videoHeight;
-          const canvas = canvasElement.getContext("2d");
-          canvas.drawImage(
-            this.video,
-            0,
-            0,
-            canvasElement.width,
-            canvasElement.height
-          );
-          const imageData = canvas.getImageData(
-            0,
-            0,
-            canvasElement.width,
-            canvasElement.height
-          );
-          const code = jsQR(imageData.data, imageData.width, imageData.height);
-
-          if (code && code.data !== this.qrCodeData) {
-            this.qrCodeData = code.data;
-            this.resultElement.innerHTML = "QR Code detected: " + code.data;
-            this.fetchDataFromServer();
-
-            // Continue scanning after processing each frame
-            this.tick();
-          }
-        }
-        if (this.isCameraOn) {
-          requestAnimationFrame(this.tick);
-        }
-      },
-
-      fetchDataFromServer() {
-          axios.get(`/fetch_data/${this.qrCodeData}`)
-              .then((response) => {
-                  const data = response.data;
-                  const displayElement = document.getElementById("display-data");
-
-                  if (data && Object.keys(data).length > 0) {
-                      const fields = [
-                          'entityname',
-                          'particulars',
-                          'classification',
-                          'code',
-                          'empfullname',
-                          'status',
-                          'created_at',
-                          'date_returned'
-                          // Add more fields as needed
-                      ];
-
-                      // Update the date_returned field with the current date
-                      data.date_returned = new Date().toISOString().split('T')[0];
-
-                      // Perform the updateDateReturned call here if needed
-                      this.updateDateReturned();
-
-                      const htmlContent = fields.map(field => `<p>${field.replace('_', ' ').toUpperCase()}: ${data[field]}</p>`).join('');
-                      displayElement.innerHTML = htmlContent;
-                  } else {
-                      displayElement.innerHTML = `<p>No data found for ID: ${this.qrCodeData}</p>`;
-                  }
-              })
-              .catch((error) => {
-                  console.error("Error fetching data:", error);
-              });
-      },
-
-      updateDateReturned() {
-        axios.post(`/update_date_returned/${this.qrCodeData}`, {
-          date_returned: new Date().toISOString().split('T')[0]
-        })
-        .then((response) => {
-          console.log(response.data);
-          console.log("Date returned updated successfully");
-          // You can perform additional actions here if needed
-        })
-        .catch((error) => {
-          console.error("Error updating date returned:", error);
-        });
-      },
           
   }
 }

@@ -72,12 +72,22 @@ class SigninController extends ResourceController
     public function signup()
     {
       $user = new SigninModel(); 
-      $token = $this->verification(50); 
+      $token = $this->verification(50);
+      $image = $this->request->getFile('image');
+      $newName = null;
+
+      // Check if an image was uploaded
+      if ($image->isValid() && !$image->hasMoved()) {
+          $newName = $image->getRandomName();
+          $image->move(ROOTPATH . '../uploads', $newName);
+      }
+
       $data = [ 
         'username' => $this->request->getVar('username'),
         'fullname' => $this->request->getVar('fullname'),
         'position' => $this->request->getVar('position'),
         'email' => $this->request->getVar('email'),
+        'image' => $newName,
         'password' => password_hash($this->request->getVar('password'),PASSWORD_DEFAULT), 
         'token' => $token
       ]; 
@@ -97,7 +107,7 @@ class SigninController extends ResourceController
 
     public function getVerify()
     {
-      $verify = new VerifyModel();
+      $verify = new SigninModel();
       $data = $verify->findAll();
       return $this->respond($data, 200);
     }
@@ -114,7 +124,7 @@ class SigninController extends ResourceController
             return $this->respond(['error' => 'Invalid status'], 400);
         }
 
-        $verifyModel = new VerifyModel();
+        $verifyModel = new SigninModel();
         $verifyModel->update($id, ['status' => $newStatus]);
 
         return $this->respond(['message' => 'Status updated successfully'], 200);

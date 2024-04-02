@@ -1,0 +1,102 @@
+CRITICAL - 2024-03-06 04:56:14 --> Cannot access offset of type string on string
+in APPPATH\Views\pdf_template.php on line 58.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 4 APPPATH\Controllers\DatabasePPEController.php(675): view('pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-06 12:18:54 --> Call to undefined method App\Controllers\OfficerVerifyController::respond()
+in APPPATH\Controllers\OfficerVerifyController.php on line 35.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->getOfficerVerifyPPE()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-06 12:37:22 --> Undefined array key "entityname"
+in APPPATH\Views\pdf_template.php on line 58.
+ 1 APPPATH\Views\pdf_template.php(58): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "entityname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 58)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\OfficerVerifyController.php(127): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-06 12:40:32 --> Undefined variable $record
+in APPPATH\Views\pdf_template.php on line 56.
+ 1 APPPATH\Views\pdf_template.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $record', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 56)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\OfficerVerifyController.php(129): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-06 12:43:09 --> Cannot access offset of type string on string
+in APPPATH\Views\pdf_template.php on line 58.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 4 APPPATH\Controllers\OfficerVerifyController.php(129): view('pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->recordsPDF()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-06 13:07:55 --> Undefined array key "entityname"
+in APPPATH\Views\pdf_template.php on line 57.
+ 1 APPPATH\Views\pdf_template.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "entityname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 57)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\OfficerVerifyController.php(130): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-06 13:14:09 --> Cannot access offset of type string on string
+in APPPATH\Views\pdf_template.php on line 57.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 4 APPPATH\Controllers\OfficerVerifyController.php(129): view('pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->recordsPDF()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-06 13:19:21 --> Undefined array key "entityname"
+in APPPATH\Views\pdf_template.php on line 57.
+ 1 APPPATH\Views\pdf_template.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "entityname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 57)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\OfficerVerifyController.php(134): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-06 13:19:57 --> Undefined array key "entityname"
+in APPPATH\Views\pdf_template.php on line 57.
+ 1 APPPATH\Views\pdf_template.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "entityname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 57)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\OfficerVerifyController.php(134): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-06 13:20:00 --> Undefined array key "entityname"
+in APPPATH\Views\pdf_template.php on line 57.
+ 1 APPPATH\Views\pdf_template.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "entityname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 57)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\OfficerVerifyController.php(134): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

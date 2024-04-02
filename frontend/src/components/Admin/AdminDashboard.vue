@@ -6,8 +6,8 @@
     <div class="d-flex align-items-center justify-content-between">
       <a href="/dashboard" class="logo d-flex align-items-center">
         <img src="./img/logo1.png" alt="">
-        <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 210%; color: rgb(42, 43, 72);">
-          <i>DILG<sup style="font-size: 70%;">ence</sup></i>
+        <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
+          <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
         </span>
       </a>
       <i class="bi bi-list toggle-sidebar-btn"></i>

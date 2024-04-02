@@ -1,24 +1,23 @@
-<style>
+<style scoped>
 
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i');
 
-@import '@/assets/vendor/bootstrap/css/bootstrap.min.css';
-@import '@/assets/vendor/bootstrap-icons/bootstrap-icons.css';
-@import '@/assets/vendor/boxicons/css/boxicons.min.css';
-@import '@/assets/vendor/quill/quill.snow.css';
-@import '@/assets/vendor/quill/quill.bubble.css';
-@import '@/assets/vendor/remixicon/remixicon.css';
-@import '@/assets/vendor/simple-datatables/style.css';
-@import '@/assets/css/style.css';
-</style>
-<template>
+@import '@/assets/assets1/vendor/bootstrap/css/bootstrap.min.css';
+@import '@/assets/assets1/vendor/bootstrap-icons/bootstrap-icons.css';
+@import '@/assets/assets1/vendor/boxicons/css/boxicons.min.css';
+@import '@/assets/assets1/vendor/quill/quill.snow.css';
+@import '@/assets/assets1/vendor/quill/quill.bubble.css';
+@import '@/assets/assets1/vendor/remixicon/remixicon.css';
+@import '@/assets/assets1/vendor/simple-datatables/style.css';
+@import '@/assets/assets1/css/style.css';
 
-</template>
+
+</style>
+
 
 
 <script>
   export default {
-    name: "DashboardStyle",
 
     mounted() {
         const scriptPaths = [

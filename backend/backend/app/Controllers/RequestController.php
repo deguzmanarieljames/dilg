@@ -143,4 +143,54 @@ class RequestController extends ResourceController
 
         return $this->respond(['message' => 'Status updated successfully', $feedback], 200);
     }
+
+
+
+    //EMPLOYEE PROFILE
+    public function updateEmployee($empid)
+    {
+        // Load the model
+        $model = new SigninModel();
+        $id = $empid;
+        // if ($this->request->getFile('image')->isValid() && $existingImage) {
+        //     $uploadsPath = ROOTPATH . '../uploads/'; 
+        //     unlink($uploadsPath . $existingImage);
+        // }
+        // Retrieve data from the request
+        $data = [
+            'fullname' => $this->request->getPost('fullname'),
+            'username' => $this->request->getPost('username'),
+            'position' => $this->request->getPost('position'),
+            'email' => $this->request->getPost('email'),
+        ];
+
+        $existingRecord = $model->find($id);
+        $existingImage = $existingRecord['image'];
+
+        if($existingImage) {
+            $uploadsPath = ROOTPATH . '../uploads/'; 
+            unlink($uploadsPath . $existingImage);
+        }
+
+        // Check if an image is uploaded
+        if ($this->request->getFile('image') && $this->request->getFile('image')->isValid()) {
+            // $uploadsPath = ROOTPATH . '../uploads/'; 
+            // unlink($uploadsPath . $existingImage);
+            $image = $this->request->getFile('image');
+            $newName = $image->getRandomName();
+            $image->move('./uploads', $newName);
+            $data['image'] = $newName; // Update the image field with the new image name
+        }
+
+        // Perform the update operation
+        $result = $model->update($id, $data);
+        
+        if ($result) {
+            return $this->respond(['status' => 'success', 'message' => 'Employee updated successfully']);
+        } else {
+            // Handle the case where the update fails
+            return $this->respond(['status' => 'error', 'message' => 'Failed to update employee'], 500);
+        }
+    }
+
 }

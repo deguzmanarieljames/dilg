@@ -81,45 +81,45 @@ import axios from 'axios';
 import router from '@/router'
 
 
-import { initializeApp } from "firebase/app";
-import { getMessaging, getToken, onMessage } from "firebase/messaging";
+// import { initializeApp } from "firebase/app";
+// import { getMessaging, getToken, onMessage } from "firebase/messaging";
 
 
-        const firebaseConfig = {
-        apiKey: "AIzaSyBYJFAEo7DoVcirECtaIzoqqAYn2OLW2qk",
-        authDomain: "ci4-backend-firebase.firebaseapp.com",
-        projectId: "ci4-backend-firebase",
-        storageBucket: "ci4-backend-firebase.appspot.com",
-        messagingSenderId: "876476699989",
-        appId: "1:876476699989:web:6c7fa2d9fe158d32530bdc",
-        measurementId: "G-NC5RW3RMWM"
-        };
+//         const firebaseConfig = {
+//         apiKey: "AIzaSyBYJFAEo7DoVcirECtaIzoqqAYn2OLW2qk",
+//         authDomain: "ci4-backend-firebase.firebaseapp.com",
+//         projectId: "ci4-backend-firebase",
+//         storageBucket: "ci4-backend-firebase.appspot.com",
+//         messagingSenderId: "876476699989",
+//         appId: "1:876476699989:web:6c7fa2d9fe158d32530bdc",
+//         measurementId: "G-NC5RW3RMWM"
+//         };
 
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
+//         // Initialize Firebase
+//         const app = initializeApp(firebaseConfig);
 
 
-        const messaging = getMessaging();
+//         const messaging = getMessaging();
 
-        onMessage(messaging, (payload) => {
-        console.log('Message received. ', payload);
-        // ...
-        });
+//         onMessage(messaging, (payload) => {
+//         console.log('Message received. ', payload);
+//         // ...
+//         });
 
-        getToken(messaging, { vapidKey: 'BGC0t0CBZEcyecRGyJXhY7CyvVyoMtwfBk9jkDR8JUyQyHG6OnTX7Ej-veEyaLOHHrtq34u8mhfpe5HRADwba4o' }).then((currentToken) => {
-        if (currentToken) {
-            // Send the token to your server and update the UI if necessary
-            console.log("Token is:",currentToken)
-            // ...
-        } else {
-            // Show permission request UI
-            console.log('No registration token available. Request permission to generate one.');
-            // ...
-        }
-        }).catch((err) => {
-        console.log('An error occurred while retrieving token. ', err);
-        // ...
-        });
+//         getToken(messaging, { vapidKey: 'BGC0t0CBZEcyecRGyJXhY7CyvVyoMtwfBk9jkDR8JUyQyHG6OnTX7Ej-veEyaLOHHrtq34u8mhfpe5HRADwba4o' }).then((currentToken) => {
+//         if (currentToken) {
+//             // Send the token to your server and update the UI if necessary
+//             console.log("Token is:",currentToken)
+//             // ...
+//         } else {
+//             // Show permission request UI
+//             console.log('No registration token available. Request permission to generate one.');
+//             // ...
+//         }
+//         }).catch((err) => {
+//         console.log('An error occurred while retrieving token. ', err);
+//         // ...
+//         });
 
 
   export default {
@@ -166,6 +166,9 @@ import { getMessaging, getToken, onMessage } from "firebase/messaging";
                     else{
                         alert('Your account has not yet been verified!');
                     }
+                }else if(signdata.data.usertype === 'officer'){
+                    sessionStorage.setItem("token", signdata.data.token);
+                    router.push('/offadmin');
                 }
             }else{
                 alert("Wrong credentials"); 

@@ -7,6 +7,7 @@ use CodeIgniter\RestFul\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\DatabasePPEModel;
 use App\Models\SigninModel;
+use App\Models\EmployeeModel;
 
 class ServiceController extends ResourceController
 {

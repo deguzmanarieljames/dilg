@@ -271,24 +271,15 @@
                 <!-- Vertical Form -->
                 <form class="row g-3" @submit.prevent="save">
                   <div class="col-12">
-                    <label for="entityname" class="form-label">Entity Name</label>
-                    <input type="text" class="form-control" id="entityname" v-model="entityname">
-                  </div>
-                  <div class="col-12">
                     <label for="particulars" class="form-label">Particulars</label>
-                    <input type="text" class="form-control" id="particulars" v-model="particulars">
+                    <select class="form-select" v-model="particulars" required>
+                      <option value="" disabled>Select Particular</option>
+                      <option v-for="inv in inventory">{{ inv.particulars }}</option>
+                    </select>
                   </div>
-                  <div class="col-12">
-                    <label for="classification" class="form-label">Classification</label>
-                    <input type="text" class="form-control" id="classification" v-model="classification">
-                  </div>
-                  <!-- <div class="col-12">
-                    <label for="empfullname" class="form-label">Fullname</label>
-                    <input type="text" class="form-control" id="empfullname" v-model="empfullname">
-                  </div> -->
                   <div class="col-12">
                     <label for="empfullname" class="form-label">Employee</label>
-                    <select class="form-select" v-model="empfullname">
+                    <select class="form-select" v-model="empfullname" required>
                       <option value="" disabled>Select Employee</option>
                       <option v-for="employee in employees">{{ employee.empfullname }}</option>
                     </select>
@@ -434,6 +425,7 @@ export default{
           code: "",
           // selectedEmployee: "",
           employees: [],
+          inventory: [],
           // selectedEmployeeDetails: null
 
           message: [],
@@ -444,6 +436,7 @@ export default{
   created(){
       this.getInfo()
       this.getReq()
+      this.getInventory()
   },
   methods:{
     updatereqStatus(id, newStatus) {
@@ -511,6 +504,7 @@ export default{
         try {
             const inv = await axios.get('getInventory');
             this.inventory = inv.data;
+            console.log(this.inventory);
         } catch (error) {
             console.log(error);
         }
@@ -518,15 +512,13 @@ export default{
 
       async save() {
         try {
-          const generatedCode = await this.generateUniqueCode();
+          // const generatedCode = await this.generateUniqueCode();
 
           const response = await axios.post('save', {
-            entityname: this.entityname,
             particulars: this.particulars,
-            classification: this.classification,
             empfullname: this.empfullname,
-            code: generatedCode.data,
           });
+
           this.message = response.data.msg;
           if(response.data.msg === 'Cannot save data. Inventory status is inactive.'){
             alert('Cannot save data. Inventory status is inactive.');
@@ -537,21 +529,15 @@ export default{
 
           console.log('Server response:', response.data);
           // Clear the code only after successfully saving the record
-          this.entityname = "";
           this.particulars = "";
-          this.classification = "";
           this.empfullname = "";
-          this.code = "";
 
           this.$emit('data-saved');
           this.getInfo();
         } catch (error) {
           console.error(error);
-          this.entityname = "";
           this.particulars = "";
-          this.classification = "";
           this.empfullname = "";
-          this.code = "";
         }
       },
 
@@ -650,13 +636,23 @@ export default{
       async fetchEmployeeNames() {
         // Use the CodeIgniter API endpoint to fetch the list of employee names
         try {
-          const response = await fetch('http://dilg.test/backend/getEmployees');
-          const data = await response.json();
-          this.employees = data;
+          const response = await axios.get('getEmployees');
+          this.employees = response.data;
         } catch (error) {
           console.error('Error fetching employee names', error);
         }
       },
+
+    //   async getInventory(){
+    //     try {
+    //         const inv = await axios.get('getInventory');
+    //         this.inventory = inv.data;
+    //         console.log(this.inventory);
+    //     } catch (error) {
+    //         console.log(error);
+    //     }
+    // },
+      
 
 
     //   async approveRecord(id) {
@@ -772,6 +768,7 @@ export default{
   },
   mounted() {
     this.fetchEmployeeNames();
+    this.getInventory();
   },
 }
 </script>

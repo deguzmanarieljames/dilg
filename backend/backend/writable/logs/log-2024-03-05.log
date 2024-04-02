@@ -1,0 +1,285 @@
+CRITICAL - 2024-03-05 03:05:27 --> Undefined variable $data
+in APPPATH\Controllers\DatabasePPEController.php on line 646.
+ 1 APPPATH\Controllers\DatabasePPEController.php(646): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 646)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('14')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 11:30:47 --> Undefined variable $data
+in APPPATH\Controllers\DatabasePPEController.php on line 646.
+ 1 APPPATH\Controllers\DatabasePPEController.php(646): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 646)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('14')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 11:31:02 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1709607939_a719bfa7fcfa42b74892.png): No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 632.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709607939_a719bfa7fcfa42b74892.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 632)
+ 2 APPPATH\Controllers\DatabasePPEController.php(632): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709607939_a719bfa7fcfa42b74892.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('14')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 11:31:17 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1709607939_a719bfa7fcfa42b74892.png): No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 632.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709607939_a719bfa7fcfa42b74892.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 632)
+ 2 APPPATH\Controllers\DatabasePPEController.php(632): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709607939_a719bfa7fcfa42b74892.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('14')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 11:31:40 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1709607939_a719bfa7fcfa42b74892.png): No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 632.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709607939_a719bfa7fcfa42b74892.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 632)
+ 2 APPPATH\Controllers\DatabasePPEController.php(632): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709607939_a719bfa7fcfa42b74892.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('14')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 11:33:48 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1709607939_a719bfa7fcfa42b74892.png): No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 632.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709607939_a719bfa7fcfa42b74892.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 632)
+ 2 APPPATH\Controllers\DatabasePPEController.php(632): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709607939_a719bfa7fcfa42b74892.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('14')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:16:47 --> Invalid file: "pdf_template.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pdf_template.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 3 APPPATH\Controllers\DatabasePPEController.php(668): view('pdf_template', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:17:34 --> Invalid file: "pdf_template.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pdf_template.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template.php', [], true)
+ 3 APPPATH\Controllers\DatabasePPEController.php(668): view('pdf_template.php', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:17:38 --> Invalid file: "pdf_template.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pdf_template.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 3 APPPATH\Controllers\DatabasePPEController.php(668): view('pdf_template', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:17:40 --> Invalid file: "pdf_template.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pdf_template.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 3 APPPATH\Controllers\DatabasePPEController.php(668): view('pdf_template', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:17:41 --> Invalid file: "pdf_template.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pdf_template.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 3 APPPATH\Controllers\DatabasePPEController.php(668): view('pdf_template', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:17:42 --> Invalid file: "pdf_template.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('pdf_template.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 3 APPPATH\Controllers\DatabasePPEController.php(668): view('pdf_template', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:18:38 --> Undefined array key "entityname"
+in APPPATH\Views\pdf_template.php on line 12.
+ 1 APPPATH\Views\pdf_template.php(12): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "entityname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 12)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(668): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:21:28 --> Undefined variable $records
+in APPPATH\Views\pdf_template.php on line 25.
+ 1 APPPATH\Views\pdf_template.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $records', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 25)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(668): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:22:23 --> Undefined variable $records
+in APPPATH\Views\pdf_template.php on line 25.
+ 1 APPPATH\Views\pdf_template.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $records', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 25)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(668): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:22:24 --> Undefined variable $records
+in APPPATH\Views\pdf_template.php on line 25.
+ 1 APPPATH\Views\pdf_template.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $records', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 25)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(668): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:24:41 --> Undefined variable $records
+in APPPATH\Views\pdf_template.php on line 25.
+ 1 APPPATH\Views\pdf_template.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $records', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 25)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(668): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:24:50 --> Undefined variable $records
+in APPPATH\Views\pdf_template.php on line 25.
+ 1 APPPATH\Views\pdf_template.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $records', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 25)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(668): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:25:32 --> Cannot access offset of type string on string
+in APPPATH\Views\pdf_template.php on line 28.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 4 APPPATH\Controllers\DatabasePPEController.php(668): view('pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:25:44 --> Cannot access offset of type string on string
+in APPPATH\Views\pdf_template.php on line 29.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 4 APPPATH\Controllers\DatabasePPEController.php(668): view('pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:27:32 --> Undefined variable $entityname
+in APPPATH\Controllers\DatabasePPEController.php on line 681.
+ 1 APPPATH\Controllers\DatabasePPEController.php(681): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $entityname', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 681)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:29:11 --> Call to a member function find() on array
+in APPPATH\Controllers\DatabasePPEController.php on line 667.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:33:03 --> Call to a member function find() on array
+in APPPATH\Controllers\DatabasePPEController.php on line 668.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:33:56 --> Undefined variable $record
+in APPPATH\Controllers\DatabasePPEController.php on line 670.
+ 1 APPPATH\Controllers\DatabasePPEController.php(670): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $record', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 670)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:34:33 --> Cannot access offset of type string on string
+in APPPATH\Views\pdf_template.php on line 28.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 4 APPPATH\Controllers\DatabasePPEController.php(675): view('pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:45:45 --> Cannot access offset of type string on string
+in APPPATH\Views\pdf_template.php on line 28.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 4 APPPATH\Controllers\DatabasePPEController.php(675): view('pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:48:42 --> Cannot access offset of type string on string
+in APPPATH\Views\pdf_template.php on line 28.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 4 APPPATH\Controllers\DatabasePPEController.php(675): view('pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 14:50:21 --> Cannot access offset of type string on string
+in APPPATH\Views\pdf_template.php on line 28.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 4 APPPATH\Controllers\DatabasePPEController.php(675): view('pdf_template', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 16:22:40 --> Undefined variable $data
+in APPPATH\Views\pdf_template.php on line 25.
+ 1 APPPATH\Views\pdf_template.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 25)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(693): view('pdf_template')
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->pdf()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 16:24:53 --> Undefined variable $data
+in APPPATH\Views\pdf_template.php on line 25.
+ 1 APPPATH\Views\pdf_template.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 25)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(690): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-03-05 16:25:02 --> Undefined variable $data
+in APPPATH\Views\pdf_template.php on line 25.
+ 1 APPPATH\Views\pdf_template.php(25): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 25)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(690): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('8')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

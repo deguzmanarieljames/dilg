@@ -331,13 +331,13 @@
 
 // Components
 import axios from 'axios'
-import QrcodeStream from "vue-qrcode-reader";
+// import QrcodeStream from "vue-qrcode-reader";
 import jsQR from "jsqr";
 import QRCode from 'qrcode-generator';
 
 export default{
   components: {
-    QrcodeStream,
+    // QrcodeStream,
   },
   data(){
       return{

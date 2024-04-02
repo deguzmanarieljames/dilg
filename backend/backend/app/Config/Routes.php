@@ -9,7 +9,7 @@ $routes->get('/', 'Home::index');
 
 
 // DATABASE PPE
-$routes->get('/getData', 'DatabasePPEController::getData');
+$routes->get('/getdata', 'DatabasePPEController::getData');
 
 $routes->post('/save', 'DatabasePPEController::save');
 $routes->post('/del', 'DatabasePPEController::del');
@@ -47,6 +47,8 @@ $routes->post('/send_request', 'RequestController::send_request');
 $routes->match(['get', 'post'], '/users/(:any)', 'RequestController::users/$1');
 $routes->match(['get', 'post'], '/getReq', 'RequestController::getReq');
 // $routes->get('/getUser', 'DatabasePPEController::getUser');
+$routes->match(['get', 'post'], '/updateEmployee/(:any)', 'RequestController::updateEmployee/$1');
+
 
 $routes->get('/getEmployee', 'DatabasePPEController::getEmployee');
 $routes->get('/getEmployees', 'DatabasePPEController::getEmployees');
@@ -58,7 +60,7 @@ $routes->get('/getDataServiceable', 'ServiceController::getDataServiceable');
 $routes->get('/getDataUnserviceable', 'ServiceController::getDataUnserviceable');
 $routes->get('/getUserDataServiceable', 'ServiceController::getuserDataServiceable');
 $routes->get('/getuserDataUnserviceable', 'ServiceController::getUserDataUnserviceable');
-$routes->get('/getDataUser', 'ServiceController::getDataUser');
+$routes->get('/getDataUser/(:any)', 'ServiceController::getDataUser/$1');
 
 # REQUEST PPE
 // $routes->match(['get', 'post'], '/api/request/decline/(:any)', 'DatabasePPEController::declineRecord/$1');
@@ -72,4 +74,11 @@ $routes->match(['post', 'get'], '/updatereqStatus(:any)', 'RequestController::up
 
 # NOTIFICATION MATTERS
 $routes->match(['get', 'post'], '/triggerNotification', 'DatabasePPEController::databaseListener');
+
+
+# OFFICER VERIFY PPE
+$routes->get('/getOfficerVerifyPPE', 'OfficerVerifyController::getOfficerVerifyPPE');
+$routes->match(['get', 'post'], '/updateVerification/(:any)', 'OfficerVerifyController::updateVerification/$1');
+$routes->match(['get', 'post'], '/generatepdf/(:any)', 'OfficerVerifyController::generatePDF/$1');
+$routes->match(['get', 'post'], '/recordsPDF', 'OfficerVerifyController::recordsPDF');
 

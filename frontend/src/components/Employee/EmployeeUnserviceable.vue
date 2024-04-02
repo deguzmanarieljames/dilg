@@ -51,8 +51,10 @@
       
               <li class="nav-item dropdown pe-3">
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                  <img src="./img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                  <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
+                  <div style="width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
+                    <div :style="getImageStyle(infos.image)"></div>
+                  </div>
+                <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
                 </a><!-- End Profile Image Icon -->
     
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -196,6 +198,15 @@
                 <i class="bi bi-folder-plus"></i>
                 <span>Request Equipment</span>
               </a>
+            </li>
+            
+            <li class="nav-heading">user</li>
+    
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/empprofile">
+                <i class="bi bi-folder-plus"></i>
+                <span>Employee Profile</span>
+              </a>
             </li><!-- End Dashboard Nav -->
         
       
@@ -305,6 +316,29 @@ export default{
 
 },
   methods:{
+        getImageStyle(imageUrl) {
+          // Function to generate the background image style
+            if (!imageUrl) {
+              return {}; // Return an empty object if imageUrl is not provided
+            }
+            
+            // Set the background image URL
+            const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+            
+            // Set background size and position
+            const backgroundSize = 'cover'; // Cover the entire container
+            const backgroundPosition = '50% 50%'; // Center the image
+            
+            // Return the style object
+            return {
+              width: '100%',
+              height: '100%',
+              backgroundImage,
+              backgroundSize,
+              backgroundPosition,
+              borderRadius: '50%' // Make the background circular
+            };
+          },
         async user(){
             try{
             const id= sessionStorage.getItem("token")

@@ -275,13 +275,39 @@
                 <input type="text" class="form-control" id="entityname" v-model="entityname" required>
               </div>
               <div class="col-12">
+                <label for="classification" class="form-label">Classification</label>
+                <input type="text" class="form-control" id="classification" v-model="classification" required>
+              </div>
+              <div class="col-12">
+                <label for="code" class="form-label">Code</label>
+                <input type="text" class="form-control" id="code" v-model="code" required>
+              </div>
+              <div class="col-12">
+                <label for="article" class="form-label">Article</label>
+                <input type="text" class="form-control" id="article" v-model="article" required>
+              </div>
+              <div class="col-12">
                 <label for="particulars" class="form-label">Particulars</label>
                 <input type="text" class="form-control" id="particulars" v-model="particulars" required>
               </div>
               <div class="col-12">
-                <label for="classification" class="form-label">Classification</label>
-                <input type="text" class="form-control" id="classification" v-model="classification" required>
+                <label for="modelno" class="form-label">Model No.:</label>
+                <input type="text" class="form-control" id="modelno" v-model="modelno">
               </div>
+              <div class="col-12">
+                <label for="serialno" class="form-label">Serial No.:</label>
+                <input type="text" class="form-control" id="serialno" v-model="serialno">
+              </div>
+
+              <!-- <div class="col-12">
+                <label for="image" class="form-label">Upload Image</label>
+                <input type="file" class="form-control" id="image" @change="handleFileUpload" accept="image/*">
+              </div>
+              <div class="col-12">
+                <label class="form-label">Preview</label>
+                <img :src="uploadedImage" v-if="uploadedImage" alt="Uploaded Image Preview" style="max-width: 100px; max-height: 100px;">
+              </div>
+
               <div class="col-12">
                 <label for="camera" class="form-label">Capture Image</label>
                 <video id="camera" width="320" height="240" autoplay></video>
@@ -291,7 +317,42 @@
               <div class="col-12">
                 <label class="form-label">Preview</label>
                 <img :src="capturedImage" alt="Captured Image" v-if="capturedImage">
+              </div> -->
+
+              <div class="col-12">
+                  <label class="form-label">Choose Image Source:</label>
+                  <div>
+                      <input type="radio" id="upload" value="upload" v-model="imageSource">
+                      <label for="upload">Upload Image</label>
+                  </div>
+                  <div>
+                      <input type="radio" id="capture" value="capture" v-model="imageSource">
+                      <label for="capture">Capture Image</label>
+                  </div>
               </div>
+
+              <div class="col-12" v-if="imageSource === 'upload'">
+                  <!-- File upload input -->
+                  <label for="image" class="form-label">Upload Image</label>
+                  <input type="file" class="form-control" id="image" @change="handleFileUpload" accept="image/*">
+                  <!-- <div class="col-12">
+                      <label class="form-label">Preview</label>
+                      <img :src="uploadedImage" v-if="uploadedImage" alt="Uploaded Image Preview" style="max-width: 100px; max-height: 100px;">
+                  </div> -->
+              </div>
+
+              <div class="col-12" v-else-if="imageSource === 'capture'">
+                  <!-- Camera capture section -->
+                  <label for="camera" class="form-label">Capture Image</label>
+                  <video id="camera" width="320" height="240" autoplay></video>
+                  <a @click="startCamera" class="btn btn-primary">{{ cameraStarted ? 'Stop Camera' : 'Start Camera' }}</a>
+                  <a @click="captureImage" class="btn btn-success" :disabled="!cameraStarted">Capture</a>
+              </div>
+              <div class="col-12">
+                  <label class="form-label">Image Preview</label>
+                  <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" style="max-width: 320px; max-height: 240px;">
+              </div>
+
               <div class="col-12">
                 <label for="quantity" class="form-label">Quantity</label>
                 <input type="text" class="form-control" id="quantity" v-model="quantity" required>
@@ -303,7 +364,7 @@
               <div class="text-center">
                   <button @click="saveOrUpdate" v-if="status !== 'update'" type="submit" class="btn btn-primary">Submit</button>
                   <button @click="saveOrUpdate" v-if="status === 'update'" type="submit" class="btn btn-success">Update</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
+                  <button @click="resetForm" type="reset" class="btn btn-secondary">Reset</button>
               </div>
             </form><!-- Vertical Form -->
 
@@ -347,15 +408,20 @@
                 </tr>
               </tbody>
             </table> -->
-
+            <div style="overflow-y: auto;">
             <qrcode-stream @decode="onDecode" />
               <table class="table datatable">
                 <thead style="width: 100%;">
                   <tr>
                     <th scope="col">Image</th>
                     <th scope="col">Entity</th>
-                    <th scope="col">Particulars</th>
                     <th scope="col">Classification</th>
+                    <th scope="col">Code</th>
+                    <th scope="col">Article</th>
+                    <th scope="col">Particulars</th>
+                    <th scope="col">Model No.</th>
+                    <th scope="col">Serial No.</th>
+                    <th scope="col">Full Description</th>
                     <th scope="col">Qty</th>
                     <th scope="col">Arrival</th>
                     <th scope="col">Status</th>
@@ -364,10 +430,15 @@
                 </thead>
                 <tbody>
                   <tr v-for="inv in inventory" :key="inv.id">
-                    <td scope="row"><img :src="inv.image" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
+                    <td scope="row"><img :src="inv.image" alt="Inventory Image" style="max-width: 100px; max-height: 100px;"/></td>
                     <td scope="row">{{ inv.entityname }}</td>
-                    <td scope="row">{{ inv.particulars }}</td>
                     <td scope="row">{{ inv.classification }}</td>
+                    <td scope="row">{{ inv.code }}</td>
+                    <td scope="row">{{ inv.article }}</td>
+                    <td scope="row">{{ inv.particulars }}</td>
+                    <td scope="row">{{ inv.modelno }}</td>
+                    <td scope="row">{{ inv.serialno }}</td>
+                    <td scope="row">{{ inv.fulldescription }}</td>
                     <td scope="row">{{ inv.quantity }}</td>
                     <td scope="row">{{ inv.arrival }}</td>
                     <td scope="row">{{ inv.status }}</td>
@@ -376,7 +447,7 @@
                   </tr>
                 </tbody>
               </table>
-
+              </div>
           </div>
         </div>
         
@@ -397,17 +468,34 @@
 // Components
 import axios from 'axios'
 
+
 export default{
+
+computed:{
+  imagePreview() {
+        if (this.imageSource === 'upload') {
+            return this.uploadedImage;
+        } else if (this.imageSource === 'capture') {
+            return this.capturedImage;
+        } else {
+            return null; // or a default placeholder image
+        }
+    }
+},
 data(){
     return{
         id: "",
         inventory:[],
         entityname: "",
-        particulars: "",
         classification: "",
+        code: "",
+        article: "",
+        particulars: "",
+        modelno: "",
+        serialno: "",
+        fulldescription: "",
         quantity: "",
         arrival: "",
-        status: "",
         image: null,
         status: "",
         statusId: "",
@@ -415,13 +503,25 @@ data(){
         cameraStarted: false,
         capturedImage: null,
         imageDataUrl: "",
-        cameraButtonText: 'Start Camera'
+        cameraButtonText: 'Start Camera',
+        selectedImageFile: null,
+        imageSource: 'upload',
+        imagePreview: ''
     }
 },
 created(){
     this.getInventory()
 },
+
 methods:{
+  handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (file) {
+            this.uploadedImage = URL.createObjectURL(file);
+            this.selectedImageFile = file;
+            this.imagePreview = this.uploadedImage;
+        }
+    },
   async startCamera() {
     const videoElement = document.getElementById('camera');
     if (!this.cameraStarted) {
@@ -449,7 +549,7 @@ methods:{
       this.cameraButtonText = 'Start Camera';
     }
   },
-    captureImage() {
+    async captureImage() {
       if (!this.cameraStarted) {
         console.error('Camera not started yet');
         return;
@@ -464,12 +564,8 @@ methods:{
 
       // Set the captured image for preview
       this.capturedImage = imageDataUrl;
+      this.imagePreview = this.capturedImage;
     },
-
-    // handleImageUpload() {
-    //   const file = this.$refs.image.files[0]; // Get the selected file
-    //   // this.image = URL.createObjectURL(file); // Display the image preview in the UI
-    // },
 
     deleteRecord(id) {
       // Implement your delete logic here
@@ -493,52 +589,29 @@ methods:{
         }
     },
 
-    // async save(){
-    //   try {
-    //     const inv = await axios.post('saveInventory', {
-    //         entityname: this.entityname,
-    //         particulars: this.particulars,
-    //         classification: this.classification,
-    //         quantity: this.quantity,
-    //         arrival: this.arrival,
-    //     });
-    //     this.resetForm();
-    //     this.$emit('data-saved');
-    //     this.getInventory();
-
-    //     await axios.post('/triggerNotification')
-    //         .then(response => {
-    //             console.log('Notification triggered successfully');
-    //         })
-    //         .catch(error => {
-    //             console.error('Error triggering notification:', error);
-    //         });
-        
-    //   } catch (error) {
-        
-    //   }
-    //   console.log("Hello");
-    // },
-
     async save() {
       try {
-        if (!this.capturedImage) {
-          console.error('No image captured yet');
-          return;
-        }
-
-        // Convert the captured image to a file
-        const blob = await fetch(this.capturedImage).then(res => res.blob());
-        const file = new File([blob], `image_${Date.now()}.png`, { type: 'image/png' });
 
         // Create a FormData object and append the captured image file
         const formData = new FormData();
-        formData.append('image', file);
+        if (this.selectedImageFile) {
+            formData.append('image', this.selectedImageFile);
+        }
+        else if (this.capturedImage) {
+            // Convert the captured image to a file
+            const blob = await fetch(this.capturedImage).then(res => res.blob());
+            const file = new File([blob], `image_${Date.now()}.png`, { type: 'image/png' });
+            formData.append('image', file);
+        }
 
         // Append other form data
         formData.append('entityname', this.entityname);
-        formData.append('particulars', this.particulars);
         formData.append('classification', this.classification);
+        formData.append('code', this.code);
+        formData.append('article', this.article);
+        formData.append('particulars', this.particulars);
+        formData.append('modelno', this.modelno);
+        formData.append('serialno', this.serialno);
         formData.append('quantity', this.quantity);
         formData.append('arrival', this.arrival);
 
@@ -631,47 +704,7 @@ methods:{
       }
     },
 
-
-    async updateRecord() {
-    try {
-        const formData = new FormData();
-
-        // Append the updated data
-        formData.append('id', this.statusId);
-        formData.append('entityname', this.entityname);
-        formData.append('particulars', this.particulars);
-        formData.append('classification', this.classification);
-        formData.append('quantity', this.quantity);
-        formData.append('arrival', this.arrival);
-
-        // If a new image is captured, append it to the form data
-        if (this.capturedImage) {
-            const blob = await fetch(this.capturedImage).then(res => res.blob());
-            const file = new File([blob], `image_${Date.now()}.png`, { type: 'image/png' });
-            formData.append('image', file);
-        }
-
-        const response = await axios.post(`/updateInventory/${this.statusId}`, formData, {
-            headers: {
-                'Content-Type': 'multipart/form-data'
-            }
-        });
-
-        if (response.data.status === 'success') {
-            this.resetForm();
-            this.status = ""; // reset status after update
-            this.getInventory();
-            console.log("Record updated successfully");
-        } else {
-            console.error("Failed to update record:", response.data.message);
-        }
-    } catch (error) {
-        console.error("Error updating record:", error);
-    }
-},
-
-
-//     async updateRecord() {
+    //     async updateRecord() {
 //     try {
 //         const data = {
 //             id: this.statusId,
@@ -699,6 +732,53 @@ methods:{
 //     }
 // },
 
+async updateRecord() {
+    try {
+        const formData = new FormData();
+
+        // Append the updated data
+        formData.append('id', this.statusId);
+        formData.append('entityname', this.entityname);
+        formData.append('classification', this.classification);
+        formData.append('code', this.code);
+        formData.append('article', this.article);
+        formData.append('particulars', this.particulars);
+        formData.append('modelno', this.modelno);
+        formData.append('serialno', this.serialno);
+        formData.append('quantity', this.quantity);
+        formData.append('arrival', this.arrival);
+
+        // Always append the image field, even if it's not changed
+        if (this.capturedImage) {
+            const blob = await fetch(this.capturedImage).then(res => res.blob());
+            const file = new File([blob], `image_${Date.now()}.png`, { type: 'image/png' });
+            formData.append('image', file);
+        } else if (this.selectedImageFile) {
+            formData.append('image', this.selectedImageFile);
+        } else {
+            // If the image is not changed, you can append the existing image data
+            formData.append('image', this.imagePreview);
+        }
+
+        const response = await axios.post(`/updateInventory/${this.statusId}`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+
+        if (response.data.status === 'success') {
+            this.resetForm();
+            this.status = ""; // reset status after update
+            this.getInventory();
+            console.log("Record updated successfully");
+        } else {
+            console.error("Failed to update record:", response.data.message);
+        }
+    } catch (error) {
+        console.error("Error updating record:", error);
+    }
+},
+
 placeRecord(recordId) {
     // set status to update and statusId to the record id
     this.status = "update";
@@ -707,11 +787,15 @@ placeRecord(recordId) {
     // fetch the record details and set them to the form
     const record = this.inventory.find(inv => inv.id === recordId);
     this.entityname = record.entityname;
-    this.particulars = record.particulars;
     this.classification = record.classification;
+    this.code = record.code;
+    this.article = record.article;
+    this.particulars = record.particulars;
+    this.modelno = record.modelno;
+    this.serialno = record.serialno;
     this.quantity = record.quantity;
     this.arrival = record.arrival;
-    this.capturedImage = record.image;
+    this.imagePreview = record.image;
 
     console.log(recordId);
 },
@@ -720,12 +804,18 @@ placeRecord(recordId) {
 
     resetForm() {
             this.entityname = "";
-            this.particulars = "";
             this.classification = "";
+            this.code = "";
+            this.article = "";
+            this.particulars = "";
+            this.modelno = "";
+            this.serialno = "";
             this.quantity = "";
             this.arrival = "";
             this.cameraStarted = false;
             this.capturedImage = null;
+            this.uploadedImage = null;
+            this.imagePreview = "";
         },
 
     

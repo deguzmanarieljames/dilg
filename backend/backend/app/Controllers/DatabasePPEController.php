@@ -9,7 +9,9 @@ use App\Models\DatabasePPEModel;
 use App\Models\InventoryModel;
 use App\Models\EmployeeModel;
 use App\Models\RequestModel;
+use App\Models\OfficerModel;
 use App\Libraries\FirebaseNotificationService;
+use Mpdf\Mpdf;
 
 class DatabasePPEController extends ResourceController
 {
@@ -29,11 +31,28 @@ class DatabasePPEController extends ResourceController
         $this->model = new InventoryModel();
     }
 
+
+
+
+    #----------------------- DATABASE PPE -----------------------------
+
     public function getData()
     {
-        $main = new DatabasePPEModel();
-        $data = $main->findAll();
-        return $this->respond($data, 200);
+    // Load necessary models
+    $databasePPEModel = new DatabasePPEModel();
+    $inventoryPPEModel = new InventoryModel();
+
+    // Perform the join query
+    $data = $databasePPEModel->select('databaseppe.*, inventoryppe.entityname, inventoryppe.classification, inventoryppe.code, inventoryppe.article, inventoryppe.modelno, inventoryppe.serialno, inventoryppe.fulldescription, inventoryppe.image')
+                              ->join('inventoryppe', 'inventoryppe.particulars = databaseppe.particulars', 'left')
+                              ->orderBy('databaseppe.id', 'DESC')
+                              ->findAll();
+                              foreach ($data as &$item) {
+                                $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+                            }
+
+    // Return the merged data
+    return $this->respond($data, 200);
     }
 
     // public function save()
@@ -55,7 +74,7 @@ class DatabasePPEController extends ResourceController
     public function save()
     {
         $json = $this->request->getJSON();
-        $code = $this->code_gen(8);
+        // $code = $this->code_gen(8);
     
         // Retrieve particulars from input
         $particulars = $json->particulars;
@@ -73,14 +92,12 @@ class DatabasePPEController extends ResourceController
             if ($status === 'active') {
                 // If active, proceed with saving to the databaseppe table
                 $data = [
-                    'entityname' => $json->entityname,
-                    'particulars' => $particulars,
-                    'classification' => $json->classification,
+                    'particulars' => $json->particulars,
                     'empfullname' => $json->empfullname,
-                    'code' => $code,
+                    // 'code' => $code,
                 ];
     
-                $databasePPEModel = new DatabasePPEModel();
+                $databasePPEModel = new OfficerModel();
                 $result = $databasePPEModel->save($data);
     
                 return $this->respond($result, 200);
@@ -92,6 +109,36 @@ class DatabasePPEController extends ResourceController
             // Handle the case where no matching row was found
             return $this->respond(['msg' => 'Cannot save data. No matching inventory record found.'], 200);
         }
+    }
+
+    public function savesInventory()
+    {
+        $main = new InventoryModel();
+        $image = $this->request->getFile('image');
+        $newName = null;
+    
+        // Check if an image was uploaded
+        if ($image->isValid() && !$image->hasMoved()) {
+            $newName = $image->getRandomName();
+            $image->move(ROOTPATH . '../uploads', $newName);
+        }
+    
+        $data = [
+            'entityname' => $this->request->getPost('entityname'),
+            'classification' => $this->request->getPost('classification'),
+            'code' => $this->request->getPost('code'),
+            'article' => $this->request->getPost('article'),
+            'particulars' => $this->request->getPost('particulars'),
+            'modelno' => $this->request->getPost('modelno'),
+            'serialno' => $this->request->getPost('serialno'),
+            'quantity' => $this->request->getPost('quantity'),
+            'arrival' => $this->request->getPost('arrival'),
+            'image' => $newName, // Store the image filename
+        ];
+    
+        $rin = $main->save($data);
+    
+        return $this->respond($rin, 200);
     }
     
 
@@ -118,27 +165,38 @@ class DatabasePPEController extends ResourceController
         // Load the model
         $model = new InventoryModel();
         $id = $statusId;
-        
+        // if ($this->request->getFile('image')->isValid() && $existingImage) {
+        //     $uploadsPath = ROOTPATH . '../uploads/'; 
+        //     unlink($uploadsPath . $existingImage);
+        // }
         // Retrieve data from the request
         $data = [
             'entityname' => $this->request->getPost('entityname'),
-            'particulars' => $this->request->getPost('particulars'),
             'classification' => $this->request->getPost('classification'),
+            'code' => $this->request->getPost('code'),
+            'article' => $this->request->getPost('article'),
+            'particulars' => $this->request->getPost('particulars'),
+            'modelno' => $this->request->getPost('modelno'),
+            'serialno' => $this->request->getPost('serialno'),
             'quantity' => $this->request->getPost('quantity'),
             'arrival' => $this->request->getPost('arrival')
         ];
+        $existingRecord = $model->find($id);
+        $existingImage = $existingRecord['image'];
 
         // Check if an image is uploaded
-        if ($this->request->getFile('image')->isValid()) {
+        if ($this->request->getFile('image') && $this->request->getFile('image')->isValid()) {
+            $uploadsPath = ROOTPATH . '../uploads/'; 
+            unlink($uploadsPath . $existingImage);
             $image = $this->request->getFile('image');
             $newName = $image->getRandomName();
             $image->move('./uploads', $newName);
             $data['image'] = $newName; // Update the image field with the new image name
         }
-
+        
         // Perform the update operation
         $result = $model->update($id, $data);
-
+        
         if ($result) {
             return $this->respond(['status' => 'success', 'message' => 'Record updated successfully']);
         } else {
@@ -147,8 +205,49 @@ class DatabasePPEController extends ResourceController
         }
     }
 
-
     // public function updateInventory($statusId)
+    // {
+    //     // Load the model
+    //     $model = new InventoryModel();
+    //     $id = $statusId;
+        
+    //     // Retrieve data from the request
+    //     $data = [
+    //         'entityname' => $this->request->getPost('entityname'),
+    //         'classification' => $this->request->getPost('classification'),
+    //         'code' => $this->request->getPost('code'),
+    //         'article' => $this->request->getPost('article'),
+    //         'particulars' => $this->request->getPost('particulars'),
+    //         'modelno' => $this->request->getPost('modelno'),
+    //         'serialno' => $this->request->getPost('serialno'),
+    //         'quantity' => $this->request->getPost('quantity'),
+    //         'arrival' => $this->request->getPost('arrival')
+    //     ];
+        
+    //     // Retrieve the existing image name
+    //     $existingRecord = $model->find($id);
+    //     $existingImage = $existingRecord['image'];
+    
+    //     // Check if an image is uploaded
+    //     if ($this->request->getFile('image')->isValid()) {
+    //         $image = $this->request->getFile('image');
+    //         $newName = $image->getRandomName();
+    //         $image->move('./uploads', $newName);
+    //         $data['image'] = $newName; // Update the image field with the new image name
+    //     }
+    
+    //     // Perform the update operation
+    //     $result = $model->update($id, $data);
+    
+    //     if ($result) {
+    //         return $this->respond(['status' => 'success', 'message' => 'Record updated successfully']);
+    //     } else {
+    //         // Handle the case where the update fails
+    //         return $this->respond(['status' => 'error', 'message' => 'Failed to update record'], 500);
+    //     }
+    // }
+
+        // public function updateInventory($statusId)
     // {
     //     // Load the model
     //     $json = $this->request->getJSON();
@@ -182,32 +281,6 @@ class DatabasePPEController extends ResourceController
     //         return $this->respond(['status' => 'error', 'message' => 'Failed to update record'], 500);
     //     }
     // }
-    
-
-    // public function updateDateReturned($id)
-    // {
-    //     $model = new DatabasePPEModel();
-    //     $data = $model->find($id);
-
-    //     if ($data) {
-    //         // Modify the date_returned field
-    //         $currentDate = date('Y-m-d');
-    //         $data['date_returned'] = $currentDate;
-
-    //         // Attempt to update the record in the database
-    //         $updated = $model->update($id, $data);
-
-    //         if ($updated) {
-    //             return $this->respond(['message' => 'Date returned updated successfully']);
-    //         } else {
-    //             return $this->failServerError('Failed to update the record');
-    //         }
-    //     } else {
-    //         return $this->failNotFound('Data not found');
-    //     }
-    // }
-    
-    
 
 
 
@@ -245,16 +318,29 @@ class DatabasePPEController extends ResourceController
         // }
 
     // INVENTORY MODEL
+    // public function getInventory()
+    // {
+    //     $main = new InventoryModel();
+    //     $data = $main->findAll();  
+    //     foreach ($data as &$item) {
+    //         $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+    //     }
+    
+    //     return $this->respond($data, 200);
+    // }
+
     public function getInventory()
     {
         $main = new InventoryModel();
-        $data = $main->findAll();  
+        $data = $main->orderBy('id', 'DESC') // Order by created_at column in descending order
+                    ->findAll();
         foreach ($data as &$item) {
             $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
         }
-    
+
         return $this->respond($data, 200);
     }
+
 
     // public function saveInventory()
     // {
@@ -273,29 +359,35 @@ class DatabasePPEController extends ResourceController
 
     public function saveInventory()
     {
+        $main = new InventoryModel();
         $image = $this->request->getFile('image');
-
+        $newName = null;
+    
         // Check if an image was uploaded
         if ($image->isValid() && !$image->hasMoved()) {
             $newName = $image->getRandomName();
             $image->move(ROOTPATH . '../uploads', $newName);
         }
-
-        $json = $this->request->getPost();
+    
         $data = [
-            'entityname' => $json['entityname'],
-            'particulars' => $json['particulars'],
-            'classification' => $json['classification'],
-            'quantity' => $json['quantity'],
-            'arrival' => $json['arrival'],
-            'image' => isset($newName) ? '' . $newName : null, // Store the image path
+            'entityname' => $this->request->getPost('entityname'),
+            'classification' => $this->request->getPost('classification'),
+            'code' => $this->request->getPost('code'),
+            'article' => $this->request->getPost('article'),
+            'particulars' => $this->request->getPost('particulars'),
+            'modelno' => $this->request->getPost('modelno'),
+            'serialno' => $this->request->getPost('serialno'),
+            'quantity' => $this->request->getPost('quantity'),
+            'arrival' => $this->request->getPost('arrival'),
+            'image' => $newName, // Store the image filename
         ];
-
-        $main = new InventoryModel();
+    
         $rin = $main->save($data);
-
+    
         return $this->respond($rin, 200);
     }
+    
+
 
     // public function saveInventory()
     // {
@@ -334,12 +426,49 @@ class DatabasePPEController extends ResourceController
     // }
 
 
+    // public function delInventory(){
+    //     $json = $this->request->getJSON();  
+    //     $id = $json->id;
+    //     $main = new InventoryModel();
+    //     $ron = $main->delete($id);
+    //     return $this->respond($ron, 200);
+    // }
+
     public function delInventory(){
         $json = $this->request->getJSON();  
         $id = $json->id;
+        
+        // Retrieve the image file name associated with the record
         $main = new InventoryModel();
+        $record = $main->find($id);
+        $imageName = $record['image']; // Assuming 'image' is the column name storing the image file name
+        
+        // Delete the record
         $ron = $main->delete($id);
-        return $this->respond($ron, 200);
+        
+        // Delete the corresponding image file from the uploads folder
+        if (!empty($imageName)) {
+            $uploadsPath = ROOTPATH . '../uploads/'; // Adjust the path to your uploads folder
+            $imagePath = $uploadsPath . $imageName; 
+            
+            // Check if the file exists before attempting deletion
+            if (file_exists($imagePath)) {
+                // Attempt to delete the file
+                if (unlink($imagePath)) {
+                    // File deletion successful
+                    return $this->respond($ron, 200);
+                } else {
+                    // File deletion failed
+                    return $this->respond(['status' => 'error', 'message' => 'Failed to delete file'], 500);
+                }
+            } else {
+                // File does not exist
+                return $this->respond(['status' => 'error', 'message' => 'File not found'], 404);
+            }
+        } else {
+            // No image associated with the record
+            return $this->respond($ron, 200);
+        }
     }
 
 
@@ -475,6 +604,12 @@ class DatabasePPEController extends ResourceController
             return $this->respond(['status' => 'success', 'message' => 'Notification sent successfully', 'payload' => $payload]);
         }
     }
+
+
+
+
+
+    
 
 }
 

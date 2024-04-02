@@ -271,6 +271,7 @@
               <table class="table table-hover">
                 <thead>
                   <tr>
+                    <th scope="col">Image</th>
                     <th scope="col">Full Name</th>
                     <th scope="col">Position</th>
                     <th scope="col">Date/Time</th>
@@ -280,6 +281,9 @@
                 </thead>
                 <tbody>
                   <tr v-for="item in info" :key="item.id">
+                    <td scope="row">                <div style="width: 60px; height: 60px; overflow: hidden; border-radius: 50%;">
+                      <div :style="getImageStyle(item.image)"></div>
+                    </div></td>
                     <td scope="row">{{ item.fullname }}</td>
                     <td scope="row">{{ item.position }}</td>
                     <td scope="row">{{ item.created_at }}</td>
@@ -318,8 +322,10 @@ export default{
   data(){
       return{
           info:[],
+          item: [],
           fullname: "",
           position: "",
+          image: "",
           created_at: "",
           status: "",
       }
@@ -328,6 +334,29 @@ export default{
       this.getInfo()
   },
   methods:{
+          getImageStyle(imageUrl) {
+            // Function to generate the background image style
+              if (!imageUrl) {
+                return {}; // Return an empty object if imageUrl is not provided
+              }
+              
+              // Set the background image URL
+              const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+              
+              // Set background size and position
+              const backgroundSize = 'cover'; // Cover the entire container
+              const backgroundPosition = '50% 50%'; // Center the image
+              
+              // Return the style object
+              return {
+                width: '100%',
+                height: '100%',
+                backgroundImage,
+                backgroundSize,
+                backgroundPosition,
+                borderRadius: '50%' // Make the background circular
+              };
+            },
       /*async deleteRecord(recordId){
           const confirm = window.confirm("are you sure you want to delete this?");
           if (confirm){

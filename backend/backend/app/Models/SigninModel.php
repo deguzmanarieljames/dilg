@@ -13,7 +13,7 @@ class SigninModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['username', 'fullname', 'position', 'email', 'password', 'token', 'usertype', 'status', 'verify'];
+    protected $allowedFields    = ['username', 'fullname', 'position', 'email', 'image', 'password', 'token', 'usertype', 'status', 'verify'];
 
     // Dates
     protected $useTimestamps = false;
