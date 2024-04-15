@@ -6,8 +6,8 @@
       <div class="d-flex align-items-center justify-content-between">
         <a href="/empdashboard" class="logo d-flex align-items-center">
           <img src="./img/logo1.png" alt="">
-          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 210%; color: rgb(42, 43, 72);">
-            <i>DILG<sup style="font-size: 70%;">ence</sup></i>
+          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
+            <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
           </span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -235,77 +235,38 @@
   
       <section class="section dashboard">
         <div class="row">
-  
-          <!-- Left side columns -->
-          <div class="col-lg-12">
-            <div class="row">
-  
-              <!-- Reports -->
-              <div class="col-12">
-                <div class="card">
-  
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-  
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                  </div>
-  
-                  <div class="card-body">
-                    <h5 class="card-title">Property Acquisition <span>/gaining possession to a property or equipment by the government</span></h5>
-                                  <!-- Table with hoverable rows -->
-                                  <table class="table">
-                    <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Entity</th>
-                        <th>Particulars</th>
-                        <th>Classification</th>
-                        <th>Assigned</th>
-                        <th>Code</th>
-                        <th>Status</th>
-                        <th datatype="date" data-format="YYYY/DD/MM">Date Recorded</th>
-                        <th>Date Returned</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr v-for="info in info" :key="info.id">
-                      <td scope="row">
-                        <img :src="generateQRCodeUrl(info.id)" alt="">
-                      </td>
-                        <td scope="row">{{ info.entityname }}</td>
-                        <td scope="row">{{ info.particulars }}</td>
-                        <td scope="row">{{ info.classification }}</td>
-                        <td scope="row">{{ info.empfullname }}</td>
-                        <td scope="row">{{ info.code }}</td>
-                        <td scope="row">{{ info.status }}</td>
-                        <td scope="row">{{ info.created_at }}</td>
-                        <td scope="row">{{ info.date_returned }}</td>
-
-                    </tr>
-                    </tbody>
-                </table>
-              <!-- End Table with hoverable rows -->  
-  
-                  </div>
-  
+          <!-- Display each record in a separate container -->
+          <div class="col-lg-4" v-for="info in info" :key="info.id">
+            <div class="card mb-3">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img :src="info.image" alt="Inventory Image" class="inventory-image" />
                 </div>
-              </div><!-- End Reports -->
-  
-  
-  
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">{{ info.particulars }}</h5>
+                    <p class="card-text">{{ info.classification }}</p>
+                    <p class="card-text">{{ info.article }}</p>
+                    <!-- <p class="card-text" :class="{'status-serviceable': info.status === 'Serviceable', 'status-unserviceable': info.status === 'Unserviceable'}"><small class="text-muted">{{ info.status }}</small></p> -->
+                    <p class="card-text">
+                      <span v-if="info.status === 'Serviceable'" class="status-serviceable">
+                        <i class="bi bi-bookmark-check"></i> <!-- Add bookmark-check icon -->
+                        <small class="text-muted">{{ info.status }}</small>
+                      </span>
+                      <span v-if="info.status === 'Unserviceable'" class="status-unserviceable">
+                        <i class="bi bi-bookmark-x"></i> <!-- Add bookmark-x icon -->
+                        <small class="text-muted">{{ info.status }}</small>
+                      </span>
+                      <!-- <small class="text-muted">{{ info.status }}</small> -->
+                    </p>
+                  </div>
+                </div>
+              </div>
             </div>
-          </div><!-- End Left side columns -->
-  
-  
+          </div>
         </div>
       </section>
+      
   
       </main><!-- End #main -->
    </div>
@@ -342,6 +303,7 @@ export default {
     },
     created(){
       this.user();
+      this.getInfo();
     },
 
     async created() {
@@ -432,3 +394,40 @@ export default {
     }
   }
   </script>
+
+<style scoped>
+.status-serviceable {
+  background-color: #dff8d0; /* Light green color */
+  border: 1px solid #4CAF50; /* Green border */
+  color: #4CAF50; /* Green text color */
+  border-radius: 20px; /* Round border radius */
+  padding: 5px 10px; /* Add padding */
+  display: inline-block; /* Display as inline-block for rectangular shape */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Define the light red color for unserviceable items */
+.status-unserviceable {
+  background-color: #fbdcdc; /* Light red color */
+  border: 1px solid #f44336; /* Red border */
+  color: #f44336; /* Red text color */
+  border-radius: 20px; /* Round border radius */
+  padding: 5px 10px; /* Add padding */
+  display: inline-block; /* Display as inline-block for rectangular shape */
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Hover effect */
+.status-serviceable:hover,
+.status-unserviceable:hover {
+  opacity: 0.9; /* Reduce opacity on hover */
+}
+.inventory-image {
+  max-width: 150px; /* Adjust as needed */
+  max-height: 150px; /* Adjust as needed */
+  width: auto;
+  height: auto;
+  padding: 20px 0 0 20px;
+}
+
+</style>

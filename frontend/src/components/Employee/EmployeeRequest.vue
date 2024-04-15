@@ -6,8 +6,8 @@
       <div class="d-flex align-items-center justify-content-between">
         <a href="/empdashboard" class="logo d-flex align-items-center">
           <img src="./img/logo1.png" alt="">
-          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 210%; color: rgb(42, 43, 72);">
-            <i>DILG<sup style="font-size: 70%;">ence</sup></i>
+          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
+            <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
           </span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -234,70 +234,52 @@
   
       <section class="section dashboard">
         <div class="row">
-  
           <!-- Left side columns -->
           <div class="col-lg-6">
             <div class="row">
-  
               <!-- Reports -->
               <div class="col-12">
                 <div class="card">
-  
                   <div class="filter">
                     <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
                       <li class="dropdown-header text-start">
                         <h6>Filter</h6>
                       </li>
-  
                       <li><a class="dropdown-item" href="#">Today</a></li>
                       <li><a class="dropdown-item" href="#">This Month</a></li>
                       <li><a class="dropdown-item" href="#">This Year</a></li>
                     </ul>
                   </div>
-  
                   <div class="card-body">
                     <h5 class="card-title">Property Acquisition Request Form<span>/gaining possession to a property or equipment by the government</span></h5>
-
-                                  <!-- Vertical Form -->
+                    <!-- Vertical Form -->
                     <form class="row g-3" @submit.prevent="send_request">
-                      <!-- <div class="col-12">
-                        <label for="empfullname" class="form-label">Employee Name</label>
-                        <input type="text" class="form-control" id="empfullname" v-model="empfullname">
-                      </div> -->
                       <div class="col-12">
                         <label for="particulars" class="form-label">Particulars</label>
                         <input type="text" class="form-control" id="particulars" v-model="particulars" required>
                       </div>
                       <div class="input-group">
-                      <span class="input-group-text">Write here the description</span>
-                      <textarea class="form-control" aria-label="With textarea" v-model="description" required></textarea>
-                    </div>
+                        <span class="input-group-text">Write here the description</span>
+                        <textarea class="form-control" aria-label="With textarea" v-model="description" required></textarea>
+                      </div>
                       <div class="text-center">
                         <button type="submit" class="btn btn-primary">Submit</button>
                         <button type="reset" class="btn btn-secondary">Reset</button>
                       </div>
                     </form><!-- Vertical Form -->
-  
                   </div>
-  
                 </div>
               </div><!-- End Reports -->
-  
-  
-  
             </div>
           </div><!-- End Left side columns -->
-  
+    
           <!-- Right side columns -->
           <div class="col-lg-6">
-  
             <!-- Recent Activity -->
             <div class="card">
-  
               <div class="card-body">
                 <h5 class="card-title">Recent Request</h5>
-  
                 <table class="table">
                   <thead>
                     <tr>
@@ -318,19 +300,9 @@
                     </tr>
                   </tbody>
                 </table>
-                <!-- <h1>Hello</h1>
-                <div v-if="fullname && position">
-                  <h2>Welcome, {{ fullname }}</h2>
-                  <p>Your Position: {{ position }}</p>
-                </div> -->
-  
-  
               </div>
             </div><!-- End Recent Activity -->
-  
-  
           </div><!-- End Right side columns -->
-  
         </div>
       </section>
   
@@ -468,7 +440,7 @@ export default{
           this.description = "";
 
           this.$emit('data-saved');
-          this.getReq();
+          this.getReq(this.infos.fullname);
         } catch (error) {
           // Handle errors
           console.error(error);

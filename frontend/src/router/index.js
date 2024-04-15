@@ -32,6 +32,7 @@ import EmpProfile from '../views/EmpView/EmpProfile.vue'
 //OFFICER
 
 import OffAdmin from '../views/OfficerView/OffAdmin.vue'
+import OffLogbook from '../views/OfficerView/OffLogbook.vue'
 
 const routes = [
   //ADMIN ROUTES
@@ -181,11 +182,18 @@ const routes = [
     meta: {requireAuth: true}
   },
 
+//OFFICER
 
   {
     path: '/offadmin',
     name: 'OffAdmin',
     component: OffAdmin,
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/offlogbook',
+    name: 'OffLogbook',
+    component: OffLogbook,
     meta: {requireAuth: true}
   },
 

@@ -58,8 +58,8 @@ table {
       <div class="d-flex align-items-center justify-content-between">
         <a href="/dashboard" class="logo d-flex align-items-center">
           <img src="./img/logo1.png" alt="">
-          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 210%; color: rgb(42, 43, 72);">
-            <i>DILG<sup style="font-size: 70%;">ence</sup></i>
+          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
+            <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
           </span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -181,6 +181,15 @@ table {
           <a class="nav-link " href="offadmin">
             <i class="bi bi-clipboard-data"></i>
             <span>Verification of PPE</span>
+          </a>
+        </li>
+
+        <li class="nav-heading">Borrow</li>
+
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="offlogbook">
+            <i class="bi bi-clipboard-data"></i>
+            <span>Logbook</span>
           </a>
         </li>
   

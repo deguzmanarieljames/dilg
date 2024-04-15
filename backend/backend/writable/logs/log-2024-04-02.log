@@ -537,3 +537,83 @@ in APPPATH\Controllers\RequestController.php on line 172.
  4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
  5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-02 16:38:30 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1712072646_f977a1290d80456fc367.jpg): No such file or directory
+in APPPATH\Controllers\RequestController.php on line 172.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1712072646_f977a1290d80456fc367.jpg): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\RequestController.php', 172)
+ 2 APPPATH\Controllers\RequestController.php(172): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1712072646_f977a1290d80456fc367.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RequestController->updateEmployee('104')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-02 16:51:28 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1712072646_f977a1290d80456fc367.jpg): No such file or directory
+in APPPATH\Controllers\RequestController.php on line 172.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1712072646_f977a1290d80456fc367.jpg): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\RequestController.php', 172)
+ 2 APPPATH\Controllers\RequestController.php(172): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1712072646_f977a1290d80456fc367.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RequestController->updateEmployee('104')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-02 16:52:03 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1712072914_daf369be85eeb229fea2.jpg): No such file or directory
+in APPPATH\Controllers\RequestController.php on line 172.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1712072914_daf369be85eeb229fea2.jpg): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\RequestController.php', 172)
+ 2 APPPATH\Controllers\RequestController.php(172): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1712072914_daf369be85eeb229fea2.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RequestController->updateEmployee('89')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-02 16:52:09 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1712072914_daf369be85eeb229fea2.jpg): No such file or directory
+in APPPATH\Controllers\RequestController.php on line 172.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1712072914_daf369be85eeb229fea2.jpg): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\RequestController.php', 172)
+ 2 APPPATH\Controllers\RequestController.php(172): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1712072914_daf369be85eeb229fea2.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RequestController->updateEmployee('89')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-02 16:56:01 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1710252990_101901581bb653f63be8.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1710252990_101901581bb653f63be8.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1710252990_101901581bb653f63be8.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('8')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-02 17:14:17 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1710252990_101901581bb653f63be8.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1710252990_101901581bb653f63be8.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1710252990_101901581bb653f63be8.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('8')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-02 17:14:45 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1709396072_2cd307107c962258ea6d.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709396072_2cd307107c962258ea6d.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709396072_2cd307107c962258ea6d.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('9')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-02 17:16:08 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1712078025_a94dda18cef1e38428d1.jpg): No such file or directory
+in APPPATH\Controllers\RequestController.php on line 172.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1712078025_a94dda18cef1e38428d1.jpg): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\RequestController.php', 172)
+ 2 APPPATH\Controllers\RequestController.php(172): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1712078025_a94dda18cef1e38428d1.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RequestController->updateEmployee('89')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-02 17:16:19 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1712078025_a94dda18cef1e38428d1.jpg): No such file or directory
+in APPPATH\Controllers\RequestController.php on line 172.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1712078025_a94dda18cef1e38428d1.jpg): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\RequestController.php', 172)
+ 2 APPPATH\Controllers\RequestController.php(172): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1712078025_a94dda18cef1e38428d1.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RequestController->updateEmployee('89')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-02 18:24:17 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/): Is a directory
+in APPPATH\Controllers\RequestController.php on line 178.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/): Is a directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\RequestController.php', 178)
+ 2 APPPATH\Controllers\RequestController.php(178): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\RequestController->updateEmployee('104')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\RequestController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

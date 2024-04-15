@@ -167,15 +167,15 @@ class RequestController extends ResourceController
         $existingRecord = $model->find($id);
         $existingImage = $existingRecord['image'];
 
-        if($existingImage) {
-            $uploadsPath = ROOTPATH . '../uploads/'; 
-            unlink($uploadsPath . $existingImage);
-        }
+        // if($existingImage) {
+        //     $uploadsPath = ROOTPATH . '../uploads/'; 
+        //     unlink($uploadsPath . $existingImage);
+        // }
 
         // Check if an image is uploaded
         if ($this->request->getFile('image') && $this->request->getFile('image')->isValid()) {
-            // $uploadsPath = ROOTPATH . '../uploads/'; 
-            // unlink($uploadsPath . $existingImage);
+            $uploadsPath = ROOTPATH . '../uploads/'; 
+            unlink($uploadsPath . $existingImage);
             $image = $this->request->getFile('image');
             $newName = $image->getRandomName();
             $image->move('./uploads', $newName);

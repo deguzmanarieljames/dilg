@@ -59,8 +59,8 @@ $routes->get('/getEmployees', 'DatabasePPEController::getEmployees');
 $routes->get('/getDataServiceable', 'ServiceController::getDataServiceable');
 $routes->get('/getDataUnserviceable', 'ServiceController::getDataUnserviceable');
 $routes->get('/getUserDataServiceable', 'ServiceController::getuserDataServiceable');
-$routes->get('/getuserDataUnserviceable', 'ServiceController::getUserDataUnserviceable');
-$routes->get('/getDataUser/(:any)', 'ServiceController::getDataUser/$1');
+$routes->get('/getUserDataUnserviceable', 'ServiceController::getUserDataUnserviceable');
+$routes->get('/getDataUser', 'ServiceController::getDataUser');
 
 # REQUEST PPE
 // $routes->match(['get', 'post'], '/api/request/decline/(:any)', 'DatabasePPEController::declineRecord/$1');
@@ -82,3 +82,10 @@ $routes->match(['get', 'post'], '/updateVerification/(:any)', 'OfficerVerifyCont
 $routes->match(['get', 'post'], '/generatepdf/(:any)', 'OfficerVerifyController::generatePDF/$1');
 $routes->match(['get', 'post'], '/recordsPDF', 'OfficerVerifyController::recordsPDF');
 
+
+# OFFICER BORROWED/LOGBOOK
+$routes->get('/getBorrowed', 'LogbookController::getBorrowed');
+$routes->match(['get', 'post'], '/fetchEmployee/(:any)', 'LogbookController::fetchEmployee/$1');
+$routes->post('/saveBorrowed', 'LogbookController::saveBorrowed');
+$routes->match(['get', 'post'], 'update_logbook_date_returned/(:segment)/(:segment)', 'LogbookController::updateLogbookDateReturned/$1/$2');
+$routes->get('/getCalBorrowed', 'LogbookController::getCalBorrowed');

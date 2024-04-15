@@ -6,8 +6,8 @@
           <div class="d-flex align-items-center justify-content-between">
             <a href="/empdashboard" class="logo d-flex align-items-center">
               <img src="./img/logo1.png" alt="">
-              <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 210%; color: rgb(42, 43, 72);">
-                <i>DILG<sup style="font-size: 70%;">ence</sup></i>
+              <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
+                <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
               </span>
             </a>
             <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -239,35 +239,46 @@
         <h5 class="card-title">Acquisition</h5>
         <p> Refers to the act of gaining possession to a property or equipment by the government.</p>
         <!-- Table with stripped rows -->
-        <table class="table datatable">
-            <thead>
+        <table class="table">
+          <!-- Table header -->
+          <thead>
             <tr>
-                <th>Image</th>
-                <th>Entity</th>
-                <th>Particulars</th>
-                <th>Classification</th>
-                <th>Assigned</th>
-                <th>Code</th>
-                <th>Status</th>
-                <th datatype="date" data-format="YYYY/DD/MM">Date Recorded</th>
-                <th>Date Returned</th>
+              <th>Image</th>
+              <th>Entity</th>
+              <th>Classification</th>
+              <th>Code</th>
+              <th>Article</th>
+              <th>Particulars</th>
+              <th>Model No.</th>
+              <th>Serial No.</th>
+              <th>Description</th>
+              <th>Employee</th>
+              <th>Status</th>
+              <th>Date Recorded</th>
+              <th>Date Returned</th>
             </tr>
-            </thead>
-            <tbody>
-            <tr v-for="info in info" :key="info.id">
-              <td scope="row">
-                <img :src="generateQRCodeUrl(info.id)" alt="">
-              </td>
-                <td scope="row">{{ info.entityname }}</td>
-                <td scope="row">{{ info.particulars }}</td>
-                <td scope="row">{{ info.classification }}</td>
-                <td scope="row">{{ infos.fullname }}</td>
-                <td scope="row">{{ info.code }}</td>
-                <td scope="row">{{ info.status }}</td>
-                <td scope="row">{{ info.created_at }}</td>
-                <td scope="row">{{ info.date_returned }}</td>
+          </thead>
+          <tbody>
+            <!-- Table rows -->
+            <tr v-for="info in info" :key="info.id" @click="selectRecord(info)">
+              <!-- <td scope="row">
+                <img :src="generateQRCodeUrl(info.id)" alt="" style="width: 200px; height: 200px;">
+              </td> -->
+              <td scope="row"><img :src="info.image" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
+              <td scope="row">{{ info.entityname }}</td>
+              <td scope="row">{{ info.classification }}</td>
+              <td scope="row">{{ info.code }}</td>
+              <td scope="row">{{ info.article }}</td>
+              <td scope="row">{{ info.particulars }}</td>
+              <td scope="row">{{ info.modelno }}</td>
+              <td scope="row">{{ info.serialno }}</td>
+              <td scope="row">{{ info.fulldescription }}</td>
+              <td scope="row">{{ info.empfullname }}</td>
+              <td scope="row">{{ info.status }}</td>
+              <td scope="row">{{ info.created_at }}</td>
+              <td scope="row">{{ info.date_returned }}</td>
             </tr>
-            </tbody>
+          </tbody>
         </table>
         <!-- End Table with stripped rows -->
 
@@ -296,11 +307,11 @@ export default{
       return{
           info:[],
           infos:[],
-          // entityname: "",
-          // particulars: "",
-          // classification: "",
-          // empfullname: "",
-          // code: "",
+          entityname: "",
+          particulars: "",
+          classification: "",
+          empfullname: "",
+          code: "",
           qrCodeData: null,
       }
   },
@@ -374,7 +385,7 @@ export default{
         deleteRecord(id) {
           // Implement your delete logic here
         },
-        async getInfo() {
+        async getInfo(id) {
             try {
                 // Pass infos.fullname to the API call
                 const inf = await axios.get(`getUserDataServiceable?id=${id}`);
