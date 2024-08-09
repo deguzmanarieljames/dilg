@@ -272,9 +272,9 @@
                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
                       </li>
       
-                      <li class="nav-item">
+                      <!-- <li class="nav-item">
                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
-                      </li>
+                      </li> -->
       
                       <li class="nav-item">
                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
@@ -283,10 +283,7 @@
                     </ul>
                     <div class="tab-content pt-2">
       
-                      <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                        <h5 class="card-title">About</h5>
-                        <p class="small fst-italic">Sunt est soluta temporibus accusantium neque nam maiores cumque temporibus. Tempora libero non est unde veniam est qui dolor. Ut sunt iure rerum quae quisquam autem eveniet perspiciatis odit. Fuga sequi sed ea saepe at unde.</p>
-      
+                      <div class="tab-pane fade show active profile-overview" id="profile-overview">     
                         <h5 class="card-title">Profile Details</h5>
       
                         <div class="row">

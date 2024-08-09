@@ -94,3 +94,17 @@ methods: {
  },
 };
 </script>-->
+
+<style>
+  /* Override Bootstrap table border styles */
+  .table.table-hover,
+  .table.table-hover > thead > tr > th,
+  .table.table-hover > tbody > tr > td {
+    border: none;
+  }
+  
+  /* Style to display bottom border for table rows */
+  .table-hover tbody tr {
+    border-bottom: 1px solid #dee2e6; /* Adjust color and thickness as needed */
+  }
+</style>

@@ -226,14 +226,6 @@
           </a>
         </li>
 
-        <li class="nav-heading">Ordering</li>
-    
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/ordering">
-            <i class="bi bi-folder-plus"></i>
-            <span>Ordering</span>
-          </a>
-        </li>
 
         <li class="nav-heading">Security</li>
 
@@ -282,15 +274,12 @@
                 <h5 class="card-title">Acquisition</h5>
                 <p> Refers to the act of gaining possession to a property or equipment by the government.</p>
                 <!-- Table with stripped rows -->
-                <table class="table datatable">
+                <table class="table">
                     <thead>
                     <tr>
                         <th>Image</th>
-                        <th>Entity</th>
                         <th>Particulars</th>
-                        <th>Classification</th>
                         <th>Assigned</th>
-                        <th>Code</th>
                         <th>Status</th>
                         <th datatype="date" data-format="YYYY/DD/MM">Date Recorded</th>
                         <th>Date Returned</th>
@@ -301,11 +290,8 @@
                       <td scope="row">
                         <img :src="generateQRCodeUrl(info.id)" alt="">
                       </td>
-                        <td scope="row">{{ info.entityname }}</td>
                         <td scope="row">{{ info.particulars }}</td>
-                        <td scope="row">{{ info.classification }}</td>
                         <td scope="row">{{ info.empfullname }}</td>
-                        <td scope="row">{{ info.code }}</td>
                         <td scope="row">{{ info.status }}</td>
                         <td scope="row">{{ info.created_at }}</td>
                         <td scope="row">{{ info.date_returned }}</td>

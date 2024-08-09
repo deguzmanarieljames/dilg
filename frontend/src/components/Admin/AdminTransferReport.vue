@@ -215,14 +215,6 @@
           </a>
         </li>
 
-        <li class="nav-heading">Ordering</li>
-    
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/ordering">
-            <i class="bi bi-folder-plus"></i>
-            <span>Ordering</span>
-          </a>
-        </li>
 
         <li class="nav-heading">Security</li>
 

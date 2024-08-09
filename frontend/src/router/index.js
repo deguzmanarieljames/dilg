@@ -12,6 +12,7 @@ import AdServiceable from '../views/AdminView/AdServiceable.vue'
 import AdTransferReport from '../views/AdminView/AdTransferReport.vue'
 import AdUnserviceable from '../views/AdminView/AdUnserviceable.vue'
 import AdWorkspace from '../views/AdminView/AdWorkspace.vue'
+import AdLogbook from '../views/AdminView/AdLogbook.vue'
 import AdUserverify from '../views/AdminView/AdUserverify.vue'
 import AdInventory from '../views/AdminView/AdInventory.vue'
 import AdOrdering from '../views/AdminView/AdOrdering.vue'
@@ -19,7 +20,7 @@ import AdOrderPending from '../views/AdminView/AdOrderPending.vue'
 import AdOrderIncoming from '../views/AdminView/AdOrderIncoming.vue'
 import SignupView from '../views/SignupView.vue'
 import SigninView from '../views/SigninView.vue'
-import LandingPage2 from '../views/Interface/LandingPage2.vue'
+// import LandingPage2 from '../views/Interface/LandingPage2.vue'
 
 
 //EMPLOYEE
@@ -32,15 +33,14 @@ import EmpProfile from '../views/EmpView/EmpProfile.vue'
 //OFFICER
 
 import OffAdmin from '../views/OfficerView/OffAdmin.vue'
-import OffLogbook from '../views/OfficerView/OffLogbook.vue'
 
 const routes = [
   //ADMIN ROUTES
-  {
-    path: '/',
-    name: 'LandingPage2',
-    component: LandingPage2
-  },
+  // {
+  //   path: '/',
+  //   name: 'LandingPage2',
+  //   component: LandingPage2
+  // },
   {
     path: '/signin',
     name: 'SigninView',
@@ -118,6 +118,12 @@ const routes = [
     meta: {requireAuth: true}
   },
   {
+    path: '/logbook',
+    name: 'AdLogbook',
+    component: AdLogbook,
+    meta: {requireAuth: true}
+  },
+  {
     path: '/inventory',
     name: 'AdInventory',
     component: AdInventory,
@@ -188,12 +194,6 @@ const routes = [
     path: '/offadmin',
     name: 'OffAdmin',
     component: OffAdmin,
-    meta: {requireAuth: true}
-  },
-  {
-    path: '/offlogbook',
-    name: 'OffLogbook',
-    component: OffLogbook,
     meta: {requireAuth: true}
   },
 

@@ -1,0 +1,26 @@
+ERROR - 2024-06-18 12:15:07 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-06-18 12:15:07 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

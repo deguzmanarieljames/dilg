@@ -13,7 +13,8 @@ class DatabasePPEModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['particulars', 'empfullname', 'status', 'created_at', 'date_returned'];
+    // protected $allowedFields    = ['particulars', 'empfullname', 'status', 'created_at', 'date_returned'];
+    protected $allowedFields    = ['entityname', 'classification', 'code', 'article', 'particulars', 'modelno', 'serialno', 'description', 'propertynumber', 'propertydate', 'icsnumber', 'jevnumber', 'rec_quantity', 'rec_unit', 'rec_unitcost', 'rec_totalcost', 'isstranadjamount', 'accimploss', 'adjustedcost', 'repair_nature', 'repair_amount', 'issue_itemno', 'issue_date', 'issue_quantity', 'issue_officeofficer', 'transfer_date', 'transfer_quantity', 'transfer_officeofficer', 'disposal_date', 'disposal_quantity', 'disposal_officeofficer', 'balancequantity', 'balanceamount', 'remarks', 'estimatedlife', 'issued_officer', 'issued_offposition', 'issued_date', 'acc_officer', 'acc_empposition', 'acc_date', 'itr_no', 'itr_date', 'rrsp_no', 'rrsp_date', 'reasonfortrans', 'reg_semiissuedserialno', 'reg_returned_qty', 'reg_returned_off', 'reg_reissued_qty', 'reg_reissued_off', 'reg_disposed_qty', 'reg_balance_quantity', 'reg_amount', 'reg_remarks', 'property_officer', 'approving_authority', 'imageverification', 'status', 'created_at'];
 
     // Dates
     protected $useTimestamps = false;

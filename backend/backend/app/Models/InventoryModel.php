@@ -13,8 +13,11 @@ class InventoryModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['entityname', 'classification', 'code', 'article', 'particulars', 'modelno', 'serialno', 'fulldescription', 'quantity', 'arrival', 'status', 'image', 'created_at'];
+    // protected $allowedFields    = ['entityname', 'classification', 'code', 'article', 'particulars', 'modelno', 'serialno', 'fulldescription', 'quantity', 'arrival', 'status', 'availability', 'counts', 'image', 'created_at'];
+    protected $allowedFields    = ['entityname', 'classification', 'code', 'article', 'particulars', 'modelno', 'serialno', 'fulldescription', 'quantity', 'unit', 'unitcost', 'totalcost', 'status', 'availability', 'counts', 'image', 'created_at'];
 
+
+    
     // Dates
     protected $useTimestamps = false;
     protected $dateFormat    = 'datetime';

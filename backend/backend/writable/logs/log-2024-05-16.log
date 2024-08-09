@@ -1,0 +1,842 @@
+CRITICAL - 2024-05-16 03:06:33 --> Undefined array key "issue_officeofficer"
+in APPPATH\Views\ICS.php on line 118.
+ 1 APPPATH\Views\ICS.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "issue_officeofficer"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php', 118)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('ICS', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1045): view('ICS', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:06:45 --> Undefined array key "issue_officeofficer"
+in APPPATH\Views\ICS.php on line 118.
+ 1 APPPATH\Views\ICS.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "issue_officeofficer"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php', 118)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('ICS', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1045): view('ICS', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:06:47 --> Undefined array key "issue_officeofficer"
+in APPPATH\Views\ICS.php on line 118.
+ 1 APPPATH\Views\ICS.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "issue_officeofficer"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php', 118)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('ICS', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1045): view('ICS', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:07:11 --> Undefined array key "issue_officeofficer"
+in APPPATH\Views\ICS.php on line 118.
+ 1 APPPATH\Views\ICS.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "issue_officeofficer"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php', 118)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('ICS', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1045): view('ICS', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:07:12 --> Undefined array key "issue_officeofficer"
+in APPPATH\Views\ICS.php on line 118.
+ 1 APPPATH\Views\ICS.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "issue_officeofficer"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php', 118)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('ICS', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1045): view('ICS', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:08:14 --> Undefined array key "issue_officeofficer"
+in APPPATH\Views\ICS.php on line 118.
+ 1 APPPATH\Views\ICS.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "issue_officeofficer"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php', 118)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('ICS', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1045): view('ICS', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:17:02 --> Attempt to read property "19" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1025.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1025): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "19" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1025)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('19')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:17:09 --> Attempt to read property "19" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1025.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1025): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "19" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1025)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('19')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:17:14 --> Attempt to read property "19" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1025.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1025): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "19" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1025)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('19')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:17:19 --> Attempt to read property "18" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1025.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1025): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "18" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1025)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('18')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:19:31 --> Attempt to read property "recordId" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1025.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1025): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "recordId" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1025)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('19')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:19:44 --> Attempt to read property "recordId" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1025.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1025): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "recordId" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1025)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('18')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:20:00 --> Attempt to read property "recordId" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1025.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1025): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "recordId" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1025)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('19')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:23:19 --> Undefined variable $record
+in APPPATH\Views\ICS.php on line 68.
+ 1 APPPATH\Views\ICS.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $record', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php', 68)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('ICS', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1038): view('ICS', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('19')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:23:35 --> Undefined variable $record
+in APPPATH\Views\ICS.php on line 68.
+ 1 APPPATH\Views\ICS.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $record', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php', 68)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('ICS', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1038): view('ICS', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('19')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:23:50 --> Undefined array key "entityname"
+in APPPATH\Views\ICS.php on line 68.
+ 1 APPPATH\Views\ICS.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "entityname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php', 68)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('ICS', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1038): view('ICS', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('19')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:23:56 --> Undefined variable $record
+in APPPATH\Views\ICS.php on line 68.
+ 1 APPPATH\Views\ICS.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $record', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php', 68)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('ICS', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1038): view('ICS', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('19')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:24:01 --> Undefined variable $record
+in APPPATH\Views\ICS.php on line 68.
+ 1 APPPATH\Views\ICS.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $record', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php', 68)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('ICS', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1038): view('ICS', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generatePDF('19')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:40:12 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\OfficerVerifyController.php on line 48.
+ 1 APPPATH\Controllers\OfficerVerifyController.php(48): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 48)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('19')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:40:21 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\OfficerVerifyController.php on line 48.
+ 1 APPPATH\Controllers\OfficerVerifyController.php(48): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 48)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('19')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:41:55 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\DatabasePPEController.php(1158): CodeIgniter\Model->update('19', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('19')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:42:23 --> There is no data to update.
+in SYSTEMPATH\BaseModel.php on line 930.
+ 1 SYSTEMPATH\BaseModel.php(930): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\DatabasePPEController.php(1158): CodeIgniter\Model->update('19', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('19')
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:43:48 --> Undefined variable $data
+in APPPATH\Controllers\DatabasePPEController.php on line 1158.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1158): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1158)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('19')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:46:18 --> Undefined variable $data
+in APPPATH\Controllers\DatabasePPEController.php on line 1158.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1158): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1158)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('19')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:46:19 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1715831171_fd02160ca9cd7d0af6fb.gif): No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 1142.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1715831171_fd02160ca9cd7d0af6fb.gif): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1142)
+ 2 APPPATH\Controllers\DatabasePPEController.php(1142): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1715831171_fd02160ca9cd7d0af6fb.gif')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('19')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:46:19 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1715831171_fd02160ca9cd7d0af6fb.gif): No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 1142.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1715831171_fd02160ca9cd7d0af6fb.gif): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1142)
+ 2 APPPATH\Controllers\DatabasePPEController.php(1142): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1715831171_fd02160ca9cd7d0af6fb.gif')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('19')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 03:47:15 --> Undefined variable $data
+in APPPATH\Controllers\DatabasePPEController.php on line 1158.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1158): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1158)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('18')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 05:39:40 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-16 05:42:20 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-16 05:42:20 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-16 05:42:21 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-16 05:42:21 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 13:47:44 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 13:58:40 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:01:52 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:02:03 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:02:03 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:02:04 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:02:23 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:02:23 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:02:24 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:02:26 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:04:42 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:05:17 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:05:32 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:05:47 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:06:11 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:06:20 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:06:35 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:06:47 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:07:28 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:09:35 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:09:47 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:10:44 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:11:01 --> Undefined array key "article"
+in APPPATH\Views\RPCSP.php on line 119.
+ 1 APPPATH\Views\RPCSP.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "article"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 119)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:11:57 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 123.
+ 1 APPPATH\Views\RPCSP.php(123): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 123)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:11:57 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 123.
+ 1 APPPATH\Views\RPCSP.php(123): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 123)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:11:58 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 123.
+ 1 APPPATH\Views\RPCSP.php(123): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 123)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:12:01 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 123.
+ 1 APPPATH\Views\RPCSP.php(123): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 123)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:12:03 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 123.
+ 1 APPPATH\Views\RPCSP.php(123): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 123)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:14:00 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 123.
+ 1 APPPATH\Views\RPCSP.php(123): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 123)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:15:11 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 123.
+ 1 APPPATH\Views\RPCSP.php(123): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 123)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:15:23 --> Undefined array key "reg_returned_quantity"
+in APPPATH\Views\RPCSP.php on line 124.
+ 1 APPPATH\Views\RPCSP.php(124): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "reg_returned_quantity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 124)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:15:40 --> Undefined array key "reg_returned_quantity"
+in APPPATH\Views\RPCSP.php on line 124.
+ 1 APPPATH\Views\RPCSP.php(124): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "reg_returned_quantity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 124)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 14:16:38 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1116): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 15:45:27 --> Undefined variable $data
+in APPPATH\Controllers\DatabasePPEController.php on line 1159.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1159): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1159)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('19')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 15:45:56 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1715874283_924ee0a045911033cfb4.png): No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 1143.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1715874283_924ee0a045911033cfb4.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1143)
+ 2 APPPATH\Controllers\DatabasePPEController.php(1143): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1715874283_924ee0a045911033cfb4.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('19')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-16 15:55:04 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-16 15:55:04 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-16 15:55:04 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-16 15:55:04 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 18:14:05 --> Undefined array key "article"
+in APPPATH\Views\RPCSP.php on line 117.
+ 1 APPPATH\Views\RPCSP.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "article"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 117)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1152): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->requestPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 18:14:12 --> Undefined array key "rec_quantity"
+in APPPATH\Views\ICS.php on line 90.
+ 1 APPPATH\Views\ICS.php(90): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "rec_quantity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php', 90)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\ICS.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('ICS', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1191): view('ICS', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRequestPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 18:17:22 --> Undefined array key "article"
+in APPPATH\Views\RPCSP.php on line 117.
+ 1 APPPATH\Views\RPCSP.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "article"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 117)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1152): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->requestPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 18:17:49 --> Undefined array key "article"
+in APPPATH\Views\RPCSP.php on line 117.
+ 1 APPPATH\Views\RPCSP.php(117): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "article"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 117)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1152): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->requestPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 18:22:17 --> Attempt to read property "empfullname" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1171.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1171): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "empfullname" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1171)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRequestPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-16 18:22:26 --> Undefined variable $selectedEmployee
+in APPPATH\Controllers\DatabasePPEController.php on line 1195.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1195): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $selectedEmployee', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1195)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRequestPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-16 18:24:51 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-16 18:24:51 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-16 18:24:52 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-16 18:24:52 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

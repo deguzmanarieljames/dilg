@@ -65,7 +65,7 @@ class ServiceController extends ResourceController
             // Perform the join query
             $data = $main->select('databaseppe.*, inventoryppe.entityname, inventoryppe.classification, inventoryppe.code, inventoryppe.article, inventoryppe.modelno, inventoryppe.serialno, inventoryppe.fulldescription, inventoryppe.image')
                          ->join('inventoryppe', 'inventoryppe.particulars = databaseppe.particulars', 'left')
-                         ->where('databaseppe.empfullname', $fullname)
+                         ->where('databaseppe.acc_officer', $fullname)
                          ->orderBy('databaseppe.id', 'DESC')
                          ->findAll();
     
@@ -179,6 +179,76 @@ class ServiceController extends ResourceController
             } else {
                 return $this->respond(['error' => 'User not found', 'fullname' => $id], 404);
             }
+        }
+    }
+
+
+
+    //-------------------- PDF GENERATION ------------------------
+
+    public function serviceablePDF() {
+        $records = [];
+        $databaseppemodel = new DatabasePPEModel();
+        
+        // Get all records
+        $data = $databaseppemodel->where('remarks', 'Serviceable')->findAll();
+        
+        // Check if any records found
+        if ($data) {
+            // Load the MPDF library
+            $mpdf = new \Mpdf\Mpdf(['orientation' => 'L', 'format' => 'Legal']);
+    
+        
+            foreach ($data as $record) {
+                // Add each record to the array
+                $records[] = $record;
+            }
+    
+            $htmlContent = view('IIRUSP', ['data' => $records]);
+            $mpdf->WriteHTML($htmlContent);
+            
+            // Output the PDF with a unique filename
+            $filename = 'generated_pdf_all.pdf';
+            $mpdf->Output($filename, 'D'); // 'D' to force download
+        
+            // End script execution after downloading the PDF
+            exit();
+        } else {
+            // Handle the case where no records found
+            die("No records found.");
+        }
+    }
+
+    public function unserviceablePDF() {
+        $records = [];
+        $databaseppemodel = new DatabasePPEModel();
+        
+        // Get all records
+        $data = $databaseppemodel->where('remarks', 'Unserviceable')->findAll();
+        
+        // Check if any records found
+        if ($data) {
+            // Load the MPDF library
+            $mpdf = new \Mpdf\Mpdf(['orientation' => 'L', 'format' => 'Legal']);
+    
+        
+            foreach ($data as $record) {
+                // Add each record to the array
+                $records[] = $record;
+            }
+    
+            $htmlContent = view('IIRUSP', ['data' => $records]);
+            $mpdf->WriteHTML($htmlContent);
+            
+            // Output the PDF with a unique filename
+            $filename = 'generated_pdf_all.pdf';
+            $mpdf->Output($filename, 'D'); // 'D' to force download
+        
+            // End script execution after downloading the PDF
+            exit();
+        } else {
+            // Handle the case where no records found
+            die("No records found.");
         }
     }
 

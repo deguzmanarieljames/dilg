@@ -10,6 +10,7 @@ use App\Models\InventoryModel;
 use App\Models\EmployeeModel;
 use App\Models\RequestModel;
 use App\Models\OfficerModel;
+use App\Models\SigninModel;
 use App\Libraries\FirebaseNotificationService;
 use Mpdf\Mpdf;
 
@@ -49,6 +50,7 @@ class DatabasePPEController extends ResourceController
                               ->findAll();
                               foreach ($data as &$item) {
                                 $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+                                $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
                             }
 
     // Return the merged data
@@ -70,36 +72,152 @@ class DatabasePPEController extends ResourceController
     //     $rin = $main->save($data);
     //     return $this->respond($rin, 200);
     // }
+    
+
+
 
     public function save()
     {
-        $json = $this->request->getJSON();
-        // $code = $this->code_gen(8);
-    
-        // Retrieve particulars from input
-        $particulars = $json->particulars;
-    
+        // Retrieve input data
+        $entityname = $this->request->getPost('entityname');
+        $classification = $this->request->getPost('classification');
+        $code = $this->request->getPost('code');
+        $article = $this->request->getPost('article');
+        $particulars = $this->request->getPost('particulars');
+        $modelno = $this->request->getPost('modelno');
+        $serialno = $this->request->getPost('serialno');
+        $propertynumber = $this->request->getPost('propertynumber');
+        $propertydate = $this->request->getPost('propertydate');
+        $icsnumber = $this->request->getPost('icsnumber');
+        $jevnumber = $this->request->getPost('jevnumber');
+        $rec_quantity = $this->request->getPost('rec_quantity');
+        $rec_unit = $this->request->getPost('rec_unit');
+        $rec_unitcost = $this->request->getPost('rec_unitcost');
+        $isstranadjamount = $this->request->getPost('isstranadjamount');
+        $accimploss = $this->request->getPost('accimploss');
+        $adjustedcost = $this->request->getPost('adjustedcost');
+        $repair_nature = $this->request->getPost('repair_nature');
+        $repair_amount = $this->request->getPost('repair_amount');
+        $issue_itemno = $this->request->getPost('propertynumber');
+        $issue_date = $this->request->getPost('issue_date');
+        $issue_quantity = $this->request->getPost('rec_quantity');
+        $issue_officeofficer = $this->request->getPost('issue_officeofficer');
+        $transfer_date = $this->request->getPost('transfer_date');
+        $transfer_quantity = $this->request->getPost('transfer_quantity');
+        $transfer_officeofficer = $this->request->getPost('transfer_officeofficer');
+        $disposal_date = $this->request->getPost('disposal_date');
+        $disposal_quantity = $this->request->getPost('disposal_quantity');
+        $disposal_officeofficer = $this->request->getPost('disposal_officeofficer');
+        $remarks = $this->request->getPost('remarks');
+        $estimatedlife = $this->request->getPost('estimatedlife');
+        $issued_officer = $this->request->getPost('issued_officer');
+        $issued_offposition = $this->request->getPost('issued_offposition');
+        $issued_date = $this->request->getPost('issued_date');
+        $acc_officer = $this->request->getPost('acc_officer');
+        $acc_empposition = $this->request->getPost('acc_empposition');
+        $acc_date = $this->request->getPost('acc_date');
+        $itr_no = $this->request->getPost('itr_no');
+        $itr_date = $this->request->getPost('itr_date');
+        $rrsp_no = $this->request->getPost('rrsp_no');
+        $rrsp_date = $this->request->getPost('rrsp_date');
+        $reasonfortrans = $this->request->getPost('reasonfortrans');
+        $reg_semiissuedserialno = $this->request->getPost('reg_semiissuedserialno');
+        $reg_returned_qty = $this->request->getPost('reg_returned_qty');
+        $reg_reissued_qty = $this->request->getPost('reg_reissued_qty');
+        $reg_reissued_off = $this->request->getPost('reg_reissued_off');
+        $reg_disposed_qty = $this->request->getPost('reg_disposed_qty');
+        $reg_balance_quantity = $this->request->getPost('reg_balance_quantity');
+        $reg_amount = $this->request->getPost('reg_amount');
+        $reg_remarks = $this->request->getPost('reg_remarks');
+        $property_officer = $this->request->getPost('property_officer');
+        $approving_authority = $this->request->getPost('approving_authority');
+
+        // Calculate the total cost
+        $rec_totalcost = $rec_quantity * $rec_unitcost;
+        $balancequantity = $rec_quantity - $issue_quantity;
+
         // Check the status in the inventoryppe table based on particulars
         $inventoryModel = new InventoryModel();
         $statusRows = $inventoryModel->where('particulars', $particulars)->findAll();
-    
+
         // Check if any rows were found
         if (!empty($statusRows)) {
             // Assuming 'status' is a field in the inventory table
             $status = $statusRows[0]['status'];
-    
+
             // Check if the status is active
             if ($status === 'active') {
-                // If active, proceed with saving to the databaseppe table
+                // Proceed with saving to the databaseppe table
+
+                // Retrieve other form fields from the input
                 $data = [
-                    'particulars' => $json->particulars,
-                    'empfullname' => $json->empfullname,
-                    // 'code' => $code,
+                    'entityname' => $entityname,
+                    'classification' => $classification,
+                    'code' => $code,
+                    'article' => $article,
+                    'particulars' => $particulars,
+                    'entityname' => $entityname,
+                    'classification' => $classification,
+                    'code' => $code,
+                    'article' => $article,
+                    'particulars' => $particulars,
+                    'modelno' => $modelno,
+                    'serialno' => $serialno,
+                    'propertynumber' => $propertynumber,
+                    'propertydate' => $propertydate,
+                    'icsnumber' => $icsnumber,
+                    'jevnumber' => $jevnumber,
+                    'rec_quantity' => $rec_quantity,
+                    'rec_unit' => $rec_unit,
+                    'rec_unitcost' => $rec_unitcost,
+                    'rec_totalcost' => $rec_totalcost,
+                    'isstranadjamount' => $isstranadjamount,
+                    'accimploss' => $accimploss,
+                    'adjustedcost' => $adjustedcost,
+                    'repair_nature' => $repair_nature,
+                    'repair_amount' => $repair_amount,
+                    'issue_itemno' => $issue_itemno,
+                    'issue_date' => $issue_date,
+                    'issue_quantity' => $issue_quantity,
+                    'issue_officeofficer' => $issue_officeofficer,
+                    'transfer_date' => $transfer_date,
+                    'transfer_quantity' => $transfer_quantity,
+                    'transfer_officeofficer' => $transfer_officeofficer,
+                    'disposal_date' => $disposal_date,
+                    'disposal_quantity' => $disposal_quantity,
+                    'disposal_officeofficer' => $disposal_officeofficer,
+                    'balancequantity' => $balancequantity,
+                    'balanceamount' => $rec_totalcost,
+                    'remarks' => $remarks,
+                    'estimatedlife' => $estimatedlife,
+                    'issued_officer' => $issued_officer,
+                    'issued_offposition' => $issued_offposition,
+                    'issued_date' > $issued_date,
+                    'acc_officer' => $acc_officer,
+                    'acc_empposition' => $acc_empposition,
+                    'acc_date' => $acc_date,
+                    'itr_no' => $itr_no,
+                    'itr_date' => $itr_date,
+                    'rrsp_no' => $rrsp_no,
+                    'rrsp_date' => $rrsp_date,
+                    'reasonfortrans' => $reasonfortrans,
+                    'reg_semiissuedserialno' => $reg_semiissuedserialno,
+                    'reg_returned_qty' => $reg_returned_qty,
+                    'reg_returned_off' => $acc_officer,
+                    'reg_reissued_qty' => $reg_reissued_qty,
+                    'reg_reissued_off' => $reg_reissued_off,
+                    'reg_disposed_qty' => $reg_disposed_qty,
+                    'reg_balance_quantity' => $reg_balance_quantity,
+                    'reg_amount' => $reg_amount,
+                    'reg_remarks' => $reg_remarks,
+                    'property_officer' => $property_officer,
+                    'approving_authority' => $approving_authority,
                 ];
-    
-                $databasePPEModel = new OfficerModel();
+
+                // Save data to the database
+                $databasePPEModel = new DatabasePPEModel();
                 $result = $databasePPEModel->save($data);
-    
+
                 return $this->respond($result, 200);
             } else {
                 // If inactive, do not save and respond accordingly
@@ -110,6 +228,197 @@ class DatabasePPEController extends ResourceController
             return $this->respond(['msg' => 'Cannot save data. No matching inventory record found.'], 200);
         }
     }
+
+    public function updateppe($statusId)
+    {
+        // Load the model
+        $rec_quantity = $this->request->getPost('rec_quantity');//---------------------------
+        $rec_unitcost = $this->request->getPost('rec_unitcost');
+
+        $issue_quantity = $this->request->getPost('rec_quantity');
+
+        $rec_totalcost = $rec_quantity * $rec_unitcost;
+        $balancequantity = $rec_quantity - $issue_quantity;
+
+        $model = new DatabasePPEModel();
+        $id = $statusId;
+        // if ($this->request->getFile('image')->isValid() && $existingImage) {
+        //     $uploadsPath = ROOTPATH . '../uploads/'; 
+        //     unlink($uploadsPath . $existingImage);
+        // }
+        // Retrieve data from the request
+        $data = [
+            'entityname' => $this->request->getPost('entityname'),
+            'classification' => $this->request->getPost('classification'),
+            'code' => $this->request->getPost('code'),
+            'article' => $this->request->getPost('article'),
+            'particulars' => $this->request->getPost('particulars'),
+            'modelno' => $this->request->getPost('modelno'),
+            'serialno' => $this->request->getPost('serialno'),
+            'propertynumber' => $this->request->getPost('propertynumber'),
+            'propertydate' => $this->request->getPost('propertydate'),
+            'icsnumber' => $this->request->getPost('icsnumber'),
+            'jevnumber' => $this->request->getPost('jevnumber'),
+            // 'rec_quantity' => $this->request->getPost('rec_quantity'),
+            'rec_unit' => $this->request->getPost('rec_unit'),
+            // 'rec_unitcost' => $this->request->getPost('rec_unitcost'),
+            'rec_quantity' => $rec_quantity,
+            'rec_unitcost' => $rec_unitcost,
+            'rec_totalcost' => $rec_totalcost,
+            'isstranadjamount' => $this->request->getPost('isstranadjamount'),
+            'accimploss' => $this->request->getPost('accimploss'),
+            'adjustedcost' => $this->request->getPost('adjustedcost'),
+            'repair_nature' => $this->request->getPost('repair_nature'),
+            'repair_amount' => $this->request->getPost('repair_amount'),
+            'issue_itemno' => $this->request->getPost('propertynumber'),
+            'issue_date' => $this->request->getPost('issue_date'),
+            'issue_quantity' => $issue_quantity,
+            'issue_officeofficer' => $this->request->getPost('issue_officeofficer'),
+            'transfer_date' => $this->request->getPost('transfer_date'),
+            'transfer_quantity' => $this->request->getPost('transfer_quantity'),
+            'transfer_officeofficer' => $this->request->getPost('transfer_officeofficer'),
+            'disposal_date' => $this->request->getPost('disposal_date'),
+            'disposal_quantity' => $this->request->getPost('disposal_quantity'),
+            'disposal_officeofficer' => $this->request->getPost('disposal_officeofficer'),
+            'balancequantity' => $balancequantity,
+            'balanceamount' => $rec_totalcost,
+            'remarks' => $this->request->getPost('remarks'),
+            'estimatedlife' => $this->request->getPost('estimatedlife'),
+            'issued_officer' => $this->request->getPost('issued_officer'),
+            'issued_offposition' => $this->request->getPost('issued_offposition'),
+            'issued_date' => $this->request->getPost('issued_date'),
+            'acc_officer' => $this->request->getPost('acc_officer'),
+            'acc_empposition' => $this->request->getPost('acc_empposition'),
+            'acc_date' => $this->request->getPost('acc_date'),
+            'itr_no' => $this->request->getPost('itr_no'),
+            'itr_date' => $this->request->getPost('itr_date'),
+            'rrsp_no' => $this->request->getPost('rrsp_no'),
+            'rrsp_date' => $this->request->getPost('rrsp_date'),
+            'reasonfortrans' => $this->request->getPost('reasonfortrans'),
+            'reg_semiissuedserialno' => $this->request->getPost('reg_semiissuedserialno'),
+            'reg_returned_qty' => $this->request->getPost('reg_returned_qty'),
+            'reg_returned_off' => $this->request->getPost('acc_officer'),
+            'reg_reissued_qty' => $this->request->getPost('reg_reissued_qty'),
+            'reg_reissued_off' => $this->request->getPost('reg_reissued_off'),
+            'reg_disposed_qty' => $this->request->getPost('reg_disposed_qty'),
+            'reg_balance_quantity' => $this->request->getPost('reg_balance_quantity'),
+            'reg_amount' => $this->request->getPost('reg_amount'),
+            'reg_remarks' => $this->request->getPost('reg_remarks'),
+            'property_officer' => $this->request->getPost('property_officer'),
+            'approving_authority' => $this->request->getPost('approving_authority'),
+        ];
+        // $existingRecord = $model->find($id);
+        // $existingImage = $existingRecord['image'];
+
+        // Check if an image is uploaded
+        // if ($this->request->getFile('image') && $this->request->getFile('image')->isValid()) {
+        //     $uploadsPath = ROOTPATH . '../uploads/'; 
+        //     unlink($uploadsPath . $existingImage);
+        //     $image = $this->request->getFile('image');
+        //     $newName = $image->getRandomName();
+        //     $image->move('./uploads', $newName);
+        //     $data['image'] = $newName; // Update the image field with the new image name
+        // }
+        
+        // Perform the update operation
+        $result = $model->update($id, $data);
+        
+        if ($result) {
+            return $this->respond(['status' => 'success', 'message' => 'Record updated successfully']);
+        } else {
+            // Handle the case where the update fails
+            return $this->respond(['status' => 'error', 'message' => 'Failed to update record'], 500);
+        }
+    }
+
+
+
+    // public function save()
+    // {
+    //     $json = $this->request->getJSON();
+    //     // $code = $this->code_gen(8);
+    
+    //     // Retrieve particulars from input
+    //     $particulars = $json->particulars;
+    
+    //     // Check the status in the inventoryppe table based on particulars
+    //     $inventoryModel = new InventoryModel();
+    //     $statusRows = $inventoryModel->where('particulars', $particulars)->findAll();
+    
+    //     // Check if any rows were found
+    //     if (!empty($statusRows)) {
+    //         // Assuming 'status' is a field in the inventory table
+    //         $status = $statusRows[0]['status'];
+    
+    //         // Check if the status is active
+    //         if ($status === 'active') {
+    //             // If active, proceed with saving to the databaseppe table
+    //             $data = [
+    //                 'entityname' => $json->entityname,
+    //                 'classification' => $json->classification,
+    //                 'code' => $json->code,
+    //                 'article' => $json->article,
+    //                 'particulars' => $particulars,
+    //                 'modelno' => $json->modelno,
+    //                 'serialno' => $json->serialno,
+    //                 'propertynumber' => $json->propertynumber,
+    //                 'propertydate' => $json->propertydate,
+    //                 'icsnumber' => $json->icsnumber,
+    //                 'jevnumber' => $json->jevnumber,
+    //                 'rec_quantity' => $json->rec_quantity,
+    //                 'rec_unit' => $json->rec_unit,
+    //                 'rec_unitcost' => $json->rec_unitcost,
+    //                 'isstranadjamount' => $json->isstranadjamount,
+    //                 'accimploss' => $json->accimploss,
+    //                 'adjustedcost' => $json->adjustedcost,
+    //                 'repair_nature' => $json->repair_nature,
+    //                 'repair_amount' => $json->repair_amount,
+    //                 'issue_date' => $json->issue_date,
+    //                 'issue_officeofficer' => $json->issue_officeofficer,
+    //                 'transfer_date' => $json->transfer_date,
+    //                 'transfer_quantity' => $json->transfer_quantity,
+    //                 'transfer_officeofficer' => $json->transfer_officeofficer,
+    //                 'disposal_date' => $json->disposal_date,
+    //                 'disposal_quantity' => $json->disposal_quantity,
+    //                 'disposal_officeofficer' => $json->disposal_officeofficer,
+    //                 'remarks' => $json->remarks,
+    //                 'estimatedlife' => $json->estimatedlife,
+    //                 'issued_officer' => $json->issued_officer,
+    //                 'issued_offposition' => $json->issued_offposition,
+    //                 'acc_officer' => $json->acc_officer,
+    //                 'acc_empposition' => $json->acc_empposition,
+    //                 'acc_date' => $json->acc_date,
+    //                 'itr_no' => $json->itr_no,
+    //                 'itr_date' => $json->itr_date,
+    //                 'rrsp_no' => $json->rrsp_no,
+    //                 'rrsp_date' => $json->rrsp_date,
+    //                 'reasonfortrans' => $json->reasonfortrans,
+    //                 'reg_semiissuedserialno' => $json->reg_semiissuedserialno,
+    //                 'reg_returned_qty' => $json->reg_returned_qty,
+    //                 'reg_reissued_qty' => $json->reg_reissued_qty,
+    //                 'reg_reissued_off' => $json->reg_reissued_off,
+    //                 'reg_disposed_qty' => $json->reg_disposed_qty,
+    //                 'reg_balance_quantity' => $json->reg_balance_quantity,
+    //                 'reg_amount' => $json->reg_amount,
+    //                 'reg_remarks' => $json->reg_remarks,
+    //                 'property_officer' => $json->property_officer,
+    //                 'approving_authority' => $json->approving_authority,
+    //             ];
+    
+    //             $model = new DatabasePPEModel();
+    //             $result = $model->save($data);
+    
+    //             return $this->respond($result, 200);
+    //         } else {
+    //             // If inactive, do not save and respond accordingly
+    //             return $this->respond(['msg' => 'Cannot save data. Inventory status is inactive.'], 200);
+    //         }
+    //     } else {
+    //         // Handle the case where no matching row was found
+    //         return $this->respond(['msg' => 'Cannot save data. No matching inventory record found.'], 200);
+    //     }
+    //     return $this->respond(['msg' => 'The Data is not saving, there is an error'], 200);
+    // }
 
     public function savesInventory()
     {
@@ -179,7 +488,9 @@ class DatabasePPEController extends ResourceController
             'modelno' => $this->request->getPost('modelno'),
             'serialno' => $this->request->getPost('serialno'),
             'quantity' => $this->request->getPost('quantity'),
-            'arrival' => $this->request->getPost('arrival')
+            'unit' => $this->request->getPost('unit'),
+            'unitcost' => $this->request->getPost('unitcost'),
+            'totalcost' => $this->request->getPost('totalcost'),
         ];
         $existingRecord = $model->find($id);
         $existingImage = $existingRecord['image'];
@@ -204,6 +515,25 @@ class DatabasePPEController extends ResourceController
             return $this->respond(['status' => 'error', 'message' => 'Failed to update record'], 500);
         }
     }
+
+    public function updateAvailability()
+    {
+        $requestData = $this->request->getJSON();
+        $id = $requestData->id;
+        $newAvailability = $requestData->availability; // Added this line to get the new availability
+
+        $allowedAvailabilities = ['yes', 'no']; // Define allowed availabilities
+
+        if (!in_array($newAvailability, $allowedAvailabilities)) {
+            return $this->respond(['error' => 'Invalid availability'], 400);
+        }
+
+        $inventoryModel = new InventoryModel(); // Assuming your model is named InventoryModel
+        $inventoryModel->update($id, ['availability' => $newAvailability]);
+
+        return $this->respond(['message' => 'Availability updated successfully'], 200);
+    }
+
 
     // public function updateInventory($statusId)
     // {
@@ -357,18 +687,47 @@ class DatabasePPEController extends ResourceController
     //     return $this->respond($rin, 200);
     // }
 
+    // public function saveInventory()
+    // {
+    //     $main = new InventoryModel();
+    //     $image = $this->request->getFile('image');
+    //     $newName = null;
+    
+    //     // Check if an image was uploaded
+    //     if ($image->isValid() && !$image->hasMoved()) {
+    //         $newName = $image->getRandomName();
+    //         $image->move(ROOTPATH . '../uploads', $newName);
+    //     }
+    
+    //     $data = [
+    //         'entityname' => $this->request->getPost('entityname'),
+    //         'classification' => $this->request->getPost('classification'),
+    //         'code' => $this->request->getPost('code'),
+    //         'article' => $this->request->getPost('article'),
+    //         'particulars' => $this->request->getPost('particulars'),
+    //         'modelno' => $this->request->getPost('modelno'),
+    //         'serialno' => $this->request->getPost('serialno'),
+    //         'quantity' => $this->request->getPost('quantity'),
+    //         'arrival' => $this->request->getPost('arrival'),
+    //         'image' => $newName, // Store the image filename
+    //     ];
+    
+    //     $rin = $main->save($data);
+    
+    //     return $this->respond($rin, 200);
+    // }
     public function saveInventory()
     {
         $main = new InventoryModel();
         $image = $this->request->getFile('image');
         $newName = null;
-    
+
         // Check if an image was uploaded
         if ($image->isValid() && !$image->hasMoved()) {
             $newName = $image->getRandomName();
             $image->move(ROOTPATH . '../uploads', $newName);
         }
-    
+
         $data = [
             'entityname' => $this->request->getPost('entityname'),
             'classification' => $this->request->getPost('classification'),
@@ -378,14 +737,21 @@ class DatabasePPEController extends ResourceController
             'modelno' => $this->request->getPost('modelno'),
             'serialno' => $this->request->getPost('serialno'),
             'quantity' => $this->request->getPost('quantity'),
-            'arrival' => $this->request->getPost('arrival'),
+            'unit' => $this->request->getPost('unit'),
+            'unitcost' => $this->request->getPost('unitcost'),
+            'totalcost' => $this->request->getPost('totalcost'),
+            // 'arrival' => $this->request->getPost('arrival'),
             'image' => $newName, // Store the image filename
         ];
-    
+
         $rin = $main->save($data);
-    
+
+        // Call the databaseListener function with the particular name
+        $this->databaseListener($particularName);
+
         return $this->respond($rin, 200);
     }
+
     
 
 
@@ -552,24 +918,42 @@ class DatabasePPEController extends ResourceController
 
 
 
-    public function databaseListener()
+    // public function databaseListener()
+    // {
+    //     $newRecord = $this->model->isNewRecordAdded();
+
+    //     if ($newRecord) {
+
+    //         $notification = [
+    //             'title' => 'New Record Added!',
+    //             'body' => 'A new record was added in your database.'
+    //         ];
+
+    //         // Send the notification
+    //         $this->triggerNotification($notification);
+    //     }
+    //     else{
+    //         return $this->respond('no changes');
+    //     }
+    // }
+
+    public function databaseListener($particularName)
     {
         $newRecord = $this->model->isNewRecordAdded();
 
         if ($newRecord) {
-
             $notification = [
                 'title' => 'New Record Added!',
-                'body' => 'A new record was added in your database.'
+                'body' => "A new record for particular '$particularName' was added in your database."
             ];
 
             // Send the notification
             $this->triggerNotification($notification);
-        }
-        else{
+        } else {
             return $this->respond('no changes');
         }
     }
+
 
     public function triggerNotification($notification)
     {
@@ -606,7 +990,422 @@ class DatabasePPEController extends ResourceController
     }
 
 
+    public function getEmployeeCount()
+    {
+        // Instantiate the EmployeeModel
+        $employeeModel = new SigninModel();
+        
+        // Exclude records where the position is 'Admin'
+        $employeeModel->where('position !=', 'Admin');
+        
+        // Retrieve the count of employees using the countAllResults() method
+        $employeeCount = $employeeModel->countAllResults();
+        
+        // Return the count in JSON format
+        return $this->respond(['employeeCount' => $employeeCount], 200);
+    }
+    
 
+
+    public function getTotalInventory()
+    {
+        // Instantiate the EmployeeModel
+        $inventoryModel = new InventoryModel();
+        
+        // Retrieve the count of employees using the countAllResults() method
+        $inventoryCount = $inventoryModel->countAllResults();
+        
+        // Return the count in JSON format
+        return $this->respond(['inventoryCount' => $inventoryCount], 200);
+    }
+
+    public function getPPECount()
+    {
+        // Instantiate the EmployeeModel
+        $ppeModel = new DatabasePPEModel();
+        
+        // Retrieve the count of employees using the countAllResults() method
+        $ppeCount = $ppeModel->countAllResults();
+        
+        // Return the count in JSON format
+        return $this->respond(['ppeCount' => $ppeCount], 200);
+    }
+
+    public function getInventoryCount()
+    {
+        $main = new InventoryModel();
+        $inventoryppe = $main->findAll(); // Retrieve all inventory entries
+        $count = count($inventoryppe); // Count all entries
+    
+        // Extract particulars and quantities from inventory entries
+        $particulars = [];
+        $counts = [];
+        foreach ($inventoryppe as $item) {
+            $particulars[] = $item['particulars'];
+            $counts[] = $item['counts'];
+        }
+    
+        return $this->respond([
+            'count' => $count,
+            'particulars' => $particulars,
+            'counts' => $counts
+        ], 200);
+    }
+
+
+//------------------------------    P D F  G E N E R A T I O N   ---------------------------------------
+
+public function generatePDF($recordId)
+{
+    // Ensure recordId is provided
+    if (!$recordId) {
+        die("Record ID is required.");
+    }
+
+    $databaseppemodel = new DatabasePPEModel();
+
+    // Fetch the data based on the provided recordId
+    $data = $databaseppemodel->where('id', $recordId)->first();
+
+    if ($data) {
+        // Load the MPDF library
+        $mpdf = new \Mpdf\Mpdf(); // Ensure correct namespacing
+
+        // Generate HTML content dynamically based on record data
+        $htmlContent = view('ICS', ['data' => [$data]]); // Pass the record to the view
+
+        // Write HTML content to PDF
+        $mpdf->WriteHTML($htmlContent);
+
+        // Output the PDF
+        $mpdf->Output('generated_pdf.pdf', 'D'); // 'D' to force download
+
+        exit(); // End script execution after downloading the PDF
+    } else {
+        // Handle the case where the record is not found
+        die("Record with ID $recordId not found.");
+    }
+}
+
+
+
+    public function employeeRecordsPDF()
+    {
+        // Get the selected employee name from the request
+        $requestData = $this->request->getJSON();
+        $selectedEmployee = $requestData->acc_officer;
+
+        $records = [];
+        $databaseppemodel = new DatabasePPEModel();
+
+        // Get records for the selected employee
+        $data = $databaseppemodel->where('acc_officer', $selectedEmployee)
+                                ->findAll();
+
+        // Check if any records found
+        if ($data) {
+            // Load the MPDF library
+            $mpdf = new \Mpdf\Mpdf();
+
+
+            // Add each record to the array
+            foreach ($data as $record) {
+                $records[] = $record;
+            }
+
+            $htmlContent = view('ICS', ['data' => $records]);
+            $mpdf->WriteHTML($htmlContent);
+
+            // Output the PDF with a unique filename
+            $filename = $selectedEmployee . '_records.pdf';
+            $mpdf->Output($filename, 'D'); // 'D' to force download
+
+            // End script execution after downloading the PDF
+            exit();
+        } else {
+            // Handle the case where no records found
+            die("No records found for employee: $selectedEmployee");
+        }
+    }
+
+
+    // public function recordsPDF()
+    // {
+    //     $records = [];
+    //     $databaseppemodel = new DatabasePPEModel();
+        
+    //     // Get all records
+    //     $data = $databaseppemodel->findAll();
+        
+    //     // Check if any records found
+    //     if ($data) {
+    //         // Load the MPDF library
+    //         $mpdf = new \Mpdf\Mpdf(['orientation' => 'L', 'format' => 'Legal']);
+    
+        
+    //         foreach ($data as $record) {
+    //             // Add each record to the array
+    //             $records[] = $record;
+    //         }
+    
+    //         $htmlContent = view('RPCSP', ['data' => $records]);
+    //         $mpdf->WriteHTML($htmlContent);
+            
+    //         // Output the PDF with a unique filename
+    //         $filename = 'generated_pdf_all.pdf';
+    //         $mpdf->Output($filename, 'D'); // 'D' to force download
+        
+    //         // End script execution after downloading the PDF
+    //         exit();
+    //     } else {
+    //         // Handle the case where no records found
+    //         die("No records found.");
+    //     }
+    // }
+
+    public function recordsPDF()
+    {
+        $records = [];
+        $databaseppemodel = new DatabasePPEModel();
+        
+        // Get all records
+        $data = $databaseppemodel->findAll();
+        
+        // Check if any records found
+        if ($data) {
+            // Load the MPDF library
+            $mpdf = new \Mpdf\Mpdf(['format' => 'Legal']);
+        
+            foreach ($data as $record) {
+                // Add each record to the array
+                $records[] = $record;
+            }
+
+            // Generate the HTML content from the view
+            $htmlContent = view('SPS', ['data' => $records]);
+            $mpdf->WriteHTML($htmlContent);
+            
+            // Capture the PDF output as a string
+            $pdfOutput = $mpdf->Output('', 'S'); // 'S' to return as a string
+            
+            // Return the PDF as a response
+            return $this->response->setHeader('Content-Type', 'application/pdf')
+                                ->setBody($pdfOutput);
+        } else {
+            // Handle the case where no records are found
+            return $this->response->setStatusCode(404)
+                                ->setBody("No records found.");
+        }
+    }
+
+    public function stickerPDF()
+    {
+        // Get the JSON request body
+        $id = $this->request->getJSON();
+        $ids = $id->ids;
+        
+        //Ensure $ids is an array and not empty
+        if (!is_array($ids) || empty($ids)) {
+            return $this->response->setStatusCode(400)
+                ->setBody("Invalid input: IDs must be a non-empty array.");
+        }
+        
+        // Initialize records array
+        $records = [];
+        $databaseppemodel = new DatabasePPEModel();
+        
+        // Get records based on the array of IDs
+        $data = $databaseppemodel->whereIn('id', $ids)->findAll();
+        
+        // Check if any records found
+        if ($data) {
+            // Load the MPDF library
+            $mpdf = new \Mpdf\Mpdf(['format' => 'Legal']);
+            
+            foreach ($data as $record) {
+                // Add each record to the array
+                $records[] = $record;
+            }
+            
+            // Generate the HTML content from the view
+            $htmlContent = view('SPS', ['data' => $records]);
+            $mpdf->WriteHTML($htmlContent);
+            
+            // Capture the PDF output as a string
+            $pdfOutput = $mpdf->Output('', 'S'); // 'S' to return as a string
+            
+            // Return the PDF as a response
+            return $this->response->setHeader('Content-Type', 'application/pdf')
+                ->setBody($pdfOutput);
+        } else {
+            // Handle the case where no records are found
+            return $this->response->setStatusCode(404)
+                ->setBody("No records found.");
+        }
+        var_dump($ids);
+    }
+    
+    
+    
+    
+
+
+    public function showemployeerecordPDF($selectedshowEmployeePDF)
+    {
+        // Get the selected employee name from the request
+
+        $databaseppemodel = new DatabasePPEModel();
+
+        // Get records for the selected employee
+        $data = $databaseppemodel->where('acc_officer', $selectedshowEmployeePDF)
+                                ->findAll();
+
+        // Check if any records found
+        if ($data) {
+            // Load the MPDF library
+            $mpdf = new \Mpdf\Mpdf();
+
+            // Generate the HTML content from the view
+            $htmlContent = view('ICS', ['data' => $data]);
+            $mpdf->WriteHTML($htmlContent);
+
+            // Capture the PDF output as a string
+            $pdfOutput = $mpdf->Output('', 'S'); // 'S' to return as a string
+
+            // Return the PDF as a response
+            return $this->response->setHeader('Content-Type', 'application/pdf')
+                                ->setBody($pdfOutput);
+        } else {
+            // Handle the case where no records found
+            return $this->response->setStatusCode(404)
+                                ->setBody("No records found for employee: $selectedshowEmployeePDF");
+        }
+    }
+
+
+//------------------------ REQUEST PDF-------------------------
+
+
+public function requestPDF()
+{
+    $records = [];
+    $requestmodel = new RequestModel();
+    
+    // Get all records
+    $data = $requestmodel->findAll();
+    
+    // Check if any records found
+    if ($data) {
+        // Load the MPDF library
+        $mpdf = new \Mpdf\Mpdf(['orientation' => 'L', 'format' => 'Legal']);
+
+    
+        foreach ($data as $record) {
+            // Add each record to the array
+            $records[] = $record;
+        }
+
+        $htmlContent = view('pdf_template', ['data' => $records]);
+        $mpdf->WriteHTML($htmlContent);
+        
+        // Output the PDF with a unique filename
+        $filename = 'requests_pdf_all.pdf';
+        $mpdf->Output($filename, 'D'); // 'D' to force download
+    
+        // End script execution after downloading the PDF
+        exit();
+    } else {
+        // Handle the case where no records found
+        die("No records found.");
+    }
+}
+
+public function employeeRequestPDF()
+{
+    // Get the selected employee name from the request
+    $requestData = $this->request->getJSON();
+    $selectedEmployee = $requestData->empfullname;
+
+    $records = [];
+    $requestmodel = new RequestModel();
+
+    // Get records for the selected employee
+    $data = $requestmodel->where('empfullname', $selectedEmployee)
+                            ->findAll();
+
+    // Check if any records found
+    if ($data) {
+        // Load the MPDF library
+        $mpdf = new \Mpdf\Mpdf();
+
+
+        // Add each record to the array
+        foreach ($data as $record) {
+            $records[] = $record;
+        }
+
+        $htmlContent = view('pdf_template', ['data' => $records]);
+        $mpdf->WriteHTML($htmlContent);
+
+        // Output the PDF with a unique filename
+        $filename = $selectedEmployee . '_requests.pdf';
+        $mpdf->Output($filename, 'D'); // 'D' to force download
+
+        // End script execution after downloading the PDF
+        exit();
+    } else {
+        // Handle the case where no records found
+        die("No records found for employee: $selectedEmployee");
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+    public function updateVerification($selectedRecord)
+    {
+        // Load the model
+        $model = new DatabasePPEModel();
+        $id = $selectedRecord;
+
+        $existingRecord = $model->find($id);
+        $existingImage = $existingRecord['imageverification'];
+
+        if($existingImage) {
+            $uploadsPath = ROOTPATH . '../uploads/'; 
+            unlink($uploadsPath . $existingImage);
+        }
+
+
+
+        // Check if an image is uploaded
+        if ($this->request->getFile('imageverification') && $this->request->getFile('imageverification')->isValid()) {
+            // $uploadsPath = ROOTPATH . '../uploads/'; 
+            // unlink($uploadsPath . $existingImage);
+            $image = $this->request->getFile('imageverification');
+            $newName = $image->getRandomName();
+            $image->move('./uploads', $newName);
+            $data['imageverification'] = $newName; // Update the image field with the new image name
+        }
+        
+        // Perform the update operation
+        $result = $model->update($id, $data);
+        
+        if ($result) {
+            return $this->respond(['status' => 'success', 'message' => 'Record updated successfully']);
+        } else {
+            // Handle the case where the update fails
+            return $this->respond(['status' => 'error', 'message' => 'Failed to update record'], 500);
+        }
+    }
+    
 
 
     

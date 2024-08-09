@@ -1,55 +1,3 @@
-<style scoped>
-#qr-video {
-  width: 500px;
-  height: 500px;
-}
-#qr-result {
-  margin-top: 10px;
-}
-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
-    /* Responsive styles */
-    @media screen and (max-width: 600px) {
-      table, tr, td {
-        display: block;
-      }
-
-      td {
-        border: none;
-        position: relative;
-      }
-
-      td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, 0);
-      }
-
-      /* Make the table scrollable on smaller screens */
-      table {
-        overflow-y: auto;
-      }
-    }
-</style>
-
-
 <template>
 <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
         <!-- ======= Header ======= -->
@@ -228,11 +176,24 @@ table {
               <div class="col-lg-12">
                 <div class="card">
                 <div class="card-body">
-                <h5 class="card-title">Pending</h5>
-                <!-- Table with stripped rows -->
-                <a class="btn btn-warning" @click="recordsPDF()">Records</a>
+                <h5 class="card-title">Pending</h5> 
+                <div class="col-lg-6"> <!-- Use col-lg-6 to make both elements half width on large screens -->
+                  <div class="form-group">
+                      <!-- Dropdown to filter by employee -->
+                      <select v-model="selectedEmployee" @change="downloadEmployeeRecordsPDF" class="form-select mt-3 animated-dropdown">
+                          <option value="">Select Employee</option>
+                          <option v-for="employee in distinctEmployees" :key="employee" :value="employee">{{ employee }}</option>
+                      </select>
+                  </div>
+              </div>
+              <div class="col-lg-6 text-end"> <!-- Use col-lg-6 and text-end to align the button to the right -->
+                  <!-- Download All button -->
+                  <a class="btn btn-warning" @click="recordsPDF()"><i class="ri-download-2-line"></i> Download All</a>
+              </div>
+
+                <br>
                 <div style="overflow-y: auto;">
-              <table class="table">
+              <table class="table table-hover">
                 <thead>
                   <tr>
                     <th>Entity</th>
@@ -244,8 +205,8 @@ table {
                     <th>Serial No.</th>
                     <th>Description</th>
                     <th>Employee</th>
-                    <th>Image Verification</th>
                     <th>Date Recorded</th>
+                    <th>Image Verification</th>
                     <th>Action</th>
                   </tr>
                 </thead>
@@ -264,11 +225,11 @@ table {
                     <td scope="row">{{ info.serialno }}</td>
                     <td scope="row">{{ info.fulldescription }}</td>
                     <td scope="row">{{ info.empfullname }}</td>
-                    <td scope="row"><img :src="info.imageverification" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
                     <td scope="row">{{ info.created_at }}</td>
+                    <td scope="row"><img :src="info.imageverification" alt="Generate and Capture to Verify" style="max-width: 100px; max-height: 100px;" /></td>
                     <td scope="row">
-                      <a class="btn btn-success" @click="generatePDF(info.id)">Generate PDF</a>
-                      <a class="btn btn-warning" @click="selectRecord(info)">Capture File</a>
+                      <a class="btn btn-success" @click="generatePDF(info.id)"><i class="bx bxs-download"></i></a>
+                      <a class="btn btn-warning" @click="selectRecord(info)"><i class="bx bxs-camera"></i></a>
                     </td>
                   </tr>
                 </tbody>
@@ -289,7 +250,7 @@ table {
 
               <form class="row g-3" enctype="multipart/form-data">
                 <div class="col-12">
-                  <label class="form-label">Choose Image Source:</label>
+                  <label class="form-label"><h3><b>Choose Image Source:</b></h3></label>
                   <div>
                       <input type="radio" id="upload" value="upload" v-model="imageSource">
                       <label for="upload">Upload Image</label>
@@ -302,24 +263,20 @@ table {
 
               <div class="col-12" v-if="imageSource === 'upload'">
                   <!-- File upload input -->
-                  <label for="image" class="form-label">Upload Image</label>
+                  <label for="image" class="form-label"><b>Upload Image</b></label>
                   <input type="file" class="form-control" id="image" @change="handleFileUpload" accept="image/*">
-                  <!-- <div class="col-12">
-                      <label class="form-label">Preview</label>
-                      <img :src="uploadedImage" v-if="uploadedImage" alt="Uploaded Image Preview" style="max-width: 100px; max-height: 100px;">
-                  </div> -->
               </div>
 
-              <div class="col-12" v-else-if="imageSource === 'capture'">
+              <div class="col-6" v-else-if="imageSource === 'capture'">
                   <!-- Camera capture section -->
-                  <label for="camera" class="form-label">Capture Image</label>
-                  <video id="camera" width="320" height="240" autoplay></video>
+                  <label for="camera" class="form-label"><b>Capture Image</b></label>
+                  <video id="camera" width="280" height="220" autoplay></video>
                   <a @click="startCamera" class="btn btn-primary">{{ cameraStarted ? 'Stop Camera' : 'Start Camera' }}</a>
                   <a @click="captureImage" class="btn btn-success" :disabled="!cameraStarted">Capture</a>
               </div>
-              <div class="col-12">
-                  <label class="form-label">Image Preview</label>
-                  <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" style="max-width: 320px; max-height: 240px;">
+              <div class="col-6">
+                  <label class="form-label text-center"><b>Preview</b></label>
+                  <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" style="max-width: 280px; max-height: 220px;">
               </div>
               <div class="text-center">
                   <button @click="updateVerification" type="submit" class="btn btn-primary">Submit</button>
@@ -372,7 +329,7 @@ import QRCode from 'qrcode-generator';
 
 export default{
 computed:{
-  imagePreview() {
+    imagePreview() {
         if (this.imageSource === 'upload') {
             return this.uploadedImage;
         } else if (this.imageSource === 'capture') {
@@ -380,7 +337,20 @@ computed:{
         } else {
             return null; // or a default placeholder image
         }
+    },
+    distinctEmployees() {
+    const employeeSet = new Set();
+    this.info.forEach(item => employeeSet.add(item.empfullname));
+    return Array.from(employeeSet);
+  },
+  // Filtered table data based on selected employee
+  filteredInfo() {
+    if (this.selectedEmployee) {
+      return this.info.filter(item => item.empfullname === this.selectedEmployee);
+    } else {
+      return this.info;
     }
+  }
 },
   data(){
       return{
@@ -411,7 +381,8 @@ computed:{
           cameraButtonText: 'Start Camera',
           selectedImageFile: null,
           imageSource: 'upload',
-          imagePreview: ''
+          imagePreview: '',
+          selectedEmployee: ''
       }
   },
   created(){
@@ -564,19 +535,48 @@ dataURLtoFile(dataUrl) {
         },
 
         async recordsPDF() {
+        try {
+            // Send HTTP request to backend to generate PDFs for all records
+            const response = await fetch('http://dilg.test/backend/recordsPDF', {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            // Check if the response is successful
+            if (response.ok) {
+                const blob = await response.blob();
+                const filename = 'generated_pdf_all.pdf'; // Adjust the filename if needed
+                const url = window.URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.setAttribute('download', filename);
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                console.log('PDF generated successfully');
+            } else {
+                console.error('Failed to generate PDF');
+            }
+        } catch (error) {
+            console.error('Error generating PDFs:', error);
+        }
+    },
+
+        async downloadEmployeeRecordsPDF() {
             try {
-                // Send HTTP request to backend to generate PDFs for all records
-                const response = await fetch('http://dilg.test/backend/recordsPDF', {
-                    method: 'GET',
+                const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
+                    method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
+                    body: JSON.stringify({ acc_officer: this.selectedEmployee }),
                 });
 
-                // Check if the response is successful
                 if (response.ok) {
                     const blob = await response.blob();
-                    const filename = 'generated_pdf_all.pdf'; // Adjust the filename if needed
+                    const filename = `${this.selectedEmployee}_records.pdf`; // Adjust the filename if needed
                     const url = window.URL.createObjectURL(new Blob([blob]));
                     const link = document.createElement('a');
                     link.href = url;
@@ -589,9 +589,10 @@ dataURLtoFile(dataUrl) {
                     console.error('Failed to generate PDF');
                 }
             } catch (error) {
-                console.error('Error generating PDFs:', error);
+                console.error('Error generating PDF:', error);
             }
         },
+
 
         onDecode(result) {
           this.scannedId = result;
@@ -643,6 +644,63 @@ dataURLtoFile(dataUrl) {
 </script>
 
 <style>
+.animated-dropdown {
+  width: 50%; /* Set the width to half of its container */
+  transition: width 0.3s ease; /* Add animation transition */
+}
+
+.animated-dropdown:hover {
+  width: 50%; /* Expand to full width on hover */
+}
+
+#qr-video {
+  width: 300px;
+  height: 300px;
+}
+#qr-result {
+  margin-top: 10px;
+}
+table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    /* Responsive styles */
+    @media screen and (max-width: 600px) {
+      table, tr, td {
+        display: block;
+      }
+
+      td {
+        border: none;
+        position: relative;
+      }
+
+      td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+
+      /* Make the table scrollable on smaller screens */
+      table {
+        overflow-y: auto;
+      }
+    }
 /* CSS styles for modal */
 .modal {
   display: flex;

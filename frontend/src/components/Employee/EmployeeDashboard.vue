@@ -251,11 +251,9 @@
                     <p class="card-text">
                       <span v-if="info.status === 'Serviceable'" class="status-serviceable">
                         <i class="bi bi-bookmark-check"></i> <!-- Add bookmark-check icon -->
-                        <small class="text-muted">{{ info.status }}</small>
                       </span>
                       <span v-if="info.status === 'Unserviceable'" class="status-unserviceable">
                         <i class="bi bi-bookmark-x"></i> <!-- Add bookmark-x icon -->
-                        <small class="text-muted">{{ info.status }}</small>
                       </span>
                       <!-- <small class="text-muted">{{ info.status }}</small> -->
                     </p>

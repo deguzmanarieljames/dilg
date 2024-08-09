@@ -23,3 +23,990 @@ WHERE `id` IN :id:', [...], false)
  6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
  7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
  8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-04-15 12:47:47 --> mysqli_sql_exception: Can't update table 'inventoryppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(198): CodeIgniter\Model->update('324', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('324')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-04-15 12:47:47 --> Can't update table 'inventoryppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `quantity` = :quantity:, `arrival` = :arrival:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(198): CodeIgniter\Model->update('324', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('324')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:28 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:28 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:28 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:28 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:28 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:29 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:30 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:33 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:33 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:33 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:34 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:35 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:35 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:35 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:35 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:35 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:35 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:35 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:35 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:35 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:35 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:35 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:35 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:35 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 14:57:35 --> Too few arguments to function App\Controllers\LogbookController::updateLogbookDateReturned(), 2 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 3 expected
+in APPPATH\Controllers\LogbookController.php on line 52.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->updateLogbookDateReturned('55', 'Ariel James De Guzman')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:20:59 --> Undefined variable $data
+in APPPATH\Controllers\OfficerVerifyController.php on line 68.
+ 1 APPPATH\Controllers\OfficerVerifyController.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 68)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('24')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:27:45 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('24')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:34:03 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('24')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:34:12 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('24')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:34:55 --> Undefined variable $data
+in APPPATH\Controllers\OfficerVerifyController.php on line 68.
+ 1 APPPATH\Controllers\OfficerVerifyController.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 68)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('23')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:35:01 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1713195279_5e34557bdda06f6001bb.jpg): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713195279_5e34557bdda06f6001bb.jpg): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713195279_5e34557bdda06f6001bb.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('23')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:35:28 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('24')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:36:29 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('24')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:37:20 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('24')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:38:45 --> Undefined variable $data
+in APPPATH\Controllers\OfficerVerifyController.php on line 68.
+ 1 APPPATH\Controllers\OfficerVerifyController.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 68)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('24')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:38:46 --> Undefined variable $data
+in APPPATH\Controllers\OfficerVerifyController.php on line 68.
+ 1 APPPATH\Controllers\OfficerVerifyController.php(68): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 68)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('24')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:39:38 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 60.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 60)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(60): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('24')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:39:57 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('24')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:41:22 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1713195279_5e34557bdda06f6001bb.jpg): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713195279_5e34557bdda06f6001bb.jpg): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713195279_5e34557bdda06f6001bb.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('23')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:41:28 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('24')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 15:42:55 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1713170821_b0c1298f9c99af189ab8.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('24')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 16:34:33 --> Attempt to read property "particulars" on null
+in APPPATH\Controllers\LogbookController.php on line 57.
+ 1 APPPATH\Controllers\LogbookController.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "particulars" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\LogbookController.php', 57)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->saveBorrowed()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 16:34:45 --> Attempt to read property "particulars" on null
+in APPPATH\Controllers\LogbookController.php on line 57.
+ 1 APPPATH\Controllers\LogbookController.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "particulars" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\LogbookController.php', 57)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->saveBorrowed()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 16:37:47 --> Attempt to read property "particulars" on null
+in APPPATH\Controllers\LogbookController.php on line 57.
+ 1 APPPATH\Controllers\LogbookController.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "particulars" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\LogbookController.php', 57)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->saveBorrowed()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 16:38:08 --> Attempt to read property "particulars" on null
+in APPPATH\Controllers\LogbookController.php on line 57.
+ 1 APPPATH\Controllers\LogbookController.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "particulars" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\LogbookController.php', 57)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->saveBorrowed()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 16:39:07 --> Undefined variable $json
+in APPPATH\Controllers\LogbookController.php on line 57.
+ 1 APPPATH\Controllers\LogbookController.php(57): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $json', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\LogbookController.php', 57)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->saveBorrowed()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 16:40:25 --> Attempt to read property "particulars" on null
+in APPPATH\Controllers\LogbookController.php on line 58.
+ 1 APPPATH\Controllers\LogbookController.php(58): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "particulars" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\LogbookController.php', 58)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\LogbookController->saveBorrowed()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\LogbookController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 18:17:06 --> Call to a member function isValid() on null
+in APPPATH\Controllers\DatabasePPEController.php on line 367.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 18:17:28 --> Call to a member function isValid() on null
+in APPPATH\Controllers\DatabasePPEController.php on line 367.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 18:17:55 --> Call to a member function isValid() on null
+in APPPATH\Controllers\DatabasePPEController.php on line 367.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 18:18:50 --> Call to a member function isValid() on null
+in APPPATH\Controllers\DatabasePPEController.php on line 367.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-04-15 18:18:54 --> Call to a member function isValid() on null
+in APPPATH\Controllers\DatabasePPEController.php on line 367.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-04-15 18:50:40 --> mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`dilg`.`logbook`, CONSTRAINT `fk_logbook_equipment` FOREIGN KEY (`particulars`) REFERENCES `inventoryppe` (`particulars`) ON DELETE RESTRICT ON UPDATE RESTRICT) in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `in...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `in...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `in...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2790): CodeIgniter\Database\BaseConnection->query('DELETE FROM `in...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(445): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(1080): CodeIgniter\Model->doDelete(Array, false)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(482): CodeIgniter\BaseModel->delete(Array)
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->delInventory()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-04-15 18:50:40 --> Cannot delete or update a parent row: a foreign key constraint fails (`dilg`.`logbook`, CONSTRAINT `fk_logbook_equipment` FOREIGN KEY (`particulars`) REFERENCES `inventoryppe` (`particulars`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2790): CodeIgniter\Database\BaseConnection->query('DELETE FROM `inventoryppe`
+WHERE `id` IN :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(445): CodeIgniter\Database\BaseBuilder->delete()
+ 3 SYSTEMPATH\BaseModel.php(1080): CodeIgniter\Model->doDelete([...], false)
+ 4 APPPATH\Controllers\DatabasePPEController.php(482): CodeIgniter\BaseModel->delete([...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->delInventory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-04-15 18:50:47 --> mysqli_sql_exception: Cannot delete or update a parent row: a foreign key constraint fails (`dilg`.`logbook`, CONSTRAINT `fk_logbook_equipment` FOREIGN KEY (`particulars`) REFERENCES `inventoryppe` (`particulars`) ON DELETE RESTRICT ON UPDATE RESTRICT) in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('DELETE FROM `in...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('DELETE FROM `in...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('DELETE FROM `in...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2790): CodeIgniter\Database\BaseConnection->query('DELETE FROM `in...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(445): CodeIgniter\Database\BaseBuilder->delete()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(1080): CodeIgniter\Model->doDelete(Array, false)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(482): CodeIgniter\BaseModel->delete(Array)
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->delInventory()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-04-15 18:50:47 --> Cannot delete or update a parent row: a foreign key constraint fails (`dilg`.`logbook`, CONSTRAINT `fk_logbook_equipment` FOREIGN KEY (`particulars`) REFERENCES `inventoryppe` (`particulars`) ON DELETE RESTRICT ON UPDATE RESTRICT)
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2790): CodeIgniter\Database\BaseConnection->query('DELETE FROM `inventoryppe`
+WHERE `id` IN :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(445): CodeIgniter\Database\BaseBuilder->delete()
+ 3 SYSTEMPATH\BaseModel.php(1080): CodeIgniter\Model->doDelete([...], false)
+ 4 APPPATH\Controllers\DatabasePPEController.php(482): CodeIgniter\BaseModel->delete([...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->delInventory()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

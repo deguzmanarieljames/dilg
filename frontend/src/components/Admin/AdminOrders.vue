@@ -1,3 +1,56 @@
+<style scoped>
+.custom-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 0;
+  z-index: 1000;
+  display: none;
+  background-color: #fff;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+}
+
+.custom-dropdown:hover .dropdown-menu {
+  display: block;
+}
+
+.dropdown-item {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.star-rating {
+  font-size: 1.5em;
+}
+
+.star-bar {
+  width: 100%;
+  height: 30px;
+  border-radius: 15px;
+  background-color: #ccc;
+}
+
+.star-progress {
+  height: 100%;
+  border-radius: 15px;
+  background-color: #ffd700;
+}
+
+
+
+
+
+
+
+
+
+
+</style>
 <template>
     <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
             <!-- ======= Header ======= -->
@@ -280,7 +333,119 @@
                 <div class="card">
                   <div class="card-body">
 
-Hello
+                    <h5 class="card-title">Add Order</h5>
+                    <form class="row g-3" enctype="multipart/form-data">
+                      <div class="col-4">
+                        <label for="classification" class="form-label">Classification</label>
+                        <input type="text" class="form-control" id="classification" v-model="classification" required>
+                      </div>
+                      <!-- <div class="col-4">
+                        <label for="article" class="form-label">Article</label>
+                        <input type="text" class="form-control" id="article" v-model="article" required>
+                      </div> -->
+                      <!-- <div class="col-4">
+                        <label for="article" class="form-label">Article</label>
+                        <select class="form-select" v-model="article" required>
+                          <option value="" disabled>Select Article</option>
+                          <option v-for="articlechoice in shops">{{ articlechoice.article }}</option>
+                        </select>
+                      </div> -->
+
+                      <div class="col-4 position-relative">
+                        <label for="article" class="form-label">Article</label>
+                        <input type="text" class="form-control" id="article" v-model="article" @input="fetchArticles" @change="fetchShopsByArticle" required>
+                        <ul v-if="filteredArticles.length" class="list-group position-absolute">
+                          <li v-for="articleChoice in filteredArticles" 
+                              :key="articleChoice.id" 
+                              class="list-group-item list-group-item-action"
+                              @click="selectArticle(articleChoice.article)">
+                            {{ articleChoice.article }}
+                          </li>
+                        </ul>
+                      </div>
+
+
+
+                      <div class="col-4">
+                        <label for="particulars" class="form-label">Particular</label>
+                        <input type="text" class="form-control" id="particulars" v-model="particulars" required>
+                      </div>
+                      <div class="col-2">
+                        <label for="quantity" class="form-label">Quantity</label>
+                        <input type="text" class="form-control" id="quantity" v-model="quantity" required>
+                      </div>
+                      <div class="col-2">
+                        <label for="unit" class="form-label">Unit</label>
+                        <select class="form-select" id="unit" v-model="unit" required>
+                          <option value="unit">Unit</option>
+                          <option value="set">Set</option>
+                        </select>
+                      </div>
+                      <div class="col-2">
+                        <label for="unitcost" class="form-label">Unit Cost</label>
+                        <input type="text" class="form-control" id="unitcost" v-model="unitcost" required>
+                      </div>
+                  
+                      <div class="col-2">
+                        <label for="totalamount" class="form-label">Total Amount</label>
+                        <input type="text" class="form-control" id="totalamount" :value="totalAmountFormatted" required readonly>
+                      </div>
+
+                      <div class="col-2">
+                        <label for="shop" class="form-label">Shop</label>
+                        <br>
+                        <div class="custom-dropdown">
+                          <input v-if="!useDropdown" type="text" class="form-control" id="shop" v-model="shop" required>
+                          <select v-else class="form-select" v-model="shop" required>
+                            <option value="" disabled>Select Best Shop</option>
+                            <option v-for="suggestedShop in filteredShops" :key="suggestedShop.id">
+                              {{ suggestedShop.shop }}
+                            </option>
+                          </select>
+                          <div class="dropdown-menu">
+                            <div v-for="suggestedShop in filteredShops" :key="suggestedShop.id" class="dropdown-item">
+                              {{ suggestedShop.shop }}
+                              <div class="star-rating">
+                                <div class="star-bar">
+                                  <div class="star-progress" :style="{ width: ((suggestedShop.shop_rate / 5) * 100) + '%' }"></div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      
+                      <div class="col-2">
+                        <button type="button" class="btn btn-info mt-4" @click="toggleShopInput">{{ useDropdown ? 'New Shop' : 'Suggested' }}</button>
+                      </div>
+                      <div align="center">
+                        <div class="col-4">
+                          <label for="date_ordered" class="form-label">Date Ordered</label>
+                          <input type="date" class="form-control" id="date_ordered" v-model="date_ordered">
+                        </div>
+                      </div>
+                    
+                      <div class="text-center">
+                        <button @click="saveOrder" type="submit" class="btn btn-primary">Submit</button>
+                        <button @click="resetForm" type="reset" class="btn btn-secondary">Reset</button>
+                      </div>
+                    </form>
+                    <!-- Vertical Form -->
 
 
                   </div>  
@@ -298,10 +463,187 @@ Hello
       </template>
     
     
-    <script>
-    
-    // Components
+      <script>
+      import axios from 'axios'
+      
+      
+      export default{
+      
+      computed:{
+        totalAmount() {
+          return this.quantity * this.unitcost;
+        },
+        totalAmountFormatted() {
+          // Format total amount with commas
+          return this.totalAmount.toLocaleString();
+        },
+      },
+      data(){
+          return{
+              id: "",
+              inventory:[],
+              shops: [],
+              entityname: "",
+              classification: "",
+              article: "",
+              particulars: "",
+              quantity: "",
+              unit: "",
+              unitcost: "",
+              totalamount: "",
+              shop: "",
+              date_ordered: "",
+              filteredArticles: [],
+              filteredShops: [],
+              useDropdown: false
+          }
+      },
+      created(){
+          this.getInventory()
+          this.getShop()
+          this.fetchArticles()
+      },
+      
+      methods:{
+        getStarWidth(shopRate) {
+          return (shopRate / 5) * 100;
+        },
+        // calculateTotalAmount() {
+        //   // Check if quantity and unit cost are numeric values
+        //   if (!isNaN(this.quantity) && !isNaN(this.unitcost)) {
+        //     // Calculate total amount
+        //     return this.quantity * this.unitcost;
+        //   } else {
+        //     // If quantity or unit cost is not a number, return 0
+        //     return 0;
+        //   }
+        // },
+        async fetchArticles() {
+          if (this.article.length > 0) {
+            try {
+              const response = await axios.get('/getArticles', { params: { query: this.article } });
+              this.filteredArticles = response.data;
+            } catch (error) {
+              console.error('Error fetching articles', error);
+            }
+          } else {
+            this.filteredArticles = [];
+          }
+        },
+        async fetchShopsByArticle() {
+          if (this.article) {
+            try {
+              const response = await axios.get('/getShopsByArticle', { params: { article: this.article } });
+              this.filteredShops = response.data;
+            } catch (error) {
+              console.error('Error fetching shops by article', error);
+            }
+          }
+        },
+        selectArticle(article) {
+          this.article = article;
+          this.filteredArticles = [];
+          this.fetchShopsByArticle();
+        },
+        toggleShopInput() {
+          this.useDropdown = !this.useDropdown;
+        },
+          async getInventory(){
+              try {
+                  const inv = await axios.get('getInventory');
+                  this.inventory = inv.data;
+                  console.log(this.inventory);
+              } catch (error) {
+                  console.log(error);
+              }
+          },
+          // async saveOrder() {
+          //     try {
+          //         const response = await axios.post('saveOrder', {
+          //             classification: this.classification,
+          //             article: this.article,
+          //             particulars: this.particulars,
+          //             quantity: this.quantity,
+          //             unit: this.unit,
+          //             unitcost: this.unitcost,
+          //             totalamount: this.totalamount,
+          //             shop: this.shop,
+          //             date_ordered: this.date_ordered,
+          //         });
+          //         console.log('Server response:', response.data);
+          //         this.$emit('data-saved');
+          //     } catch (error) {
+          //         console.error(error);
+          //     }
+          // },
 
-    
-    </script>
-    
+
+
+          async saveOrder() {
+          try {
+            // Compute totalcost
+
+            // Create a FormData object and append the computed totalcost
+            const formData = new FormData();
+
+            // Append other form data including the computed totalcost
+            formData.append('classification', this.classification);
+            formData.append('article', this.article);
+            formData.append('particulars', this.particulars);
+            formData.append('quantity', this.quantity);
+            formData.append('unit', this.unit);
+            formData.append('unitcost', this.unitcost);
+            formData.append('totalamount', this.totalamount); // Ensure totalcost is included
+            formData.append('shop', this.shop);
+            formData.append('date_ordered', this.date_ordered);
+
+            // Now you can submit the formData to your backend endpoint using Axios or any other method
+            await axios.post('/saveOrder', formData, {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            });
+
+            // Reset the form and emit the 'data-saved' event
+            // this.resetForm();
+            // this.$emit('data-saved');
+            // console.log('Server response:', response.data);
+            
+          } catch (error) {
+            console.error('Error saving:', error);
+          }
+          this.$router.push('/orderpending');
+        },
+
+          async getShop() {
+            // Use the CodeIgniter API endpoint to fetch the list of employee names
+            try {
+              const response = await axios.get('getShop');
+              this.shops = response.data;
+            } catch (error) {
+              console.error('Error fetching employee names', error);
+            }
+          },
+
+      
+          resetForm() {
+                  this.classification = "";
+                  this.article = "";
+                  this.particular = "";
+                  this.unit = "";
+                  this.unitcost = "";
+                  this.totalamount = "";
+                  this.shop = "";
+                  this.quantity = "";
+                  this.date_ordered = "";
+              },
+      
+      
+      
+          async logout(){
+              sessionStorage.removeItem('token');
+              this.$router.push('/');
+          }
+      },
+      }
+      </script>

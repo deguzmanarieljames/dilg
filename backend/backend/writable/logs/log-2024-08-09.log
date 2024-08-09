@@ -1,0 +1,563 @@
+CRITICAL - 2024-08-09 11:50:34 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:50:36 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:50:36 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:50:54 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:51:28 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:52:02 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:52:17 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:54:51 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:55:27 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:55:43 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:55:44 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:55:57 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:56:26 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:58:54 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:58:56 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:58:57 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:59:35 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 11:59:49 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:25:21 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:26:54 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:29:06 --> Call to undefined function App\Controllers\var_dum()
+in APPPATH\Controllers\DatabasePPEController.php on line 1235.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:30:38 --> syntax error, unexpected token ")", expecting variable
+in APPPATH\Controllers\DatabasePPEController.php on line 1201.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\DatabasePPEController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\DatabasePPEController')
+ 4 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\DatabasePPEController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:30:46 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', null, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', null)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:31:06 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', 33, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', 33)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:31:07 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', 33, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', 33)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:31:07 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', 33, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', 33)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:31:08 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', 33, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', 33)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:31:08 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', 33, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', 33)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:31:08 --> whereIn() expects $values to be of type array or closure
+in SYSTEMPATH\Database\BaseBuilder.php on line 939.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(826): CodeIgniter\Database\BaseBuilder->_whereIn('id', 33, false, 'AND ', null)
+ 2 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->whereIn('id', 33)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1208): CodeIgniter\Model->__call('whereIn', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:33:09 --> Attempt to read property "acc_officer" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1204.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1204): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "acc_officer" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1204)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:33:16 --> Attempt to read property "ids" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1206.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1206): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "ids" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1206)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-08-09 12:35:14 --> mysqli_sql_exception: Operand should contain 1 column(s) in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1209): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-08-09 12:35:14 --> Operand should contain 1 column(s)
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(1209): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-08-09 12:35:33 --> mysqli_sql_exception: Operand should contain 1 column(s) in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1209): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-08-09 12:35:33 --> Operand should contain 1 column(s)
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(1209): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-08-09 12:35:33 --> mysqli_sql_exception: Operand should contain 1 column(s) in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1209): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-08-09 12:35:33 --> Operand should contain 1 column(s)
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(1209): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-08-09 12:35:34 --> mysqli_sql_exception: Operand should contain 1 column(s) in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1209): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-08-09 12:35:34 --> Operand should contain 1 column(s)
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(1209): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-08-09 12:35:34 --> mysqli_sql_exception: Operand should contain 1 column(s) in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1209): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-08-09 12:35:34 --> Operand should contain 1 column(s)
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(1209): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-08-09 12:35:53 --> mysqli_sql_exception: Operand should contain 1 column(s) in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1209): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-08-09 12:35:53 --> Operand should contain 1 column(s)
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(1209): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:45:41 --> Attempt to read property "ids" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1205.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1205): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "ids" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1205)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:45:42 --> Attempt to read property "ids" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1205.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1205): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "ids" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1205)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:45:42 --> Attempt to read property "ids" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1205.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1205): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "ids" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1205)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:45:42 --> Attempt to read property "ids" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1205.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1205): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "ids" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1205)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:45:43 --> Attempt to read property "ids" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1205.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1205): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "ids" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1205)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:46:23 --> syntax error, unexpected token ","
+in APPPATH\Controllers\DatabasePPEController.php on line 1204.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\DatabasePPEController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\DatabasePPEController')
+ 4 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\DatabasePPEController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:46:37 --> Attempt to read property "ids" on int
+in APPPATH\Controllers\DatabasePPEController.php on line 1205.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1205): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "ids" on int', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1205)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:46:52 --> Attempt to read property "ids" on string
+in APPPATH\Controllers\DatabasePPEController.php on line 1205.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1205): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "ids" on string', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1205)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:46:53 --> Attempt to read property "ids" on string
+in APPPATH\Controllers\DatabasePPEController.php on line 1205.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1205): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "ids" on string', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1205)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:47:22 --> Attempt to read property "ids" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1205.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1205): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "ids" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1205)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:47:30 --> Attempt to read property "ids" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1205.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1205): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "ids" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1205)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:47:45 --> syntax error, unexpected integer "33", expecting identifier or variable or "{" or "$"
+in APPPATH\Controllers\DatabasePPEController.php on line 1205.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\DatabasePPEController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\DatabasePPEController')
+ 4 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\DatabasePPEController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 12:48:01 --> Attempt to read property "ids" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1205.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1205): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "ids" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1205)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-08-09 12:56:28 --> mysqli_sql_exception: Operand should contain 1 column(s) in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1218): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-08-09 12:56:28 --> Operand should contain 1 column(s)
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `id` = :id:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(1218): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 13:11:03 --> Undefined variable $record
+in APPPATH\Controllers\DatabasePPEController.php on line 1227.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1227): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $record', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1227)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-08-09 13:11:05 --> Undefined variable $record
+in APPPATH\Controllers\DatabasePPEController.php on line 1227.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1227): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $record', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1227)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->stickerPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

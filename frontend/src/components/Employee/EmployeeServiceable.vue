@@ -312,6 +312,13 @@ export default{
           classification: "",
           empfullname: "",
           code: "",
+          article: "",
+          modelno: "",
+          serialno: "",
+          fulldescription: "",
+          status: "",
+          created_at: "",
+          date_returned: "",
           qrCodeData: null,
       }
   },

@@ -147,6 +147,49 @@ class OfficerVerifyController extends ResourceController
                 die("No records found.");
             }
         }
+
+        public function employeeRecordsPDF()
+        {
+            // Get the selected employee name from the request
+            $requestData = $this->request->getJSON();
+            $selectedEmployee = $requestData->employee;
+
+            $records = [];
+            $officerPPEModel = new OfficerModel();
+            $inventoryPPEModel = new InventoryModel();
+
+            // Get records for the selected employee
+            $data = $officerPPEModel->select('officerverifyppe.*, inventoryppe.entityname, inventoryppe.classification, inventoryppe.code, inventoryppe.article, inventoryppe.modelno, inventoryppe.serialno, inventoryppe.fulldescription')
+                                    ->join('inventoryppe', 'inventoryppe.particulars = officerverifyppe.particulars', 'left')
+                                    ->where('officerverifyppe.empfullname', $selectedEmployee)
+                                    ->findAll();
+
+            // Check if any records found
+            if ($data) {
+                // Load the MPDF library
+                $mpdf = new \Mpdf\Mpdf();
+
+                // Start the PDF document
+                $mpdf->WriteHTML('<h1>Records Details</h1>');
+
+                foreach ($data as $record) {
+                    // Add each record to the array
+                    $records[] = $record;
+                }
+                $htmlContent = view('pdf_template', ['data' => $records]);
+                $mpdf->WriteHTML($htmlContent);
+                // Output the PDF with a unique filename
+                $filename = $selectedEmployee . '_records.pdf';
+                $mpdf->Output($filename, 'D'); // 'D' to force download
+
+                // End script execution after downloading the PDF
+                exit();
+            } else {
+                // Handle the case where no records found
+                die("No records found for employee: $selectedEmployee");
+            }
+        }
+
         
         
 

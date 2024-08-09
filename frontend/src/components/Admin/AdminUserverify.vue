@@ -52,14 +52,16 @@
           <li class="nav-item dropdown pe-3">
   
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <img src="./img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <span class="d-none d-md-block dropdown-toggle ps-2">A. De Guzman</span>
-            </a><!-- End Profile Iamge Icon -->
-  
+              <div style="width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
+                <div :style="getImageStyle(infos.image)"></div>
+              </div>
+              <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
+            </a><!-- End Profile Image Icon -->
+
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>Ariel James De Guzman</h6>
-                <span>Web Designer</span>
+                <h6>{{ infos.fullname }}</h6>
+                <span>{{ infos.position }}</span>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -205,6 +207,12 @@
             <span>Workspace</span>
         </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/logbook">
+            <i class="bi bi-folder-plus"></i>
+            <span>Logbook</span>
+          </a>
+        </li><!-- End Input Nav -->
 
         <li class="nav-heading">Stocks</li>
 
@@ -215,14 +223,6 @@
           </a>
         </li>
 
-        <li class="nav-heading">Ordering</li>
-    
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/ordering">
-            <i class="bi bi-folder-plus"></i>
-            <span>Ordering</span>
-          </a>
-        </li>
         
         <li class="nav-heading">Security</li>
 
@@ -263,44 +263,44 @@
 
 
 
-            <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Table with hoverable rows</h5>
-
-              <!-- Table with hoverable rows -->
-              <table class="table table-hover">
-                <thead>
-                  <tr>
-                    <th scope="col">Image</th>
-                    <th scope="col">Full Name</th>
-                    <th scope="col">Position</th>
-                    <th scope="col">Date/Time</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="item in info" :key="item.id">
-                    <td scope="row">                <div style="width: 60px; height: 60px; overflow: hidden; border-radius: 50%;">
-                      <div :style="getImageStyle(item.image)"></div>
-                    </div></td>
-                    <td scope="row">{{ item.fullname }}</td>
-                    <td scope="row">{{ item.position }}</td>
-                    <td scope="row">{{ item.created_at }}</td>
-                    <td scope="row">{{ item.status }}</td>
-                    <td scope="row">
-                      <div>
-                        <button @click="updateStatus(item.id, 'Approved')" class="btn btn-success">Approve</button>
-                        <button @click="updateStatus(item.id, 'Declined')" class="btn btn-danger">Decline</button>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <!-- End Table with hoverable rows -->
-
-            </div>
-          </div>
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Table with hoverable rows</h5>
+              
+                  <!-- Table with hoverable rows -->
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Image</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Position</th>
+                        <th scope="col">Date/Time</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr v-for="item in info" :key="item.id">
+                        <td scope="row">
+                          <div style="width: 60px; height: 60px; overflow: hidden; border-radius: 50%;">
+                            <div :style="getImageStyle(item.image)"></div>
+                          </div>
+                        </td>
+                        <td scope="row">{{ item.fullname }}</td>
+                        <td scope="row">{{ item.position }}</td>
+                        <td scope="row">{{ item.created_at }}</td>
+                        <td scope="row">
+                          <button v-if="item.status === 'Approved'" @click="updateStatus(item.id, 'Declined')" class="btn btn-outline-success">Approved</button>
+                          <button v-else-if="item.status === 'Pending'" @click="updateStatus(item.id, 'Approved')" class="btn btn-outline-warning">Pending</button>
+                          <button v-else @click="updateStatus(item.id, 'Approved')" class="btn btn-outline-danger">Declined</button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <!-- End Table with hoverable rows -->
+              
+                </div>
+              </div>
+              
 
             </div>
         </div>
@@ -322,6 +322,7 @@ export default{
   data(){
       return{
           info:[],
+          infos:[],
           item: [],
           fullname: "",
           position: "",
@@ -332,8 +333,31 @@ export default{
   },
   created(){
       this.getInfo()
+      this.user();
+      this.getUserInfo(this.infos.fullname);
   },
   methods:{
+    async getUserInfo(id){
+              try {
+                  const inf = await axios.get(`getDataUser?id=${id}`);
+                  this.info = inf.data;
+              } catch (error) {
+                  console.log(error);
+              }
+          },
+
+      async user(){
+        try{
+          const id= sessionStorage.getItem("token")
+          const response = await axios.get(`/users/${id}`, {
+            id:id
+          })
+          this.infos = response.data;
+
+        }catch(error){
+          console.log(error);
+        }
+      },
           getImageStyle(imageUrl) {
             // Function to generate the background image style
               if (!imageUrl) {

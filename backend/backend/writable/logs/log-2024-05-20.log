@@ -1,0 +1,560 @@
+CRITICAL - 2024-05-20 15:22:24 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 15:44:28 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles('1')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 15:44:34 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles('2')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 15:45:13 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 15:45:16 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 15:58:53 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 15:59:00 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 15:59:00 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 15:59:01 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 15:59:02 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 15:59:58 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:00:01 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:00:57 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:01:01 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:01:03 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:01:04 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:01:47 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:01:49 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:01:49 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:01:49 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:01:50 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:01:50 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:01:50 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:01:52 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:01:52 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:01:53 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:02:20 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:02:21 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:03:12 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:03:20 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:03:56 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:04:06 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:05:08 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:05:27 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:05:29 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:06:52 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:07:26 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:07:28 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:07:28 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:07:28 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:07:29 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:07:32 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:07:33 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:07:56 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:08:28 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:08:28 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:08:29 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:08:30 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:08:30 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:08:31 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:08:32 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:08:33 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:08:33 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:08:34 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:08:54 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:09:00 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:09:00 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:09:01 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:09:03 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:09:04 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:09:05 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:09:06 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:09:06 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:09:06 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:10:01 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:10:01 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:10:49 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:11:17 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:11:33 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-20 16:11:34 --> CodeIgniter\Database\BaseBuilder::like(): Argument #2 ($match) must be of type string, null given, called in C:\laragon\www\dilg\backend\backend\system\Model.php on line 871
+in SYSTEMPATH\Database\BaseBuilder.php on line 983.
+ 1 SYSTEMPATH\Model.php(871): CodeIgniter\Database\BaseBuilder->like('article', null)
+ 2 APPPATH\Controllers\OrderController.php(80): CodeIgniter\Model->__call('like', [...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OrderController->getArticles()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OrderController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

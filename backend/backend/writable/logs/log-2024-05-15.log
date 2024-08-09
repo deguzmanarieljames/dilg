@@ -1,0 +1,1530 @@
+CRITICAL - 2024-05-15 03:25:27 --> Undefined array key "empfullname"
+in APPPATH\Views\pdf_template.php on line 61.
+ 1 APPPATH\Views\pdf_template.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "empfullname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 61)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1047): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 03:26:07 --> Attempt to read property "acc_officer" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1025.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1025): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "acc_officer" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1025)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsPDF()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 03:52:44 --> Undefined array key "empfullname"
+in APPPATH\Views\pdf_template.php on line 61.
+ 1 APPPATH\Views\pdf_template.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "empfullname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 61)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1047): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 03:57:55 --> Undefined array key "empfullname"
+in APPPATH\Views\pdf_template.php on line 61.
+ 1 APPPATH\Views\pdf_template.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "empfullname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 61)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1047): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 03:58:03 --> Undefined array key "empfullname"
+in APPPATH\Views\pdf_template.php on line 61.
+ 1 APPPATH\Views\pdf_template.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "empfullname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 61)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1047): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 03:59:44 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 03:59:44 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 04:01:48 --> Undefined array key "empfullname"
+in APPPATH\Views\pdf_template.php on line 61.
+ 1 APPPATH\Views\pdf_template.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "empfullname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 61)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1047): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 04:07:12 --> Undefined array key "empfullname"
+in APPPATH\Views\pdf_template.php on line 61.
+ 1 APPPATH\Views\pdf_template.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "empfullname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 61)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1047): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 04:07:15 --> Undefined array key "empfullname"
+in APPPATH\Views\pdf_template.php on line 61.
+ 1 APPPATH\Views\pdf_template.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "empfullname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 61)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1047): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 04:22:51 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 04:22:51 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 06:31:34 --> Undefined array key "empfullname"
+in APPPATH\Views\pdf_template.php on line 61.
+ 1 APPPATH\Views\pdf_template.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "empfullname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 61)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1085): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 06:34:12 --> Undefined array key "empfullname"
+in APPPATH\Views\pdf_template.php on line 61.
+ 1 APPPATH\Views\pdf_template.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "empfullname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 61)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1085): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 06:35:33 --> Undefined array key "empfullname"
+in APPPATH\Views\pdf_template.php on line 61.
+ 1 APPPATH\Views\pdf_template.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "empfullname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 61)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1085): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 06:37:08 --> Undefined array key "empfullname"
+in APPPATH\Views\pdf_template.php on line 61.
+ 1 APPPATH\Views\pdf_template.php(61): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "empfullname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php', 61)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\pdf_template.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('pdf_template', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1085): view('pdf_template', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 07:02:55 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 07:02:55 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:09:04 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:09:04 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:48:56 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:48:56 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:48:57 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:48:57 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:48:58 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:48:58 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:49:13 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:49:13 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:49:13 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:49:13 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:49:20 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:49:20 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:49:20 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:49:20 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:49:21 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:49:21 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:49:26 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:49:26 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:50:25 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:50:25 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:50:26 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:50:26 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:50:27 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:50:27 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:50:28 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:50:28 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:50:30 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:50:30 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:50:30 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:50:30 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 15:50:32 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 15:50:32 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:12:19 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:12:19 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:12:23 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:12:23 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:12:26 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:12:26 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:15:19 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:15:19 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:15:45 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:15:45 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:16:32 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:16:32 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:16:39 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:16:39 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:16:41 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:16:41 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:17:09 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:17:09 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:17:10 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:17:10 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:17:12 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:17:12 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:17:52 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:17:52 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:17:54 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:17:54 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:17:55 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:17:55 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:18:22 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:18:22 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:18:53 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:18:53 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:58:02 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:58:02 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 16:59:54 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 16:59:54 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 17:00:08 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 17:00:08 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 17:00:11 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 17:00:11 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 17:00:19 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 17:00:19 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 17:30:53 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 17:30:53 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 17:30:55 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 17:30:55 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(70): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUser()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 18:34:37 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 18:34:37 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 18:34:42 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 18:34:42 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(96): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataUnserviceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-05-15 18:34:42 --> mysqli_sql_exception: Unknown column 'status' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-05-15 18:34:42 --> Unknown column 'status' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppe`
+WHERE `status` = :status:', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(88): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 18:36:24 --> Unknown page format L
+in FCPATH\backend\vendor\mpdf\mpdf\src\PageFormat.php on line 78.
+ 1 FCPATH\backend\vendor\mpdf\mpdf\src\Mpdf.php(1647): Mpdf\PageFormat::getSizeFromName('L')
+ 2 FCPATH\backend\vendor\mpdf\mpdf\src\Mpdf.php(1300): Mpdf\Mpdf->_setPageSize('L', 'L')
+ 3 APPPATH\Controllers\DatabasePPEController.php(1073): Mpdf\Mpdf->__construct([...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 18:53:25 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1081): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 18:53:44 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1081): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 18:54:48 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1081): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 18:55:22 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1081): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 18:55:43 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1081): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 18:55:45 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1081): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 18:55:45 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1081): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 18:56:17 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1081): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 18:56:41 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1081): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 18:58:09 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1081): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 18:58:25 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1081): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 18:59:39 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1081): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-15 19:00:20 --> Undefined array key "balancequntity"
+in APPPATH\Views\RPCSP.php on line 125.
+ 1 APPPATH\Views\RPCSP.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "balancequntity"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php', 125)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RPCSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RPCSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1081): view('RPCSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->recordsPDF()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

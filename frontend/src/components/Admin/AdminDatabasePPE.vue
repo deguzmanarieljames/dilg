@@ -7,21 +7,19 @@
   margin-top: 10px;
 }
 table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
-
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
-
-    th {
-      background-color: #f2f2f2;
-    }
-
+width: 100%;
+border-collapse: collapse;
+}
+th, td {
+border: 1px solid black;
+padding: 10px;
+text-align: center;
+}
+th {
+height: 55px; 
+white-space: nowrap;
+}
+  
     /* Responsive styles */
     @media screen and (max-width: 600px) {
       table, tr, td {
@@ -47,8 +45,75 @@ table {
         overflow-y: auto;
       }
     }
-</style>
 
+    /* CSS */
+/* Updated CSS */
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* Add margin to separate from the table */
+}
+
+.search-bar {
+  width: 20%; /* Adjust width as needed */
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+  border-color: #66afe9;
+  box-shadow: 0 0 5px #66afe9;
+}
+
+.pagination .page-item {
+  display: inline-block;
+  margin-right: 5px; /* Paggalang sa espasyo sa pagitan ng mga button */
+}
+
+.pagination .page-link {
+  border: 1px solid #ced4da; /* Bawasan ang lapad ng border */
+  color: #343a40; /* Itim na kulay ng text */
+  border-radius: 0; /* Alisin ang radius ng border */
+}
+
+.pagination .page-link:hover {
+  background-color: transparent; /* Alisin ang background color sa hover */
+}
+
+.pagination .page-item.disabled .page-link {
+  pointer-events: none; /* Huwag pahintulutan ang pag-click kung ang button ay hindi aktibo */
+}
+
+.pagination .page-item.active .page-link {
+  background-color: transparent; /* Alisin ang background color ng active button */
+  border-color: #ced4da; /* Bawasan ang lapad ng border ng active button */
+}
+
+.pagination .page-link:focus {
+  box-shadow: none; /* Alisin ang focus border */
+}
+
+.pagination .page-link.prev, .pagination .page-link.next {
+  padding: 0; /* Alisin ang padding */
+  border: none; /* Alisin ang border */
+  background: none; /* Alisin ang background */
+  font-size: 1.5rem; /* Taasan ang laki ng font */
+  color: #343a40; /* Itim na kulay ng text */
+}
+
+.pagination .page-link.prev::after, .pagination .page-link.next::after {
+  content: '\2190'; /* Isama ang Unicode character para sa arrow (left arrow) */
+}
+
+.pagination .page-link.next::after {
+  content: '\2192'; /* Isama ang Unicode character para sa arrow (right arrow) */
+}
+
+/* CSS */
+</style>
 
 <template>
 <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
@@ -104,14 +169,16 @@ table {
           <li class="nav-item dropdown pe-3">
   
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <img src="./img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <span class="d-none d-md-block dropdown-toggle ps-2">A. De Guzman</span>
-            </a><!-- End Profile Iamge Icon -->
-  
+              <div style="width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
+                <div :style="getImageStyle(infos.image)"></div>
+              </div>
+              <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
+            </a><!-- End Profile Image Icon -->
+
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>Ariel James De Guzman</h6>
-                <span>Web Designer</span>
+                <h6>{{ infos.fullname }}</h6>
+                <span>{{ infos.position }}</span>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -252,11 +319,17 @@ table {
         <li class="nav-heading">input</li>
 
         <li class="nav-item">
-        <a class="nav-link collapsed" href="/workspace">
-            <i class="bi bi-folder-plus"></i>
-            <span>Workspace</span>
-        </a>
+          <a class="nav-link collapsed" href="/workspace">
+              <i class="bi bi-folder-plus"></i>
+              <span>Workspace</span>
+          </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/logbook">
+            <i class="bi bi-folder-plus"></i>
+            <span>Logbook</span>
+          </a>
+        </li><!-- End Input Nav -->
 
         <li class="nav-heading">Stocks</li>
 
@@ -290,11 +363,6 @@ table {
       </aside><!-- End Sidebar-->
   
   
-  
-  
-  
-  
-  
       <main id="main" class="main">
 
         <div class="pagetitle">
@@ -310,8 +378,23 @@ table {
 
         <section class="section">
         <div class="row">
-            <div class="col-lg-6">
-
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-body">
+                  <h1>Choose</h1>
+                  <select v-model="selectedshowEmployeePDF" @change="updatePdfUrl" class="form-select animated-dropdown w-100">
+                    <option value="">Select Employee</option>
+                    <option v-for="employee in distinctEmployees" :key="employee" :value="employee">
+                      {{ employee }}
+                    </option>
+                  </select>
+                </div>
+                <div class="card-body">
+                  <div>
+                    <iframe v-if="pdfUrl" :src="pdfUrl" style="width: 100%; height: 100vh;" frameborder="0"></iframe>
+                  </div>
+                </div>
+              </div>
             </div>
         </div>
 
@@ -322,33 +405,259 @@ table {
                 <div class="card-body">
                 <h5 class="card-title">Acquisition</h5>
                 <p> Refers to the act of gaining possession to a property or equipment by the government.</p>
+                <div class="col-lg-4">
+                  <div class="accordion accordion-body text-end" id="faq-group-2">
+                    <div class="accordion-item">
+                      <h2 class="accordion-header">
+                        <button class="accordion-button collapsed btn btn-outline-info" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse" style="margin-left: 1">
+                          Download the records through a documented PDF
+                        </button>
+                      </h2>
+                      <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                        <div class="row align-items-center mt-3">
+                          <div class="col-lg-6">
+                            <select v-model="selectedEmployeePDF" @change="downloadEmployeeRecordsPDF" class="form-select animated-dropdown w-100">
+                              <option value="" disabled>Select Employee</option>
+                              <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
+                            </select>
+                          </div>
+                          <div class="col-lg-6 text-end">
+                            <button class="btn btn-warning w-100" @click="recordsPDF"><i class="ri-download-2-line"></i> Download All</button>
+                          </div>
+                        </div>
+                        <!-- Loading animation -->
+                        <div v-if="loading" class="text-center mt-1">
+                          <div class="loading-line"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                
                 <!-- Table with stripped rows -->
+<!-- Search bar on the right side -->
+<!-- <div class="row align-items-center">
+  <div class="col-lg-4">
+    <h5>PDF Download</h5>
+  </div>
+
+  <div class="col-lg-4 text-center">
+    <select v-model="selectedEmployeePDF" @change="downloadEmployeeRecordsPDF" class="form-select mt-3 animated-dropdown">
+      <option value="">Select Employee</option>
+      <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
+    </select>
+  </div>
+  
+  <div class="col-lg-4 text-end">
+    <a class="btn btn-warning" @click="recordsPDF"><i class="ri-download-2-line"></i> Download All</a>
+  </div>
+</div> -->
+
+
+
+<hr>
+
+<!-- HTML Template -->
+<div class="row align-items-center">
+  <!-- Dropdown for Employee -->
+  <div class="col-lg-2">
+    <select v-model="selectedEmployee" class="form-select" @change="onEmployeeChange">
+      <option value="">Select Employee</option>
+      <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
+    </select>
+  </div>
+
+  <!-- Dropdown for Classification -->
+  <div class="col-lg-2">
+    <select v-model="selectedClassification" class="form-select" :disabled="!selectedEmployee" @change="onEmployeeChange">
+      <option value="">Select Classification</option>
+      <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
+    </select>
+  </div>
+
+  <!-- Dropdown for Article -->
+  <div class="col-lg-2">
+    <select v-model="selectedArticle" class="form-select" :disabled="!selectedEmployee || !selectedClassification" @change="onEmployeeChange">
+      <option value="">Select Article</option>
+      <option v-for="article in distinctArticle" :key="article" :value="article">{{ article }}</option>
+    </select>
+  </div>
+
+  <!-- Dropdown for Particular -->
+  <div class="col-lg-2">
+    <select v-model="selectedParticular" class="form-select" :disabled="!selectedEmployee || !selectedClassification || !selectedArticle">
+      <option value="">Select Particular</option>
+      <option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
+    </select>
+  </div>
+
+  <!-- Status dropdown centered -->
+  <div class="col-lg-2">
+    <select v-model="selectedStatus" class="form-select">
+      <option value="">Current Status</option>
+      <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
+    </select>
+  </div>
+
+  <div class="col-lg-2">
+    <!-- Search bar -->
+    <div class="input-group">
+      <div class="input-group-prepend">
+        <span class="input-group-text">
+          <i class="bi bi-search"></i>
+        </span>
+      </div>
+      <input type="text" v-model="searchKeyword" placeholder="Search ..." class="form-control">
+    </div>
+  </div>
+</div>
+<hr>
+
+
+
+<div class="row align-items-center">
+  <div class="col-lg-6">
+    <span class="me-2">Show</span> <!-- Added margin to the right -->
+    <div class="dropdown" style="display: inline-block;">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+        {{ pageSize }}
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+        <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+        <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+        <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+       
+        <!-- Add more options as needed -->
+      </ul>
+    </div>
+    <span class="ms-2">entries</span> <!-- Added margin to the left -->
+  </div>
+</div>
+
+
+
                 <div style="overflow-y: auto;">
-                  <table class="table">
+                  <table>
                 <!-- Table header -->
                 <thead>
+                  
                   <tr>
-                    <th>Image</th>
-                    <th>Entity</th>
-                    <th>Classification</th>
-                    <th>Code</th>
-                    <th>Article</th>
-                    <th>Particulars</th>
-                    <th>Model No.</th>
-                    <th>Serial No.</th>
-                    <th>Description</th>
-                    <th>Employee</th>
-                    <th>Status</th>
-                    <th>Date Recorded</th>
-                    <th>Date Returned</th>
-                  </tr>
+        <th rowspan="2"><b>Image</b></th>
+        <th rowspan="2"><b>Entity Name</b></th>
+        <th rowspan="2"><b>Semi-expendable</b><br> 
+                        <b>Property Classification</b></th>
+        <th rowspan="2"><b>UACS</b><br>
+                        <b>Object Code:</b></th>
+
+        <th colspan="4"><b>Description</b></th>
+
+        <th rowspan="2"><b>Full Description</b></th>
+        <th rowspan="2">
+          <b>Semi-expendable</b><br>
+          <b>Property Number:</b>
+        </th>
+      
+        <th rowspan="2"><b>Date</b></th>
+
+        <th colspan="2"><b>Reference</b></th>
+        <th colspan="4" style="background-color: blue; color: white;"><b>Receipt</b></th>
+
+        <th rowspan="2" style="background-color: blue; color: white;"><b>"Issue/ Transfer/</b><br>
+                                                                          <b> Adjustments (Amount)"</b></th>
+        <th rowspan="2" style="background-color: blue; color: white;"><b>Accummulated</b><br><b>Impairment Loss</b></th>
+        <th rowspan="2" style="background-color: blue; color: white;"><b>Adjusted Cost</b></th>
+
+        <th colspan="2" style="background-color: blue; color: white;"><b>History of Repair</b></th>
+        <th colspan="4" style="background-color: #20ff6a; color: black;"><b>Issue</b></th>
+        <th colspan="3" style="background-color: #07ad41; color: black;"><b>Transfer</b></th>
+        <th colspan="3" style="background-color: orange; color: black;"><b>Disposal</b></th>
+        <th colspan="1"><b>Balance</b></th>
+
+        <th rowspan="2"><b>Amount</b></th>
+        <th rowspan="2"><b>Remarks</b></th>
+        <th rowspan="2"><b>ESTIMATED</b><br><b>USEFUL</b><br><b>LIFE</b></th>
+
+        <th colspan="3" style="background-color: #16fa54; color: black;"><b>Received from: (Issued by)</b></th>
+        <th colspan="3" style="background-color: #16fa54; color: black;"><b>Received by: (Accountable Officer)</b></th>
+        <th colspan="2" style="background-color: #07ad41; color: black;"><b>INVENTORY TRANSFER REPORT</b></th>
+        <th colspan="3" style="background-color: #07ad41; color: black;"><b></b></th>
+
+        <th rowspan="2" style="background-color: blue; color: white;"><b>"REPORT OF SEMI-EXP PROP ISSUEDSERIAL NO.:"</b></th>
+
+        <th colspan="2" style="background-color: blue; color: white;"><b>Returned</b></th>
+        <th colspan="2" style="background-color: blue; color: white;"><b>Re-issued</b></th>
+        <th colspan="1" style="background-color: blue; color: white;"><b>Disposed</b></th>
+        <th colspan="1" style="background-color: blue; color: white;"><b>Balance</b></th>
+
+        <th rowspan="2" style="background-color: blue; color: white;"><b>Amount</b></th>
+        <th rowspan="2" style="background-color: blue; color: white;"><b>Remarks</b></th>
+        <th rowspan="2"><b>Property Officer</b></th>
+        <th rowspan="2"><b>Head of Office/ Approving Authority</b></th>
+       
+
+    </tr>
+    <tr>
+        <th><b>Article</b></th>
+        <th><b>Particulars</b></th>
+        <th><b>Model No.</b></th>
+        <th><b>Serial No.</b></th>
+
+        <th><b>ICS No.</b></th>
+        <th><b>JEV No.</b></th>
+
+        <th style="background-color: blue; color: white;"><b>Quantity</b></th>
+        <th style="background-color: blue; color: white;"><b>Unit</b></th>
+        <th style="background-color: blue; color: white;"><b>Unit Cost</b></th>
+        <th style="background-color: blue; color: white;"><b>Total Cost</b></th>
+
+        <th style="background-color: blue; color: white;"><b>Nature of Repair</b></th>
+        <th style="background-color: blue; color: white;"><b>Amount</b></th>
+
+        <th style="background-color: #20ff6a; color: black;"><b>Item No.</b></th>
+        <th style="background-color: #20ff6a; color: black;"><b>Date</b></th>
+        <th style="background-color: #20ff6a; color: black;"><b>Quantity</b></th>
+        <th style="background-color: #20ff6a; color: black;"><b>Office/Officer</b></th>
+
+        <th style="background-color: #07ad41; color: black;"><b>Date</b></th>
+        <th style="background-color: #07ad41; color: black;"><b>Quantity</b></th>
+        <th style="background-color: #07ad41; color: black;"><b>Office/Officer</b></th>
+
+        <th style="background-color: orange; color: black;"><b>Date</b></th>
+        <th style="background-color: orange; color: black;"><b>Quantity</b></th>
+        <th style="background-color: orange; color: black;"><b>Office/Officer</b></th>
+
+        <th><b>Quantity</b></th>
+
+        <th style="background-color: #16fa54; color: black;"><b>Name</b></th>
+        <th style="background-color: #16fa54; color: black;"><b>Position/Office</b></th>
+        <th style="background-color: #16fa54; color: black;"><b>Date</b></th>
+        
+        <th style="background-color: #16fa54; color: black;"><b>Name</b></th>
+        <th style="background-color: #16fa54; color: black;"><b>Position</b></th>
+        <th style="background-color: #16fa54; color: black;"><b>Date</b></th>
+
+        <th style="background-color: #07ad41; color: black;"><b>"ITR NO.(YYYY-MON-NO. SERIES-RCC)"</b></th>
+        <th style="background-color: #07ad41; color: black;"><b>ITR DATE</b></th>
+
+        <th style="background-color: #07ad41; color: black;"><b>"RRSP NO.(YYYY-MON-NO. SERIES-RCC)"</b></th>
+        <th style="background-color: #07ad41; color: black;"><b>RRSP DATE</b></th>
+        <th style="background-color: #07ad41; color: black;"><b>REASON FOR TRANSFER</b></th>
+
+        <th style="background-color: blue; color: white;"><b>Quantity</b></th>
+        <th style="background-color: blue; color: white;"><b>Office/Officer</b></th>
+        <th style="background-color: blue; color: white;"><b>Quantity</b></th>
+        <th style="background-color: blue; color: white;"><b>Office/Officer</b></th>
+        <th style="background-color: blue; color: white;"><b>Quantity</b></th>
+        <th style="background-color: blue; color: white;"><b>Quantity</b></th>
+
+    </tr>
                 </thead>
+                
                 <tbody>
                   <!-- Table rows -->
-                  <tr v-for="info in info" :key="info.id" @click="selectRecord(info)">
-                    <!-- <td scope="row">
-                      <img :src="generateQRCodeUrl(info.id)" alt="" style="width: 200px; height: 200px;">
-                    </td> -->
+                  <tr v-for="info in paginatedInfo" :key="info.id" @click="selectRecord(info)">
+                  
                     <td scope="row"><img :src="info.image" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
                     <td scope="row">{{ info.entityname }}</td>
                     <td scope="row">{{ info.classification }}</td>
@@ -358,15 +667,83 @@ table {
                     <td scope="row">{{ info.modelno }}</td>
                     <td scope="row">{{ info.serialno }}</td>
                     <td scope="row">{{ info.fulldescription }}</td>
-                    <td scope="row">{{ info.empfullname }}</td>
-                    <td scope="row">{{ info.status }}</td>
-                    <td scope="row">{{ info.created_at }}</td>
-                    <td scope="row">{{ info.date_returned }}</td>
+                    <td scope="row">{{ info.propertynumber }}</td>
+                    <td scope="row">{{ info.propertydate }}</td>
+                    <td scope="row">{{ info.icsnumber }}</td>
+                    <td scope="row">{{ info.jevnumber }}</td>
+                    <td scope="row">{{ info.rec_quantity }}</td>
+                    <td scope="row">{{ info.rec_unit }}</td>
+                    <td scope="row">{{ info.rec_unitcost }}</td>
+                    <td scope="row">{{ info.rec_totalcost }}</td>
+                    <td scope="row">{{ info.isstranadjamount }}</td>
+                    <td scope="row">{{ info.accimploss }}</td>
+                    <td scope="row">{{ info.adjustedcost }}</td>
+                    <td scope="row">{{ info.repair_nature }}</td>
+                    <td scope="row">{{ info.repair_amount }}</td>
+                    <td scope="row">{{ info.issue_itemno }}</td>
+                    <td scope="row">{{ info.issue_date }}</td>
+                    <td scope="row">{{ info.issue_quantity }}</td>
+                    <td scope="row">{{ info.issue_officeofficer }}</td>
+                    <td scope="row">{{ info.transfer_date }}</td>
+                    <td scope="row">{{ info.transfer_quantity }}</td>
+                    <td scope="row">{{ info.transfer_officeofficer }}</td>
+                    <td scope="row">{{ info.disposal_date }}</td>
+                    <td scope="row">{{ info.disposal_quantity }}</td>
+                    <td scope="row">{{ info.disposal_officeofficer }}</td>
+                    <td scope="row">{{ info.balancequantity }}</td>
+                    <td scope="row">{{ info.balanceamount }}</td>
+                    <td scope="row">{{ info.remarks }}</td>
+                    <td scope="row">{{ info.estimatedlife }}</td>
+                    <td scope="row">{{ info.issued_officer }}</td>
+                    <td scope="row">{{ info.issued_offposition }}</td>
+                    <td scope="row">{{ info.issued_date }}</td>
+                    <td scope="row">{{ info.acc_officer }}</td>
+                    <td scope="row">{{ info.acc_empposition }}</td>
+                    <td scope="row">{{ info.acc_date }}</td>
+                    <td scope="row">{{ info.itr_no }}</td>
+                    <td scope="row">{{ info.itr_date }}</td>
+                    <td scope="row">{{ info.rrsp_no }}</td>
+                    <td scope="row">{{ info.rrsp_date }}</td>
+                    <td scope="row">{{ info.reasonfortrans }}</td>
+                    <td scope="row">{{ info.reg_semiissuedserialno }}</td>
+                    <td scope="row">{{ info.reg_returned_qty }}</td>
+                    <td scope="row">{{ info.reg_returned_off }}</td>
+                    <td scope="row">{{ info.reg_reissued_qty }}</td>
+                    <td scope="row">{{ info.reg_reissued_off }}</td>
+                    <td scope="row">{{ info.reg_disposed_qty }}</td>
+                    <td scope="row">{{ info.reg_balance_quantity }}</td>
+                    <td scope="row">{{ info.reg_amount }}</td>
+                    <td scope="row">{{ info.reg_remarks }}</td>
+                    <td scope="row">{{ info.property_officer }}</td>
+                    <td scope="row">{{ info.approving_authority }}</td>
                   </tr>
                 </tbody>
               </table>
                 </div>
                 <!-- End Table with stripped rows -->
+
+                <!-- I-update ang table at idagdag ang pagination controls -->
+                <div class="card-body">
+  <!-- Iba pang content ng card... -->
+  <div class="text-center">
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center mb-0"> <!-- Center pagination -->
+        <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+          <a class="page-link" href="#" @click.prevent="currentPage = Math.max(currentPage - 1, 1)">Previous</a>
+        </li>
+        <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': currentPage === page }">
+          <a class="page-link" href="#" @click.prevent="currentPage = page">{{ page }}</a>
+        </li>
+        <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+          <a class="page-link" href="#" @click.prevent="currentPage = Math.min(currentPage + 1, totalPages)"><b>Next</b></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="mt-3">
+    <p>{{ currentPageRecords }}</p> <!-- Moved current page records here -->
+  </div>
+</div>
 
                 </div>
             </div>
@@ -375,31 +752,68 @@ table {
 
           <!-- Modal component to display selected record -->
           <div class="modal" v-if="selectedInfo">
-            <div class="modal-content">
+            <div class="modal-content" style="
+                  font-family: Calibri;
+                  font-size: 14px;
+                  line-height: 1.5;
+                  color: #333;
+                  background-color: #f9f9f9;
+                  padding: 20px;">
               <span class="close" @click="selectedInfo = null">&times;</span>
-              <div class="row">
-                <div class="col-lg-6">
-                  <img :src="generateQRCodeUrl(selectedInfo.id)" alt="" style="width: 100%; height: auto;">
-                </div>
-                <div class="col-lg-6">
-                  <h6>{{ selectedInfo.entityname }}</h6>
-                  <h6>{{ selectedInfo.classification }}</h6>
-                    <h6>{{ selectedInfo.code }}</h6>
-                    <h6>{{ selectedInfo.article }}</h6>
-                    <h6>{{ selectedInfo.particulars }}</h6>
-                    <h6>{{ selectedInfo.modelno }}</h6>
-                    <h6>{{ selectedInfo.serialno }}</h6>
-                    <h6>{{ selectedInfo.fulldescription }}</h6>
-                    <h6>{{ selectedInfo.empfullname }}</h6>
-                    <h6>{{ selectedInfo.status }}</h6>
-                    <h6>{{ selectedInfo.created_at }}</h6>
-                    <h6>{{ selectedInfo.date_returned }}</h6>
-                  <!-- Display other details of the selected record -->
+              <div class="col-lg-16">
+                <div class="container" style="
+                      width: 70%;
+                      max-width: 600px;
+                      margin: 0 auto;
+                      border: 1px solid #ccc;
+                      padding: 20px;
+                      background-color: #fff;
+                      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+                  <div class="header" style="text-align: center; margin-bottom: 20px;">
+                    <p>Republic of the Philippines
+                      <br>
+                      <b>Department of the Interior and Local Government</b>
+                      <br>
+                      MIMAROPA Region
+                      <br>
+                      <i style="color: red;"><b>PROPERTY INVENTORY STICKER</b></i>
+                    </p>
+                  </div>
+                  <div class="property-info">
+                    <p>Property No./Description : <b style="color: blue;">MDO - LT - 2022-02</b>
+                      <br>
+                      <b style="color: blue;">{{selectedInfo.fulldescription}}</b>
+                      __________________________________________________
+                      <br>
+                      Model No.: <b style="color: blue;">{{selectedInfo.modelno}}</b>
+                      <br>
+                      Serial No.: <b style="color: blue;">{{selectedInfo.serialno}}</b><img :src="generateQRCodeUrl(selectedInfo.id)" alt="" style="width: 20%; height: auto; float: right;">
+                      <br>
+                      Acquisition Date/Cost: <b style="color: blue;"> 2021 - 7,999.00 </b>
+                      <br>
+                      Person Accountable: <b style="color: blue;">{{selectedInfo.acc_officer}}</b>
+                      <br>
+                      Remarks: <b style="color: blue;"> Ronel O. Cacho/Oriental Mindoro </b>
+                    </p>
+                    <br>
+                    <div style="text-align: center;">
+                      ________________________
+                      <br>
+                      COA Representative
+                      <br>
+                      ______________________________
+                      <br>
+                      Authorized Representative
+                    </div>
+                  </div>
+                  <div class="note">
+                    <p style="color: red;"><b>NOTE: PLEASE DO NOT REMOVE</b></p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-
+          
 
         </section>
 
@@ -409,133 +823,335 @@ table {
     </div>
   </template>
 
-
 <script>
-
-// Components
-import axios from 'axios'
+import axios from 'axios';
 import jsQR from "jsqr";
 import QRCode from 'qrcode-generator';
 import html2pdf from 'html2pdf.js';
 
-export default{
-  components: {
+export default {
+  data() {
+    return {
+      info: [],
+      employeeOptions: [], // Array to store employee names
+      selectedEmployee: '', // Selected employee from dropdown
+      selectedEmployeePDF: '', // Selected employee from dropdown
+      selectedshowEmployeePDF: '',
+      selectedClassification: '', // Selected classification from dropdown
+      selectedArticle: '', // Selected article from dropdown
+      selectedParticular: '', // Selected particular from dropdown
+      selectedStatus: '', // Selected status from dropdown
+      video: null,
+      resultElement: null,
+      startButton: null,
+      stopButton: null,
+      isCameraOn: false,
+      stream: null,
+      qrCodeData: null,
+      infos: [],
+      selectedInfo: null,
+      searchKeyword: '',
+      currentPage: 1, // Current page number
+      pageSize: 10, // Default page size
+      previousEmployee: '', // Store the previous selected employee
+      previousClassification: '', // Store the previous selected classification
+      previousArticle: '', // Store the previous selected article
+      previousParticular: '', // Store the previous selected particular
+      loading: false,
+      pdfUrl: '',
+    }
   },
-  data(){
-      return{
-          info:[],
-          // entityname: "",
-          // particulars: "",
-          // classification: "",
-          // empfullname: "",
-          // code: "",
-          video: null,
-          resultElement: null,
-          startButton: null,
-          stopButton: null,
-          isCameraOn: false,
-          stream: null,
-          qrCodeData: null,
-          infos: [], // Assuming you have data for your table
-          selectedInfo: null // Store the selected record
+  mounted() {
+
+  },
+  created() {
+    this.getInfo();
+    this.user();
+    this.getUserInfo(this.infos.fullname);
+  },
+  methods: {
+    simulateLoading() {
+    this.loading = true;
+  },
+      setTimeout() {
+    this.loading = false;
+  },
+    selectRecord(info) {
+      this.selectedInfo = info;
+    },
+    async downloadEmployeeRecordsPDF() {
+        try {
+          this.simulateLoading();
+           const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json',
+               },
+               body: JSON.stringify({ acc_officer: this.selectedEmployeePDF }),
+           });
+           if (response.ok) {
+               const blob = await response.blob();
+               const filename = `${this.selectedEmployeePDF}_records.pdf`; // Adjust the filename if needed
+               const url = window.URL.createObjectURL(new Blob([blob]));
+               const link = document.createElement('a');
+               link.href = url;
+               link.setAttribute('download', filename);
+               document.body.appendChild(link);
+               link.click();
+               link.parentNode.removeChild(link);
+               console.log('PDF generated successfully');
+               this.setTimeout();
+           } else {
+               console.error('Failed to generate PDF');
+           }
+       } catch (error) {
+           console.error('Error generating PDF:', error);
+       }
+    },
+
+    async recordsPDF() {
+    try {
+        // Send HTTP request to backend to generate PDFs for all records
+        this.simulateLoading();
+        const response = await fetch('http://dilg.test/backend/recordsPDF', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        // Check if the response is successful
+        if (response.ok) {
+            const blob = await response.blob();
+            const filename = 'generated_pdf_all.pdf'; // Adjust the filename if needed
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            console.log('PDF generated successfully');
+            this.setTimeout();
+        } else {
+            console.error('Failed to generate PDF');
+        }
+    } catch (error) {
+        console.error('Error generating PDFs:', error);
+    }
+},
+  updatePdfUrl() {
+      if (this.selectedshowEmployeePDF) {
+        this.pdfUrl = `http://dilg.test/backend/showemployeerecordPDF/${this.selectedshowEmployeePDF}`;
+      } else {
+        this.pdfUrl = '';
       }
-  },
-  created(){
-      this.getInfo()
-  },
-  methods:{
-        selectRecord(info) {
-          this.selectedInfo = info; // Set the selected record
-        },
-
-        generatePDF() {
-          // Get the data for a specific record (you might need to modify this logic)
-         // Change this to the desired record ID
-          const record = this.info.find(info => info.id);
-
-          // Generate HTML content for the PDF based on the specific record
-          if (record) {
-              // Generate HTML content for the PDF based on the specific record
-              const htmlContent = `
-                <div>
-                  <h2>Record Details</h2>
-                  <p>Entity: ${record.entityname}</p>
-                  <p>Particulars: ${record.particulars}</p>
-                  <p>Classification: ${record.classification}</p>
-                  <!-- Add more fields as needed -->
-                </div>
-              `;
-
-              // Options for PDF generation
-              const pdfOptions = {
-                margin: 10,
-                filename: 'record_details.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-              };
-
-              // Generate PDF using html2pdf
-              html2pdf().from(htmlContent).set(pdfOptions).outputPdf(pdf => {
-                // Save or open the PDF file as needed
-                const blob = new Blob([pdf], { type: 'application/pdf' });
-                const link = document.createElement('a');
-                link.href = window.URL.createObjectURL(blob);
-                link.download = pdfOptions.filename;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-              });
-            } else {
-              // Handle the case where the record is not found
-              console.error(`Record with ID ${recordId} not found.`);
-            }
-                  },
+    },
 
 
-        onDecode(result) {
-          this.scannedId = result;
-          // Implement any additional logic after scanning the QR code
-        },
-        generateQRCodeUrl(id) {
-          return `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${id}`;
-        },
 
-        generateQRCodeUrl(id) {
-          // Use qrcode-generator to generate QR code
-          const typeNumber = 2;
-          const errorCorrectionLevel = 'L';
-          const qr = QRCode(typeNumber, errorCorrectionLevel);
-          qr.addData(id);
-          qr.make();
 
-          // Convert QR code data to a data URL
-          const imageUrl = qr.createDataURL();
 
-          return imageUrl;
-        },
-        deleteRecord(id) {
-          // Implement your delete logic here
-        },
-        async getInfo(){
+
+async getUserInfo(id){
               try {
-                  const inf = await axios.get('getdata');
+                  const inf = await axios.get(`getDataUser?id=${id}`);
                   this.info = inf.data;
               } catch (error) {
                   console.log(error);
               }
           },
 
-        async logout(){
-              sessionStorage.removeItem('token');
-              this.$router.push('/');
+      async user(){
+        try{
+          const id= sessionStorage.getItem("token")
+          const response = await axios.get(`/users/${id}`, {
+            id:id
+          })
+          this.infos = response.data;
+
+        }catch(error){
+          console.log(error);
+        }
+      },
+      getImageStyle(imageUrl) {
+      // Function to generate the background image style
+        if (!imageUrl) {
+          return {}; // Return an empty object if imageUrl is not provided
+        }
+        
+        // Set the background image URL
+        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        
+        // Set background size and position
+        const backgroundSize = 'cover'; // Cover the entire container
+        const backgroundPosition = '50% 50%'; // Center the image
+        
+        // Return the style object
+        return {
+          width: '100%',
+          height: '100%',
+          backgroundImage,
+          backgroundSize,
+          backgroundPosition,
+          borderRadius: '50%' // Make the background circular
+        };
+      },
+
+      generateQRCodeUrl(id) {
+          return `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${id}`;
         },
-          
+
+
+    deleteRecord(id) {
+      // Implement your delete logic here
+    },
+    async getInfo() {
+      try {
+        const response = await axios.get('getdata');
+        this.info = response.data;
+        // Extract employee names from info and store in employeeOptions
+        this.employeeOptions = this.info.map(info => info.acc_officer);
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    async logout() {
+      sessionStorage.removeItem('token');
+      this.$router.push('/');
+    },
+    updatePageSize(size) {
+      this.pageSize = size;
+      this.getInfo();
+    },
+    onEmployeeChange() {
+      // Reset selected values of dropdowns only if a new employee is selected
+      if (this.selectedEmployee !== this.previousEmployee) {
+        this.selectedClassification = '';
+        this.selectedArticle = '';
+        this.selectedParticular = '';
+      }
+      // Update the previous selected employee
+      this.previousEmployee = this.selectedEmployee;
+    },
+  },
+  computed: {
+    filteredInfo() {
+      let filteredData = this.info;
+
+      // Filter based on selected employee
+      if (this.selectedEmployee !== '') {
+        filteredData = filteredData.filter(info => info.acc_officer.toLowerCase() === this.selectedEmployee.toLowerCase());
+      }
+
+      // Filter based on selected classification
+      if (this.selectedClassification !== '') {
+        filteredData = filteredData.filter(info => info.classification.toLowerCase() === this.selectedClassification.toLowerCase());
+      }
+
+      // Filter based on selected article
+      if (this.selectedArticle !== '') {
+        filteredData = filteredData.filter(info => info.article.toLowerCase() === this.selectedArticle.toLowerCase());
+      }
+
+      // Filter based on selected particular
+      if (this.selectedParticular !== '') {
+        filteredData = filteredData.filter(info => info.particulars.toLowerCase() === this.selectedParticular.toLowerCase());
+      }
+
+      if (this.selectedStatus !== '') {
+    filteredData = filteredData.filter(info => info.status.toLowerCase() === this.selectedStatus.toLowerCase());
   }
+
+      // Filter based on search keyword
+      if (this.searchKeyword !== '') {
+        const keyword = this.searchKeyword.toLowerCase();
+        filteredData = filteredData.filter(info => 
+          (info.entityname && info.entityname.toLowerCase().includes(keyword)) ||
+          (info.acc_officer && info.acc_officer.toLowerCase().includes(keyword)) ||
+          (info.classification && info.classification.toLowerCase().includes(keyword)) ||
+          (info.article && info.article.toLowerCase().includes(keyword)) ||
+          (info.code && info.code.toLowerCase().includes(keyword)) ||
+          (info.created_at && info.created_at.toLowerCase().includes(keyword)) ||
+          (info.status && info.status.toLowerCase().includes(keyword)) ||
+          (info.particulars && info.particulars.toLowerCase().includes(keyword))
+        );
+      }
+
+      return filteredData;
+    },
+    paginatedInfo() {
+      const startIndex = (this.currentPage - 1) * this.pageSize;
+      const endIndex = startIndex + this.pageSize;
+      return this.filteredInfo.slice(startIndex, endIndex);
+    },
+    totalPages() {
+      return Math.ceil(this.filteredInfo.length / this.pageSize);
+    },
+    currentPageRecords() {
+      const startIndex = (this.currentPage - 1) * this.pageSize + 1;
+      const endIndex = Math.min(startIndex + this.pageSize - 1, this.filteredInfo.length);
+      return `Showing ${startIndex} - ${endIndex} of ${this.filteredInfo.length} records`;
+    },
+    distinctEmployees() {
+      const employeeSet = new Set();
+      this.info.forEach(item => employeeSet.add(item.acc_officer));
+      return Array.from(employeeSet);
+    },
+    distinctClassification() {
+      const classificationSet = new Set();
+      this.info.forEach(item => {
+        if (item.acc_officer && typeof item.acc_officer === 'string' &&
+            item.acc_officer.toLowerCase() === this.selectedEmployee.toLowerCase() &&
+            item.classification && typeof item.classification === 'string') {
+          classificationSet.add(item.classification);
+        }
+      });
+      return Array.from(classificationSet);
+    },
+    distinctArticle() {
+      const articleSet = new Set();
+      this.info.forEach(item => {
+        if (item.acc_officer && typeof item.acc_officer === 'string' &&
+            item.acc_officer.toLowerCase() === this.selectedEmployee.toLowerCase() &&
+            item.classification && typeof item.classification === 'string' &&
+            item.classification.toLowerCase() === this.selectedClassification.toLowerCase() &&
+            item.article && typeof item.article === 'string') {
+          articleSet.add(item.article);
+        }
+      });
+      return Array.from(articleSet);
+    },
+    distinctParticular() {
+      const particularSet = new Set();
+      this.info.forEach(item => {
+        if (item.acc_officer &&
+            item.acc_officer.toLowerCase() === this.selectedEmployee.toLowerCase() &&
+            item.classification &&
+            item.classification.toLowerCase() === this.selectedClassification.toLowerCase() &&
+            item.article &&
+            item.article.toLowerCase() === this.selectedArticle.toLowerCase() &&
+            item.particulars &&
+            typeof item.particulars === 'string') {
+          particularSet.add(item.particulars);
+        }
+      });
+      return Array.from(particularSet);
+    },
+    distinctStatus() {
+    const statusSet = new Set();
+    this.info.forEach(item => {
+      if (item.status) {
+        statusSet.add(item.status);
+      }
+    });
+    return Array.from(statusSet);
+  },
+}
 }
 </script>
 
-<style>
+<style scoped>
 /* CSS styles for modal */
 .modal {
   display: flex;
@@ -603,7 +1219,58 @@ export default{
     padding: 10px;
   }
 }
+
+.loading-line {
+  width: 100%;
+  height: 4px;
+  background-color: #ffffff; /* Background color of the loading container */
+  position: relative;
+  overflow: hidden; /* Ensures the loading line stays within the container */
+}
+
+.loading-line::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  background-color: rgb(0, 68, 255); /* Color of the loading line */
+  animation: loading 0.5s linear infinite; /* Faster looping animation */
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%); /* Start from the left */
+  }
+  100% {
+    transform: translateX(100%); /* Move to the right */
+  }
+}
+
+
+.property-info {
+  margin-bottom: 20px;
+}
+
+.property-info p {
+  margin: 0;
+}
+.details {
+  margin-bottom: 20px;
+}
+
+.details p {
+  margin: 0;
+}
+.note {
+  text-align: center;
+  font-size: 14px;
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
 </style>
+
 
 
 

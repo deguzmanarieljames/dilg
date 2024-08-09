@@ -1,0 +1,29 @@
+CRITICAL - 2024-05-05 11:33:42 --> Attempt to read property "id" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 211.
+ 1 APPPATH\Controllers\DatabasePPEController.php(211): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 211)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateAvailability()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-05 12:52:06 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1709396072_2cd307107c962258ea6d.png): No such file or directory
+in APPPATH\Controllers\OfficerVerifyController.php on line 52.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709396072_2cd307107c962258ea6d.png): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\OfficerVerifyController.php', 52)
+ 2 APPPATH\Controllers\OfficerVerifyController.php(52): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1709396072_2cd307107c962258ea6d.png')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\OfficerVerifyController->updateVerification('9')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\OfficerVerifyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-05 12:59:34 --> Attempt to read property "id" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 211.
+ 1 APPPATH\Controllers\DatabasePPEController.php(211): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 211)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateAvailability()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-05-05 12:59:46 --> Attempt to read property "id" on null
+in APPPATH\Controllers\SigninController.php on line 118.
+ 1 APPPATH\Controllers\SigninController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->updateStatus('')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

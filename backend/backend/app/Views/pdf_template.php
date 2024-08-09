@@ -34,47 +34,22 @@
 </head>
 <body>
 <div class="container">
-    <h3 class="text-center">INVENTORY CUSTODIAN SLIP</h3>
+    <h3 class="text-center">Request PPE Records</h3>
         <div class="table-wrapper">
             <table class="custom-table">
                 <thead>
                     <tr>
-                        <th>Entity</th>
+                        <th>Employee Name</th>
                         <th>Particulars</th>
-                        <th>Employee Fullname</th>
-                        <th>Image Verification</th>
-                        <th>Created At</th>
-                        <th>Classification</th>
-                        <th>Code</th>
-                        <th>Article</th>
-                        <th>Model No</th>
-                        <th>Serial No</th>
-                        <th>Full Description</th>
-                        <th>QRCode</th> <!-- New column for QRCode -->
+                        <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($data as $record): ?>
                         <tr class="record-details">
-                            <td><?= $record['entityname'] ?></td>
-                            <td><?= $record['particulars'] ?></td>
                             <td><?= $record['empfullname'] ?></td>
-                            <td>
-                                <!-- Display imageverification as an actual image -->
-                                <img src="<?='http://dilg.test/backend/uploads/' . $record['imageverification'] ?>" alt="Verification Image" style="max-width: 100px; max-height: 100px;">
-                            </td>
-                            <td><?= $record['created_at'] ?></td>
-                            <td><?= $record['classification'] ?></td>
-                            <td><?= $record['code'] ?></td>
-                            <td><?= $record['article'] ?></td>
-                            <td><?= $record['modelno'] ?></td>
-                            <td><?= $record['serialno'] ?></td>
-                            <td><?= $record['fulldescription'] ?></td>
-                            <!-- QRCode column -->
-                            <td>
-                                <!-- QRCode generation URL -->
-                                <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?= $record['code'] ?>" alt="QRCode">
-                            </td>
+                            <td><?= $record['particulars'] ?></td>
+                            <td><?= $record['description'] ?></td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>

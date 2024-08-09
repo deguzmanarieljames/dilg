@@ -1,5 +1,72 @@
+<style scoped>
+.loading-line {
+  width: 100%;
+  height: 4px;
+  background-color: #ffffff; /* Background color of the loading container */
+  position: relative;
+  overflow: hidden; /* Ensures the loading line stays within the container */
+}
+
+.loading-line::before {
+  content: "";
+  position: absolute;
+  height: 100%;
+  width: 50%;
+  background-color: rgb(0, 68, 255); /* Color of the loading line */
+  animation: loading 0.5s linear infinite; /* Faster looping animation */
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%); /* Start from the left */
+  }
+  100% {
+    transform: translateX(100%); /* Move to the right */
+  }
+}
+.context-menu {
+  position: fixed;
+  background-color: white;
+  border: 1px solid #ccc;
+  padding: 5px;
+  z-index: 1000; /* Ensure the context menu is above other elements */
+}
+
+.context-menu a {
+  display: block;
+  padding: 8px 12px;
+  color: #ffffff;
+  text-decoration: none;
+  margin: 10px;
+}
+
+.context-menu a:hover {
+  background-color: aquamarine;
+  color: #333;
+}
+
+.card-title {
+  margin-bottom: -20px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  }
+  th, td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  }
+  th {
+  height: 55px; 
+  white-space: nowrap;
+  }
+  label.form-label, input.form-control, select.form-select, th, td {
+    font-size: 80%;
+}
+</style>
 <template>
-<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
+<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;" @click="hideContextMenu">
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
   
@@ -52,14 +119,16 @@
           <li class="nav-item dropdown pe-3">
   
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <img src="./img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <span class="d-none d-md-block dropdown-toggle ps-2">A. De Guzman</span>
-            </a><!-- End Profile Iamge Icon -->
-  
+              <div style="width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
+                <div :style="getImageStyle(infos.image)"></div>
+              </div>
+              <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
+            </a><!-- End Profile Image Icon -->
+
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>Ariel James De Guzman</h6>
-                <span>Web Designer</span>
+                <h6>{{ infos.fullname }}</h6>
+                <span>{{ infos.position }}</span>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -205,6 +274,12 @@
             <span>Workspace</span>
         </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/logbook">
+            <i class="bi bi-folder-plus"></i>
+            <span>Logbook</span>
+          </a>
+        </li><!-- End Input Nav -->
 
         <li class="nav-heading">Stocks</li>
 
@@ -215,14 +290,6 @@
           </a>
         </li>
 
-        <li class="nav-heading">Ordering</li>
-    
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/ordering">
-            <i class="bi bi-folder-plus"></i>
-            <span>Ordering</span>
-          </a>
-        </li>
 
         <li class="nav-heading">Security</li>
 
@@ -247,7 +314,7 @@
       <main id="main" class="main">
   
       <div class="pagetitle">
-        <h1>Workspace</h1>
+        <h1>Procurement</h1>
         <nav>
           <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="/workspace">Input</a></li>
@@ -258,51 +325,1229 @@
   
         <section class="section">
         <div class="row">
-
-          <div class="col-lg-4">
-              <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Procurement</h5>
+        <!-- <form class="row g-3"> -->
+        <div class="row g-3" >
 
 
 
 
-
-                <!-- Vertical Form -->
-                <form class="row g-3" @submit.prevent="save">
-                  <div class="col-12">
-                    <label for="particulars" class="form-label">Particulars</label>
-                    <select class="form-select" v-model="particulars" required>
-                      <option value="" disabled>Select Particular</option>
-                      <option v-for="inv in inventory">{{ inv.particulars }}</option>
-                    </select>
+            <div class="modal" v-if="showUpdateFormModal">
+              <div class="modal-card">
+                <header class="modal-card-head">
+                  <p class="modal-card-title">Modify Record</p>
+                  <button class="delete" aria-label="close" @click="closeUpdateFormModal"></button>
+                </header>
+                <section>
+        
+        
+                  <form class="row g-3" enctype="multipart/form-data">
+                    <div class="container-fluid">
+                      <div class="row justify-content-center">
+                          <div class="col-lg-3">
+                              <div class="card">
+                                  <div class="card-body">
+                                      <!-- Entity Information -->
+                                      <div class="row g-1">
+                                      <label class="card-title text-center" style="font-size: 100%">Equipment</label>
+                                      <div class="col-12">
+                                        <label for="particulars" class="form-label">Particulars</label>
+                                        <input type="text" disabled class="form-control" id="particulars" v-model="particulars">
+                                      </div>
+                                      <!-- <div class="col-12">
+                                        <label for="particulars" class="form-label">Particulars</label>
+                                        <select class="form-select" id="particulars" v-model="formselectedParticular" @change="populateRecords" required>
+                                          <option value="" disabled>Select Particular</option>
+                                          <option v-for="items in inventory" :value="items.id">{{ items.particulars }}</option>
+                                        </select>
+                                      </div> -->
+            
+                                      
+                                      <div>
+                                        <div class="col-12">
+                                          <label for="entityname" class="form-label">Entity Name</label>
+                                          <input type="text" disabled class="form-control" id="entityname" v-model="entityname">
+                                        </div>
+                                        <div class="col-12">
+                                          <label for="classification" class="form-label">Classification</label>
+                                          <input type="text" disabled class="form-control" id="classification" v-model="classification">
+                                        </div>
+                                        <div class="col-12">
+                                          <label for="code" class="form-label">Code</label>
+                                          <input type="text" disabled class="form-control" id="code" v-model="code">
+                                        </div>
+                                      </div>
+                                      
+                                      
+                                      <div class="row g-1">
+                                        <label class="card-title text-center" style="font-size: 100%">Description</label>
+                                        <div class="col-12">
+                                          <label for="article" class="form-label">Article</label>
+                                          <input type="text" disabled class="form-control" id="article" v-model="article">
+                                        </div>
+                                        <div class="col-6">
+                                          <label for="modelno" class="form-label">Model No.:</label>
+                                          <input type="text" disabled class="form-control" id="modelno" v-model="modelno">
+                                        </div>
+                                        <div class="col-6">
+                                          <label for="serialno" class="form-label">Serial No.:</label>
+                                          <input type="text" disabled class="form-control" id="serialno" v-model="serialno">
+                                        </div>
+                                      </div>
+                                      </div>
+            
+            
+                                      <!-- Semi-expendable -->
+                                      <div class="row g-1">
+                                          <label class="card-title text-center" style="font-size: 100%">Semi-expendable</label>
+                                          <div class="col-6">
+                                            <label for="propertynumber" class="form-label">Property Number</label>
+                                            <input type="text" class="form-control" id="propertynumber" v-model="propertynumber" placeholder="MDO-CPU-02">
+                                          </div>
+                                          <div class="col-6">
+                                            <label for="propertydate" class="form-label">Property Date</label>
+                                            <input type="date" class="form-control" id="propertydate" v-model="propertydate">
+                                          </div>
+                  
+                                      </div>
+            
+                                      
+            
+                                      <!-- Reference -->
+                                      <div class="row g-1">
+                                          <label class="card-title text-center" style="font-size: 100%">Reference</label>
+                                          <div class="col-6">
+                                            <label for="icsnumber" class="form-label">ICS NO.</label>
+                                            <input type="text" class="form-control" id="icsnumber" v-model="icsnumber">
+                                          </div>
+                                          <div class="col-6">
+                                            <label for="jevnumber" class="form-label">JEV NO.</label>
+                                            <input type="text" class="form-control" id="jevnumber" v-model="jevnumber">
+                                          </div>
+                                      </div>
+            
+                                      
+            
+                                      <div class="row g-1">
+                                        <label class="card-title text-center" style="font-size: 100%">Receipt</label>
+                                        <div class="col-6">
+                                          <label for="rec_quantity" class="form-label">Receipt Quantity</label>
+                                          <input type="text" class="form-control" id="rec_quantity" v-model="rec_quantity" placeholder="0">
+                                        </div>
+                                        <div class="col-6">
+                                          <label for="rec_unit" class="form-label">Unit</label>
+                                          <select class="form-select" id="rec_unit" v-model="rec_unit" required>
+                                            <option value="unit">Unit</option>
+                                            <option value="set">Set</option>
+                                          </select>
+                                        </div>
+                                        <div class="col-6">
+                                          <label for="rec_unitcost" class="form-label">Receipt Unit Cost</label>
+                                          <input type="text" class="form-control" id="rec_unitcost" v-model="rec_unitcost" placeholder="0">
+                                        </div>
+                                    </div>
+            
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3">
+                              <div class="card">
+                                  <div class="card-body">
+                                                <!-- Receipt -->
+                                                <div class="row g-1">
+                                                    <label class="card-title text-center" style="font-size: 100%">Others</label>
+                                                    <div class="col-12">
+                                                      <label for="isstranadjamount" class="form-label">Issue/ Transfer/ Adjustments
+                                                        (Amount)</label>
+                                                      <input type="text" class="form-control" id="isstranadjamount" v-model="isstranadjamount" placeholder="0">
+                                                    </div>
+                                                    <div class="col-6">
+                                                      <label for="accimploss" class="form-label">Acc Imp Loss</label>
+                                                      <input type="text" class="form-control" id="accimploss" v-model="accimploss">
+                                                    </div>
+                                                    <div class="col-6">
+                                                      <label for="adjustedcost" class="form-label">Adjusted Cost</label>
+                                                      <input type="text" class="form-control" id="adjustedcost" v-model="adjustedcost" placeholder="0">
+                                                    </div>
+                                                </div>
+            
+                                                
+            
+                                                <!-- History of Repair -->
+                                                <div class="row g-1">
+                                                    <label class="card-title text-center" style="font-size: 100%">History of Repair</label>
+                                                    <div class="col-6">
+                                                      <label for="repair_nature" class="form-label">Nature of Repair</label>
+                                                      <input type="text" class="form-control" id="repair_nature" v-model="repair_nature">
+                                                    </div>
+                                                    <div class="col-6">
+                                                      <label for="repair_amount" class="form-label">Repair Amount</label>
+                                                      <input type="text" class="form-control" id="repair_amount" v-model="repair_amount">
+                                                    </div>
+                                                </div>
+            
+                                                
+                    
+                                                <!-- Issue -->
+                                                <div class="row g-1">
+                                                    <label class="card-title text-center" style="font-size: 100%">Issue</label>
+                                                    <div class="col-6">
+                                                      <label for="issue_date" class="form-label">Issue Item Date</label>
+                                                      <input type="date" class="form-control" id="issue_date" v-model="issue_date">
+                                                    </div>
+                                                    <div class="col-12">
+                                                      <label for="issue_officeofficer" class="form-label">Issue Office/Officer</label>
+                                                      <input type="text" class="form-control" id="issue_officeofficer" v-model="issue_officeofficer" placeholder="Base sa nagamit ng system">
+                                                    </div>
+                                                </div>
+            
+                                                
+            
+                                                <!-- Transfer -->
+                                                <div class="row g-1">
+                                                  <label class="card-title text-center" style="font-size: 100%">Transfer</label>
+                                                  <div class="col-6">
+                                                    <label for="transfer_date" class="form-label">Transfer Date</label>
+                                                    <input type="date" class="form-control" id="transfer_date" v-model="transfer_date">
+                                                  </div>
+                                                  <div class="col-6">
+                                                    <label for="transfer_quantity" class="form-label">Transfer Quantity</label>
+                                                    <input type="text" class="form-control" id="transfer_quantity" v-model="transfer_quantity">
+                                                  </div>
+                                                  <div class="col-12">
+                                                    <label for="transfer_officeofficer" class="form-label">Transfer Office/Officer</label>
+                                                    <input type="text" class="form-control" id="transfer_officeofficer" v-model="transfer_officeofficer">
+                                                  </div>
+                                              </div>
+            
+                                              
+            
+                                              <!-- Disposal -->
+                                              <div class="row g-1">
+                                                  <label class="card-title text-center" style="font-size: 100%">Disposal</label>
+                                                  <div class="col-6">
+                                                    <label for="disposal_date" class="form-label">Disposal Date</label>
+                                                    <input type="date" class="form-control" id="disposal_date" v-model="disposal_date">
+                                                  </div>
+                                                  <div class="col-6">
+                                                    <label for="disposal_quantity" class="form-label">Disposal Quantity</label>
+                                                    <input type="text" class="form-control" id="disposal_quantity" v-model="disposal_quantity">
+                                                  </div>
+                                                  <div class="col-12">
+                                                    <label for="disposal_officeofficer" class="form-label">Disposal Officer</label>
+                                                    <input type="text" class="form-control" id="disposal_officeofficer" v-model="disposal_officeofficer">
+                                                  </div>
+                                              </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3">
+                              <div class="card">
+                                  <div class="card-body">
+                                              <!-- Balance Quantity -->
+                                              <div class="row g-1">
+                                                <label class="card-title text-center" style="font-size: 100%">Balance Quantity</label>
+                                                <div class="col-6">
+                                                  <label for="remarks" class="form-label">Remarks</label>
+                                                  <select class="form-select" id="remarks" v-model="remarks">
+                                                    <option value="SERVICEABLE">SERVICEABLE</option>
+                                                    <option value="UNSERVICEABLE">UNSERVICEABLE</option>
+                                                  </select>
+                                                </div>                                    
+                                                <div class="col-6">
+                                                  <label for="estimatedlife" class="form-label">Estimated Useful Life</label>
+                                                  <input type="text" class="form-control" id="estimatedlife" v-model="estimatedlife">
+                                                </div>
+                                            </div>
+            
+                                            
+            
+                                            <!-- Received from: (Issued by) -->
+                                            <div class="row g-1">
+                                              <label class="card-title text-center" style="font-size: 100%">Received from: (Issued by)</label>
+                                              <div class="col-12">
+                                                <label for="issued_officer" class="form-label">Issued Officer</label>
+                                                <input type="text" class="form-control" id="issued_officer" v-model="issued_officer" placeholder="Nakabase din sa nagamit">
+                                              </div>
+                                              <div class="col-6">
+                                                <label for="issued_offposition" class="form-label">Issued Position</label>
+                                                <input type="text" class="form-control" id="issued_offposition" v-model="issued_offposition">
+                                              </div>
+                                              <div class="col-6">
+                                                <label for="issued_date" class="form-label">Issued Date</label>
+                                                <input type="date" class="form-control" id="issued_date" v-model="issued_date" required>
+                                              </div>
+                                          </div>
+            
+                                          
+              
+                                          <!-- Received by: (Accountable Officer) -->
+                                          <div class="row g-3">
+                                              <label class="card-title text-center" style="font-size: 100%">Received by: (Accountable Officer)</label>
+                                              <div class="col-12">
+                                                <label for="acc_officer" class="form-label">Accountable Officer</label>
+                                                <!-- <input type="text" class="form-control" id="acc_officer" v-model="acc_officer"> -->
+                                                <select class="form-select" v-model="acc_officer" required>
+                                                  <option value="" disabled>Select Employee</option>
+                                                  <option v-for="employee in employees">{{ employee.empfullname }}</option>
+                                                </select>
+                                              </div>
+                                              <div class="col-12">
+                                                <label for="acc_empposition" class="form-label">Accountable Position</label>
+                                                <select class="form-select" v-model="acc_empposition" required>
+                                                  <option value="" disabled>Select Position</option>
+                                                  <option v-for="employee in employees">{{ employee.empposition }}</option>
+                                                </select>
+                                              </div>
+                                              <div class="col-6">
+                                                <label for="acc_date" class="form-label">Accountable Date</label>
+                                                <input type="date" class="form-control" id="acc_date" v-model="acc_date">
+                                              </div>
+                                          </div>
+            
+                                          
+              
+                                          <!-- Inventory Transfer Report -->
+                                          <div class="row g-1">
+                                              <label class="card-title text-center" style="font-size: 100%">Inventory Transfer Report</label>
+                                              <div class="col-6">
+                                                <label for="itr_no" class="form-label">ITR Number</label>
+                                                <input type="text" class="form-control" id="itr_no" v-model="itr_no">
+                                              </div>
+                                              <div class="col-6">
+                                                <label for="itr_date" class="form-label">ITR Date</label>
+                                                <input type="date" class="form-control" id="itr_date" v-model="itr_date">
+                                              </div>
+                                              <div class="col-6">
+                                                <label for="rrsp_no" class="form-label">RRSP No.</label>
+                                                <input type="text" class="form-control" id="rrsp_no" v-model="rrsp_no">
+                                              </div>
+                                              <div class="col-6">
+                                                <label for="rrsp_date" class="form-label">RRSP Date</label>
+                                                <input type="date" class="form-control" id="rrsp_date" v-model="rrsp_date">
+                                              </div>
+                                              <div class="col-12">
+                                                <label for="reasonfortrans" class="form-label">Reason for Transfer</label>
+                                                <textarea type="text" class="form-control" id="reasonfortrans" v-model="reasonfortrans"></textarea>
+                                              </div>
+                                          </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-lg-3">
+                              <div class="card">
+                                  <div class="card-body">
+                                            <!-- REGISTRY OF SEMI-EXPENDABLE PROPERTY ISSUED -->
+                                            <div class="row g-1">
+                                              <label class="card-title text-center" style="font-size: 100%">REGISTRY OF SEMI-EXPENDABLE PROPERTY ISSUED</label>
+                                              <label class="card-title" style="font-size: 100%">Returned</label>
+                                              <div class="col-6">
+                                                <label for="reg_semiissuedserialno" class="form-label">SERIAL NO.:</label>
+                                                <input type="text" class="form-control" id="reg_semiissuedserialno" v-model="reg_semiissuedserialno">
+                                              </div>
+                                              <div class="col-6">
+                                                <label for="reg_returned_qty" class="form-label">Returned Quantity</label>
+                                                <input type="text" class="form-control" id="reg_returned_qty" v-model="reg_returned_qty">
+                                              </div>
+                                              <label class="card-title" style="font-size: 100%">Re-issued</label>
+                                              <div class="col-6">
+                                                <label for="reg_reissued_qty" class="form-label">Re-issued Quantity</label>
+                                                <input type="text" class="form-control" id="reg_reissued_qty" v-model="reg_reissued_qty">
+                                              </div>
+                                              <div class="col-12">
+                                                <label for="reg_reissued_off" class="form-label">Re-issued Office/Officer</label>
+                                                <input type="text" class="form-control" id="reg_reissued_off" v-model="reg_reissued_off">
+                                              </div>
+                                              <label class="card-title" style="font-size: 100%">Disposed</label>
+                                              <div class="col-6">
+                                                <label for="reg_disposed_qty" class="form-label">Disposed Quantity</label>
+                                                <input type="text" class="form-control" id="reg_disposed_qty" v-model="reg_disposed_qty">
+                                              </div>
+                                              <div class="col-6">
+                                                <label for="reg_balance_quantity" class="form-label">Balance Quantity</label>
+                                                <input type="text" class="form-control" id="reg_balance_quantity" v-model="reg_balance_quantity">
+                                              </div>
+                                              <div class="col-6">
+                                                <label for="reg_amount" class="form-label">Amount</label>
+                                                <input type="text" class="form-control" id="reg_amount" v-model="reg_amount">
+                                              </div>
+                                              <div class="col-6">
+                                                <label for="reg_remarks" class="form-label">Remarks</label>
+                                                <select class="form-select" id="reg_remarks" v-model="reg_remarks">
+                                                  <option value="SERVICEABLE">SERVICEABLE</option>
+                                                  <option value="UNSERVICEABLE">UNSERVICEABLE</option>
+                                                </select>
+                                              </div>
+                                              
+                                              <label class="card-title text-center" style="font-size: 100%">ASSIGNED OFFICER</label>
+                                              <br>
+                                              <div class="col-12">
+                                                <label for="property_officer" class="form-label">Property Officer</label>
+                                                <input type="text" class="form-control" id="property_officer" v-model="property_officer" placeholder="nakabase sa nagamit">
+                                              </div>
+                                              <div class="col-12">
+                                                <label for="approving_authority" class="form-label">Head of Office/ Approving Authority</label>
+                                                <input type="text" class="form-control" id="approving_authority" v-model="approving_authority" placeholder="magbase sa position">
+                                              </div>
+            
+                                          <!-- Buttons -->
+                                          <br><br><br><br>
+            
+                                          <div class="col-12 text-center">
+                                            <!-- <button @click="saveOrUpdate" v-if="status !== 'update'" type="submit" class="btn btn-primary">Submit</button> -->
+                                            <button @click="updatePPE" type="submit" class="btn btn-success">Update</button>
+                                            <a @click="closeUpdateFormModal" class="btn btn-secondary">Close</a>
+                                          </div>
+                                          <br><br><br><br>
+                                        </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                   </div>
-                  <div class="col-12">
-                    <label for="empfullname" class="form-label">Employee</label>
-                    <select class="form-select" v-model="empfullname" required>
-                      <option value="" disabled>Select Employee</option>
-                      <option v-for="employee in employees">{{ employee.empfullname }}</option>
-                    </select>
-                  </div>
-
-                  <!-- <div class="col-12">
-                    <label for="code" class="form-label">Code</label>
-                    <input type="text" class="form-control" id="code" v-model="code">
-                  </div> -->
-                  <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="reset" class="btn btn-secondary">Reset</button>
-                  </div>
-                </form><!-- Vertical Form -->
-
+                  </form>
+                </section>
               </div>
             </div>
-            </div>
 
-            <div class="col-lg-8" style="font-size: small;">
+
+
+
+
+
+        <form enctype="multipart/form-data">
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+              <div class="col-lg-3">
+                  <div class="card">
+                      <div class="card-body">
+                          <!-- Entity Information -->
+                          <div class="row g-1">
+                          <label class="card-title text-center" style="font-size: 100%">Equipment</label>
+                          <div class="col-12">
+                            <label for="particulars" class="form-label">Particulars</label>
+                            <select class="form-select" id="particulars" v-model="formselectedParticular" @change="populateRecords" required>
+                              <option value="" disabled>Select Particular</option>
+                              <option v-for="items in inventory" :value="items.id">{{ items.particulars }}</option>
+                            </select>
+                          </div>
+
+                          <!-- <div class="col-12">
+                            <label for="acc_officer" class="form-label">Accountable Officer</label>
+                            <select class="form-select" v-model="acc_officer" required>
+                              <option value="" disabled>Select Employee</option>
+                              <option v-for="employee in employees">{{ employee.empfullname }}</option>
+                            </select>
+                          </div> -->
+                          
+                          <div>
+                            <div class="col-12">
+                              <label for="entityname" class="form-label">Entity Name</label>
+                              <input type="text" disabled class="form-control" id="entityname" v-model="entityname">
+                            </div>
+                            <div class="col-12">
+                              <label for="classification" class="form-label">Classification</label>
+                              <input type="text" disabled class="form-control" id="classification" v-model="classification">
+                            </div>
+                            <div class="col-12">
+                              <label for="code" class="form-label">Code</label>
+                              <input type="text" disabled class="form-control" id="code" v-model="code">
+                            </div>
+                          </div>
+                          
+                          
+                          <div class="row g-1">
+                            <label class="card-title text-center" style="font-size: 100%">Description</label>
+                            <div class="col-12">
+                              <label for="article" class="form-label">Article</label>
+                              <input type="text" disabled class="form-control" id="article" v-model="article">
+                            </div>
+                            <div class="col-6">
+                              <label for="modelno" class="form-label">Model No.:</label>
+                              <input type="text" disabled class="form-control" id="modelno" v-model="modelno">
+                            </div>
+                            <div class="col-6">
+                              <label for="serialno" class="form-label">Serial No.:</label>
+                              <input type="text" disabled class="form-control" id="serialno" v-model="serialno">
+                            </div>
+                          </div>
+                          </div>
+
+
+                          <!-- Semi-expendable -->
+                          <div class="row g-1">
+                              <label class="card-title text-center" style="font-size: 100%">Semi-expendable</label>
+                              <div class="col-6">
+                                <label for="propertynumber" class="form-label">Property Number</label>
+                                <input type="text" class="form-control" id="propertynumber" v-model="propertynumber" placeholder="MDO-CPU-02">
+                              </div>
+                              <div class="col-6">
+                                <label for="propertydate" class="form-label">Property Date</label>
+                                <input type="date" class="form-control" id="propertydate" v-model="propertydate">
+                              </div>
+      
+                          </div>
+
+                          
+
+                          <!-- Reference -->
+                          <div class="row g-1">
+                              <label class="card-title text-center" style="font-size: 100%">Reference</label>
+                              <div class="col-6">
+                                <label for="icsnumber" class="form-label">ICS NO.</label>
+                                <input type="text" class="form-control" id="icsnumber" v-model="icsnumber">
+                              </div>
+                              <div class="col-6">
+                                <label for="jevnumber" class="form-label">JEV NO.</label>
+                                <input type="text" class="form-control" id="jevnumber" v-model="jevnumber">
+                              </div>
+                          </div>
+
+                          
+
+                          <!-- <div class="row g-1">
+                            <label class="card-title text-center" style="font-size: 100%">Receipt</label>
+                            <div class="col-6">
+                              <label for="rec_quantity" class="form-label">Receipt Quantity</label>
+                              <input type="text" class="form-control" id="rec_quantity" v-model="rec_quantity" placeholder="0">
+                            </div>
+                            <div class="col-6">
+                              <label for="rec_unit" class="form-label">Unit</label>
+                              <select class="form-select" id="rec_unit" v-model="rec_unit" required>
+                                <option value="unit">Unit</option>
+                                <option value="set">Set</option>
+                              </select>
+                            </div>
+                            <div class="col-6">
+                              <label for="rec_unitcost" class="form-label">Receipt Unit Cost</label>
+                              <input type="text" class="form-control" id="rec_unitcost" v-model="rec_unitcost" placeholder="0">
+                            </div>
+                            <div class="col-6">
+                              <label for="rec_totalcost" class="form-label">Receipt Total Cost</label>
+                              <input type="text" class="form-control" id="rec_totalcost" v-model="rec_totalcost" placeholder="0" disabled>
+                            </div>
+                        </div> -->
+
+                        <div class="row g-1">
+                          <label class="card-title text-center" style="font-size: 100%">Receipt</label>
+                          <div class="col-6">
+                            <label for="rec_quantity" class="form-label">Receipt Quantity</label>
+                            <input type="text" class="form-control" id="rec_quantity" v-model="rec_quantity" placeholder="0" required>
+                          </div>
+                          <div class="col-6">
+                            <label for="rec_unit" class="form-label">Unit</label>
+                            <select class="form-select" id="rec_unit" v-model="rec_unit" required>
+                              <option value="unit">Unit</option>
+                              <option value="set">Set</option>
+                            </select>
+                          </div>
+                          <div class="col-6">
+                            <label for="rec_unitcost" class="form-label">Receipt Unit Cost</label>
+                            <input type="text" class="form-control" id="rec_unitcost" v-model="rec_unitcost" placeholder="0.00" disabled>
+                          </div>
+                          <div class="col-6">
+                            <label for="rec_totalcost" class="form-label">Receipt Total Cost</label>
+                            <input type="text" class="form-control" id="rec_totalcost" :value="totalCostFormatted" placeholder="0.00" disabled>
+                          </div>
+                        </div>
+
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3">
+                  <div class="card">
+                      <div class="card-body">
+                                    <!-- Receipt -->
+                                    <div class="row g-1">
+                                        <label class="card-title text-center" style="font-size: 100%">Others</label>
+                                        <div class="col-12">
+                                          <label for="isstranadjamount" class="form-label">Issue/ Transfer/ Adjustments
+                                            (Amount)</label>
+                                          <input type="text" class="form-control" id="isstranadjamount" v-model="isstranadjamount" placeholder="0.00">
+                                        </div>
+                                        <div class="col-6">
+                                          <label for="accimploss" class="form-label">Acc Imp Loss</label>
+                                          <input type="text" class="form-control" id="accimploss" v-model="accimploss">
+                                        </div>
+                                        <div class="col-6">
+                                          <label for="adjustedcost" class="form-label">Adjusted Cost</label>
+                                          <input type="text" class="form-control" id="adjustedcost" v-model="adjustedcost" placeholder="0.00">
+                                        </div>
+                                    </div>
+
+                                    
+
+                                    <!-- History of Repair -->
+                                    <div class="row g-1">
+                                        <label class="card-title text-center" style="font-size: 100%">History of Repair</label>
+                                        <div class="col-6">
+                                          <label for="repair_nature" class="form-label">Nature of Repair</label>
+                                          <input type="text" class="form-control" id="repair_nature" v-model="repair_nature">
+                                        </div>
+                                        <div class="col-6">
+                                          <label for="repair_amount" class="form-label">Repair Amount</label>
+                                          <input type="text" class="form-control" id="repair_amount" v-model="repair_amount">
+                                        </div>
+                                    </div>
+
+                                    
+        
+                                    <!-- Issue -->
+                                    <div class="row g-1">
+                                        <label class="card-title text-center" style="font-size: 100%">Issue</label>
+                                        <div class="col-6">
+                                          <label for="issue_date" class="form-label">Issue Item Date</label>
+                                          <input type="date" class="form-control" id="issue_date" v-model="issue_date" required>
+                                        </div>
+                                        <div class="col-12">
+                                          <label for="issue_officeofficer" class="form-label">Issue Office/Officer</label>
+                                          <input type="text" class="form-control" id="issue_officeofficer" v-model="issue_officeofficer" placeholder="Base sa nagamit ng system"  required>
+                                        </div>
+                                    </div>
+
+                                    
+
+                                    <!-- Transfer -->
+                                    <div class="row g-1">
+                                      <label class="card-title text-center" style="font-size: 100%">Transfer</label>
+                                      <div class="col-6">
+                                        <label for="transfer_date" class="form-label">Transfer Date</label>
+                                        <input type="date" class="form-control" id="transfer_date" v-model="transfer_date" required>
+                                      </div>
+                                      <div class="col-6">
+                                        <label for="transfer_quantity" class="form-label">Transfer Quantity</label>
+                                        <input type="text" class="form-control" id="transfer_quantity" v-model="transfer_quantity" required>
+                                      </div>
+                                      <div class="col-12">
+                                        <label for="transfer_officeofficer" class="form-label">Transfer Office/Officer</label>
+                                        <input type="text" class="form-control" id="transfer_officeofficer" v-model="transfer_officeofficer" required>
+                                      </div>
+                                  </div>
+
+                                  
+
+                                  <!-- Disposal -->
+                                  <div class="row g-1">
+                                      <label class="card-title text-center" style="font-size: 100%">Disposal</label>
+                                      <div class="col-6">
+                                        <label for="disposal_date" class="form-label">Disposal Date</label>
+                                        <input type="date" class="form-control" id="disposal_date" v-model="disposal_date" required>
+                                      </div>
+                                      <div class="col-6">
+                                        <label for="disposal_quantity" class="form-label">Disposal Quantity</label>
+                                        <input type="text" class="form-control" id="disposal_quantity" v-model="disposal_quantity" required>
+                                      </div>
+                                      <div class="col-12">
+                                        <label for="disposal_officeofficer" class="form-label">Disposal Officer</label>
+                                        <input type="text" class="form-control" id="disposal_officeofficer" v-model="disposal_officeofficer" required>
+                                      </div>
+                                  </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3">
+                  <div class="card">
+                      <div class="card-body">
+                                  <!-- Balance Quantity -->
+                                  <div class="row g-1">
+                                    <label class="card-title text-center" style="font-size: 100%">Balance Quantity</label>
+                                    <div class="col-6">
+                                      <label for="remarks" class="form-label">Remarks</label>
+                                      <select class="form-select" id="remarks" v-model="remarks">
+                                        <option value="SERVICEABLE">SERVICEABLE</option>
+                                        <option value="UNSERVICEABLE">UNSERVICEABLE</option>
+                                      </select>
+                                    </div>                                    
+                                    <div class="col-6">
+                                      <label for="estimatedlife" class="form-label">Estimated Useful Life</label>
+                                      <input type="text" class="form-control" id="estimatedlife" v-model="estimatedlife" required>
+                                    </div>
+                                </div>
+
+                                
+
+                                <!-- Received from: (Issued by) -->
+                                <div class="row g-1">
+                                  <label class="card-title text-center" style="font-size: 100%">Received from: (Issued by)</label>
+                                  <div class="col-12">
+                                    <label for="issued_officer" class="form-label">Issued Officer</label>
+                                    <input type="text" class="form-control" id="issued_officer" v-model="issued_officer" placeholder="Nakabase din sa nagamit" required>
+                                  </div>
+                                  <div class="col-6">
+                                    <label for="issued_offposition" class="form-label">Issued Position</label>
+                                    <input type="text" class="form-control" id="issued_offposition" v-model="issued_offposition" required>
+                                  </div>
+                                  <div class="col-6">
+                                    <label for="issued_date" class="form-label">Issued Date</label>
+                                    <input type="date" class="form-control" id="issued_date" v-model="issued_date" required>
+                                  </div>
+                              </div>
+
+                              
+  
+                              <!-- Received by: (Accountable Officer) -->
+                              <div class="row g-3">
+                                  <label class="card-title text-center" style="font-size: 100%">Received by: (Accountable Officer)</label>
+                                  <div class="col-12">
+                                    <label for="acc_officer" class="form-label">Accountable Officer</label>
+                                    <!-- <input type="text" class="form-control" id="acc_officer" v-model="acc_officer"> -->
+                                    <select class="form-select" v-model="acc_officer" required>
+                                      <option value="" disabled>Select Employee</option>
+                                      <option v-for="employee in employees">{{ employee.empfullname }}</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-12">
+                                    <label for="acc_empposition" class="form-label">Accountable Position</label>
+                                    <select class="form-select" v-model="acc_empposition" required>
+                                      <option value="" disabled>Select Position</option>
+                                      <option v-for="employee in employees">{{ employee.empposition }}</option>
+                                    </select>
+                                  </div>
+                                  <div class="col-6">
+                                    <label for="acc_date" class="form-label">Accountable Date</label>
+                                    <input type="date" class="form-control" id="acc_date" v-model="acc_date" required>
+                                  </div>
+                              </div>
+
+                              
+  
+                              <!-- Inventory Transfer Report -->
+                              <div class="row g-1">
+                                  <label class="card-title text-center" style="font-size: 100%">Inventory Transfer Report</label>
+                                  <div class="col-6">
+                                    <label for="itr_no" class="form-label">ITR Number</label>
+                                    <input type="text" class="form-control" id="itr_no" v-model="itr_no" required>
+                                  </div>
+                                  <div class="col-6">
+                                    <label for="itr_date" class="form-label">ITR Date</label>
+                                    <input type="date" class="form-control" id="itr_date" v-model="itr_date" required>
+                                  </div>
+                                  <div class="col-6">
+                                    <label for="rrsp_no" class="form-label">RRSP No.</label>
+                                    <input type="text" class="form-control" id="rrsp_no" v-model="rrsp_no" required>
+                                  </div>
+                                  <div class="col-6">
+                                    <label for="rrsp_date" class="form-label">RRSP Date</label>
+                                    <input type="date" class="form-control" id="rrsp_date" v-model="rrsp_date" required>
+                                  </div>
+                                  <div class="col-12">
+                                    <label for="reasonfortrans" class="form-label">Reason for Transfer</label>
+                                    <textarea type="text" class="form-control" id="reasonfortrans" v-model="reasonfortrans"  required></textarea>
+                                  </div>
+                              </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-3">
+                  <div class="card">
+                      <div class="card-body">
+                                <!-- REGISTRY OF SEMI-EXPENDABLE PROPERTY ISSUED -->
+                                <div class="row g-1">
+                                  <label class="card-title text-center" style="font-size: 100%">REGISTRY OF SEMI-EXPENDABLE PROPERTY ISSUED</label>
+                                  <label class="card-title" style="font-size: 100%">Returned</label>
+                                  <div class="col-6">
+                                    <label for="reg_semiissuedserialno" class="form-label">SERIAL NO.:</label>
+                                    <input type="text" class="form-control" id="reg_semiissuedserialno" v-model="reg_semiissuedserialno" required>
+                                  </div>
+                                  <div class="col-6">
+                                    <label for="reg_returned_qty" class="form-label">Returned Quantity</label>
+                                    <input type="text" class="form-control" id="reg_returned_qty" v-model="reg_returned_qty" required>
+                                  </div>
+                                  <label class="card-title" style="font-size: 100%">Re-issued</label>
+                                  <div class="col-6">
+                                    <label for="reg_reissued_qty" class="form-label">Re-issued Quantity</label>
+                                    <input type="text" class="form-control" id="reg_reissued_qty" v-model="reg_reissued_qty" required>
+                                  </div>
+                                  <div class="col-12">
+                                    <label for="reg_reissued_off" class="form-label">Re-issued Office/Officer</label>
+                                    <input type="text" class="form-control" id="reg_reissued_off" v-model="reg_reissued_off" required>
+                                  </div>
+                                  <label class="card-title" style="font-size: 100%">Disposed</label>
+                                  <div class="col-6">
+                                    <label for="reg_disposed_qty" class="form-label">Disposed Quantity</label>
+                                    <input type="text" class="form-control" id="reg_disposed_qty" v-model="reg_disposed_qty" required>
+                                  </div>
+                                  <div class="col-6">
+                                    <label for="reg_balance_quantity" class="form-label">Balance Quantity</label>
+                                    <input type="text" class="form-control" id="reg_balance_quantity" v-model="reg_balance_quantity" required>
+                                  </div>
+                                  <div class="col-6">
+                                    <label for="reg_amount" class="form-label">Amount</label>
+                                    <input type="text" class="form-control" id="reg_amount" v-model="reg_amount" required>
+                                  </div>
+                                  <div class="col-6">
+                                    <label for="reg_remarks" class="form-label">Remarks</label>
+                                    <select class="form-select" id="reg_remarks" v-model="reg_remarks" required>
+                                      <option value="SERVICEABLE">SERVICEABLE</option>
+                                      <option value="UNSERVICEABLE">UNSERVICEABLE</option>
+                                    </select>
+                                  </div>
+                                  
+                                  <label class="card-title text-center" style="font-size: 100%">ASSIGNED OFFICER</label>
+                                  <br>
+                                  <div class="col-12">
+                                    <label for="property_officer" class="form-label">Property Officer</label>
+                                    <input type="text" class="form-control" id="property_officer" v-model="property_officer" placeholder="nakabase sa nagamit" required>
+                                  </div>
+                                  <div class="col-12">
+                                    <label for="approving_authority" class="form-label">Head of Office/ Approving Authority</label>
+                                    <input type="text" class="form-control" id="approving_authority" v-model="approving_authority" placeholder="magbase sa position" required>
+                                  </div>
+
+                              <!-- Buttons -->
+                              <br><br><br><br>
+
+                              <div class="col-12 text-center">
+                                <button @click="saveOrUpdate" v-if="status !== 'update'" type="submit" class="btn btn-primary">Submit</button>
+                                <button @click="saveOrUpdate" v-if="status === 'update'" type="submit" class="btn btn-success">Update</button>
+                                <button @click="resetForm" type="reset" class="btn btn-secondary">Reset</button>
+                              </div>
+                              <br><br><br><br>
+                            </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+          <div class="card-body">
+          <h5 class="card-title">Acquisition</h5>
+          <p> Refers to the act of gaining possession to a property or equipment by the government.</p>
+          <!-- Table with stripped rows -->
+
+<!-- HTML Template -->
+<div class="row align-items-center">
+<!-- Dropdown for Employee -->
+<div class="col-lg-3">
+<select v-model="selectedEmployee" class="form-select" @change="onEmployeeChange">
+<option value="">Select Employee</option>
+<option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
+</select>
+</div>
+
+<!-- Dropdown for Classification -->
+<div class="col-lg-3">
+<select v-model="selectedClassification" class="form-select" :disabled="!selectedEmployee" @change="onEmployeeChange">
+<option value="">Select Classification</option>
+<option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
+</select>
+</div>
+
+<!-- Dropdown for Article -->
+<div class="col-lg-3">
+<select v-model="selectedArticle" class="form-select" :disabled="!selectedEmployee || !selectedClassification" @change="onEmployeeChange">
+<option value="">Select Article</option>
+<option v-for="article in distinctArticle" :key="article" :value="article">{{ article }}</option>
+</select>
+</div>
+
+<!-- Dropdown for Particular -->
+<div class="col-lg-3">
+<select v-model="selectedParticular" class="form-select" :disabled="!selectedEmployee || !selectedClassification || !selectedArticle">
+<option value="">Select Particular</option>
+<option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
+</select>
+</div>
+</div>
+
+<!-- Status dropdown centered -->
+<div class="row mt-3 justify-content-center">
+<div class="col-lg-2">
+<select v-model="selectedStatus" class="form-select">
+<option value="">Current Status</option>
+<option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
+</select>
+</div>
+</div>
+
+<!-- Search bar on the right side -->
+<div class="row mt-3 justify-content-end">
+<div class="col-lg-3">
+<!-- Search bar -->
+<div class="input-group">
+<input type="text" v-model="searchKeyword" placeholder="Search..." class="form-control">
+</div>
+</div>
+</div>
+
+
+
+<div class="row align-items-center">
+<div class="col-lg-6">
+<span class="me-2">Show</span> <!-- Added margin to the right -->
+<div class="dropdown" style="display: inline-block;">
+<button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+  {{ pageSize }}
+</button>
+<ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+  <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+  <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+  <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+ 
+  <!-- Add more options as needed -->
+</ul>
+</div>
+<span class="ms-2">entries</span> <!-- Added margin to the left -->
+</div>
+</div>
+
+
+
+          <div style="overflow-y: auto;">
+            <table>
+          <!-- Table header -->
+          <thead>
+            
+            <tr>
+  <th rowspan="2"><b>ID</b></th>
+  <th rowspan="2"><b>Image</b><br><b>Verification</b></th>
+  <th rowspan="2"><b>Image</b></th>
+  <th rowspan="2"><b>Entity Name</b></th>
+  <th rowspan="2"><b>Semi-expendable Property Classification</b></th>
+  <th rowspan="2"><b>UACS Object Code:</b></th>
+
+  <th colspan="4"><b>Description</b></th>
+
+  <th rowspan="2"><b>Full Description</b></th>
+  <th rowspan="2">
+    <b>Semi-expendable</b><br>
+    <b>Property Number:</b>
+</th>
+
+  <th rowspan="2"><b>Date</b></th>
+
+  <th colspan="2"><b>Reference</b></th>
+  <th colspan="4" style="background-color: blue; color: white;"><b>Receipt</b></th>
+
+  <th rowspan="2" style="background-color: blue; color: white;"><b>"Issue/ Transfer/ Adjustments (Amount)"</b></th>
+  <th rowspan="2" style="background-color: blue; color: white;"><b>Accummulated Impairment Loss</b></th>
+  <th rowspan="2" style="background-color: blue; color: white;"><b>Adjusted Cost</b></th>
+
+  <th colspan="2" style="background-color: blue; color: white;"><b>History of Repair</b></th>
+  <th colspan="4" style="background-color: #20ff6a; color: black;"><b>Issue</b></th>
+  <th colspan="3" style="background-color: #07ad41; color: black;"><b>Transfer</b></th>
+  <th colspan="3" style="background-color: orange; color: black;"><b>Disposal</b></th>
+  <th colspan="1"><b>Balance</b></th>
+
+  <th rowspan="2"><b>Amount</b></th>
+  <th rowspan="2"><b>Remarks</b></th>
+  <th rowspan="2"><b>ESTIMATED USEFUL LIFE</b></th>
+
+  <th colspan="3" style="background-color: #16fa54; color: black;"><b>Received from: (Issued by)</b></th>
+  <th colspan="3" style="background-color: #16fa54; color: black;"><b>Received by: (Accountable Officer)</b></th>
+  <th colspan="2" style="background-color: #07ad41; color: black;"><b>INVENTORY TRANSFER REPORT</b></th>
+  <th colspan="3" style="background-color: #07ad41; color: black;"><b></b></th>
+
+  <th rowspan="2" style="background-color: blue; color: white;"><b>"REPORT OF SEMI-EXP PROP ISSUEDSERIAL NO.:"</b></th>
+
+  <th colspan="2" style="background-color: blue; color: white;"><b>Returned</b></th>
+  <th colspan="2" style="background-color: blue; color: white;"><b>Re-issued</b></th>
+  <th colspan="1" style="background-color: blue; color: white;"><b>Disposed</b></th>
+  <th colspan="1" style="background-color: blue; color: white;"><b>Balance</b></th>
+
+  <th rowspan="2" style="background-color: blue; color: white;"><b>Amount</b></th>
+  <th rowspan="2" style="background-color: blue; color: white;"><b>Remarks</b></th>
+  <th rowspan="2"><b>Property Officer</b></th>
+  <th rowspan="2"><b>Head of Office/ Approving Authority</b></th>
+ 
+
+</tr>
+<tr>
+  <th><b>Article</b></th>
+  <th><b>Particulars</b></th>
+  <th><b>Model No.</b></th>
+  <th><b>Serial No.</b></th>
+
+  <th><b>ICS No.</b></th>
+  <th><b>JEV No.</b></th>
+
+  <th style="background-color: blue; color: white;"><b>Quantity</b></th>
+  <th style="background-color: blue; color: white;"><b>Unit</b></th>
+  <th style="background-color: blue; color: white;"><b>Unit Cost</b></th>
+  <th style="background-color: blue; color: white;"><b>Total Cost</b></th>
+
+  <th style="background-color: blue; color: white;"><b>Nature of Repair</b></th>
+  <th style="background-color: blue; color: white;"><b>Amount</b></th>
+
+  <th style="background-color: #20ff6a; color: black;"><b>Item No.</b></th>
+  <th style="background-color: #20ff6a; color: black;"><b>Date</b></th>
+  <th style="background-color: #20ff6a; color: black;"><b>Quantity</b></th>
+  <th style="background-color: #20ff6a; color: black;"><b>Office/Officer</b></th>
+
+  <th style="background-color: #07ad41; color: black;"><b>Date</b></th>
+  <th style="background-color: #07ad41; color: black;"><b>Quantity</b></th>
+  <th style="background-color: #07ad41; color: black;"><b>Office/Officer</b></th>
+
+  <th style="background-color: orange; color: black;"><b>Date</b></th>
+  <th style="background-color: orange; color: black;"><b>Quantity</b></th>
+  <th style="background-color: orange; color: black;"><b>Office/Officer</b></th>
+
+  <th><b>Quantity</b></th>
+
+  <th style="background-color: #16fa54; color: black;"><b>Name</b></th>
+  <th style="background-color: #16fa54; color: black;"><b>Position/Office</b></th>
+  <th style="background-color: #16fa54; color: black;"><b>Date</b></th>
+  
+  <th style="background-color: #16fa54; color: black;"><b>Name</b></th>
+  <th style="background-color: #16fa54; color: black;"><b>Position</b></th>
+  <th style="background-color: #16fa54; color: black;"><b>Date</b></th>
+
+  <th style="background-color: #07ad41; color: black;"><b>"ITR NO.(YYYY-MON-NO. SERIES-RCC)"</b></th>
+  <th style="background-color: #07ad41; color: black;"><b>ITR DATE</b></th>
+
+  <th style="background-color: #07ad41; color: black;"><b>"RRSP NO.(YYYY-MON-NO. SERIES-RCC)"</b></th>
+  <th style="background-color: #07ad41; color: black;"><b>RRSP DATE</b></th>
+  <th style="background-color: #07ad41; color: black;"><b>REASON FOR TRANSFER</b></th>
+
+  <th style="background-color: blue; color: white;"><b>Quantity</b></th>
+  <th style="background-color: blue; color: white;"><b>Office/Officer</b></th>
+  <th style="background-color: blue; color: white;"><b>Quantity</b></th>
+  <th style="background-color: blue; color: white;"><b>Office/Officer</b></th>
+  <th style="background-color: blue; color: white;"><b>Quantity</b></th>
+  <th style="background-color: blue; color: white;"><b>Quantity</b></th>
+
+</tr>
+          </thead>
+          
+          <tbody>
+            <!-- Table rows -->
+            <tr v-for="info in paginatedInfo" :key="info.id" @contextmenu.prevent="openContextMenu(info.id, $event)">
+            
+              <!-- <td scope="row">
+                <img :src="generateQRCodeUrl(info.id)" alt="" style="width: 200px; height: 200px;">
+              </td> -->
+              <!-- <td scope="row">
+                <a class="btn btn-success" @click="generatePDF(info.id)"><i class="bx bxs-download"></i></a>
+                <a class="btn btn-warning" @click="selectRecord(info)"><i class="bx bxs-camera"></i></a>
+                <button @click="placeRecord(inv.id)" class="btn btn-warning"><i class="bx bxs-arrow-from-right"></i></button>
+                <button @click="deleteRecord(inv.id)" class="btn btn-danger"><i class="ri-delete-bin-6-line"></i></button>
+              </td> -->
+              <!-- <td scope="row">
+                <div class="dropdown">
+                    <a class="btn btn-primary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="bx bxs-menu"></i>
+                    </a>
+            
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <li><a class="btn btn-outline-success" @click="generatePDF(info.id)"><i class="bx bxs-download"></i>Generate PDF</a></li>
+                        <li><a class="btn btn-outline-warning" @click="selectRecord(info)"><i class="bx bxs-camera">  </i>Capture a File</a></li>
+                        <li><button @click="openUpdateFormModal(info.id)" class="btn btn-outline-info"><i class="bx bxs-arrow-from-right">    </i>Modify Record</button></li>
+                        <li><button @click="deleteRecord(info.id)" class="btn btn-outline-danger"><i class="ri-delete-bin-6-line">    </i>Delete Record</button></li>
+                    </ul>
+                </div>
+              </td> -->
+
+              <td scoped="row">
+                {{ info.id }}
+                <div v-if="showContextMenu && contextMenuRecordId === info.id" class="context-menu" :style="{ top: contextMenuY + 'px', left: contextMenuX + 'px' }">
+                  <a class="btn btn-success" @click="generatePDF(info.id)"><i class="bx bxs-download"></i>Generate PDF</a>
+                  <a class="btn btn-warning" @click="selectRecord(info)"><i class="bx bxs-camera"></i>Capture Image</a>
+                  <a @click="openUpdateFormModal(info.id)" class="btn btn-info"><i class="bx bxs-arrow-from-right"></i>Update Record</a>
+                  <a @click="deleteRecord(info.id)" class="btn btn-danger"><i class="ri-delete-bin-6-line"></i>Delete Record</a>
+                </div>
+              </td>
+              <td scope="row"><img :src="info.imageverification" alt="Verification Image" style="max-width: 100px; max-height: 100px;" /></td>
+              <td scope="row"><img :src="info.image" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
+              <td scope="row">{{ info.entityname }}</td>
+              <td scope="row">{{ info.classification }}</td>
+              <td scope="row">{{ info.code }}</td>
+              <td scope="row">{{ info.article }}</td>
+              <td scope="row">{{ info.particulars }}</td>
+              <td scope="row">{{ info.modelno }}</td>
+              <td scope="row">{{ info.serialno }}</td>
+              <td scope="row">{{ info.fulldescription }}</td>
+              <td scope="row">{{ info.propertynumber }}</td>
+              <td scope="row">{{ info.propertydate }}</td>
+              <td scope="row">{{ info.icsnumber }}</td>
+              <td scope="row">{{ info.jevnumber }}</td>
+              <td scope="row">{{ info.rec_quantity }}</td>
+              <td scope="row">{{ info.rec_unit }}</td>
+              <td scope="row">{{ info.rec_unitcost }}</td>
+              <td scope="row">{{ info.rec_totalcost }}</td>
+              <td scope="row">{{ info.isstranadjamount }}</td>
+              <td scope="row">{{ info.accimploss }}</td>
+              <td scope="row">{{ info.adjustedcost }}</td>
+              <td scope="row">{{ info.repair_nature }}</td>
+              <td scope="row">{{ info.repair_amount }}</td>
+              <td scope="row">{{ info.issue_itemno }}</td>
+              <td scope="row">{{ info.issue_date }}</td>
+              <td scope="row">{{ info.issue_quantity }}</td>
+              <td scope="row">{{ info.issue_officeofficer }}</td>
+              <td scope="row">{{ info.transfer_date }}</td>
+              <td scope="row">{{ info.transfer_quantity }}</td>
+              <td scope="row">{{ info.transfer_officeofficer }}</td>
+              <td scope="row">{{ info.disposal_date }}</td>
+              <td scope="row">{{ info.disposal_quantity }}</td>
+              <td scope="row">{{ info.disposal_officeofficer }}</td>
+              <td scope="row">{{ info.balancequantity }}</td>
+              <td scope="row">{{ info.balanceamount }}</td>
+              <td scope="row">{{ info.remarks }}</td>
+              <td scope="row">{{ info.estimatedlife }}</td>
+              <td scope="row">{{ info.issued_officer }}</td>
+              <td scope="row">{{ info.issued_offposition }}</td>
+              <td scope="row">{{ info.issued_date }}</td>
+              <td scope="row">{{ info.acc_officer }}</td>
+              <td scope="row">{{ info.acc_empposition }}</td>
+              <td scope="row">{{ info.acc_date }}</td>
+              <td scope="row">{{ info.itr_no }}</td>
+              <td scope="row">{{ info.itr_date }}</td>
+              <td scope="row">{{ info.rrsp_no }}</td>
+              <td scope="row">{{ info.rrsp_date }}</td>
+              <td scope="row">{{ info.reasonfortrans }}</td>
+              <td scope="row">{{ info.reg_semiissuedserialno }}</td>
+              <td scope="row">{{ info.reg_returned_qty }}</td>
+              <td scope="row">{{ info.reg_returned_off }}</td>
+              <td scope="row">{{ info.reg_reissued_qty }}</td>
+              <td scope="row">{{ info.reg_reissued_off }}</td>
+              <td scope="row">{{ info.reg_disposed_qty }}</td>
+              <td scope="row">{{ info.reg_balance_quantity }}</td>
+              <td scope="row">{{ info.reg_amount }}</td>
+              <td scope="row">{{ info.reg_remarks }}</td>
+              <td scope="row">{{ info.property_officer }}</td>
+              <td scope="row">{{ info.approving_authority }}</td>
+            </tr>
+          </tbody>
+        </table>
+          </div>
+          <!-- End Table with stripped rows -->
+
+          <!-- I-update ang table at idagdag ang pagination controls -->
+          <div class="card-body">
+<!-- Iba pang content ng card... -->
+<div class="text-center">
+<nav aria-label="Page navigation">
+<ul class="pagination justify-content-center mb-0"> <!-- Center pagination -->
+  <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+    <a class="page-link" href="#" @click.prevent="currentPage = Math.max(currentPage - 1, 1)">Previous</a>
+  </li>
+  <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': currentPage === page }">
+    <a class="page-link" href="#" @click.prevent="currentPage = page">{{ page }}</a>
+  </li>
+  <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+    <a class="page-link" href="#" @click.prevent="currentPage = Math.min(currentPage + 1, totalPages)"><b>Next</b></a>
+  </li>
+</ul>
+</nav>
+</div>
+<div class="mt-3">
+<p>{{ currentPageRecords }}</p> <!-- Moved current page records here -->
+</div>
+</div>
+
+          </div>
+      </div>
+  </div>
+  </div>
+
+
+
+  <div class="modal" v-if="selectedRecord">
+    <div class="modal-content">
+      <span class="close" @click="selectedRecord = null">&times;</span>
+
+
+      <form class="row g-3" enctype="multipart/form-data">
+        <div class="col-12">
+          <label class="form-label"><h3><b>Choose Image Source:</b></h3></label>
+          <div>
+              <input type="radio" id="upload" value="upload" v-model="imageSource">
+              <label for="upload">Upload Image</label>
+          </div>
+          <div>
+              <input type="radio" id="capture" value="capture" v-model="imageSource">
+              <label for="capture">Capture Image</label>
+          </div>
+      </div>
+
+      <div class="col-12" v-if="imageSource === 'upload'">
+          <!-- File upload input -->
+          <label for="image" class="form-label"><b>Upload Image</b></label>
+          <input type="file" class="form-control" id="image" @change="handleFileUpload" accept="image/*">
+      </div>
+
+      <div class="col-6" v-else-if="imageSource === 'capture'">
+          <!-- Camera capture section -->
+          <label for="camera" class="form-label"><b>Capture Image</b></label>
+          <video id="camera" width="280" height="220" autoplay></video>
+          <a @click="startCamera" class="btn btn-primary">{{ cameraStarted ? 'Stop Camera' : 'Start Camera' }}</a>
+          <a @click="captureImage" class="btn btn-success" :disabled="!cameraStarted">Capture</a>
+      </div>
+      <div class="col-6">
+          <label class="form-label text-center"><b>Preview</b></label>
+          <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" style="max-width: 280px; max-height: 220px;">
+      </div>
+      <div class="text-center">
+          <button @click="updateVerification" type="submit" class="btn btn-primary">Submit</button>
+          <button type="reset" class="btn btn-secondary">Reset</button>
+      </div>
+      </form>
+
+
+
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+      
+
+            <div class="col-lg-12">
               <div class="card">
               <div class="card-body">
-                <h5 class="card-title">Request</h5>
+                <div class="row">
+                  <div class="col-lg-12">
+                    <h6 class="card-title" style="font-size: 150%">Request Table</h6>
+                  </div>
+                  
+  
+  
+                  <div class="col-lg-6" >
+                    <div class="accordion accordion-body text-end" id="faq-group-2">
+                      <div class="accordion-item">
+                        <h2 class="accordion-header">
+                          <button class="accordion-button collapsed btn btn-outline-info" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse" style="margin-left: 1">
+                            Download the records through a documented PDF
+                          </button>
+                        </h2>
+                        <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                          <div class="row align-items-center mt-3">
+                            <div class="col-lg-6">
+                              <select v-model="selectedEmployeePDF" @change="downloadEmployeeRequest" class="form-select animated-dropdown w-100">
+                                <option value="" disabled>Select Employee</option>
+                                <option v-for="empfullname in distinctReqEmployees" :key="empfullname" :value="empfullname">{{ empfullname }}</option>
+                              </select>
+                            </div>
+                            <div class="col-lg-6 text-end">
+                              <button class="btn btn-warning w-100" @click="requestPDF"><i class="ri-download-2-line"></i> Download All</button>
+                            </div>
+                          </div>
+                          <!-- Loading animation -->
+                          <div v-if="loading" class="text-center mt-1">
+                            <div class="loading-line"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>  
+                </div>
 
                     <!-- Modal -->
                     <div class="modal" v-if="showModal">
@@ -327,7 +1572,7 @@
                     </div>
 
                 <!-- Table with hoverable rows -->
-                <table class="table">
+                <table class="table table-striped table-hover table-sm">
                   <thead>
                     <tr>
                       <th scope="col">Employee</th>
@@ -345,8 +1590,11 @@
                       <td scope="row">{{ req.description }}</td>
                       <td scope="row">{{ req.status }}</td>
                       <td scope="row">{{ req.feedback }}</td>
-                      <td><button @click="updatereqStatus(req.id, 'Approved')" class="btn btn-success">Approve</button></td>
-                        <td><button @click="updatereqStatus(req.id, 'Declined')" class="btn btn-danger">Decline</button></td>
+                      <td>
+                        <div>
+                          <button @click="updatereqStatus(req.id, 'Approved')" class="btn btn-outline-success"><i class="ri-checkbox-circle-line"></i>Approve</button><button @click="updatereqStatus(req.id, 'Declined')" class="btn btn-outline-danger"><i class="ri-close-circle-line"></i>Decline</button>
+                        </div>
+                      </td>
                         <!-- <td><button @click="deleteRecord(req.id)" class="btn btn-warning">Message</button></td> -->
                     </tr>
                   </tbody>
@@ -362,39 +1610,6 @@
 
             <div class="col-lg-16">
 
-
-
-            <div class="card" style="font-size: medium;">
-            <div class="card-body">
-              <h5 class="card-title">Data Table</h5>
-              <hr>
-              <!-- Table with hoverable rows -->
-              <!-- <table class="table table-hover datatable">
-                <thead>
-                  <tr>
-                    <th scope="col">Entity</th>
-                    <th scope="col">Particulars</th>
-                    <th scope="col">Classification</th>
-                    <th scope="col">Fullname</th>
-                    <th scope="col">Code</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="infos in info">
-                    <td scope="row">{{ infos.entityname }}</td>
-                    <td scope="row">{{ infos.particulars }}</td>
-                    <td scope="row">{{ infos.classification }}</td>
-                    <td scope="row">{{ infos.empfullname }}</td>
-                    <td scope="row">{{ infos.code }}</td>
-                    <td><button @click="deleteRecord(infos.id)" class="btn btn-danger">Delete</button></td>
-                  </tr>
-                </tbody>
-              </table> -->
-              <!-- End Table with hoverable rows -->
-
-            </div>
-          </div>
 
             </div>
         </div>
@@ -413,32 +1628,627 @@
 import axios from 'axios'
 
 export default{
+  computed: {
+      rec_totalCost() {
+            return this.rec_quantity * this.rec_unitcost;
+          },
+      totalCostFormatted() {
+            // Format total Cost with commas
+            return this.rec_totalCost.toLocaleString();
+          },
+    filteredInfo() {
+      let filteredData = this.info;
+
+      // Filter based on selected employee
+      if (this.selectedEmployee !== '') {
+        filteredData = filteredData.filter(info => info.empfullname.toLowerCase() === this.selectedEmployee.toLowerCase());
+      }
+
+      // Filter based on selected classification
+      if (this.selectedClassification !== '') {
+        filteredData = filteredData.filter(info => info.classification.toLowerCase() === this.selectedClassification.toLowerCase());
+      }
+
+      // Filter based on selected article
+      if (this.selectedArticle !== '') {
+        filteredData = filteredData.filter(info => info.article.toLowerCase() === this.selectedArticle.toLowerCase());
+      }
+
+      // Filter based on selected particular
+      if (this.selectedParticular !== '') {
+        filteredData = filteredData.filter(info => info.particulars.toLowerCase() === this.selectedParticular.toLowerCase());
+      }
+
+      if (this.selectedStatus !== '') {
+    filteredData = filteredData.filter(info => info.status.toLowerCase() === this.selectedStatus.toLowerCase());
+  }
+
+      // Filter based on search keyword
+      if (this.searchKeyword !== '') {
+        const keyword = this.searchKeyword.toLowerCase();
+        filteredData = filteredData.filter(info => 
+          (info.entityname && info.entityname.toLowerCase().includes(keyword)) ||
+          (info.empfullname && info.empfullname.toLowerCase().includes(keyword)) ||
+          (info.classification && info.classification.toLowerCase().includes(keyword)) ||
+          (info.article && info.article.toLowerCase().includes(keyword)) ||
+          (info.code && info.code.toLowerCase().includes(keyword)) ||
+          (info.created_at && info.created_at.toLowerCase().includes(keyword)) ||
+          (info.status && info.status.toLowerCase().includes(keyword)) ||
+          (info.particulars && info.particulars.toLowerCase().includes(keyword))
+        );
+      }
+
+      return filteredData;
+    },
+    paginatedInfo() {
+      const startIndex = (this.currentPage - 1) * this.pageSize;
+      const endIndex = startIndex + this.pageSize;
+      return this.filteredInfo.slice(startIndex, endIndex);
+    },
+    totalPages() {
+      return Math.ceil(this.filteredInfo.length / this.pageSize);
+    },
+    currentPageRecords() {
+      const startIndex = (this.currentPage - 1) * this.pageSize + 1;
+      const endIndex = Math.min(startIndex + this.pageSize - 1, this.filteredInfo.length);
+      return `Showing ${startIndex} - ${endIndex} of ${this.filteredInfo.length} records`;
+    },
+    distinctEmployees() {
+      const employeeSet = new Set();
+      this.info.forEach(item => employeeSet.add(item.acc_officer));
+      return Array.from(employeeSet);
+    },
+    distinctReqEmployees() {
+      const employeeSet = new Set();
+      this.requests.forEach(requests => employeeSet.add(requests.empfullname));
+      return Array.from(employeeSet);
+    },
+    distinctClassification() {
+      const classificationSet = new Set();
+      this.info.forEach(item => {
+        if (item.empfullname && typeof item.empfullname === 'string' &&
+            item.empfullname.toLowerCase() === this.selectedEmployee.toLowerCase() &&
+            item.classification && typeof item.classification === 'string') {
+          classificationSet.add(item.classification);
+        }
+      });
+      return Array.from(classificationSet);
+    },
+    distinctArticle() {
+      const articleSet = new Set();
+      this.info.forEach(item => {
+        if (item.empfullname && typeof item.empfullname === 'string' &&
+            item.empfullname.toLowerCase() === this.selectedEmployee.toLowerCase() &&
+            item.classification && typeof item.classification === 'string' &&
+            item.classification.toLowerCase() === this.selectedClassification.toLowerCase() &&
+            item.article && typeof item.article === 'string') {
+          articleSet.add(item.article);
+        }
+      });
+      return Array.from(articleSet);
+    },
+    distinctParticular() {
+      const particularSet = new Set();
+      this.info.forEach(item => {
+        if (item.empfullname &&
+            item.empfullname.toLowerCase() === this.selectedEmployee.toLowerCase() &&
+            item.classification &&
+            item.classification.toLowerCase() === this.selectedClassification.toLowerCase() &&
+            item.article &&
+            item.article.toLowerCase() === this.selectedArticle.toLowerCase() &&
+            item.particulars &&
+            typeof item.particulars === 'string') {
+          particularSet.add(item.particulars);
+        }
+      });
+      return Array.from(particularSet);
+    },
+    distinctStatus() {
+    const statusSet = new Set();
+    this.info.forEach(item => {
+      if (item.status) {
+        statusSet.add(item.status);
+      }
+    });
+    return Array.from(statusSet);
+  },
+  populateRecords() {
+      if (this.formselectedParticular) {
+        // Filter the inventory to find the selected particular
+        const selectedItem = this.inventory.find(item => item.id === this.formselectedParticular);
+        if (selectedItem) {
+          // Populate other fields based on the selected particular
+          this.particulars = selectedItem.particulars;
+          this.entityname = selectedItem.entityname;
+          this.classification = selectedItem.classification;
+          this.code = selectedItem.code;
+          this.article = selectedItem.article;
+          this.modelno = selectedItem.modelno;
+          this.serialno = selectedItem.serialno;
+          this.rec_unitcost = selectedItem.unitcost;
+          // Add more fields if needed
+        }
+      }
+    },
+  },
   data(){
       return{
           info:[],
+          infos:[],
           req:[],
           requests:[],
           entityname: "",
-          particulars: "",
           classification: "",
           empfullname: "",
           code: "",
+          modelno: '',
+          serialno: '',
+          entityname: '',
+          classification: '',
+          code: '',
+          article: '',
+          particulars: '',
+          modelno: '',
+          serialno: '',
+          description: '',
+          propertynumber: '',
+          propertydate: '',
+          icsnumber: '',
+          jevnumber: '',
+          rec_quantity: '',
+          rec_unit: '',
+          rec_unitcost: '',
+          rec_totalcost: '',
+          isstranadjamount: '',
+          accimploss: '',
+          adjustedcost: '',
+          repair_nature: '',
+          repair_amount: '',
+          issue_itemno: '',
+          issue_date: '',
+          issue_quantity: '',
+          issue_officeofficer: '',
+          transfer_date: '',
+          transfer_quantity: '',
+          transfer_officeofficer: '',
+          disposal_date: '',
+          disposal_quantity: '',
+          disposal_officeofficer: '',
+          balancequantity: '',
+          balanceamount: '',
+          remarks: '',
+          empfullname: '',
+          estimatedlife: '',
+          issued_officer: '',
+          issued_offposition: '',
+          issued_date: '',
+          acc_officer: '',
+          acc_empposition: '',
+          acc_date: '',
+          itr_no: '',
+          itr_date: '',
+          rrsp_no: '',
+          rrsp_date: '',
+          reasonfortrans: '',
+          reg_semiissuedserialno: '',
+          reg_returned_qty: '',
+          reg_returned_off: '',
+          reg_reissued_qty: '',
+          reg_reissued_off: '',
+          reg_disposed_qty: '',
+          reg_balance_quantity: '',
+          reg_amount: '',
+          reg_remarks: '',
+          property_officer: '',
+          approving_authority: '',
+          formselectedParticular: null,
           // selectedEmployee: "",
           employees: [],
           inventory: [],
           // selectedEmployeeDetails: null
-
           message: [],
           showModal: false,
-          feedback: ''
+          showUpdateFormModal: false,
+          feedback: '',
+          infos: [],
+          selectedInfo: null,
+          searchKeyword: '',
+          employeeOptions: [], // Array to store employee names
+          selectedEmployee: '', // Selected employee from dropdown
+          selectedClassification: '', // Selected classification from dropdown
+          selectedArticle: '', // Selected article from dropdown
+          selectedParticular: '', // Selected particular from dropdown
+          selectedStatus: '', // Selected status from dropdown
+          currentPage: 1, // Current page number
+          pageSize: 10, // Default page size
+          previousEmployee: '', // Store the previous selected employee
+          previousClassification: '', // Store the previous selected classification
+          previousArticle: '', // Store the previous selected article
+          previousParticular: '', // Store the previous selected particular
+          showContextMenu: false,
+          contextMenuRecordId: null,
+          contextMenuX: 0,
+          contextMenuY: 0,
+          scrollX: 0,
+          scrollY: 0,
+
+
+          mediaStream: null,
+          cameraStarted: false,
+          capturedImage: null,
+          imageDataUrl: "",
+          cameraButtonText: 'Start Camera',
+          selectedImageFile: null,
+          imageSource: 'upload',
+          imagePreview: '',
+          selectedEmployee: '',
+          imageverification: null,
+          employeeReqOptions: [],
+          loading: false,
       }
   },
   created(){
       this.getInfo()
       this.getReq()
       this.getInventory()
+      this.user();
+      this.getUserInfo(this.infos.fullname);
+  },
+  mounted() {
+    window.addEventListener("scroll", this.hideContextMenu);
+    window.addEventListener("click", this.hideContextMenu);
+  },
+  beforeDestroy() {
+    window.removeEventListener("scroll", this.hideContextMenu);
+    window.removeEventListener("click", this.hideContextMenu);
+
+    if (this.mediaStream) {
+      this.mediaStream.getTracks().forEach(track => {
+        track.stop();
+      });
+    }
   },
   methods:{
+    simulateLoading() {
+    this.loading = true;
+  },
+      setTimeout() {
+    this.loading = false;
+  },
+    handleFileUpload(event) {
+        const file = event.target.files[0];
+        if (file) {
+            this.uploadedImage = URL.createObjectURL(file);
+            this.selectedImageFile = file;
+            this.imagePreview = this.uploadedImage;
+        }
+    },
+      async startCamera() {
+    const videoElement = document.getElementById('camera');
+    if (!this.cameraStarted) {
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+          videoElement.srcObject = stream;
+          this.mediaStream = stream;
+          this.cameraStarted = true;
+          this.cameraButtonText = 'Stop Camera';
+        } catch (error) {
+          console.error('Error accessing camera:', error);
+        }
+      } else {
+        console.error('getUserMedia is not supported');
+      }
+    } else {
+      // Stop the camera
+      if (this.mediaStream) {
+        this.mediaStream.getTracks().forEach(track => {
+          track.stop();
+        });
+      }
+      this.cameraStarted = false;
+      this.cameraButtonText = 'Start Camera';
+    }
+  },
+    async captureImage() {
+      if (!this.cameraStarted) {
+        console.error('Camera not started yet');
+        return;
+      }
+
+      const canvas = document.createElement('canvas');
+      canvas.width = 320;
+      canvas.height = 240;
+      const context = canvas.getContext('2d');
+      context.drawImage(document.getElementById('camera'), 0, 0, 320, 240);
+      const imageDataUrl = canvas.toDataURL('image/png');
+
+      // Set the captured image for preview
+      this.capturedImage = imageDataUrl;
+      this.imagePreview = this.capturedImage;
+    },
+
+
+    async updateVerification() {
+      try {
+          const formData = new FormData();
+          // formData.append('id', this.selectedRecord);
+
+          // Always append the image field, even if it's not changed
+          if (this.capturedImage) {
+              const blob = await fetch(this.capturedImage).then(res => res.blob());
+              const file = new File([blob], `image_${Date.now()}.png`, { type: 'image/png' });
+              formData.append('imageverification', file);
+          } else if (this.selectedImageFile) {
+              formData.append('imageverification', this.selectedImageFile);
+          } else {
+              // If the image is not changed, you can append the existing image data
+              formData.append('imageverification', this.imagePreview);
+          }
+
+          const response = await axios.post(`/updateVerification/${this.selectedRecord}`, formData, {
+              headers: {
+                  'Content-Type': 'multipart/form-data'
+              }
+          });
+
+          if (response.data.status === 'success') {
+              this.resetForm();
+              this.status = ""; // reset status after update
+              this.getInventory();
+              console.log("Record updated successfully");
+          } else {
+              console.error("Failed to update record:", response.data.message);
+          }
+      } catch (error) {
+          console.error("Error updating record:", error);
+      }
+      console.log(this.imagePreview);
+    },
+      dataURLtoFile(dataUrl) {
+          const binary = atob(dataUrl.split(',')[1]);
+          const array = [];
+          for (let i = 0; i < binary.length; i++) {
+            array.push(binary.charCodeAt(i));
+          }
+          return new File([new Uint8Array(array)], 'image.png', { type: 'image/png' });
+        },
+        async selectRecord(info) {
+          this.selectedRecord = info.id;
+          console.log(this.selectedRecord);
+        },
+
+
+
+        async downloadEmployeeRequest() {
+        try {
+          this.simulateLoading();
+           const response = await fetch('http://dilg.test/backend/employeeRequestPDF', {
+               method: 'POST',
+               headers: {
+                   'Content-Type': 'application/json',
+               },
+               body: JSON.stringify({ empfullname: this.selectedEmployeePDF }),
+           });
+           if (response.ok) {
+               const blob = await response.blob();
+               const filename = `${this.selectedEmployeePDF}_records.pdf`; // Adjust the filename if needed
+               const url = window.URL.createObjectURL(new Blob([blob]));
+               const link = document.createElement('a');
+               link.href = url;
+               link.setAttribute('download', filename);
+               document.body.appendChild(link);
+               link.click();
+               link.parentNode.removeChild(link);
+               console.log('PDF generated successfully');
+               this.setTimeout();
+           } else {
+               console.error('Failed to generate PDF');
+           }
+       } catch (error) {
+           console.error('Error generating PDF:', error);
+       }
+    },
+
+    async requestPDF() {
+    try {
+        // Send HTTP request to backend to generate PDFs for all records
+        this.simulateLoading();
+        const response = await fetch('http://dilg.test/backend/requestPDF', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        // Check if the response is successful
+        if (response.ok) {
+            const blob = await response.blob();
+            const filename = 'generated_pdf_all.pdf'; // Adjust the filename if needed
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', filename);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            console.log('PDF generated successfully');
+            this.setTimeout();
+        } else {
+            console.error('Failed to generate PDF');
+        }
+    } catch (error) {
+        console.error('Error generating PDFs:', error);
+    }
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    async generatePDF(recordId) {
+            try {
+                // Send HTTP request to backend
+                const response = await fetch(`http://dilg.test/backend/generatepdf/${recordId}`, {
+                    method: 'GET', // Adjust the method accordingly
+                    headers: {
+                        'Content-Type': 'application/json', // Adjust the content type if needed
+                    },
+                });
+
+                // Check if the response is successful
+                if (response.ok) {
+                    const blob = await response.blob();
+                    const filename = 'generated_pdf.pdf'; // Adjust the filename if needed
+                    const url = window.URL.createObjectURL(new Blob([blob]));
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', filename);
+                    document.body.appendChild(link);
+                    link.click();
+                    link.parentNode.removeChild(link);
+                    console.log('PDF generated successfully');
+                } else {
+                    console.error('Failed to generate PDF');
+                }
+            } catch (error) {
+                // Handle any errors that occur during the request
+                console.error('Error:', error);
+            }
+        },
+    openContextMenu(recordId, event) {
+      // Prevent default behavior of right-click to show the context menu
+      event.preventDefault();
+
+      this.contextMenuRecordId = recordId;
+      this.contextMenuX = event.clientX;
+      this.contextMenuY = event.clientY + this.scrollY; // Adjust for scroll offset
+      this.showContextMenu = true;
+
+      setTimeout(() => {
+        this.hideContextMenu();
+      }, 1500);
+    },
+    hideContextMenu() {
+      this.showContextMenu = false;
+      this.contextMenuRecordId = null;
+      this.contextMenuX = 0;
+      this.contextMenuY = 0;
+    },
+    updateScroll() {
+      this.scrollX = window.pageXOffset;
+      this.scrollY = window.pageYOffset;
+      if (this.showContextMenu) {
+        // If context menu is open, adjust its position based on scroll offset
+        this.contextMenuY += this.scrollY;
+      }
+    },
+    openUpdateFormModal(recordId) {
+      this.showUpdateFormModal = true;
+
+          // set status to update and statusId to the record id
+          // this.status = "update";
+          this.statusId = recordId;
+
+          // fetch the record details and set them to the form
+          const record = this.info.find(info => info.id === recordId);
+          this.entityname = record.entityname;
+            this.classification = record.classification;
+            this.code = record.code;
+            this.article = record.article;
+            this.particulars = record.particulars;
+            this.modelno = record.modelno;
+            this.serialno = record.serialno;
+            this.propertynumber = record.propertynumber;
+            this.propertydate = record.propertydate;
+            this.icsnumber = record.icsnumber;
+            this.jevnumber = record.jevnumber;
+            this.rec_quantity = record.rec_quantity;
+            this.rec_unit = record.rec_unit;
+            this.rec_unitcost = record.rec_unitcost;
+            // this.rec_totalcost = record.rec_totalcost;
+            this.isstranadjamount = record.isstranadjamount;
+            this.accimploss = record.accimploss;
+            this.adjustedcost = record.adjustedcost;
+            this.repair_nature = record.repair_nature;
+            this.repair_amount = record.repair_amount;
+            // this.issue_itemno = record.issue_itemno;
+            this.issue_date = record.issue_date;
+            // this.issue_quantity = record.issue_quantity;
+            this.issue_officeofficer = record.issue_officeofficer;
+            this.transfer_date = record.transfer_date;
+            this.transfer_quantity = record.transfer_quantity;
+            this.transfer_officeofficer = record.transfer_officeofficer;
+            this.disposal_date = record.disposal_date;
+            this.disposal_quantity = record.disposal_quantity;
+            this.disposal_officeofficer = record.disposal_officeofficer;
+            // this.balancequantity = record.balancequantity;
+            // this.balanceamount = record.balanceamount;
+            this.remarks = record.remarks;
+            this.empfullname = record.empfullname;
+            this.estimatedlife = record.estimatedlife;
+            this.issued_officer = record.issued_officer;
+            this.issued_offposition = record.issued_offposition;
+            this.issued_date = record.issued_date;
+            this.acc_officer = record.acc_officer;
+            this.acc_empposition = record.acc_empposition;
+            this.acc_date = record.acc_date;
+            this.itr_no = record.itr_no;
+            this.itr_date = record.itr_date;
+            this.rrsp_no = record.rrsp_no;
+            this.rrsp_date = record.rrsp_date;
+            this.reasonfortrans = record.reasonfortrans;
+            this.reg_semiissuedserialno = record.reg_semiissuedserialno;
+            this.reg_returned_qty = record.reg_returned_qty;
+            // this.reg_returned_off = record.reg_returned_off;
+            this.reg_reissued_qty = record.reg_reissued_qty;
+            this.reg_reissued_off = record.reg_reissued_off;
+            this.reg_disposed_qty = record.reg_disposed_qty;
+            this.reg_balance_quantity = record.reg_balance_quantity;
+            this.reg_amount = record.reg_amount;
+            this.reg_remarks = record.reg_remarks;
+            this.property_officer = record.property_officer;
+            this.approving_authority = record.approving_authority;
+
+          console.log(recordId);
+    },
+    closeUpdateFormModal() {
+      this.showUpdateFormModal = false;
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     updatereqStatus(id, newStatus) {
       // Show the modal
       this.showModal = true;
@@ -482,7 +2292,7 @@ export default{
           try {
               const req = await axios.get('getReqAdmin');
               this.requests = req.data;
-
+              this.employeeReqOptions = this.requests.map(requests => requests.empfullname);
 
             
           } catch (error) {
@@ -491,14 +2301,50 @@ export default{
       },
 
 
-      async getInfo(){
-          try {
-              const inf = await axios.get('getData');
-              this.info = inf.data;
-          } catch (error) {
-              console.log(error);
-          }
+      async getInfo() {
+        try {
+          const response = await axios.get('getdata');
+          this.info = response.data;
+          // Extract employee names from info and store in employeeOptions
+          this.employeeOptions = this.info.map(info => info.acc_officer);
+        } catch (error) {
+          console.log(error);
+        }
       },
+      updatePageSize(size) {
+      this.pageSize = size;
+      this.getInfo();
+    },
+    onEmployeeChange() {
+      // Reset selected values of dropdowns only if a new employee is selected
+      if (this.selectedEmployee !== this.previousEmployee) {
+        this.selectedClassification = '';
+        this.selectedArticle = '';
+        this.selectedParticular = '';
+      }
+      // Update the previous selected employee
+      this.previousEmployee = this.selectedEmployee;
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       async getInventory(){
         try {
@@ -510,35 +2356,442 @@ export default{
         }
     },
 
-      async save() {
-        try {
-          // const generatedCode = await this.generateUniqueCode();
+    // async save() {
+    //   try {
+    //     // Compute totalcost
 
-          const response = await axios.post('save', {
-            particulars: this.particulars,
-            empfullname: this.empfullname,
-          });
+    //     // Create a FormData object and append the computed totalcost
+    //     const formData = new FormData();
+    //     // if (this.selectedImageFile) {
+    //     //     formData.append('image', this.selectedImageFile);
+    //     // }
+    //     // else if (this.capturedImage) {
+    //     //     // Convert the captured image to a file
+    //     //     const blob = await fetch(this.capturedImage).then(res => res.blob());
+    //     //     const file = new File([blob], `image_${Date.now()}.png`, { type: 'image/png' });
+    //     //     formData.append('image', file);
+    //     // }
 
-          this.message = response.data.msg;
-          if(response.data.msg === 'Cannot save data. Inventory status is inactive.'){
-            alert('Cannot save data. Inventory status is inactive.');
-          }
-          else if(response.data.msg === 'Cannot save data. No matching inventory record found.'){
-            alert('Cannot save data. No matching inventory record found.');
-          }
+    //     // Append other form data including the computed totalcost
+    //     formData.append('entityname', this.entityname);
+    //     formData.append('classification', this.classification);
+    //     formData.append('code', this.code);
+    //     formData.append('article', this.article);
+    //     formData.append('particulars', this.particulars);
+    //     formData.append('modelno', this.modelno);
+    //     formData.append('serialno', this.serialno);
+    //                 formData.append('propertynumber', this.propertynumber);
+    //                 formData.append('propertydate', this.propertydate);
+    //                 formData.append('icsnumber', this.icsnumber);
+    //                 formData.append('jevnumber', this.jevnumber);
+    //                 formData.append('rec_quantity', this.rec_quantity);
+    //                 formData.append('rec_unit', this.rec_unit);
+    //                 formData.append('rec_unitcost', this.rec_unitcost);
+    //                 formData.append('rec_totalcost', this.rec_totalcost);
+    //                 formData.append('isstranadjamount', this.isstranadjamount);
+    //                 formData.append('accimploss', this.accimploss);
+    //                 formData.append('adjustedcost', this.adjustedcost);
+    //                 formData.append('repair_nature', this.repair_nature);
+    //                 formData.append('repair_amount', this.repair_amount);
+    //                 formData.append('issue_itemno', this.issue_itemno);
+    //                 formData.append('issue_date', this.issue_date);
+    //                 formData.append('issue_quantity', this.issue_quantity);
+    //                 formData.append('issue_officeofficer', this.issue_officeofficer);
+    //                 formData.append('transfer_date', this.transfer_date);
+    //                 formData.append('transfer_quantity', this.transfer_quantity);
+    //                 formData.append('transfer_officeofficer', this.transfer_officeofficer);
+    //                 formData.append('disposal_date', this.disposal_date);
+    //                 formData.append('disposal_quantity', this.disposal_quantity);
+    //                 formData.append('disposal_officeofficer', this.disposal_officeofficer);
+    //                 formData.append('balancequantity', this.balancequantity);
+    //                 formData.append('balanceamount', this.balanceamount);
+    //                 formData.append('remarks', this.remarks);
+    //                 formData.append('empfullname', this.empfullname);
+    //                 formData.append('estimatedlife', this.estimatedlife);
+    //                 formData.append('issued_officer', this.issued_officer);
+    //                 formData.append('issued_offposition', this.issued_offposition);
+    //                 formData.append('issued_date', this.issued_date);
+    //                 formData.append('acc_officer', this.acc_officer);
+    //                 formData.append('acc_empposition', this.acc_empposition);
+    //                 formData.append('acc_date', this.acc_date);
+    //                 formData.append('itr_no', this.itr_no);
+    //                 formData.append('itr_date', this.itr_date);
+    //                 formData.append('rrsp_no', this.rrsp_no);
+    //                 formData.append('rrsp_date', this.rrsp_date);
+    //                 formData.append('reasonfortrans', this.reasonfortrans);
+    //                 formData.append('reg_semiissuedserialno', this.reg_semiissuedserialno);
+    //                 formData.append('reg_returned_qty', this.reg_returned_qty);
+    //                 formData.append('reg_returned_off', this.reg_returned_off);
+    //                 formData.append('reg_reissued_qty', this.reg_reissued_qty);
+    //                 formData.append('reg_reissued_off', this.reg_reissued_off);
+    //                 formData.append('reg_disposed_qty', this.reg_disposed_qty);
+    //                 formData.append('reg_balance_quantity', this.reg_balance_quantity);
+    //                 formData.append('reg_amount', this.reg_amount);
+    //                 formData.append('reg_remarks', this.reg_remarks);
+    //                 formData.append('property_officer', this.property_officer);
+    //                 formData.append('approving_authority', this.approving_authority);
 
-          console.log('Server response:', response.data);
-          // Clear the code only after successfully saving the record
-          this.particulars = "";
-          this.empfullname = "";
+    //     // Now you can submit the formData to your backend endpoint using Axios or any other method
+    //     await axios.post('/save', formData, {
+    //       headers: {
+    //         'Content-Type': 'multipart/form-data'
+    //       }
+    //     });
 
-          this.$emit('data-saved');
-          this.getInfo();
-        } catch (error) {
-          console.error(error);
-          this.particulars = "";
-          this.empfullname = "";
+    //     // Reset the form and emit the 'data-saved' event
+    //     this.resetForm();
+    //     this.$emit('data-saved');
+
+    //     // Trigger notification
+    //     await axios.post('/triggerNotification')
+    //       .then(response => {
+    //         console.log('Notification triggered successfully');
+    //       })
+    //       .catch(error => {
+    //         console.error('Error triggering notification:', error);
+    //       });
+
+    //   } catch (error) {
+    //     console.error('Error saving:', error);
+    //   }
+    // },
+
+    async saveOrUpdate() {
+      if (this.status === "update") {
+          await this.updatePPE();
+      } else {
+        await this.save();
+      }
+    },
+
+
+    async save() {
+  try {
+    // Create a new FormData object
+    const formData = new FormData();
+
+    // Append each field to the FormData object
+    formData.append('entityname', this.entityname);
+    formData.append('classification', this.classification);
+    formData.append('code', this.code);
+    formData.append('article', this.article);
+    formData.append('particulars', this.particulars);
+    formData.append('modelno', this.modelno);
+    formData.append('serialno', this.serialno);
+    formData.append('propertynumber', this.propertynumber);
+    formData.append('propertydate', this.propertydate);
+    formData.append('icsnumber', this.icsnumber);
+    formData.append('jevnumber', this.jevnumber);
+    formData.append('rec_quantity', this.rec_quantity);
+    formData.append('rec_unit', this.rec_unit);
+    formData.append('rec_unitcost', this.rec_unitcost);
+    formData.append('rec_totalcost', this.rec_totalcost);
+    formData.append('isstranadjamount', this.isstranadjamount);
+    formData.append('accimploss', this.accimploss);
+    formData.append('adjustedcost', this.adjustedcost);
+    formData.append('repair_nature', this.repair_nature);
+    formData.append('repair_amount', this.repair_amount);
+    formData.append('issue_date', this.issue_date);
+    formData.append('issue_officeofficer', this.issue_officeofficer);
+    formData.append('transfer_date', this.transfer_date);
+    formData.append('transfer_quantity', this.transfer_quantity);
+    formData.append('transfer_officeofficer', this.transfer_officeofficer);
+    formData.append('disposal_date', this.disposal_date);
+    formData.append('disposal_quantity', this.disposal_quantity);
+    formData.append('disposal_officeofficer', this.disposal_officeofficer);
+    formData.append('remarks', this.remarks);
+    formData.append('empfullname', this.empfullname);
+    formData.append('estimatedlife', this.estimatedlife);
+    formData.append('issued_officer', this.issued_officer);
+    formData.append('issued_offposition', this.issued_offposition);
+    formData.append('issued_date', this.issued_date);
+    formData.append('acc_officer', this.acc_officer);
+    formData.append('acc_empposition', this.acc_empposition);
+    formData.append('acc_date', this.acc_date);
+    formData.append('itr_no', this.itr_no);
+    formData.append('itr_date', this.itr_date);
+    formData.append('rrsp_no', this.rrsp_no);
+    formData.append('rrsp_date', this.rrsp_date);
+    formData.append('reasonfortrans', this.reasonfortrans);
+    formData.append('reg_semiissuedserialno', this.reg_semiissuedserialno);
+    formData.append('reg_returned_qty', this.reg_returned_qty);
+    formData.append('reg_returned_off', this.reg_returned_off);
+    formData.append('reg_reissued_qty', this.reg_reissued_qty);
+    formData.append('reg_reissued_off', this.reg_reissued_off);
+    formData.append('reg_disposed_qty', this.reg_disposed_qty);
+    formData.append('reg_balance_quantity', this.reg_balance_quantity);
+    formData.append('reg_amount', this.reg_amount);
+    formData.append('reg_remarks', this.reg_remarks);
+    formData.append('property_officer', this.property_officer);
+    formData.append('approving_authority', this.approving_authority);
+
+    // Send the POST request with the FormData object
+    const response = await axios.post('save', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data' // Set content type to multipart/form-data
+      }
+    });
+
+    // Handle the response
+    this.message = response.data.msg;
+    if(response.data.msg === 'Cannot save data. Inventory status is inactive.') {
+      alert('Cannot save data. Inventory status is inactive.');
+    } else if(response.data.msg === 'Cannot save data. No matching inventory record found.') {
+      alert('Cannot save data. No matching inventory record found.');
+    }
+
+    console.log('Server response:', response.data);
+    // Clear the code only after successfully saving the record
+    this.particulars = "";
+    this.empfullname = "";
+
+    this.$emit('data-saved');
+    this.getInfo();
+  } catch (error) {
+    console.error(error);
+    this.particulars = "";
+    this.empfullname = "";
+  }
+},
+
+
+    // async save() {
+    //   try {
+
+    //     const response = await axios.post('save', {
+    //         entityname: this.entityname,
+    //         classification: this.classification,
+    //         code: this.code,
+    //         article: this.article,
+    //         particulars: this.particulars,
+    //         modelno: this.modelno,
+    //         serialno: this.serialno,
+    //         propertynumber: this.propertynumber,
+    //         propertydate: this.propertydate,
+    //         icsnumber: this.icsnumber,
+    //         jevnumber: this.jevnumber,
+    //         rec_quantity: this.rec_quantity,
+    //         rec_unit: this.rec_unit,
+    //         rec_unitcost: this.rec_unitcost,
+    //         isstranadjamount: this.isstranadjamount,
+    //         accimploss: this.accimploss,
+    //         adjustedcost: this.adjustedcost,
+    //         repair_nature: this.repair_nature,
+    //         repair_amount: this.repair_amount,
+    //         issue_date: this.issue_date,
+    //         issue_officeofficer: this.issue_officeofficer,
+    //         transfer_date: this.transfer_date,
+    //         transfer_quantity: this.transfer_quantity,
+    //         transfer_officeofficer: this.transfer_officeofficer,
+    //         disposal_date: this.disposal_date,
+    //         disposal_quantity: this.disposal_quantity,
+    //         disposal_officeofficer: this.disposal_officeofficer,
+    //         remarks: this.remarks,
+    //         estimatedlife: this.estimatedlife,
+    //         issued_officer: this.issued_officer,
+    //         issued_offposition: this.issued_offposition,
+    //         acc_officer: this.acc_officer,
+    //         acc_empposition: this.acc_empposition,
+    //         acc_date: this.acc_date,
+    //         itr_no: this.itr_no,
+    //         itr_date: this.itr_date,
+    //         rrsp_no: this.rrsp_no,
+    //         rrsp_date: this.rrsp_date,
+    //         reasonfortrans: this.reasonfortrans,
+    //         reg_semiissuedserialno: this.reg_semiissuedserialno,
+    //         reg_returned_qty: this.reg_returned_qty,
+    //         reg_reissued_qty: this.reg_reissued_qty,
+    //         reg_reissued_off: this.reg_reissued_off,
+    //         reg_disposed_qty: this.reg_disposed_qty,
+    //         reg_balance_quantity: this.reg_balance_quantity,
+    //         reg_amount: this.reg_amount,
+    //         reg_remarks: this.reg_remarks,
+    //         property_officer: this.property_officer,
+    //         approving_authority: this.approving_authority,
+    //       });
+
+    //       this.message = response.data.msg;
+    //       if(response.data.msg === 'Cannot save data. Inventory status is inactive.'){
+    //         alert('Cannot save data. Inventory status is inactive.');
+    //       }
+    //       else if(response.data.msg === 'Cannot save data. No matching inventory record found.'){
+    //         alert('Cannot save data. No matching inventory record found.');
+    //       }else if(response.data.msg === 'The Data is not saving, there is an error'){
+    //         alert('There is an error!');
+    //       }
+
+    //       console.log('Server response:', response.data);
+    //       // Clear the code only after successfully saving the record
+    //       this.particulars = "";
+    //       this.empfullname = "";
+
+    //       this.$emit('data-saved');
+    //       this.getInfo();
+    //     } catch (error) {
+    //       console.error(error);
+    //       this.particulars = "";
+    //       this.empfullname = "";
+    //     }
+    //   },
+
+
+    async updatePPE() {
+    try {
+        const formData = new FormData();
+
+        // Append the updated data
+        formData.append('id', this.statusId);
+        formData.append('entityname', this.entityname);
+        formData.append('classification', this.classification);
+        formData.append('code', this.code);
+        formData.append('article', this.article);
+        formData.append('particulars', this.particulars);
+        formData.append('modelno', this.modelno);
+        formData.append('serialno', this.serialno);
+        formData.append('propertynumber', this.propertynumber);
+        formData.append('propertydate', this.propertydate);
+        formData.append('icsnumber', this.icsnumber);
+        formData.append('jevnumber', this.jevnumber);
+        formData.append('rec_quantity', this.rec_quantity);
+        formData.append('rec_unit', this.rec_unit);
+        formData.append('rec_unitcost', this.rec_unitcost);
+        formData.append('isstranadjamount', this.isstranadjamount);
+        formData.append('accimploss', this.accimploss);
+        formData.append('adjustedcost', this.adjustedcost);
+        formData.append('repair_nature', this.repair_nature);
+        formData.append('repair_amount', this.repair_amount);
+        formData.append('issue_date', this.issue_date);
+        formData.append('issue_officeofficer', this.issue_officeofficer);
+        formData.append('issued_date', this.issued_date);
+        formData.append('transfer_date', this.transfer_date);
+        formData.append('transfer_quantity', this.transfer_quantity);
+        formData.append('transfer_officeofficer', this.transfer_officeofficer);
+        formData.append('disposal_date', this.disposal_date);
+        formData.append('disposal_quantity', this.disposal_quantity);
+        formData.append('disposal_officeofficer', this.disposal_officeofficer);
+        formData.append('remarks', this.remarks);
+        formData.append('empfullname', this.empfullname);
+        formData.append('estimatedlife', this.estimatedlife);
+        formData.append('issued_officer', this.issued_officer);
+        formData.append('issued_offposition', this.issued_offposition);
+        formData.append('acc_officer', this.acc_officer);
+        formData.append('acc_empposition', this.acc_empposition);
+        formData.append('acc_date', this.acc_date);
+        formData.append('itr_no', this.itr_no);
+        formData.append('itr_date', this.itr_date);
+        formData.append('rrsp_no', this.rrsp_no);
+        formData.append('rrsp_date', this.rrsp_date);
+        formData.append('reasonfortrans', this.reasonfortrans);
+        formData.append('reg_semiissuedserialno', this.reg_semiissuedserialno);
+        formData.append('reg_returned_qty', this.reg_returned_qty);
+        formData.append('reg_returned_off', this.reg_returned_off);
+        formData.append('reg_reissued_qty', this.reg_reissued_qty);
+        formData.append('reg_reissued_off', this.reg_reissued_off);
+        formData.append('reg_disposed_qty', this.reg_disposed_qty);
+        formData.append('reg_balance_quantity', this.reg_balance_quantity);
+        formData.append('reg_amount', this.reg_amount);
+        formData.append('reg_remarks', this.reg_remarks);
+        formData.append('property_officer', this.property_officer);
+        formData.append('approving_authority', this.approving_authority);
+
+        const response = await axios.post(`/updateppe/${this.statusId}`, formData, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        });
+
+        if (response.data.status === 'success') {
+            this.resetForm();
+            this.status = ""; // reset status after update
+            this.getInventory();
+            console.log("Record updated successfully");
+        } else {
+            console.error("Failed to update record:", response.data.message);
         }
+    } catch (error) {
+        console.error("Error updating record:", error);
+    }
+},
+
+      placeRecord(recordId) {
+          // set status to update and statusId to the record id
+          this.status = "update";
+          this.statusId = recordId;
+
+          // fetch the record details and set them to the form
+          const record = this.info.find(info => info.id === recordId);
+          // this.entityname = record.entityname;
+          // this.classification = record.classification;
+          // this.code = record.code;
+          // this.article = record.article;
+          // this.particulars = record.particulars;
+          // this.modelno = record.modelno;
+          // this.serialno = record.serialno;
+          // this.quantity = record.quantity;
+          // this.unit = record.unit;
+          // this.unitcost = record.unitcost;
+          // this.totalcost = record.totalcost;
+          // this.imagePreview = record.image;
+
+          this.entityname = record.entityname;
+            this.classification = record.classification;
+            this.code = record.code;
+            this.article = record.article;
+            this.particulars = record.particulars;
+            this.modelno = record.modelno;
+            this.serialno = record.serialno;
+            this.propertynumber = record.propertynumber;
+            this.propertydate = record.propertydate;
+            this.icsnumber = record.icsnumber;
+            this.jevnumber = record.jevnumber;
+            this.rec_quantity = record.rec_quantity;
+            this.rec_unit = record.rec_unit;
+            this.rec_unitcost = record.rec_unitcost;
+            // this.rec_totalcost = record.rec_totalcost;
+            this.isstranadjamount = record.isstranadjamount;
+            this.accimploss = record.accimploss;
+            this.adjustedcost = record.adjustedcost;
+            this.repair_nature = record.repair_nature;
+            this.repair_amount = record.repair_amount;
+            // this.issue_itemno = record.issue_itemno;
+            this.issue_date = record.issue_date;
+            // this.issue_quantity = record.issue_quantity;
+            this.issue_officeofficer = record.issue_officeofficer;
+            this.transfer_date = record.transfer_date;
+            this.transfer_quantity = record.transfer_quantity;
+            this.transfer_officeofficer = record.transfer_officeofficer;
+            this.disposal_date = record.disposal_date;
+            this.disposal_quantity = record.disposal_quantity;
+            this.disposal_officeofficer = record.disposal_officeofficer;
+            // this.balancequantity = record.balancequantity;
+            // this.balanceamount = record.balanceamount;
+            this.remarks = record.remarks;
+            this.empfullname = record.empfullname;
+            this.estimatedlife = record.estimatedlife;
+            this.issued_officer = record.issued_officer;
+            this.issued_offposition = record.issued_offposition;
+            this.issued_date = record.issued_date;
+            this.acc_officer = record.acc_officer;
+            this.acc_empposition = record.acc_empposition;
+            this.acc_date = record.acc_date;
+            this.itr_no = record.itr_no;
+            this.itr_date = record.itr_date;
+            this.rrsp_no = record.rrsp_no;
+            this.rrsp_date = record.rrsp_date;
+            this.reasonfortrans = record.reasonfortrans;
+            this.reg_semiissuedserialno = record.reg_semiissuedserialno;
+            this.reg_returned_qty = record.reg_returned_qty;
+            // this.reg_returned_off = record.reg_returned_off;
+            this.reg_reissued_qty = record.reg_reissued_qty;
+            this.reg_reissued_off = record.reg_reissued_off;
+            this.reg_disposed_qty = record.reg_disposed_qty;
+            this.reg_balance_quantity = record.reg_balance_quantity;
+            this.reg_amount = record.reg_amount;
+            this.reg_remarks = record.reg_remarks;
+            this.property_officer = record.property_officer;
+            this.approving_authority = record.approving_authority;
+
+          console.log(recordId);
       },
 
       // async save() {
@@ -587,20 +2840,49 @@ export default{
 
 
 
-      async generateUniqueCode() {
-          let generatedCode;
-          do {
-            // Call the code_gen endpoint on the server
-            const response = await axios.post('code_gen', { length: 8 });
-            generatedCode = response.data;
-          } while (this.codeExists(generatedCode));
+      async getUserInfo(id){
+              try {
+                  const inf = await axios.get(`getDataUser?id=${id}`);
+                  this.info = inf.data;
+              } catch (error) {
+                  console.log(error);
+              }
+          },
 
-          return generatedCode;
+      async user(){
+        try{
+          const id= sessionStorage.getItem("token")
+          const response = await axios.get(`/users/${id}`, {
+            id:id
+          })
+          this.infos = response.data;
+
+        }catch(error){
+          console.log(error);
+        }
       },
-
-      codeExists(code) {
-        // Check if the generated code already exists in the info array
-        return this.info.some(item => item.code === code);
+      getImageStyle(imageUrl) {
+      // Function to generate the background image style
+        if (!imageUrl) {
+          return {}; // Return an empty object if imageUrl is not provided
+        }
+        
+        // Set the background image URL
+        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        
+        // Set background size and position
+        const backgroundSize = 'cover'; // Cover the entire container
+        const backgroundPosition = '50% 50%'; // Center the image
+        
+        // Return the style object
+        return {
+          width: '100%',
+          height: '100%',
+          backgroundImage,
+          backgroundSize,
+          backgroundPosition,
+          borderRadius: '50%' // Make the background circular
+        };
       },
       
       async deleteRecord(recordId){

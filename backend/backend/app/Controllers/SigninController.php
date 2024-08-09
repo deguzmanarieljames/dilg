@@ -155,7 +155,7 @@ class SigninController extends ResourceController
             // Content
             $mail->isHTML(true);
             $mail->Subject = 'Account Verification';
-            $mail->Body    = "Click the following link to verify your account: " . base_url("verify-account?token=$token");
+            $mail->Body    = "Click the following link to verify your account: " . ("http://dilg.test/backend/verify-account?token=$token");
     
             // Send the email
             $mail->send();
