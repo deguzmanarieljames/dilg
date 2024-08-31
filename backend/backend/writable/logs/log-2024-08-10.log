@@ -1,0 +1,7 @@
+CRITICAL - 2024-08-10 12:26:33 --> Undefined variable $particularName
+in APPPATH\Controllers\DatabasePPEController.php on line 750.
+ 1 APPPATH\Controllers\DatabasePPEController.php(750): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $particularName', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 750)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

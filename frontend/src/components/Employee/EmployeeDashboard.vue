@@ -1,431 +1,592 @@
 <template>
-<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
-        <!-- ======= Header ======= -->
-        <header id="header" class="header fixed-top d-flex align-items-center">
+  <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
   
-      <div class="d-flex align-items-center justify-content-between">
-        <a href="/empdashboard" class="logo d-flex align-items-center">
-          <img src="./img/logo1.png" alt="">
-          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
-            <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
-          </span>
-        </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-      </div><!-- End Logo -->
+          <!-- ======= Header ======= -->
+          <header id="header" class="header fixed-top d-flex align-items-center">
+    
+        <div class="d-flex align-items-center justify-content-between">
+          <a href="/empdashboard" class="logo d-flex align-items-center">
+            <img src="./img/logo1.png" alt="">
+            <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
+              <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
+            </span>
+          </a>
+          <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div><!-- End Logo -->
+    
+        <nav class="header-nav ms-auto">
+          <ul class="d-flex align-items-center">
+    
+            <li class="nav-item d-block d-lg-none">
+              <a class="nav-link nav-icon search-bar-toggle " href="#">
+                <i class="bi bi-search"></i>
+              </a>
+            </li><!-- End Search Icon-->
+    
+            <li class="nav-item dropdown">
+    
+              <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                <i class="bi bi-bell"></i>
+                <span class="badge bg-primary badge-number">4</span>
+              </a><!-- End Notification Icon -->
+    
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+    
+              </ul><!-- End Notification Dropdown Items -->
+    
+            </li><!-- End Notification Nav -->
+    
+            <li class="nav-item dropdown">
+    
+              <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                <i class="bi bi-chat-left-text"></i>
+                <span class="badge bg-success badge-number">3</span>
+              </a><!-- End Messages Icon -->
+    
+    
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
+    
+              </ul><!-- End Messages Dropdown Items -->
+    
+            </li><!-- End Messages Nav -->
+    
+            <li class="nav-item dropdown pe-3">
+    
+              <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                <div style="width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
+                  <div :style="getImageStyle(infos.image)"></div>
+                </div>
+                <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
+              </a><!-- End Profile Image Icon -->
   
-      <nav class="header-nav ms-auto">
-        <ul class="d-flex align-items-center">
-  
-          <li class="nav-item d-block d-lg-none">
-            <a class="nav-link nav-icon search-bar-toggle " href="#">
-              <i class="bi bi-search"></i>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                <li class="dropdown-header">
+                  <h6>{{ infos.fullname }}</h6>
+                  <span>{{ infos.position }}</span>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+    
+                <li>
+                  <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                    <i class="bi bi-person"></i>
+                    <span>My Profile</span>
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+    
+                <li>
+                  <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                    <i class="bi bi-gear"></i>
+                    <span>Account Settings</span>
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+    
+                <li>
+                  <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                    <i class="bi bi-question-circle"></i>
+                    <span>Need Help?</span>
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+    
+                <li>
+                  <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)" @click="logout">
+                    <i class="bi bi-box-arrow-right"></i>
+                    <span>Sign Out</span>
+                  </a>
+                </li>
+    
+              </ul><!-- End Profile Dropdown Items -->
+            </li><!-- End Profile Nav -->
+    
+          </ul>
+        </nav><!-- End Icons Navigation -->
+    
+        </header><!-- End Header -->
+    
+    
+    
+    
+    
+        <!-- ======= Sidebar ======= -->
+        <aside id="sidebar" class="sidebar">
+    
+        <ul class="sidebar-nav" id="sidebar-nav">
+    
+          
+          <li class="nav-heading">Home</li>
+    
+          <li class="nav-item">
+            <a class="nav-link active" href="/dashboard">
+              <i class="bi bi-grid"></i>
+              <span>Dashboard</span>
             </a>
-          </li><!-- End Search Icon-->
-  
-          <li class="nav-item dropdown">
-  
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span>
-            </a><!-- End Notification Icon -->
-  
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-  
-            </ul><!-- End Notification Dropdown Items -->
-  
-          </li><!-- End Notification Nav -->
-  
-          <li class="nav-item dropdown">
-  
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-chat-left-text"></i>
-              <span class="badge bg-success badge-number">3</span>
-            </a><!-- End Messages Icon -->
-  
-  
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-  
-            </ul><!-- End Messages Dropdown Items -->
-  
-          </li><!-- End Messages Nav -->
-  
-          <li class="nav-item dropdown pe-3">
-  
-            <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <div style="width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
-                <div :style="getImageStyle(infos.image)"></div>
-              </div>
-              <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
-            </a><!-- End Profile Image Icon -->
-
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-              <li class="dropdown-header">
-                <h6>{{ infos.fullname }}</h6>
-                <span>{{ infos.position }}</span>
-              </li>
+          </li><!-- End Dashboard Nav -->
+    
+          
+          <li class="nav-heading">Pages</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
               <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                  <i class="bi bi-person"></i>
-                  <span>My Profile</span>
+                <a href="empserviceable">
+                  <i class="bi bi-circle"></i><span>Serviceable</span>
                 </a>
               </li>
               <li>
-                <hr class="dropdown-divider">
+                <a href="empunserviceable">
+                  <i class="bi bi-circle"></i><span>Unserviceable</span>
+                </a>
               </li>
-  
+            </ul>
+          </li><!-- End Components Nav -->
+    
+          <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
               <li>
-                <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                  <i class="bi bi-gear"></i>
-                  <span>Account Settings</span>
+                <a href="emppropertysticker">
+                  <i class="bi bi-circle"></i><span>Property Sticker</span>
                 </a>
               </li>
               <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                  <i class="bi bi-question-circle"></i>
-                  <span>Need Help?</span>
+                <a href="empledgercard">
+                  <i class="bi bi-circle"></i><span>Ledger Card</span>
                 </a>
               </li>
               <li>
-                <hr class="dropdown-divider">
-              </li>
-  
-              <li>
-                <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)" @click="logout">
-                  <i class="bi bi-box-arrow-right"></i>
-                  <span>Sign Out</span>
+                <a href="emppropertycard">
+                  <i class="bi bi-circle"></i><span>Property Card</span>
                 </a>
               </li>
-  
-            </ul><!-- End Profile Dropdown Items -->
-          </li><!-- End Profile Nav -->
-  
+              <li>
+                <a href="empackreceipt">
+                  <i class="bi bi-circle"></i><span>Acknowledgement Receipt</span>
+                </a>
+              </li>
+              <li>
+                <a href="emptransferreport">
+                  <i class="bi bi-circle"></i><span>Transfer Report</span>
+                </a>
+              </li>
+              <li>
+                <a href="emprlsddp">
+                  <i class="bi bi-circle"></i><span>RLSDDP</span>
+                </a>
+              </li>
+            </ul>
+          </li><!-- End Forms Nav -->
+    
+          <li class="nav-heading">input</li>
+    
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/emprequest">
+              <i class="bi bi-folder-plus"></i>
+              <span>Request Equipment</span>
+            </a>
+          </li>
+          
+          <li class="nav-heading">user</li>
+    
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/empprofile">
+              <i class="bi bi-folder-plus"></i>
+              <span>Employee Profile</span>
+            </a>
+          </li><!-- End Dashboard Nav -->
+      
+    
         </ul>
-      </nav><!-- End Icons Navigation -->
-  
-      </header><!-- End Header -->
-  
-  
-  
-  
-  
-  
-  
-  
-      <!-- ======= Sidebar ======= -->
-      <aside id="sidebar" class="sidebar">
-  
-      <ul class="sidebar-nav" id="sidebar-nav">
-  
-        
-        <li class="nav-heading">Home</li>
-  
-        <li class="nav-item">
-          <a class="nav-link " href="/empdashboard">
-            <i class="bi bi-grid"></i>
-            <span>Dashboard</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-  
-        
-        <li class="nav-heading">Pages</li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="empserviceable">
-                <i class="bi bi-circle"></i><span>Serviceable</span>
-              </a>
-            </li>
-            <li>
-              <a href="empunserviceable">
-                <i class="bi bi-circle"></i><span>Unserviceable</span>
-              </a>
-            </li>
-          </ul>
-        </li><!-- End Components Nav -->
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="emppropertysticker">
-                <i class="bi bi-circle"></i><span>Property Sticker</span>
-              </a>
-            </li>
-            <li>
-              <a href="empledgercard">
-                <i class="bi bi-circle"></i><span>Ledger Card</span>
-              </a>
-            </li>
-            <li>
-              <a href="emppropertycard">
-                <i class="bi bi-circle"></i><span>Property Card</span>
-              </a>
-            </li>
-            <li>
-              <a href="empackreceipt">
-                <i class="bi bi-circle"></i><span>Acknowledgement Receipt</span>
-              </a>
-            </li>
-            <li>
-              <a href="emptransferreport">
-                <i class="bi bi-circle"></i><span>Transfer Report</span>
-              </a>
-            </li>
-            <li>
-              <a href="emprlsddp">
-                <i class="bi bi-circle"></i><span>RLSDDP</span>
-              </a>
-            </li>
-          </ul>
-        </li><!-- End Forms Nav -->
-  
-        <li class="nav-heading">input</li>
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/emprequest">
-            <i class="bi bi-folder-plus"></i>
-            <span>Request Equipment</span>
-          </a>
-        </li>
-        
-        <li class="nav-heading">user</li>
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/empprofile">
-            <i class="bi bi-folder-plus"></i>
-            <span>Employee Profile</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
+    
+        </aside><!-- End Sidebar-->
     
   
-      </ul>
-  
-      </aside><!-- End Sidebar-->
-  
-  
-  
-  
-  
-  
-  
-      <main id="main" class="main">
-  
-      <div class="pagetitle">
-        <h1>Dashboard</h1>
-        <nav>
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/empdashboard">Home</a></li>
-            <li class="breadcrumb-item active">Dashboard</li>
-          </ol>
-        </nav>
-      </div><!-- End Page Title -->
-  
-      <section class="section dashboard">
-        <div class="row">
+        <main id="main" class="main">
+    
+        <div class="pagetitle">
+          <h1>Dashboard</h1>
+          <nav>
+            <ol class="breadcrumb">
+              <li class="breadcrumb-item"><a href="/empdashboard">Home</a></li>
+              <li class="breadcrumb-item active">Dashboard</li>
+            </ol>
+          </nav>
+        </div><!-- End Page Title -->
+    
+        <section class="section dashboard">
+      <div class="row">
           <!-- Display each record in a separate container -->
-          <div class="col-lg-4" v-for="info in info" :key="info.id">
-            <div class="card mb-3">
-              <div class="row g-0">
-                <div class="col-md-4">
-                  <img :src="info.image" alt="Inventory Image" class="inventory-image" />
-                </div>
-                <div class="col-md-8">
-                  <div class="card-body">
-                    <h5 class="card-title">{{ info.particulars }}</h5>
-                    <p class="card-text">{{ info.classification }}</p>
-                    <p class="card-text">{{ info.article }}</p>
-                    <!-- <p class="card-text" :class="{'status-serviceable': info.status === 'Serviceable', 'status-unserviceable': info.status === 'Unserviceable'}"><small class="text-muted">{{ info.status }}</small></p> -->
-                    <p class="card-text">
-                      <span v-if="info.status === 'Serviceable'" class="status-serviceable">
-                        <i class="bi bi-bookmark-check"></i> <!-- Add bookmark-check icon -->
-                      </span>
-                      <span v-if="info.status === 'Unserviceable'" class="status-unserviceable">
-                        <i class="bi bi-bookmark-x"></i> <!-- Add bookmark-x icon -->
-                      </span>
-                      <!-- <small class="text-muted">{{ info.status }}</small> -->
-                    </p>
+          <div class="col-lg-4" v-for="info in info" :key="info.id"
+              draggable="true"
+              @dragstart="dragStart($event, info)"
+              @dragover="dragOver($event)"
+              @dragleave="dragLeave($event)"
+              @drop="drop($event, info)"
+              :data-id="info.id">
+              <div class="card mb-3" :class="{'transition-right': transitionRight, 'transition-left': transitionLeft}">
+                  <div class="row g-0">
+                      <div class="col-md-4">
+                          <img :src="info.image" alt="Inventory Image" class="inventory-image" />
+                      </div>
+                      <div class="col-md-8">
+                          <div class="card-body">
+                              <h5 class="card-title">{{ info.particulars }}</h5>
+                              <p class="card-text">{{ info.classification }}</p>
+                              <p class="card-text">{{ info.article }}</p>
+                              <p class="card-text">
+                                <br>
+                                  <span v-if="info.status === 'Serviceable'" class="status-serviceable">
+                                      <i class="bi bi-bookmark-check">&nbsp;&nbsp;</i>
+                                      <small class="text-muted">{{ info.status }}</small>
+                                  </span>
+                                  <span v-if="info.status === 'Unserviceable'" class="status-unserviceable">
+                                      <i class="bi bi-bookmark-x">&nbsp;&nbsp;</i>
+                                      <small class="text-muted">{{ info.status }}</small>
+                                  </span>
+                              </p>
+                          </div>
+                      </div>
                   </div>
-                </div>
               </div>
-            </div>
           </div>
-        </div>
-      </section>
-      
+      </div>
+  </section>
   
-      </main><!-- End #main -->
-   </div>
-  </template>
-
-
-
-<script>
-import axios from 'axios'
-import QRCode from 'qrcode-generator';
-
-export default {
-  data(){
-        return{
-            infos:[],
-            info:[],
-            empfullname: "",
-            particulars: "",
-            token: '',
-            entityname: '',
-            classification: '',
-            code: '',
-            status: '',
-            created_at: '',
-            date_returned: '',
-            video: null,
-            resultElement: null,
-            startButton: null,
-            stopButton: null,
-            isCameraOn: false,
-            stream: null,
-            qrCodeData: null,
-        };
+  
+        </main><!-- End #main -->
+     </div>
+    </template>
+  
+  
+  
+  <script>
+  import axios from 'axios';
+  import QRCode from 'qrcode-generator';
+  export default {
+    data() {
+      return {
+        infos: [],
+        info: [],
+        empfullname: "",
+        particulars: "",
+        token: '',
+        entityname: '',
+        classification: '',
+        code: '',
+        status: '',
+        created_at: '',
+        date_returned: '',
+        video: null,
+        resultElement: null,
+        startButton: null,
+        stopButton: null,
+        isCameraOn: false,
+        stream: null,
+        qrCodeData: null,
+        dragCardId: null,
+        transitionRight: false,
+        transitionLeft: false,
+      };
     },
-    created(){
-      this.user();
-      this.getInfo();
+    created() {
+      this.initData();
     },
-
-    async created() {
-    // Call the user function to get user information
-    await this.user()
-    await this.getInfo(this.infos.fullname)
-
-},
     methods: {
+      async initData() {
+        await this.getUser();
+        await this.getInfo(this.infos.fullname);
+      },
       getImageStyle(imageUrl) {
-      // Function to generate the background image style
         if (!imageUrl) {
-          return {}; // Return an empty object if imageUrl is not provided
+          return {};
         }
-        
-        // Set the background image URL
         const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
-        
-        // Set background size and position
-        const backgroundSize = 'cover'; // Cover the entire container
-        const backgroundPosition = '50% 50%'; // Center the image
-        
-        // Return the style object
+        const backgroundSize = 'cover';
+        const backgroundPosition = '50% 50%';
         return {
           width: '100%',
           height: '100%',
           backgroundImage,
           backgroundSize,
           backgroundPosition,
-          borderRadius: '50%' // Make the background circular
+          borderRadius: '50%'
         };
       },
       onDecode(result) {
-          this.scannedId = result;
-          // Implement any additional logic after scanning the QR code
-        },
-        // generateQRCodeUrl(id) {
-        //   return `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${id}`;
-        // },
-
-        generateQRCodeUrl(id) {
-          // Use qrcode-generator to generate QR code
-          const typeNumber = 0;
-          const errorCorrectionLevel = 'L';
-          const qr = QRCode(typeNumber, errorCorrectionLevel);
-          qr.addData(id);
-          qr.make();
-
-          // Convert QR code data to a data URL
-          const imageUrl = qr.createDataURL();
-
-          return imageUrl;
-        },
-
-      async getInfo(id){
-              try {
-                  const inf = await axios.get(`getDataUser?id=${id}`);
-                  this.info = inf.data;
-              } catch (error) {
-                  console.log(error);
-              }
-          },
-
-      async user(){
-        try{
-          const id= sessionStorage.getItem("token")
-          const response = await axios.get(`/users/${id}`, {
-            id:id
-          })
-          this.infos = response.data;
-
-        }catch(error){
+        this.scannedId = result;
+      },
+      generateQRCodeUrl(id) {
+        const typeNumber = 0;
+        const errorCorrectionLevel = 'L';
+        const qr = QRCode(typeNumber, errorCorrectionLevel);
+        qr.addData(id);
+        qr.make();
+        const imageUrl = qr.createDataURL();
+        return imageUrl;
+      },
+      async getInfo(id) {
+        try {
+          const inf = await axios.get(`getDataUser?id=${id}`);
+          this.info = inf.data;
+          this.applyCardOrder();
+        } catch (error) {
           console.log(error);
         }
       },
-
-      async logout(){
+      async getUser() {
+        try {
+          const id = sessionStorage.getItem("token");
+          const response = await axios.get(`/users/${id}`, {
+            id: id
+          });
+          this.infos = response.data;
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      async logout() {
         sessionStorage.removeItem('token');
         this.$router.push('/');
       },
-      /*async created(){
-        const signdata = await axios.get('user', {
-          headers: {
-            
-          }
-        });
-      } */
+      dragStart(event, info) {
+        this.dragCardId = info.id;
+        event.dataTransfer.setData('text/plain', '');
+        event.currentTarget.classList.add('dragging');
+      },
+      dragOver(event) {
+        event.preventDefault();
+        event.dataTransfer.dropEffect = 'move';
+        const dropTarget = event.currentTarget;
+        dropTarget.classList.add('dragging-over');
+        const draggedIndex = this.info.findIndex(item => item.id === this.dragCardId);
+        const dropTargetIndex = this.info.findIndex(item => item.id === dropTarget.getAttribute('data-id'));
+        if (draggedIndex !== dropTargetIndex) {
+          const draggedInfo = this.info[draggedIndex];
+          this.info.splice(draggedIndex, 1);
+          this.info.splice(dropTargetIndex, 0, draggedInfo);
+          this.triggerTransition(draggedIndex, dropTargetIndex);
+        }
+      },
+      dragLeave(event) {
+        event.currentTarget.classList.remove('dragging-over');
+      },
+      drop(event, info) {
+        event.preventDefault();
+        const draggedInfoIndex = this.info.findIndex(item => item.id === this.dragCardId);
+        const droppedInfoIndex = this.info.findIndex(item => item.id === info.id);
+        const draggedInfo = this.info[draggedInfoIndex];
+        document.querySelectorAll('.card').forEach(card => card.classList.remove('dragging', 'dragging-over'));
+        if (draggedInfoIndex !== droppedInfoIndex) {
+          this.info.splice(draggedInfoIndex, 1);
+          this.info.splice(droppedInfoIndex, 0, draggedInfo);
+          this.triggerTransition(draggedInfoIndex, droppedInfoIndex);
+        }
+        this.dragCardId = null;
+        this.saveCardOrder();
+      },
+      triggerTransition(draggedIndex, dropTargetIndex) {
+        if (draggedIndex < dropTargetIndex) {
+          this.transitionRight = true;
+          this.transitionLeft = false;
+        } else {
+          this.transitionRight = false;
+          this.transitionLeft = true;
+        }
+        setTimeout(() => {
+          this.transitionRight = false;
+          this.transitionLeft = false;
+        }, 300); // The duration should match the CSS animation duration
+      },
+      saveCardOrder() {
+        const cardOrder = this.info.map(item => item.id);
+        localStorage.setItem('cardOrder', JSON.stringify(cardOrder));
+      },
+      loadCardOrder() {
+        const cardOrder = JSON.parse(localStorage.getItem('cardOrder'));
+        if (cardOrder) {
+          const orderedInfo = [];
+          cardOrder.forEach(id => {
+            const item = this.info.find(infoItem => infoItem.id === id);
+            if (item) {
+              orderedInfo.push(item);
+            }
+          });
+          this.info = orderedInfo;
+        }
+      },
+      applyCardOrder() {
+        const cardOrder = JSON.parse(localStorage.getItem('cardOrder'));
+        if (cardOrder) {
+          const orderedInfo = [];
+          cardOrder.forEach(id => {
+            const item = this.info.find(infoItem => infoItem.id === id);
+            if (item) {
+              orderedInfo.push(item);
+            }
+          });
+          this.info = orderedInfo;
+        }
+      }
+    }
+  };
+  
+  </script>
+  
+  
+  
+  <style scoped>
+  
+  .card {
+    box-sizing: border-box;
+    width: 500px;
+    height: 300px;
+    background-color: lightblue;
+    border: 2px;
+    border-color: #BED0EB;
+    box-shadow: 12px 17px 51px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(6px);
+    border-radius: 17px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s, opacity 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    font-weight: bolder;
+    color: black;
+    margin-left: 22px; 
+    margin-bottom: 23px !important;
+  }
+  
+  .card:hover {
+    border: 1px solid black;
+    transform: scale(1.05);
+    box-shadow: 15px 20px 60px rgba(0, 0, 0, 0.3);
+  }
+  
+  .card:active {
+    transform: scale(0.95) rotateZ(1.7deg);
+  }
+  
+  .card.dragging {
+    opacity: 0.7;
+    transition: none;
+  }
+  
+  .card.dragging-over {
+    border: 2px dashed #ff6347;
+    animation: pulse 0.3s ease-in-out;
+  }
+  
+  .transition-right {
+    animation: slide-right 0.3s forwards;
+  }
+  
+  .transition-left {
+    animation: slide-left 0.3s forwards;
+  }
+  
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
     }
   }
-  </script>
-
-<style scoped>
-.status-serviceable {
-  background-color: #dff8d0; /* Light green color */
-  border: 1px solid #4CAF50; /* Green border */
-  color: #4CAF50; /* Green text color */
-  border-radius: 20px; /* Round border radius */
-  padding: 5px 10px; /* Add padding */
-  display: inline-block; /* Display as inline-block for rectangular shape */
-  transition: background-color 0.3s ease; /* Smooth transition for background color */
-}
-
-/* Define the light red color for unserviceable items */
-.status-unserviceable {
-  background-color: #fbdcdc; /* Light red color */
-  border: 1px solid #f44336; /* Red border */
-  color: #f44336; /* Red text color */
-  border-radius: 20px; /* Round border radius */
-  padding: 5px 10px; /* Add padding */
-  display: inline-block; /* Display as inline-block for rectangular shape */
-  transition: background-color 0.3s ease; /* Smooth transition for background color */
-}
-
-/* Hover effect */
-.status-serviceable:hover,
-.status-unserviceable:hover {
-  opacity: 0.9; /* Reduce opacity on hover */
-}
-.inventory-image {
-  max-width: 150px; /* Adjust as needed */
-  max-height: 150px; /* Adjust as needed */
-  width: auto;
-  height: auto;
-  padding: 20px 0 0 20px;
-}
-
-</style>
+  .status-serviceable {
+    background-color: #dff8d0; /* Light green color */
+    border: 1px solid #4CAF50; /* Green border */
+    color: #4CAF50; /* Green text color */
+    border-radius: 20px; /* Round border radius */
+    padding: 5px 10px; /* Add padding */
+    display: inline-block; /* Display as inline-block for rectangular shape */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  .status-unserviceable {
+    background-color: #fbdcdc; /* Light red color */
+    border: 1px solid #f44336; /* Red border */
+    color: #f44336; /* Red text color */
+    border-radius: 20px; /* Round border radius */
+    padding: 5px 10px; /* Add padding */
+    display: inline-block; /* Display as inline-block for rectangular shape */
+    transition: background-color 0.3s ease; /* Smooth transition for background color */
+  }
+  
+  .status-serviceable:hover,
+  .status-unserviceable:hover {
+    opacity: 0.9; /* Reduce opacity on hover */
+  }
+  
+  .inventory-image {
+    max-width: 150px; /* Adjust as needed */
+    max-height: 150px; /* Adjust as needed */
+    width: auto;
+    height: auto;
+    padding: 20px 0 0 20px;
+  }
+  
+  /* Sidebar background color */
+  .sidebar {
+    width: 300px;
+    z-index: 1;
+    background-color: #1b2f47; /* Background color for active links */
+  }
+  
+  /* Sidebar text color and background for links */
+  .sidebar .sidebar-nav .nav-link {
+    background-color: #1b2f47; /* Background color for all sidebar links */
+    color: white !important; /* Set text color to white */
+    transition: all 0.3s ease; /* Add transition for smooth animation */
+  }
+  
+  /* Sidebar text color and background when a link is active or hovered */
+  .sidebar .sidebar-nav .nav-link.active {
+    background: linear-gradient(to right, #1b2f47, #3e5b77);
+    color: white !important;
+    border-left: 4px solid #FFF; /* Optional: Add left border with highlight color */
+    transition: all 0.3s ease;
+  }
+  
+  .sidebar .sidebar-nav .nav-link:hover {
+    background: linear-gradient(to right, #1b2f47, #3e5b77);
+    color: white !important;
+    transform: translateX(5px); /* Move the link to the right on hover */
+    transition: all 0.3s ease;
+  }
+  
+  /* Sidebar dropdown icon color */
+  .sidebar .sidebar-nav .nav-link .bi,
+  .sidebar .sidebar-nav .nav-content .bi {
+    color: white !important;
+    transition: all 0.3s ease;
+  }
+  
+  /* Additional styles for sidebar sub-menus */
+  .sidebar .sidebar-nav .nav-content a {
+    background-color: #2c3e50; /* Slightly darker background for sub-menu items */
+    color: #ffffff;
+    transition: all 0.3s ease;
+  }
+  .sidebar .sidebar-nav .nav-content a:hover {
+    background-color: #3e5b77;
+    color: #ffffff;
+    transform: translateX(5px); /* Move the sub-menu link to the right on hover */
+    transition: all 0.3s ease;
+  }
+  </style>

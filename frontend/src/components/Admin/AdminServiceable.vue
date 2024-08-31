@@ -1,145 +1,3 @@
-<style scoped>
-#qr-video {
-  width: 300px;
-  height: 300px;
-}
-#qr-result {
-  margin-top: 10px;
-}
-table {
-  width: 100%;
-  border-collapse: collapse;
-  }
-  th, td {
-  border: 1px solid black;
-  padding: 10px;
-  text-align: center;
-  }
-  th {
-  height: 55px; 
-  white-space: nowrap;
-  }
-    
-      /* Responsive styles */
-      @media screen and (max-width: 600px) {
-        table, tr, td {
-          display: block;
-        }
-  
-        td {
-          border: none;
-          position: relative;
-        }
-  
-        td::before {
-          content: attr(data-label);
-          font-weight: bold;
-          position: absolute;
-          top: 0;
-          left: 50%;
-          transform: translate(-50%, 0);
-        }
-  
-        /* Make the table scrollable on smaller screens */
-        table {
-          overflow-y: auto;
-        }
-      }
-  
-      /* CSS */
-  /* Updated CSS */
-  .search-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px; /* Add margin to separate from the table */
-  }
-  
-  .search-bar {
-    width: 20%; /* Adjust width as needed */
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    transition: all 0.3s ease;
-  }
-  
-  .search-bar:focus {
-    border-color: #66afe9;
-    box-shadow: 0 0 5px #66afe9;
-  }
-  
-  .pagination .page-item {
-    display: inline-block;
-    margin-right: 5px; /* Paggalang sa espasyo sa pagitan ng mga button */
-  }
-  
-  .pagination .page-link {
-    border: 1px solid #ced4da; /* Bawasan ang lapad ng border */
-    color: #343a40; /* Itim na kulay ng text */
-    border-radius: 0; /* Alisin ang radius ng border */
-  }
-  
-  .pagination .page-link:hover {
-    background-color: transparent; /* Alisin ang background color sa hover */
-  }
-  
-  .pagination .page-item.disabled .page-link {
-    pointer-events: none; /* Huwag pahintulutan ang pag-click kung ang button ay hindi aktibo */
-  }
-  
-  .pagination .page-item.active .page-link {
-    background-color: transparent; /* Alisin ang background color ng active button */
-    border-color: #ced4da; /* Bawasan ang lapad ng border ng active button */
-  }
-  
-  .pagination .page-link:focus {
-    box-shadow: none; /* Alisin ang focus border */
-  }
-  
-  .pagination .page-link.prev, .pagination .page-link.next {
-    padding: 0; /* Alisin ang padding */
-    border: none; /* Alisin ang border */
-    background: none; /* Alisin ang background */
-    font-size: 1.5rem; /* Taasan ang laki ng font */
-    color: #343a40; /* Itim na kulay ng text */
-  }
-  
-  .pagination .page-link.prev::after, .pagination .page-link.next::after {
-    content: '\2190'; /* Isama ang Unicode character para sa arrow (left arrow) */
-  }
-  
-  .pagination .page-link.next::after {
-    content: '\2192'; /* Isama ang Unicode character para sa arrow (right arrow) */
-  }
-
-  .loading-line {
-    width: 100%;
-    height: 4px;
-    background-color: #ffffff; /* Background color of the loading container */
-    position: relative;
-    overflow: hidden; /* Ensures the loading line stays within the container */
-  }
-  
-  .loading-line::before {
-    content: "";
-    position: absolute;
-    height: 100%;
-    width: 50%;
-    background-color: rgb(0, 68, 255); /* Color of the loading line */
-    animation: loading 0.5s linear infinite; /* Faster looping animation */
-  }
-  
-  @keyframes loading {
-    0% {
-      transform: translateX(-100%); /* Start from the left */
-    }
-    100% {
-      transform: translateX(100%); /* Move to the right */
-    }
-  }
-</style>
-
-
 <template>
 <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
         <!-- ======= Header ======= -->
@@ -391,32 +249,39 @@ table {
         </div><!-- End Page Title -->
 
         <section class="section">
+       
+        
         <div class="row">
-            <div class="col-lg-4">
+          <div class="col-lg-12">
+            <div class="card">
+            <div class="card-body">
+            <h3 class="card-title">Serviceable PPE</h3>
+<br>
 
-              <div class="card">
-                <div class="card-body">
+            <div class="row"> 
+              <div class="col-lg-4">
+  <div class="card">
+    <div class="card-body">
+      <!-- Container for video element -->
+      <div class="box">
+        <video id="qr-video" playsinline></video>
+      </div>
+      <div id="qr-result"></div>
+      <br>
+      <button class="button" id="start-camera" @click="startCamera" v-show="!isCameraOn">Scan</button>
+      <button class="button1" id="stop-camera" @click="stopCamera" v-show="isCameraOn">Close</button>
+    </div>
+  </div>
+</div>
 
-
-                  <video id="qr-video" playsinline></video>
-                  <div id="qr-result"></div>
-                  <button class="btn btn-success" id="start-camera" @click="startCamera" v-show="!isCameraOn">Scan</button>
-                  <button class="btn btn-danger" id="stop-camera" @click="stopCamera" v-show="isCameraOn">Stop</button>
-
-
-
-                </div>
-            </div>
-
-            </div>
 
             <div class="col-lg-8" align="center">
 
             <div class="card">
               <div class="card-body">
                 <hr>
-                <h2>Result</h2>
-                <h4><b><i>Kindly Scan the QR Code. Thank you!</i></b></h4>
+                <h3><b>Result</b></h3>
+                
                 <hr>
                 <div id="display-data">
                   <!-- Display fetched data here -->
@@ -430,34 +295,8 @@ table {
             </div>
         </div>
 
-        
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="card">
-            <div class="card-body">
-            <h5 class="card-title">Serviceable PPE</h5>
-            <div class="col-lg-3">
-              <div class="accordion accordion-body text-end" id="faq-group-2">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button btn btn-outline-info collapsed " data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
-                      Download Serviceable Document
-                    </button>
-                  </h2>
-                  <!-- Loading animation -->
-                  <div v-if="loading" class="text-center mt-1">
-                    <div class="loading-line"></div>
-                  </div>
-                  <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
-                    <div class="row mt-3">
-                      <div class="col-lg-12 align-items-center">
-                        <button class="btn btn-warning w-100" @click="serviceablePDF"><i class="ri-download-2-line"></i> Download Serviceable</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+           
+         
             
             
             <!-- Table with stripped rows -->
@@ -539,6 +378,35 @@ table {
 </div>
 <hr>
 
+<!-- Download Serviceable Document -->
+<div class="col-lg-12 d-flex justify-content-end">
+  <div class="accordion accordion-body text-end" id="faq-group-2">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button btn btn-outline-info collapsed" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
+          Download Serviceable Documents
+        </button>
+      </h2>
+      <!-- Loading animation -->
+      <div v-if="loading" class="text-center mt-1">
+        <div class="loading-line"></div>
+      </div>
+      <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+        <div class="row mt-3">
+          <div class="col-lg-12 align-items-center">
+           
+<button class="download" type="button" @click="serviceablePDF">
+  <span class="button__text">Download</span>
+  <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
+</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <div class="row align-items-center">
@@ -560,191 +428,108 @@ table {
 </div>
 </div>
 
+<br>
 
 
-            <div style="overflow-y: auto;">
-              <table>
-            <!-- Table header -->
-            <thead>
-              
-              <tr>
-    <th rowspan="2"><b>Image</b></th>
-    <th rowspan="2"><b>Entity Name</b></th>
-    <th rowspan="2"><b>Semi-expendable</b><br> 
-                    <b>Property Classification</b></th>
-    <th rowspan="2"><b>UACS</b><br>
-                    <b>Object Code:</b></th>
 
-    <th colspan="4"><b>Description</b></th>
+<div style="overflow-y: auto;">
 
-    <th rowspan="2"><b>Full Description</b></th>
-    <th rowspan="2">
-      <b>Semi-expendable</b><br>
-      <b>Property Number:</b>
-    </th>
-  
-    <th rowspan="2"><b>Date</b></th>
+  <table class="table-compact">
+    <!-- Table header -->
+    <thead>
+      <tr>
+        <th rowspan="2"><b>Image</b></th>
+        <th rowspan="2"><b>Entity Name</b></th>
+        <th rowspan="2"><b>Semi-expendable</b><br><b>Property Classification</b></th>
+        <th rowspan="2"><b>UACS</b><br><b>Object Code:</b></th>
+        <th colspan="4"><b>Description</b></th>
+        <th rowspan="2"><b>Full Description</b></th>
+        <th rowspan="2"><b>Semi-expendable</b><br><b>Property Number:</b></th>
+        <th rowspan="2"><b>Date</b></th>
+        <th rowspan="2"><b>View All</b></th> <!-- View All button column -->
+      </tr>
+      <tr>
+        <th><b>Article</b></th>
+        <th><b>Particulars</b></th>
+        <th><b>Model No.</b></th>
+        <th><b>Serial No.</b></th>
+      </tr>
+    </thead>
 
-    <th colspan="2"><b>Reference</b></th>
-    <th colspan="4" style="background-color: blue; color: white;"><b>Receipt</b></th>
-
-    <th rowspan="2" style="background-color: blue; color: white;"><b>"Issue/ Transfer/</b><br>
-                                                                      <b> Adjustments (Amount)"</b></th>
-    <th rowspan="2" style="background-color: blue; color: white;"><b>Accummulated</b><br><b>Impairment Loss</b></th>
-    <th rowspan="2" style="background-color: blue; color: white;"><b>Adjusted Cost</b></th>
-
-    <th colspan="2" style="background-color: blue; color: white;"><b>History of Repair</b></th>
-    <th colspan="4" style="background-color: #20ff6a; color: black;"><b>Issue</b></th>
-    <th colspan="3" style="background-color: #07ad41; color: black;"><b>Transfer</b></th>
-    <th colspan="3" style="background-color: orange; color: black;"><b>Disposal</b></th>
-    <th colspan="1"><b>Balance</b></th>
-
-    <th rowspan="2"><b>Amount</b></th>
-    <th rowspan="2"><b>Remarks</b></th>
-    <th rowspan="2"><b>ESTIMATED</b><br><b>USEFUL</b><br><b>LIFE</b></th>
-
-    <th colspan="3" style="background-color: #16fa54; color: black;"><b>Received from: (Issued by)</b></th>
-    <th colspan="3" style="background-color: #16fa54; color: black;"><b>Received by: (Accountable Officer)</b></th>
-    <th colspan="2" style="background-color: #07ad41; color: black;"><b>INVENTORY TRANSFER REPORT</b></th>
-    <th colspan="3" style="background-color: #07ad41; color: black;"><b></b></th>
-
-    <th rowspan="2" style="background-color: blue; color: white;"><b>"REPORT OF SEMI-EXP PROP ISSUEDSERIAL NO.:"</b></th>
-
-    <th colspan="2" style="background-color: blue; color: white;"><b>Returned</b></th>
-    <th colspan="2" style="background-color: blue; color: white;"><b>Re-issued</b></th>
-    <th colspan="1" style="background-color: blue; color: white;"><b>Disposed</b></th>
-    <th colspan="1" style="background-color: blue; color: white;"><b>Balance</b></th>
-
-    <th rowspan="2" style="background-color: blue; color: white;"><b>Amount</b></th>
-    <th rowspan="2" style="background-color: blue; color: white;"><b>Remarks</b></th>
-    <th rowspan="2"><b>Property Officer</b></th>
-    <th rowspan="2"><b>Head of Office/ Approving Authority</b></th>
-   
-
-</tr>
-<tr>
-    <th><b>Article</b></th>
-    <th><b>Particulars</b></th>
-    <th><b>Model No.</b></th>
-    <th><b>Serial No.</b></th>
-
-    <th><b>ICS No.</b></th>
-    <th><b>JEV No.</b></th>
-
-    <th style="background-color: blue; color: white;"><b>Quantity</b></th>
-    <th style="background-color: blue; color: white;"><b>Unit</b></th>
-    <th style="background-color: blue; color: white;"><b>Unit Cost</b></th>
-    <th style="background-color: blue; color: white;"><b>Total Cost</b></th>
-
-    <th style="background-color: blue; color: white;"><b>Nature of Repair</b></th>
-    <th style="background-color: blue; color: white;"><b>Amount</b></th>
-
-    <th style="background-color: #20ff6a; color: black;"><b>Item No.</b></th>
-    <th style="background-color: #20ff6a; color: black;"><b>Date</b></th>
-    <th style="background-color: #20ff6a; color: black;"><b>Quantity</b></th>
-    <th style="background-color: #20ff6a; color: black;"><b>Office/Officer</b></th>
-
-    <th style="background-color: #07ad41; color: black;"><b>Date</b></th>
-    <th style="background-color: #07ad41; color: black;"><b>Quantity</b></th>
-    <th style="background-color: #07ad41; color: black;"><b>Office/Officer</b></th>
-
-    <th style="background-color: orange; color: black;"><b>Date</b></th>
-    <th style="background-color: orange; color: black;"><b>Quantity</b></th>
-    <th style="background-color: orange; color: black;"><b>Office/Officer</b></th>
-
-    <th><b>Quantity</b></th>
-
-    <th style="background-color: #16fa54; color: black;"><b>Name</b></th>
-    <th style="background-color: #16fa54; color: black;"><b>Position/Office</b></th>
-    <th style="background-color: #16fa54; color: black;"><b>Date</b></th>
-    
-    <th style="background-color: #16fa54; color: black;"><b>Name</b></th>
-    <th style="background-color: #16fa54; color: black;"><b>Position</b></th>
-    <th style="background-color: #16fa54; color: black;"><b>Date</b></th>
-
-    <th style="background-color: #07ad41; color: black;"><b>"ITR NO.(YYYY-MON-NO. SERIES-RCC)"</b></th>
-    <th style="background-color: #07ad41; color: black;"><b>ITR DATE</b></th>
-
-    <th style="background-color: #07ad41; color: black;"><b>"RRSP NO.(YYYY-MON-NO. SERIES-RCC)"</b></th>
-    <th style="background-color: #07ad41; color: black;"><b>RRSP DATE</b></th>
-    <th style="background-color: #07ad41; color: black;"><b>REASON FOR TRANSFER</b></th>
-
-    <th style="background-color: blue; color: white;"><b>Quantity</b></th>
-    <th style="background-color: blue; color: white;"><b>Office/Officer</b></th>
-    <th style="background-color: blue; color: white;"><b>Quantity</b></th>
-    <th style="background-color: blue; color: white;"><b>Office/Officer</b></th>
-    <th style="background-color: blue; color: white;"><b>Quantity</b></th>
-    <th style="background-color: blue; color: white;"><b>Quantity</b></th>
-
-</tr>
-            </thead>
-            
-            <tbody>
-              <!-- Table rows -->
-              <tr v-for="info in paginatedInfo" :key="info.id" @click="selectRecord(info)">
-              
-                <td scope="row"><img :src="info.image" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
-                <td scope="row">{{ info.entityname }}</td>
-                <td scope="row">{{ info.classification }}</td>
-                <td scope="row">{{ info.code }}</td>
-                <td scope="row">{{ info.article }}</td>
-                <td scope="row">{{ info.particulars }}</td>
-                <td scope="row">{{ info.modelno }}</td>
-                <td scope="row">{{ info.serialno }}</td>
-                <td scope="row">{{ info.fulldescription }}</td>
-                <td scope="row">{{ info.propertynumber }}</td>
-                <td scope="row">{{ info.propertydate }}</td>
-                <td scope="row">{{ info.icsnumber }}</td>
-                <td scope="row">{{ info.jevnumber }}</td>
-                <td scope="row">{{ info.rec_quantity }}</td>
-                <td scope="row">{{ info.rec_unit }}</td>
-                <td scope="row">{{ info.rec_unitcost }}</td>
-                <td scope="row">{{ info.rec_totalcost }}</td>
-                <td scope="row">{{ info.isstranadjamount }}</td>
-                <td scope="row">{{ info.accimploss }}</td>
-                <td scope="row">{{ info.adjustedcost }}</td>
-                <td scope="row">{{ info.repair_nature }}</td>
-                <td scope="row">{{ info.repair_amount }}</td>
-                <td scope="row">{{ info.issue_itemno }}</td>
-                <td scope="row">{{ info.issue_date }}</td>
-                <td scope="row">{{ info.issue_quantity }}</td>
-                <td scope="row">{{ info.issue_officeofficer }}</td>
-                <td scope="row">{{ info.transfer_date }}</td>
-                <td scope="row">{{ info.transfer_quantity }}</td>
-                <td scope="row">{{ info.transfer_officeofficer }}</td>
-                <td scope="row">{{ info.disposal_date }}</td>
-                <td scope="row">{{ info.disposal_quantity }}</td>
-                <td scope="row">{{ info.disposal_officeofficer }}</td>
-                <td scope="row">{{ info.balancequantity }}</td>
-                <td scope="row">{{ info.balanceamount }}</td>
-                <td scope="row">{{ info.remarks }}</td>
-                <td scope="row">{{ info.estimatedlife }}</td>
-                <td scope="row">{{ info.issued_officer }}</td>
-                <td scope="row">{{ info.issued_offposition }}</td>
-                <td scope="row">{{ info.issued_date }}</td>
-                <td scope="row">{{ info.acc_officer }}</td>
-                <td scope="row">{{ info.acc_empposition }}</td>
-                <td scope="row">{{ info.acc_date }}</td>
-                <td scope="row">{{ info.itr_no }}</td>
-                <td scope="row">{{ info.itr_date }}</td>
-                <td scope="row">{{ info.rrsp_no }}</td>
-                <td scope="row">{{ info.rrsp_date }}</td>
-                <td scope="row">{{ info.reasonfortrans }}</td>
-                <td scope="row">{{ info.reg_semiissuedserialno }}</td>
-                <td scope="row">{{ info.reg_returned_qty }}</td>
-                <td scope="row">{{ info.reg_returned_off }}</td>
-                <td scope="row">{{ info.reg_reissued_qty }}</td>
-                <td scope="row">{{ info.reg_reissued_off }}</td>
-                <td scope="row">{{ info.reg_disposed_qty }}</td>
-                <td scope="row">{{ info.reg_balance_quantity }}</td>
-                <td scope="row">{{ info.reg_amount }}</td>
-                <td scope="row">{{ info.reg_remarks }}</td>
-                <td scope="row">{{ info.property_officer }}</td>
-                <td scope="row">{{ info.approving_authority }}</td>
-              </tr>
-            </tbody>
-          </table>
-            </div>
+    <tbody>
+      <!-- Table rows -->
+      <tr v-for="info in paginatedInfo" :key="info.id">
+        <td><img :src="info.image" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
+        <td>{{ info.entityname }}</td>
+        <td>{{ info.classification }}</td>
+        <td>{{ info.code }}</td>
+        <td>{{ info.article }}</td>
+        <td>{{ info.particulars }}</td>
+        <td>{{ info.modelno }}</td>
+        <td>{{ info.serialno }}</td>
+        <td>{{ info.fulldescription }}</td>
+        <td>{{ info.propertynumber }}</td>
+        <td>{{ info.propertydate }}</td>
+        <td>
+          <button @click="toggleRowVisibility(info)">View All</button>
+        </td>
+      </tr>
+      <tr v-if="info.showDetails" v-for="info in paginatedInfo" :key="info.id + '-details'">
+        <!-- Detailed row with additional information -->
+        <td colspan="12">
+          <div>
+            <p><b>ICS No:</b> {{ info.icsnumber }}</p>
+            <p><b>JEV No:</b> {{ info.jevnumber }}</p>
+            <p><b>Quantity:</b> {{ info.rec_quantity }}</p>
+            <p><b>Unit:</b> {{ info.rec_unit }}</p>
+            <p><b>Unit Cost:</b> {{ info.rec_unitcost }}</p>
+            <p><b>Total Cost:</b> {{ info.rec_totalcost }}</p>
+            <p><b>Issue/ Transfer/ Adjustments (Amount):</b> {{ info.isstranadjamount }}</p>
+            <p><b>Accummulated Impairment Loss:</b> {{ info.accimploss }}</p>
+            <p><b>Adjusted Cost:</b> {{ info.adjustedcost }}</p>
+            <p><b>Nature of Repair:</b> {{ info.repair_nature }}</p>
+            <p><b>Repair Amount:</b> {{ info.repair_amount }}</p>
+            <p><b>Issue Item No:</b> {{ info.issue_itemno }}</p>
+            <p><b>Issue Date:</b> {{ info.issue_date }}</p>
+            <p><b>Issue Quantity:</b> {{ info.issue_quantity }}</p>
+            <p><b>Issue Office/Officer:</b> {{ info.issue_officeofficer }}</p>
+            <p><b>Transfer Date:</b> {{ info.transfer_date }}</p>
+            <p><b>Transfer Quantity:</b> {{ info.transfer_quantity }}</p>
+            <p><b>Transfer Office/Officer:</b> {{ info.transfer_officeofficer }}</p>
+            <p><b>Disposal Date:</b> {{ info.disposal_date }}</p>
+            <p><b>Disposal Quantity:</b> {{ info.disposal_quantity }}</p>
+            <p><b>Disposal Office/Officer:</b> {{ info.disposal_officeofficer }}</p>
+            <p><b>Balance Quantity:</b> {{ info.balancequantity }}</p>
+            <p><b>Balance Amount:</b> {{ info.balanceamount }}</p>
+            <p><b>Remarks:</b> {{ info.remarks }}</p>
+            <p><b>Estimated Useful Life:</b> {{ info.estimatedlife }}</p>
+            <p><b>Issued Officer:</b> {{ info.issued_officer }}</p>
+            <p><b>Issued Position/Office:</b> {{ info.issued_offposition }}</p>
+            <p><b>Issued Date:</b> {{ info.issued_date }}</p>
+            <p><b>Accountable Officer:</b> {{ info.acc_officer }}</p>
+            <p><b>Accountable Position:</b> {{ info.acc_empposition }}</p>
+            <p><b>Accountable Date:</b> {{ info.acc_date }}</p>
+            <p><b>ITR No:</b> {{ info.itr_no }}</p>
+            <p><b>ITR Date:</b> {{ info.itr_date }}</p>
+            <p><b>RRSP No:</b> {{ info.rrsp_no }}</p>
+            <p><b>RRSP Date:</b> {{ info.rrsp_date }}</p>
+            <p><b>Reason for Transfer:</b> {{ info.reasonfortrans }}</p>
+            <p><b>Returned Quantity:</b> {{ info.reg_returned_qty }}</p>
+            <p><b>Returned Office:</b> {{ info.reg_returned_off }}</p>
+            <p><b>Re-issued Quantity:</b> {{ info.reg_reissued_qty }}</p>
+            <p><b>Re-issued Office:</b> {{ info.reg_reissued_off }}</p>
+            <p><b>Disposed Quantity:</b> {{ info.reg_disposed_qty }}</p>
+            <p><b>Balance Quantity:</b> {{ info.reg_balance_quantity }}</p>
+            <p><b>Amount:</b> {{ info.reg_amount }}</p>
+            <p><b>Remarks:</b> {{ info.reg_remarks }}</p>
+            <p><b>Property Officer:</b> {{ info.property_officer }}</p>
+            <p><b>Head of Office/ Approving Authority:</b> {{ info.approving_authority }}</p>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
             <!-- End Table with stripped rows -->
 
             <!-- I-update ang table at idagdag ang pagination controls -->
@@ -833,6 +618,7 @@ export default{
           loading: false,
       }
   },
+  
   mounted() {
     this.video = document.getElementById("qr-video");
     this.resultElement = document.getElementById("qr-result");
@@ -852,6 +638,10 @@ export default{
     selectRecord(info) {
       this.selectedInfo = info;
     },
+    toggleRowVisibility(info) {
+      info.showDetails = !info.showDetails;
+    },
+
     async downloadEmployeeRecordsPDF() {
         try {
           this.simulateLoading();
@@ -1221,3 +1011,322 @@ export default{
 }
 }
 </script>
+
+
+<style scoped>
+
+#qr-video {
+  width: 300px;
+  height: 300px;
+}
+#qr-result {
+  margin-top: 10px;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  }
+  th, td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  }
+  th {
+  height: 55px; 
+  white-space: nowrap;
+  }
+    
+      /* Responsive styles */
+      @media screen and (max-width: 600px) {
+        table, tr, td {
+          display: block;
+        }
+  
+        td {
+          border: none;
+          position: relative;
+        }
+  
+        td::before {
+          content: attr(data-label);
+          font-weight: bold;
+          position: absolute;
+          top: 0;
+          left: 50%;
+          transform: translate(-50%, 0);
+        }
+  
+        /* Make the table scrollable on smaller screens */
+        table {
+          overflow-y: auto;
+        }
+      }
+  
+      /* CSS */
+  /* Updated CSS */
+  .search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Add margin to separate from the table */
+  }
+  
+  .search-bar {
+    width: 20%; /* Adjust width as needed */
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
+  }
+  
+  .search-bar:focus {
+    border-color: #66afe9;
+    box-shadow: 0 0 5px #66afe9;
+  }
+  
+  .pagination .page-item {
+    display: inline-block;
+    margin-right: 5px; /* Paggalang sa espasyo sa pagitan ng mga button */
+  }
+  
+  .pagination .page-link {
+    border: 1px solid #ced4da; /* Bawasan ang lapad ng border */
+    color: #343a40; /* Itim na kulay ng text */
+    border-radius: 0; /* Alisin ang radius ng border */
+  }
+  
+  .pagination .page-link:hover {
+    background-color: transparent; /* Alisin ang background color sa hover */
+  }
+  
+  .pagination .page-item.disabled .page-link {
+    pointer-events: none; /* Huwag pahintulutan ang pag-click kung ang button ay hindi aktibo */
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: transparent; /* Alisin ang background color ng active button */
+    border-color: #ced4da; /* Bawasan ang lapad ng border ng active button */
+  }
+  
+  .pagination .page-link:focus {
+    box-shadow: none; /* Alisin ang focus border */
+  }
+  
+  .pagination .page-link.prev, .pagination .page-link.next {
+    padding: 0; /* Alisin ang padding */
+    border: none; /* Alisin ang border */
+    background: none; /* Alisin ang background */
+    font-size: 1.5rem; /* Taasan ang laki ng font */
+    color: #343a40; /* Itim na kulay ng text */
+  }
+  
+  .pagination .page-link.prev::after, .pagination .page-link.next::after {
+    content: '\2190'; /* Isama ang Unicode character para sa arrow (left arrow) */
+  }
+  
+  .pagination .page-link.next::after {
+    content: '\2192'; /* Isama ang Unicode character para sa arrow (right arrow) */
+  }
+
+  .loading-line {
+    width: 100%;
+    height: 4px;
+    background-color: #ffffff; /* Background color of the loading container */
+    position: relative;
+    overflow: hidden; /* Ensures the loading line stays within the container */
+  }
+  
+  .loading-line::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background-color: rgb(0, 68, 255); /* Color of the loading line */
+    animation: loading 0.5s linear infinite; /* Faster looping animation */
+  }
+  
+  @keyframes loading {
+    0% {
+      transform: translateX(-100%); /* Start from the left */
+    }
+    100% {
+      transform: translateX(100%); /* Move to the right */
+    }
+  }
+
+  .button {
+  border: none;
+  background-color: seagreen;
+  color: white;
+  font-size: 0.9rem; /* Slightly larger font size */
+  font-weight: 500;
+  padding: 0.5rem 1.4rem; /* Slightly increased padding */
+  border-radius: 0.35rem; /* Slightly larger border radius */
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transform: translate(1) translate(0, 0);
+  transition: transform 225ms, box-shadow 225ms;
+  display: block; /* Ensures the button is a block element for centering */
+  margin: 0 auto; /* Centers button horizontally */
+}
+
+.button:hover {
+  transform: scale(1.05) translate(0, -0.1rem);
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.35);
+}
+
+.button:active {
+  transform: scale(1) translate(0, 0.1rem);
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.15);
+}
+
+.button1 {
+    border: none;
+    background-color: #C0392B;
+    color: white;
+  font-size: 0.9rem; /* Slightly larger font size */
+  font-weight: 500;
+  padding: 0.5rem 1.4rem; /* Slightly increased padding */
+  border-radius: 0.35rem; /* Slightly larger border radius */
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transform: translate(1) translate(0, 0);
+  transition: transform 225ms, box-shadow 225ms;
+  display: block; /* Ensures the button is a block element for centering */
+  margin: 0 auto; /* Centers button horizontally */
+  }
+  
+  .button1:hover {
+    transform: scale(1.05) translate(0, -0.1rem);
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.35);
+  }
+  
+  .button1:active {
+    transform: scale(1) translate(0, 0.1rem);
+    box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.15);
+  }
+  
+  .box {
+  position: relative; /* Create a positioning context */
+  width: 100%; /* Full width of its container */
+  height: 300px; /* Set a specific height; adjust as needed */
+  overflow: hidden; /* Hide overflow to ensure clean edges */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  border: 1px solid #ccc; /* Optional: Add border for visual debugging */
+}
+
+.box video {
+  max-width: 100%; /* Ensure video does not exceed the width of the box */
+  max-height: 100%; /* Ensure video does not exceed the height of the box */
+
+}
+
+
+.download {
+  position: relative;
+  width: 300px;
+  height: 45px; /* Reduce the height */
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center the text horizontally */
+  border: 1px solid #17795E;
+  background-color: #209978;
+  overflow: hidden;
+}
+
+.button__text {
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px; /* Decrease the font size */
+  margin-left: -20px; /* Move the text slightly to the left */
+  transition: color 0.3s;
+  z-index: 1; /* Ensure text is above icon */
+}
+
+.button__icon {
+  position: absolute;
+  height: 100%;
+  width: 50px;
+  background-color: #17795E;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  right: 0;
+  transition: right 0.3s, width 0.3s, transform 0.3s, background-color 0.3s;
+}
+
+.svg {
+  width: 21px;
+  fill: #fff;
+}
+
+.download:hover {
+  background: #17795E;
+}
+
+.download:hover .button__text {
+  color: transparent;
+}
+
+.download:hover .button__icon {
+  width: 100px;
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.download:active .button__icon {
+  background-color: #146c54;
+}
+
+.download:active {
+  border: 1px solid #146c54;
+}
+
+* {
+  font-family: sans-serif;
+}
+
+
+.content-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+.content-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+}
+
+.content-table th,
+.content-table td {
+    padding: 12px 15px;
+}
+
+.content-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.content-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.content-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.content-table tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+</style>
+

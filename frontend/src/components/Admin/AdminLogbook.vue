@@ -149,6 +149,91 @@ table {
   cursor: pointer;
 }
 
+.body {
+  display: flex;
+  justify-content: flex-end; /* Ensure the body div is aligned to the right */
+  width: 100%;
+  padding-right: 20px; /* Add padding to the right if needed */
+}
+
+.body {
+  display: flex;
+  justify-content: flex-end; /* Align tabs to the right */
+  width: 100%;
+  padding-right: 20px;
+}
+
+.radio-input {
+  --container_width: 640px; /* Adjust width for four tabs */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align tabs to the right side */
+  border-radius: 10px;
+  background-color: #fff;
+  color: #000000;
+  width: var(--container_width);
+  overflow: hidden;
+  border: 1px solid rgba(53, 52, 52, 0.226);
+}
+
+.radio-input label {
+  width: 100%;
+  padding: 13px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-weight: 600;
+  letter-spacing: -1px;
+  font-size: 15px;
+  border-right: 1px solid rgba(53, 52, 52, 0.226);
+  gap: 7px;
+}
+
+.radio-input label:last-child {
+  border-right: none;
+}
+
+.selection {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: calc(var(--container_width) / 4); /* Adjust width for four tabs */
+  z-index: 0;
+  left: 0;
+  top: 0;
+  transition: .15s ease;
+}
+
+.radio-input label:has(input:checked) {
+  color: #fff;
+}
+
+.radio-input label:has(input:checked) ~ .selection {
+  background-color: rgb(11 117 223);
+  display: inline-block;
+}
+
+.radio-input label:nth-child(1):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 0/4));
+}
+
+.radio-input label:nth-child(2):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 1/4));
+}
+
+.radio-input label:nth-child(3):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 2/4));
+}
+
+.radio-input label:nth-child(4):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 3/4));
+}
+
+
+
 </style>
 
 
@@ -382,11 +467,6 @@ table {
       </aside><!-- End Sidebar-->
   
   
-  
-  
-  
-  
-  
       <main id="main" class="main">
 
         <div class="pagetitle">
@@ -400,169 +480,216 @@ table {
         </nav>
         </div><!-- End Page Title -->
      
-    
-   
-    <full-calendar ref="fullCalendar" :options="calendarOptions" class="calendar" />
-    <div v-if="selectedEvent" 
-     :class="['side-panel', { visible: sidePanelVisible }]" 
-     :style="sidePanelPosition">
-  <h2>Employee Details</h2>
-  <br>
-  <p><strong>Employee:</strong> {{ selectedEvent.employee }}</p>
-  <p><strong>Equipment:</strong> {{ selectedEvent.particulars }}</p>
-  <p><strong>Date Borrowed:</strong> {{ selectedEvent.dateBorrowed }}</p>
-  <p><strong>Date Returned:</strong> {{ selectedEvent.dateReturned || 'Not Returned Yet' }}</p>
-  <br>
-  <div class="button-container">
-    <button class="back-button" @click="goBack">Back</button>
-    <button v-if="selectedEvent.backgroundColor === 'orange'" class="return-button" @click="selectRecord(selectedEvent)">Return</button>
+        <div class="body">
+  <div class="radio-input">
+    <label>
+      <input
+        value="calendar"
+        name="value-radio"
+        id="calendar"
+        type="radio"
+        v-model="activeTab"
+      />
+      <span>Calendar</span>
+    </label>
+
+    <label>
+      <input
+        value="scan"
+        name="value-radio"
+        id="scan"
+        type="radio"
+        v-model="activeTab"
+      />
+      <span>Scan</span>
+    </label>
+
+    <label>
+      <input
+        value="borrowed"
+        name="value-radio"
+        id="borrowed"
+        type="radio"
+        v-model="activeTab"
+      />
+      <span>Borrowed</span>
+    </label>
+
+    <label>
+      <input
+        value="returned"
+        name="value-radio"
+        id="returned"
+        type="radio"
+        v-model="activeTab"
+      />
+      <span>Returned</span>
+    </label>
+
+    <span class="selection"></span>
   </div>
 </div>
 
+<!-- Calendar Component -->
+<div v-if="activeTab === 'calendar'">
+  <full-calendar ref="fullCalendar" :options="calendarOptions" class="calendar" />
+  <div v-if="selectedEvent" 
+       :class="['side-panel', { visible: sidePanelVisible }]" 
+       :style="sidePanelPosition">
+    <h2>Employee Details</h2>
+    <br>
+    <p><strong>Employee:</strong> {{ selectedEvent.employee }}</p>
+    <p><strong>Equipment:</strong> {{ selectedEvent.particulars }}</p>
+    <p><strong>Date Borrowed:</strong> {{ selectedEvent.dateBorrowed }}</p>
+    <p><strong>Date Returned:</strong> {{ selectedEvent.dateReturned || 'Not Returned Yet' }}</p>
+    <br>
+    <div class="button-container">
+      <button class="back-button" @click="goBack">Back</button>
+      <button v-if="selectedEvent.backgroundColor === 'orange'" class="return-button" @click="selectRecord(selectedEvent)">Return</button>
+    </div>
+  </div>
+</div>
 
-        <section class="section">
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="card">
-                  <div class="card-body">
-                      <video id="qr-video" playsinline></video>
-                      <!-- <div id="qr-result"></div> -->
-                      <button class="btn btn-success" id="start-camera" @click="startCamera" v-show="!isCameraOn">Scan</button>
-                      <button class="btn btn-danger" id="stop-camera" @click="stopCamera" v-show="isCameraOn">Stop</button>
-                  </div>
-              </div>
+<!-- Scan Component -->
+<div v-if="activeTab === 'scan'">
+  <section class="section">
+    <div class="row">
+      <div class="col-lg-4">
+        <div class="card">
+          <div class="card-body">
+            <video id="qr-video" playsinline></video>
+            <button class="btn btn-success" id="start-camera" @click="startCamera" v-show="!isCameraOn">Scan</button>
+            <button class="btn btn-danger" id="stop-camera" @click="stopCamera" v-show="isCameraOn">Stop</button>
           </div>
-          
-          <div class="col-lg-8" align="center">
-              <div class="card">
-                <div class="card-body">
+        </div>
+      </div>
+      
+      <div class="col-lg-8" align="center">
+        <div class="card">
+          <div class="card-body">
+            <hr>
+            <h2>Scan Result</h2>
+            <hr>
+            <div id="display-data">
+              <p v-if="employee">
+                <form @submit.prevent="saveBorrowed" enctype="multipart/form-data">
+                  <h4><label for="employee"><b>Welcome!</b> </label>
+                  <input type="text" id="employee" v-model="employee"></h4>
                   <hr>
-                  <h2>Scan Result</h2>
-                  <hr>
-                  <div id="display-data">
-                      <!-- Display fetched data here -->
-                      <p v-if="employee">
-                        <form @submit.prevent="saveBorrowed" enctype="multipart/form-data">
-                          <h4><label for="employee"><b>Welcome!</b>  </label>
-                          <input type="text" id="employee" v-model="employee"></h4>
-                          <hr>
-                          <h5><label><i>Please Select the equipment that you want to borrow:</i></label></h5>
-                          <br>
-                          <div>
-                            <div class="row">
-                              <div class="col-lg-4" v-for="(inv, index) in inventory" :key="inv.id">
-                                  <!-- Use a click event to handle card selection -->
-                                  <div class="card mb-3" 
-                                      @click="selectParticular(inv.particulars)"
-                                      :class="{ 'selected': selectedParticular === inv.particulars }">
-                                      <div class="row g-0">
-                                        <div class="col-md-4">
-                                          <img :src="inv.image" alt="Inventory Image" class="inventory-image" />
-                                        </div>
-                                          <div class="col-md-8">
-                                              <div class="card-body">
-                                                  <h6 class="card-title">{{ inv.particulars }}</h6>
-                                                  <p class="card-text">Available: {{ inv.quantity }}</p>
-                                              </div>
-                                          </div>
-                                      </div>
-                                  </div>
+                  <h5><label><i>Please Select the equipment that you want to borrow:</i></label></h5>
+                  <br>
+                  <div>
+                    <div class="row">
+                      <div class="col-lg-4" v-for="(inv, index) in inventory" :key="inv.id">
+                        <div class="card mb-3" 
+                            @click="selectParticular(inv.particulars)"
+                            :class="{ 'selected': selectedParticular === inv.particulars }">
+                          <div class="row g-0">
+                            <div class="col-md-4">
+                              <img :src="inv.image" alt="Inventory Image" class="inventory-image" />
+                            </div>
+                            <div class="col-md-8">
+                              <div class="card-body">
+                                <h6 class="card-title">{{ inv.particulars }}</h6>
+                                <p class="card-text">Available: {{ inv.quantity }}</p>
                               </div>
                             </div>
-          
-                          
                           </div>
-                          <button type="submit" class="btn btn-primary">Borrow</button>
-                      </form>
-                      </p>
-                      <h4 v-else><b><i>Kindly Scan the QR Code. Thank you!</i></b> {{ qrCodeData }}</h4>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-              </div>              
-              </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Borrowed Log</h5>
-                    <p>Please see all the borrowed log of equipments inside the office.</p>
-                    <!-- Table with stripped rows -->
-                    <table class="table">
-                        <!-- Table header -->
-                        <thead>
-                            <tr>
-                                
-                                <th>Equipment</th>
-                                <th>Employee</th>
-                                <th>Date Borrowed</th>
-                                <th>Date Returned</th>
-                                <th>Scan</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Table rows -->
-                            <tr v-for="info in borrowedInfo" :key="info.id">
-                                
-                                <td scope="row">{{ info.particulars }}</td>
-                                <td scope="row">{{ info.employee }}</td>
-                                <td scope="row">{{ info.date_borrowed }}</td>
-                                <td scope="row">{{ info.date_returned }}</td>
-                                <td scope="row">
-                                  <button class="btn btn-success" @click="selectRecord(info)">Scan</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
+                  <button type="submit" class="btn btn-primary">Borrow</button>
+                </form>
+              </p>
+              <h4 v-else><b><i>Kindly Scan the QR Code. Thank you!</i></b> {{ qrCodeData }}</h4>
             </div>
+          </div>              
         </div>
-        
-        <div class="col-lg-6">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Returned Log</h5>
-                    <p>Please see all the returned log of equipments inside the office.</p>
-                    <!-- Table with stripped rows -->
-                    <table class="table">
-                        <!-- Table header -->
-                        <thead>
-                            <tr>
-                          
-                                <th>Equipment</th>
-                                <th>Employee</th>
-                                <th>Date Borrowed</th>
-                                <th>Date Returned</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Table rows -->
-                            <tr v-for="info in returnedInfo" :key="info.id">
-                               
-                                <td scope="row">{{ info.particulars }}</td>
-                                <td scope="row">{{ info.employee }}</td>
-                                <td scope="row">{{ info.date_borrowed }}</td>
-                                <td scope="row">{{ info.date_returned }}</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
-        </div>
+      </div>
+    </div>
+  </section>
+</div>
 
-        <div class="modal" v-if="selectedRecord">
-          <div class="modal-content">
-            <span class="close" @click="selectedRecord = null">&times;</span>
-      
-            <!-- Video element for camera -->
-            <video id="modal-qr-video" playsinline></video>
-            <div id="modal-qr-result"></div>
-            <button class="btn btn-success" id="modal-start-camera" @click="startModalCamera" v-show="!modalIsCameraOn">Scan</button>
-            <button class="btn btn-danger" id="modal-stop-camera" @click="stopModalCamera" v-show="modalIsCameraOn">Stop</button>
-          </div>
+<!-- Borrowed Log Section -->
+<div v-if="activeTab === 'borrowed'">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Borrowed Log</h5>
+          <p>Please see all the borrowed logs of equipment inside the office.</p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Equipment</th>
+                <th>Employee</th>
+                <th>Date Borrowed</th>
+                <th>Date Returned</th>
+                <th>Scan</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="info in borrowedInfo" :key="info.id">
+                <td>{{ info.particulars }}</td>
+                <td>{{ info.employee }}</td>
+                <td>{{ info.date_borrowed }}</td>
+                <td>{{ info.date_returned }}</td>
+                <td>
+                  <button class="btn btn-success" @click="selectRecord(info)">Scan</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-        </section>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Returned Log Section -->
+<div v-if="activeTab === 'returned'">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Returned Log</h5>
+          <p>Please see all the returned logs of equipment inside the office.</p>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Equipment</th>
+                <th>Employee</th>
+                <th>Date Borrowed</th>
+                <th>Date Returned</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="info in returnedInfo" :key="info.id">
+                <td>{{ info.particulars }}</td>
+                <td>{{ info.employee }}</td>
+                <td>{{ info.date_borrowed }}</td>
+                <td>{{ info.date_returned }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal for Scanning -->
+<div class="modal" v-if="selectedRecord">
+  <div class="modal-content">
+    <span class="close" @click="selectedRecord = null">&times;</span>
+    <video id="modal-qr-video" playsinline></video>
+    <div id="modal-qr-result"></div>
+    <button class="btn btn-success" id="modal-start-camera" @click="startModalCamera" v-show="!modalIsCameraOn">Scan</button>
+    <button class="btn btn-danger" id="modal-stop-camera" @click="stopModalCamera" v-show="modalIsCameraOn">Stop</button>
+  </div>
+</div>
+
 
         </main><!-- End #main -->
 
@@ -587,6 +714,7 @@ table {
     },
     data() {
       return {
+        activeTab: 'calendar', // Set the default active tab
         info: [],
         infos:[],
         inventory: [],

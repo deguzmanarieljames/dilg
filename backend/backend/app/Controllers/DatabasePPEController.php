@@ -1182,7 +1182,7 @@ public function generatePDF($recordId)
             }
 
             // Generate the HTML content from the view
-            $htmlContent = view('SPS', ['data' => $records]);
+            $htmlContent = view('ICS', ['data' => $records]);
             $mpdf->WriteHTML($htmlContent);
             
             // Capture the PDF output as a string
@@ -1245,9 +1245,6 @@ public function generatePDF($recordId)
         var_dump($ids);
     }
     
-    
-    
-    
 
 
     public function showemployeerecordPDF($selectedshowEmployeePDF)
@@ -1283,6 +1280,180 @@ public function generatePDF($recordId)
     }
 
 
+
+    public function IIRUSP()
+    {
+        $records = [];
+        $databaseppemodel = new DatabasePPEModel();
+        
+        // Get all records
+        $data = $databaseppemodel->findAll();
+        
+        // Check if any records found
+        if ($data) {
+            // Load the MPDF library
+            $mpdf = new \Mpdf\Mpdf(['format' => 'Legal']);
+        
+            foreach ($data as $record) {
+                // Add each record to the array
+                $records[] = $record;
+            }
+
+            // Generate the HTML content from the view
+            $htmlContent = view('IIRUSP', ['data' => $records]);
+            $mpdf->WriteHTML($htmlContent);
+            
+            // Capture the PDF output as a string
+            $pdfOutput = $mpdf->Output('', 'S'); // 'S' to return as a string
+            
+            // Return the PDF as a response
+            return $this->response->setHeader('Content-Type', 'application/pdf')
+                                ->setBody($pdfOutput);
+        } else {
+            // Handle the case where no records are found
+            return $this->response->setStatusCode(404)
+                                ->setBody("No records found.");
+        }
+    }
+
+    public function updateIIRUSP($unservId)
+    {
+        // Load the model
+        $model = new DatabasePPEModel();
+        $id = $unservId;
+        // if ($this->request->getFile('image')->isValid() && $existingImage) {
+        //     $uploadsPath = ROOTPATH . '../uploads/'; 
+        //     unlink($uploadsPath . $existingImage);
+        // }
+        // Retrieve data from the request
+        $data = [
+            'issue_date' => $this->request->getPost('issue_date'),
+            'propertynumber' => $this->request->getPost('propertynumber'),
+            'rec_quantity' => $this->request->getPost('rec_quantity'),
+            'rec_unitcost' => $this->request->getPost('rec_unitcost'),
+            'accimploss' => $this->request->getPost('accimploss'),
+            'remarks' => $this->request->getPost('remarks'),
+        ];
+        
+        // Perform the update operation
+        $result = $model->update($id, $data);
+        
+        if ($result) {
+            return $this->respond(['status' => 'success', 'message' => 'Record updated successfully']);
+        } else {
+            // Handle the case where the update fails
+            return $this->respond(['status' => 'error', 'message' => 'Failed to update record'], 500);
+        }
+    }
+
+
+
+    public function RPCSPLOW()
+    {
+        $records = [];
+        $databaseppemodel = new DatabasePPEModel();
+        
+        // Get all records
+        $data = $databaseppemodel->findAll();
+        
+        // Check if any records found
+        if ($data) {
+            // Load the MPDF library
+            $mpdf = new \Mpdf\Mpdf(['format' => 'Legal']);
+        
+            foreach ($data as $record) {
+                // Add each record to the array
+                $records[] = $record;
+            }
+
+            // Generate the HTML content from the view
+            $htmlContent = view('RPCSP', ['data' => $records]);
+            $mpdf->WriteHTML($htmlContent);
+            
+            // Capture the PDF output as a string
+            $pdfOutput = $mpdf->Output('', 'S'); // 'S' to return as a string
+            
+            // Return the PDF as a response
+            return $this->response->setHeader('Content-Type', 'application/pdf')
+                                ->setBody($pdfOutput);
+        } else {
+            // Handle the case where no records are found
+            return $this->response->setStatusCode(404)
+                                ->setBody("No records found.");
+        }
+    }
+
+
+    public function RPCSPHIGH()
+    {
+        $records = [];
+        $databaseppemodel = new DatabasePPEModel();
+        
+        // Get all records
+        $data = $databaseppemodel->findAll();
+        
+        // Check if any records found
+        if ($data) {
+            // Load the MPDF library
+            $mpdf = new \Mpdf\Mpdf(['format' => 'Legal']);
+        
+            foreach ($data as $record) {
+                // Add each record to the array
+                $records[] = $record;
+            }
+
+            // Generate the HTML content from the view
+            $htmlContent = view('RPCSP', ['data' => $records]);
+            $mpdf->WriteHTML($htmlContent);
+            
+            // Capture the PDF output as a string
+            $pdfOutput = $mpdf->Output('', 'S'); // 'S' to return as a string
+            
+            // Return the PDF as a response
+            return $this->response->setHeader('Content-Type', 'application/pdf')
+                                ->setBody($pdfOutput);
+        } else {
+            // Handle the case where no records are found
+            return $this->response->setStatusCode(404)
+                                ->setBody("No records found.");
+        }
+    }
+
+
+    public function RegSPI()
+    {
+        $records = [];
+        $databaseppemodel = new DatabasePPEModel();
+        
+        // Get all records
+        $data = $databaseppemodel->findAll();
+        
+        // Check if any records found
+        if ($data) {
+            // Load the MPDF library
+            $mpdf = new \Mpdf\Mpdf(['format' => 'Legal']);
+        
+            foreach ($data as $record) {
+                // Add each record to the array
+                $records[] = $record;
+            }
+
+            // Generate the HTML content from the view
+            $htmlContent = view('RegSPI', ['data' => $records]);
+            $mpdf->WriteHTML($htmlContent);
+            
+            // Capture the PDF output as a string
+            $pdfOutput = $mpdf->Output('', 'S'); // 'S' to return as a string
+            
+            // Return the PDF as a response
+            return $this->response->setHeader('Content-Type', 'application/pdf')
+                                ->setBody($pdfOutput);
+        } else {
+            // Handle the case where no records are found
+            return $this->response->setStatusCode(404)
+                                ->setBody("No records found.");
+        }
+    }
 //------------------------ REQUEST PDF-------------------------
 
 

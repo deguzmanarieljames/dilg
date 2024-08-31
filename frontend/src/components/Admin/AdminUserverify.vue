@@ -227,7 +227,7 @@
         <li class="nav-heading">Security</li>
 
         <li class="nav-item">
-        <a class="nav-link " href="/userverify">
+        <a class="nav-link active" href="/userverify">
             <i class="bi bi-folder-plus"></i>
             <span>User Verification</span>
         </a>

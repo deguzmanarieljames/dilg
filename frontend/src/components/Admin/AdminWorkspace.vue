@@ -64,7 +64,221 @@ table {
   label.form-label, input.form-control, select.form-select, th, td {
     font-size: 80%;
 }
+
+.section-divider {
+  border-top: 1px solid #000; 
+  margin: 20px 0; 
+}
+
+.form-control {
+  border-width: 1px; 
+  border-color: lightgray; 
+
+}
+
+.button {
+  border: none;
+  background-color: seagreen;
+  color: white;
+  font-size: 0.9rem; /* Slightly larger font size */
+  font-weight: 500;
+  padding: 0.5rem 1.4rem; /* Slightly increased padding */
+  border-radius: 0.35rem; /* Slightly larger border radius */
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transform: translate(1) translate(0, 0);
+  transition: transform 225ms, box-shadow 225ms;
+  display: block; /* Ensures the button is a block element for centering */
+  margin: 0 auto; /* Centers button horizontally */
+}
+
+.button:hover {
+  transform: scale(1.05) translate(0, -0.1rem);
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.35);
+}
+
+.button:active {
+  transform: scale(1) translate(0, 0.1rem);
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.15);
+}
+
+
+.button1 {
+  color: white;
+  background-color: #C0392B;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  font-size: 0.904rem; /* Smaller font size */
+  line-height: 1.7rem; /* Adjusted line height */
+  padding-left: 1rem; /* Reduced padding */
+  padding-right: 1rem; /* Reduced padding */
+  padding-top: 0.5rem; /* Reduced padding */
+  padding-bottom: 0.5rem; /* Reduced padding */
+  cursor: pointer;
+  text-align: center;
+  margin-right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  border: none;
+  margin-right: 120px;
+}
+
+
+.button1:hover {
+  background-color: maroon;
+}
+
+.button1 svg {
+  display: inline;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-right: 0.75rem;
+  color: white;
+}
+
+.button1:focus svg {
+  animation: spin_357 0.5s linear;
+}
+
+@keyframes spin_357 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.button, .button1 {
+  width: 120px;
+  height: 40px;
+  font-size: 14px;
+  padding: 0.5rem 1rem; /* Adjust as needed */
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+}
+
+th {
+  height: 55px;
+  white-space: nowrap;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  table, tr, td {
+    display: block;
+  }
+
+  td {
+    border: none;
+    position: relative;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  /* Make the table scrollable on smaller screens */
+  table {
+    overflow-y: auto;
+  }
+}
+
+.body {
+  display: flex;
+  justify-content: flex-end; /* Ensure the body div is aligned to the right */
+  width: 100%;
+  padding-right: 20px; /* Add padding to the right if needed */
+}
+
+.radio-input {
+  --container_width: 480px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* Align tabs to the right side */
+  border-radius: 10px;
+  background-color: #fff;
+  color: #000000;
+  width: var(--container_width);
+  overflow: hidden;
+  border: 1px solid rgba(53, 52, 52, 0.226);
+}
+
+.radio-input label {
+  width: 100%;
+  padding: 13px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+  font-weight: 600;
+  letter-spacing: -1px;
+  font-size: 15px;
+  border-right: 1px solid rgba(53, 52, 52, 0.226);
+  gap: 7px;
+}
+
+.radio-input label:last-child {
+  border-right: none;
+}
+
+.selection {
+  display: none;
+  position: absolute;
+  height: 100%;
+  width: calc(var(--container_width) / 3);
+  z-index: 0;
+  left: 0;
+  top: 0;
+  transition: .15s ease;
+}
+
+.radio-input label:has(input:checked) {
+  color: #fff;
+}
+
+.radio-input label:has(input:checked) ~ .selection {
+  background-color: rgb(11 117 223);
+  display: inline-block;
+}
+
+.radio-input label:nth-child(1):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 0/3));
+}
+
+.radio-input label:nth-child(2):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 1/3));
+}
+
+.radio-input label:nth-child(3):has(input:checked) ~ .selection {
+  transform: translateX(calc(var(--container_width) * 2/3));
+}
+
+
+
 </style>
+
+
+
+
+
 <template>
 <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;" @click="hideContextMenu">
         <!-- ======= Header ======= -->
@@ -269,7 +483,7 @@ table {
         <li class="nav-heading">input</li>
 
         <li class="nav-item">
-        <a class="nav-link " href="/workspace">
+        <a class="nav-link active" href="/workspace"> 
             <i class="bi bi-folder-plus"></i>
             <span>Workspace</span>
         </a>
@@ -329,9 +543,54 @@ table {
         <div class="row g-3" >
 
 
+          <div>
+            <div class="body">
+  <div class="radio-input">
+    <label>
+      <input
+        checked
+        value="inputs"
+        name="value-radio"
+        id="inputs"
+        type="radio"
+        v-model="activeTab"
+      />
+      <span>Inputs</span>
+    </label>
 
+    <label>
+      <input
+        value="records"
+        name="value-radio"
+        id="records"
+        type="radio"
+        v-model="activeTab"
+      />
+      <span>Records</span>
+    </label>
 
-            <div class="modal" v-if="showUpdateFormModal">
+    <label>
+      <input
+        value="requestTable"
+        name="value-radio"
+        id="requestTable"
+        type="radio"
+        v-model="activeTab"
+      />
+      <span>Request Table</span>
+    </label>
+
+    <span class="selection"></span>
+  </div>
+</div>
+
+<br>
+<br>
+    <!-- Tab Contents -->
+    <div v-if="activeTab === 'inputs'">
+      <!-- Content for Inputs Tab -->
+       
+      <div class="modal" v-if="showUpdateFormModal">
               <div class="modal-card">
                 <header class="modal-card-head">
                   <p class="modal-card-title">Modify Record</p>
@@ -341,60 +600,38 @@ table {
         
         
                   <form class="row g-3" enctype="multipart/form-data">
-                    <div class="container-fluid">
-                      <div class="row justify-content-center">
-                          <div class="col-lg-3">
-                              <div class="card">
-                                  <div class="card-body">
-                                      <!-- Entity Information -->
-                                      <div class="row g-1">
-                                      <label class="card-title text-center" style="font-size: 100%">Equipment</label>
-                                      <div class="col-12">
-                                        <label for="particulars" class="form-label">Particulars</label>
-                                        <input type="text" disabled class="form-control" id="particulars" v-model="particulars">
-                                      </div>
-                                      <!-- <div class="col-12">
-                                        <label for="particulars" class="form-label">Particulars</label>
-                                        <select class="form-select" id="particulars" v-model="formselectedParticular" @change="populateRecords" required>
-                                          <option value="" disabled>Select Particular</option>
-                                          <option v-for="items in inventory" :value="items.id">{{ items.particulars }}</option>
-                                        </select>
-                                      </div> -->
+
+                    
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-body">
+            <!-- Entity Information -->
+            <div class="row g-1">
+              <label class="card-title text-center" style="font-size: 100%">Equipment</label>
+              <div class="col-12">
+                <label for="particulars" class="form-label">Particulars</label>
+                <input type="text" disabled class="form-control" id="particulars" v-model="particulars">
+              </div>
+             
+              
+              <div class="col-12">
+                <label for="entityname" class="form-label">Entity Name</label>
+                <input type="text" disabled class="form-control" id="entityname" v-model="entityname">
+              </div>
+              <div class="col-12">
+                <label for="classification" class="form-label">Classification</label>
+                <input type="text" disabled class="form-control" id="classification" v-model="classification">
+              </div>
+              <div class="col-12">
+                <label for="code" class="form-label">Code</label>
+                <input type="text" disabled class="form-control" id="code" v-model="code">
+              </div>
+            </div>
             
-                                      
-                                      <div>
-                                        <div class="col-12">
-                                          <label for="entityname" class="form-label">Entity Name</label>
-                                          <input type="text" disabled class="form-control" id="entityname" v-model="entityname">
-                                        </div>
-                                        <div class="col-12">
-                                          <label for="classification" class="form-label">Classification</label>
-                                          <input type="text" disabled class="form-control" id="classification" v-model="classification">
-                                        </div>
-                                        <div class="col-12">
-                                          <label for="code" class="form-label">Code</label>
-                                          <input type="text" disabled class="form-control" id="code" v-model="code">
-                                        </div>
-                                      </div>
-                                      
-                                      
-                                      <div class="row g-1">
-                                        <label class="card-title text-center" style="font-size: 100%">Description</label>
-                                        <div class="col-12">
-                                          <label for="article" class="form-label">Article</label>
-                                          <input type="text" disabled class="form-control" id="article" v-model="article">
-                                        </div>
-                                        <div class="col-6">
-                                          <label for="modelno" class="form-label">Model No.:</label>
-                                          <input type="text" disabled class="form-control" id="modelno" v-model="modelno">
-                                        </div>
-                                        <div class="col-6">
-                                          <label for="serialno" class="form-label">Serial No.:</label>
-                                          <input type="text" disabled class="form-control" id="serialno" v-model="serialno">
-                                        </div>
-                                      </div>
-                                      </div>
-            
+            <hr class="section-divider">
+
             
                                       <!-- Semi-expendable -->
                                       <div class="row g-1">
@@ -410,7 +647,7 @@ table {
                   
                                       </div>
             
-                                      
+                                      <hr class="section-divider">
             
                                       <!-- Reference -->
                                       <div class="row g-1">
@@ -425,7 +662,7 @@ table {
                                           </div>
                                       </div>
             
-                                      
+                                      <hr>
             
                                       <div class="row g-1">
                                         <label class="card-title text-center" style="font-size: 100%">Receipt</label>
@@ -470,7 +707,7 @@ table {
                                                     </div>
                                                 </div>
             
-                                                
+                                                <br>
             
                                                 <!-- History of Repair -->
                                                 <div class="row g-1">
@@ -547,6 +784,7 @@ table {
                                               <div class="row g-1">
                                                 <label class="card-title text-center" style="font-size: 100%">Balance Quantity</label>
                                                 <div class="col-6">
+                                                  <br>
                                                   <label for="remarks" class="form-label">Remarks</label>
                                                   <select class="form-select" id="remarks" v-model="remarks">
                                                     <option value="SERVICEABLE">SERVICEABLE</option>
@@ -755,6 +993,8 @@ table {
                           </div>
                           
                           
+                          <div class="section-divider"></div> <!-- Custom Divider -->
+                          
                           <div class="row g-1">
                             <label class="card-title text-center" style="font-size: 100%">Description</label>
                             <div class="col-12">
@@ -768,41 +1008,46 @@ table {
                             <div class="col-6">
                               <label for="serialno" class="form-label">Serial No.:</label>
                               <input type="text" disabled class="form-control" id="serialno" v-model="serialno">
+                              <br>
                             </div>
                           </div>
                           </div>
 
-
+                          <div class="section-divider"></div> <!-- Custom Divider -->
                           <!-- Semi-expendable -->
                           <div class="row g-1">
                               <label class="card-title text-center" style="font-size: 100%">Semi-expendable</label>
                               <div class="col-6">
+                                <br>
                                 <label for="propertynumber" class="form-label">Property Number</label>
                                 <input type="text" class="form-control" id="propertynumber" v-model="propertynumber" placeholder="MDO-CPU-02">
                               </div>
                               <div class="col-6">
+                                <br>
                                 <label for="propertydate" class="form-label">Property Date</label>
                                 <input type="date" class="form-control" id="propertydate" v-model="propertydate">
                               </div>
       
                           </div>
 
-                          
+                          <div class="section-divider"></div> <!-- Custom Divider -->
 
                           <!-- Reference -->
                           <div class="row g-1">
                               <label class="card-title text-center" style="font-size: 100%">Reference</label>
                               <div class="col-6">
+                                <br>
                                 <label for="icsnumber" class="form-label">ICS NO.</label>
                                 <input type="text" class="form-control" id="icsnumber" v-model="icsnumber">
                               </div>
                               <div class="col-6">
+                                <br>
                                 <label for="jevnumber" class="form-label">JEV NO.</label>
                                 <input type="text" class="form-control" id="jevnumber" v-model="jevnumber">
                               </div>
                           </div>
 
-                          
+                          <div class="section-divider"></div> <!-- Custom Divider -->
 
                           <!-- <div class="row g-1">
                             <label class="card-title text-center" style="font-size: 100%">Receipt</label>
@@ -830,10 +1075,12 @@ table {
                         <div class="row g-1">
                           <label class="card-title text-center" style="font-size: 100%">Receipt</label>
                           <div class="col-6">
+                            <br>
                             <label for="rec_quantity" class="form-label">Receipt Quantity</label>
                             <input type="text" class="form-control" id="rec_quantity" v-model="rec_quantity" placeholder="0" required>
                           </div>
                           <div class="col-6">
+                            <br>
                             <label for="rec_unit" class="form-label">Unit</label>
                             <select class="form-select" id="rec_unit" v-model="rec_unit" required>
                               <option value="unit">Unit</option>
@@ -841,12 +1088,15 @@ table {
                             </select>
                           </div>
                           <div class="col-6">
+                            <br>
                             <label for="rec_unitcost" class="form-label">Receipt Unit Cost</label>
                             <input type="text" class="form-control" id="rec_unitcost" v-model="rec_unitcost" placeholder="0.00" disabled>
                           </div>
                           <div class="col-6">
+                            <br>
                             <label for="rec_totalcost" class="form-label">Receipt Total Cost</label>
                             <input type="text" class="form-control" id="rec_totalcost" :value="totalCostFormatted" placeholder="0.00" disabled>
+                            <br>
                           </div>
                         </div>
 
@@ -860,6 +1110,7 @@ table {
                                     <div class="row g-1">
                                         <label class="card-title text-center" style="font-size: 100%">Others</label>
                                         <div class="col-12">
+                                          <br>
                                           <label for="isstranadjamount" class="form-label">Issue/ Transfer/ Adjustments
                                             (Amount)</label>
                                           <input type="text" class="form-control" id="isstranadjamount" v-model="isstranadjamount" placeholder="0.00">
@@ -871,30 +1122,38 @@ table {
                                         <div class="col-6">
                                           <label for="adjustedcost" class="form-label">Adjusted Cost</label>
                                           <input type="text" class="form-control" id="adjustedcost" v-model="adjustedcost" placeholder="0.00">
+                                          <br>
                                         </div>
                                     </div>
+                                
 
-                                    
+                                    <div class="section-divider"></div> <!-- Custom Divider -->
 
                                     <!-- History of Repair -->
                                     <div class="row g-1">
                                         <label class="card-title text-center" style="font-size: 100%">History of Repair</label>
                                         <div class="col-6">
+                                          <br>
                                           <label for="repair_nature" class="form-label">Nature of Repair</label>
                                           <input type="text" class="form-control" id="repair_nature" v-model="repair_nature">
                                         </div>
                                         <div class="col-6">
+                                          <br>
                                           <label for="repair_amount" class="form-label">Repair Amount</label>
                                           <input type="text" class="form-control" id="repair_amount" v-model="repair_amount">
+                                          <br>
                                         </div>
                                     </div>
+
+                                    <div class="section-divider"></div> <!-- Custom Divider -->
 
                                     
         
                                     <!-- Issue -->
                                     <div class="row g-1">
                                         <label class="card-title text-center" style="font-size: 100%">Issue</label>
-                                        <div class="col-6">
+                                        <div class="col-12">
+                                          <br>
                                           <label for="issue_date" class="form-label">Issue Item Date</label>
                                           <input type="date" class="form-control" id="issue_date" v-model="issue_date" required>
                                         </div>
@@ -904,41 +1163,48 @@ table {
                                         </div>
                                     </div>
 
-                                    
+                                    <div class="section-divider"></div> <!-- Custom Divider -->
 
                                     <!-- Transfer -->
                                     <div class="row g-1">
                                       <label class="card-title text-center" style="font-size: 100%">Transfer</label>
                                       <div class="col-6">
+                                        <br>
                                         <label for="transfer_date" class="form-label">Transfer Date</label>
                                         <input type="date" class="form-control" id="transfer_date" v-model="transfer_date" required>
                                       </div>
                                       <div class="col-6">
+                                        <br>
                                         <label for="transfer_quantity" class="form-label">Transfer Quantity</label>
                                         <input type="text" class="form-control" id="transfer_quantity" v-model="transfer_quantity" required>
                                       </div>
                                       <div class="col-12">
+                                        <br>
                                         <label for="transfer_officeofficer" class="form-label">Transfer Office/Officer</label>
                                         <input type="text" class="form-control" id="transfer_officeofficer" v-model="transfer_officeofficer" required>
                                       </div>
                                   </div>
 
-                                  
+                                  <div class="section-divider"></div> <!-- Custom Divider -->
 
                                   <!-- Disposal -->
                                   <div class="row g-1">
                                       <label class="card-title text-center" style="font-size: 100%">Disposal</label>
                                       <div class="col-6">
+                                        <br>
                                         <label for="disposal_date" class="form-label">Disposal Date</label>
                                         <input type="date" class="form-control" id="disposal_date" v-model="disposal_date" required>
                                       </div>
                                       <div class="col-6">
+                                        <br>
                                         <label for="disposal_quantity" class="form-label">Disposal Quantity</label>
                                         <input type="text" class="form-control" id="disposal_quantity" v-model="disposal_quantity" required>
                                       </div>
                                       <div class="col-12">
+                                        <br>
                                         <label for="disposal_officeofficer" class="form-label">Disposal Officer</label>
                                         <input type="text" class="form-control" id="disposal_officeofficer" v-model="disposal_officeofficer" required>
+                                        
                                       </div>
                                   </div>
                       </div>
@@ -950,44 +1216,51 @@ table {
                                   <!-- Balance Quantity -->
                                   <div class="row g-1">
                                     <label class="card-title text-center" style="font-size: 100%">Balance Quantity</label>
-                                    <div class="col-6">
+                                    <div class="col-12">
+                                      <br>
                                       <label for="remarks" class="form-label">Remarks</label>
                                       <select class="form-select" id="remarks" v-model="remarks">
                                         <option value="SERVICEABLE">SERVICEABLE</option>
                                         <option value="UNSERVICEABLE">UNSERVICEABLE</option>
                                       </select>
                                     </div>                                    
-                                    <div class="col-6">
+                                    <div class="col-12">
+                                      
                                       <label for="estimatedlife" class="form-label">Estimated Useful Life</label>
                                       <input type="text" class="form-control" id="estimatedlife" v-model="estimatedlife" required>
                                     </div>
                                 </div>
 
-                                
+                                <div class="section-divider"></div> <!-- Custom Divider -->
 
                                 <!-- Received from: (Issued by) -->
                                 <div class="row g-1">
                                   <label class="card-title text-center" style="font-size: 100%">Received from: (Issued by)</label>
                                   <div class="col-12">
+                                    <br>
                                     <label for="issued_officer" class="form-label">Issued Officer</label>
                                     <input type="text" class="form-control" id="issued_officer" v-model="issued_officer" placeholder="Nakabase din sa nagamit" required>
                                   </div>
                                   <div class="col-6">
+                                    <br>
                                     <label for="issued_offposition" class="form-label">Issued Position</label>
                                     <input type="text" class="form-control" id="issued_offposition" v-model="issued_offposition" required>
                                   </div>
                                   <div class="col-6">
+                                    <br>
                                     <label for="issued_date" class="form-label">Issued Date</label>
                                     <input type="date" class="form-control" id="issued_date" v-model="issued_date" required>
+                                    <br>
                                   </div>
                               </div>
 
-                              
+                              <div class="section-divider"></div> <!-- Custom Divider -->
   
                               <!-- Received by: (Accountable Officer) -->
                               <div class="row g-3">
                                   <label class="card-title text-center" style="font-size: 100%">Received by: (Accountable Officer)</label>
                                   <div class="col-12">
+                                    <br>
                                     <label for="acc_officer" class="form-label">Accountable Officer</label>
                                     <!-- <input type="text" class="form-control" id="acc_officer" v-model="acc_officer"> -->
                                     <select class="form-select" v-model="acc_officer" required>
@@ -996,28 +1269,33 @@ table {
                                     </select>
                                   </div>
                                   <div class="col-12">
+                                    
                                     <label for="acc_empposition" class="form-label">Accountable Position</label>
                                     <select class="form-select" v-model="acc_empposition" required>
                                       <option value="" disabled>Select Position</option>
                                       <option v-for="employee in employees">{{ employee.empposition }}</option>
                                     </select>
                                   </div>
-                                  <div class="col-6">
+                                  <div class="col-12">
+                                    
                                     <label for="acc_date" class="form-label">Accountable Date</label>
                                     <input type="date" class="form-control" id="acc_date" v-model="acc_date" required>
+                                    <br>
                                   </div>
                               </div>
 
-                              
+                              <div class="section-divider"></div> <!-- Custom Divider -->
   
                               <!-- Inventory Transfer Report -->
                               <div class="row g-1">
                                   <label class="card-title text-center" style="font-size: 100%">Inventory Transfer Report</label>
                                   <div class="col-6">
+                                    <br>
                                     <label for="itr_no" class="form-label">ITR Number</label>
                                     <input type="text" class="form-control" id="itr_no" v-model="itr_no" required>
                                   </div>
                                   <div class="col-6">
+                                    <br>
                                     <label for="itr_date" class="form-label">ITR Date</label>
                                     <input type="date" class="form-control" id="itr_date" v-model="itr_date" required>
                                   </div>
@@ -1043,17 +1321,25 @@ table {
                                 <!-- REGISTRY OF SEMI-EXPENDABLE PROPERTY ISSUED -->
                                 <div class="row g-1">
                                   <label class="card-title text-center" style="font-size: 100%">REGISTRY OF SEMI-EXPENDABLE PROPERTY ISSUED</label>
+                                  <div class="section-divider"></div> <!-- Custom Divider -->
                                   <label class="card-title" style="font-size: 100%">Returned</label>
+                                  
                                   <div class="col-6">
+                                    <br>
                                     <label for="reg_semiissuedserialno" class="form-label">SERIAL NO.:</label>
                                     <input type="text" class="form-control" id="reg_semiissuedserialno" v-model="reg_semiissuedserialno" required>
                                   </div>
                                   <div class="col-6">
+                                    <br>
                                     <label for="reg_returned_qty" class="form-label">Returned Quantity</label>
                                     <input type="text" class="form-control" id="reg_returned_qty" v-model="reg_returned_qty" required>
                                   </div>
-                                  <label class="card-title" style="font-size: 100%">Re-issued</label>
-                                  <div class="col-6">
+
+                                  <div class="section-divider"></div> <!-- Custom Divider -->
+                                  
+                                  <label class="card-title text-center" style="font-size: 100%">Re-issued</label>
+                                  <div class="col-12">
+                                    <br>
                                     <label for="reg_reissued_qty" class="form-label">Re-issued Quantity</label>
                                     <input type="text" class="form-control" id="reg_reissued_qty" v-model="reg_reissued_qty" required>
                                   </div>
@@ -1061,20 +1347,27 @@ table {
                                     <label for="reg_reissued_off" class="form-label">Re-issued Office/Officer</label>
                                     <input type="text" class="form-control" id="reg_reissued_off" v-model="reg_reissued_off" required>
                                   </div>
-                                  <label class="card-title" style="font-size: 100%">Disposed</label>
-                                  <div class="col-6">
+
+                                  <div class="section-divider"></div> <!-- Custom Divider -->
+
+                                  <label class="card-title text-center" style="font-size: 100%">Disposed</label>
+                                  <div class="col-12">
+                                    <br>
                                     <label for="reg_disposed_qty" class="form-label">Disposed Quantity</label>
                                     <input type="text" class="form-control" id="reg_disposed_qty" v-model="reg_disposed_qty" required>
                                   </div>
-                                  <div class="col-6">
+                                  <div class="col-12">
+                                  
                                     <label for="reg_balance_quantity" class="form-label">Balance Quantity</label>
                                     <input type="text" class="form-control" id="reg_balance_quantity" v-model="reg_balance_quantity" required>
                                   </div>
                                   <div class="col-6">
+                                    
                                     <label for="reg_amount" class="form-label">Amount</label>
                                     <input type="text" class="form-control" id="reg_amount" v-model="reg_amount" required>
                                   </div>
                                   <div class="col-6">
+                                  
                                     <label for="reg_remarks" class="form-label">Remarks</label>
                                     <select class="form-select" id="reg_remarks" v-model="reg_remarks" required>
                                       <option value="SERVICEABLE">SERVICEABLE</option>
@@ -1082,26 +1375,40 @@ table {
                                     </select>
                                   </div>
                                   
+                                  <div class="section-divider"></div> <!-- Custom Divider -->
+
                                   <label class="card-title text-center" style="font-size: 100%">ASSIGNED OFFICER</label>
-                                  <br>
-                                  <div class="col-12">
-                                    <label for="property_officer" class="form-label">Property Officer</label>
-                                    <input type="text" class="form-control" id="property_officer" v-model="property_officer" placeholder="nakabase sa nagamit" required>
-                                  </div>
-                                  <div class="col-12">
-                                    <label for="approving_authority" class="form-label">Head of Office/ Approving Authority</label>
-                                    <input type="text" class="form-control" id="approving_authority" v-model="approving_authority" placeholder="magbase sa position" required>
-                                  </div>
+<br>
+<div class="col-12">
+  <br>
+  <label for="property_officer" class="form-label">Property Officer</label>
+  <input type="text" class="form-control" id="property_officer" v-model="property_officer" placeholder="nakabase sa nagamit" required>
+</div>
+<div class="col-12">
+  <br>
+  <label for="approving_authority" class="form-label">Head of Office/ Approving Authority</label>
+  <input type="text" class="form-control" id="approving_authority" v-model="approving_authority" placeholder="magbase sa position" required>
+</div>
 
-                              <!-- Buttons -->
-                              <br><br><br><br>
+<!-- Buttons -->
+<br><br><br><br><br><br>
 
-                              <div class="col-12 text-center">
-                                <button @click="saveOrUpdate" v-if="status !== 'update'" type="submit" class="btn btn-primary">Submit</button>
+<div class="d-flex justify-content-between">
+
+  <button class="button1" @click="confirmReset" type="reset" style="width: 120px; height: 40px;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"></path>
+    <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"></path>
+  </svg>
+  Reset
+</button>
+
+  <button @click="saveOrUpdate" v-if="status !== 'update'" type="submit" class="button">Submit</button>
+
                                 <button @click="saveOrUpdate" v-if="status === 'update'" type="submit" class="btn btn-success">Update</button>
-                                <button @click="resetForm" type="reset" class="btn btn-secondary">Reset</button>
+                            
                               </div>
-                              <br><br><br><br>
+                              <br><br><br>
                             </div>
                       </div>
                   </div>
@@ -1110,22 +1417,18 @@ table {
       </div>
       </form>
     </div>
+      
 
 
-
-
-
-
-
-
-
-
+    </div>
+    <div v-if="activeTab === 'records'">
+      <!-- Content for Records Tab -->
       <div class="row">
         <div class="col-lg-12">
           <div class="card">
           <div class="card-body">
-          <h5 class="card-title">Acquisition</h5>
-          <p> Refers to the act of gaining possession to a property or equipment by the government.</p>
+          <h5 class="card-title"></h5>
+          
           <!-- Table with stripped rows -->
 
 <!-- HTML Template -->
@@ -1203,7 +1506,7 @@ table {
 <span class="ms-2">entries</span> <!-- Added margin to the left -->
 </div>
 </div>
-
+<br>
 
 
           <div style="overflow-y: auto;">
@@ -1503,20 +1806,27 @@ table {
 
 
 
+    </div>
 
 
 
 
-      
 
-            <div class="col-lg-12">
+    
+    <div v-if="activeTab === 'requestTable'">
+      <!-- Content for Request Table Tab -->
+     
+
+      <div class="col-lg-12">
               <div class="card">
               <div class="card-body">
                 <div class="row">
                   <div class="col-lg-12">
-                    <h6 class="card-title" style="font-size: 150%">Request Table</h6>
+                    <h6 class="card-title" style="font-size: 120%">Request Table</h6>
                   </div>
-                  
+                  <br>
+                  <br>
+                  <br>
   
   
                   <div class="col-lg-6" >
@@ -1572,7 +1882,7 @@ table {
                     </div>
 
                 <!-- Table with hoverable rows -->
-                <table class="table table-striped table-hover table-sm">
+                <table class="table">
                   <thead>
                     <tr>
                       <th scope="col">Employee</th>
@@ -1600,6 +1910,14 @@ table {
                   </tbody>
                 </table>
                 <!-- End Table with hoverable rows -->
+
+
+    </div>
+  </div>
+
+
+
+
 
               </div>
               </div>
@@ -1773,6 +2091,7 @@ export default{
   },
   data(){
       return{
+          activeTab: 'inputs', // Default active tab
           info:[],
           infos:[],
           req:[],
@@ -2082,21 +2401,6 @@ export default{
     }
 },
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     async generatePDF(recordId) {
             try {
                 // Send HTTP request to backend
@@ -2228,27 +2532,6 @@ export default{
     },
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     updatereqStatus(id, newStatus) {
       // Show the modal
       this.showModal = true;
@@ -2325,26 +2608,6 @@ export default{
       // Update the previous selected employee
       this.previousEmployee = this.selectedEmployee;
     },
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
       async getInventory(){
         try {
@@ -2712,7 +2975,18 @@ export default{
         console.error("Error updating record:", error);
     }
 },
+confirmReset() {
+    if (confirm("Are you sure you want to reset the form?")) {
+      this.resetForm();
+    }
+  },
 
+  resetForm() {
+    
+    this.property_officer = '';
+    this.approving_authority = '';
+ 
+  },
       placeRecord(recordId) {
           // set status to update and statusId to the record id
           this.status = "update";

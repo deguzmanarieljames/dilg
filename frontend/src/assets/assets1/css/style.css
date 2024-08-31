@@ -661,6 +661,44 @@ h6 {
   }
 }
 
+
+
+/* Sidebar background color */
+.sidebar {
+  width: 300px;
+  z-index: 1;
+  background-color: #1b2f47;
+}
+
+.sidebar .sidebar-nav .nav-link {
+  background-color: #1b2f47; 
+  color: white !important; 
+  transition: all 0.3s ease; 
+}
+
+
+.sidebar .sidebar-nav .nav-link.active {
+  background: linear-gradient(to right, #1b2f47, #3e5b77);
+  color: white !important;
+  border-left: 4px solid #FFF;
+  transition: all 0.3s ease; 
+}
+
+.sidebar .sidebar-nav .nav-link:hover {
+  background: linear-gradient(to right, #1b2f47, #3e5b77);
+  color: white !important;
+  transform: translateX(5px); 
+  transition: all 0.3s ease;
+}
+
+
+.sidebar .sidebar-nav .nav-content a:hover {
+  background-color: #3e5b77;
+  color: #ffffff;
+  transform: translateX(5px);
+  transition: all 0.3s ease; 
+}
+
 .sidebar-nav {
   padding: 0;
   margin: 0;
@@ -762,6 +800,23 @@ h6 {
 .sidebar-nav .nav-content a.active i {
   background-color: #4154f1;
 }
+
+@keyframes hoverOut {
+  0% {
+    background: linear-gradient(to right, #1b2f47, #3e5b77);
+    transform: translateX(5px);
+  }
+  100% {
+    background-color: #1b2f47;
+    transform: translateX(0);
+  }
+}
+
+.sidebar .sidebar-nav .nav-link {
+  animation: hoverOut 0.3s forwards;
+}
+
+
 
 /*--------------------------------------------------------------
 # Dashboard

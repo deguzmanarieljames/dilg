@@ -668,7 +668,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .drag-area {
   min-height: 300px;
   border: 2px dashed #ccc;

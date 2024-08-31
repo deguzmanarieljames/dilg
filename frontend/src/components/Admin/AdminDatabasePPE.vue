@@ -255,7 +255,7 @@ white-space: nowrap;
         <li class="nav-heading">Pages</li>
   
         <li class="nav-item">
-          <a class="nav-link " href="databaseppe">
+          <a class="nav-link active" href="databaseppe">
             <i class="bi bi-clipboard-data"></i>
             <span>Database PPE</span>
           </a>
@@ -381,7 +381,9 @@ white-space: nowrap;
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-body">
-                  <h1>Choose</h1>
+                  <br>
+                  <h5>Choose Employee</h5>
+                  <br>
                   <select v-model="selectedshowEmployeePDF" @change="updatePdfUrl" class="form-select animated-dropdown w-100">
                     <option value="">Select Employee</option>
                     <option v-for="employee in distinctEmployees" :key="employee" :value="employee">
@@ -403,8 +405,7 @@ white-space: nowrap;
               <div class="col-lg-12">
                 <div class="card">
                 <div class="card-body">
-                <h5 class="card-title">Acquisition</h5>
-                <p> Refers to the act of gaining possession to a property or equipment by the government.</p>
+    
                 <div class="col-lg-4">
                   <div class="accordion accordion-body text-end" id="faq-group-2">
                     <div class="accordion-item">
@@ -534,6 +535,8 @@ white-space: nowrap;
     <span class="ms-2">entries</span> <!-- Added margin to the left -->
   </div>
 </div>
+
+<br>
 
 
 
@@ -740,7 +743,7 @@ white-space: nowrap;
       </ul>
     </nav>
   </div>
-  <div class="mt-3">
+  <div class="mt-6">
     <p>{{ currentPageRecords }}</p> <!-- Moved current page records here -->
   </div>
 </div>

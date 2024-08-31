@@ -19,18 +19,27 @@ $routes->match(['get', 'post'], 'fetch_data/(:any)', 'DatabasePPEController::fet
 $routes->match(['get', 'post'], '/getDataById/(:any)', 'DatabasePPEController::getDataById/$1');
 $routes->match(['get', 'post'], 'update_date_returned/(:any)', 'DatabasePPEController::updateDateReturned/$1');
 
+
+//PDF GENERATION
 $routes->match(['get', 'post'], '/employeeRecordsPDF', 'DatabasePPEController::employeeRecordsPDF');
 $routes->match(['get', 'post'], '/recordsPDF', 'DatabasePPEController::recordsPDF');
 $routes->match(['get', 'post'], '/showemployeerecordPDF/(:any)', 'DatabasePPEController::showemployeerecordPDF/$1');
 
+$routes->match(['get', 'post'], '/stickerPDF', 'DatabasePPEController::stickerPDF');
 
+$routes->match(['get', 'post'], '/IIRUSP', 'DatabasePPEController::IIRUSP');
+$routes->match(['get', 'post'], '/updateIIRUSP/(:any)', 'DatabasePPEController::updateIIRUSP/$1');
+$routes->match(['get', 'post'], '/RPCSPLOW', 'DatabasePPEController::RPCSPLOW');
+$routes->match(['get', 'post'], '/RPCSPHIGH', 'DatabasePPEController::RPCSPHIGH');
+$routes->match(['get', 'post'], '/RegSPI', 'DatabasePPEController::RegSPI');
 
+//REQUEST
 $routes->match(['get', 'post'], '/employeeRequestPDF', 'DatabasePPEController::employeeRequestPDF');
 $routes->match(['get', 'post'], '/requestPDF', 'DatabasePPEController::requestPDF');
 $routes->match(['get', 'post'], '/generatepdf/(:any)', 'DatabasePPEController::generatePDF/$1');
 $routes->match(['get', 'post'], '/updateVerification/(:any)', 'DatabasePPEController::updateVerification/$1');
 
-$routes->match(['get', 'post'], '/stickerPDF', 'DatabasePPEController::stickerPDF');
+
 
 // INVENTORY
 $routes->get('/getInventory', 'DatabasePPEController::getInventory');

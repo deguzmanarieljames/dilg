@@ -643,7 +643,7 @@ dataURLtoFile(dataUrl) {
 }
 </script>
 
-<style>
+<style scoped>
 .animated-dropdown {
   width: 50%; /* Set the width to half of its container */
   transition: width 0.3s ease; /* Add animation transition */
