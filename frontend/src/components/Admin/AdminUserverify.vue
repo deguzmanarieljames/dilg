@@ -239,11 +239,6 @@
       </aside><!-- End Sidebar-->
   
   
-  
-  
-  
-  
-  
       <main id="main" class="main">
   
       <div class="pagetitle">
@@ -265,37 +260,87 @@
 
               <div class="card">
                 <div class="card-body">
-                  <h5 class="card-title">Table with hoverable rows</h5>
-              
-                  <!-- Table with hoverable rows -->
-                  <table class="table table-hover">
-                    <thead>
-                      <tr>
-                        <th scope="col">Image</th>
-                        <th scope="col">Full Name</th>
-                        <th scope="col">Position</th>
-                        <th scope="col">Date/Time</th>
-                        <th scope="col">Status</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr v-for="item in info" :key="item.id">
-                        <td scope="row">
-                          <div style="width: 60px; height: 60px; overflow: hidden; border-radius: 50%;">
-                            <div :style="getImageStyle(item.image)"></div>
-                          </div>
-                        </td>
-                        <td scope="row">{{ item.fullname }}</td>
-                        <td scope="row">{{ item.position }}</td>
-                        <td scope="row">{{ item.created_at }}</td>
-                        <td scope="row">
-                          <button v-if="item.status === 'Approved'" @click="updateStatus(item.id, 'Declined')" class="btn btn-outline-success">Approved</button>
-                          <button v-else-if="item.status === 'Pending'" @click="updateStatus(item.id, 'Approved')" class="btn btn-outline-warning">Pending</button>
-                          <button v-else @click="updateStatus(item.id, 'Approved')" class="btn btn-outline-danger">Declined</button>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
+                  <br>
+<!-- Search Bar and Show Entries Dropdown -->
+<div class="d-flex justify-content-between align-items-center">
+  <!-- Show Entries Dropdown -->
+  <div class="d-flex align-items-center">
+    <span class="me-2">Show</span>
+    <div class="dropdown" style="display: inline-block;">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+        {{ entriesPerPage }}
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+        <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+        <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+        <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+        <!-- Add more options as needed -->
+      </ul>
+    </div>
+    <span class="ms-2">entries</span>
+  </div>
+  <!-- Search Bar -->
+  <div class="InputContainer">
+    <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword" @input="filterData">
+  </div>
+</div>
+
+<br>
+<div class="wrapper">
+  <table class="table-compact">
+    <thead>
+      <tr>
+        <th scope="col">Image</th>
+        <th scope="col">Full Name</th>
+        <th scope="col">Position</th>
+        <th scope="col">Date/Time</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr v-for="item in paginatedInfo" :key="item.id">
+        <td scope="row">
+          <div class="image-container">
+            <div :style="getImageStyle(item.image)"></div>
+          </div>
+        </td>
+        <td scope="row">{{ item.fullname }}</td>
+        <td scope="row">{{ item.position }}</td>
+        <td scope="row">{{ item.created_at }}</td>
+        <td scope="row">
+          <button v-if="item.status === 'Approved'" @click="updateStatus(item.id, 'Declined')" class="btn btn-outline-success">Approved</button>
+          <button v-else-if="item.status === 'Pending'" @click="updateStatus(item.id, 'Approved')" class="btn btn-outline-warning">Pending</button>
+          <button v-else @click="updateStatus(item.id, 'Approved')" class="btn btn-outline-danger">Declined</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<br>
+
+<!-- Pagination Controls -->
+<div class="card-body">
+  <!-- Other card content -->
+  <div class="text-center">
+    <nav aria-label="Page navigation">
+      <ul class="pagination justify-content-center mb-0">
+        <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+          <a class="page-link" href="#" @click.prevent="prevPage">Previous</a>
+        </li>
+        <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': currentPage === page }">
+          <a class="page-link" href="#" @click.prevent="goToPage(page)">{{ page }}</a>
+        </li>
+        <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+          <a class="page-link" href="#" @click.prevent="nextPage"><b>Next</b></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  <div class="mt-3">
+    <p>{{ currentPageRecords }}</p>
+  </div>
+</div>
+
                   <!-- End Table with hoverable rows -->
               
                 </div>
@@ -329,6 +374,10 @@ export default{
           image: "",
           created_at: "",
           status: "",
+      filteredInfo: [], // Filtered records based on search
+      entriesPerPage: 10, // Default entries per page
+      currentPage: 1,
+      searchQuery: '', // For search functionality
       }
   },
   created(){
@@ -336,6 +385,23 @@ export default{
       this.user();
       this.getUserInfo(this.infos.fullname);
   },
+
+  computed: {
+    totalPages() {
+      return Math.ceil(this.filteredInfo.length / this.entriesPerPage);
+    },
+    paginatedInfo() {
+      const start = (this.currentPage - 1) * this.entriesPerPage;
+      const end = start + this.entriesPerPage;
+      return this.filteredInfo.slice(start, end);
+    },
+    currentPageRecords() {
+      const start = (this.currentPage - 1) * this.entriesPerPage + 1;
+      const end = Math.min(start + this.entriesPerPage - 1, this.filteredInfo.length);
+      return `Showing ${start} to ${end} of ${this.filteredInfo.length} entries`;
+    },
+  },
+
   methods:{
     async getUserInfo(id){
               try {
@@ -390,27 +456,53 @@ export default{
           this.getInfo();
           }
       }, */
-      async getInfo(){
-          try {
-              const inf = await axios.get('getVerify');
-              this.info = inf.data;
-          } catch (error) {
-              console.log(error);
-          }
-      },
-      async updateStatus(id, newStatus) {
-        try {
-          const response = await axios.post('updateStatus', { id, status: newStatus });
-            if (response.status === 200) {
-                console.log(response.data);
-                this.getInfo();
-            } else {
-                console.error('Error updating status:', response.data.error);
-            }
-        } catch (error) {
-            console.error('Network error:', error.message);
+      async getInfo() {
+      try {
+        const response = await axios.get('getVerify');
+        this.info = response.data;
+        this.filteredInfo = this.info; // Initialize filteredInfo
+      } catch (error) {
+        console.log(error);
+      }
+    },
+    updatePageSize(size) {
+      this.entriesPerPage = size;
+      this.currentPage = 1; // Reset to first page
+    },
+    filterData() {
+      this.filteredInfo = this.info.filter(item =>
+        Object.values(item).some(val =>
+          val.toString().toLowerCase().includes(this.searchKeyword.toLowerCase())
+        )
+      );
+      this.currentPage = 1; // Reset to first page
+    },
+    prevPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+      }
+    },
+    nextPage() {
+      if (this.currentPage < this.totalPages) {
+        this.currentPage++;
+      }
+    },
+    goToPage(page) {
+      this.currentPage = page;
+    },
+    async updateStatus(id, newStatus) {
+      try {
+        const response = await axios.post('updateStatus', { id, status: newStatus });
+        if (response.status === 200) {
+          this.getInfo();
+        } else {
+          console.error('Error updating status:', response.data.error);
         }
-        },
+      } catch (error) {
+        console.error('Network error:', error.message);
+      }
+    },
+  
         async logout(){
           sessionStorage.removeItem('token');
           this.$router.push('/');
@@ -419,3 +511,98 @@ export default{
   }
 }
 </script>
+
+<style scoped>
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px; /* Adjust font size as needed */
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 2px 4px; /* Adjust padding for better readability */
+  text-align: center;
+  white-space: nowrap; /* Prevent line breaks in cells */
+  overflow: hidden; /* Hide overflowed content */
+  text-overflow: ellipsis; /* Show ellipsis for overflowed content */
+}
+
+th {
+  height: 30px; /* Adjust height for header */
+  white-space: nowrap;
+}
+
+.image-container {
+  display: flex;
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  width: 42px;
+  height: 42px;
+  overflow: hidden; /* Hide any overflowed content */
+  border-radius: 50%; /* Ensures the container is circular */
+}
+
+.image-container div {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  border-radius: 50%; /* Ensures the image is circular if needed */
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  table, tr, td {
+    display: block;
+  }
+
+  td {
+    border: none;
+    position: relative;
+  }
+
+  td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+
+  /* Make the table scrollable on smaller screens */
+  table {
+    overflow-y: auto;
+  }
+}
+
+.InputContainer {
+  width: 200px; /* Increased width */
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, rgb(227, 213, 255), rgb(255, 231, 231));
+  border-radius: 27px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.075);
+}
+
+.input {
+  width: 190px; /* Increased width */
+  height: 35px;
+  border: none;
+  outline: none;
+  caret-color: rgb(255, 81, 0);
+  background-color: rgb(255, 255, 255);
+  border-radius: 27px;
+  padding-left: 12px;
+  letter-spacing: 0.8px;
+  color: rgb(19, 19, 19);
+  font-size: 13.8px;
+}
+
+</style>

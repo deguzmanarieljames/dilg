@@ -310,11 +310,15 @@
                   <div class="modal-header d-flex justify-content-between align-items-center">
                     <h5 class="modal-title">INVENTORY AND INSPECTION REPORT OF UNSERVICEABLE SEMI-EXPENDABLE PROPERTY</h5>
                     <div>
+                      <!-- Date Filters -->
+                      <input type="date" v-model="startDate" class="form-control-sm me-2" placeholder="Start Date">
+                      <input type="date" v-model="endDate" class="form-control-sm me-2" placeholder="End Date">
+
                       <!-- Show PDF Button -->
                       <button 
                         v-if="!showPdf" 
                         class="btn btn-outline-secondary btn-sm me-2" 
-                        @click="showPDF"
+                        @click="IIRUSPshowPDF"
                       >
                         <i class="fas fa-file-pdf"></i> Show PDF
                       </button>
@@ -390,16 +394,16 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr v-for="unserv in info" :key="unserv.id" @click="openUpdateTab(unserv.id)">
-                                <td>{{ unserv.issue_date }}</td>
-                                <td>{{ unserv.fulldescription }}</td>
-                                <td>{{ unserv.propertynumber }}</td>
-                                <td>{{ unserv.rec_quantity }}</td>
-                                <td>{{ unserv.rec_unitcost }}</td>
-                                <td>{{ unserv.rec_totalcost }}</td>
-                                <td>{{ unserv.accimploss }}</td>
-                                <td>{{ unserv.rec_totalcost }}</td>
-                                <td>{{ unserv.remarks }}</td>
+                              <tr v-for="unservice in unserv" :key="unservice.id" @click="openUpdateTab(unservice.id)">
+                                <td>{{ unservice.issue_date }}</td>
+                                <td>{{ unservice.fulldescription }}</td>
+                                <td>{{ unservice.propertynumber }}</td>
+                                <td>{{ unservice.rec_quantity }}</td>
+                                <td>{{ unservice.rec_unitcost }}</td>
+                                <td>{{ unservice.rec_totalcost }}</td>
+                                <td>{{ unservice.accimploss }}</td>
+                                <td>{{ unservice.rec_totalcost }}</td>
+                                <td>{{ unservice.remarks }}</td>
                               </tr>
                             </tbody>
                           </table>
@@ -513,8 +517,9 @@
               </div>
             </div>
           </div>
-  
-      
+
+
+
           <!-- Modal 2 -->
           <div :class="{ 'modal-open': isModalOpen && modalIndex === 2 }">
             <div class="modal-overlay">
@@ -560,6 +565,7 @@
                         </button>
                       </li>
                     </ul>
+
                     <div class="tab-content" id="myTabContent">
                       <!-- Tab 1 -->
                       <div
@@ -569,42 +575,62 @@
                         role="tabpanel"
                         aria-labelledby="tab1-tab"
                       >
-                        <table class="office-table">
-                          <thead>
-                            <tr>
-                              <th colspan="11" class="header-title"><b>Inventory Inspection and Disposal</b></th>
-                            </tr>
-                            <tr>
-                              <th rowspan="2"><b>Article</b></th>
-                              <th rowspan="2"><b>Description</b></th>
-                              <th rowspan="2"><b>Semi-Expendable Property No.</b></th>
-                              <th rowspan="2"><b>Unit Measures</b></th>
-                              <th rowspan="2"><b>Unit Value</b></th>
-                              <th rowspan="2"><b>Date Acquired</b></th>
-                              <th rowspan="2"><b>Balance Per Card</b></th>
-                              <th rowspan="2"><b>On Hand Per Card</b></th>
-                              <th rowspan="2"><b>Shortage/Overage Quantity</b></th>
-                              <th rowspan="2"><b>Shortage/Overage Value</b></th>
-                              <th rowspan="2"><b>Remarks</b></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr v-for="unserv in info" :key="unserv.id" @click="openUpdateTab(unserv.id)">
-                              <td>{{ unserv.article }}</td>
-                              <td>{{ unserv.fulldescription }}</td>
-                              <td>{{ unserv.propertynumber }}</td>
-                              <td>{{ unserv.rec_unit }}</td>
-                              <td>{{ unserv.rec_unitcost }}</td>
-                              <td>{{ unserv.issue_date }}</td>
-                              <td>{{ unserv.issue_quantity }}</td>
-                              <td>{{ unserv.issue_quantity }}</td>
-                              <td>{{ unserv.issue_quantity - unserv.issue_quantity }}</td>
-                              <td>{{ unserv.rec_unitcost * (unserv.issue_quantity - unserv.issue_quantity) }}</td>
-                              <td>{{ unserv.remarks }}</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        <div class="d-flex justify-content-end mb-3">
+                          <!-- Date Filters -->
+                          <input type="date" v-model="RPCSPHIGHstartDate" class="form-control-sm me-2" placeholder="Start Date">
+                          <input type="date" v-model="RPCSPHIGHendDate" class="form-control-sm me-2" placeholder="End Date">
+                          <button v-if="!isRPCSPHIGHPdfVisible" class="btn btn-primary" @click="RPCSPHIGHshowPDF">Show PDF</button>
+                          <button v-if="isRPCSPHIGHPdfVisible" class="btn btn-danger ms-2" @click="RPCSPHIGHPdfClose">Close PDF</button>
+                          <button class="btn btn-secondary ms-2" @click="RPCSPHIGHdownloadPDF">Download PDF</button>
+                        </div>
+
+                        <div class="content-wrapper">
+                          <table class="office-table">
+                            <thead>
+                              <tr>
+                                <th colspan="11" class="header-title"><b>Inventory Inspection and Disposal</b></th>
+                              </tr>
+                              <tr>
+                                <th rowspan="2"><b>Article</b></th>
+                                <th rowspan="2"><b>Description</b></th>
+                                <th rowspan="2"><b>Semi-Expendable Property No.</b></th>
+                                <th rowspan="2"><b>Unit Measures</b></th>
+                                <th rowspan="2"><b>Unit Value</b></th>
+                                <th rowspan="2"><b>Date Acquired</b></th>
+                                <th rowspan="2"><b>Balance Per Card</b></th>
+                                <th rowspan="2"><b>On Hand Per Card</b></th>
+                                <th rowspan="2"><b>Shortage/Overage Quantity</b></th>
+                                <th rowspan="2"><b>Shortage/Overage Value</b></th>
+                                <th rowspan="2"><b>Remarks</b></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr v-for="highval in highdata" :key="highval.id">
+                                <td>{{ highval.article }}</td>
+                                <td>{{ highval.fulldescription }}</td>
+                                <td>{{ highval.propertynumber }}</td>
+                                <td>{{ highval.rec_unit }}</td>
+                                <td>{{ highval.rec_unitcost }}</td>
+                                <td>{{ highval.issue_date }}</td>
+                                <td>{{ highval.issue_quantity }}</td>
+                                <td>{{ highval.issue_quantity }}</td>
+                                <td>{{ highval.issue_quantity - highval.issue_quantity }}</td>
+                                <td>{{ highval.rec_unitcost * (highval.issue_quantity - highval.issue_quantity) }}</td>
+                                <td>{{ highval.remarks }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                          <iframe
+                            v-if="isRPCSPHIGHPdfVisible && RPCSPHIGHpdfUrl"
+                            :src="RPCSPHIGHpdfUrl"
+                            class="pdf-iframe"
+                            width="100%"
+                            height="600px"
+                          ></iframe>
+                        </div>
                       </div>
+
                       <!-- Tab 2 -->
                       <div
                         class="tab-pane fade"
@@ -613,41 +639,59 @@
                         role="tabpanel"
                         aria-labelledby="tab2-tab"
                       >
-                        <table class="office-table">
-                          <thead>
-                            <tr>
-                              <th colspan="11" class="header-title"><b>Inventory Inspection and Disposal</b></th>
-                            </tr>
-                            <tr>
-                              <th rowspan="2"><b>Article</b></th>
-                              <th rowspan="2"><b>Description</b></th>
-                              <th rowspan="2"><b>Semi-Expendable Property No.</b></th>
-                              <th rowspan="2"><b>Unit Measures</b></th>
-                              <th rowspan="2"><b>Unit Value</b></th>
-                              <th rowspan="2"><b>Date Acquired</b></th>
-                              <th rowspan="2"><b>Balance Per Card</b></th>
-                              <th rowspan="2"><b>On Hand Per Card</b></th>
-                              <th rowspan="2"><b>Shortage/Overage Quantity</b></th>
-                              <th rowspan="2"><b>Shortage/Overage Value</b></th>
-                              <th rowspan="2"><b>Remarks</b></th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            <tr v-for="unserv in info" :key="unserv.id" @click="openUpdateTab(unserv.id)">
-                              <td>{{ unserv.article }}</td>
-                              <td>{{ unserv.fulldescription }}</td>
-                              <td>{{ unserv.propertynumber }}</td>
-                              <td>{{ unserv.rec_unit }}</td>
-                              <td>{{ unserv.rec_unitcost }}</td>
-                              <td>{{ unserv.issue_date }}</td>
-                              <td>{{ unserv.issue_quantity }}</td>
-                              <td>{{ unserv.issue_quantity }}</td>
-                              <td>{{ unserv.issue_quantity - unserv.issue_quantity }}</td>
-                              <td>{{ unserv.rec_unitcost * (unserv.issue_quantity - unserv.issue_quantity) }}</td>
-                              <td>{{ unserv.remarks }}</td>
-                            </tr>
-                          </tbody>
-                        </table>
+                        <div class="d-flex justify-content-end mb-3">
+                          <input type="date" v-model="RPCSPLOWstartDate" class="form-control-sm me-2" placeholder="Start Date">
+                          <input type="date" v-model="RPCSPLOWendDate" class="form-control-sm me-2" placeholder="End Date">
+                          <button v-if="!isRPCSPLOWPdfVisible" class="btn btn-primary" @click="RPCSPLOWshowPDF">Show PDF</button>
+                          <button v-if="isRPCSPLOWPdfVisible" class="btn btn-danger ms-2" @click="RPCSPLOWPdfClose">Close PDF</button>
+                          <button class="btn btn-secondary ms-2" @click="RPCSPLOWdownloadPDF">Download PDF</button>
+                        </div>
+
+                        <div class="content-wrapper">
+                          <table class="office-table">
+                            <thead>
+                              <tr>
+                                <th colspan="11" class="header-title"><b>Inventory Inspection and Disposal</b></th>
+                              </tr>
+                              <tr>
+                                <th rowspan="2"><b>Article</b></th>
+                                <th rowspan="2"><b>Description</b></th>
+                                <th rowspan="2"><b>Semi-Expendable Property No.</b></th>
+                                <th rowspan="2"><b>Unit Measures</b></th>
+                                <th rowspan="2"><b>Unit Value</b></th>
+                                <th rowspan="2"><b>Date Acquired</b></th>
+                                <th rowspan="2"><b>Balance Per Card</b></th>
+                                <th rowspan="2"><b>On Hand Per Card</b></th>
+                                <th rowspan="2"><b>Shortage/Overage Quantity</b></th>
+                                <th rowspan="2"><b>Shortage/Overage Value</b></th>
+                                <th rowspan="2"><b>Remarks</b></th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              <tr v-for="lowval in lowdata" :key="lowval.id">
+                                <td>{{ lowval.article }}</td>
+                                <td>{{ lowval.fulldescription }}</td>
+                                <td>{{ lowval.propertynumber }}</td>
+                                <td>{{ lowval.rec_unit }}</td>
+                                <td>{{ lowval.rec_unitcost }}</td>
+                                <td>{{ lowval.issue_date }}</td>
+                                <td>{{ lowval.issue_quantity }}</td>
+                                <td>{{ lowval.issue_quantity }}</td>
+                                <td>{{ lowval.issue_quantity - lowval.issue_quantity }}</td>
+                                <td>{{ lowval.rec_unitcost * (lowval.issue_quantity - lowval.issue_quantity) }}</td>
+                                <td>{{ lowval.remarks }}</td>
+                              </tr>
+                            </tbody>
+                          </table>
+
+                          <iframe
+                            v-if="isRPCSPLOWPdfVisible && RPCSPLOWpdfUrl"
+                            :src="RPCSPLOWpdfUrl"
+                            class="pdf-iframe"
+                            width="100%"
+                            height="600px"
+                          ></iframe>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -658,6 +702,11 @@
               </div>
             </div>
           </div>
+
+
+
+
+
   
       
           <!-- Modal 3 -->
@@ -670,7 +719,80 @@
                     <!-- <button type="button" class="btn-close" @click="closeModal"></button> -->
                   </div>
                   <div class="modal-body">
-                    <!-- Content for Modal 3 -->
+                    <div class="d-flex justify-content-end mb-3">
+                      <div class="col-lg-23">                      
+                        <select v-model="selectedClassification" class="form-select" @change="fetchFilteredData">
+                          <option value="">All Classifications</option>
+                          <option v-for="classification in classifications" :key="classification" :value="classification.classification">
+                            {{ classification.classification }}
+                          </option>
+                        </select>
+                      </div>
+
+                      <button v-if="!isRegSPIPdfVisible" class="btn btn-primary" @click="RegSPIshowPDF">Show PDF</button>
+                      <button v-if="isRegSPIPdfVisible" class="btn btn-danger ms-2" @click="RegSPIPdfClose">Close PDF</button>
+                      <button class="btn btn-secondary ms-2" @click="RegSPIdownloadPDF">Download PDF</button>
+                    </div>
+                    <div class="content-wrapper">
+                      <table class="office-table">
+                        <thead>
+                          <tr>
+                            <th colspan="15" class="header-title"><b>Inventory Inspection and Disposal</b></th>
+                          </tr>
+                          <tr>
+                            <th rowspan="2"><b>Date</b></th>
+                            <th colspan="2"><b>Reference</b></th>
+                            <th rowspan="2"><b>Item Description</b></th>
+                            <th rowspan="2"><b>Estimated Useful Life</b></th>
+                            <th colspan="2"><b>Issued</b></th>
+                            <th colspan="2"><b>Returned</b></th>
+                            <th colspan="2"><b>Re-issued</b></th>
+                            <th rowspan="2"><b>Disposed</b></th>
+                            <th rowspan="2"><b>Balance</b></th>
+                            <th rowspan="2"><b>Amount</b></th>
+                            <th rowspan="2"><b>Remarks</b></th>
+                          </tr>
+                          <tr>
+                            <th><b>ICS/RRSP No.</b></th>
+                            <th><b>Semi-expendable Property No.</b></th>
+                            <th><b>Quantity</b></th>
+                            <th><b>Office/Officer</b></th>
+                            <th><b>Quantity</b></th>
+                            <th><b>Office/Officer</b></th>
+                            <th><b>Quantity</b></th>
+                            <th><b>Office/Officer</b></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="regspi in filteredInfo" :key="regspi.id">
+                            <td>{{ regspi.propertydate }}</td>
+                            <td>{{ regspi.icsnumber }}</td>
+                            <td>{{ regspi.propertynumber }}</td>
+                            <td>{{ regspi.fulldescription }}</td>
+                            <td>{{ regspi.estimatedlife }}</td>
+                            <td>{{ regspi.issue_quantity }}</td>
+                            <td>{{ regspi.issue_officeofficer }}</td>
+                            <td>{{ regspi.reg_returned_qty }}</td>
+                            <td>{{ regspi.reg_returned_off }}</td>
+                            <td>{{ regspi.reg_reissued_qty }}</td>
+                            <td>{{ regspi.reg_reissued_off }}</td>
+                            <td>{{ regspi.reg_disposed_qty }}</td>
+                            <td>{{ regspi.reg_balance_quantity }}</td>
+                            <td>{{ regspi.reg_amount }}</td>
+                            <td>{{ regspi.reg_remarks }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      
+
+                      <iframe
+                        v-if="isRegSPIPdfVisible && RegSPIpdfUrl"
+                        :src="RegSPIpdfUrl"
+                        class="pdf-iframe"
+                        width="100%"
+                        height="600px"
+                      ></iframe>
+                    </div>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" @click="closeModal">Close</button>
@@ -700,6 +822,9 @@
     data() {
       return {
         info: [],
+        unserv: [],
+        highdata: [],
+        lowdata: [],
         isModalOpen: false,
         modalIndex: null,
         currentTab: 'view', // Default tab is 'view'
@@ -718,11 +843,60 @@
         remarks: '',
         showPdf: false,
         pdfUrl: '',
-        currentTab: 'view',
+        RPCSPHIGHpdfUrl: '',
+        RPCSPLOWpdfUrl: '',
+        RegSPIpdfUrl: '',
+        isRPCSPHIGHPdfVisible: false,
+        isRPCSPLOWPdfVisible: false,
+        isRegSPIPdfVisible: false,
+        filteredInfo: [],
+        classifications: [], // Holds the classification options
+        selectedClassification: '', // Currently selected classification
+        RegSPIpdfUrl: null,
+        startDate: '',
+        endDate: '',
+        RPCSPHIGHstartDate: '',
+        RPCSPHIGHendDate: '',
+        RPCSPLOWstartDate: '',
+        RPCSPLOWendDate: '',
       };
     },
+    watch: {
+    startDate() {
+      this.IIRUSPgetData();
+      this.IIRUSPshowPDF();
+    },
+    endDate() {
+      this.IIRUSPgetData();
+      this.IIRUSPshowPDF();
+    },
+    RPCSPHIGHstartDate() {
+      this.RPCSPHIGHgetData();
+      this.RPCSPHIGHshowPDF();
+    },
+    RPCSPHIGHendDate() {
+      this.RPCSPHIGHgetData();
+      this.RPCSPHIGHshowPDF();
+    },
+    RPCSPLOWstartDate() {
+      this.RPCSPLOWgetData();
+      this.RPCSPLOWshowPDF();
+    },
+    RPCSPLOWendDate() {
+      this.RPCSPLOWgetData();
+      this.RPCSPLOWshowPDF();
+    },
+  },
     created() {
       this.getInfo();
+      this.IIRUSPgetData();
+      this.RPCSPHIGHgetData();
+      this.RPCSPLOWgetData();
+      this.fetchFilteredData();
+    },
+    mounted() {
+      this.fetchClassifications();
+      this.fetchFilteredData(); // Fetch all data initially
     },
     methods: {
       async getInfo() {
@@ -747,44 +921,10 @@
         this.modalIndex = index;
         this.currentTab = 'view'; // Reset to the view tab when modal opens
       },
-      showPDF() {
-        this.pdfUrl = 'http://dilg.test/backend/IIRUSP'; // Set the path to your PDF file
-        this.showPdf = true;
-      },
       closeModal() {
         this.isModalOpen = false;
         this.showPdf = false;
         this.pdfUrl = '';
-      },
-      async IIRUSPdownloadPDF() {
-        try {
-          // Send HTTP request to backend to generate PDFs for all records
-          const response = await fetch('http://dilg.test/backend/IIRUSP', {
-              method: 'GET',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-          });
-  
-          // Check if the response is successful
-          if (response.ok) {
-              const blob = await response.blob();
-              const filename = 'IIRUSP_PDF.pdf'; // Adjust the filename if needed
-              const url = window.URL.createObjectURL(blob);
-              const link = document.createElement('a');
-              link.href = url;
-              link.setAttribute('download', filename);
-              document.body.appendChild(link);
-              link.click();
-              document.body.removeChild(link);
-              console.log('PDF generated successfully');
-              this.setTimeout();
-          } else {
-              console.error('Failed to generate PDF');
-          }
-        } catch (error) {
-            console.error('Error generating PDFs:', error);
-        }
       },
       openUpdateTab(recordId) {
         this.currentTab = 'update';
@@ -836,6 +976,334 @@
       cancelUpdate() {
         this.currentTab = 'view'; // Switch back to 'view' tab
       },
+
+
+//-------------------------------------------ALL ABOUT IIRUSP-------------------------------------------
+
+        IIRUSPshowPDF() {
+           const start = this.startDate ? `start_date=${this.startDate}` : '';
+           const end = this.endDate ? `&end_date=${this.endDate}` : '';
+           const queryParams = start || end ? `?${start}${end}` : '';
+
+           this.pdfUrl = `http://dilg.test/backend/IIRUSP${queryParams}`;
+           this.showPdf = true;
+         },
+        async IIRUSPdownloadPDF() {
+          try {
+            const start = this.startDate ? `start_date=${this.startDate}` : '';
+            const end = this.endDate ? `&end_date=${this.endDate}` : '';
+            const queryParams = start || end ? `?${start}${end}` : '';
+
+            const response = await fetch(`http://dilg.test/backend/IIRUSP${queryParams}`, {
+              method: 'GET',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            });
+
+            if (response.ok) {
+              const blob = await response.blob();
+              const filename = 'IIRUSP_PDF.pdf';
+              const url = window.URL.createObjectURL(blob);
+              const link = document.createElement('a');
+              link.href = url;
+              link.setAttribute('download', filename);
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              console.log('PDF generated successfully');
+            } else {
+              console.error('Failed to generate PDF');
+            }
+          } catch (error) {
+            console.error('Error generating PDFs:', error);
+          }
+        },
+        async IIRUSPgetData() {
+          try {
+            const start = this.startDate ? `start_date=${this.startDate}` : '';
+            const end = this.endDate ? `&end_date=${this.endDate}` : '';
+            const queryParams = start || end ? `?${start}${end}` : '';
+
+            const response = await axios.get(`http://dilg.test/backend/IIRUSPgetData${queryParams}`);
+            this.unserv = response.data;
+          } catch (error) {
+            console.log(error);
+          }
+        },
+
+
+
+      // IIRUSPshowPDF() {
+      //   this.pdfUrl = 'http://dilg.test/backend/IIRUSP'; // Set the path to your PDF file
+      //   this.showPdf = true;
+      // },
+      // async IIRUSPdownloadPDF() {
+      //   try {
+      //     // Send HTTP request to backend to generate PDFs for all records
+      //     const response = await fetch('http://dilg.test/backend/IIRUSP', {
+      //         method: 'GET',
+      //         headers: {
+      //             'Content-Type': 'application/json',
+      //         },
+      //     });
+  
+      //     // Check if the response is successful
+      //     if (response.ok) {
+      //         const blob = await response.blob();
+      //         const filename = 'IIRUSP_PDF.pdf'; // Adjust the filename if needed
+      //         const url = window.URL.createObjectURL(blob);
+      //         const link = document.createElement('a');
+      //         link.href = url;
+      //         link.setAttribute('download', filename);
+      //         document.body.appendChild(link);
+      //         link.click();
+      //         document.body.removeChild(link);
+      //         console.log('PDF generated successfully');
+      //         this.setTimeout();
+      //     } else {
+      //         console.error('Failed to generate PDF');
+      //     }
+      //   } catch (error) {
+      //       console.error('Error generating PDFs:', error);
+      //   }
+      // },
+      // async IIRUSPgetData() {
+      //   try {
+      //     const response = await axios.get('IIRUSPgetData');
+      //     this.unserv = response.data;
+      //   } catch (error) {
+      //     console.log(error);
+      //   }
+      // },
+
+
+
+//-------------------------------------------ALL ABOUT RPCSP-------------------------------------------
+
+      async RPCSPHIGHgetData() {
+        try {
+          const start = this.RPCSPHIGHstartDate ? `start_date=${this.RPCSPHIGHstartDate}` : '';
+          const end = this.RPCSPHIGHendDate ? `&end_date=${this.RPCSPHIGHendDate}` : '';
+          const queryParams = start || end ? `?${start}${end}` : '';
+
+          const response = await axios.get(`RPCSPHIGHgetData${queryParams}`);
+          this.highdata = response.data;
+        } catch (error) {
+          console.log(error);
+        }
+      },
+
+      async RPCSPLOWgetData() {
+        try {
+          const start = this.RPCSPLOWstartDate ? `start_date=${this.RPCSPLOWstartDate}` : '';
+          const end = this.RPCSPLOWendDate ? `&end_date=${this.RPCSPLOWendDate}` : '';
+          const queryParams = start || end ? `?${start}${end}` : '';
+
+          const response = await axios.get(`RPCSPLOWgetData${queryParams}`);
+          this.lowdata = response.data;
+        } catch (error) {
+          console.log(error);
+        }
+      },
+
+
+      RPCSPHIGHshowPDF() {
+        const start = this.RPCSPHIGHstartDate ? `start_date=${this.RPCSPHIGHstartDate}` : '';
+        const end = this.RPCSPHIGHendDate ? `&end_date=${this.RPCSPHIGHendDate}` : '';
+        const queryParams = start || end ? `?${start}${end}` : '';
+
+        
+        this.RPCSPHIGHpdfUrl = `http://dilg.test/backend/RPCSPHIGH${queryParams}`; // Set the path to your PDF file
+        this.isRPCSPHIGHPdfVisible = true;
+      },
+      async RPCSPHIGHdownloadPDF() {
+        try {
+          const start = this.RPCSPHIGHstartDate ? `start_date=${this.RPCSPHIGHstartDate}` : '';
+          const end = this.RPCSPHIGHendDate ? `&end_date=${this.RPCSPHIGHendDate}` : '';
+          const queryParams = start || end ? `?${start}${end}` : '';
+
+          
+          // Send HTTP request to backend to generate PDFs for all records
+          const response = await fetch(`http://dilg.test/backend/RPCSPHIGH${queryParams}`, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+          });
+  
+          // Check if the response is successful
+          if (response.ok) {
+              const blob = await response.blob();
+              const filename = 'RPCSPHIGH_PDF.pdf'; // Adjust the filename if needed
+              const url = window.URL.createObjectURL(blob);
+              const link = document.createElement('a');
+              link.href = url;
+              link.setAttribute('download', filename);
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              console.log('PDF generated successfully');
+              this.setTimeout();
+          } else {
+              console.error('Failed to generate PDF');
+          }
+        } catch (error) {
+            console.error('Error generating PDFs:', error);
+        }
+      },
+      RPCSPLOWshowPDF() {
+        const start = this.RPCSPLOWstartDate ? `start_date=${this.RPCSPLOWstartDate}` : '';
+        const end = this.RPCSPLOWendDate ? `&end_date=${this.RPCSPLOWendDate}` : '';
+        const queryParams = start || end ? `?${start}${end}` : '';
+
+        
+        this.RPCSPLOWpdfUrl = `http://dilg.test/backend/RPCSPLOW${queryParams}`; // Set the path to your PDF file
+        this.isRPCSPLOWPdfVisible = true;
+      },
+      async RPCSPLOWdownloadPDF() {
+        try {
+          // Send HTTP request to backend to generate PDFs for all records
+          const start = this.RPCSPLOWstartDate ? `start_date=${this.RPCSPLOWstartDate}` : '';
+          const end = this.RPCSPLOWendDate ? `&end_date=${this.RPCSPLOWendDate}` : '';
+          const queryParams = start || end ? `?${start}${end}` : '';
+
+          
+          // Send HTTP request to backend to generate PDFs for all records
+          const response = await fetch(`http://dilg.test/backend/RPCSPLOW${queryParams}`, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+          });
+  
+          // Check if the response is successful
+          if (response.ok) {
+              const blob = await response.blob();
+              const filename = 'RPCSPLOW_PDF.pdf'; // Adjust the filename if needed
+              const url = window.URL.createObjectURL(blob);
+              const link = document.createElement('a');
+              link.href = url;
+              link.setAttribute('download', filename);
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              console.log('PDF generated successfully');
+              this.setTimeout();
+          } else {
+              console.error('Failed to generate PDF');
+          }
+        } catch (error) {
+            console.error('Error generating PDFs:', error);
+        }
+      },
+      RPCSPHIGHPdfClose() {
+        this.isRPCSPHIGHPdfVisible = false;
+      },
+      RPCSPLOWPdfClose() {
+        this.isRPCSPLOWPdfVisible = false;
+      },
+
+
+//-------------------------------------------ALL ABOUT RegSPI-------------------------------------------
+
+
+      RegSPIshowPDF() {
+        const classification = this.selectedClassification || ''; // Default to all records if no classification is selected
+        this.RegSPIpdfUrl = `http://dilg.test/backend/RegSPI/${classification}`; // Set the path to your PDF file
+        this.isRegSPIPdfVisible = true;
+      },
+      RegSPIPdfClose() {
+        this.isRegSPIPdfVisible = false;
+      },
+      async RegSPIdownloadPDF() {
+        try {
+          const classification = this.selectedClassification || ''; // Default to all records if no classification is selected
+          
+          // Adjust the URL based on the classification
+          const url = classification 
+            ? `http://dilg.test/backend/RegSPI/${classification}` 
+            : `http://dilg.test/backend/RegSPI`;
+          
+          // Send HTTP request to backend to generate PDFs for all records
+          const response = await fetch(url, {
+              method: 'GET',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+          });
+
+          // Check if the response is successful
+          if (response.ok) {
+              const blob = await response.blob();
+              const filename = 'RegSPI_PDF.pdf'; // Adjust the filename if needed
+              const downloadUrl = window.URL.createObjectURL(blob);
+              const link = document.createElement('a');
+              link.href = downloadUrl;
+              link.setAttribute('download', filename);
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+              console.log('PDF generated successfully');
+              this.setTimeout();
+          } else {
+              console.error('Failed to generate PDF');
+          }
+        } catch (error) {
+            console.error('Error generating PDFs:', error);
+        }
+      },
+
+      async fetchClassifications() {
+        try {
+          const response = await fetch('http://dilg.test/backend/getClassifications');
+          this.classifications = await response.json();
+        } catch (error) {
+          console.error('Error fetching classifications:', error);
+        }
+      },
+      async fetchFilteredData() {
+  try {
+    // Adjust the URL based on the classification
+    const classification = this.selectedClassification || ''; // Default to an empty string if no classification is selected
+    const url = classification 
+      ? `http://dilg.test/backend/RegSPIdata/${classification}` 
+      : `http://dilg.test/backend/RegSPIdata`;
+
+    const response = await fetch(url);
+    
+    if (response.ok) {
+      this.info = await response.json(); // Store all data
+      this.filterTableData(); // Call the function to filter data
+    } else {
+      console.error('Failed to fetch data');
+    }
+  } catch (error) {
+    console.error('Error fetching filtered data:', error);
+  }
+},
+
+filterTableData() {
+  // If no classification is selected, show all records
+  this.filteredInfo = this.selectedClassification
+    ? this.info.filter(item => item.classification === this.selectedClassification)
+    : this.info;
+},
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       async logout(){
         sessionStorage.removeItem('token');
         this.$router.push('/');
@@ -946,7 +1414,7 @@
     padding: 8px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-    font-size: 14px;
+    font-size: 10px;
   }
   
   .header-title {

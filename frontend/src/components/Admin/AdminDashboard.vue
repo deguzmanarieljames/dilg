@@ -1,5 +1,5 @@
 <template>
-  <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
+  <div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
     <!-- Header -->
     <header id="header" class="header fixed-top d-flex align-items-center">
       <!-- Logo -->
@@ -104,7 +104,7 @@
           </a>
           <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
             <li>
-              <a href="serviceable">
+              <a class="nav-link active" href="/serviceable">
                 <i class="bi bi-circle"></i><span>Serviceable</span>
               </a>
             </li>
@@ -700,61 +700,6 @@ export default {
 
 .row, .inventory-container {
   margin-right: 30px;
-}
-
-/* Sidebar background color */
-.sidebar {
-  width: 300px;
-  z-index: 1;
-  background-color: #1b2f47;
-}
-
-.sidebar .sidebar-nav .nav-link {
-  background-color: #1b2f47; 
-  color: white !important; 
-  transition: all 0.3s ease; 
-}
-
-
-.sidebar .sidebar-nav .nav-link.active {
-  background: linear-gradient(to right, #1b2f47, #3e5b77);
-  color: white !important;
-  border-left: 4px solid #FFF;
-  transition: all 0.3s ease; 
-}
-
-.sidebar .sidebar-nav .nav-link:hover {
-  background: linear-gradient(to right, #1b2f47, #3e5b77);
-  color: white !important;
-  transform: translateX(5px); 
-  transition: all 0.3s ease;
-}
-
-.sidebar .sidebar-nav .nav-link .bi,
-.sidebar .sidebar-nav .nav-content .bi {
-  color: white !important;
-  transition: all 0.3s ease; 
-}
-
-.sidebar .sidebar-nav .nav-content a {
-  background-color: #2c3e50; 
-  color: #ffffff;
-  transition: all 0.3s ease; 
-}
-
-.sidebar .sidebar-nav .nav-content a:hover {
-  background-color: #3e5b77;
-  color: #ffffff;
-  transform: translateX(5px);
-  transition: all 0.3s ease; 
-}
-
-.sidebar .sidebar-nav .nav-link:hover {
-  animation: hoverIn 0.3s forwards;
-}
-
-.sidebar .sidebar-nav .nav-link {
-  animation: hoverOut 0.3s forwards;
 }
 
 

@@ -1280,41 +1280,134 @@ public function generatePDF($recordId)
     }
 
 
+    public function IIRUSPgetData()
+    {
+        $databasePPEModel = new DatabasePPEModel();
+        $inventoryPPEModel = new InventoryModel();
+
+        $startDate = $this->request->getGet('start_date');
+        $endDate = $this->request->getGet('end_date');
+
+        $builder = $databasePPEModel->select('databaseppe.*, inventoryppe.entityname, inventoryppe.classification, inventoryppe.code, inventoryppe.article, inventoryppe.modelno, inventoryppe.serialno, inventoryppe.fulldescription, inventoryppe.image')
+                                    ->join('inventoryppe', 'inventoryppe.particulars = databaseppe.particulars', 'left')
+                                    ->where('databaseppe.remarks', 'UNSERVICEABLE')
+                                    ->orderBy('databaseppe.id', 'DESC');
+
+        if ($startDate && $endDate) {
+            $builder->where('databaseppe.issue_date >=', $startDate)
+                    ->where('databaseppe.issue_date <=', $endDate);
+        } elseif ($startDate) {
+            $builder->where('databaseppe.issue_date >=', $startDate);
+        } elseif ($endDate) {
+            $builder->where('databaseppe.issue_date <=', $endDate);
+        }
+
+        $data = $builder->findAll();
+
+        foreach ($data as &$item) {
+            $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+            $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+        }
+
+        return $this->respond($data, 200);
+    }
 
     public function IIRUSP()
     {
-        $records = [];
         $databaseppemodel = new DatabasePPEModel();
         
-        // Get all records
-        $data = $databaseppemodel->findAll();
+        $startDate = $this->request->getGet('start_date');
+        $endDate = $this->request->getGet('end_date');
         
-        // Check if any records found
-        if ($data) {
-            // Load the MPDF library
-            $mpdf = new \Mpdf\Mpdf(['format' => 'Legal']);
+        $builder = $databaseppemodel->where('remarks', 'UNSERVICEABLE');
         
-            foreach ($data as $record) {
-                // Add each record to the array
-                $records[] = $record;
-            }
+        if ($startDate && $endDate) {
+            $builder->where('issue_date >=', $startDate)
+                    ->where('issue_date <=', $endDate);
+        } elseif ($startDate) {
+            $builder->where('issue_date >=', $startDate);
+        } elseif ($endDate) {
+            $builder->where('issue_date <=', $endDate);
+        }
+        
+        $data = $builder->findAll();
 
-            // Generate the HTML content from the view
-            $htmlContent = view('IIRUSP', ['data' => $records]);
+        if ($data) {
+            $mpdf = new \Mpdf\Mpdf(['format' => 'Legal']);
+            
+            $htmlContent = view('IIRUSP', ['data' => $data]);
             $mpdf->WriteHTML($htmlContent);
             
-            // Capture the PDF output as a string
-            $pdfOutput = $mpdf->Output('', 'S'); // 'S' to return as a string
+            $pdfOutput = $mpdf->Output('', 'S');
             
-            // Return the PDF as a response
             return $this->response->setHeader('Content-Type', 'application/pdf')
                                 ->setBody($pdfOutput);
         } else {
-            // Handle the case where no records are found
             return $this->response->setStatusCode(404)
                                 ->setBody("No records found.");
         }
     }
+
+
+
+
+    // public function IIRUSPgetData()
+    // {
+    //     // Load necessary models
+    //     $databasePPEModel = new DatabasePPEModel();
+    //     $inventoryPPEModel = new InventoryModel();
+
+    //     // Perform the join query with a WHERE clause for rec_unitcost = 5000
+    //     $data = $databasePPEModel->select('databaseppe.*, inventoryppe.entityname, inventoryppe.classification, inventoryppe.code, inventoryppe.article, inventoryppe.modelno, inventoryppe.serialno, inventoryppe.fulldescription, inventoryppe.image')
+    //                             ->join('inventoryppe', 'inventoryppe.particulars = databaseppe.particulars', 'left')
+    //                             ->where('databaseppe.remarks', 'UNSERVICEABLE')
+    //                             ->orderBy('databaseppe.id', 'DESC')
+    //                             ->findAll();
+
+    //     // Update image paths
+    //     foreach ($data as &$item) {
+    //         $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+    //         $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+    //     }
+
+    //     // Return the merged data
+    //     return $this->respond($data, 200);
+    // }
+
+    // public function IIRUSP()
+    // {
+    //     $records = [];
+    //     $databaseppemodel = new DatabasePPEModel();
+        
+    //     // Get all records
+    //     $data = $databaseppemodel->findAll();
+        
+    //     // Check if any records found
+    //     if ($data) {
+    //         // Load the MPDF library
+    //         $mpdf = new \Mpdf\Mpdf(['format' => 'Legal']);
+        
+    //         foreach ($data as $record) {
+    //             // Add each record to the array
+    //             $records[] = $record;
+    //         }
+
+    //         // Generate the HTML content from the view
+    //         $htmlContent = view('IIRUSP', ['data' => $records]);
+    //         $mpdf->WriteHTML($htmlContent);
+            
+    //         // Capture the PDF output as a string
+    //         $pdfOutput = $mpdf->Output('', 'S'); // 'S' to return as a string
+            
+    //         // Return the PDF as a response
+    //         return $this->response->setHeader('Content-Type', 'application/pdf')
+    //                             ->setBody($pdfOutput);
+    //     } else {
+    //         // Handle the case where no records are found
+    //         return $this->response->setStatusCode(404)
+    //                             ->setBody("No records found.");
+    //     }
+    // }
 
     public function updateIIRUSP($unservId)
     {
@@ -1353,8 +1446,22 @@ public function generatePDF($recordId)
         $records = [];
         $databaseppemodel = new DatabasePPEModel();
         
-        // Get all records
-        $data = $databaseppemodel->findAll();
+        $startDate = $this->request->getGet('start_date');
+        $endDate = $this->request->getGet('end_date');
+
+        // Get records where rec_unitcost <= 5000
+        $builder = $databaseppemodel->where('rec_unitcost <=', 5000);
+
+        if ($startDate && $endDate) {
+            $builder->where('issue_date >=', $startDate)
+                    ->where('issue_date <=', $endDate);
+        } elseif ($startDate) {
+            $builder->where('issue_date >=', $startDate);
+        } elseif ($endDate) {
+            $builder->where('issue_date <=', $endDate);
+        }
+        
+        $data = $builder->findAll();
         
         // Check if any records found
         if ($data) {
@@ -1365,9 +1472,10 @@ public function generatePDF($recordId)
                 // Add each record to the array
                 $records[] = $record;
             }
-
+    
+            
             // Generate the HTML content from the view
-            $htmlContent = view('RPCSP', ['data' => $records]);
+            $htmlContent = view('RPCSPLOW', ['data' => $records]);
             $mpdf->WriteHTML($htmlContent);
             
             // Capture the PDF output as a string
@@ -1375,12 +1483,49 @@ public function generatePDF($recordId)
             
             // Return the PDF as a response
             return $this->response->setHeader('Content-Type', 'application/pdf')
-                                ->setBody($pdfOutput);
+                                  ->setBody($pdfOutput);
         } else {
             // Handle the case where no records are found
             return $this->response->setStatusCode(404)
-                                ->setBody("No records found.");
+                                  ->setBody("No records found.");
         }
+    }
+    
+
+    public function RPCSPLOWgetData()
+    {
+        // Load necessary models
+        $databasePPEModel = new DatabasePPEModel();
+        $inventoryPPEModel = new InventoryModel();
+
+        $startDate = $this->request->getGet('start_date');
+        $endDate = $this->request->getGet('end_date');
+
+        // Perform the join query with a WHERE clause for rec_unitcost = 5000
+        $builder = $databasePPEModel->select('databaseppe.*, inventoryppe.entityname, inventoryppe.classification, inventoryppe.code, inventoryppe.article, inventoryppe.modelno, inventoryppe.serialno, inventoryppe.fulldescription, inventoryppe.image')
+                                ->join('inventoryppe', 'inventoryppe.particulars = databaseppe.particulars', 'left')
+                                ->where('databaseppe.rec_unitcost <=', 5000)
+                                ->orderBy('databaseppe.id', 'DESC');
+
+        if ($startDate && $endDate) {
+            $builder->where('databaseppe.issue_date >=', $startDate)
+                    ->where('databaseppe.issue_date <=', $endDate);
+        } elseif ($startDate) {
+            $builder->where('databaseppe.issue_date >=', $startDate);
+        } elseif ($endDate) {
+            $builder->where('databaseppe.issue_date <=', $endDate);
+        }
+        
+        $data = $builder->findAll();
+
+        // Update image paths
+        foreach ($data as &$item) {
+            $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+            $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+        }
+
+        // Return the merged data
+        return $this->respond($data, 200);
     }
 
 
@@ -1389,8 +1534,22 @@ public function generatePDF($recordId)
         $records = [];
         $databaseppemodel = new DatabasePPEModel();
         
+        $startDate = $this->request->getGet('start_date');
+        $endDate = $this->request->getGet('end_date');
+        
         // Get all records
-        $data = $databaseppemodel->findAll();
+        $builder = $databaseppemodel->where('rec_unitcost >=', 5000);
+
+        if ($startDate && $endDate) {
+            $builder->where('issue_date >=', $startDate)
+                    ->where('issue_date <=', $endDate);
+        } elseif ($startDate) {
+            $builder->where('issue_date >=', $startDate);
+        } elseif ($endDate) {
+            $builder->where('issue_date <=', $endDate);
+        }
+        
+        $data = $builder->findAll();
         
         // Check if any records found
         if ($data) {
@@ -1403,7 +1562,7 @@ public function generatePDF($recordId)
             }
 
             // Generate the HTML content from the view
-            $htmlContent = view('RPCSP', ['data' => $records]);
+            $htmlContent = view('RPCSPHIGH', ['data' => $records]);
             $mpdf->WriteHTML($htmlContent);
             
             // Capture the PDF output as a string
@@ -1419,40 +1578,92 @@ public function generatePDF($recordId)
         }
     }
 
-
-    public function RegSPI()
+    public function RPCSPHIGHgetData()
     {
-        $records = [];
+        // Load necessary models
+        $databasePPEModel = new DatabasePPEModel();
+        $inventoryPPEModel = new InventoryModel();
+
+        $startDate = $this->request->getGet('start_date');
+        $endDate = $this->request->getGet('end_date');
+
+        // Perform the join query with a WHERE clause for rec_unitcost = 5000
+        $builder = $databasePPEModel->select('databaseppe.*, inventoryppe.entityname, inventoryppe.classification, inventoryppe.code, inventoryppe.article, inventoryppe.modelno, inventoryppe.serialno, inventoryppe.fulldescription, inventoryppe.image')
+                                ->join('inventoryppe', 'inventoryppe.particulars = databaseppe.particulars', 'left')
+                                ->where('databaseppe.rec_unitcost >=', 5000)
+                                ->orderBy('databaseppe.id', 'DESC');
+                            
+        if ($startDate && $endDate) {
+            $builder->where('databaseppe.issue_date >=', $startDate)
+                    ->where('databaseppe.issue_date <=', $endDate);
+        } elseif ($startDate) {
+            $builder->where('databaseppe.issue_date >=', $startDate);
+        } elseif ($endDate) {
+            $builder->where('databaseppe.issue_date <=', $endDate);
+        }
+
+        $data = $builder->findAll();
+
+        // Update image paths
+        foreach ($data as &$item) {
+            $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+            $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+        }
+
+        // Return the merged data
+        return $this->respond($data, 200);
+    }
+
+
+    public function RegSPI($classification = null)
+    {
         $databaseppemodel = new DatabasePPEModel();
         
-        // Get all records
-        $data = $databaseppemodel->findAll();
+        // If a classification is provided, filter the records by it
+        if ($classification) {
+            $data = $databaseppemodel->where('classification', $classification)->findAll();
+        } else {
+            $data = $databaseppemodel->findAll(); // Fetch all records if no classification is provided
+        }
         
         // Check if any records found
         if ($data) {
-            // Load the MPDF library
             $mpdf = new \Mpdf\Mpdf(['format' => 'Legal']);
-        
-            foreach ($data as $record) {
-                // Add each record to the array
-                $records[] = $record;
-            }
-
-            // Generate the HTML content from the view
-            $htmlContent = view('RegSPI', ['data' => $records]);
+            
+            $htmlContent = view('RegSPI', ['data' => $data]);
             $mpdf->WriteHTML($htmlContent);
             
-            // Capture the PDF output as a string
-            $pdfOutput = $mpdf->Output('', 'S'); // 'S' to return as a string
+            $pdfOutput = $mpdf->Output('', 'S');
             
-            // Return the PDF as a response
             return $this->response->setHeader('Content-Type', 'application/pdf')
-                                ->setBody($pdfOutput);
+                                  ->setBody($pdfOutput);
         } else {
-            // Handle the case where no records are found
             return $this->response->setStatusCode(404)
-                                ->setBody("No records found.");
+                                  ->setBody("No records found.");
         }
+    }
+    
+    // Function to get unique classifications
+    public function getClassifications()
+    {
+        $databaseppemodel = new DatabasePPEModel();
+        $classifications = $databaseppemodel->select('classification')->distinct()->findAll();
+        return $this->response->setJSON($classifications);
+    }
+
+    public function RegSPIdata($classification = null)
+    {
+        $databaseppemodel = new DatabasePPEModel();
+        
+        // If a classification is provided, filter the records by it
+        if ($classification) {
+            $data = $databaseppemodel->where('classification', $classification)->findAll();
+        } else {
+            $data = $databaseppemodel->findAll(); // Fetch all records if no classification is provided
+        }
+        
+        // Return data as JSON for Vue.js
+        return $this->response->setJSON($data);
     }
 //------------------------ REQUEST PDF-------------------------
 
@@ -1576,6 +1787,46 @@ public function employeeRequestPDF()
             return $this->respond(['status' => 'error', 'message' => 'Failed to update record'], 500);
         }
     }
+
+
+    // public function checkEmail()
+    // {
+    //     $email = $this->request->getPost('email');
+    //     $url = "https://botscout.com/test/?mail=" . urlencode($email);
+    
+    //     // Fetch response from BotScout API
+    //     $response = file_get_contents($url);
+    
+    //     // Return response to Vue.js
+    //     return $this->response->setJSON(['result' => $response]);
+    // }
+    
+    public function checkEmail()
+    {
+        // Check the request method
+        if ($this->request->getMethod() !== 'post') {
+            return $this->response->setStatusCode(405, 'Method Not Allowed');
+        }
+
+        $email = $this->request->getPost('email');
+        if (!$email) {
+            return $this->response->setJSON(['result' => 'No email provided']);
+        }
+
+        // URL to BotScout API
+        $url = "https://botscout.com/test/?mail=" . urlencode($email);
+
+        // Fetch response from BotScout API
+        $response = file_get_contents($url);
+
+        // Log the response (for debugging)
+        log_message('debug', 'BotScout response: ' . $response);
+
+        // Return the response to Vue.js
+        return $this->response->setJSON(['result' => $response]);
+    }
+
+
     
 
 

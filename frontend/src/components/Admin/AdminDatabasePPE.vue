@@ -1,120 +1,3 @@
-<style scoped>
-#qr-video {
-  width: 500px;
-  height: 500px;
-}
-#qr-result {
-  margin-top: 10px;
-}
-table {
-width: 100%;
-border-collapse: collapse;
-}
-th, td {
-border: 1px solid black;
-padding: 10px;
-text-align: center;
-}
-th {
-height: 55px; 
-white-space: nowrap;
-}
-  
-    /* Responsive styles */
-    @media screen and (max-width: 600px) {
-      table, tr, td {
-        display: block;
-      }
-
-      td {
-        border: none;
-        position: relative;
-      }
-
-      td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, 0);
-      }
-
-      /* Make the table scrollable on smaller screens */
-      table {
-        overflow-y: auto;
-      }
-    }
-
-    /* CSS */
-/* Updated CSS */
-.search-container {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px; /* Add margin to separate from the table */
-}
-
-.search-bar {
-  width: 20%; /* Adjust width as needed */
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  transition: all 0.3s ease;
-}
-
-.search-bar:focus {
-  border-color: #66afe9;
-  box-shadow: 0 0 5px #66afe9;
-}
-
-.pagination .page-item {
-  display: inline-block;
-  margin-right: 5px; /* Paggalang sa espasyo sa pagitan ng mga button */
-}
-
-.pagination .page-link {
-  border: 1px solid #ced4da; /* Bawasan ang lapad ng border */
-  color: #343a40; /* Itim na kulay ng text */
-  border-radius: 0; /* Alisin ang radius ng border */
-}
-
-.pagination .page-link:hover {
-  background-color: transparent; /* Alisin ang background color sa hover */
-}
-
-.pagination .page-item.disabled .page-link {
-  pointer-events: none; /* Huwag pahintulutan ang pag-click kung ang button ay hindi aktibo */
-}
-
-.pagination .page-item.active .page-link {
-  background-color: transparent; /* Alisin ang background color ng active button */
-  border-color: #ced4da; /* Bawasan ang lapad ng border ng active button */
-}
-
-.pagination .page-link:focus {
-  box-shadow: none; /* Alisin ang focus border */
-}
-
-.pagination .page-link.prev, .pagination .page-link.next {
-  padding: 0; /* Alisin ang padding */
-  border: none; /* Alisin ang border */
-  background: none; /* Alisin ang background */
-  font-size: 1.5rem; /* Taasan ang laki ng font */
-  color: #343a40; /* Itim na kulay ng text */
-}
-
-.pagination .page-link.prev::after, .pagination .page-link.next::after {
-  content: '\2190'; /* Isama ang Unicode character para sa arrow (left arrow) */
-}
-
-.pagination .page-link.next::after {
-  content: '\2192'; /* Isama ang Unicode character para sa arrow (right arrow) */
-}
-
-/* CSS */
-</style>
-
 <template>
 <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
         <!-- ======= Header ======= -->
@@ -401,66 +284,47 @@ white-space: nowrap;
         </div>
 
         
-        <div class="row">
-              <div class="col-lg-12">
-                <div class="card">
-                <div class="card-body">
-    
-                <div class="col-lg-4">
-                  <div class="accordion accordion-body text-end" id="faq-group-2">
-                    <div class="accordion-item">
-                      <h2 class="accordion-header">
-                        <button class="accordion-button collapsed btn btn-outline-info" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse" style="margin-left: 1">
-                          Download the records through a documented PDF
-                        </button>
-                      </h2>
-                      <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
-                        <div class="row align-items-center mt-3">
-                          <div class="col-lg-6">
-                            <select v-model="selectedEmployeePDF" @change="downloadEmployeeRecordsPDF" class="form-select animated-dropdown w-100">
-                              <option value="" disabled>Select Employee</option>
-                              <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
-                            </select>
-                          </div>
-                          <div class="col-lg-6 text-end">
-                            <button class="btn btn-warning w-100" @click="recordsPDF"><i class="ri-download-2-line"></i> Download All</button>
-                          </div>
-                        </div>
-                        <!-- Loading animation -->
-                        <div v-if="loading" class="text-center mt-1">
-                          <div class="loading-line"></div>
-                        </div>
-                      </div>
+        <div class="row justify-content-center">
+  <div class="col-lg-12">
+    <div class="card">
+      <br>
+      <div class="card-body">
+        <div class="d-flex justify-content-center">
+          <div class="col-lg-4">
+            <div class="accordion" id="faq-group-2">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button collapsed btn btn-outline-info" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
+                    Download the records through a documented PDF
+                  </button>
+                </h2>
+                
+                <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                  <div class="row align-items-center mt-3">
+                    <div class="col-lg-6">
+                      <select v-model="selectedEmployeePDF" @change="downloadEmployeeRecordsPDF" class="form-select animated-dropdown w-100">
+                        <option value="" disabled>Select Employee</option>
+                        <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
+                      </select>
+                    </div>
+                    <div class="col-lg-6">
+                      <button class="btn btn-warning w-100" @click="recordsPDF"><i class="ri-download-2-line"></i> Download All</button>
                     </div>
                   </div>
+                  <!-- Loading animation -->
+                  <div v-if="loading" class="text-center mt-1">
+                    <div class="loading-line"></div>
+                  </div>
                 </div>
-                
-                
-                <!-- Table with stripped rows -->
-<!-- Search bar on the right side -->
-<!-- <div class="row align-items-center">
-  <div class="col-lg-4">
-    <h5>PDF Download</h5>
-  </div>
+              </div> 
+            </div> 
+          </div> 
+        </div> 
 
-  <div class="col-lg-4 text-center">
-    <select v-model="selectedEmployeePDF" @change="downloadEmployeeRecordsPDF" class="form-select mt-3 animated-dropdown">
-      <option value="">Select Employee</option>
-      <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
-    </select>
-  </div>
-  
-  <div class="col-lg-4 text-end">
-    <a class="btn btn-warning" @click="recordsPDF"><i class="ri-download-2-line"></i> Download All</a>
-  </div>
-</div> -->
-
-
-
-<hr>
+      <hr>  
 
 <!-- HTML Template -->
-<div class="row align-items-center">
+<div class="row justify-content-center align-items-center">
   <!-- Dropdown for Employee -->
   <div class="col-lg-2">
     <select v-model="selectedEmployee" class="form-select" @change="onEmployeeChange">
@@ -493,7 +357,7 @@ white-space: nowrap;
     </select>
   </div>
 
-  <!-- Status dropdown centered -->
+  <!-- Status dropdown -->
   <div class="col-lg-2">
     <select v-model="selectedStatus" class="form-select">
       <option value="">Current Status</option>
@@ -501,47 +365,46 @@ white-space: nowrap;
     </select>
   </div>
 
-  <div class="col-lg-2">
-    <!-- Search bar -->
-    <div class="input-group">
-      <div class="input-group-prepend">
-        <span class="input-group-text">
-          <i class="bi bi-search"></i>
-        </span>
-      </div>
-      <input type="text" v-model="searchKeyword" placeholder="Search ..." class="form-control">
-    </div>
-  </div>
-</div>
-<hr>
 
-
-
-<div class="row align-items-center">
-  <div class="col-lg-6">
-    <span class="me-2">Show</span> <!-- Added margin to the right -->
-    <div class="dropdown" style="display: inline-block;">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
-        {{ pageSize }}
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
-        <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
-        <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
-        <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
-       
-        <!-- Add more options as needed -->
-      </ul>
-    </div>
-    <span class="ms-2">entries</span> <!-- Added margin to the left -->
-  </div>
-</div>
-
+<br>
+<br>
+<br>
 <br>
 
 
 
-                <div style="overflow-y: auto;">
-                  <table>
+<!-- Search Bar and Show Entries Dropdown -->
+<div class="d-flex justify-content-between align-items-center">
+    <!-- Show Entries Dropdown -->
+    <div class="d-flex align-items-center">
+      <span class="me-2">Show</span>
+      <div class="dropdown" style="display: inline-block;">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+          {{ pageSize }}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+          <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+          <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+          <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+          <!-- Add more options as needed -->
+        </ul>
+      </div>
+      <span class="ms-2">entries</span>
+    </div>
+
+    <!-- Search Bar -->
+    
+      <div class="InputContainer">
+      <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
+    </div>
+  </div>
+</div>
+
+
+<br>
+
+<div class="wrapper">
+  <table class="table-compact">
                 <!-- Table header -->
                 <thead>
                   
@@ -661,7 +524,7 @@ white-space: nowrap;
                   <!-- Table rows -->
                   <tr v-for="info in paginatedInfo" :key="info.id" @click="selectRecord(info)">
                   
-                    <td scope="row"><img :src="info.image" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
+                    <td scope="row"><img :src="info.image" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" /></td>
                     <td scope="row">{{ info.entityname }}</td>
                     <td scope="row">{{ info.classification }}</td>
                     <td scope="row">{{ info.code }}</td>
@@ -724,7 +587,7 @@ white-space: nowrap;
               </table>
                 </div>
                 <!-- End Table with stripped rows -->
-
+<br>
                 <!-- I-update ang table at idagdag ang pagination controls -->
                 <div class="card-body">
   <!-- Iba pang content ng card... -->
@@ -743,7 +606,7 @@ white-space: nowrap;
       </ul>
     </nav>
   </div>
-  <div class="mt-6">
+  <div class="mt-3">
     <p>{{ currentPageRecords }}</p> <!-- Moved current page records here -->
   </div>
 </div>
@@ -1038,6 +901,7 @@ async getUserInfo(id){
       this.previousEmployee = this.selectedEmployee;
     },
   },
+
   computed: {
     filteredInfo() {
       let filteredData = this.info;
@@ -1083,6 +947,7 @@ async getUserInfo(id){
 
       return filteredData;
     },
+
     paginatedInfo() {
       const startIndex = (this.currentPage - 1) * this.pageSize;
       const endIndex = startIndex + this.pageSize;
@@ -1096,6 +961,7 @@ async getUserInfo(id){
       const endIndex = Math.min(startIndex + this.pageSize - 1, this.filteredInfo.length);
       return `Showing ${startIndex} - ${endIndex} of ${this.filteredInfo.length} records`;
     },
+    
     distinctEmployees() {
       const employeeSet = new Set();
       this.info.forEach(item => employeeSet.add(item.acc_officer));
@@ -1155,7 +1021,107 @@ async getUserInfo(id){
 </script>
 
 <style scoped>
-/* CSS styles for modal */
+
+#qr-video {
+  width: 500px;
+  height: 500px;
+}
+#qr-result {
+  margin-top: 10px;
+}
+
+.search-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px; /* Add margin to separate from the table */
+}
+
+.search-bar {
+  width: 20%; /* Adjust width as needed */
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  transition: all 0.3s ease;
+}
+
+.search-bar:focus {
+  border-color: #66afe9;
+  box-shadow: 0 0 5px #66afe9;
+}
+
+.pagination .page-item {
+  display: inline-block;
+  margin-right: 5px; /* Paggalang sa espasyo sa pagitan ng mga button */
+}
+
+.pagination .page-link {
+  border: 1px solid #ced4da; /* Bawasan ang lapad ng border */
+  color: #343a40; /* Itim na kulay ng text */
+  border-radius: 0; /* Alisin ang radius ng border */
+}
+
+.pagination .page-link:hover {
+  background-color: transparent; /* Alisin ang background color sa hover */
+}
+
+.pagination .page-item.disabled .page-link {
+  pointer-events: none; /* Huwag pahintulutan ang pag-click kung ang button ay hindi aktibo */
+}
+
+.pagination .page-item.active .page-link {
+  background-color: transparent; /* Alisin ang background color ng active button */
+  border-color: #ced4da; /* Bawasan ang lapad ng border ng active button */
+}
+
+.pagination .page-link:focus {
+  box-shadow: none; /* Alisin ang focus border */
+}
+
+.pagination .page-link.prev, .pagination .page-link.next {
+  padding: 0; /* Alisin ang padding */
+  border: none; /* Alisin ang border */
+  background: none; /* Alisin ang background */
+  font-size: 1.5rem; /* Taasan ang laki ng font */
+  color: #343a40; /* Itim na kulay ng text */
+}
+
+.pagination .page-link.prev::after, .pagination .page-link.next::after {
+  content: '\2190'; /* Isama ang Unicode character para sa arrow (left arrow) */
+}
+
+.pagination .page-link.next::after {
+  content: '\2192'; /* Isama ang Unicode character para sa arrow (right arrow) */
+}
+
+.InputContainer {
+  width: 200px; /* Increased width */
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, rgb(227, 213, 255), rgb(255, 231, 231));
+  border-radius: 27px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.075);
+}
+
+.input {
+  width: 190px; /* Increased width */
+  height: 35px;
+  border: none;
+  outline: none;
+  caret-color: rgb(255, 81, 0);
+  background-color: rgb(255, 255, 255);
+  border-radius: 27px;
+  padding-left: 12px;
+  letter-spacing: 0.8px;
+  color: rgb(19, 19, 19);
+  font-size: 13.8px;
+}
+
+
 .modal {
   display: flex;
   position: fixed;
@@ -1271,6 +1237,65 @@ async getUserInfo(id){
   border-top: 1px solid #ccc;
   padding-top: 10px;
 }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px; /* Adjust font size as needed */
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 4px 9px; /* Adjust padding for better readability */
+  text-align: center;
+  white-space: nowrap; /* Prevent line breaks in cells */
+  overflow: hidden; /* Hide overflowed content */
+  text-overflow: ellipsis; /* Show ellipsis for overflowed content */
+}
+
+th {
+  height: 27px; /* Adjust height for header */
+  white-space: nowrap;
+}
+
+img {
+  max-width: 50px; /* Adjust image size as needed */
+  max-height: 50px;
+}
+
+/* Optional: Add a wrapper for horizontal scrolling */
+.wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile */
+}
+
+
+    /* Responsive styles */
+    @media screen and (max-width: 600px) {
+      table, tr, td {
+        display: block;
+      }
+
+      td {
+        border: none;
+        position: relative;
+      }
+
+      td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+
+      /* Make the table scrollable on smaller screens */
+      table {
+        overflow-y: auto;
+      }
+    }
+
 
 </style>
 

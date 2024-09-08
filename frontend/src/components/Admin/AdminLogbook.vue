@@ -238,7 +238,7 @@ table {
 
 
 <template>
-<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
+<div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
   
@@ -441,7 +441,7 @@ table {
             </a>
           </li><!-- End Input Nav -->
           <li class="nav-item">
-            <a class="nav-link" href="/logbook">
+            <a class="nav-link active" href="/logbook">
               <i class="bi bi-folder-plus"></i>
               <span>Logbook</span>
             </a>

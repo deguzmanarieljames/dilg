@@ -165,7 +165,7 @@
           </a>
           <ul id="forms-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
             <li>
-              <a href="propertysticker" class="active">
+              <a class="nav-link active" href="propertysticker">
                 <i class="bi bi-circle"></i><span>Property Sticker</span>
               </a>
             </li>

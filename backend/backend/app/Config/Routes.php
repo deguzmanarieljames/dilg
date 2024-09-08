@@ -6,7 +6,7 @@ use CodeIgniter\Router\RouteCollection;
  * @var RouteCollection $routes
  */
 $routes->get('/', 'Home::index');
-
+$routes->match(['get', 'post'], 'check-email', 'DatabasePPEController::checkEmail');
 
 // DATABASE PPE
 $routes->get('/getdata', 'DatabasePPEController::getData');
@@ -18,6 +18,11 @@ $routes->post('/del', 'DatabasePPEController::del');
 $routes->match(['get', 'post'], 'fetch_data/(:any)', 'DatabasePPEController::fetchData/$1');
 $routes->match(['get', 'post'], '/getDataById/(:any)', 'DatabasePPEController::getDataById/$1');
 $routes->match(['get', 'post'], 'update_date_returned/(:any)', 'DatabasePPEController::updateDateReturned/$1');
+
+$routes->match(['get', 'post'], '/IIRUSPgetData', 'DatabasePPEController::IIRUSPgetData');
+$routes->match(['get', 'post'], '/IIRUSPgetData/(:any)', 'DatabasePPEController::IIRUSPgetData/$1');
+$routes->get('/RPCSPHIGHgetData', 'DatabasePPEController::RPCSPHIGHgetData');
+$routes->get('/RPCSPLOWgetData', 'DatabasePPEController::RPCSPLOWgetData');
 
 
 //PDF GENERATION
@@ -31,7 +36,11 @@ $routes->match(['get', 'post'], '/IIRUSP', 'DatabasePPEController::IIRUSP');
 $routes->match(['get', 'post'], '/updateIIRUSP/(:any)', 'DatabasePPEController::updateIIRUSP/$1');
 $routes->match(['get', 'post'], '/RPCSPLOW', 'DatabasePPEController::RPCSPLOW');
 $routes->match(['get', 'post'], '/RPCSPHIGH', 'DatabasePPEController::RPCSPHIGH');
+$routes->match(['get', 'post'], '/RegSPI/(:any)', 'DatabasePPEController::RegSPI/$1');
 $routes->match(['get', 'post'], '/RegSPI', 'DatabasePPEController::RegSPI');
+$routes->match(['get', 'post'], '/getClassifications', 'DatabasePPEController::getClassifications');
+$routes->match(['get', 'post'], '/RegSPIdata/(:any)', 'DatabasePPEController::RegSPIdata/$1');
+$routes->match(['get', 'post'], '/RegSPIdata', 'DatabasePPEController::RegSPIdata');
 
 //REQUEST
 $routes->match(['get', 'post'], '/employeeRequestPDF', 'DatabasePPEController::employeeRequestPDF');

@@ -152,7 +152,7 @@
                 </a>
               </li>
               <li>
-                <a href="unserviceable">
+                <a class="nav-link active" href="unserviceable">
                   <i class="bi bi-circle"></i><span>Unserviceable</span>
                 </a>
               </li>
@@ -257,92 +257,79 @@
               <div class="card-body">
               <h3 class="card-title">Unserviceable PPE</h3>
   <br>
-  
-           
-           
 
-              
-              <!-- Table with stripped rows -->
-  <!-- Search bar on the right side -->
-  <!-- <div class="row align-items-center">
-  <div class="col-lg-4">
-  <h5>PDF Download</h5>
-  </div>
-  
-  <div class="col-lg-4 text-center">
-  <select v-model="selectedEmployeePDF" @change="downloadEmployeeRecordsPDF" class="form-select mt-3 animated-dropdown">
-    <option value="">Select Employee</option>
-    <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
-  </select>
-  </div>
-  
-  <div class="col-lg-4 text-end">
-  <a class="btn btn-warning" @click="serviceablePDF"><i class="ri-download-2-line"></i> Download All</a>
-  </div>
-  </div> -->
-  
-  
-  
-  <hr>
-  
-  <!-- HTML Template -->
-  <div class="row align-items-center">
+      <!-- Dropdowns and Search Bar at the Top -->
+<div class="row align-items-center">
   <!-- Dropdown for Employee -->
   <div class="col-lg-2">
-  <select v-model="selectedEmployee" class="form-select" @change="onEmployeeChange">
-    <option value="">Select Employee</option>
-    <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
-  </select>
+    <select v-model="selectedEmployee" class="form-select" @change="onEmployeeChange">
+      <option value="">Select Employee</option>
+      <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
+    </select>
   </div>
-  
+
   <!-- Dropdown for Classification -->
   <div class="col-lg-2">
-  <select v-model="selectedClassification" class="form-select" :disabled="!selectedEmployee" @change="onEmployeeChange">
-    <option value="">Select Classification</option>
-    <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
-  </select>
+    <select v-model="selectedClassification" class="form-select" :disabled="!selectedEmployee" @change="onEmployeeChange">
+      <option value="">Select Classification</option>
+      <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
+    </select>
   </div>
-  
+
   <!-- Dropdown for Article -->
   <div class="col-lg-2">
-  <select v-model="selectedArticle" class="form-select" :disabled="!selectedEmployee || !selectedClassification" @change="onEmployeeChange">
-    <option value="">Select Article</option>
-    <option v-for="article in distinctArticle" :key="article" :value="article">{{ article }}</option>
-  </select>
+    <select v-model="selectedArticle" class="form-select" :disabled="!selectedEmployee || !selectedClassification" @change="onEmployeeChange">
+      <option value="">Select Article</option>
+      <option v-for="article in distinctArticle" :key="article" :value="article">{{ article }}</option>
+    </select>
   </div>
-  
+
   <!-- Dropdown for Particular -->
   <div class="col-lg-2">
-  <select v-model="selectedParticular" class="form-select" :disabled="!selectedEmployee || !selectedClassification || !selectedArticle">
-    <option value="">Select Particular</option>
-    <option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
-  </select>
+    <select v-model="selectedParticular" class="form-select" :disabled="!selectedEmployee || !selectedClassification || !selectedArticle">
+      <option value="">Select Particular</option>
+      <option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
+    </select>
   </div>
-  
+
   <!-- Status dropdown centered -->
   <div class="col-lg-2">
-  <select v-model="selectedStatus" class="form-select">
-    <option value="">Current Status</option>
-    <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
-  </select>
+    <select v-model="selectedStatus" class="form-select">
+      <option value="">Current Status</option>
+      <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
+    </select>
   </div>
-  
-  <div class="col-lg-2">
-  <!-- Search bar -->
-  <div class="input-group">
-    <div class="input-group-prepend">
-      <span class="input-group-text">
-        <i class="bi bi-search"></i>
-      </span>
+
+  <!-- Search Bar -->
+  <div class="col-lg-2 d-flex justify-content-end">
+    <div class="InputContainer">
+      <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
     </div>
-    <input type="text" v-model="searchKeyword" placeholder="Search ..." class="form-control">
   </div>
+</div>
+
+<hr>
+<!-- Show Entries and Download Serviceable Document at the Bottom -->
+<div class="row align-items-center">
+  <!-- Show Entries -->
+  <div class="col-lg-6">
+    <span class="me-2">Show</span> <!-- Added margin to the right -->
+    <div class="dropdown" style="display: inline-block;">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+        {{ pageSize }}
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+        <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+        <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+        <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+        <!-- Add more options as needed -->
+      </ul>
+    </div>
+    <span class="ms-2">entries</span> <!-- Added margin to the left -->
   </div>
-  </div>
-  <hr>
-  
+
   <!-- Download Serviceable Document -->
-  <div class="col-lg-12 d-flex justify-content-end">
+  <div class="col-lg-6 d-flex justify-content-end">
     <div class="accordion accordion-body text-end" id="faq-group-2">
       <div class="accordion-item">
         <h2 class="accordion-header">
@@ -357,39 +344,17 @@
         <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
           <div class="row mt-3">
             <div class="col-lg-12 align-items-center">
-             
-  <button class="download" type="button" @click="serviceablePDF">
-    <span class="button__text">Download</span>
-    <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
-  </button>
-              
+              <button class="download" type="button" @click="serviceablePDF">
+                <span class="button__text">Download</span>
+                <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
-  
-  
-  <div class="row align-items-center">
-  <div class="col-lg-6">
-  <span class="me-2">Show</span> <!-- Added margin to the right -->
-  <div class="dropdown" style="display: inline-block;">
-    <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
-      {{ pageSize }}
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
-      <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
-      <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
-      <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
-     
-      <!-- Add more options as needed -->
-    </ul>
-  </div>
-  <span class="ms-2">entries</span> <!-- Added margin to the left -->
-  </div>
-  </div>
+</div>
   
   <br>
   
@@ -1185,6 +1150,8 @@
     max-height: 100%; /* Ensure video does not exceed the height of the box */
   
   }
+
+  
   .download {
   position: relative;
   width: 300px;
@@ -1251,44 +1218,92 @@
 }
 
   
-  .content-table {
-      border-collapse: collapse;
-      margin: 25px 0;
-      font-size: 0.9em;
-      min-width: 400px;
-      border-radius: 5px 5px 0 0;
-      overflow: hidden;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-  }
-  
-  .content-table thead tr {
-      background-color: #009879;
-      color: #ffffff;
-      text-align: left;
-      font-weight: bold;
-  }
-  
-  .content-table th,
-  .content-table td {
-      padding: 12px 15px;
-  }
-  
-  .content-table tbody tr {
-      border-bottom: 1px solid #dddddd;
-  }
-  
-  .content-table tbody tr:nth-of-type(even) {
-      background-color: #f3f3f3;
-  }
-  
-  .content-table tbody tr:last-of-type {
-      border-bottom: 2px solid #009879;
-  }
-  
-  .content-table tbody tr.active-row {
-      font-weight: bold;
-      color: #009879;
-  }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px; /* Adjust font size as needed */
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 4px 9px; /* Adjust padding for better readability */
+  text-align: center;
+  white-space: nowrap; /* Prevent line breaks in cells */
+  overflow: hidden; /* Hide overflowed content */
+  text-overflow: ellipsis; /* Show ellipsis for overflowed content */
+}
+
+th {
+  height: 30px; /* Adjust height for header */
+  white-space: nowrap;
+}
+
+img {
+  max-width: 50px; /* Adjust image size as needed */
+  max-height: 50px;
+}
+
+/* Optional: Add a wrapper for horizontal scrolling */
+.wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile */
+}
+
+
+    /* Responsive styles */
+    @media screen and (max-width: 600px) {
+      table, tr, td {
+        display: block;
+      }
+
+      td {
+        border: none;
+        position: relative;
+      }
+
+      td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+
+      /* Make the table scrollable on smaller screens */
+      table {
+        overflow-y: auto;
+      }
+    }
+
+
+.InputContainer {
+  width: 210px; /* Increased width */
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, rgb(227, 213, 255), rgb(255, 231, 231));
+  border-radius: 27px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.075);
+}
+
+.input {
+  width: 200px; /* Increased width */
+  height: 35px;
+  border: none;
+  outline: none;
+  caret-color: rgb(255, 81, 0);
+  background-color: rgb(255, 255, 255);
+  border-radius: 27px;
+  padding-left: 12px;
+  letter-spacing: 0.8px;
+  color: rgb(19, 19, 19);
+  font-size: 13.8px;
+}
+
   </style>
   
   

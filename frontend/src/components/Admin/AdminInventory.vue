@@ -1,5 +1,5 @@
 <template>
-  <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
+  <div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
   
@@ -217,7 +217,7 @@
         <li class="nav-heading">Stocks</li>
   
         <li class="nav-item">
-          <a class="nav-link" href="/inventory">
+          <a class="nav-link active" href="/inventory">
             <i class="bi bi-folder-plus"></i>
             <span>Inventory</span>
           </a>
@@ -264,7 +264,7 @@
         <div class="card-body">
    
 <br>
-
+<!-- Add Item Button -->
 <div class="button-container">
   <button @click="showAddItemModal = true" class="noselect">
     <span class="text">Add Item</span>
@@ -274,9 +274,64 @@
     </span>
   </button>
 </div>
-
 <br>
 
+<!-- Search Bar and Show Entries Dropdown -->
+<div class="d-flex justify-content-between align-items-center">
+  <!-- Show Entries Dropdown -->
+  <div class="d-flex align-items-center">
+    <span class="me-2">Show</span>
+    <div class="dropdown" style="display: inline-block;">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+        {{ pageSize }}
+      </button>
+      <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+        <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+        <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+        <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+        <!-- Add more options as needed -->
+      </ul>
+    </div>
+    <span class="ms-2">entries</span>
+  </div>
+
+  <!-- Centered Dropdowns -->
+  <div class="filters-container d-flex align-items-center">
+    <!-- Filters: Select Classification, Article, Particulars, Current Status -->
+    <select v-model="selectedClassification" class="form-select me-2" @change="handleClassificationChange">
+      <option value="">Select Classification</option>
+      <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
+    </select>
+
+    <select v-model="selectedArticle" class="form-select me-2" :disabled="!selectedClassification" @change="handleArticleChange">
+      <option value="">Select Article</option>
+      <option v-for="article in filteredArticles" :key="article" :value="article">{{ article }}</option>
+    </select>
+
+    <select v-model="selectedParticular" class="form-select me-2" :disabled="!selectedArticle">
+      <option value="">Select Particular</option>
+      <option v-for="particular in filteredParticulars" :key="particular" :value="particular">{{ particular }}</option>
+    </select>
+
+    <select v-model="selectedStatus" class="form-select">
+      <option value="">Current Status</option>
+      <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
+    </select>
+  </div>
+
+  <!-- Search Bar -->
+  <div class="InputContainer">
+    <input placeholder="Search..." id="input" class="input" name="text" type="text" v-model="searchQuery">
+  </div>
+</div>
+
+
+<!-- Backdrop for Darkening Effect -->
+<div v-if="showAddItemModal" class="modal-backdrop"></div>
+
+<!-- Add Item Modal -->
+<transition name="modal-slide">
+  
 <div v-if="showAddItemModal" class="modal fade show d-block" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-xl modal-dialog" role="document">
     <div class="modal-content">
@@ -360,99 +415,50 @@
             <a @click="startCamera" class="btn btn-primary mt-2">{{ cameraStarted ? 'Stop Camera' : 'Start Camera' }}</a>
             <a @click="captureImage" class="btn btn-success mt-2" :disabled="!cameraStarted">Capture</a>
           </div>
-          <div class="col-md-12">
-            <label class="form-label">Image Preview</label>
-            <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" class="img-fluid">
-          </div>
 
-          <div class="text-center mt-3">
-            <button @click="saveOrUpdate" v-if="status !== 'update'" type="submit" class="btn btn-primary">Submit</button>
-            <button @click="saveOrUpdate" v-if="status === 'update'" type="submit" class="btn btn-success">Update</button>
-            <button @click="resetForm" type="reset" class="btn btn-secondary">Reset</button>
+          
+          <div class="col-md-6">
+            <label class="form-label">Image Preview:</label>
+            <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" class="img-fluid">
+            <br>
           </div>
+<br>
+<hr>
+          <div class="button-group mt-6">
+
+            <button class="button1" @click="resetForm" type="reset" style="width: 120px; height: 40px;">
+  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"></path>
+    <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"></path>
+  </svg>
+  Reset
+</button>
+  <button @click="saveOrUpdate" v-if="status !== 'update'" type="submit" class="button">Submit</button>
+  <button @click="saveOrUpdate" v-if="status === 'update'" type="submit" class="button">Update</button>
+
+ 
+</div>
+
+
+
+
+
 
         </form>
-
       </div>
     </div>
   </div>
 </div>
+</transition>
 
-          <!-- Filters and Search Bar -->
-          <div class="row align-items-center mb-3">
-            <!-- Dropdown for Employee -->
-            <div class="col-lg-3">
-              <select v-model="selectedClassification" class="form-select" @change="handleClassificationChange">
-                <option value="">Select Classification</option>
-                <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
-              </select>
-            </div>
+<br>
+<br>
+         
 
-            <!-- Dropdown for Classification -->
-            <div class="col-lg-2">
-              <select v-model="selectedArticle" class="form-select" :disabled="!selectedClassification" @change="handleArticleChange">
-                <option value="">Select Article</option>
-                <option v-for="article in filteredArticles" :key="article" :value="article">{{ article }}</option>
-              </select>
-            </div>
-
-            <!-- Dropdown for Article -->
-            <div class="col-lg-2">
-              <select v-model="selectedParticular" class="form-select" :disabled="!selectedArticle">
-                <option value="">Select Particular</option>
-                <option v-for="particular in filteredParticulars" :key="particular" :value="particular">{{ particular }}</option>
-              </select>
-            </div>
-
-            <!-- Dropdown for Particular -->
-            <div class="col-lg-2">
-              <select v-model="selectedStatus" class="form-select">
-                <option value="">Current Status</option>
-                <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
-              </select>
-            </div>
-
-            <div class="col-lg-3">
-              <!-- Search bar -->
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="bi bi-search"></i>
-                  </span>
-                </div>
-                <input type="text" class="form-control" placeholder="Search" v-model="searchQuery">
-              </div>
-            </div>
-          </div>
-
-          <br>
-          <div class="row align-items-center">
-  <div class="col-lg-6">
-    <span class="me-2">Show</span> <!-- Added margin to the right -->
-    <div class="dropdown" style="display: inline-block;">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
-        {{ pageSize }}
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
-        <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
-        <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
-        <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
-       
-        <!-- Add more options as needed -->
-      </ul>
-    </div>
-    <span class="ms-2">entries</span> <!-- Added margin to the left -->
-  </div>
-</div>
-
-
-
-
-
-          <!-- Table -->
-          <div style="overflow-y: auto;">
+<div class="wrapper">
+  <table class="table-compact">
             <qrcode-stream @decode="onDecode" />
-            <table class="table table-hover">
+     
               <thead style="width: 100%;">
                 <tr>
                   <th scope="col">Image</th>
@@ -475,7 +481,7 @@
               </thead>
               <tbody>
                 <tr v-for="inv in paginatedInfo" :key="inv.id">
-                  <td scope="row"><img :src="inv.image" alt="Inventory Image" style="max-width: 100px; max-height: 100px;"/></td>
+                  <td scope="row"><img :src="inv.image" alt="Inventory Image" style="max-width: 60px; max-height: 60px;"/></td>
                   <td scope="row">{{ inv.entityname }}</td>
                   <td scope="row">{{ inv.classification }}</td>
                   <td scope="row">{{ inv.code }}</td>
@@ -500,8 +506,10 @@
 </td>
 </tr>
 </tbody>
-</table>
 
+</table>
+<br>
+<br>
    <!-- I-update ang table at idagdag ang pagination controls -->
    <div class="card-body">
   <!-- Iba pang content ng card... -->
@@ -519,9 +527,11 @@
       </li>
     </ul>
   </nav>
-  <div class="mt-3">
-    <p>{{ currentPageRecords }}</p>
-  </div>
+  <br>
+  <div class="page-records">
+  <p>{{ currentPageRecords }}</p>
+</div>
+
 </div>
 </div>
 
@@ -1099,22 +1109,54 @@
  
 <style scoped>
 
-.modal-dialog {
-  max-width: 80vw; /* Adjust the width as needed for landscape */
-  width: 80vw; /* Make sure the width is smaller than the maximum */
-  height: 70vh; /* Adjust the height to ensure no scroll down */
-  max-height: 70vh; /* Ensure the modal does not exceed 70% of viewport height */
-}
-
-.modal-content {
+/* Backdrop for darkening effect */
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  background: rgba(0, 0, 0, 0.5); /* Dark overlay with opacity */
+  z-index: 1040; /* Ensure it sits behind the modal */
 }
 
-.modal-body {
-  overflow-y: auto; /* Allow scrolling only in the modal body */
+/* Adjust z-index of modal for stacking */
+.modal {
+  z-index: 1050; /* Ensure the modal is on top of the backdrop */
 }
+
+/* Slide transition (if needed) */
+.modal-slide-enter-active {
+  animation: slide-down 0.5s ease-out forwards;
+}
+
+.modal-slide-leave-active {
+  animation: slide-up 0.5s ease-in forwards;
+}
+
+/* Keyframes for slide down and slide up */
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+}
+
 
 @media (max-width: 767px) {
   .modal-dialog {
@@ -1124,6 +1166,10 @@
 }
 
 
+.page-records {
+  text-align: left;
+  float: left;
+}
 
 /* Container for the button */
 .button-container {
@@ -1204,6 +1250,231 @@ button.noselect:active .icon svg {
   color: white;
   font-size: 24px;
 }
+
+.pagination .page-item {
+  display: inline-block;
+  margin-right: 5px; /* Paggalang sa espasyo sa pagitan ng mga button */
+}
+
+.pagination .page-link {
+  border: 1px solid #ced4da; /* Bawasan ang lapad ng border */
+  color: #343a40; /* Itim na kulay ng text */
+  border-radius: 0; /* Alisin ang radius ng border */
+}
+
+.pagination .page-link:hover {
+  background-color: transparent; /* Alisin ang background color sa hover */
+}
+
+.pagination .page-item.disabled .page-link {
+  pointer-events: none; /* Huwag pahintulutan ang pag-click kung ang button ay hindi aktibo */
+}
+
+.pagination .page-item.active .page-link {
+  background-color: transparent; /* Alisin ang background color ng active button */
+  border-color: #ced4da; /* Bawasan ang lapad ng border ng active button */
+}
+
+.pagination .page-link:focus {
+  box-shadow: none; /* Alisin ang focus border */
+}
+
+.pagination .page-link.prev, .pagination .page-link.next {
+  padding: 0; /* Alisin ang padding */
+  border: none; /* Alisin ang border */
+  background: none; /* Alisin ang background */
+  font-size: 1.5rem; /* Taasan ang laki ng font */
+  color: #343a40; /* Itim na kulay ng text */
+}
+
+.pagination .page-link.prev::after, .pagination .page-link.next::after {
+  content: '\2190'; /* Isama ang Unicode character para sa arrow (left arrow) */
+}
+
+.pagination .page-link.next::after {
+  content: '\2192'; /* Isama ang Unicode character para sa arrow (right arrow) */
+}
+
+.button-container {
+  margin-left: auto; /* Align the Add Item button to the right */
+}
+
+.input-group {
+  margin-top: 10px; /* Space between the search bar and dropdowns */
+}
+
+.InputContainer {
+  width: 210px; /* Increased width */
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(to bottom, rgb(227, 213, 255), rgb(255, 231, 231));
+  border-radius: 27px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.075);
+}
+
+.input {
+  width: 200px; /* Increased width */
+  height: 35px;
+  border: none;
+  outline: none;
+  caret-color: rgb(255, 81, 0);
+  background-color: rgb(255, 255, 255);
+  border-radius: 27px;
+  padding-left: 12px;
+  letter-spacing: 0.8px;
+  color: rgb(19, 19, 19);
+  font-size: 13.8px;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center; /* Center align the buttons */
+  gap: 1rem; /* Space between buttons */
+}
+
+.button, .button1 {
+  width: 120px;
+  height: 40px;
+  font-size: 14px;
+  padding: 0.5rem 1rem; /* Adjust as needed */
+}
+
+/* Other existing styles remain the same */
+.button {
+  border: none;
+  background-color: seagreen;
+  color: white;
+  font-size: 0.9rem; /* Slightly larger font size */
+  font-weight: 500;
+  border-radius: 0.35rem; /* Slightly larger border radius */
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transform: translate(1) translate(0, 0);
+  transition: transform 225ms, box-shadow 225ms;
+}
+
+.button:hover {
+  transform: scale(1.05) translate(0, -0.1rem);
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.35);
+}
+
+.button:active {
+  transform: scale(1) translate(0, 0.1rem);
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.15);
+}
+
+.button1 {
+  color: white;
+  background-color: #C0392B;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  font-size: 0.904rem; /* Smaller font size */
+  line-height: 1.7rem; /* Adjusted line height */
+  padding-left: 1rem; /* Reduced padding */
+  padding-right: 1rem; /* Reduced padding */
+  padding-top: 0.5rem; /* Reduced padding */
+  padding-bottom: 0.5rem; /* Reduced padding */
+  cursor: pointer;
+  text-align: center;
+  margin-right: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  border: none;
+
+}
+
+
+.button1:hover {
+  background-color: maroon;
+}
+
+.button1 svg {
+  display: inline;
+  width: 1.3rem;
+  height: 1.3rem;
+  margin-right: 0.75rem;
+  color: white;
+}
+
+.button1:focus svg {
+  animation: spin_357 0.5s linear;
+}
+
+@keyframes spin_357 {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.button, .button1 {
+  width: 120px;
+  height: 40px;
+  font-size: 14px;
+  padding: 0.5rem 1rem; /* Adjust as needed */
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px; /* Adjust font size as needed */
+}
+
+th, td {
+  border: 1px solid black;
+  padding: 3px 7px; /* Adjust padding for better readability */
+  text-align: center;
+  white-space: nowrap; /* Prevent line breaks in cells */
+  overflow: hidden; /* Hide overflowed content */
+  text-overflow: ellipsis; /* Show ellipsis for overflowed content */
+}
+
+th {
+  height: px; /* Adjust height for header */
+  white-space: nowrap;
+}
+
+
+/* Optional: Add a wrapper for horizontal scrolling */
+.wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile */
+}
+
+
+    /* Responsive styles */
+    @media screen and (max-width: 600px) {
+      table, tr, td {
+        display: block;
+      }
+
+      td {
+        border: none;
+        position: relative;
+      }
+
+      td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+      }
+
+      /* Make the table scrollable on smaller screens */
+      table {
+        overflow-y: auto;
+      }
+    }
 
 
 </style>
