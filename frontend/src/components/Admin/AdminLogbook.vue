@@ -1,12 +1,79 @@
 <style scoped>
 
+.modal {
+  display: flex;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(148, 203, 255, 0.5);
+  animation-name: modal-animation;
+  animation-duration: 0.5s;
+}
+
+.modal-content {
+  background-color: #ffffff;
+  margin: 10% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 90%; /* Adjust the width to fit smaller screens */
+  max-width: 600px; /* Max width to ensure readability on larger screens */
+  animation-name: modal-content-animation;
+  animation-duration: 0.5s;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+@keyframes modal-animation {
+  from {
+    top: -100%;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes modal-content-animation {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 768px) { /* Adjust for smaller screens */
+  .modal-content {
+    width: 90%;
+    margin: 20px auto;
+    padding: 10px;
+  }
+}
+
 .selected {
   border: 2px solid #007bff;
   background-color: aquamarine;
 }
 #qr-video {
-  width: 400px;
-  height: 400px;
+  width: 300px;
+  height: 300px;
 }
 #qr-result {
   margin-top: 10px;
@@ -238,19 +305,20 @@ table {
 
 
 <template>
-<div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
+  <div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
   
-      <div class="d-flex align-items-center justify-content-between">
-        <a href="/dashboard" class="logo d-flex align-items-center">
-          <img src="./img/logo1.png" alt="">
-          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
-            <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
-          </span>
-        </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-      </div><!-- End Logo -->
+          <div class="d-flex align-items-center justify-content-between">
+            <a href="/dashboard" class="logo d-flex align-items-center" style="position: relative;">
+              <img src="./img/dilg-logo1.png" alt="" 
+                   style="position: absolute; max-height: 220px; max-width: 220px; margin-left: -30px; z-index: 1;">
+              <span style="font-family: 'Times New Roman', Times, serif; font-size: 25px; color: rgb(42, 43, 72); padding-left: 120px; z-index: 2; position: relative;">
+                INVENTrack
+              </span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+          </div><!-- End Logo -->
   
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
@@ -393,6 +461,21 @@ table {
                   <i class="bi bi-circle"></i><span>Unserviceable</span>
                 </a>
               </li>
+              <li>
+                <a href="returnedppe">
+                  <i class="bi bi-circle"></i><span>Returned PPE</span>
+                </a>
+              </li>
+              <li>
+                <a href="transferedppe">
+                  <i class="bi bi-circle"></i><span>Transfered PPE</span>
+                </a>
+             </li>
+             <li>
+              <a href="disposedppe">
+                <i class="bi bi-circle"></i><span>Disposed PPE</span>
+              </a>
+           </li>
             </ul>
           </li><!-- End Components Nav -->
           <li class="nav-item">
@@ -407,27 +490,7 @@ table {
               </li>
               <li>
                 <a href="ledgercard">
-                  <i class="bi bi-circle"></i><span>Ledger Card</span>
-                </a>
-              </li>
-              <li>
-                <a href="propertycard">
-                  <i class="bi bi-circle"></i><span>Property Card</span>
-                </a>
-              </li>
-              <li>
-                <a href="ackreceipt">
-                  <i class="bi bi-circle"></i><span>Acknowledgement Receipt</span>
-                </a>
-              </li>
-              <li>
-                <a href="transferreport">
-                  <i class="bi bi-circle"></i><span>Transfer Report</span>
-                </a>
-              </li>
-              <li>
-                <a href="rlsddp">
-                  <i class="bi bi-circle"></i><span>RLSDDP</span>
+                  <i class="bi bi-circle"></i><span>PPE Documents</span>
                 </a>
               </li>
             </ul>
@@ -571,7 +634,7 @@ table {
             <h2>Scan Result</h2>
             <hr>
             <div id="display-data">
-              <p v-if="employee">
+              <div v-if="employee">
                 <form @submit.prevent="saveBorrowed" enctype="multipart/form-data">
                   <h4><label for="employee"><b>Welcome!</b> </label>
                   <input type="text" id="employee" v-model="employee"></h4>
@@ -601,7 +664,7 @@ table {
                   </div>
                   <button type="submit" class="btn btn-primary">Borrow</button>
                 </form>
-              </p>
+              </div>
               <h4 v-else><b><i>Kindly Scan the QR Code. Thank you!</i></b> {{ qrCodeData }}</h4>
             </div>
           </div>              
@@ -737,55 +800,97 @@ table {
         selectedEvent: null, 
         sidePanelVisible: false, 
         sidePanelPosition: { top: '0px', left: '0px' }, 
-        calendarOptions: {
-    plugins: [dayGridPlugin, interactionPlugin],
-    initialView: 'dayGridMonth',
-    contentHeight: 'auto', 
-    eventSources: [
-      {
-        events: this.calendarEvents,
-        textColor: 'white'
-      }
-    ],
-    titleFormat: { year: 'numeric', month: 'long', day: 'numeric' },
-    dayHeaderFormat: { weekday: 'long' },
-    eventClick: this.handleEventClick,
-    eventContent: function(arg) {
-      const title = arg.event.title; 
-      const backgroundColor = arg.event.backgroundColor; 
-      const html = `<div class="fc-content" style="background-color: ${backgroundColor}; text-align: center;">${title}</div>`;
-  
-      return { html: html };
-    }
-  }
+        // calendarOptions: {
+        //       plugins: [dayGridPlugin, interactionPlugin],
+        //       initialView: 'dayGridMonth',
+        //       contentHeight: 'auto', 
+        //       eventSources: [
+        //         {
+        //           events: this.calendarEvents,
+        //           textColor: 'white'
+        //         }
+        //       ],
+        //       titleFormat: { year: 'numeric', month: 'long', day: 'numeric' },
+        //       dayHeaderFormat: { weekday: 'long' },
+        //       eventClick: this.handleEventClick,
+        //       eventContent: function(arg) {
+        //         const title = arg.event.title; 
+        //         const backgroundColor = arg.event.backgroundColor; 
+        //         const html = `<div class="fc-content" style="background-color: ${backgroundColor}; text-align: center;">${title}</div>`;
+            
+        //         return { html: html };
+        //       }
+        // }
   
       };
     },
     computed: {
       calendarEvents() {
-    const events = [];
-    this.info.forEach(log => {
-      const dateBorrowed = new Date(log.date_borrowed);
-      const timeBorrowed = dateBorrowed.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-      const dateReturned = log.date_returned;
-      const eventSource = dateReturned ? 'returned' : 'borrowed';
-      const backgroundColor = eventSource === 'returned' ? 'lightgreen' : 'orange';
-      events.push({
-        id: log.id, 
-        title: timeBorrowed, 
-        start: dateBorrowed,
-        source: eventSource,
-        backgroundColor: backgroundColor,
-        extendedProps: {
-          particulars: log.particulars,
-          employee: log.employee,
-          dateBorrowed: log.date_borrowed,
-          dateReturned: log.date_returned
-        }
+        const events = [];
+        this.info.forEach(log => {
+          const dateBorrowed = new Date(log.date_borrowed);
+          const timeBorrowed = dateBorrowed.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+          const dateReturned = log.date_returned;
+          const eventSource = dateReturned ? 'returned' : 'borrowed';
+          const backgroundColor = eventSource === 'returned' ? 'lightgreen' : 'orange';
+          events.push({
+            id: log.id, 
+            title: timeBorrowed, 
+            start: dateBorrowed,
+            source: eventSource,
+            backgroundColor: backgroundColor,
+            extendedProps: {
+              particulars: log.particulars,
+              employee: log.employee,
+              dateBorrowed: log.date_borrowed,
+              dateReturned: log.date_returned
+            }
+          });
+        });
+        return events;
+      },
+      calendarEvents() {
+      const events = [];
+      this.info.forEach(log => {
+        const dateBorrowed = new Date(log.date_borrowed);
+        const timeBorrowed = dateBorrowed.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        const dateReturned = log.date_returned;
+        const eventSource = dateReturned ? 'returned' : 'borrowed';
+        const backgroundColor = eventSource === 'returned' ? 'lightgreen' : 'orange';
+        
+        events.push({
+          id: log.id,
+          title: timeBorrowed,
+          start: dateBorrowed,
+          source: eventSource,
+          backgroundColor: backgroundColor,
+          extendedProps: {
+            particulars: log.particulars,
+            employee: log.employee,
+            dateBorrowed: log.date_borrowed,
+            dateReturned: log.date_returned
+          }
+        });
       });
-    });
-    return events;
-  },
+      return events;
+    },
+      calendarOptions() {
+        return {
+          plugins: [dayGridPlugin, interactionPlugin],
+          initialView: 'dayGridMonth',
+          contentHeight: 'auto',
+          events: this.calendarEvents, // Bind the computed property directly
+          titleFormat: { year: 'numeric', month: 'long', day: 'numeric' },
+          dayHeaderFormat: { weekday: 'long' },
+          eventClick: this.handleEventClick,
+          eventContent: function(arg) {
+            const title = arg.event.title;
+            const backgroundColor = arg.event.backgroundColor;
+            const html = `<div class="fc-content" style="background-color: ${backgroundColor}; text-align: center;">${title}</div>`;
+            return { html: html };
+          }
+        };
+      },
   
   
   
@@ -830,6 +935,18 @@ table {
       this.user();
       this.getUserInfo(this.infos.fullname);
     },
+
+    watch: {
+    activeTab(newTab) {
+      if (newTab === 'calendar') {
+        this.$nextTick(() => {
+          if (this.$refs.fullCalendar) {
+            this.$refs.fullCalendar.getApi().refetchEvents(); // Ensure the calendar is refreshed
+          }
+        });
+      }
+    }
+  },
     methods: {
       updateCalendarEvents() {
         // Generate calendar events from borrowedLogs array
@@ -843,6 +960,20 @@ table {
         this.$refs.fullCalendar.getApi().removeAllEvents(); 
         this.$refs.fullCalendar.getApi().addEventSource(events); 
         
+      },
+
+      handleEventClick(info) {
+        const eventDetails = info.event.extendedProps;
+        this.selectedEvent = {
+          id: info.event.id, // Accessing the event ID directly from info.event
+          particulars: eventDetails.particulars,
+          employee: eventDetails.employee,
+          dateBorrowed: eventDetails.dateBorrowed,
+          dateReturned: eventDetails.dateReturned,
+          backgroundColor: info.event.backgroundColor
+        };
+        this.showSidePanel(info.el);
+        this.getInfo();
       },
   
       getImageStyle(imageUrl) {
@@ -881,56 +1012,70 @@ table {
       },
   
       startCamera() {
+        // Access the video element directly via DOM
+        const videoElement = document.getElementById("qr-video");
+
         navigator.mediaDevices
           .getUserMedia({ video: { facingMode: "environment" } })
           .then((videoStream) => {
             this.stream = videoStream;
-            this.video.srcObject = this.stream;
-            this.video.play();
+            videoElement.srcObject = this.stream;
+            videoElement.play();
             this.isCameraOn = true;
-            this.startButton.style.display = "none";
-            this.stopButton.style.display = "inline-block";
-            this.tick();
+
+            // Control buttons via DOM, no need for instance variables
+            const startButton = document.getElementById("start-camera");
+            const stopButton = document.getElementById("stop-camera");
+            startButton.style.display = "none";
+            stopButton.style.display = "inline-block";
+
+            this.tick(); // Start the QR scanning process
           })
           .catch((error) => {
             console.error("Error accessing camera:", error);
           });
       },
-  
+
       async stopCamera() {
         if (this.stream) {
           const tracks = this.stream.getTracks();
           tracks.forEach((track) => track.stop());
-          
-          if (this.video) {
-            this.video.pause();
-            this.video.srcObject = null;
+
+          const videoElement = document.getElementById("qr-video");
+          if (videoElement) {
+            videoElement.pause();
+            videoElement.srcObject = null;
             this.isCameraOn = false;
-  
-            if (this.startButton && this.startButton.style) {
-              this.startButton.style.display = "inline-block";
+
+            // Control buttons via DOM, no need for instance variables
+            const startButton = document.getElementById("start-camera");
+            const stopButton = document.getElementById("stop-camera");
+            if (startButton && startButton.style) {
+              startButton.style.display = "inline-block";
             }
-  
-            if (this.stopButton && this.stopButton.style) {
-              this.stopButton.style.display = "none";
+            if (stopButton && stopButton.style) {
+              stopButton.style.display = "none";
             }
           }
         }
       },
-  
+
       tick() {
-        if (this.video.readyState === this.video.HAVE_ENOUGH_DATA) {
+        const videoElement = document.getElementById("qr-video");
+
+        if (videoElement && videoElement.readyState === videoElement.HAVE_ENOUGH_DATA) {
           const canvasElement = document.createElement("canvas");
-          canvasElement.width = this.video.videoWidth;
-          canvasElement.height = this.video.videoHeight;
+          canvasElement.width = videoElement.videoWidth;
+          canvasElement.height = videoElement.videoHeight;
           const canvas = canvasElement.getContext("2d");
           canvas.drawImage(
-            this.video,
+            videoElement,
             0,
             0,
             canvasElement.width,
             canvasElement.height
           );
+
           const imageData = canvas.getImageData(
             0,
             0,
@@ -938,20 +1083,19 @@ table {
             canvasElement.height
           );
           const code = jsQR(imageData.data, imageData.width, imageData.height);
-  
+
           if (code && code.data !== this.qrCodeData) {
             this.qrCodeData = code.data;
             this.fetchDataFromServer();
-  
-            // Continue scanning after processing each frame
-            this.tick();
-            this.stopCamera();
+            this.stopCamera();  // Stop camera after QR code is detected
           }
         }
+
         if (this.isCameraOn) {
-          requestAnimationFrame(this.tick);
+          requestAnimationFrame(this.tick);  // Continue scanning while camera is on
         }
       },
+
   
       fetchDataFromServer() {
         axios.get(`/fetchEmployee/${this.qrCodeData}`)
@@ -1140,24 +1284,19 @@ table {
         this.$router.push('/');
       },
   
-      handleEventClick(info) {
-    const eventDetails = info.event.extendedProps;
-    this.selectedEvent = {
-      id: info.event.id, // Accessing the event ID directly from info.event
-      particulars: eventDetails.particulars,
-      employee: eventDetails.employee,
-      dateBorrowed: eventDetails.dateBorrowed,
-      dateReturned: eventDetails.dateReturned,
-      backgroundColor: info.event.backgroundColor
-    };
-    this.showSidePanel(info.el);
-    this.getInfo();
-  },
-  
-  
-  handleEventChange() {
-      this.$refs.fullCalendar.getApi().rerenderEvents();
-  },
+      updateCalendarEvents() {
+        // Generate calendar events from borrowedLogs array
+        const events = [];
+        this.info.forEach(log => {
+          events.push({
+            title: log.employee,
+            start: log.date_borrowed // Assuming this field contains the borrowing date
+          });
+        });
+        this.$refs.fullCalendar.getApi().removeAllEvents(); 
+        this.$refs.fullCalendar.getApi().addEventSource(events); 
+        
+      },
   
       goBack() {
         console.log('Back button clicked');

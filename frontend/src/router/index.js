@@ -4,11 +4,18 @@ import { createRouter, createWebHistory } from 'vue-router'
 import AdDashboard from '../views/AdminView/AdDashboard.vue'
 import AdAckReceipt from '../views/AdminView/AdAckReceipt.vue'
 import AdDatabasePPE from '../views/AdminView/AdDatabasePPE.vue'
+import AdDatabasePPEDocs from '../views/AdminView/AdDatabasePPEDocs.vue'
 import AdLedgerCard from '../views/AdminView/AdLedgerCard.vue'
 import AdPropertyCard from '../views/AdminView/AdPropertyCard.vue'
 import AdPropertySticker from '../views/AdminView/AdPropertySticker.vue'
 import AdRLSDDP from '../views/AdminView/AdRLSDDP.vue'
 import AdServiceable from '../views/AdminView/AdServiceable.vue'
+import AdServiceableReturn from '../views/AdminView/AdServiceableReturn.vue'
+import AdReturnedPPE from '../views/AdminView/AdReturnedPPE.vue'
+import AdTransferPPE from '../views/AdminView/AdTransferPPE.vue'
+import AdTransferedPPE from '../views/AdminView/AdTransferedPPE.vue'
+import AdDisposedPPE from '../views/AdminView/AdDisposedPPE.vue'
+import AdDisposePPE from '../views/AdminView/AdDisposePPE.vue'
 import AdTransferReport from '../views/AdminView/AdTransferReport.vue'
 import AdUnserviceable from '../views/AdminView/AdUnserviceable.vue'
 import AdWorkspace from '../views/AdminView/AdWorkspace.vue'
@@ -25,14 +32,12 @@ import SigninView from '../views/SigninView.vue'
 
 //EMPLOYEE
 import EmpDashboard from '../views/EmpView/EmpDashboard.vue'
+import EmpDatabasePPEDocs from '../views/EmpView/EmpDatabasePPEDocs.vue'
 import EmpRequest from '../views/EmpView/EmpRequest.vue'
+import EmpQRcode from '../views/EmpView/EmpQRcode.vue'
 import EmpServiceable from '../views/EmpView/EmpServiceable.vue'
 import EmpUnserviceable from '../views/EmpView/EmpUnserviceable.vue'
 import EmpProfile from '../views/EmpView/EmpProfile.vue'
-
-//OFFICER
-
-import OffAdmin from '../views/OfficerView/OffAdmin.vue'
 
 const routes = [
   //ADMIN ROUTES
@@ -64,15 +69,57 @@ const routes = [
     meta: {requireAuth: true}
   },
   {
+    path: '/databaseppedocs',
+    name: 'AdDatabasePPEDocs',
+    component: AdDatabasePPEDocs,
+    meta: {requireAuth: true}
+  },
+  {
     path: '/serviceable',
     name: 'AdServiceable',
     component: AdServiceable,
     meta: {requireAuth: true}
   },
   {
+    path: '/serviceablereturn',
+    name: 'AdServiceableReturn',
+    component: AdServiceableReturn,
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/transferppe',
+    name: 'AdTransferPPE',
+    component: AdTransferPPE,
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/transferedppe',
+    name: 'AdTransferedPPE',
+    component: AdTransferedPPE,
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/disposedppe',
+    name: 'AdDisposedPPE',
+    component: AdDisposedPPE,
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/disposeppe',
+    name: 'AdDisposePPE',
+    component: AdDisposePPE,
+    meta: {requireAuth: true}
+  },
+  {
     path: '/unserviceable',
     name: 'AdUnserviceable',
     component: AdUnserviceable,
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/returnedppe',
+    name: 'AdReturnedPPE',
+    component: AdReturnedPPE,
     meta: {requireAuth: true}
   },
   {
@@ -164,9 +211,21 @@ const routes = [
     meta: {requireAuth: true}
   },
   {
+    path: '/empdatabaseppedocs',
+    name: 'EmpDatabasePPEDocs',
+    component: EmpDatabasePPEDocs,
+    meta: {requireAuth: true}
+  },
+  {
     path: '/emprequest',
     name: 'EmpRequest',
     component: EmpRequest,
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/empqrcode',
+    name: 'EmpQRcode',
+    component: EmpQRcode,
     meta: {requireAuth: true}
   },
   {
@@ -188,14 +247,6 @@ const routes = [
     meta: {requireAuth: true}
   },
 
-//OFFICER
-
-  {
-    path: '/offadmin',
-    name: 'OffAdmin',
-    component: OffAdmin,
-    meta: {requireAuth: true}
-  },
 
 ]
 

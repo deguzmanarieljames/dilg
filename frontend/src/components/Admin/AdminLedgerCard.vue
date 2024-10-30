@@ -1,17 +1,19 @@
 <template>
-  <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
+  <div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
+    
           <!-- ======= Header ======= -->
           <header id="header" class="header fixed-top d-flex align-items-center">
     
-        <div class="d-flex align-items-center justify-content-between">
-          <a href="/dashboard" class="logo d-flex align-items-center">
-            <img src="./img/logo1.png" alt="">
-            <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
-              <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
-            </span>
-          </a>
-          <i class="bi bi-list toggle-sidebar-btn"></i>
-        </div><!-- End Logo -->
+            <div class="d-flex align-items-center justify-content-between">
+              <a href="/dashboard" class="logo d-flex align-items-center" style="position: relative;">
+                <img src="./img/dilg-logo1.png" alt="" 
+                     style="position: absolute; max-height: 220px; max-width: 220px; margin-left: -30px; z-index: 1;">
+                <span style="font-family: 'Times New Roman', Times, serif; font-size: 25px; color: rgb(42, 43, 72); padding-left: 120px; z-index: 2; position: relative;">
+                  INVENTrack
+                </span>
+              </a>
+              <i class="bi bi-list toggle-sidebar-btn"></i>
+            </div><!-- End Logo -->
     
         <nav class="header-nav ms-auto">
           <ul class="d-flex align-items-center">
@@ -156,6 +158,21 @@
                   <i class="bi bi-circle"></i><span>Unserviceable</span>
                 </a>
               </li>
+              <li>
+                <a href="returnedppe">
+                  <i class="bi bi-circle"></i><span>Returned PPE</span>
+                </a>
+              </li>
+              <li>
+                <a href="transferedppe">
+                  <i class="bi bi-circle"></i><span>Transfered PPE</span>
+                </a>
+             </li>
+             <li>
+              <a href="disposedppe">
+                <i class="bi bi-circle"></i><span>Disposed PPE</span>
+              </a>
+           </li>
             </ul>
           </li><!-- End Components Nav -->
     
@@ -170,30 +187,11 @@
                 </a>
               </li>
               <li>
-                <a href="ledgercard" class="active">
-                  <i class="bi bi-circle"></i><span>Ledger Card</span>
+                <a class="nav-link active" href="ledgercard">
+                  <i class="bi bi-circle"></i><span>PPE Documents</span>
                 </a>
               </li>
-              <li>
-                <a href="propertycard">
-                  <i class="bi bi-circle"></i><span>Property Card</span>
-                </a>
-              </li>
-              <li>
-                <a href="ackreceipt">
-                  <i class="bi bi-circle"></i><span>Acknowledgement Receipt</span>
-                </a>
-              </li>
-              <li>
-                <a href="transferreport">
-                  <i class="bi bi-circle"></i><span>Transfer Report</span>
-                </a>
-              </li>
-              <li>
-                <a href="rlsddp">
-                  <i class="bi bi-circle"></i><span>RLSDDP</span>
-                </a>
-              </li>
+             
             </ul>
           </li><!-- End Forms Nav -->
   
@@ -286,6 +284,7 @@
                 </div>
               </div>
             </div>
+             
         
             <!-- Card 3 -->
             <div class="col-lg-4" @click="openModal(3)">
@@ -307,69 +306,123 @@
             <div class="modal-overlay">
               <div class="modal-dialog">
                 <div class="modal-content">
-                  <div class="modal-header d-flex justify-content-between align-items-center">
-                    <h5 class="modal-title">INVENTORY AND INSPECTION REPORT OF UNSERVICEABLE SEMI-EXPENDABLE PROPERTY</h5>
-                    <div>
-                      <!-- Date Filters -->
-                      <input type="date" v-model="startDate" class="form-control-sm me-2" placeholder="Start Date">
-                      <input type="date" v-model="endDate" class="form-control-sm me-2" placeholder="End Date">
+
+                  <div class="modal-header d-flex align-items-center" style="width: 100%;">
+    <h5 class="modal-title text-white" style="background-color: seagreen; padding: 5px 15px; border-radius: 5px; text-transform: capitalize; flex-grow: 1; display: flex; justify-content: center; align-items: center;">
+        Inventory and inspection report of unserviceable semi-expendable property
+    </h5>
+    <button class="closebtn" type="button" @click="closeModal" style="background: transparent; border: none; position: relative; z-index: 1;">
+        <span class="X"></span>
+        <span class="Y"></span>
+        <div class="close" style="font-size: 12px; color: white;">Close</div>
+    </button>
+</div>
+
+
+                                      <br>
+                                      <div class="d-flex justify-content-between align-items-center">
+                      <!-- Left side: Tabs Navigation -->
+                      <ul class="nav nav-tabs" id="inventoryTabs">
+                        <li class="nav-item">
+                          <span 
+                            class="nav-link" 
+                            :class="{ active: currentTab === 'view' }" 
+                            @click="currentTab = 'view'"
+                          >
+                            View Records
+                          </span>
+                        </li>
+                        <li class="nav-item">
+                          <span 
+                            class="nav-link" 
+                            :class="{ active: currentTab === 'update' }" 
+                            @click="currentTab = 'update'"
+                          >
+                            Update Record
+                          </span>
+                        </li>
+                      </ul>
+
+                    <!-- Right side: Date Pickers, Show PDF, and Download PDF -->
+                    <div class="d-flex align-items-center gap-2">
+                      <!-- Start and End Date Pickers -->
+                    <input 
+                      type="date" 
+                      v-model="startDate" 
+                      class="form-control-sm custom-datepicker datepicker-start" 
+                      placeholder="Start Date"
+                    >
+
+                    <input 
+                      type="date" 
+                      v-model="endDate" 
+                      class="form-control-sm custom-datepicker datepicker-end" 
+                      placeholder="End Date"
+                    >
+
 
                       <!-- Show PDF Button -->
-                      <button 
-                        v-if="!showPdf" 
-                        class="btn btn-outline-secondary btn-sm me-2" 
-                        @click="IIRUSPshowPDF"
-                      >
+                      <!-- Show PDF Button -->
+                    <button 
+                      v-if="!showPdf" 
+                      class="showbtn" 
+                      @click="IIRUSPshowPDF"
+                    >
+                      <span class="transition"></span>
+                      <span class="gradient"></span>
+                      <span class="label">
                         <i class="fas fa-file-pdf"></i> Show PDF
-                      </button>
-                    
-                      <!-- Close PDF Button -->
-                      <button 
-                        v-else 
-                        class="btn btn-danger btn-sm me-2" 
-                        @click="showPdf = false"
-                      >
-                        <i class="fas fa-times"></i> Close PDF
-                      </button>
-                    
-                      <!-- Download PDF Button -->
-                      <a 
-                        class="btn btn-outline-primary btn-sm" 
-                        @click="IIRUSPdownloadPDF"
-                      >
-                        <i class="fas fa-download"></i> Download PDF
-                      </a>
-  
-                      <button class="btn btn-outline-secondary btn-sm me-2"
-                      @click="closeModal"
-                      >
-                      <i class="fas fa-file-pdf"></i> Close 
+                      </span>
                     </button>
-                  </div>
-                    
-                  </div>
-  
-                  <!-- Tabs Navigation -->
-                  <ul class="nav nav-tabs" id="inventoryTabs">
-                    <li class="nav-item">
-                      <span 
-                        class="nav-link" 
-                        :class="{ active: currentTab === 'view' }" 
-                        @click="currentTab = 'view'"
-                      >
-                        View Records
+
+                    <!-- Close PDF Button -->
+                    <button 
+                      v-else 
+                      class="closepdfbtn" 
+                      @click="showPdf = false"
+                    >
+                      <span class="transition"></span>
+                      <span class="gradient"></span>
+                      <span class="label">
+                        <i class="fas fa-times"></i> Close PDF
                       </span>
-                    </li>
-                    <li class="nav-item">
-                      <span 
-                        class="nav-link" 
-                        :class="{ active: currentTab === 'update' }"
-                      >
-                        Update Record
-                      </span>
-                    </li>
-                  </ul>
-  
+                    </button>
+
+                    <!-- Download PDF Button -->
+                    <button 
+                      class="downloadbtn ms-auto" 
+                      @click="IIRUSPdownloadPDF"
+                    >
+                      <div class="button-wrapper">
+                        <div class="text">Download PDF</div>
+                        <span class="icon">
+                          <svg 
+                            xmlns="http://www.w3.org/2000/svg" 
+                            aria-hidden="true" 
+                            role="img" 
+                            width="2em" 
+                            height="2em" 
+                            preserveAspectRatio="xMidYMid meet" 
+                            viewBox="0 0 24 24"
+                          >
+                            <path 
+                              fill="none" 
+                              stroke="currentColor" 
+                              stroke-linecap="round" 
+                              stroke-linejoin="round" 
+                              stroke-width="2" 
+                              d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"
+                            ></path>
+                          </svg>
+                        </span>
+                      </div>
+                    </button>
+
+                    </div>
+
+                        </div>
+
+          <br>        
                   <div class="modal-body">
                     <!-- Responsive Container -->
                     <div class="d-flex flex-column flex-lg-row">
@@ -520,6 +573,7 @@
 
 
 
+
           <!-- Modal 2 -->
           <div :class="{ 'modal-open': isModalOpen && modalIndex === 2 }">
             <div class="modal-overlay">
@@ -527,8 +581,18 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title">REPORT ON THE PHYSICAL COUNT OF SEMI-EXPENDABLE PROPERTY</h5>
-                    <button type="button" class="close" @click="closeModal">&times;</button>
+                   
+                  <button class="closebtn" type="button" @click="closeModal">
+                    <span class="X"></span>
+                    <span class="Y"></span>
+                    <div class="close">Close</div>
+                  </button>
                   </div>
+
+                  <div>
+                
+              </div>
+                
                   <div class="modal-body">
                     <!-- Tabs -->
                     <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -565,7 +629,7 @@
                         </button>
                       </li>
                     </ul>
-
+                <br>
                     <div class="tab-content" id="myTabContent">
                       <!-- Tab 1 -->
                       <div
@@ -577,13 +641,81 @@
                       >
                         <div class="d-flex justify-content-end mb-3">
                           <!-- Date Filters -->
-                          <input type="date" v-model="RPCSPHIGHstartDate" class="form-control-sm me-2" placeholder="Start Date">
-                          <input type="date" v-model="RPCSPHIGHendDate" class="form-control-sm me-2" placeholder="End Date">
-                          <button v-if="!isRPCSPHIGHPdfVisible" class="btn btn-primary" @click="RPCSPHIGHshowPDF">Show PDF</button>
-                          <button v-if="isRPCSPHIGHPdfVisible" class="btn btn-danger ms-2" @click="RPCSPHIGHPdfClose">Close PDF</button>
-                          <button class="btn btn-secondary ms-2" @click="RPCSPHIGHdownloadPDF">Download PDF</button>
-                        </div>
+                      
 
+                            <input 
+                              type="date" 
+                              v-model="RPCSPHIGHstartDate"
+                              class="form-control-sm custom-datepicker datepicker-start2" 
+                              placeholder="Start Date"
+                            >
+
+                            <input 
+                              type="date" 
+                              v-model="RPCSPHIGHendDate"
+                              class="form-control-sm custom-datepicker datepicker-end2" 
+                              placeholder="End Date"
+                            >
+
+                            <button 
+                              v-if="!isRPCSPHIGHPdfVisible"
+                              class="showbtn me-4" 
+                              @click="RPCSPHIGHshowPDF"
+                            >
+                              <span class="transition"></span>
+                              <span class="gradient"></span>
+                              <span class="label">
+                                <i class="fas fa-file-pdf"></i> Show PDF
+                              </span>
+                            </button>
+
+                            <!-- Close PDF Button -->
+                            <button 
+                              v-if="isRPCSPHIGHPdfVisible"
+                              class="closepdfbtn me-4" 
+                            @click="RPCSPHIGHPdfClose"
+                            >
+                              <span class="transition"></span>
+                              <span class="gradient"></span>
+                              <span class="label">
+                                <i class="fas fa-times"></i> Close PDF
+                              </span>
+                            </button>
+
+                                                
+                        <!-- Download PDF Button -->
+                        <button 
+                          class="downloadbtn" 
+                          @click="RPCSPHIGHdownloadPDF"
+                        >
+                          <div class="button-wrapper">
+                            <div class="text">Download PDF</div>
+                            <span class="icon">
+                              <svg 
+                                xmlns="http://www.w3.org/2000/svg" 
+                                aria-hidden="true" 
+                                role="img" 
+                                width="2em" 
+                                height="2em" 
+                                preserveAspectRatio="xMidYMid meet" 
+                                viewBox="0 0 24 24"
+                              >
+                                <path 
+                                  fill="none" 
+                                  stroke="currentColor" 
+                                  stroke-linecap="round" 
+                                  stroke-linejoin="round" 
+                                  stroke-width="2" 
+                                  d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"
+                                ></path>
+                              </svg>
+                            </span>
+                          </div>
+                        </button>
+
+            
+                        </div>
+                          <hr>
                         <div class="content-wrapper">
                           <table class="office-table">
                             <thead>
@@ -640,12 +772,85 @@
                         aria-labelledby="tab2-tab"
                       >
                         <div class="d-flex justify-content-end mb-3">
-                          <input type="date" v-model="RPCSPLOWstartDate" class="form-control-sm me-2" placeholder="Start Date">
-                          <input type="date" v-model="RPCSPLOWendDate" class="form-control-sm me-2" placeholder="End Date">
-                          <button v-if="!isRPCSPLOWPdfVisible" class="btn btn-primary" @click="RPCSPLOWshowPDF">Show PDF</button>
-                          <button v-if="isRPCSPLOWPdfVisible" class="btn btn-danger ms-2" @click="RPCSPLOWPdfClose">Close PDF</button>
-                          <button class="btn btn-secondary ms-2" @click="RPCSPLOWdownloadPDF">Download PDF</button>
+                          
+                      
+              
+
+                        <input 
+                              type="date" 
+                              v-model="RPCSPLOWstartDate"
+                              class="form-control-sm custom-datepicker datepicker-start" 
+                              placeholder="Start Date"
+                            >
+
+                            <input 
+                              type="date" 
+                              v-model="RPCSPLOWendDate"
+                              class="form-control-sm custom-datepicker datepicker-end" 
+                              placeholder="End Date"
+                            >
+
+                            <button 
+                             v-if="!isRPCSPLOWPdfVisible"
+                              class="showbtn me-4" 
+                               @click="RPCSPLOWshowPDF"
+                            >
+                              <span class="transition"></span>
+                              <span class="gradient"></span>
+                              <span class="label">
+                                <i class="fas fa-file-pdf"></i> Show PDF
+                              </span>
+                            </button>
+
+                            <!-- Close PDF Button -->
+                            <button 
+                              v-if="isRPCSPLOWPdfVisible"
+                              class="closepdfbtn me-4" 
+                          @click="RPCSPLOWPdfClose"
+                            >
+                              <span class="transition"></span>
+                              <span class="gradient"></span>
+                              <span class="label">
+                                <i class="fas fa-times"></i> Close PDF
+                              </span>
+                            </button>
+
+                                              
+                      <!-- Download PDF Button -->
+                      <button 
+                        class="downloadbtn" 
+                        @click="RPCSPLOWdownloadPDF"
+                      >
+                        <div class="button-wrapper">
+                          <div class="text">Download PDF</div>
+                          <span class="icon">
+                            <svg 
+                              xmlns="http://www.w3.org/2000/svg" 
+                              aria-hidden="true" 
+                              role="img" 
+                              width="2em" 
+                              height="2em" 
+                              preserveAspectRatio="xMidYMid meet" 
+                              viewBox="0 0 24 24"
+                            >
+                              <path 
+                                fill="none" 
+                                stroke="currentColor" 
+                                stroke-linecap="round" 
+                                stroke-linejoin="round" 
+                                stroke-width="2" 
+                                d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"
+                              ></path>
+                            </svg>
+                          </span>
                         </div>
+                        
+                      </button>
+
+
+
+                        </div>
+
 
                         <div class="content-wrapper">
                           <table class="office-table">
@@ -695,9 +900,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" @click="closeModal">Close</button>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -716,23 +919,84 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <h5 class="modal-title">REGISTRY OF SEMI-EXPENDABLE PROPERTY ISSUED</h5>
-                    <!-- <button type="button" class="btn-close" @click="closeModal"></button> -->
+                    <button class="closebtn" type="button" @click="closeModal">
+                    <span class="X"></span>
+                    <span class="Y"></span>
+                    <div class="close">Close</div>
+                  </button>
                   </div>
+                  <hr>
                   <div class="modal-body">
-                    <div class="d-flex justify-content-end mb-3">
-                      <div class="col-lg-23">                      
-                        <select v-model="selectedClassification" class="form-select" @change="fetchFilteredData">
-                          <option value="">All Classifications</option>
-                          <option v-for="classification in classifications" :key="classification" :value="classification.classification">
-                            {{ classification.classification }}
-                          </option>
-                        </select>
-                      </div>
+                    <div class="d-flex justify-content-start">
+  <div class="col-lg-3">
+    <select v-model="selectedClassification" class="form-select" @change="fetchFilteredData">
+      <option value="">All Classifications</option>
+      <option v-for="classification in classifications" :key="classification" :value="classification.classification">
+        {{ classification.classification }}
+      </option>
+    </select>
+  </div>
 
-                      <button v-if="!isRegSPIPdfVisible" class="btn btn-primary" @click="RegSPIshowPDF">Show PDF</button>
-                      <button v-if="isRegSPIPdfVisible" class="btn btn-danger ms-2" @click="RegSPIPdfClose">Close PDF</button>
-                      <button class="btn btn-secondary ms-2" @click="RegSPIdownloadPDF">Download PDF</button>
-                    </div>
+  <div class="ml-auto d-flex align-items-center">
+    <button 
+      v-if="!isRegSPIPdfVisible"
+      class="showbtn me-4" 
+      @click="RegSPIshowPDF"
+    >
+      <span class="transition"></span>
+      <span class="gradient"></span>
+      <span class="label">
+        <i class="fas fa-file-pdf"></i> Show PDF
+      </span>
+    </button>
+
+    <!-- Close PDF Button -->
+    <button 
+      v-if="isRegSPIPdfVisible"
+      class="closepdfbtn me-4" 
+      @click="RegSPIPdfClose" 
+    >
+      <span class="transition"></span>
+      <span class="gradient"></span>
+      <span class="label">
+        <i class="fas fa-times"></i> Close PDF
+      </span>
+    </button>
+
+    <!-- Download PDF Button -->
+    <button 
+      class="downloadbtn" 
+      @click="RegSPIdownloadPDF"
+    >
+      <div class="button-wrapper">
+        <div class="text">Download PDF</div>
+        <span class="icon">
+          <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            aria-hidden="true" 
+            role="img" 
+            width="2em" 
+            height="2em" 
+            preserveAspectRatio="xMidYMid meet" 
+            viewBox="0 0 24 24"
+          >
+            <path 
+              fill="none" 
+              stroke="currentColor" 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"
+            ></path>
+          </svg>
+        </span>
+      </div>
+    </button>
+  </div>
+</div>
+
+<hr>
+                    
                     <div class="content-wrapper">
                       <table class="office-table">
                         <thead>
@@ -794,9 +1058,6 @@
                       ></iframe>
                     </div>
                   </div>
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" @click="closeModal">Close</button>
-                  </div>
                 </div>
               </div>
             </div>
@@ -814,8 +1075,15 @@
   
   
   
+  
+  
   <script>
   import axios from 'axios'
+
+  import flatpickr from 'flatpickr';
+  import 'flatpickr/dist/flatpickr.min.css';
+
+
   
   
   export default {
@@ -895,10 +1163,55 @@
       this.fetchFilteredData();
     },
     mounted() {
-      this.fetchClassifications();
-      this.fetchFilteredData(); // Fetch all data initially
-    },
+      flatpickr('.custom-datepicker', {
+      dateFormat: 'Y-m-d',
+      // You can use default locale settings or customize them
+      locale: {
+        firstDayOfWeek: 1,
+        weekdays: {
+          shorthand: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+          longhand: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+        },
+        months: {
+          shorthand: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          longhand: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        }
+      }
+    });
+
+
+    // Fetch classifications and data
+    this.fetchClassifications();
+    this.fetchFilteredData(); // Fetch all data initially
+  },
+
     methods: {
+
+      addCustomButtons(flatpickrInstance) {
+      // Create 'Reset' button
+      const resetButton = document.createElement('button');
+      resetButton.textContent = 'Reset';
+      resetButton.className = 'flatpickr-button';
+      resetButton.addEventListener('click', () => {
+        flatpickrInstance.clear();
+      });
+
+      // Create 'Today' button
+      const todayButton = document.createElement('button');
+      todayButton.textContent = 'Today';
+      todayButton.className = 'flatpickr-button';
+      todayButton.addEventListener('click', () => {
+        flatpickrInstance.setDate(new Date());
+      });
+
+      // Append buttons to the calendar
+      const calendarContainer = document.querySelector('.flatpickr-calendar');
+      if (calendarContainer) {
+        calendarContainer.appendChild(todayButton);
+        calendarContainer.appendChild(resetButton);
+      }
+    },
+
       async getInfo() {
         try {
           const response = await axios.get('getdata');
@@ -909,13 +1222,7 @@
       },
   
   
-  
-  
-  
-  
-  
-  
-  
+
       openModal(index) {
         this.isModalOpen = true;
         this.modalIndex = index;
@@ -1291,19 +1598,6 @@ filterTableData() {
 },
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
       async logout(){
         sessionStorage.removeItem('token');
         this.$router.push('/');
@@ -1313,6 +1607,7 @@ filterTableData() {
   </script>
   
   <style scoped>
+  
   /* Modal Overlay */
   .modal-overlay {
     position: fixed;
@@ -1456,6 +1751,369 @@ filterTableData() {
   .office-table td:nth-child(n+3):nth-child(-n+17) {
     text-align: center; /* Center numbers in the relevant columns */
   }
+  .closebtn {
+  position: relative;
+  width: 2em; /* Size */
+  height: 2em; /* Size */
+  border: none;
+  background: transparent; /* Transparent background */
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.X, .Y {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.5em; /* Size */
+  height: 2px; /* Thickness */
+  background-color: rgb(0, 0, 0); /* Default color */
+  transform: translate(-50%, -50%); /* Centering */
+  transition: background-color 0.1s ease-in;
+}
+
+.X {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.Y {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.closebtn:hover {
+  background-color: red; /* Change to red on hover */
+}
+
+.closebtn:hover .X,
+.closebtn:hover .Y {
+  background-color: white; /* Change lines to white on hover */
+}
+
+.close {
+  position: absolute;
+  display: flex;
+  padding: 0.5rem 1rem; /* Adjusted padding */
+  align-items: center;
+  justify-content: center;
+  top: -70%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3em;
+  height: 1.7em;
+  font-size: 12px;
+  color: white; /* Text color */
+  border: none;
+  border-radius: 3px;
+  pointer-events: none;
+  opacity: 0;
+}
+
+
+.closebtn:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Light hover effect */
+}
+
+.closebtn:active {
+  background-color: rgba(255, 255, 255, 0.4); /* Active state */
+}
+
+.closebtn:hover .X,
+.closebtn:hover .Y {
+  background-color: white; /* Darken lines on hover */
+}
+
+.closebtn:hover > .close {
+  animation: close 0.2s forwards 0.25s;
+}
+
+@keyframes close {
+  100% {
+    opacity: 1;
+  }
+}
+
+.custom-datepicker {
+  padding: 0.4rem 0.8rem;
+  font-size: 13px;
+  border: 1px solid #dce2e6;
+  border-radius: 0.375rem;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  color: #333;
+  font-family: 'Roboto', sans-serif;
+  height: 2.5rem;
+  width: 8.9rem;
+}
+
+.custom-datepicker:focus {
+  outline: none;
+  border-color: #0056b3;
+  box-shadow: 0 0 0 0.2rem rgba(0, 86, 179, 0.25);
+}
+
+.custom-datepicker:hover {
+  background: #f5f7f9;
+}
+
+.flatpickr-button {
+  margin: 0 2px;
+  padding: 0.3rem 0.6rem;
+  font-size: 12px;
+  border: 1px solid #dce2e6;
+  border-radius: 0.375rem;
+  background: #ffffff;
+  color: #007bff;
+  cursor: pointer;
+}
+
+.flatpickr-button:hover {
+  background: #007bff;
+  color: #ffffff;
+}
+
+/* Custom Button Styles */
+.showbtn {
+  font-size: 14px; /* Font size */
+  padding: 0.6em 1.5em; /* Padding */
+  font-weight: 500;
+  background: #1f2937;
+  color: white;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.6em;
+  cursor: pointer;
+}
+
+.showbtn .gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 0.6em;
+  margin-top: -0.25em;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+.showbtn .label {
+  position: relative;
+  top: -1px;
+}
+
+.showbtn .transition {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 500ms;
+  background-color: rgba(16, 185, 129, 0.6);
+  border-radius: 9999px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.showbtn:hover .transition {
+  width: 14em;
+  height: 14em;
+}
+
+.showbtn:active {
+  transform: scale(0.97);
+}
+
+
+
+
+/* Custom Button Styles */
+.closepdfbtn {
+  font-size: 14px; /* Font size */
+  padding: 0.6em 1.5em; /* Padding */
+  font-weight: 500;
+  background: #1f2937;
+  color: white;
+  border: none;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.6em;
+  cursor: pointer;
+}
+
+.closepdfbtn .gradient {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  border-radius: 0.6em;
+  margin-top: -0.25em;
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0),
+    rgba(0, 0, 0, 0.3)
+  );
+}
+
+.closepdfbtn .label {
+  position: relative;
+  top: -1px;
+}
+
+.closepdfbtn .transition {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  transition-duration: 500ms;
+  background-color: rgba(255, 99, 99, 0.6); /* Lighter Red */
+  border-radius: 9999px;
+  width: 0;
+  height: 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.closepdfbtn:hover .transition {
+  width: 14em;
+  height: 14em;
+}
+
+.closepdfbtn:active {
+  transform: scale(0.97);
+}
+
+/* Custom Button Styles */
+.downloadbtn {
+  --width: 130px;
+  --height: 38px;
+  --tooltip-height: 35px;
+  --tooltip-width: 90px;
+  --gap-between-tooltip-to-button: 18px;
+  --button-color: #1163ff;
+  --tooltip-color: #fff;
+  width: var(--width);
+  height: var(--height);
+  background: var(--button-color);
+  position: relative;
+  text-align: center;
+  border-radius: 0.45em;
+  font-size: 14px;
+  transition: background 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none; /* Remove underline */
+  color: white; /* Text color */
+}
+
+.downloadbtn::before {
+  position: absolute;
+  content: attr(data-tooltip);
+  width: var(--tooltip-width);
+  height: var(--tooltip-height);
+  background-color: var(--tooltip-color);
+  font-size: 0.9rem;
+  color: #111;
+  border-radius: .25em;
+  line-height: var(--tooltip-height);
+  bottom: calc(var(--height) + var(--gap-between-tooltip-to-button) + 30px);
+  left: calc(50% - var(--tooltip-width) / 2);
+}
+
+.downloadbtn::after {
+  position: absolute;
+  content: '';
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+  border-top-color: var(--tooltip-color);
+  left: calc(50% - 10px);
+  bottom: calc(150% + var(--gap-between-tooltip-to-button) - 30px);
+}
+
+.downloadbtn::after, .downloadbtn::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+
+.text {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button-wrapper, .text, .icon {
+  overflow: hidden;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  color: #fff;
+}
+
+.text {
+  top: 0;
+}
+
+.text, .icon {
+  transition: top 0.3s; /* Faster transition */
+}
+
+.icon {
+  color: #fff;
+  top: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.downloadbtn:hover {
+  background: #6c18ff;
+}
+
+.downloadbtn:hover .text {
+  top: -100%;
+}
+
+.downloadbtn:hover .icon {
+  top: 0;
+}
+
+
+/* Align the datepickers to the left and add spacing */
+.datepicker-start {
+  margin-left: 0;   /* Make sure the start date is fully left aligned */
+  margin-right: 15px; /* Add space between start and end date */
+}
+
+.datepicker-end {
+  margin-left: 0; /* Align the end date next to the start date */
+  margin-right: 160px; /* Add space between start and end date */
+}
+
+/* Align the datepickers to the left and add spacing */
+.datepicker-start2 {
+  margin-left: 0;   /* Make sure the start date is fully left aligned */
+  margin-right: 15px; /* Add space between start and end date */
+}
+
+.datepicker-end2 {
+  margin-left: 0; /* Align the end date next to the start date */
+  margin-right: 850px; /* Add space between start and end date */
+}
+
   </style>
   
   

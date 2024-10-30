@@ -25,6 +25,7 @@ class ServiceController extends ResourceController
         // var_dump($data);
     }
 
+
     // public function getData()
     // {
     //     $main = new DatabasePPEModel();
@@ -63,9 +64,39 @@ class ServiceController extends ResourceController
             $fullname = $userData['fullname'];
             
             // Perform the join query
-            $data = $main->select('databaseppe.*, inventoryppe.entityname, inventoryppe.classification, inventoryppe.code, inventoryppe.article, inventoryppe.modelno, inventoryppe.serialno, inventoryppe.fulldescription, inventoryppe.image')
-                         ->join('inventoryppe', 'inventoryppe.particulars = databaseppe.particulars', 'left')
-                         ->where('databaseppe.acc_officer', $fullname)
+            $data = $main->where('databaseppe.acc_officer', $fullname)
+                         ->where('databaseppe.remarks', 'SERVICEABLE')
+                         ->where('databaseppe.imageverification IS NOT NULL')
+                         ->orderBy('databaseppe.id', 'DESC')
+                         ->findAll();
+    
+            // Manipulate image URLs
+            foreach ($data as &$item) {
+                $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+            }
+            
+            return $this->respond($data, 200);
+        } else {
+            return $this->respond(['error' => 'User not found', 'fullname' => $id], 404);
+        }
+    }
+
+    public function getDataUserUnserviceable()
+    {
+        $main = new DatabasePPEModel();
+        
+        // Retrieve user data to get the fullname
+        $id = $this->request->getVar('id');
+        $user = new SigninModel();
+        $userData = $user->where('fullname', $id)->first();
+        
+        if ($userData) {
+            $fullname = $userData['fullname'];
+            
+            // Perform the join query
+            $data = $main->where('databaseppe.acc_officer', $fullname)
+                         ->where('databaseppe.remarks', 'UNSERVICEABLE')
+                         ->where('databaseppe.imageverification IS NOT NULL')
                          ->orderBy('databaseppe.id', 'DESC')
                          ->findAll();
     

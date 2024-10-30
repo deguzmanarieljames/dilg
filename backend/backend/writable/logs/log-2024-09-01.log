@@ -1,0 +1,75 @@
+CRITICAL - 2024-09-01 12:40:06 --> Invalid file: "RegSPI.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 39.
+ 1 SYSTEMPATH\View\View.php(214): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('RegSPI.php')
+ 2 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RegSPI', [], true)
+ 3 APPPATH\Controllers\DatabasePPEController.php(1512): view('RegSPI', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->RegSPI()
+ 5 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-01 14:38:36 --> Undefined array key "description"
+in APPPATH\Views\RegSPI.php on line 127.
+ 1 APPPATH\Views\RegSPI.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "description"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RegSPI.php', 127)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RegSPI.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RegSPI', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1512): view('RegSPI', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->RegSPI()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-01 14:38:59 --> Undefined array key "description"
+in APPPATH\Views\RegSPI.php on line 127.
+ 1 APPPATH\Views\RegSPI.php(127): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "description"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RegSPI.php', 127)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RegSPI.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RegSPI', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1512): view('RegSPI', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->RegSPI()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-01 15:17:03 --> Undefined array key "entityname"
+in APPPATH\Views\RegSPI.php on line 76.
+ 1 APPPATH\Views\RegSPI.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "entityname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RegSPI.php', 76)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RegSPI.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RegSPI', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1512): view('RegSPI', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->RegSPI()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-01 15:18:04 --> Undefined array key "entityname"
+in APPPATH\Views\RegSPI.php on line 76.
+ 1 APPPATH\Views\RegSPI.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "entityname"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RegSPI.php', 76)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RegSPI.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RegSPI', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1512): view('RegSPI', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->RegSPI()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-01 15:19:14 --> Undefined variable $record
+in APPPATH\Views\RegSPI.php on line 76.
+ 1 APPPATH\Views\RegSPI.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $record', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RegSPI.php', 76)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RegSPI.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RegSPI', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1512): view('RegSPI', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->RegSPI()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-09-01 15:19:15 --> Undefined variable $record
+in APPPATH\Views\RegSPI.php on line 76.
+ 1 APPPATH\Views\RegSPI.php(76): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $record', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RegSPI.php', 76)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RegSPI.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RegSPI', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1512): view('RegSPI', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->RegSPI()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

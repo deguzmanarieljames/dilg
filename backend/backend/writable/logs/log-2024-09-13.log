@@ -1,0 +1,1333 @@
+ERROR - 2024-09-13 17:15:37 --> Error connecting to the database: mysqli_sql_exception: Host 'frontend.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\SigninController.php(57): CodeIgniter\BaseModel->first()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->signin()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'frontend.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(662): CodeIgniter\Model->doFirst()
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\SigninController.php(57): CodeIgniter\BaseModel->first()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\SigninController->signin()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:15:37 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'frontend.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `signin`
+WHERE `username` = :username:
+ LIMIT 1', [...], false)
+ 3 SYSTEMPATH\Model.php(264): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(662): CodeIgniter\Model->doFirst()
+ 5 APPPATH\Controllers\SigninController.php(57): CodeIgniter\BaseModel->first()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->signin()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:19:16 --> Error connecting to the database: mysqli_sql_exception: Host 'frontend.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'frontend.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:19:16 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'frontend.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:19:17 --> Error connecting to the database: mysqli_sql_exception: Host 'frontend.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'frontend.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:19:17 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'frontend.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:20:08 --> Error connecting to the database: mysqli_sql_exception: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:20:08 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:20:08 --> Error connecting to the database: mysqli_sql_exception: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:20:08 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:21:37 --> Error connecting to the database: mysqli_sql_exception: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:21:37 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:21:38 --> Error connecting to the database: mysqli_sql_exception: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:21:38 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:21:38 --> Error connecting to the database: mysqli_sql_exception: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:21:38 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:21:38 --> Error connecting to the database: mysqli_sql_exception: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:21:38 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:21:39 --> Error connecting to the database: mysqli_sql_exception: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:21:39 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:21:50 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:21:50 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:21:51 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:21:51 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:21:52 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:21:52 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:21:52 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:21:52 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:21:52 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:21:52 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:21:53 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:21:53 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:21:53 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:21:53 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:22:09 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:22:09 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:23:56 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:23:56 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:24:00 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:24:00 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:24:00 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:24:00 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:24:01 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:24:01 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:24:05 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:24:05 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:24:06 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:24:06 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:24:15 --> Error connecting to the database: mysqli_sql_exception: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:24:15 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:24:31 --> Error connecting to the database: mysqli_sql_exception: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:24:31 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:24:45 --> Error connecting to the database: mysqli_sql_exception: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:24:45 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:24:46 --> Error connecting to the database: mysqli_sql_exception: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:24:46 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:24:46 --> Error connecting to the database: mysqli_sql_exception: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:24:46 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'LAPTOP-5SNEH48R' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:26:19 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:26:19 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-13 17:27:03 --> Error connecting to the database: mysqli_sql_exception: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:185
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(185): mysqli->real_connect('192.168.254.189', 'root', '', 'dilg', 3306, '', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Host 'dilg.test' is not allowed to connect to this MySQL server in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:229
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect(false)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#3 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#4 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#5 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+#6 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2024-09-13 17:27:03 --> Unable to connect to the database.
+Main connection [MySQLi]: Host 'dilg.test' is not allowed to connect to this MySQL server
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+ORDER BY `databaseppe`.`id` DESC', [], false)
+ 3 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 5 APPPATH\Controllers\DatabasePPEController.php(50): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getData()
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

@@ -1,17 +1,18 @@
 <template>
-<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
-        <!-- ======= Header ======= -->
+  <div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
+    <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
   
-      <div class="d-flex align-items-center justify-content-between">
-        <a href="/dashboard" class="logo d-flex align-items-center">
-          <img src="./img/logo1.png" alt="">
-          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
-            <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
-          </span>
-        </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-      </div><!-- End Logo -->
+          <div class="d-flex align-items-center justify-content-between">
+            <a href="/dashboard" class="logo d-flex align-items-center" style="position: relative;">
+              <img src="./img/dilg-logo1.png" alt="" 
+                   style="position: absolute; max-height: 220px; max-width: 220px; margin-left: -30px; z-index: 1;">
+              <span style="font-family: 'Times New Roman', Times, serif; font-size: 25px; color: rgb(42, 43, 72); padding-left: 120px; z-index: 2; position: relative;">
+                INVENTrack
+              </span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+          </div><!-- End Logo -->
   
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
@@ -158,6 +159,21 @@
                 <i class="bi bi-circle"></i><span>Unserviceable</span>
               </a>
             </li>
+            <li>
+              <a href="returnedppe">
+                <i class="bi bi-circle"></i><span>Returned PPE</span>
+              </a>
+            </li>
+            <li>
+              <a href="transferedppe">
+                <i class="bi bi-circle"></i><span>Transfered PPE</span>
+              </a>
+           </li>
+           <li>
+            <a href="disposedppe">
+              <i class="bi bi-circle"></i><span>Disposed PPE</span>
+            </a>
+         </li>
           </ul>
         </li><!-- End Components Nav -->
   
@@ -173,27 +189,7 @@
             </li>
             <li>
               <a href="ledgercard">
-                <i class="bi bi-circle"></i><span>Ledger Card</span>
-              </a>
-            </li>
-            <li>
-              <a href="propertycard">
-                <i class="bi bi-circle"></i><span>Property Card</span>
-              </a>
-            </li>
-            <li>
-              <a href="ackreceipt">
-                <i class="bi bi-circle"></i><span>Acknowledgement Receipt</span>
-              </a>
-            </li>
-            <li>
-              <a href="transferreport">
-                <i class="bi bi-circle"></i><span>Transfer Report</span>
-              </a>
-            </li>
-            <li>
-              <a href="rlsddp">
-                <i class="bi bi-circle"></i><span>RLSDDP</span>
+                <i class="bi bi-circle"></i><span>PPE Documents</span>
               </a>
             </li>
           </ul>
@@ -260,68 +256,12 @@
         </div><!-- End Page Title -->
 
         <section class="section">
-        <div class="row">
-            <div class="col-lg-12">
-              <div class="card">
-                <div class="card-body">
-                  <br>
-                  <h5>Choose Employee</h5>
-                  <br>
-                  <select v-model="selectedshowEmployeePDF" @change="updatePdfUrl" class="form-select animated-dropdown w-100">
-                    <option value="">Select Employee</option>
-                    <option v-for="employee in distinctEmployees" :key="employee" :value="employee">
-                      {{ employee }}
-                    </option>
-                  </select>
-                </div>
-                <div class="card-body">
-                  <div>
-                    <iframe v-if="pdfUrl" :src="pdfUrl" style="width: 100%; height: 100vh;" frameborder="0"></iframe>
-                  </div>
-                </div>
-              </div>
-            </div>
-        </div>
 
         
         <div class="row justify-content-center">
   <div class="col-lg-12">
     <div class="card">
-      <br>
       <div class="card-body">
-        <div class="d-flex justify-content-center">
-          <div class="col-lg-4">
-            <div class="accordion" id="faq-group-2">
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button collapsed btn btn-outline-info" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
-                    Download the records through a documented PDF
-                  </button>
-                </h2>
-                
-                <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
-                  <div class="row align-items-center mt-3">
-                    <div class="col-lg-6">
-                      <select v-model="selectedEmployeePDF" @change="downloadEmployeeRecordsPDF" class="form-select animated-dropdown w-100">
-                        <option value="" disabled>Select Employee</option>
-                        <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
-                      </select>
-                    </div>
-                    <div class="col-lg-6">
-                      <button class="btn btn-warning w-100" @click="recordsPDF"><i class="ri-download-2-line"></i> Download All</button>
-                    </div>
-                  </div>
-                  <!-- Loading animation -->
-                  <div v-if="loading" class="text-center mt-1">
-                    <div class="loading-line"></div>
-                  </div>
-                </div>
-              </div> 
-            </div> 
-          </div> 
-        </div> 
-
-      <hr>  
 
 <!-- HTML Template -->
 <div class="row justify-content-center align-items-center">
@@ -358,12 +298,44 @@
   </div>
 
   <!-- Status dropdown -->
-  <div class="col-lg-2">
+  <div class="col-lg-1">
     <select v-model="selectedStatus" class="form-select">
-      <option value="">Current Status</option>
+      <option value="">Status</option>
       <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
     </select>
   </div>
+
+  <div class="col-lg-3">
+    <div class="accordion" id="faq-group-2">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button class="accordion-button collapsed btn btn-outline-info" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
+            Download
+          </button>
+        </h2>
+        
+        <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+          <div class="row align-items-center mt-3">
+            <div class="col-lg-6">
+              <select v-model="selectedEmployeePDF" @change="downloadEmployeeRecordsPDF" class="form-select animated-dropdown w-100">
+                <option value="" disabled>Select Employee</option>
+                <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
+              </select>
+            </div>
+            <div class="col-lg-6">
+              <button class="btn btn-warning w-100" @click="recordsPDF"><i class="ri-download-2-line"></i> Download All</button>
+            </div>
+          </div>
+          <!-- Loading animation -->
+          <div v-if="loading" class="text-center mt-1">
+            <div class="loading-line"></div>
+          </div>
+        </div>
+      </div> 
+    </div> 
+  </div>
+
+
 
 
 <br>
@@ -522,7 +494,7 @@
                 
                 <tbody>
                   <!-- Table rows -->
-                  <tr v-for="info in paginatedInfo" :key="info.id" @click="selectRecord(info)">
+                  <tr v-for="info in paginatedInfo" :key="info.id" @click="storeRecordId(info.id)">
                   
                     <td scope="row"><img :src="info.image" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" /></td>
                     <td scope="row">{{ info.entityname }}</td>
@@ -616,6 +588,29 @@
         </div>
         </div>
 
+        <div class="row">
+          <div class="col-lg-12">
+            <div class="card">
+              <div class="card-body">
+                <br>
+                <h5>Choose Employee</h5>
+                <br>
+                <select v-model="selectedshowEmployeePDF" @change="updatePdfUrl" class="form-select animated-dropdown w-100">
+                  <option value="">Select Employee</option>
+                  <option v-for="employee in distinctEmployees" :key="employee" :value="employee">
+                    {{ employee }}
+                  </option>
+                </select>
+              </div>
+              <div class="card-body">
+                <div>
+                  <iframe v-if="pdfUrl" :src="pdfUrl" style="width: 100%; height: 100vh;" frameborder="0"></iframe>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+
           <!-- Modal component to display selected record -->
           <div class="modal" v-if="selectedInfo">
             <div class="modal-content" style="
@@ -653,7 +648,7 @@
                       <br>
                       Model No.: <b style="color: blue;">{{selectedInfo.modelno}}</b>
                       <br>
-                      Serial No.: <b style="color: blue;">{{selectedInfo.serialno}}</b><img :src="generateQRCodeUrl(selectedInfo.id)" alt="" style="width: 20%; height: auto; float: right;">
+                      Serial No.: <b style="color: blue;">{{selectedInfo.serialno}}</b><img :src="generateQRCodeUrl(selectedInfo.propertynumber)" alt="" style="max-width: 70px; max-height: 70px; float: right;">
                       <br>
                       Acquisition Date/Cost: <b style="color: blue;"> 2021 - 7,999.00 </b>
                       <br>
@@ -736,6 +731,13 @@ export default {
     this.getUserInfo(this.infos.fullname);
   },
   methods: {
+    storeRecordId(recordId) {
+    // Save the record ID to session storage
+    sessionStorage.setItem('selectedRecordId', recordId);
+    
+    // Redirect to the new page
+    this.$router.push({ path: '/databaseppedocs' });
+  },
     simulateLoading() {
     this.loading = true;
   },
@@ -746,34 +748,43 @@ export default {
       this.selectedInfo = info;
     },
     async downloadEmployeeRecordsPDF() {
-        try {
+      try {
           this.simulateLoading();
-           const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
-               method: 'POST',
-               headers: {
-                   'Content-Type': 'application/json',
-               },
-               body: JSON.stringify({ acc_officer: this.selectedEmployeePDF }),
-           });
-           if (response.ok) {
-               const blob = await response.blob();
-               const filename = `${this.selectedEmployeePDF}_records.pdf`; // Adjust the filename if needed
-               const url = window.URL.createObjectURL(new Blob([blob]));
-               const link = document.createElement('a');
-               link.href = url;
-               link.setAttribute('download', filename);
-               document.body.appendChild(link);
-               link.click();
-               link.parentNode.removeChild(link);
-               console.log('PDF generated successfully');
-               this.setTimeout();
-           } else {
-               console.error('Failed to generate PDF');
-           }
-       } catch (error) {
-           console.error('Error generating PDF:', error);
-       }
-    },
+
+          const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ acc_officer: this.selectedEmployeePDF }),
+          });
+
+          if (response.ok) {
+              const blob = await response.blob();
+              const filename = `${this.selectedEmployeePDF}_records.pdf`;
+              const url = window.URL.createObjectURL(blob);
+              
+              // Create a link element and trigger the download
+              const link = document.createElement('a');
+              link.href = url;
+              link.setAttribute('download', filename);
+              document.body.appendChild(link);
+              link.click();
+
+              // Cleanup
+              document.body.removeChild(link);
+              window.URL.revokeObjectURL(url);
+              console.log('PDF generated successfully');
+          } else {
+              console.error('Failed to generate PDF');
+          }
+          
+          this.setTimeout();  // If this is meant to stop the loading animation
+      } catch (error) {
+          console.error('Error generating PDF:', error);
+      }
+  },
+
 
     async recordsPDF() {
     try {
@@ -874,7 +885,7 @@ async getUserInfo(id){
     },
     async getInfo() {
       try {
-        const response = await axios.get('getdata');
+        const response = await axios.get('getDataWithImageVerification');
         this.info = response.data;
         // Extract employee names from info and store in employeeOptions
         this.employeeOptions = this.info.map(info => info.acc_officer);
@@ -1256,11 +1267,6 @@ th, td {
 th {
   height: 27px; /* Adjust height for header */
   white-space: nowrap;
-}
-
-img {
-  max-width: 50px; /* Adjust image size as needed */
-  max-height: 50px;
 }
 
 /* Optional: Add a wrapper for horizontal scrolling */

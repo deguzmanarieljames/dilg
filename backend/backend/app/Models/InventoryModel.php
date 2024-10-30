@@ -14,7 +14,7 @@ class InventoryModel extends Model
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
     // protected $allowedFields    = ['entityname', 'classification', 'code', 'article', 'particulars', 'modelno', 'serialno', 'fulldescription', 'quantity', 'arrival', 'status', 'availability', 'counts', 'image', 'created_at'];
-    protected $allowedFields    = ['entityname', 'classification', 'code', 'article', 'particulars', 'modelno', 'serialno', 'fulldescription', 'quantity', 'unit', 'unitcost', 'totalcost', 'status', 'availability', 'counts', 'image', 'created_at'];
+    protected $allowedFields    = ['entityname', 'classification', 'code', 'article', 'particulars', 'modelno', 'serialno', 'fulldescription', 'propertynumber', 'propertydate', 'quantity', 'unit', 'unitcost', 'totalcost', 'status', 'availability', 'counts', 'image', 'created_at'];
 
 
     

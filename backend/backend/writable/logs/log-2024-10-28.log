@@ -1,0 +1,828 @@
+ERROR - 2024-10-28 13:25:05 --> mysqli_sql_exception: Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 13:25:05 --> Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL
+AND `transfered_image` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 13:30:39 --> mysqli_sql_exception: Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 13:30:39 --> Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL
+AND `transfered_image` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 13:35:09 --> mysqli_sql_exception: Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 13:35:09 --> Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL
+AND `transfered_image` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 13:50:30 --> mysqli_sql_exception: Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 13:50:30 --> Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL
+AND `transfered_image` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 14:05:20 --> mysqli_sql_exception: Unknown column 'databaseppe.imageverification' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(223): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataTransferedServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-28 14:05:20 --> Unknown column 'databaseppe.imageverification' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppetransfered`
+WHERE `databaseppe`.`imageverification` IS NOT NULL
+AND `databaseppe`.`returned_image` IS NOT NULL
+AND `databaseppe`.`transfered_image` IS NOT NULL
+AND `databaseppe`.`remarks` = :databaseppe.remarks:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(223): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataTransferedServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 14:05:22 --> mysqli_sql_exception: Unknown column 'databaseppe.imageverification' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(223): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataTransferedServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-28 14:05:22 --> Unknown column 'databaseppe.imageverification' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppetransfered`
+WHERE `databaseppe`.`imageverification` IS NOT NULL
+AND `databaseppe`.`returned_image` IS NOT NULL
+AND `databaseppe`.`transfered_image` IS NOT NULL
+AND `databaseppe`.`remarks` = :databaseppe.remarks:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(223): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataTransferedServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 14:06:01 --> mysqli_sql_exception: Unknown column 'databaseppe.imageverification' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(223): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataTransferedServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-28 14:06:01 --> Unknown column 'databaseppe.imageverification' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppetransfered`
+WHERE `databaseppe`.`imageverification` IS NOT NULL
+AND `databaseppe`.`returned_image` IS NOT NULL
+AND `databaseppe`.`transfered_image` IS NOT NULL
+AND `databaseppe`.`remarks` = :databaseppe.remarks:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(223): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataTransferedServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-28 15:02:49 --> Undefined variable $data
+in APPPATH\Controllers\DatabasePPEController.php on line 2371.
+ 1 APPPATH\Controllers\DatabasePPEController.php(2371): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 2371)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('72')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-28 15:13:09 --> Undefined variable $data
+in APPPATH\Controllers\DatabasePPEController.php on line 2367.
+ 1 APPPATH\Controllers\DatabasePPEController.php(2367): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 2367)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('73')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 15:29:33 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1203): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 15:29:33 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1203): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 15:32:01 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1203): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 15:32:01 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1203): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 15:33:02 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1203): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 15:33:02 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1203): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 15:34:48 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1204): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 15:34:48 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL
+AND `transfered_image` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1204): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 15:43:41 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1207): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 15:43:41 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL
+AND `transfered_image` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1207): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 15:45:40 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1203): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 15:45:40 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1203): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 16:26:14 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1204): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 16:26:14 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1204): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 16:26:48 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1204): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 16:26:48 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1204): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 16:33:53 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1204): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 16:33:53 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1204): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 16:38:51 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1204): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 16:38:51 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1204): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 16:44:58 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1204): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 16:44:58 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1204): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 16:45:10 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1204): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 16:45:10 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1204): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 16:47:19 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1203): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 16:47:19 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1203): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 16:49:31 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1203): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 16:49:31 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1203): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 16:50:34 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 16:50:34 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 16:50:39 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 16:50:39 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 16:50:42 --> mysqli_sql_exception: Duplicate entry '62' for key 'databaseppetransfered.PRIMARY' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 16:50:42 --> Duplicate entry '62' for key 'databaseppetransfered.PRIMARY'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 16:54:46 --> mysqli_sql_exception: Incorrect date value: '0000-00-00' for column 'rrsp_date' at row 1 in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 16:54:46 --> Incorrect date value: '0000-00-00' for column 'rrsp_date' at row 1
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 16:58:42 --> mysqli_sql_exception: Incorrect date value: '0000-00-00' for column 'rrsp_date' at row 1 in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 16:58:42 --> Incorrect date value: '0000-00-00' for column 'rrsp_date' at row 1
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 16:59:22 --> mysqli_sql_exception: Incorrect date value: '0000-00-00' for column 'rrsp_date' at row 1 in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 16:59:22 --> Incorrect date value: '0000-00-00' for column 'rrsp_date' at row 1
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 17:02:12 --> mysqli_sql_exception: Incorrect date value: '0000-00-00' for column 'rrsp_date' at row 1 in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 17:02:12 --> Incorrect date value: '0000-00-00' for column 'rrsp_date' at row 1
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-28 17:03:13 --> mysqli_sql_exception: Incorrect date value: '0000-00-00' for column 'rrsp_date' at row 1 in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-28 17:03:13 --> Incorrect date value: '0000-00-00' for column 'rrsp_date' at row 1
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-CPU-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

@@ -1,0 +1,162 @@
+ERROR - 2024-09-23 03:05:15 --> mysqli_sql_exception: Unknown column 'property_number' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(885): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_return('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-09-23 03:05:15 --> Unknown column 'property_number' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `reg_returned_qty` = :reg_returned_qty:
+WHERE `property_number` = :property_number:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(885): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_return('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-23 03:09:15 --> mysqli_sql_exception: Unknown column 'property_number' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(885): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_return('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-09-23 03:09:15 --> Unknown column 'property_number' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `reg_returned_qty` = :reg_returned_qty:, `reg_returned_off` = :reg_returned_off:
+WHERE `property_number` = :property_number:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(885): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_return('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-23 03:09:28 --> mysqli_sql_exception: Unknown column 'property_number' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(885): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_return('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-09-23 03:09:28 --> Unknown column 'property_number' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `reg_returned_qty` = :reg_returned_qty:, `reg_returned_off` = :reg_returned_off:
+WHERE `property_number` = :property_number:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(885): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_return('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-23 03:11:08 --> mysqli_sql_exception: Unknown column 'property_number' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(885): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_return('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-09-23 03:11:08 --> Unknown column 'property_number' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `reg_returned_qty` = :reg_returned_qty:, `reg_returned_off` = :reg_returned_off:
+WHERE `property_number` = :property_number:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(885): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_return('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-23 03:11:16 --> mysqli_sql_exception: Unknown column 'property_number' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(885): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_return('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-09-23 03:11:16 --> Unknown column 'property_number' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `reg_returned_qty` = :reg_returned_qty:, `reg_returned_off` = :reg_returned_off:
+WHERE `property_number` = :property_number:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(885): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_return('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-09-23 03:11:51 --> mysqli_sql_exception: Unknown column 'property_number' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(885): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_return('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-09-23 03:11:51 --> Unknown column 'property_number' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `reg_returned_qty` = :reg_returned_qty:, `reg_returned_off` = :reg_returned_off:
+WHERE `property_number` = :property_number:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(885): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_return('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

@@ -4,10 +4,11 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
       <!-- Logo -->
       <div class="d-flex align-items-center justify-content-between">
-        <a href="/dashboard" class="logo d-flex align-items-center">
-          <img src="./img/logo1.png" alt="">
-          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
-            <i>INVEN<sup style="font-size: 70%;">TRACK</sup></i>
+        <a href="/dashboard" class="logo d-flex align-items-center" style="position: relative;">
+          <img src="./img/dilg-logo1.png" alt="" 
+               style="position: absolute; max-height: 220px; max-width: 220px; margin-left: -30px; z-index: 1;">
+          <span style="font-family: 'Times New Roman', Times, serif; font-size: 25px; color: rgb(42, 43, 72); padding-left: 120px; z-index: 2; position: relative;">
+            INVENTrack
           </span>
         </a>
         <i class="bi bi-list toggle-sidebar-btn"></i>
@@ -113,6 +114,21 @@
                 <i class="bi bi-circle"></i><span>Unserviceable</span>
               </a>
             </li>
+            <li>
+              <a href="returnedppe">
+                <i class="bi bi-circle"></i><span>Returned PPE</span>
+              </a>
+            </li>
+            <li>
+              <a href="transferedppe">
+                <i class="bi bi-circle"></i><span>Transfered PPE</span>
+              </a>
+           </li>
+           <li>
+              <a href="disposedppe">
+                <i class="bi bi-circle"></i><span>Disposed PPE</span>
+              </a>
+           </li>
           </ul>
         </li><!-- End Components Nav -->
         <li class="nav-item">
@@ -127,27 +143,7 @@
             </li>
             <li>
               <a href="ledgercard">
-                <i class="bi bi-circle"></i><span>Ledger Card</span>
-              </a>
-            </li>
-            <li>
-              <a href="propertycard">
-                <i class="bi bi-circle"></i><span>Property Card</span>
-              </a>
-            </li>
-            <li>
-              <a href="ackreceipt">
-                <i class="bi bi-circle"></i><span>Acknowledgement Receipt</span>
-              </a>
-            </li>
-            <li>
-              <a href="transferreport">
-                <i class="bi bi-circle"></i><span>Transfer Report</span>
-              </a>
-            </li>
-            <li>
-              <a href="rlsddp">
-                <i class="bi bi-circle"></i><span>RLSDDP</span>
+                <i class="bi bi-circle"></i><span>PPE Documents</span>
               </a>
             </li>
           </ul>
@@ -205,44 +201,40 @@
     <!-- Left side columns -->
     <div class="col-lg-8">
       <div class="row">
-
-
-
-        
        <!-- Database PPE Card -->
 
   <div class="container">
     <!-- <div class="row ">  -->
       <div class="col-xl-6 col-md-12 mb-4 inventory-container">
-    <div class="card info-card customers-card">
-        <div class="card-body">
-            <div class="d-flex align-items-center justify-content-between">
-                <h5 class="card-title">Database PPE</h5>
-                <a href="/databaseppe" class="btn btn-view-all btn-content">
-                    <span class="btn-title">View All</span>
-                    <span class="icon-arrow">
-                      <svg width="38px" height="30px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                  <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <path id="arrow-icon-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#000000"></path>
-                    <path id="arrow-icon-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#000000"></path>
-                    <path id="arrow-icon-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#000000"></path>
-                  </g>
-                </svg>
-                    </span>
-                </a>
-            </div>
-            <div class="d-flex align-items-center">
-                <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                    <i class="bi bi-database"></i>
+        <div class="card info-card customers-card">
+            <div class="card-body">
+                <div class="d-flex align-items-center justify-content-between">
+                    <h5 class="card-title">Database PPE</h5>
+                    <a href="/databaseppe" class="btn btn-view-all btn-content">
+                        <span class="btn-title">View All</span>
+                        <span class="icon-arrow">
+                          <svg width="38px" height="30px" viewBox="0 0 66 43" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                      <g id="arrow" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <path id="arrow-icon-one" d="M40.1543933,3.89485454 L43.9763149,0.139296592 C44.1708311,-0.0518420739 44.4826329,-0.0518571125 44.6771675,0.139262789 L65.6916134,20.7848311 C66.0855801,21.1718824 66.0911863,21.8050225 65.704135,22.1989893 C65.7000188,22.2031791 65.6958657,22.2073326 65.6916762,22.2114492 L44.677098,42.8607841 C44.4825957,43.0519059 44.1708242,43.0519358 43.9762853,42.8608513 L40.1545186,39.1069479 C39.9575152,38.9134427 39.9546793,38.5968729 40.1481845,38.3998695 C40.1502893,38.3977268 40.1524132,38.395603 40.1545562,38.3934985 L56.9937789,21.8567812 C57.1908028,21.6632968 57.193672,21.3467273 57.0001876,21.1497035 C56.9980647,21.1475418 56.9959223,21.1453995 56.9937605,21.1432767 L40.1545208,4.60825197 C39.9574869,4.41477773 39.9546013,4.09820839 40.1480756,3.90117456 C40.1501626,3.89904911 40.1522686,3.89694235 40.1543933,3.89485454 Z" fill="#000000"></path>
+                        <path id="arrow-icon-two" d="M20.1543933,3.89485454 L23.9763149,0.139296592 C24.1708311,-0.0518420739 24.4826329,-0.0518571125 24.6771675,0.139262789 L45.6916134,20.7848311 C46.0855801,21.1718824 46.0911863,21.8050225 45.704135,22.1989893 C45.7000188,22.2031791 45.6958657,22.2073326 45.6916762,22.2114492 L24.677098,42.8607841 C24.4825957,43.0519059 24.1708242,43.0519358 23.9762853,42.8608513 L20.1545186,39.1069479 C19.9575152,38.9134427 19.9546793,38.5968729 20.1481845,38.3998695 C20.1502893,38.3977268 20.1524132,38.395603 20.1545562,38.3934985 L36.9937789,21.8567812 C37.1908028,21.6632968 37.193672,21.3467273 37.0001876,21.1497035 C36.9980647,21.1475418 36.9959223,21.1453995 36.9937605,21.1432767 L20.1545208,4.60825197 C19.9574869,4.41477773 19.9546013,4.09820839 20.1480756,3.90117456 C20.1501626,3.89904911 20.1522686,3.89694235 20.1543933,3.89485454 Z" fill="#000000"></path>
+                        <path id="arrow-icon-three" d="M0.154393339,3.89485454 L3.97631488,0.139296592 C4.17083111,-0.0518420739 4.48263286,-0.0518571125 4.67716753,0.139262789 L25.6916134,20.7848311 C26.0855801,21.1718824 26.0911863,21.8050225 25.704135,22.1989893 C25.7000188,22.2031791 25.6958657,22.2073326 25.6916762,22.2114492 L4.67709797,42.8607841 C4.48259567,43.0519059 4.17082418,43.0519358 3.97628526,42.8608513 L0.154518591,39.1069479 C-0.0424848215,38.9134427 -0.0453206733,38.5968729 0.148184538,38.3998695 C0.150289256,38.3977268 0.152413239,38.395603 0.154556228,38.3934985 L16.9937789,21.8567812 C17.1908028,21.6632968 17.193672,21.3467273 17.0001876,21.1497035 C16.9980647,21.1475418 16.9959223,21.1453995 16.9937605,21.1432767 L0.15452076,4.60825197 C-0.0425130651,4.41477773 -0.0453986756,4.09820839 0.148075568,3.90117456 C0.150162624,3.89904911 0.152268631,3.89694235 0.154393339,3.89485454 Z" fill="#000000"></path>
+                      </g>
+                    </svg>
+                        </span>
+                    </a>
                 </div>
-                <div class="ps-3">
-                    <h1>{{ ppeCount }}</h1>
-                    <p class="mb-2"></p>
+                <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-database"></i>
+                    </div>
+                    <div class="ps-3">
+                        <h1>{{ ppeCount }}</h1>
+                        <p class="mb-2"></p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
          <!-- Inventory Card -->
          <div class="col-xl-6 col-md-12 mb-4 inventory-container">
@@ -277,7 +269,7 @@
             </div>
           
           <!-- Employee Card -->
-          <div class="col-xl-6 col-md-12 mb-4">
+          <div class="col-xl-6 col-md-12 mb-4 inventory-container">
             <div class="card info-card employees-card">
                 <div class="card-body">
                   <div class="d-flex align-items-center justify-content-between">
@@ -309,88 +301,27 @@
     </div>
   </div>
 
+</div>
+</div>
 
-              <!-- Reports -->
-              <div class="col-12">
-                <div class="card">
-  
-                  <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    </ul>
+</div>
+
+<div class="row">
+  <!-- Left side columns -->
+  <div class="col-lg-8">
+    
+    <div class="container">
+          <div class="card info-card inventory-tracking-card">
+              <div class="card-body">
+                  <h5 class="card-title">Inventory Tracking</h5>
+                  <div class="graph-container">
+                      <canvas ref="BorrowChart" style="width: 75%; height: 500px;"></canvas>
                   </div>
-
-
-                  <div class="container">
-    <!-- Inventory Tracking -->
-    <div class="col-lg-10">
-        <div class="card info-card inventory-tracking-card">
-            <div class="card-body">
-                <h5 class="card-title">Inventory Tracking</h5>
-                <div class="graph-container">
-                    <canvas ref="BorrowChart" style="width: 100%; height: 700px;"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
-      <!-- Graph 4 -->
-      <div class="col-lg-10">
-        <div class="card info-card inventory-tracking-card">
-            <div class="card-body">
-                <h5 class="card-title">fffffff</h5>
-                <div class="graph-container">
-                    <canvas ref="FourthChart" style="width: 100%; height: 500px;"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="container">
-    <!-- Graph 3 -->
-    <div class="col-lg-10">
-        <div class="card info-card inventory-tracking-card">
-            <div class="card-body">
-                <h5 class="card-title">ggggggg</h5>
-                <div class="graph-container">
-                    <canvas ref="ThirdChart" style="width: 100%; height: 500px;"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
- <!-- Pogi -->
- <div class="col-lg-10">
-        <div class="card info-card inventory-tracking-card">
-            <div class="card-body">
-                <h5 class="card-title">Pogi</h5>
-                <div class="graph-container">
-                    <canvas ref="SecondChart" style="width: 100%; height: 700px;"></canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-<!-- Recent Sales -->
-<div class="col-12">
-    <div class="card recent-sales overflow-auto">
-        <!-- Your Recent Sales content -->
-    </div>
-</div><!-- End Recent Sales -->
-
-</div>
-</div>
-
-</div>
-</div><!-- End Left side columns -->
-
-<!-- Right side columns -->
-<div class="col-lg-4">
-</div>
+              </div>
+          </div>
+   </div>
+    
+  </div>
 </div>
 </section>
 
@@ -400,7 +331,6 @@
 </div>
 
   </template>
-
 
 <script>
 import axios from 'axios';
@@ -419,11 +349,8 @@ export default {
     this.fetchEmployeeCount();
     this.fetchTotalInventory();
     this.fetchPPECount();
-    this.renderSecondChart();
-    this.renderThirdChart();
-    this.renderFourthChart(); 
   },
-  
+
   methods: {
     async fetchInventoryCount() {
       try {
@@ -431,7 +358,9 @@ export default {
         const data = response.data;
         const particulars = data.particulars;
         const counts = data.counts;
-        this.renderInventoryChart(particulars, counts);
+        // Render charts for both BorrowChart and ReturnChart
+        this.renderInventoryChart('BorrowChart', particulars, counts);
+        this.renderInventoryChart('ReturnChart', particulars, counts); // Second graph
       } catch (error) {
         console.error('Error fetching inventory count:', error);
       }
@@ -467,8 +396,8 @@ export default {
       }
     },
 
-    renderInventoryChart(particulars, counts) {
-      const ctx = this.$refs.BorrowChart.getContext('2d');
+    renderInventoryChart(refName, particulars, counts) {
+      const ctx = this.$refs[refName].getContext('2d');
       new Chart(ctx, {
         type: 'bar',
         data: {
@@ -477,89 +406,23 @@ export default {
             label: 'Borrow Counts',
             data: counts,
             backgroundColor: [
-              'rgba(0, 0, 128, 0.6)', // Lighter Dark Blue
-              'rgba(0, 128, 0, 0.6)', // Lighter Dark Green
-              'rgba(128, 0, 0, 0.6)', // Lighter Dark Red
-              'rgba(128, 0, 128, 0.6)', // Lighter Dark Purple
-              'rgba(0, 128, 128, 0.6)', // Lighter Dark Cyan
-              'rgba(128, 128, 0, 0.6)' // Lighter Dark Yellow
+              'rgba(0, 0, 128, 0.6)', 
+              'rgba(0, 128, 0, 0.6)', 
+              'rgba(128, 0, 0, 0.6)', 
+              'rgba(128, 0, 128, 0.6)', 
+              'rgba(0, 128, 128, 0.6)', 
+              'rgba(128, 128, 0, 0.6)'
             ],
             borderColor: [
-              'rgba(0, 0, 128, 0.9)', // Lighter Dark Blue (border)
-              'rgba(0, 128, 0, 0.9)', // Lighter Dark Green (border)
-              'rgba(128, 0, 0, 0.9)', // Lighter Dark Red (border)
-              'rgba(128, 0, 128, 0.9)', // Lighter Dark Purple (border)
-              'rgba(0, 128, 128, 0.9)', // Lighter Dark Cyan (border)
-              'rgba(128, 128, 0, 0.9)' // Lighter Dark Yellow (border)
+              'rgba(0, 0, 128, 0.9)', 
+              'rgba(0, 128, 0, 0.9)', 
+              'rgba(128, 0, 0, 0.9)', 
+              'rgba(128, 0, 128, 0.9)', 
+              'rgba(0, 128, 128, 0.9)', 
+              'rgba(128, 128, 0, 0.9)'
             ],
             borderWidth: 2,
-            barThickness: 57, // Adjust this value to increase bar width
-            maxBarThickness: 70 // Adjust this value to set maximum bar width
-          }]
-        },
-        options: {
-          indexAxis: 'x',
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'top',
-            },
-            title: {
-              display: true,
-              text: 'Borrow Counts of Equipments',
-              font: {
-                size: 16, 
-              }
-            }
-          },
-          scales: {
-            y: {
-              beginAtZero: true
-            },
-            x: {
-              ticks: {
-                font: {
-                  size: 15,
-                }
-              }
-            }
-          },
-          elements: {
-            bar: {
-              borderWidth: 1,
-              borderSkipped: 'bottom',
-              barThickness: 90, // I-adjust ang lapad ng bawat bar base sa pangangailangan
-              maxBarThickness: 60, // Maximum lapad ng bawat bar
-              borderRadius: 4,
-            }
-          }
-        }
-      });
-    },
-
-    renderSecondChart() {
-      const ctx = this.$refs.SecondChart.getContext('2d');
-      new Chart(ctx, {
-        type: 'line', 
-        data: {
-          labels: ['Ariel', 'Leslie', 'Marc', 'King'], // Replace with your own data labels
-          datasets: [{
-            label: 'Pogi',
-            data: [10, 25, 1, 40], // Replace with your data points
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.6)',
-              'rgba(54, 162, 235, 0.6)',
-              'rgba(75, 192, 192, 0.6)',
-              'rgba(153, 102, 255, 0.6)'
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 0.9)',
-              'rgba(54, 162, 235, 0.9)',
-              'rgba(75, 192, 192, 0.9)',
-              'rgba(153, 102, 255, 0.9)'
-            ],
-            borderWidth: 2,
-            barThickness: 57, // Adjust the width of the bars as needed
+            barThickness: 40,
             maxBarThickness: 70
           }]
         },
@@ -572,7 +435,7 @@ export default {
             },
             title: {
               display: true,
-              text: 'Pogi',
+              text: 'Borrow Counts of Equipments',
               font: {
                 size: 16,
               }
@@ -602,91 +465,8 @@ export default {
         }
       });
     },
-
-    renderThirdChart() {
-      const ctx = this.$refs.ThirdChart.getContext('2d');
-      new Chart(ctx, {
-        type: 'pie', 
-        data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green'], // Replace with your own data labels
-          datasets: [{
-            label: '3', data: [10, 20, 30, 40], // Replace with your data points
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.6)',
-              'rgba(54, 162, 235, 0.6)',
-              'rgba(255, 206, 86, 0.6)',
-              'rgba(75, 192, 192, 0.6)'
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)'
-            ],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'top',
-            },
-            title: {
-              display: true,
-              text: '3',
-              font: {
-                size: 16,
-              }
-            }
-          }
-        }
-      });
-    },
-
-    renderFourthChart() {
-      const ctx = this.$refs.FourthChart.getContext('2d');
-      new Chart(ctx, {
-        type: 'doughnut', 
-        data: {
-          labels: ['Red', 'Blue', 'Yellow', 'Green'], // Replace with your own data labels
-          datasets: [{
-            label: '4',
-            data: [15, 25, 35, 45], // Replace with your data points
-            backgroundColor: [
-              'rgba(255, 99, 132, 0.6)',
-              'rgba(54, 162, 235, 0.6)',
-              'rgba(255, 206, 86, 0.6)',
-              'rgba(75, 192, 192, 0.6)'
-            ],
-            borderColor: [
-              'rgba(255, 99, 132, 1)',
-              'rgba(54, 162, 235, 1)',
-              'rgba(255, 206, 86, 1)',
-              'rgba(75, 192, 192, 1)'
-            ],
-            borderWidth: 1
-          }]
-        },
-        options: {
-          responsive: true,
-          plugins: {
-            legend: {
-              position: 'top',
-            },
-            title: {
-              display: true,
-              text: '4',
-              font: {
-                size: 16,
-              }
-            }
-          }
-        }
-      });
-    }
   }
-}
+};
 </script>
 
 
@@ -703,7 +483,6 @@ export default {
 }
 
 
-/* Graph container styling */
 .graph-container {
   position: relative;
 }
@@ -874,6 +653,19 @@ border-bottom: 17px solid #A3CD98;
     background-color: #1b2f47;
     transform: translateX(0);
   }
+}
+
+
+@media (max-width:600px){
+  .container{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .row{
+    margin-right: 0px;
+  }
+
 }
 
 </style>

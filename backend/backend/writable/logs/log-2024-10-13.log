@@ -1,0 +1,1132 @@
+CRITICAL - 2024-10-13 06:47:33 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/): Is a directory
+in APPPATH\Controllers\DatabasePPEController.php on line 590.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/): Is a directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 590)
+ 2 APPPATH\Controllers\DatabasePPEController.php(590): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('347')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 06:49:29 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/): Is a directory
+in APPPATH\Controllers\DatabasePPEController.php on line 590.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/): Is a directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 590)
+ 2 APPPATH\Controllers\DatabasePPEController.php(590): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('355')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 10:06:18 --> Undefined variable $particularName
+in APPPATH\Controllers\DatabasePPEController.php on line 842.
+ 1 APPPATH\Controllers\DatabasePPEController.php(842): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $particularName', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 842)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:06:33 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:06:33 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:06:43 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:06:43 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:06:49 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('358', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('358')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:06:49 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('358', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('358')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:07:40 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:07:40 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:08:21 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:08:21 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:08:34 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:08:34 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:09:16 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:09:16 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:, `image` = :image:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:10:01 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:10:01 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:12:05 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:12:05 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:22:18 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:22:18 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:25:17 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:25:17 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 10:27:10 --> Undefined variable $particularName
+in APPPATH\Controllers\DatabasePPEController.php on line 842.
+ 1 APPPATH\Controllers\DatabasePPEController.php(842): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $particularName', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 842)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:28:30 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('359', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('359')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:28:30 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('359', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('359')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:30:00 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(648): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:30:00 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(648): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:30:16 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(648): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:30:16 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(648): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:30:59 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(648): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:30:59 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(648): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:35:21 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:35:21 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:36:17 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:36:17 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:40:45 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:40:45 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 10:41:54 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1728229182_67c343902639bd10ea4b.jpg): No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 594.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1728229182_67c343902639bd10ea4b.jpg): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 594)
+ 2 APPPATH\Controllers\DatabasePPEController.php(594): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1728229182_67c343902639bd10ea4b.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 10:42:10 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1728229182_67c343902639bd10ea4b.jpg): No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 594.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1728229182_67c343902639bd10ea4b.jpg): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 594)
+ 2 APPPATH\Controllers\DatabasePPEController.php(594): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1728229182_67c343902639bd10ea4b.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:45:15 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:45:15 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('357', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 10:46:11 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1728229182_67c343902639bd10ea4b.jpg): No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 594.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1728229182_67c343902639bd10ea4b.jpg): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 594)
+ 2 APPPATH\Controllers\DatabasePPEController.php(594): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1728229182_67c343902639bd10ea4b.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('357')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:47:30 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('359', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('359')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:47:30 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('359', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('359')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:47:46 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('359', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('359')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:47:46 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('359', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('359')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:48:04 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('359', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('359')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:48:04 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('359', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('359')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:51:09 --> mysqli_sql_exception: Duplicate entry 'Speaker' for key 'inventoryppe.particulars' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `in...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `in...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `in...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `in...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(698): CodeIgniter\Model->insert(Array, false)
+#8 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(839): CodeIgniter\BaseModel->save(Array)
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#11 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-10-13 10:51:09 --> Duplicate entry 'Speaker' for key 'inventoryppe.particulars'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `inventoryppe` (`entityname`, `classification`, `code`, `article`, `particulars`, `modelno`, `serialno`, `propertynumber`, `propertydate`, `quantity`, `unit`, `unitcost`, `totalcost`, `image`) VALUES (:entityname:, :classification:, :code:, :article:, :particulars:, :modelno:, :serialno:, :propertynumber:, :propertydate:, :quantity:, :unit:, :unitcost:, :totalcost:, :image:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\DatabasePPEController.php(839): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:51:59 --> mysqli_sql_exception: Duplicate entry 'Speaker' for key 'inventoryppe.particulars' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `in...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `in...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `in...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `in...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(698): CodeIgniter\Model->insert(Array, false)
+#8 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(839): CodeIgniter\BaseModel->save(Array)
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#11 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-10-13 10:51:59 --> Duplicate entry 'Speaker' for key 'inventoryppe.particulars'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `inventoryppe` (`entityname`, `classification`, `code`, `article`, `particulars`, `modelno`, `serialno`, `propertynumber`, `propertydate`, `quantity`, `unit`, `unitcost`, `totalcost`, `image`) VALUES (:entityname:, :classification:, :code:, :article:, :particulars:, :modelno:, :serialno:, :propertynumber:, :propertydate:, :quantity:, :unit:, :unitcost:, :totalcost:, :image:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\DatabasePPEController.php(839): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 10:52:31 --> Undefined variable $particularName
+in APPPATH\Controllers\DatabasePPEController.php on line 842.
+ 1 APPPATH\Controllers\DatabasePPEController.php(842): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $particularName', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 842)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:53:17 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('362', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('362')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:53:17 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('362', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('362')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:54:01 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('362', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('362')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:54:01 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('362', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('362')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:54:23 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('362', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('362')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:54:23 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('362', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('362')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:54:40 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('362', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('362')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:54:40 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('362', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('362')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:54:49 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('362', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('362')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:54:49 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('362', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('362')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:56:25 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('362', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('362')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:56:25 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('362', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('362')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 10:57:42 --> Undefined variable $particularName
+in APPPATH\Controllers\DatabasePPEController.php on line 842.
+ 1 APPPATH\Controllers\DatabasePPEController.php(842): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $particularName', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 842)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 10:58:32 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('363', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('363')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 10:58:32 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(602): CodeIgniter\Model->update('363', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('363')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 11:03:29 --> Undefined variable $particularName
+in APPPATH\Controllers\DatabasePPEController.php on line 547.
+ 1 APPPATH\Controllers\DatabasePPEController.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $particularName', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 547)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 11:04:42 --> Undefined variable $particularName
+in APPPATH\Controllers\DatabasePPEController.php on line 547.
+ 1 APPPATH\Controllers\DatabasePPEController.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $particularName', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 547)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 11:04:53 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(610): CodeIgniter\Model->update('365', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('365')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 11:04:53 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(610): CodeIgniter\Model->update('365', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('365')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 11:05:18 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(610): CodeIgniter\Model->update('365', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('365')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 11:05:18 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `totalcost` = :totalcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(610): CodeIgniter\Model->update('365', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('365')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 11:06:02 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(609): CodeIgniter\Model->update('365', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('365')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 11:06:02 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(609): CodeIgniter\Model->update('365', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('365')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 11:06:54 --> mysqli_sql_exception: Duplicate entry '2024-10-13' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `in...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `in...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `in...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `in...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, false)
+#7 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(698): CodeIgniter\Model->insert(Array, false)
+#8 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(544): CodeIgniter\BaseModel->save(Array)
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#11 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#12 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#13 {main}
+CRITICAL - 2024-10-13 11:06:54 --> Duplicate entry '2024-10-13' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `inventoryppe` (`entityname`, `classification`, `code`, `article`, `particulars`, `modelno`, `serialno`, `propertynumber`, `propertydate`, `quantity`, `unit`, `unitcost`, `totalcost`, `image`) VALUES (:entityname:, :classification:, :code:, :article:, :particulars:, :modelno:, :serialno:, :propertynumber:, :propertydate:, :quantity:, :unit:, :unitcost:, :totalcost:, :image:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], false)
+ 5 SYSTEMPATH\BaseModel.php(698): CodeIgniter\Model->insert([...], false)
+ 6 APPPATH\Controllers\DatabasePPEController.php(544): CodeIgniter\BaseModel->save([...])
+ 7 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 8 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 9 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 11:08:35 --> Undefined variable $particularName
+in APPPATH\Controllers\DatabasePPEController.php on line 547.
+ 1 APPPATH\Controllers\DatabasePPEController.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $particularName', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 547)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 11:08:44 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(610): CodeIgniter\Model->update('367', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('367')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 11:08:44 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(610): CodeIgniter\Model->update('367', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('367')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-13 11:08:56 --> mysqli_sql_exception: Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `invento...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `invento...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `invento...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `invento...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(Array, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(Array, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(610): CodeIgniter\Model->update('367', Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('367')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-13 11:08:56 --> Duplicate entry '0000-00-00' for key 'inventoryppe.propertydate'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `inventoryppe` SET `entityname` = :entityname:, `classification` = :classification:, `code` = :code:, `article` = :article:, `particulars` = :particulars:, `modelno` = :modelno:, `serialno` = :serialno:, `propertynumber` = :propertynumber:, `propertydate` = :propertydate:, `quantity` = :quantity:, `unit` = :unit:, `unitcost` = :unitcost:, `image` = :image:
+WHERE `inventoryppe`.`id` IN :inventoryppe.id:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate([...], [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update([...], [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(610): CodeIgniter\Model->update('367', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('367')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 11:09:06 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1728817715_ce19beff85a9091d0aff.webp): No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 602.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1728817715_ce19beff85a9091d0aff.webp): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 602)
+ 2 APPPATH\Controllers\DatabasePPEController.php(602): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1728817715_ce19beff85a9091d0aff.webp')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('367')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 12:22:56 --> Undefined variable $particularName
+in APPPATH\Controllers\DatabasePPEController.php on line 547.
+ 1 APPPATH\Controllers\DatabasePPEController.php(547): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $particularName', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 547)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 14:35:47 --> Unsupported operand types: string * string
+in APPPATH\Controllers\DatabasePPEController.php on line 216.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 14:41:18 --> Unsupported operand types: string * string
+in APPPATH\Controllers\DatabasePPEController.php on line 216.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->save()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 15:16:39 --> Undefined variable $data
+in APPPATH\Controllers\DatabasePPEController.php on line 2071.
+ 1 APPPATH\Controllers\DatabasePPEController.php(2071): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 2071)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('59')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-13 23:52:16 --> Undefined variable $data
+in APPPATH\Controllers\DatabasePPEController.php on line 2095.
+ 1 APPPATH\Controllers\DatabasePPEController.php(2095): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 2095)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateVerification('62')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

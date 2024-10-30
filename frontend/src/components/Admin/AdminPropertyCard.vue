@@ -1,17 +1,18 @@
 <template>
-<div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
+  <div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
   
-      <div class="d-flex align-items-center justify-content-between">
-        <a href="/dashboard" class="logo d-flex align-items-center">
-          <img src="./img/logo1.png" alt="">
-          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
-            <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
-          </span>
-        </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-      </div><!-- End Logo -->
+          <div class="d-flex align-items-center justify-content-between">
+            <a href="/dashboard" class="logo d-flex align-items-center" style="position: relative;">
+              <img src="./img/dilg-logo1.png" alt="" 
+                   style="position: absolute; max-height: 220px; max-width: 220px; margin-left: -30px; z-index: 1;">
+              <span style="font-family: 'Times New Roman', Times, serif; font-size: 25px; color: rgb(42, 43, 72); padding-left: 120px; z-index: 2; position: relative;">
+                INVENTrack
+              </span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+          </div><!-- End Logo -->
   
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
@@ -156,6 +157,21 @@
                 <i class="bi bi-circle"></i><span>Unserviceable</span>
               </a>
             </li>
+            <li>
+              <a href="returnedppe">
+                <i class="bi bi-circle"></i><span>Returned PPE</span>
+              </a>
+            </li>
+            <li>
+              <a href="transferedppe">
+                <i class="bi bi-circle"></i><span>Transfered PPE</span>
+              </a>
+           </li>
+           <li>
+            <a href="disposedppe">
+              <i class="bi bi-circle"></i><span>Disposed PPE</span>
+            </a>
+         </li>
           </ul>
         </li><!-- End Components Nav -->
   

@@ -1,17 +1,18 @@
 <template>
-  <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
+  <div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
           <!-- ======= Header ======= -->
           <header id="header" class="header fixed-top d-flex align-items-center">
     
-        <div class="d-flex align-items-center justify-content-between">
-          <a href="/dashboard" class="logo d-flex align-items-center">
-            <img src="./img/logo1.png" alt="">
-            <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
-              <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
-            </span>
-          </a>
-          <i class="bi bi-list toggle-sidebar-btn"></i>
-        </div><!-- End Logo -->
+            <div class="d-flex align-items-center justify-content-between">
+              <a href="/dashboard" class="logo d-flex align-items-center" style="position: relative;">
+                <img src="./img/dilg-logo1.png" alt="" 
+                     style="position: absolute; max-height: 220px; max-width: 220px; margin-left: -30px; z-index: 1;">
+                <span style="font-family: 'Times New Roman', Times, serif; font-size: 25px; color: rgb(42, 43, 72); padding-left: 120px; z-index: 2; position: relative;">
+                  INVENTrack
+                </span>
+              </a>
+              <i class="bi bi-list toggle-sidebar-btn"></i>
+            </div><!-- End Logo -->
     
         <nav class="header-nav ms-auto">
           <ul class="d-flex align-items-center">
@@ -156,6 +157,21 @@
                   <i class="bi bi-circle"></i><span>Unserviceable</span>
                 </a>
               </li>
+              <li>
+                <a href="returnedppe">
+                  <i class="bi bi-circle"></i><span>Returned PPE</span>
+                </a>
+              </li>
+              <li>
+                <a href="transferedppe">
+                  <i class="bi bi-circle"></i><span>Transfered PPE</span>
+                </a>
+             </li>
+             <li>
+              <a href="disposedppe">
+                <i class="bi bi-circle"></i><span>Disposed PPE</span>
+              </a>
+           </li>
             </ul>
           </li><!-- End Components Nav -->
     
@@ -171,27 +187,7 @@
               </li>
               <li>
                 <a href="ledgercard">
-                  <i class="bi bi-circle"></i><span>Ledger Card</span>
-                </a>
-              </li>
-              <li>
-                <a href="propertycard">
-                  <i class="bi bi-circle"></i><span>Property Card</span>
-                </a>
-              </li>
-              <li>
-                <a href="ackreceipt">
-                  <i class="bi bi-circle"></i><span>Acknowledgement Receipt</span>
-                </a>
-              </li>
-              <li>
-                <a href="transferreport">
-                  <i class="bi bi-circle"></i><span>Transfer Report</span>
-                </a>
-              </li>
-              <li>
-                <a href="rlsddp">
-                  <i class="bi bi-circle"></i><span>RLSDDP</span>
+                  <i class="bi bi-circle"></i><span>PPE Documents</span>
                 </a>
               </li>
             </ul>
@@ -238,7 +234,7 @@
         <main id="main" class="main">
   
           <div class="pagetitle">
-          <h1>Serviceable - Property, Plant and Equipment</h1>
+          <h1>Unserviceable - Property, Plant and Equipment</h1>
           <nav>
               <ol class="breadcrumb">
               <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
@@ -344,7 +340,7 @@
         <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
           <div class="row mt-3">
             <div class="col-lg-12 align-items-center">
-              <button class="download" type="button" @click="serviceablePDF">
+              <button class="download" type="button" @click="unserviceablePDF">
                 <span class="button__text">Download</span>
                 <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
               </button>
@@ -600,11 +596,11 @@
          }
       },
   
-      async serviceablePDF() {
+      async unserviceablePDF() {
       try {
           // Send HTTP request to backend to generate PDFs for all records
           this.simulateLoading();
-          const response = await fetch('http://dilg.test/backend/serviceablePDF', {
+          const response = await fetch('http://dilg.test/backend/unserviceablePDF', {
               method: 'GET',
               headers: {
                   'Content-Type': 'application/json',
@@ -671,7 +667,7 @@
           //   },
           async getInfo() {
             try {
-              const response = await axios.get('getdata');
+              const response = await axios.get('getDataUnserviceable');
               this.info = response.data;
               // Extract employee names from info and store in employeeOptions
               this.employeeOptions = this.info.map(info => info.acc_officer);
@@ -941,218 +937,177 @@
   </script>
   
   
-  <style scoped>
+<style scoped>
+
+#qr-video {
+  width: 300px;
+  height: 300px;
+}
+#qr-result {
+  margin-top: 10px;
+}
+
+  .search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px; /* Add margin to separate from the table */
+  }
   
-  #qr-video {
-    width: 300px;
-    height: 300px;
-  }
-  #qr-result {
-    margin-top: 10px;
-  }
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    }
-    th, td {
-    border: 1px solid black;
+  .search-bar {
+    width: 20%; /* Adjust width as needed */
     padding: 10px;
-    text-align: center;
-    }
-    th {
-    height: 55px; 
-    white-space: nowrap;
-    }
-      
-        /* Responsive styles */
-        @media screen and (max-width: 600px) {
-          table, tr, td {
-            display: block;
-          }
-    
-          td {
-            border: none;
-            position: relative;
-          }
-    
-          td::before {
-            content: attr(data-label);
-            font-weight: bold;
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, 0);
-          }
-    
-          /* Make the table scrollable on smaller screens */
-          table {
-            overflow-y: auto;
-          }
-        }
-    
-        /* CSS */
-    /* Updated CSS */
-    .search-container {
-      display: flex;
-      justify-content: center;
-      margin-bottom: 20px; /* Add margin to separate from the table */
-    }
-    
-    .search-bar {
-      width: 20%; /* Adjust width as needed */
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-      transition: all 0.3s ease;
-    }
-    
-    .search-bar:focus {
-      border-color: #66afe9;
-      box-shadow: 0 0 5px #66afe9;
-    }
-    
-    .pagination .page-item {
-      display: inline-block;
-      margin-right: 5px; /* Paggalang sa espasyo sa pagitan ng mga button */
-    }
-    
-    .pagination .page-link {
-      border: 1px solid #ced4da; /* Bawasan ang lapad ng border */
-      color: #343a40; /* Itim na kulay ng text */
-      border-radius: 0; /* Alisin ang radius ng border */
-    }
-    
-    .pagination .page-link:hover {
-      background-color: transparent; /* Alisin ang background color sa hover */
-    }
-    
-    .pagination .page-item.disabled .page-link {
-      pointer-events: none; /* Huwag pahintulutan ang pag-click kung ang button ay hindi aktibo */
-    }
-    
-    .pagination .page-item.active .page-link {
-      background-color: transparent; /* Alisin ang background color ng active button */
-      border-color: #ced4da; /* Bawasan ang lapad ng border ng active button */
-    }
-    
-    .pagination .page-link:focus {
-      box-shadow: none; /* Alisin ang focus border */
-    }
-    
-    .pagination .page-link.prev, .pagination .page-link.next {
-      padding: 0; /* Alisin ang padding */
-      border: none; /* Alisin ang border */
-      background: none; /* Alisin ang background */
-      font-size: 1.5rem; /* Taasan ang laki ng font */
-      color: #343a40; /* Itim na kulay ng text */
-    }
-    
-    .pagination .page-link.prev::after, .pagination .page-link.next::after {
-      content: '\2190'; /* Isama ang Unicode character para sa arrow (left arrow) */
-    }
-    
-    .pagination .page-link.next::after {
-      content: '\2192'; /* Isama ang Unicode character para sa arrow (right arrow) */
-    }
-  
-    .loading-line {
-      width: 100%;
-      height: 4px;
-      background-color: #ffffff; /* Background color of the loading container */
-      position: relative;
-      overflow: hidden; /* Ensures the loading line stays within the container */
-    }
-    
-    .loading-line::before {
-      content: "";
-      position: absolute;
-      height: 100%;
-      width: 50%;
-      background-color: rgb(0, 68, 255); /* Color of the loading line */
-      animation: loading 0.5s linear infinite; /* Faster looping animation */
-    }
-    
-    @keyframes loading {
-      0% {
-        transform: translateX(-100%); /* Start from the left */
-      }
-      100% {
-        transform: translateX(100%); /* Move to the right */
-      }
-    }
-  
-    .button {
-    border: none;
-    background-color: seagreen;
-    color: white;
-    font-size: 0.9rem; /* Slightly larger font size */
-    font-weight: 500;
-    padding: 0.5rem 1.4rem; /* Slightly increased padding */
-    border-radius: 0.35rem; /* Slightly larger border radius */
-    box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-    transform: translate(1) translate(0, 0);
-    transition: transform 225ms, box-shadow 225ms;
-    display: block; /* Ensures the button is a block element for centering */
-    margin: 0 auto; /* Centers button horizontally */
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: all 0.3s ease;
   }
   
-  .button:hover {
+  .search-bar:focus {
+    border-color: #66afe9;
+    box-shadow: 0 0 5px #66afe9;
+  }
+  
+  .pagination .page-item {
+    display: inline-block;
+    margin-right: 5px; /* Paggalang sa espasyo sa pagitan ng mga button */
+  }
+  
+  .pagination .page-link {
+    border: 1px solid #ced4da; /* Bawasan ang lapad ng border */
+    color: #343a40; /* Itim na kulay ng text */
+    border-radius: 0; /* Alisin ang radius ng border */
+  }
+  
+  .pagination .page-link:hover {
+    background-color: transparent; /* Alisin ang background color sa hover */
+  }
+  
+  .pagination .page-item.disabled .page-link {
+    pointer-events: none; /* Huwag pahintulutan ang pag-click kung ang button ay hindi aktibo */
+  }
+  
+  .pagination .page-item.active .page-link {
+    background-color: transparent; /* Alisin ang background color ng active button */
+    border-color: #ced4da; /* Bawasan ang lapad ng border ng active button */
+  }
+  
+  .pagination .page-link:focus {
+    box-shadow: none; /* Alisin ang focus border */
+  }
+  
+  .pagination .page-link.prev, .pagination .page-link.next {
+    padding: 0; /* Alisin ang padding */
+    border: none; /* Alisin ang border */
+    background: none; /* Alisin ang background */
+    font-size: 1.5rem; /* Taasan ang laki ng font */
+    color: #343a40; /* Itim na kulay ng text */
+  }
+  
+  .pagination .page-link.prev::after, .pagination .page-link.next::after {
+    content: '\2190'; /* Isama ang Unicode character para sa arrow (left arrow) */
+  }
+  
+  .pagination .page-link.next::after {
+    content: '\2192'; /* Isama ang Unicode character para sa arrow (right arrow) */
+  }
+
+  .loading-line {
+    width: 100%;
+    height: 4px;
+    background-color: #ffffff; /* Background color of the loading container */
+    position: relative;
+    overflow: hidden; /* Ensures the loading line stays within the container */
+  }
+  
+  .loading-line::before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 50%;
+    background-color: rgb(0, 68, 255); /* Color of the loading line */
+    animation: loading 0.5s linear infinite; /* Faster looping animation */
+  }
+  
+  @keyframes loading {
+    0% {
+      transform: translateX(-100%); /* Start from the left */
+    }
+    100% {
+      transform: translateX(100%); /* Move to the right */
+    }
+  }
+
+  .button {
+  border: none;
+  background-color: seagreen;
+  color: white;
+  font-size: 0.9rem; /* Slightly larger font size */
+  font-weight: 500;
+  padding: 0.5rem 1.4rem; /* Slightly increased padding */
+  border-radius: 0.35rem; /* Slightly larger border radius */
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transform: translate(1) translate(0, 0);
+  transition: transform 225ms, box-shadow 225ms;
+  display: block; /* Ensures the button is a block element for centering */
+  margin: 0 auto; /* Centers button horizontally */
+}
+
+.button:hover {
+  transform: scale(1.05) translate(0, -0.1rem);
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.35);
+}
+
+.button:active {
+  transform: scale(1) translate(0, 0.1rem);
+  box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.15);
+}
+
+.button1 {
+    border: none;
+    background-color: #C0392B;
+    color: white;
+  font-size: 0.9rem; /* Slightly larger font size */
+  font-weight: 500;
+  padding: 0.5rem 1.4rem; /* Slightly increased padding */
+  border-radius: 0.35rem; /* Slightly larger border radius */
+  box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transform: translate(1) translate(0, 0);
+  transition: transform 225ms, box-shadow 225ms;
+  display: block; /* Ensures the button is a block element for centering */
+  margin: 0 auto; /* Centers button horizontally */
+  }
+  
+  .button1:hover {
     transform: scale(1.05) translate(0, -0.1rem);
     box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.35);
   }
   
-  .button:active {
+  .button1:active {
     transform: scale(1) translate(0, 0.1rem);
     box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.15);
   }
   
-  .button1 {
-      border: none;
-      background-color: #C0392B;
-      color: white;
-    font-size: 0.9rem; /* Slightly larger font size */
-    font-weight: 500;
-    padding: 0.5rem 1.4rem; /* Slightly increased padding */
-    border-radius: 0.35rem; /* Slightly larger border radius */
-    box-shadow: 0 0.3rem 0.6rem rgba(0, 0, 0, 0.15);
-    cursor: pointer;
-    transform: translate(1) translate(0, 0);
-    transition: transform 225ms, box-shadow 225ms;
-    display: block; /* Ensures the button is a block element for centering */
-    margin: 0 auto; /* Centers button horizontally */
-    }
-    
-    .button1:hover {
-      transform: scale(1.05) translate(0, -0.1rem);
-      box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.35);
-    }
-    
-    .button1:active {
-      transform: scale(1) translate(0, 0.1rem);
-      box-shadow: 0 0.4rem 0.8rem rgba(0, 0, 0, 0.15);
-    }
-    
-    .box {
-    position: relative; /* Create a positioning context */
-    width: 100%; /* Full width of its container */
-    height: 300px; /* Set a specific height; adjust as needed */
-    overflow: hidden; /* Hide overflow to ensure clean edges */
-    display: flex; /* Use flexbox for centering */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    border: 1px solid #ccc; /* Optional: Add border for visual debugging */
-  }
-  
-  .box video {
-    max-width: 100%; /* Ensure video does not exceed the width of the box */
-    max-height: 100%; /* Ensure video does not exceed the height of the box */
-  
-  }
+  .box {
+  position: relative; /* Create a positioning context */
+  width: 100%; /* Full width of its container */
+  height: 300px; /* Set a specific height; adjust as needed */
+  overflow: hidden; /* Hide overflow to ensure clean edges */
+  display: flex; /* Use flexbox for centering */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  border: 1px solid #ccc; /* Optional: Add border for visual debugging */
+}
 
-  
-  .download {
+.box video {
+  max-width: 100%; /* Ensure video does not exceed the width of the box */
+  max-height: 100%; /* Ensure video does not exceed the height of the box */
+
+}
+
+
+.download {
   position: relative;
   width: 300px;
   height: 45px; /* Reduce the height */
@@ -1217,7 +1172,8 @@
   font-family: sans-serif;
 }
 
-  
+
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -1250,34 +1206,8 @@ img {
 }
 
 
-    /* Responsive styles */
-    @media screen and (max-width: 600px) {
-      table, tr, td {
-        display: block;
-      }
-
-      td {
-        border: none;
-        position: relative;
-      }
-
-      td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, 0);
-      }
-
-      /* Make the table scrollable on smaller screens */
-      table {
-        overflow-y: auto;
-      }
-    }
-
-
-.InputContainer {
+  
+    .InputContainer {
   width: 210px; /* Increased width */
   height: 45px;
   display: flex;
@@ -1303,7 +1233,31 @@ img {
   color: rgb(19, 19, 19);
   font-size: 13.8px;
 }
+@media (max-width: 600px) {
+  .accordion-button{
+    width: 80%;
+    padding: 10px;
+  }
+    .InputContainer {
+    margin-top: 10px;
+}
+.table-compact th, .table-compact td {
+    font-size: 10px; /* Even smaller font size for mobile */
+    padding: 2px;
+    text-align: center;
+  }
+  
+  .table-compact img {
+    max-width: 25px; /* Further reduce image size */
+    max-height: 25px; /* Further reduce image size */
+  }
+  .me-2{
+    font-size: 15px;
+    margin-right: 1px;
+  }
+}
 
-  </style>
-  
-  
+
+
+
+</style>

@@ -73,21 +73,21 @@ class SigninController extends ResourceController
     {
       $user = new SigninModel(); 
       $token = $this->verification(50);
-      $image = $this->request->getFile('image');
-      $newName = null;
+    //   $image = $this->request->getFile('image');
+    //   $newName = null;
 
-      // Check if an image was uploaded
-      if ($image->isValid() && !$image->hasMoved()) {
-          $newName = $image->getRandomName();
-          $image->move(ROOTPATH . '../uploads', $newName);
-      }
+    //   // Check if an image was uploaded
+    //   if ($image->isValid() && !$image->hasMoved()) {
+    //       $newName = $image->getRandomName();
+    //       $image->move(ROOTPATH . '../uploads', $newName);
+    //   }
 
       $data = [ 
         'username' => $this->request->getVar('username'),
         'fullname' => $this->request->getVar('fullname'),
         'position' => $this->request->getVar('position'),
         'email' => $this->request->getVar('email'),
-        'image' => $newName,
+        // 'image' => $newName,
         'password' => password_hash($this->request->getVar('password'),PASSWORD_DEFAULT), 
         'token' => $token
       ]; 
@@ -194,4 +194,36 @@ class SigninController extends ResourceController
             return redirect()->to('signin')->with('error', 'Failed to verify account. Please try again.');
         }
     }
+
+    public function changePassword()
+    {
+        // Get the current user from request (POST body)
+        $userId = $this->request->getJSON()->id; // Retrieving from JSON body
+        $currentPassword = $this->request->getJSON()->currentPassword;
+        $newPassword = $this->request->getJSON()->newPassword;
+    
+        // Fetch user data from the database
+        $userModel = new SigninModel();
+        $user = $userModel->where('id', $userId)->first();
+    
+        if (!$user) {
+            return $this->respond(['error' => 'User not found'], 404);
+        }
+    
+        // Verify current password
+        if (!password_verify($currentPassword, $user['password'])) {
+            return $this->respond(['error' => 'Current password is incorrect'], 400);
+        }
+    
+        // Hash the new password
+        $hashedPassword = password_hash($newPassword, PASSWORD_DEFAULT);
+    
+        // Update the password in the database
+        $userModel->update($userId, ['password' => $hashedPassword]);
+    
+        return $this->respond(['msg' => 'passwordChanged'], 200);
+    }
+    
+    
+
 }

@@ -1,0 +1,62 @@
+CRITICAL - 2024-10-21 10:44:25 --> Undefined variable $record
+in APPPATH\Views\RRSP.php on line 113.
+ 1 APPPATH\Views\RRSP.php(113): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $record', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RRSP.php', 113)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RRSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RRSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1432): view('RRSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generateRRSPPDF('63')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-21 10:44:33 --> Undefined variable $record
+in APPPATH\Views\RRSP.php on line 113.
+ 1 APPPATH\Views\RRSP.php(113): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $record', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RRSP.php', 113)
+ 2 SYSTEMPATH\View\View.php(226): include('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Views\\RRSP.php')
+ 3 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('RRSP', [], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1432): view('RRSP', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generateRRSPPDF('63')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-21 10:53:24 --> Undefined array key 0
+in FCPATH\backend\vendor\mpdf\mpdf\src\Tag\Td.php on line 32.
+ 1 FCPATH\backend\vendor\mpdf\mpdf\src\Tag\Td.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\laragon\\www\\dilg\\backend\\backend\\vendor\\mpdf\\mpdf\\src\\Tag\\Td.php', 32)
+ 2 FCPATH\backend\vendor\mpdf\mpdf\src\Tag.php(240): Mpdf\Tag\Td->open([...], [...], 13)
+ 3 FCPATH\backend\vendor\mpdf\mpdf\src\Mpdf.php(13921): Mpdf\Tag->OpenTag('TH', [...], [...], 13)
+ 4 APPPATH\Controllers\DatabasePPEController.php(1435): Mpdf\Mpdf->WriteHTML(' <p style="text-align: right; margin-right: 30px; font-size: 14;"><i>Annex A.6</i></p> <br /><div class="container"> <th rowspan="2" colspan="4"> <div class="title">RECEIPT OF RETURNED SEMI-EXPANDABLE PROPERTY </div></th> <table> <thead> <tr> <div class="title">RECEIPT OF RETURNED SEMI-EXPANDABLE PROPERTY </div> </tr> <tr> <th rowspan="2" colspan="4"><b>Entity Name: <u>DILG Oriental Mindoro</u></b></th> <th rowspan="1" colspan="2"><b>Date: ______________</b> <tr> <th colspan="2"><b>RRSP No. ______________</b></th> </tr> <tr><th rowspan="1" colspan="6"><b>This is to acknowledge receipt of the returned Semi-expendable Property</b></tr></th> </tr> <tr> <th rowspan="1" colspan="2"><b>Item Description</b></th> <th rowspan="1"><b>Quantity</b></th> <th rowspan="1"><b>ICS No.</b></th> <th rowspan="1"><b>End-User</b></th> <th rowspan="1"><b>Remarks</b></th> </tr></thead> <tbody> <tr> <td colspan="2"></td> <td></td> <td></td> <td></td> <td></td> </tr> <tr> <td colspan="3"> Returned by:<br /><br /><br /><b><u>Name</u></b><br />End User<br /><br /><u><b>Date Required</b></u><br />Date</td> <td colspan="3"> Received by:<br /><br /><br /><b><u>Name</u></b><br />Head Property and/or Supply Division/Unit<br /><br /><u><b>Date Required</b></u><br />Date</td> </tr> </tbody> </table> ')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generateRRSPPDF('63')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-21 10:53:32 --> Undefined array key 0
+in FCPATH\backend\vendor\mpdf\mpdf\src\Tag\Td.php on line 32.
+ 1 FCPATH\backend\vendor\mpdf\mpdf\src\Tag\Td.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\laragon\\www\\dilg\\backend\\backend\\vendor\\mpdf\\mpdf\\src\\Tag\\Td.php', 32)
+ 2 FCPATH\backend\vendor\mpdf\mpdf\src\Tag.php(240): Mpdf\Tag\Td->open([...], [...], 13)
+ 3 FCPATH\backend\vendor\mpdf\mpdf\src\Mpdf.php(13921): Mpdf\Tag->OpenTag('TH', [...], [...], 13)
+ 4 APPPATH\Controllers\DatabasePPEController.php(1435): Mpdf\Mpdf->WriteHTML(' <p style="text-align: right; margin-right: 30px; font-size: 14;"><i>Annex A.6</i></p> <br /><div class="container"> <th rowspan="2" colspan="4"> <div class="title">RECEIPT OF RETURNED SEMI-EXPANDABLE PROPERTY </div></th> <table> <thead> <tr> <div class="title">RECEIPT OF RETURNED SEMI-EXPANDABLE PROPERTY </div> </tr> <tr> <th rowspan="2" colspan="4"><b>Entity Name: <u>DILG Oriental Mindoro</u></b></th> <th rowspan="1" colspan="2"><b>Date: ______________</b> <tr> <th colspan="2"><b>RRSP No. ______________</b></th> </tr> <tr><th rowspan="1" colspan="6"><b>This is to acknowledge receipt of the returned Semi-expendable Property</b></tr></th> </tr> <tr> <th rowspan="1" colspan="2"><b>Item Description</b></th> <th rowspan="1"><b>Quantity</b></th> <th rowspan="1"><b>ICS No.</b></th> <th rowspan="1"><b>End-User</b></th> <th rowspan="1"><b>Remarks</b></th> </tr></thead> <tbody> <tr> <td colspan="2"></td> <td></td> <td></td> <td></td> <td></td> </tr> <tr> <td colspan="3"> Returned by:<br /><br /><br /><b><u>Name</u></b><br />End User<br /><br /><u><b>Date Required</b></u><br />Date</td> <td colspan="3"> Received by:<br /><br /><br /><b><u>Name</u></b><br />Head Property and/or Supply Division/Unit<br /><br /><u><b>Date Required</b></u><br />Date</td> </tr> </tbody> </table> ')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generateRRSPPDF('63')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-21 10:53:44 --> Undefined array key 0
+in FCPATH\backend\vendor\mpdf\mpdf\src\Tag\Td.php on line 32.
+ 1 FCPATH\backend\vendor\mpdf\mpdf\src\Tag\Td.php(32): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\laragon\\www\\dilg\\backend\\backend\\vendor\\mpdf\\mpdf\\src\\Tag\\Td.php', 32)
+ 2 FCPATH\backend\vendor\mpdf\mpdf\src\Tag.php(240): Mpdf\Tag\Td->open([...], [...], 13)
+ 3 FCPATH\backend\vendor\mpdf\mpdf\src\Mpdf.php(13921): Mpdf\Tag->OpenTag('TH', [...], [...], 13)
+ 4 APPPATH\Controllers\DatabasePPEController.php(1435): Mpdf\Mpdf->WriteHTML(' <p style="text-align: right; margin-right: 30px; font-size: 14;"><i>Annex A.6</i></p> <br /><div class="container"> <th rowspan="2" colspan="4"> <div class="title">RECEIPT OF RETURNED SEMI-EXPANDABLE PROPERTY </div></th> <table> <thead> <tr> <div class="title">RECEIPT OF RETURNED SEMI-EXPANDABLE PROPERTY </div> </tr> <tr> <th rowspan="2" colspan="4"><b>Entity Name: <u>DILG Oriental Mindoro</u></b></th> <th rowspan="1" colspan="2"><b>Date: ______________</b> <tr> <th colspan="2"><b>RRSP No. ______________</b></th> </tr> <tr><th rowspan="1" colspan="6"><b>This is to acknowledge receipt of the returned Semi-expendable Property</b></tr></th> </tr> <tr> <th rowspan="1" colspan="2"><b>Item Description</b></th> <th rowspan="1"><b>Quantity</b></th> <th rowspan="1"><b>ICS No.</b></th> <th rowspan="1"><b>End-User</b></th> <th rowspan="1"><b>Remarks</b></th> </tr></thead> <tbody> <tr> <td colspan="2"></td> <td></td> <td></td> <td></td> <td></td> </tr> <tr> <td colspan="3"> Returned by:<br /><br /><br /><b><u>Name</u></b><br />End User<br /><br /><u><b>Date Required</b></u><br />Date</td> <td colspan="3"> Received by:<br /><br /><br /><b><u>Name</u></b><br />Head Property and/or Supply Division/Unit<br /><br /><u><b>Date Required</b></u><br />Date</td> </tr> </tbody> </table> ')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generateRRSPPDF('63')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-21 10:54:40 --> Undefined array key 0
+in FCPATH\backend\vendor\mpdf\mpdf\src\Tag\BlockTag.php on line 118.
+ 1 FCPATH\backend\vendor\mpdf\mpdf\src\Tag\BlockTag.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key 0', 'C:\\laragon\\www\\dilg\\backend\\backend\\vendor\\mpdf\\mpdf\\src\\Tag\\BlockTag.php', 118)
+ 2 FCPATH\backend\vendor\mpdf\mpdf\src\Tag.php(240): Mpdf\Tag\BlockTag->open([...], [...], 19)
+ 3 FCPATH\backend\vendor\mpdf\mpdf\src\Mpdf.php(13921): Mpdf\Tag->OpenTag('DIV', [...], [...], 19)
+ 4 APPPATH\Controllers\DatabasePPEController.php(1435): Mpdf\Mpdf->WriteHTML(' <p style="text-align: right; margin-right: 30px; font-size: 14;"><i>Annex A.6</i></p> <br /><div class="container"> <table> <thead> <tr> <div class="title">RECEIPT OF RETURNED SEMI-EXPANDABLE PROPERTY </div> </tr> <tr> <th rowspan="2" colspan="4"><b>Entity Name: <u>DILG Oriental Mindoro</u></b></th> <th rowspan="1" colspan="2"><b>Date: ______________</b> <tr> <th colspan="2"><b>RRSP No. ______________</b></th> </tr> <tr><th rowspan="1" colspan="6"><b>This is to acknowledge receipt of the returned Semi-expendable Property</b></tr></th> </tr> <tr> <th rowspan="1" colspan="2"><b>Item Description</b></th> <th rowspan="1"><b>Quantity</b></th> <th rowspan="1"><b>ICS No.</b></th> <th rowspan="1"><b>End-User</b></th> <th rowspan="1"><b>Remarks</b></th> </tr></thead> <tbody> <tr> <td colspan="2"></td> <td></td> <td></td> <td></td> <td></td> </tr> <tr> <td colspan="3"> Returned by:<br /><br /><br /><b><u>Name</u></b><br />End User<br /><br /><u><b>Date Required</b></u><br />Date</td> <td colspan="3"> Received by:<br /><br /><br /><b><u>Name</u></b><br />Head Property and/or Supply Division/Unit<br /><br /><u><b>Date Required</b></u><br />Date</td> </tr> </tbody> </table> ')
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->generateRRSPPDF('63')
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

@@ -1,0 +1,428 @@
+ERROR - 2024-10-05 16:47:51 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(137): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-05 16:47:51 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+AND `databaseppe`.`status` = :databaseppe.status:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(137): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-05 16:47:53 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(171): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataUnserviceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-05 16:47:53 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+AND `databaseppe`.`status` = :databaseppe.status:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(171): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataUnserviceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-05 16:47:54 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(137): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-05 16:47:54 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+AND `databaseppe`.`status` = :databaseppe.status:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(137): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-05 16:48:01 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(171): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataUnserviceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-05 16:48:01 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+AND `databaseppe`.`status` = :databaseppe.status:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(171): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataUnserviceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-05 16:48:04 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(171): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataUnserviceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-05 16:48:04 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+AND `databaseppe`.`status` = :databaseppe.status:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(171): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataUnserviceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-05 16:48:13 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(137): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-05 16:48:13 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+AND `databaseppe`.`status` = :databaseppe.status:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(137): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-05 16:48:24 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(137): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-05 16:48:24 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+AND `databaseppe`.`status` = :databaseppe.status:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(137): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-05 16:48:27 --> mysqli_sql_exception: Unknown column 'databaseppe.empfullname' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\ServiceController.php(137): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataServiceable()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-05 16:48:27 --> Unknown column 'databaseppe.empfullname' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT `databaseppe`.*, `inventoryppe`.`entityname`, `inventoryppe`.`classification`, `inventoryppe`.`code`, `inventoryppe`.`article`, `inventoryppe`.`modelno`, `inventoryppe`.`serialno`, `inventoryppe`.`fulldescription`, `inventoryppe`.`image`
+FROM `databaseppe`
+LEFT JOIN `inventoryppe` ON `inventoryppe`.`particulars` = `databaseppe`.`particulars`
+WHERE `databaseppe`.`empfullname` = :databaseppe.empfullname:
+AND `databaseppe`.`status` = :databaseppe.status:
+ORDER BY `databaseppe`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\ServiceController.php(137): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->getUserDataServiceable()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 17:17:43 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 17:20:38 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 17:22:11 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 17:22:17 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 17:23:34 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 17:25:06 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 17:26:56 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 17:31:00 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 17:33:47 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 17:34:03 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 17:36:31 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 17:37:42 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 17:55:33 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 17:59:19 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 18:00:40 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 18:00:43 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 18:01:34 --> log(): Argument #1 ($num) must be of type float, string given
+in APPPATH\Controllers\SigninController.php on line 209.
+ 1 APPPATH\Controllers\SigninController.php(209): log('Erooor')
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 18:03:15 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 18:03:18 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 18:04:04 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 18:04:09 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 18:06:54 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 18:08:04 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 18:09:43 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 214.
+ 1 APPPATH\Controllers\SigninController.php(214): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 214)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 18:14:34 --> CodeIgniter\BaseModel::findAll(): Argument #1 ($limit) must be of type int, string given, called in C:\laragon\www\dilg\backend\backend\app\Controllers\SigninController.php on line 207
+in SYSTEMPATH\BaseModel.php on line 607.
+ 1 APPPATH\Controllers\SigninController.php(207): CodeIgniter\BaseModel->findAll('id', null)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 18:18:54 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 217.
+ 1 APPPATH\Controllers\SigninController.php(217): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 217)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 18:18:57 --> Undefined array key "password"
+in APPPATH\Controllers\SigninController.php on line 217.
+ 1 APPPATH\Controllers\SigninController.php(217): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "password"', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 217)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-05 18:26:36 --> Attempt to read property "id" on null
+in APPPATH\Controllers\SigninController.php on line 201.
+ 1 APPPATH\Controllers\SigninController.php(201): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "id" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 201)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->changePassword()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

@@ -1,17 +1,18 @@
 <template>
-  <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
-          <!-- ======= Header ======= -->
+  <div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
+    <!-- ======= Header ======= -->
           <header id="header" class="header fixed-top d-flex align-items-center">
     
-        <div class="d-flex align-items-center justify-content-between">
-          <a href="/empdashboard" class="logo d-flex align-items-center">
-            <img src="./img/logo1.png" alt="">
-            <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
-              <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
-            </span>
-          </a>
-          <i class="bi bi-list toggle-sidebar-btn"></i>
-        </div><!-- End Logo -->
+            <div class="d-flex align-items-center justify-content-between">
+              <a href="/dashboard" class="logo d-flex align-items-center" style="position: relative;">
+                <img src="./img/dilg-logo1.png" alt="" 
+                     style="position: absolute; max-height: 220px; max-width: 220px; margin-left: -30px; z-index: 1;">
+                <span style="font-family: 'Times New Roman', Times, serif; font-size: 25px; color: rgb(42, 43, 72); padding-left: 120px; z-index: 2; position: relative;">
+                  INVENTrack
+                </span>
+              </a>
+              <i class="bi bi-list toggle-sidebar-btn"></i>
+            </div><!-- End Logo -->
     
         <nav class="header-nav ms-auto">
           <ul class="d-flex align-items-center">
@@ -195,6 +196,13 @@
               <span>Request Equipment</span>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/empqrcode">
+              <i class="bi bi-folder-plus"></i>
+              <span>Generate QR</span>
+            </a>
+          </li>
           
           <li class="nav-heading">user</li>
       
@@ -243,12 +251,12 @@
                       <form class="row g-3" @submit.prevent="send_request">
                         <div class="col-12">
                           <label for="particulars" class="form-label">Particulars:</label>
-                          <input type="text" style="width: 350px;" class="form-control" id="particulars" v-model="particulars" required>
+                          <input type="text"  class="form-control" id="particulars" v-model="particulars" required>
                         </div>
                         <div class="">
                           <label class="form-label">Description:</label>
                           <br>
-                          <textarea style="width: 540px; height: 200px;" class="form-control" aria-label="With textarea" v-model="description" required></textarea>
+                          <textarea style= "height: 200px;" class="form-control" aria-label="With textarea" v-model="description" required></textarea>
   <br>
                         </div>
                         <div class="text-center">
@@ -272,8 +280,7 @@
   
                         
               <tr>
-            <th colspan="5" style="background-color: seagreen; color: white; text-align: center; 
-            font-size: 16px;  line-height: 1.6; text-transform: uppercase;">Recent Requests</th>
+            <th colspan="5" class="whenMobile" >Recent Requests</th>
           </tr>
   
                       <tr>
@@ -624,9 +631,56 @@
     margin-top: 10px;
     margin-bottom: 10px;
   }
+  .whenMobile{
+    background-color: seagreen; 
+    color: white; 
+
+    font-size: 16px; 
+    line-height: 1.6; 
+    text-transform: uppercase;
+  }
+
+  .styled-table {
+    width: 100%; /* Ensure the table takes the full width of its container */
+    border-collapse: collapse; /* Collapse borders for a cleaner look */
+    overflow-x: auto; /* Allow horizontal scrolling on small screens */
+}
+.styled-table th, .styled-table td{
+  padding: 8px; 
+  text-align: center;
+}
+
+
+
+.card-body {
+    overflow-x: auto; /* Add horizontal scroll for card body */
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .styled-table {
+        display: block; /* Enable block display for better control on smaller screens */
+        overflow-x: auto; /* Allow horizontal scrolling */
+        white-space: nowrap; /* Prevent wrapping of table cells */
+    }
+
+    .styled-table th, .styled-table td {
+        white-space: nowrap; /* Prevent wrapping in table headers and data */
+    }
+    .form-control{
+      width: 20rem;
+    }
+    #particulars.form-control{
+      width: 20rem;
+    }
+    .styled-table th, .styled-table td{
+  padding: 8px; 
+  text-align: left;
+}
+}
   
-  
-  
+
+
   </style>
   
   

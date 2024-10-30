@@ -1,0 +1,239 @@
+CRITICAL - 2024-10-27 05:57:46 --> Call to a member function isValid() on null
+in APPPATH\Controllers\DatabasePPEController.php on line 965.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_return('undefined')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-27 05:58:41 --> Call to a member function isValid() on null
+in APPPATH\Controllers\DatabasePPEController.php on line 965.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_return('undefined')
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-27 08:46:43 --> Undefined variable $databasePPEModel
+in APPPATH\Controllers\DatabasePPEController.php on line 978.
+ 1 APPPATH\Controllers\DatabasePPEController.php(978): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $databasePPEModel', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 978)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('MDO-LPT-02')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-27 08:47:00 --> Undefined variable $databasePPEModel
+in APPPATH\Controllers\DatabasePPEController.php on line 978.
+ 1 APPPATH\Controllers\DatabasePPEController.php(978): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $databasePPEModel', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 978)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->fetchData('MDO-LPT-02')
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-27 13:33:30 --> Unsupported operand types: string - string
+in APPPATH\Views\IIRUSP.php on line 157.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('IIRUSP', [], true)
+ 4 APPPATH\Controllers\ServiceController.php(206): view('IIRUSP', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->serviceablePDF()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-27 18:37:21 --> mysqli_sql_exception: Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-27 18:37:21 --> Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL
+AND `transfered_image` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-27 18:38:02 --> mysqli_sql_exception: Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-27 18:38:02 --> Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL
+AND `transfered_image` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-27 18:38:21 --> mysqli_sql_exception: Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-27 18:38:21 --> Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL
+AND `transfered_image` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-27 18:39:13 --> mysqli_sql_exception: Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-27 18:39:13 --> Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL
+AND `transfered_image` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-27 18:41:12 --> mysqli_sql_exception: Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-27 18:41:12 --> Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL
+AND `transfered_image` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-27 18:55:05 --> mysqli_sql_exception: Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-27 18:55:05 --> Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL
+AND `transfered_image` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-27 18:55:37 --> mysqli_sql_exception: Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger. in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-27 18:55:37 --> Can't update table 'databaseppe' in stored function/trigger because it is already used by statement which invoked this stored function/trigger.
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:
+AND `returned_image` IS NOT NULL
+AND `transfered_image` IS NULL', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1206): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-LPT-02')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

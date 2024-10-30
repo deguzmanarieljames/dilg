@@ -1,0 +1,50 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build"
+  },
+  "dependencies": {
+    "@fullcalendar/core": "^6.1.11",
+    "@fullcalendar/daygrid": "^6.1.11",
+    "@fullcalendar/interaction": "^6.1.11",
+    "@fullcalendar/vue3": "^6.1.11",
+    "@mdi/font": "5.9.55",
+    "axios": "^1.6.2",
+    "chart.js": "^4.4.2",
+    "core-js": "^3.8.3",
+    "cropperjs": "^1.6.1",
+    "firebase": "^10.11.0",
+    "html2canvas": "^1.4.1",
+    "html2pdf": "^0.0.11",
+    "html2pdf.js": "^0.10.1",
+    "jquery": "^3.7.1",
+    "js-cookie": "^3.0.5",
+    "jspdf": "^2.5.1",
+    "jsqr": "^1.4.0",
+    "jwt-decode": "^4.0.0",
+    "pdf-lib": "^1.17.1",
+    "qrcode-generator": "^1.4.4",
+    "register-service-worker": "^1.7.2",
+    "roboto-fontface": "*",
+    "vue": "^3.2.36",
+    "vue-cal": "^4.8.1",
+    "vue-cropperjs": "^5.0.0",
+    "vue-qrcode-reader": "^5.4.1",
+    "vue-router": "^4.0.3",
+    "vue2-datatable-component": "^2.3.1",
+    "vuedraggable": "^4.1.0",
+    "vuetify": "^3.0.0-beta.0",
+    "webfontloader": "^1.0.0"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-pwa": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "vue-cli-plugin-vuetify": "~2.5.8",
+    "webpack-plugin-vuetify": "^2.0.0-alpha.0"
+  }
+}

@@ -1,0 +1,445 @@
+ERROR - 2024-10-29 02:44:14 --> mysqli_sql_exception: Incorrect date value: '0000-00-00' for column 'rrsp_date' at row 1 in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('UPDATE `databas...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('UPDATE `databas...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('UPDATE `databas...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databas...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(949): CodeIgniter\Model->doUpdate(NULL, Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(776): CodeIgniter\BaseModel->update(NULL, Array)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-29 02:44:14 --> Incorrect date value: '0000-00-00' for column 'rrsp_date' at row 1
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2475): CodeIgniter\Database\BaseConnection->query('UPDATE `databaseppe` SET `transfer_date` = :transfer_date:, `transfer_officeofficer` = :transfer_officeofficer:, `transfer_quantity` = :transfer_quantity:, `reg_reissued_off` = :reg_reissued_off:, `reg_reissued_qty` = :reg_reissued_qty:, `transfered_image` = :transfered_image:
+WHERE `propertynumber` = :propertynumber:', [...], false)
+ 2 SYSTEMPATH\Model.php(385): CodeIgniter\Database\BaseBuilder->update()
+ 3 SYSTEMPATH\BaseModel.php(949): CodeIgniter\Model->doUpdate(null, [...])
+ 4 SYSTEMPATH\Model.php(776): CodeIgniter\BaseModel->update(null, [...])
+ 5 APPPATH\Controllers\DatabasePPEController.php(1200): CodeIgniter\Model->update()
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_transfer('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 12:16:01 --> mysqli_sql_exception: Table 'dilg.databaseppedisposeds' doesn't exist in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(243): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataDisposed()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-29 12:16:01 --> Table 'dilg.databaseppedisposeds' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppedisposeds`
+WHERE `databaseppetransfered`.`imageverification` IS NOT NULL
+AND `databaseppetransfered`.`returned_image` IS NOT NULL
+AND `databaseppetransfered`.`remarks` = :databaseppetransfered.remarks:
+ORDER BY `databaseppetransfered`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(243): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataDisposed()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 12:18:01 --> mysqli_sql_exception: Table 'dilg.databaseppedisposeds' doesn't exist in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `da...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `da...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `da...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `da...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1480): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-29 12:18:01 --> Table 'dilg.databaseppedisposeds' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `databaseppedisposeds` (`entityname`, `classification`, `code`, `article`, `particulars`, `modelno`, `serialno`, `fulldescription`, `propertynumber`, `propertydate`, `icsnumber`, `jevnumber`, `rec_quantity`, `rec_unit`, `rec_unitcost`, `rec_totalcost`, `isstranadjamount`, `accimploss`, `adjustedcost`, `repair_nature`, `repair_amount`, `issue_itemno`, `issue_date`, `issue_quantity`, `issue_officeofficer`, `transfer_date`, `transfer_quantity`, `transfer_officeofficer`, `disposal_date`, `disposal_quantity`, `disposal_officeofficer`, `balancequantity`, `balanceamount`, `remarks`, `estimatedlife`, `issued_officer`, `issued_offposition`, `issued_date`, `acc_officer`, `acc_empposition`, `acc_date`, `itr_no`, `itr_date`, `rrsp_no`, `rrsp_date`, `reasonfortrans`, `reg_semiissuedserialno`, `reg_returned_qty`, `reg_returned_off`, `reg_reissued_qty`, `reg_reissued_off`, `reg_disposed_qty`, `reg_balance_quantity`, `reg_amount`, `reg_remarks`, `property_officer`, `approving_authority`, `image`, `imageverification`, `returned_image`, `transfered_image`, `disposed_image`, `date_returned`, `created_at`) VALUES (:entityname:, :classification:, :code:, :article:, :particulars:, :modelno:, :serialno:, :fulldescription:, :propertynumber:, :propertydate:, :icsnumber:, :jevnumber:, :rec_quantity:, :rec_unit:, :rec_unitcost:, :rec_totalcost:, :isstranadjamount:, :accimploss:, :adjustedcost:, :repair_nature:, :repair_amount:, :issue_itemno:, :issue_date:, :issue_quantity:, :issue_officeofficer:, :transfer_date:, :transfer_quantity:, :transfer_officeofficer:, :disposal_date:, :disposal_quantity:, :disposal_officeofficer:, :balancequantity:, :balanceamount:, :remarks:, :estimatedlife:, :issued_officer:, :issued_offposition:, :issued_date:, :acc_officer:, :acc_empposition:, :acc_date:, :itr_no:, :itr_date:, :rrsp_no:, :rrsp_date:, :reasonfortrans:, :reg_semiissuedserialno:, :reg_returned_qty:, :reg_returned_off:, :reg_reissued_qty:, :reg_reissued_off:, :reg_disposed_qty:, :reg_balance_quantity:, :reg_amount:, :reg_remarks:, :property_officer:, :approving_authority:, :image:, :imageverification:, :returned_image:, :transfered_image:, :disposed_image:, :date_returned:, :created_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1480): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 12:18:06 --> mysqli_sql_exception: Table 'dilg.databaseppedisposeds' doesn't exist in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(243): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataDisposed()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-29 12:18:06 --> Table 'dilg.databaseppedisposeds' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppedisposeds`
+WHERE `databaseppetransfered`.`imageverification` IS NOT NULL
+AND `databaseppetransfered`.`returned_image` IS NOT NULL
+AND `databaseppetransfered`.`remarks` = :databaseppetransfered.remarks:
+ORDER BY `databaseppetransfered`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(243): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataDisposed()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 12:19:24 --> mysqli_sql_exception: Table 'dilg.databaseppedisposeds' doesn't exist in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `da...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `da...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `da...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `da...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1480): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-29 12:19:24 --> Table 'dilg.databaseppedisposeds' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `databaseppedisposeds` (`entityname`, `classification`, `code`, `article`, `particulars`, `modelno`, `serialno`, `fulldescription`, `propertynumber`, `propertydate`, `icsnumber`, `jevnumber`, `rec_quantity`, `rec_unit`, `rec_unitcost`, `rec_totalcost`, `isstranadjamount`, `accimploss`, `adjustedcost`, `repair_nature`, `repair_amount`, `issue_itemno`, `issue_date`, `issue_quantity`, `issue_officeofficer`, `transfer_date`, `transfer_quantity`, `transfer_officeofficer`, `disposal_date`, `disposal_quantity`, `disposal_officeofficer`, `balancequantity`, `balanceamount`, `remarks`, `estimatedlife`, `issued_officer`, `issued_offposition`, `issued_date`, `acc_officer`, `acc_empposition`, `acc_date`, `itr_no`, `itr_date`, `rrsp_no`, `rrsp_date`, `reasonfortrans`, `reg_semiissuedserialno`, `reg_returned_qty`, `reg_returned_off`, `reg_reissued_qty`, `reg_reissued_off`, `reg_disposed_qty`, `reg_balance_quantity`, `reg_amount`, `reg_remarks`, `property_officer`, `approving_authority`, `image`, `imageverification`, `returned_image`, `transfered_image`, `disposed_image`, `date_returned`, `created_at`) VALUES (:entityname:, :classification:, :code:, :article:, :particulars:, :modelno:, :serialno:, :fulldescription:, :propertynumber:, :propertydate:, :icsnumber:, :jevnumber:, :rec_quantity:, :rec_unit:, :rec_unitcost:, :rec_totalcost:, :isstranadjamount:, :accimploss:, :adjustedcost:, :repair_nature:, :repair_amount:, :issue_itemno:, :issue_date:, :issue_quantity:, :issue_officeofficer:, :transfer_date:, :transfer_quantity:, :transfer_officeofficer:, :disposal_date:, :disposal_quantity:, :disposal_officeofficer:, :balancequantity:, :balanceamount:, :remarks:, :estimatedlife:, :issued_officer:, :issued_offposition:, :issued_date:, :acc_officer:, :acc_empposition:, :acc_date:, :itr_no:, :itr_date:, :rrsp_no:, :rrsp_date:, :reasonfortrans:, :reg_semiissuedserialno:, :reg_returned_qty:, :reg_returned_off:, :reg_reissued_qty:, :reg_reissued_off:, :reg_disposed_qty:, :reg_balance_quantity:, :reg_amount:, :reg_remarks:, :property_officer:, :approving_authority:, :image:, :imageverification:, :returned_image:, :transfered_image:, :disposed_image:, :date_returned:, :created_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1480): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 12:21:55 --> mysqli_sql_exception: Table 'dilg.databaseppedisposeds' doesn't exist in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `da...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `da...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `da...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `da...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1480): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-29 12:21:55 --> Table 'dilg.databaseppedisposeds' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `databaseppedisposeds` (`entityname`, `classification`, `code`, `article`, `particulars`, `modelno`, `serialno`, `fulldescription`, `propertynumber`, `propertydate`, `icsnumber`, `jevnumber`, `rec_quantity`, `rec_unit`, `rec_unitcost`, `rec_totalcost`, `isstranadjamount`, `accimploss`, `adjustedcost`, `repair_nature`, `repair_amount`, `issue_itemno`, `issue_date`, `issue_quantity`, `issue_officeofficer`, `transfer_date`, `transfer_quantity`, `transfer_officeofficer`, `disposal_date`, `disposal_quantity`, `disposal_officeofficer`, `balancequantity`, `balanceamount`, `remarks`, `estimatedlife`, `issued_officer`, `issued_offposition`, `issued_date`, `acc_officer`, `acc_empposition`, `acc_date`, `itr_no`, `itr_date`, `rrsp_no`, `rrsp_date`, `reasonfortrans`, `reg_semiissuedserialno`, `reg_returned_qty`, `reg_returned_off`, `reg_reissued_qty`, `reg_reissued_off`, `reg_disposed_qty`, `reg_balance_quantity`, `reg_amount`, `reg_remarks`, `property_officer`, `approving_authority`, `image`, `imageverification`, `returned_image`, `transfered_image`, `disposed_image`, `date_returned`, `created_at`) VALUES (:entityname:, :classification:, :code:, :article:, :particulars:, :modelno:, :serialno:, :fulldescription:, :propertynumber:, :propertydate:, :icsnumber:, :jevnumber:, :rec_quantity:, :rec_unit:, :rec_unitcost:, :rec_totalcost:, :isstranadjamount:, :accimploss:, :adjustedcost:, :repair_nature:, :repair_amount:, :issue_itemno:, :issue_date:, :issue_quantity:, :issue_officeofficer:, :transfer_date:, :transfer_quantity:, :transfer_officeofficer:, :disposal_date:, :disposal_quantity:, :disposal_officeofficer:, :balancequantity:, :balanceamount:, :remarks:, :estimatedlife:, :issued_officer:, :issued_offposition:, :issued_date:, :acc_officer:, :acc_empposition:, :acc_date:, :itr_no:, :itr_date:, :rrsp_no:, :rrsp_date:, :reasonfortrans:, :reg_semiissuedserialno:, :reg_returned_qty:, :reg_returned_off:, :reg_reissued_qty:, :reg_reissued_off:, :reg_disposed_qty:, :reg_balance_quantity:, :reg_amount:, :reg_remarks:, :property_officer:, :approving_authority:, :image:, :imageverification:, :returned_image:, :transfered_image:, :disposed_image:, :date_returned:, :created_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1480): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 12:22:15 --> mysqli_sql_exception: Table 'dilg.databaseppedisposeds' doesn't exist in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `da...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `da...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `da...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `da...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1480): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-29 12:22:15 --> Table 'dilg.databaseppedisposeds' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `databaseppedisposeds` (`entityname`, `classification`, `code`, `article`, `particulars`, `modelno`, `serialno`, `fulldescription`, `propertynumber`, `propertydate`, `icsnumber`, `jevnumber`, `rec_quantity`, `rec_unit`, `rec_unitcost`, `rec_totalcost`, `isstranadjamount`, `accimploss`, `adjustedcost`, `repair_nature`, `repair_amount`, `issue_itemno`, `issue_date`, `issue_quantity`, `issue_officeofficer`, `transfer_date`, `transfer_quantity`, `transfer_officeofficer`, `disposal_date`, `disposal_quantity`, `disposal_officeofficer`, `balancequantity`, `balanceamount`, `remarks`, `estimatedlife`, `issued_officer`, `issued_offposition`, `issued_date`, `acc_officer`, `acc_empposition`, `acc_date`, `itr_no`, `itr_date`, `rrsp_no`, `rrsp_date`, `reasonfortrans`, `reg_semiissuedserialno`, `reg_returned_qty`, `reg_returned_off`, `reg_reissued_qty`, `reg_reissued_off`, `reg_disposed_qty`, `reg_balance_quantity`, `reg_amount`, `reg_remarks`, `property_officer`, `approving_authority`, `image`, `imageverification`, `returned_image`, `transfered_image`, `disposed_image`, `date_returned`, `created_at`) VALUES (:entityname:, :classification:, :code:, :article:, :particulars:, :modelno:, :serialno:, :fulldescription:, :propertynumber:, :propertydate:, :icsnumber:, :jevnumber:, :rec_quantity:, :rec_unit:, :rec_unitcost:, :rec_totalcost:, :isstranadjamount:, :accimploss:, :adjustedcost:, :repair_nature:, :repair_amount:, :issue_itemno:, :issue_date:, :issue_quantity:, :issue_officeofficer:, :transfer_date:, :transfer_quantity:, :transfer_officeofficer:, :disposal_date:, :disposal_quantity:, :disposal_officeofficer:, :balancequantity:, :balanceamount:, :remarks:, :estimatedlife:, :issued_officer:, :issued_offposition:, :issued_date:, :acc_officer:, :acc_empposition:, :acc_date:, :itr_no:, :itr_date:, :rrsp_no:, :rrsp_date:, :reasonfortrans:, :reg_semiissuedserialno:, :reg_returned_qty:, :reg_returned_off:, :reg_reissued_qty:, :reg_reissued_off:, :reg_disposed_qty:, :reg_balance_quantity:, :reg_amount:, :reg_remarks:, :property_officer:, :approving_authority:, :image:, :imageverification:, :returned_image:, :transfered_image:, :disposed_image:, :date_returned:, :created_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1480): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 12:23:27 --> mysqli_sql_exception: Table 'dilg.databaseppedisposeds' doesn't exist in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `da...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `da...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `da...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `da...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1480): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-29 12:23:27 --> Table 'dilg.databaseppedisposeds' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `databaseppedisposeds` (`entityname`, `classification`, `code`, `article`, `particulars`, `modelno`, `serialno`, `fulldescription`, `propertynumber`, `propertydate`, `icsnumber`, `jevnumber`, `rec_quantity`, `rec_unit`, `rec_unitcost`, `rec_totalcost`, `isstranadjamount`, `accimploss`, `adjustedcost`, `repair_nature`, `repair_amount`, `issue_itemno`, `issue_date`, `issue_quantity`, `issue_officeofficer`, `transfer_date`, `transfer_quantity`, `transfer_officeofficer`, `disposal_date`, `disposal_quantity`, `disposal_officeofficer`, `balancequantity`, `balanceamount`, `remarks`, `estimatedlife`, `issued_officer`, `issued_offposition`, `issued_date`, `acc_officer`, `acc_empposition`, `acc_date`, `itr_no`, `itr_date`, `rrsp_no`, `rrsp_date`, `reasonfortrans`, `reg_semiissuedserialno`, `reg_returned_qty`, `reg_returned_off`, `reg_reissued_qty`, `reg_reissued_off`, `reg_disposed_qty`, `reg_balance_quantity`, `reg_amount`, `reg_remarks`, `property_officer`, `approving_authority`, `image`, `imageverification`, `returned_image`, `transfered_image`, `disposed_image`, `date_returned`, `created_at`) VALUES (:entityname:, :classification:, :code:, :article:, :particulars:, :modelno:, :serialno:, :fulldescription:, :propertynumber:, :propertydate:, :icsnumber:, :jevnumber:, :rec_quantity:, :rec_unit:, :rec_unitcost:, :rec_totalcost:, :isstranadjamount:, :accimploss:, :adjustedcost:, :repair_nature:, :repair_amount:, :issue_itemno:, :issue_date:, :issue_quantity:, :issue_officeofficer:, :transfer_date:, :transfer_quantity:, :transfer_officeofficer:, :disposal_date:, :disposal_quantity:, :disposal_officeofficer:, :balancequantity:, :balanceamount:, :remarks:, :estimatedlife:, :issued_officer:, :issued_offposition:, :issued_date:, :acc_officer:, :acc_empposition:, :acc_date:, :itr_no:, :itr_date:, :rrsp_no:, :rrsp_date:, :reasonfortrans:, :reg_semiissuedserialno:, :reg_returned_qty:, :reg_returned_off:, :reg_reissued_qty:, :reg_reissued_off:, :reg_disposed_qty:, :reg_balance_quantity:, :reg_amount:, :reg_remarks:, :property_officer:, :approving_authority:, :image:, :imageverification:, :returned_image:, :transfered_image:, :disposed_image:, :date_returned:, :created_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1480): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 12:30:30 --> mysqli_sql_exception: Table 'dilg.databaseppedisposeds' doesn't exist in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `da...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `da...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `da...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `da...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1480): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-29 12:30:30 --> Table 'dilg.databaseppedisposeds' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `databaseppedisposeds` (`entityname`, `classification`, `code`, `article`, `particulars`, `modelno`, `serialno`, `fulldescription`, `propertynumber`, `propertydate`, `icsnumber`, `jevnumber`, `rec_quantity`, `rec_unit`, `rec_unitcost`, `rec_totalcost`, `isstranadjamount`, `accimploss`, `adjustedcost`, `repair_nature`, `repair_amount`, `issue_itemno`, `issue_date`, `issue_quantity`, `issue_officeofficer`, `transfer_date`, `transfer_quantity`, `transfer_officeofficer`, `disposal_date`, `disposal_quantity`, `disposal_officeofficer`, `balancequantity`, `balanceamount`, `remarks`, `estimatedlife`, `issued_officer`, `issued_offposition`, `issued_date`, `acc_officer`, `acc_empposition`, `acc_date`, `itr_no`, `itr_date`, `rrsp_no`, `rrsp_date`, `reasonfortrans`, `reg_semiissuedserialno`, `reg_returned_qty`, `reg_returned_off`, `reg_reissued_qty`, `reg_reissued_off`, `reg_disposed_qty`, `reg_balance_quantity`, `reg_amount`, `reg_remarks`, `property_officer`, `approving_authority`, `image`, `imageverification`, `returned_image`, `transfered_image`, `disposed_image`, `date_returned`, `created_at`) VALUES (:entityname:, :classification:, :code:, :article:, :particulars:, :modelno:, :serialno:, :fulldescription:, :propertynumber:, :propertydate:, :icsnumber:, :jevnumber:, :rec_quantity:, :rec_unit:, :rec_unitcost:, :rec_totalcost:, :isstranadjamount:, :accimploss:, :adjustedcost:, :repair_nature:, :repair_amount:, :issue_itemno:, :issue_date:, :issue_quantity:, :issue_officeofficer:, :transfer_date:, :transfer_quantity:, :transfer_officeofficer:, :disposal_date:, :disposal_quantity:, :disposal_officeofficer:, :balancequantity:, :balanceamount:, :remarks:, :estimatedlife:, :issued_officer:, :issued_offposition:, :issued_date:, :acc_officer:, :acc_empposition:, :acc_date:, :itr_no:, :itr_date:, :rrsp_no:, :rrsp_date:, :reasonfortrans:, :reg_semiissuedserialno:, :reg_returned_qty:, :reg_returned_off:, :reg_reissued_qty:, :reg_reissued_off:, :reg_disposed_qty:, :reg_balance_quantity:, :reg_amount:, :reg_remarks:, :property_officer:, :approving_authority:, :image:, :imageverification:, :returned_image:, :transfered_image:, :disposed_image:, :date_returned:, :created_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1480): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 12:32:08 --> mysqli_sql_exception: Table 'dilg.databaseppedisposeds' doesn't exist in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `da...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `da...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `da...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `da...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1480): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-29 12:32:08 --> Table 'dilg.databaseppedisposeds' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `databaseppedisposeds` (`entityname`, `classification`, `code`, `article`, `particulars`, `modelno`, `serialno`, `fulldescription`, `propertynumber`, `propertydate`, `icsnumber`, `jevnumber`, `rec_quantity`, `rec_unit`, `rec_unitcost`, `rec_totalcost`, `isstranadjamount`, `accimploss`, `adjustedcost`, `repair_nature`, `repair_amount`, `issue_itemno`, `issue_date`, `issue_quantity`, `issue_officeofficer`, `transfer_date`, `transfer_quantity`, `transfer_officeofficer`, `disposal_date`, `disposal_quantity`, `disposal_officeofficer`, `balancequantity`, `balanceamount`, `remarks`, `estimatedlife`, `issued_officer`, `issued_offposition`, `issued_date`, `acc_officer`, `acc_empposition`, `acc_date`, `itr_no`, `itr_date`, `rrsp_no`, `rrsp_date`, `reasonfortrans`, `reg_semiissuedserialno`, `reg_returned_qty`, `reg_returned_off`, `reg_reissued_qty`, `reg_reissued_off`, `reg_disposed_qty`, `reg_balance_quantity`, `reg_amount`, `reg_remarks`, `property_officer`, `approving_authority`, `image`, `imageverification`, `returned_image`, `transfered_image`, `disposed_image`, `date_returned`, `created_at`) VALUES (:entityname:, :classification:, :code:, :article:, :particulars:, :modelno:, :serialno:, :fulldescription:, :propertynumber:, :propertydate:, :icsnumber:, :jevnumber:, :rec_quantity:, :rec_unit:, :rec_unitcost:, :rec_totalcost:, :isstranadjamount:, :accimploss:, :adjustedcost:, :repair_nature:, :repair_amount:, :issue_itemno:, :issue_date:, :issue_quantity:, :issue_officeofficer:, :transfer_date:, :transfer_quantity:, :transfer_officeofficer:, :disposal_date:, :disposal_quantity:, :disposal_officeofficer:, :balancequantity:, :balanceamount:, :remarks:, :estimatedlife:, :issued_officer:, :issued_offposition:, :issued_date:, :acc_officer:, :acc_empposition:, :acc_date:, :itr_no:, :itr_date:, :rrsp_no:, :rrsp_date:, :reasonfortrans:, :reg_semiissuedserialno:, :reg_returned_qty:, :reg_returned_off:, :reg_reissued_qty:, :reg_reissued_off:, :reg_disposed_qty:, :reg_balance_quantity:, :reg_amount:, :reg_remarks:, :property_officer:, :approving_authority:, :image:, :imageverification:, :returned_image:, :transfered_image:, :disposed_image:, :date_returned:, :created_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1480): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 12:36:52 --> mysqli_sql_exception: Table 'dilg.databaseppedisposeds' doesn't exist in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('INSERT INTO `da...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `da...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `da...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `da...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(788): CodeIgniter\Model->doInsert(Array)
+#6 C:\laragon\www\dilg\backend\backend\system\Model.php(715): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(1482): CodeIgniter\Model->insert(Array)
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#10 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#12 {main}
+CRITICAL - 2024-10-29 12:36:52 --> Table 'dilg.databaseppedisposeds' doesn't exist
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2308): CodeIgniter\Database\BaseConnection->query('INSERT INTO `databaseppedisposeds` (`entityname`, `classification`, `code`, `article`, `particulars`, `modelno`, `serialno`, `fulldescription`, `propertynumber`, `propertydate`, `icsnumber`, `jevnumber`, `rec_quantity`, `rec_unit`, `rec_unitcost`, `rec_totalcost`, `isstranadjamount`, `accimploss`, `adjustedcost`, `repair_nature`, `repair_amount`, `issue_itemno`, `issue_date`, `issue_quantity`, `issue_officeofficer`, `transfer_date`, `transfer_quantity`, `transfer_officeofficer`, `disposal_date`, `disposal_quantity`, `disposal_officeofficer`, `balancequantity`, `balanceamount`, `remarks`, `estimatedlife`, `issued_officer`, `issued_offposition`, `issued_date`, `acc_officer`, `acc_empposition`, `acc_date`, `itr_no`, `itr_date`, `rrsp_no`, `rrsp_date`, `reasonfortrans`, `reg_semiissuedserialno`, `reg_returned_qty`, `reg_returned_off`, `reg_reissued_qty`, `reg_reissued_off`, `reg_disposed_qty`, `reg_balance_quantity`, `reg_amount`, `reg_remarks`, `property_officer`, `approving_authority`, `image`, `imageverification`, `returned_image`, `transfered_image`, `disposed_image`, `date_returned`, `created_at`) VALUES (:entityname:, :classification:, :code:, :article:, :particulars:, :modelno:, :serialno:, :fulldescription:, :propertynumber:, :propertydate:, :icsnumber:, :jevnumber:, :rec_quantity:, :rec_unit:, :rec_unitcost:, :rec_totalcost:, :isstranadjamount:, :accimploss:, :adjustedcost:, :repair_nature:, :repair_amount:, :issue_itemno:, :issue_date:, :issue_quantity:, :issue_officeofficer:, :transfer_date:, :transfer_quantity:, :transfer_officeofficer:, :disposal_date:, :disposal_quantity:, :disposal_officeofficer:, :balancequantity:, :balanceamount:, :remarks:, :estimatedlife:, :issued_officer:, :issued_offposition:, :issued_date:, :acc_officer:, :acc_empposition:, :acc_date:, :itr_no:, :itr_date:, :rrsp_no:, :rrsp_date:, :reasonfortrans:, :reg_semiissuedserialno:, :reg_returned_qty:, :reg_returned_off:, :reg_reissued_qty:, :reg_reissued_off:, :reg_disposed_qty:, :reg_balance_quantity:, :reg_amount:, :reg_remarks:, :property_officer:, :approving_authority:, :image:, :imageverification:, :returned_image:, :transfered_image:, :disposed_image:, :date_returned:, :created_at:)', [...], false)
+ 2 SYSTEMPATH\Model.php(319): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(788): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(715): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\DatabasePPEController.php(1482): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->update_disposal('MDO-SPK-01')
+ 7 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 8 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 12:37:50 --> mysqli_sql_exception: Unknown column 'databaseppetransfered.imageverification' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(243): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataDisposed()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-29 12:37:50 --> Unknown column 'databaseppetransfered.imageverification' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppedisposed`
+WHERE `databaseppetransfered`.`imageverification` IS NOT NULL
+AND `databaseppetransfered`.`returned_image` IS NOT NULL
+AND `databaseppetransfered`.`remarks` = :databaseppetransfered.remarks:
+ORDER BY `databaseppetransfered`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(243): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataDisposed()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 12:37:52 --> mysqli_sql_exception: Unknown column 'databaseppetransfered.imageverification' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(243): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataDisposed()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-29 12:37:52 --> Unknown column 'databaseppetransfered.imageverification' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppedisposed`
+WHERE `databaseppetransfered`.`imageverification` IS NOT NULL
+AND `databaseppetransfered`.`returned_image` IS NOT NULL
+AND `databaseppetransfered`.`remarks` = :databaseppetransfered.remarks:
+ORDER BY `databaseppetransfered`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(243): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataDisposed()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 12:37:57 --> mysqli_sql_exception: Unknown column 'databaseppetransfered.imageverification' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(243): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataDisposed()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-29 12:37:57 --> Unknown column 'databaseppetransfered.imageverification' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppedisposed`
+WHERE `databaseppetransfered`.`imageverification` IS NOT NULL
+AND `databaseppetransfered`.`returned_image` IS NOT NULL
+AND `databaseppetransfered`.`remarks` = :databaseppetransfered.remarks:
+ORDER BY `databaseppetransfered`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(243): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataDisposed()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 12:37:59 --> mysqli_sql_exception: Unknown column 'databaseppetransfered.imageverification' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(243): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataDisposed()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-29 12:37:59 --> Unknown column 'databaseppetransfered.imageverification' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppedisposed`
+WHERE `databaseppetransfered`.`imageverification` IS NOT NULL
+AND `databaseppetransfered`.`returned_image` IS NOT NULL
+AND `databaseppetransfered`.`remarks` = :databaseppetransfered.remarks:
+ORDER BY `databaseppetransfered`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(243): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataDisposed()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+ERROR - 2024-10-29 13:00:06 --> mysqli_sql_exception: Unknown column 'databaseppetransfered.imageverification' in 'where clause' in C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php:306
+Stack trace:
+#0 C:\laragon\www\dilg\backend\backend\system\Database\MySQLi\Connection.php(306): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\laragon\www\dilg\backend\backend\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\laragon\www\dilg\backend\backend\system\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\laragon\www\dilg\backend\backend\system\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\laragon\www\dilg\backend\backend\system\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\laragon\www\dilg\backend\backend\app\Controllers\DatabasePPEController.php(243): CodeIgniter\BaseModel->findAll()
+#7 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataDisposed()
+#8 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+#9 C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\laragon\www\dilg\backend\index.php(86): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2024-10-29 13:00:06 --> Unknown column 'databaseppetransfered.imageverification' in 'where clause'
+in SYSTEMPATH\Database\BaseConnection.php on line 646.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1615): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `databaseppedisposed`
+WHERE `databaseppetransfered`.`imageverification` IS NOT NULL
+AND `databaseppetransfered`.`returned_image` IS NOT NULL
+AND `databaseppetransfered`.`remarks` = :databaseppetransfered.remarks:
+ORDER BY `databaseppetransfered`.`id` DESC', [...], false)
+ 2 SYSTEMPATH\Model.php(237): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(624): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Controllers\DatabasePPEController.php(243): CodeIgniter\BaseModel->findAll()
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->getDataDisposed()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-10-29 17:41:33 --> Attempt to read property "acc_officer" on null
+in APPPATH\Controllers\DatabasePPEController.php on line 1973.
+ 1 APPPATH\Controllers\DatabasePPEController.php(1973): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "acc_officer" on null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 1973)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->employeeRecordsSPLC()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

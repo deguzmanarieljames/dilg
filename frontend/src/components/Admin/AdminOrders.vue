@@ -56,15 +56,15 @@
             <!-- ======= Header ======= -->
             <header id="header" class="header fixed-top d-flex align-items-center">
       
-          <div class="d-flex align-items-center justify-content-between">
-            <a href="/dashboard" class="logo d-flex align-items-center">
-              <img src="./img/logo1.png" alt="">
-              <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
-                <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
-              </span>
-            </a>
-            <i class="bi bi-list toggle-sidebar-btn"></i>
-          </div><!-- End Logo -->
+              <div class="d-flex align-items-center justify-content-between">
+                <a href="/dashboard" class="logo d-flex align-items-center">
+                  <img src="./img/dilg-logo1.png" alt="" style="max-height: 92px; max-width: 92px">
+                  <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 25px; color: rgb(42, 43, 72);padding-left: 10px">
+                    INVENTrack
+                  </span>
+                </a>
+                <i class="bi bi-list toggle-sidebar-btn"></i>
+              </div><!-- End Logo -->
     
           <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">

@@ -18,11 +18,11 @@
         .row {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 20px; /* Add space between rows */
+            margin-bottom: 20px;
         }
 
+        /* This container class will have styles passed from Vue */
         .container {
-            width: 47%; /* Two containers per row with some space between */
             border: 1px solid #ccc;
             padding: 20px;
             background-color: #fff;
@@ -38,15 +38,7 @@
             margin-bottom: 20px;
         }
 
-        .property-info p {
-            margin: 0;
-        }
-
-        .details {
-            margin-bottom: 20px;
-        }
-
-        .details p {
+        .details, .property-info p {
             margin: 0;
         }
 
@@ -65,7 +57,17 @@
             <div class="row">
         <?php endif; ?>
 
-        <div class="container">
+        <!-- Applying dynamic styles from Vue editor -->
+        <div class="container" style="
+            width: <?= isset($containerStyles['width']) ? $containerStyles['width'] : '90%' ?>;
+            height: <?= isset($containerStyles['height']) ? $containerStyles['height'] : 'auto' ?>;
+            padding: <?= isset($containerStyles['padding']) ? $containerStyles['padding'] : '10px' ?>;
+            background-color: <?= isset($containerStyles['backgroundColor']) ? $containerStyles['backgroundColor'] : '#fff' ?>;
+            background-image: <?= isset($containerStyles['backgroundImage']) ? $containerStyles['backgroundImage'] : 'none' ?>;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        ">
             <div class="header">
                 <p>Republic of the Philippines
                     <br>
@@ -82,28 +84,29 @@
                     <b style="color: blue;"><?= $record['fulldescription'] ?></b>
                     __________________________________________________
                     <br>
+                    Serial No.: <b style="color: blue;"><?= $record['serialno'] ?></b><img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=<?= $record['propertynumber'] ?>" alt="" style="width: 20%; height: auto; float: right;">
+                    <br>
                     Model No.: <b style="color: blue;"><?= $record['modelno'] ?></b>
-                    <br>
-                    Serial No.: <b style="color: blue;"><?= $record['serialno'] ?></b><img :src="generateQRCodeUrl(selectedInfo.id)" alt="" style="width: 20%; height: auto; float: right;">
-                    <br>
+                    
+
                     Acquisition Date/Cost: <b style="color: blue;"><?= $record['propertydate'] ?> <?= $record['rec_unitcost'] ?></b>
                     <br>
                     Person Accountable: <b style="color: blue;"><?= $record['acc_officer'] ?></b>
                     <br>
                     Remarks: <b style="color: blue;"><?= $record['issue_officeofficer'] ?></b>
                 </p>
-                <br>
-                <div style="text-align: center; white-space: pre;">
-                    <pre>__________________  _________________________</pre>
-                    <pre>COA Representative  Authorized Representative</pre>
-                </div>
             </div>
             <div class="note">
-                <p style="text-align: center; color: red;"><b>NOTE: PLEASE DO NOT REMOVE</b></p>
+                <p><b>Issued by the Property Inventory Unit</b>
+                    <br>
+                    DILG Regional Office IV-B
+                    <br>
+                    City of Calapan, Oriental Mindoro
+                </p>
             </div>
         </div>
 
-        <?php if ($index % 2 == 1 || $index == count($data) - 1): ?>
+        <?php if ($index % 2 == 1): ?>
             </div>
         <?php endif; ?>
     <?php endforeach; ?>

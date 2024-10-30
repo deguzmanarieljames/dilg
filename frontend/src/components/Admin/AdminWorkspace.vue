@@ -1,17 +1,18 @@
 <template>
-<div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 1650px;" @click="hideContextMenu">
+  <div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;" @click="hideContextMenu">
         <!-- ======= Header ======= -->
         <header id="header" class="header fixed-top d-flex align-items-center">
   
-      <div class="d-flex align-items-center justify-content-between">
-        <a href="/dashboard" class="logo d-flex align-items-center">
-          <img src="./img/logo1.png" alt="">
-          <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
-            <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
-          </span>
-        </a>
-        <i class="bi bi-list toggle-sidebar-btn"></i>
-      </div><!-- End Logo -->
+          <div class="d-flex align-items-center justify-content-between">
+            <a href="/dashboard" class="logo d-flex align-items-center" style="position: relative;">
+              <img src="./img/dilg-logo1.png" alt="" 
+                   style="position: absolute; max-height: 220px; max-width: 220px; margin-left: -30px; z-index: 1;">
+              <span style="font-family: 'Times New Roman', Times, serif; font-size: 25px; color: rgb(42, 43, 72); padding-left: 120px; z-index: 2; position: relative;">
+                INVENTrack
+              </span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+          </div><!-- End Logo -->
 
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
@@ -158,6 +159,21 @@
                 <i class="bi bi-circle"></i><span>Unserviceable</span>
               </a>
             </li>
+            <li>
+              <a href="returnedppe">
+                <i class="bi bi-circle"></i><span>Returned PPE</span>
+              </a>
+            </li>
+            <li>
+              <a href="transferedppe">
+                <i class="bi bi-circle"></i><span>Transfered PPE</span>
+              </a>
+           </li>
+           <li>
+            <a href="disposedppe">
+              <i class="bi bi-circle"></i><span>Disposed PPE</span>
+            </a>
+         </li>
           </ul>
         </li><!-- End Components Nav -->
   
@@ -173,27 +189,7 @@
             </li>
             <li>
               <a href="ledgercard">
-                <i class="bi bi-circle"></i><span>Ledger Card</span>
-              </a>
-            </li>
-            <li>
-              <a href="propertycard">
-                <i class="bi bi-circle"></i><span>Property Card</span>
-              </a>
-            </li>
-            <li>
-              <a href="ackreceipt">
-                <i class="bi bi-circle"></i><span>Acknowledgement Receipt</span>
-              </a>
-            </li>
-            <li>
-              <a href="transferreport">
-                <i class="bi bi-circle"></i><span>Transfer Report</span>
-              </a>
-            </li>
-            <li>
-              <a href="rlsddp">
-                <i class="bi bi-circle"></i><span>RLSDDP</span>
+                <i class="bi bi-circle"></i><span>PPE Documents</span>
               </a>
             </li>
           </ul>
@@ -263,554 +259,300 @@
 
 
                             <div>
-                              <div class="body">
-                    <div class="radio-input">
-                      <label>
-                        <input
-                          checked
-                          value="inputs"
-                          name="value-radio"
-                          id="inputs"
-                          type="radio"
-                          v-model="activeTab"
-                        />
-                        <span>Inputs</span>
-                      </label>
+                                <div class="radio-input">
+                                  <label>
+                                    <input
+                                      checked
+                                      value="inputs"
+                                      name="value-radio"
+                                      id="inputs"
+                                      type="radio"
+                                      v-model="activeTab"
+                                    />
+                                    <span>Inputs</span>
+                                  </label>
 
-                      <label>
-                        <input
-                          value="records"
-                          name="value-radio"
-                          id="records"
-                          type="radio"
-                          v-model="activeTab"
-                        />
-                        <span>Records</span>
-                      </label>
+                                  <label>
+                                    <input
+                                      value="records"
+                                      name="value-radio"
+                                      id="records"
+                                      type="radio"
+                                      v-model="activeTab"
+                                    />
+                                    <span>Records</span>
+                                  </label>
 
-                      <label>
-                        <input
-                          value="requestTable"
-                          name="value-radio"
-                          id="requestTable"
-                          type="radio"
-                          v-model="activeTab"
-                        />
-                        <span>Request Table</span>
-                      </label>
+                                  <label>
+                                    <input
+                                      value="requestTable"
+                                      name="value-radio"
+                                      id="requestTable"
+                                      type="radio"
+                                      v-model="activeTab"
+                                    />
+                                    <span>Request Table</span>
+                                  </label>
 
-                      <span class="selection"></span>
-                    </div>
-                  </div>
+                                  <span class="selection"></span>
+                                </div>
 
-                  <br>
-                  <br>
+
+                              <br>
 
     <!-- Tab Contents -->
     <div v-if="activeTab === 'inputs'">
       <!-- Content for Inputs Tab -->
        
   
-            <form enctype="multipart/form-data" id="myForm">
-             
-              
-              <div class="card">
-                <div class="layout">
-                <div class="card-body">
-                  <div class="container-fluid">
-                  <div class="row justify-content-center">
-                    
-        
-            <!-- Page Navigation -->
-            <div v-if="currentFormPage === 1">
-              
-              <!-- Page 1 Content -->
-              <div class="row g-1">
-                <label class="card-title text-center" style="font-size: 100%">Equipment</label>
-                <div class="col-12">
-                  <br>
-                  <label for="particulars" class="form-label">Particulars</label>
-                  <select class="form-select" id="particulars" v-model="formselectedParticular" @change="populateRecords" required>
-                    <option value="" disabled>Select Particular</option>
-                    <option v-for="item in inventory" :value="item.id" :key="item.id">{{ item.particulars }}</option>
-                  </select>
-                </div>
-
-                <div>
-                  <div class="col-12">
-                    <label for="entityname" class="form-label">Entity Name</label>
-                    <input type="text" disabled class="form-control" id="entityname" v-model="entityname">
-                  </div>
-                  <div class="col-12">
-                    <label for="classification" class="form-label">Classification</label>
-                    <input type="text" disabled class="form-control" id="classification" v-model="classification">
-                  </div>
-                  <div class="col-12">
-                    <label for="code" class="form-label">Code</label>
-                    <input type="text" disabled class="form-control" id="code" v-model="code">
-                  </div>
-                </div>
-
-                <div class="section-divider"></div> <!-- Custom Divider -->
-
-                <div class="row g-1">
-                  <label class="card-title text-center" style="font-size: 100%">Description</label>
-                  <div class="col-12">
-                    <label for="article" class="form-label">Article</label>
-                    <input type="text" disabled class="form-control" id="article" v-model="article">
-                  </div>
-                  <div class="col-6">
-                    <label for="modelno" class="form-label">Model No.:</label>
-                    <input type="text" disabled class="form-control" id="modelno" v-model="modelno">
-                  </div>
-                  <div class="col-6">
-                    <label for="serialno" class="form-label">Serial No.:</label>
-                    <input type="text" disabled class="form-control" id="serialno" v-model="serialno">
-                    <br>
-                  </div>
-                </div>
-
-                <div class="section-divider"></div> <!-- Custom Divider -->
-
-                <div class="row g-1">
-                  <label class="card-title text-center" style="font-size: 100%">Semi-expendable</label>
-                  <div class="col-6">
-                          <br>
-                          <label for="propertynumber" class="form-label">Property Number</label>
-                          <input type="text" class="form-control" id="propertynumber" v-model="propertynumber" placeholder="MDO-CPU-02">
-                        </div>
-                        <div class="col-6">
-                          <br>
-                          <label for="propertydate" class="form-label">Property Date</label>
-                          <input type="date" class="form-control" id="propertydate" v-model="propertydate">
-                        </div>
+      <form enctype="multipart/form-data" id="myForm">       
+         <div class="card">
+          <div class="card-body">
+            <div class="container-fluid">
+              <div class="row justify-content-center">
+      
+                <!-- Page Navigation -->
+                <!-- <label class="card-title text-center" style="font-size: 100%">Equipment</label> -->
+      
+                <div class="row">
+                  <!-- First Column -->
+                  <div class="col-md-4">
+                    <label class="card-title text-center" style="font-size: 20px">INVENTORY ITEM</label>
+                    <div class="form-group row">
+                      <label for="particulars" class="form-label">Particulars</label>
+                      <div class="col-6">
+                        <select class="form-select" id="particulars" v-model="formselectedParticular" @change="populateRecords" required>
+                          <option value="" disabled>Select Particular</option>
+                          <option v-for="item in inventory" :value="item.id" :key="item.id">{{ item.particulars }}</option>
+                        </select>
                       </div>
-
-                      
-                      <div class="section-divider"></div> <!-- Custom Divider -->
-                            <br>
-                      <div class="row g-1">
-                        <label class="card-title text-center" style="font-size: 100%">Reference</label>
-                        <div class="col-6">
-                          <br>
-                          <label for="icsnumber" class="form-label">ICS NO.</label>
-                          <input type="text" class="form-control" id="icsnumber" v-model="icsnumber">
-                        </div>
-                        <div class="col-6">
-                          <br>
-                          <label for="jevnumber" class="form-label">JEV NO.</label>
-                          <input type="text" class="form-control" id="jevnumber" v-model="jevnumber">
-                        </div>
+                      <div class="col-6">
+                        <button class="btn btn-outline-success" @click="openQrScannerModal">Scan QR Code</button>
                       </div>
+                    </div>
+      
+                    <!-- Modal for QR scanner -->
+                    <div v-if="isQrScannerModalOpen" class="modal">
+                      <div class="modal-content">
+                        <h3>QR Scanner</h3>
+                        <span class="close" @click="selectedRecord = null">&times;</span>
+                        <video id="modal-qr-video" playsinline></video>
+                        <div id="modal-qr-result"></div>
+                        <button class="btn btn-success" id="modal-start-camera" @click="startModalCamera" v-show="!modalIsCameraOn">Scan</button>
+                        <button class="btn btn-danger" id="modal-stop-camera" @click="stopModalCamera" v-show="modalIsCameraOn">Stop</button>
+                        <button v-if="qrCodeData" @click="populateFromQr">Populate from QR</button>
+                        <p v-if="qrCodeData">Scanned QR Code: {{ qrCodeData }}</p>
+                      </div>
+                    </div>
+      
+                    <!-- Disabled Inputs Section -->
+                    <div class="form-group row">
+                      <div class="col-12">
+                        <label for="entityname" class="form-label">Entity Name</label>
+                        <input type="text" disabled class="form-control" id="entityname" v-model="entityname" required>
+                      </div>
+                      <div class="col-12">
+                        <label for="classification" class="form-label">Classification</label>
+                        <input type="text" disabled class="form-control" id="classification" v-model="classification" required>
+                      </div>
+                    </div>
+      
+                    <!-- Description Section -->
+                    <div class="form-group row">
+                      <div class="col-6">
+                        <label for="code" class="form-label">Code</label>
+                        <input type="text" disabled class="form-control" id="code" v-model="code" required>
+                      </div>
+                      <div class="col-6">
+                        <label for="article" class="form-label">Article</label>
+                        <input type="text" disabled class="form-control" id="article" v-model="article" required>
+                      </div>
+                      <div class="col-6">
+                        <label for="modelno" class="form-label">Model No.:</label>
+                        <input type="text" disabled class="form-control" id="modelno" v-model="modelno" required>
+                      </div>
+                      <div class="col-6">
+                        <label for="serialno" class="form-label">Serial No.:</label>
+                        <input type="text" disabled class="form-control" id="serialno" v-model="serialno" required>
+                      </div>
+                    </div>
+      
+                    <!-- Semi-expendable Section -->
+                    <div class="form-group row">
+                      <div class="col-6">
+                        <label for="propertynumber" class="form-label">Property Number</label>
+                        <input type="text" disabled class="form-control" id="propertynumber" v-model="propertynumber" placeholder="MDO-CPU-02" required>
+                      </div>
+                      <div class="col-6">
+                        <label for="propertydate" class="form-label">Property Date</label>
+                        <input type="date" disabled class="form-control" id="propertydate" v-model="propertydate" required>
+                      </div>
+                    </div>
 
-                      <div class="section-divider"></div> <!-- Custom Divider -->
-
-                      <div class="row g-1">
-                        <label class="card-title text-center" style="font-size: 100%">Receipt</label>
-                        <div class="col-6">
-                          <br>
-                          <label for="rec_quantity" class="form-label">Receipt Quantity</label>
-                          <input type="text" class="form-control" id="rec_quantity" v-model="rec_quantity" placeholder="0" required>
-                        </div>
-                        <div class="col-6">
-                          <br>
-                          <label for="rec_unit" class="form-label">Unit</label>
-                          <select class="form-select" id="rec_unit" v-model="rec_unit" required>
-                            <option value="unit">Unit</option>
-                            <option value="set">Set</option>
-                          </select>
-                        </div>
-                        <div class="col-6">
-                          <br>
-                          <label for="rec_unitcost" class="form-label">Receipt Unit Cost</label>
-                    <input type="text" class="form-control" id="rec_unitcost" v-model="rec_unitcost" placeholder="0.00" disabled>
-                  </div>
-                  <div class="col-6">
-                    <br>
-                    <label for="rec_totalcost" class="form-label">Receipt Total Cost</label>
-                    <input type="text" class="form-control" id="rec_totalcost" :value="totalCostFormatted" placeholder="0.00" disabled>
-                    <br>
-                  </div>
-                </div>
-<hr>
-                <!-- Navigation Buttons -->
-                <div style="display: flex; justify-content: flex-end;">
-                          <button class="nextbtn" @click="nextPage">
-                            <span>Next</span>
-                          </button>
-                        </div>
-                        </div>
+                    <div class="form-group row">
+                      <div class="col-6">
+                        <label for="rec_quantity" class="form-label">Receipt Quantity</label>
+                        <input type="text" class="form-control" id="rec_quantity" v-model="rec_quantity" placeholder="0" disabled required>
+                      </div>
+                      <div class="col-6">
+                        <label for="rec_unit" class="form-label">Unit</label>
+                        <select class="form-select" id="rec_unit" v-model="rec_unit" disabled required>
+                          <option value="unit">Unit</option>
+                          <option value="set">Set</option>
+                        </select>
+                      </div>
+                      <div class="col-6">
+                        <label for="rec_unitcost" class="form-label">Receipt Unit Cost</label>
+                        <input type="text" class="form-control" id="rec_unitcost" v-model="rec_unitcost" placeholder="0.00" disabled required>
+                      </div>
+                      <div class="col-6">
+                        <label for="rec_totalcost" class="form-label">Receipt Total Cost</label>
+                        <input type="text" class="form-control" id="rec_totalcost" :value="totalCostFormatted" placeholder="0.00" disabled required>
+                      </div>
                     </div>
                   </div>
-              
+      
 
- 
-      <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-lg-14">
-        <div class="card-body">
-        <!-- <div class="card">
-          <div class="card-body"> -->
-            <!-- Page 2 Content -->
-            <div v-if="currentFormPage === 2">
-              <!-- Others -->
-              <div class="row g-1">
-                <label class="card-title text-center" style="font-size: 100%">Others</label>
-                <div class="col-12">
-                  <br>
-                  <label for="isstranadjamount" class="form-label">Issue/ Transfer/ Adjustments (Amount)</label>
-                  <input type="text" class="form-control" id="isstranadjamount" v-model="isstranadjamount" placeholder="0.00">
-                </div>
-                <div class="col-6">
-                  <label for="accimploss" class="form-label">Acc Imp Loss</label>
-                  <input type="text" class="form-control" id="accimploss" v-model="accimploss">
-                </div>
-                <div class="col-6">
-                  <label for="adjustedcost" class="form-label">Adjusted Cost</label>
-                  <input type="text" class="form-control" id="adjustedcost" v-model="adjustedcost" placeholder="0.00">
-                  <br>
-                </div>
-              </div>
+                  <!-- Second Column with Image Preview -->
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <div class="col-12">
+                        <label class="card-title text-center" style="font-size: 20px">IMAGE PREVIEW</label>
+                        <div class="image-container" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 200px; border: 1px solid #ccc; border-radius: 50%;">
+                          <img 
+                            :src="image ? `http://dilg.test/backend/uploads/${image}` : 'path/to/default-image.png'" 
+                            alt="Image Preview" 
+                            class="img-fluid" 
+                            style="max-width: 100%; max-height: 100%; border-radius: 35px" 
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    
 
-              <div class="section-divider"></div> <!-- Custom Divider -->
 
-              <!-- History of Repair -->
-              <div class="row g-1">
-                <label class="card-title text-center" style="font-size: 100%">History of Repair</label>
-                <div class="col-6">
-                  <br>
-                  <label for="repair_nature" class="form-label">Nature of Repair</label>
-                  <input type="text" class="form-control" id="repair_nature" v-model="repair_nature">
-                </div>
-                <div class="col-6">
-                  <br>
-                  <label for="repair_amount" class="form-label">Repair Amount</label>
-                  <input type="text" class="form-control" id="repair_amount" v-model="repair_amount">
-                  <br>
-                </div>
-              </div>
+                    <!-- Upload Image Name -->
+                    <div class="form-group">
+                      <input type="text" class="form-control mt-2" id="image" v-model="image" placeholder="Enter or upload image file name" required>
+                    </div>
 
-              <div class="section-divider"></div> <!-- Custom Divider -->
-
-              <!-- Issue -->
-              <div class="row g-1">
-                <label class="card-title text-center" style="font-size: 100%">Issue</label>
-                <div class="col-12">
-                  <br>
-                  <label for="issue_date" class="form-label">Issue Item Date</label>
-                  <input type="date" class="form-control" id="issue_date" v-model="issue_date" required>
+                    <label class="card-title text-center" style="font-size: 20px; margin-bottom: 10px">Additional Information</label>
+                    <div class="form-group row">
+                      <div class="col-6">
+                        <label for="icsnumber" class="form-label">ICS NO.</label>
+                        <input type="text" class="form-control" id="icsnumber" v-model="icsnumber" required>
+                      </div>
+                      <div class="col-6">
+                        <label for="jevnumber" class="form-label">JEV NO.</label>
+                        <input type="date" class="form-control" id="jevnumber" v-model="jevnumber" required>
+                      </div>
+                      <label class="card-title text-center" style="font-size: 20px; margin-bottom: 10px">Issue</label>
+                      <div class="col-6">
+                        <label for="issue_date" class="form-label">Issue Item Date</label>
+                        <input type="date" class="form-control" id="issue_date" v-model="issue_date" required>
+                      </div>
+                      <div class="col-6">
+                        <label for="remarks" class="form-label">Remarks</label>
+                        <select class="form-select" id="remarks" v-model="remarks" required>
+                          <option value="SERVICEABLE">SERVICEABLE</option>
+                          <option value="UNSERVICEABLE">UNSERVICEABLE</option>
+                        </select>
+                      </div>
+                      <div class="col-8">
+                        <label for="issue_officeofficer" class="form-label">Issue Office/Officer</label>
+                        <input type="text" class="form-control" id="issue_officeofficer" v-model="issue_officeofficer" placeholder="Base sa nagamit ng system" required>
+                      </div>
+                      <div class="col-4">
+                        <label for="estimatedlife" class="form-label">Est. Useful Life</label>
+                        <input type="text" class="form-control" id="estimatedlife" v-model="estimatedlife" required>
+                      </div>
+                    </div>
+                  </div>
+      
+                  <!-- Third Column -->
+                  <div class="col-md-4">
+                    <div class="form-group row">
+                      <label class="card-title text-center" style="font-size: 17px; margin-bottom: 5px">Issued Information</label>
+                      <div class="col-12">
+                        <label for="issued_officer" class="form-label">Issued Officer</label>
+                        <input type="text" class="form-control" id="issued_officer" v-model="issued_officer" required>
+                      </div>
+                      <div class="col-6">
+                        <label for="issued_offposition" class="form-label">Issued Position</label>
+                        <input type="text" class="form-control" id="issued_offposition" v-model="issued_offposition" required>
+                      </div>
+                      <div class="col-6">
+                        <label for="issued_date" class="form-label">Issued Date</label>
+                        <input type="date" class="form-control" id="issued_date" v-model="issued_date" required>
+                      </div>
+                      <label class="card-title text-center" style="font-size: 17px; margin-bottom: 5px">Accountable Information</label>
+                      <div class="col-6">
+                        <label for="acc_officer" class="form-label">Accountable Officer</label>
+                        <select class="form-select" id="acc_officer" v-model="acc_officer" required>
+                          <option value="" disabled>Select Employee</option>
+                          <option v-for="employee in employees" :key="employee.empid" :value="employee.empfullname">{{ employee.empfullname }}</option>
+                        </select>
+                      </div>
+                      <div class="col-6">
+                        <label for="acc_empposition" class="form-label">Accountable Position</label>
+                        <select class="form-select" id="acc_empposition" v-model="acc_empposition" required>
+                          <option value="" disabled>Select Position</option>
+                          <option v-for="employee in employees" :key="employee.empid" :value="employee.empposition">{{ employee.empposition }}</option>
+                        </select>
+                      </div>
+                      <div class="col-6">
+                        <label for="acc_date" class="form-label">Accountable Date</label>
+                        <input type="date" class="form-control" id="acc_date" v-model="acc_date" required>
+                      </div>
+                      <div class="col-6">
+                        <label for="reg_remarks" class="form-label">Remarks</label>
+                        <select class="form-select" id="reg_remarks" v-model="reg_remarks" required>
+                          <option value="SERVICEABLE">SERVICEABLE</option>
+                          <option value="UNSERVICEABLE">UNSERVICEABLE</option>
+                        </select>
+                      </div>
+                      <label class="card-title text-center" style="font-size: 17px; margin-bottom: 5px">Witnessed By:</label>
+                      <div class="col-6">
+                        <label for="property_officer" class="form-label">Property Officer</label>
+                        <input type="text" class="form-control" id="property_officer" v-model="property_officer" placeholder="nakabase sa nagamit" required>
+                      </div>
+                      <div class="col-6">
+                        <label for="approving_authority" class="form-label">Head of Office</label>
+                        <input type="text" class="form-control" id="approving_authority" v-model="approving_authority" required>
+                      </div>
+                    </div>
+      
+                    <br>
+                    <!-- Reset and Submit Buttons -->
+                    <div class="d-flex justify-content-between">
+                      <!-- Reset Button -->
+                      <button class="button1 me-2" @click="confirmReset" type="reset" style="width: 120px; height: 40px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                          <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"></path>
+                          <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"></path>
+                        </svg>
+                        Reset Form
+                      </button>
+                    
+                      <!-- Submit / Update Button -->
+                      <div class="d-flex">
+                        <button @click="validateForm" v-if="status !== 'update'" type="submit" class="button">
+                          Submit
+                        </button>
+                        <button @click="validateForm" v-if="status === 'update'" type="submit" class="button">
+                          Update
+                        </button>
+                      </div>
+                    </div>                    
+                  </div>
                 </div>
-                <div class="col-12">
-                  <label for="issue_officeofficer" class="form-label">Issue Office/Officer</label>
-                  <input type="text" class="form-control" id="issue_officeofficer" v-model="issue_officeofficer" placeholder="Base sa nagamit ng system" required>
-                </div>
-              </div>
-
-              <div class="section-divider"></div> <!-- Custom Divider -->
-
-              <!-- Transfer -->
-              <div class="row g-1">
-                <label class="card-title text-center" style="font-size: 100%">Transfer</label>
-                <div class="col-6">
-                  <br>
-                  <label for="transfer_date" class="form-label">Transfer Date</label>
-                  <input type="date" class="form-control" id="transfer_date" v-model="transfer_date" required>
-                </div>
-                <div class="col-6">
-                  <br>
-                  <label for="transfer_quantity" class="form-label">Transfer Quantity</label>
-                  <input type="text" class="form-control" id="transfer_quantity" v-model="transfer_quantity" required>
-                </div>
-                <div class="col-12">
-                  <br>
-                  <label for="transfer_officeofficer" class="form-label">Transfer Office/Officer</label>
-                  <input type="text" class="form-control" id="transfer_officeofficer" v-model="transfer_officeofficer" required>
-                </div>
-              </div>
-
-              <div class="section-divider"></div> <!-- Custom Divider -->
-
-              <!-- Disposal -->
-              <div class="row g-1">
-                <label class="card-title text-center" style="font-size: 100%">Disposal</label>
-                <div class="col-6">
-                  <br>
-                  <label for="disposal_date" class="form-label">Disposal Date</label>
-                  <input type="date" class="form-control" id="disposal_date" v-model="disposal_date" required>
-                </div>
-                <div class="col-6">
-                  <br>
-                  <label for="disposal_quantity" class="form-label">Disposal Quantity</label>
-                  <input type="text" class="form-control" id="disposal_quantity" v-model="disposal_quantity" required>
-                </div>
-                <div class="col-12">
-                  <br>
-                  <label for="disposal_officeofficer" class="form-label">Disposal Officer</label>
-                  <input type="text" class="form-control" id="disposal_officeofficer" v-model="disposal_officeofficer" required>
-                </div>
-              </div>
-              <br>
-<hr>
-              <!-- Navigation Buttons -->
-
-              <div class="d-flex justify-content-between mt-4">
-                <button class="backbtn" @click="prevPage" :disabled="currentFormPage === 1">
-                <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
-                  <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z"></path>
-                </svg>
-                <span>Back</span>
-              </button>
-              <button class="nextbtn" @click="nextPage">
-                            <span>Next</span>
-                          </button>
-              </div>
-              </div>
-              </div>
-              </div>
-              </div>
-              </div>
-                  
-              <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-lg-14">
-        <!-- <div class="card">
-          <div class="card-body"> -->
-            <!-- Page 3 Content -->
-            <div v-if="currentFormPage === 3">
-              <!-- Balance Quantity -->
-              <div class="row g-1">
-                <label class="card-title text-center" style="font-size: 100%">Balance Quantity</label>
-                <div class="col-12">
-                  <br>
-                  <label for="remarks" class="form-label">Remarks</label>
-                  <select class="form-select" id="remarks" v-model="remarks">
-                    <option value="SERVICEABLE">SERVICEABLE</option>
-                    <option value="UNSERVICEABLE">UNSERVICEABLE</option>
-                  </select>
-                </div>
-                <div class="col-12">
-                  <label for="estimatedlife" class="form-label">Estimated Useful Life</label>
-                  <input type="text" class="form-control" id="estimatedlife" v-model="estimatedlife" required>
-                </div>
-              </div>
-
-              <div class="section-divider"></div> <!-- Custom Divider -->
-
-              <!-- Received from: (Issued by) -->
-              <div class="row g-1">
-                <label class="card-title text-center" style="font-size: 100%">Received from: (Issued by)</label>
-                <div class="col-12">
-                  <br>
-                  <label for="issued_officer" class="form-label">Issued Officer</label>
-                  <input type="text" class="form-control" id="issued_officer" v-model="issued_officer" placeholder="Nakabase din sa nagamit" required>
-                </div>
-                <div class="col-6">
-                  <br>
-                  <label for="issued_offposition" class="form-label">Issued Position</label>
-                  <input type="text" class="form-control" id="issued_offposition" v-model="issued_offposition" required>
-                </div>
-                <div class="col-6">
-                  <br>
-                  <label for="issued_date" class="form-label">Issued Date</label>
-                  <input type="date" class="form-control" id="issued_date" v-model="issued_date" required>
-                  <br>
-                </div>
-              </div>
-
-              <div class="section-divider"></div> <!-- Custom Divider -->
-
-              <!-- Received by: (Accountable Officer) -->
-              <div class="row g-3">
-                <label class="card-title text-center" style="font-size: 100%">Received by: (Accountable Officer)</label>
-                <div class="col-12">
-                  <br>
-                  <label for="acc_officer" class="form-label">Accountable Officer</label>
-                  <select class="form-select" id="acc_officer" v-model="acc_officer" required>
-                    <option value="" disabled>Select Employee</option>
-                    <option v-for="employee in employees" :key="employee.empid" :value="employee.empfullname">{{ employee.empfullname }}</option>
-                  </select>
-                </div>
-                <div class="col-12">
-                  <label for="acc_empposition" class="form-label">Accountable Position</label>
-                  <select class="form-select" id="acc_empposition" v-model="acc_empposition" required>
-                    <option value="" disabled>Select Position</option>
-                    <option v-for="employee in employees" :key="employee.empid" :value="employee.empposition">{{ employee.empposition }}</option>
-                  </select>
-                </div>
-                <div class="col-12">
-                  <label for="acc_date" class="form-label">Accountable Date</label>
-                  <input type="date" class="form-control" id="acc_date" v-model="acc_date" required>
-                  <br>
-                </div>
-              </div>
-
-              <div class="section-divider"></div> <!-- Custom Divider -->
-
-              <!-- Inventory Transfer Report -->
-              <div class="row g-1">
-                <label class="card-title text-center" style="font-size: 100%">Inventory Transfer Report</label>
-                <div class="col-6">
-                  <br>
-                  <label for="itr_no" class="form-label">ITR Number</label>
-                  <input type="text" class="form-control" id="itr_no" v-model="itr_no" required>
-                </div>
-                <div class="col-6">
-                  <br>
-                  <label for="itr_date" class="form-label">ITR Date</label>
-                  <input type="date" class="form-control" id="itr_date" v-model="itr_date" required>
-                </div>
-                <div class="col-6">
-                  <label for="rrsp_no" class="form-label">RRSP No.</label>
-                  <input type="text" class="form-control" id="rrsp_no" v-model="rrsp_no" required>
-                </div>
-                <div class="col-6">
-                  <label for="rrsp_date" class="form-label">RRSP Date</label>
-                  <input type="date" class="form-control" id="rrsp_date" v-model="rrsp_date" required>
-                </div>
-                <div class="col-12">
-                  <label for="reasonfortrans" class="form-label">Reason for Transfer</label>
-                  <textarea class="form-control" id="reasonfortrans" v-model="reasonfortrans" required></textarea>
-                </div>
-              </div>
-                <hr>
-              <!-- Navigation Buttons -->
-              <div class="d-flex justify-content-between mt-4">
-                <button class="backbtn" @click="prevPage" :disabled="currentFormPage === 1">
-                <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
-                  <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z"></path>
-                </svg>
-                <span>Back</span>
-              </button>
-              <button class="nextbtn" @click="nextPage">
-                            <span>Next</span>
-                          </button>
+      
               </div>
             </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div class="container-fluid">
-    <div class="row justify-content-center">
-      <div class="col-lg-12">
-        
-      <!-- REGISTRY OF SEMI-EXPENDABLE PROPERTY ISSUED -->
-      <div v-if="currentFormPage === 4">
-      <div class="row g-1">
-        <label class="card-title text-center" style="font-size: 100%">REGISTRY OF SEMI-EXPENDABLE PROPERTY ISSUED</label>
-        <div class="section-divider"></div> <!-- Custom Divider -->
-        
-        <!-- Returned -->
-        <label class="card-title" style="font-size: 100%">Returned</label>
-        <div class="col-6">
-          <br>
-          <label for="reg_semiissuedserialno" class="form-label">SERIAL NO.:</label>
-          <input type="text" class="form-control" id="reg_semiissuedserialno" v-model="reg_semiissuedserialno" required>
+          </div>
         </div>
-        <div class="col-6">
-          <br>
-          <label for="reg_returned_qty" class="form-label">Returned Quantity</label>
-          <input type="text" class="form-control" id="reg_returned_qty" v-model="reg_returned_qty" required>
-        </div>
-
-        <div class="section-divider"></div> <!-- Custom Divider -->
-
-        <!-- Re-issued -->
-        <label class="card-title text-center" style="font-size: 100%">Re-issued</label>
-        <div class="col-12">
-          <br>
-          <label for="reg_reissued_qty" class="form-label">Re-issued Quantity</label>
-          <input type="text" class="form-control" id="reg_reissued_qty" v-model="reg_reissued_qty" required>
-        </div>
-        <div class="col-12">
-          <label for="reg_reissued_off" class="form-label">Re-issued Office/Officer</label>
-          <input type="text" class="form-control" id="reg_reissued_off" v-model="reg_reissued_off" required>
-        </div>
-
-        <div class="section-divider"></div> <!-- Custom Divider -->
-
-        <!-- Disposed -->
-        <label class="card-title text-center" style="font-size: 100%">Disposed</label>
-        <div class="col-12">
-          <br>
-          <label for="reg_disposed_qty" class="form-label">Disposed Quantity</label>
-          <input type="text" class="form-control" id="reg_disposed_qty" v-model="reg_disposed_qty" required>
-        </div>
-        <div class="col-12">
-          <label for="reg_balance_quantity" class="form-label">Balance Quantity</label>
-          <input type="text" class="form-control" id="reg_balance_quantity" v-model="reg_balance_quantity" required>
-        </div>
-        <div class="col-12">
-          <label for="reg_amount" class="form-label">Amount</label>
-          <input type="text" class="form-control" id="reg_amount" v-model="reg_amount" required>
-        </div>
-        <div class="col-12">
-          <label for="reg_remarks" class="form-label">Remarks</label>
-          <select class="form-select" id="reg_remarks" v-model="reg_remarks" required>
-            <option value="SERVICEABLE">SERVICEABLE</option>
-            <option value="UNSERVICEABLE">UNSERVICEABLE</option>
-          </select>
-        </div>
-
-        <div class="section-divider"></div> <!-- Custom Divider -->
-
-        <!-- ASSIGNED OFFICER -->
-        <label class="card-title text-center" style="font-size: 100%">ASSIGNED OFFICER</label>
-        <br>
-        <div class="col-12">
-          <br>
-          <label for="property_officer" class="form-label">Property Officer</label>
-          <input type="text" class="form-control" id="property_officer" v-model="property_officer" placeholder="nakabase sa nagamit" required>
-        </div>
-        <div class="col-12">
-          <br>
-          <label for="approving_authority" class="form-label">Head of Office/ Approving Authority</label>
-          <input type="text" class="form-control" id="approving_authority" v-model="approving_authority" placeholder="magbase sa position" required>
-        </div>
-
-        <!-- Buttons -->
-        <br><br><br><br><br><br>
-  
-        <hr>
-        
-        <div class="d-flex justify-content-between align-items-center">
-          <button class="backbtn" @click="prevPage" :disabled="currentFormPage === 1">
-                <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
-                  <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z"></path>
-                </svg>
-                <span>Back</span>
-              </button>
-
-  <button class="button1" @click="confirmReset" type="reset" style="width: 120px; height: 40px;">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-      <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"></path>
-      <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"></path>
-    </svg>
-    Reset Form
-  </button>
-
-  <div class="d-flex">
-    <button @click="saveOrUpdate" v-if="status !== 'update'" type="submit" class="button">
-      Submit
-    </button>
-    <button @click="saveOrUpdate" v-if="status === 'update'" type="submit" class="button">
-      Update
-    </button>
-  </div>
-</div>
-
-      
-      </div>
-    </div>
-  </div>
-</div>
-</div>
-</div>
-</div>
-</div> 
-</div>
       </form>
+      
     </div>
     </div>
 
@@ -818,504 +560,259 @@
     <div v-if="activeTab === 'records'">
 
       <div class="updatemodal-backdrop" v-if="showUpdateFormModal">
-  <div class="modal-card">
-    <button class="delete" aria-label="close" @click="closeUpdateFormModal"></button>
+ <div class="modal"> 
+  <div class="modal-card" style="margin: 0px 100px 0px 100px">
+    <br><br>
     <section>
       <transition name="updatemodal-slide">
-      <form enctype="multipart/form-data" id="myForm">
-        <div class="card">
-          <div class="layout">
-            <div class="card-body">
-              <div class="container-fluid">
-                <div class="row justify-content-center">
-                  <!-- Page Navigation -->
-                  <div v-if="currentFormPage === 1">
-                    <!-- Page 1 Content -->
-                    <div class="row g-1">
-                      <label class="card-title text-center" style="font-size: 100%">Equipment</label>
-                      <div class="col-12">
-                        <br>
-                        <label for="particulars" class="form-label">Particulars</label>
-                 <select class="form-select" id="particulars" v-model="formselectedParticular" @change="populateRecords" required>
-                   <option value="" disabled>Select Particular</option>
-                   <option v-for="item in inventory" :value="item.id" :key="item.id">{{ item.particulars }}</option>
-                 </select>
-               </div>
-
-               <div>
-                 <div class="col-12">
-                   <label for="entityname" class="form-label">Entity Name</label>
-                   <input type="text" disabled class="form-control" id="entityname" v-model="entityname">
-                 </div>
-                 <div class="col-12">
-                   <label for="classification" class="form-label">Classification</label>
-                   <input type="text" disabled class="form-control" id="classification" v-model="classification">
-                 </div>
-                 <div class="col-12">
-                   <label for="code" class="form-label">Code</label>
-                   <input type="text" disabled class="form-control" id="code" v-model="code">
-                 </div>
-               </div>
-
-               <div class="section-divider"></div> <!-- Custom Divider -->
-
-               <div class="row g-1">
-                 <label class="card-title text-center" style="font-size: 100%">Description</label>
-                 <div class="col-12">
-                   <label for="article" class="form-label">Article</label>
-                   <input type="text" disabled class="form-control" id="article" v-model="article">
-                 </div>
-                 <div class="col-6">
-                   <label for="modelno" class="form-label">Model No.:</label>
-                   <input type="text" disabled class="form-control" id="modelno" v-model="modelno">
-                 </div>
-                 <div class="col-6">
-                   <label for="serialno" class="form-label">Serial No.:</label>
-                   <input type="text" disabled class="form-control" id="serialno" v-model="serialno">
-                   <br>
-                 </div>
-               </div>
-
-               <div class="section-divider"></div> <!-- Custom Divider -->
-
-               <div class="row g-1">
-                 <label class="card-title text-center" style="font-size: 100%">Semi-expendable</label>
-                 <div class="col-6">
-                         <br>
+        <form enctype="multipart/form-data" id="myForm">       
+          <div class="card">
+           <div class="card-body">
+             <div class="container-fluid">
+              <button class="delete" aria-label="close" @click="closeUpdateFormModal"><span>&times;</span></button>
+               <div class="row justify-content-center">
+       
+                 <!-- Page Navigation -->
+                 <!-- <label class="card-title text-center" style="font-size: 100%">Equipment</label> -->
+       
+                 <div class="row">
+                   <!-- First Column -->
+                   <div class="col-md-4">
+                     <label class="card-title text-center" style="font-size: 20px">INVENTORY ITEM</label>
+                     <div class="form-group row">
+                       <label for="particulars" class="form-label">Particulars</label>
+                       <div class="col-6">
+                         <select class="form-select" id="particulars" v-model="formselectedParticular" @change="populateRecords" required>
+                           <option value="" disabled>Select Particular</option>
+                           <option v-for="item in inventory" :value="item.id" :key="item.id">{{ item.particulars }}</option>
+                         </select>
+                       </div>
+                       <div class="col-6">
+                         <button class="btn btn-outline-success" @click="openQrScannerModal">Scan QR Code</button>
+                       </div>
+                     </div>
+       
+                     <!-- Modal for QR scanner -->
+                     <div v-if="isQrScannerModalOpen" class="modal">
+                       <div class="modal-content">
+                         <h3>QR Scanner</h3>
+                         <span class="close" @click="selectedRecord = null">&times;</span>
+                         <video id="modal-qr-video" playsinline></video>
+                         <div id="modal-qr-result"></div>
+                         <button class="btn btn-success" id="modal-start-camera" @click="startModalCamera" v-show="!modalIsCameraOn">Scan</button>
+                         <button class="btn btn-danger" id="modal-stop-camera" @click="stopModalCamera" v-show="modalIsCameraOn">Stop</button>
+                         <button v-if="qrCodeData" @click="populateFromQr">Populate from QR</button>
+                         <p v-if="qrCodeData">Scanned QR Code: {{ qrCodeData }}</p>
+                       </div>
+                     </div>
+       
+                     <!-- Disabled Inputs Section -->
+                     <div class="form-group row">
+                       <div class="col-12">
+                         <label for="entityname" class="form-label">Entity Name</label>
+                         <input type="text" disabled class="form-control" id="entityname" v-model="entityname" required>
+                       </div>
+                       <div class="col-12">
+                         <label for="classification" class="form-label">Classification</label>
+                         <input type="text" disabled class="form-control" id="classification" v-model="classification" required>
+                       </div>
+                     </div>
+       
+                     <!-- Description Section -->
+                     <div class="form-group row">
+                       <div class="col-6">
+                         <label for="code" class="form-label">Code</label>
+                         <input type="text" disabled class="form-control" id="code" v-model="code" required>
+                       </div>
+                       <div class="col-6">
+                         <label for="article" class="form-label">Article</label>
+                         <input type="text" disabled class="form-control" id="article" v-model="article" required>
+                       </div>
+                       <div class="col-6">
+                         <label for="modelno" class="form-label">Model No.:</label>
+                         <input type="text" disabled class="form-control" id="modelno" v-model="modelno" required>
+                       </div>
+                       <div class="col-6">
+                         <label for="serialno" class="form-label">Serial No.:</label>
+                         <input type="text" disabled class="form-control" id="serialno" v-model="serialno" required>
+                       </div>
+                     </div>
+       
+                     <!-- Semi-expendable Section -->
+                     <div class="form-group row">
+                       <div class="col-6">
                          <label for="propertynumber" class="form-label">Property Number</label>
-                         <input type="text" class="form-control" id="propertynumber" v-model="propertynumber" placeholder="MDO-CPU-02">
+                         <input type="text" disabled class="form-control" id="propertynumber" v-model="propertynumber" placeholder="MDO-CPU-02" required>
                        </div>
                        <div class="col-6">
-                         <br>
                          <label for="propertydate" class="form-label">Property Date</label>
-                         <input type="date" class="form-control" id="propertydate" v-model="propertydate">
+                         <input type="date" disabled class="form-control" id="propertydate" v-model="propertydate" required>
                        </div>
                      </div>
-
-                     
-                     <div class="section-divider"></div> <!-- Custom Divider -->
-                           <br>
-                     <div class="row g-1">
-                       <label class="card-title text-center" style="font-size: 100%">Reference</label>
+ 
+                     <div class="form-group row">
                        <div class="col-6">
-                         <br>
-                         <label for="icsnumber" class="form-label">ICS NO.</label>
-                         <input type="text" class="form-control" id="icsnumber" v-model="icsnumber">
-                       </div>
-                       <div class="col-6">
-                         <br>
-                         <label for="jevnumber" class="form-label">JEV NO.</label>
-                         <input type="text" class="form-control" id="jevnumber" v-model="jevnumber">
-                       </div>
-                     </div>
-
-                     <div class="section-divider"></div> <!-- Custom Divider -->
-
-                     <div class="row g-1">
-                       <label class="card-title text-center" style="font-size: 100%">Receipt</label>
-                       <div class="col-6">
-                         <br>
                          <label for="rec_quantity" class="form-label">Receipt Quantity</label>
-                         <input type="text" class="form-control" id="rec_quantity" v-model="rec_quantity" placeholder="0" required>
+                         <input type="text" class="form-control" id="rec_quantity" v-model="rec_quantity" placeholder="0" disabled required>
                        </div>
                        <div class="col-6">
-                         <br>
                          <label for="rec_unit" class="form-label">Unit</label>
-                         <select class="form-select" id="rec_unit" v-model="rec_unit" required>
+                         <select class="form-select" id="rec_unit" v-model="rec_unit" disabled required>
                            <option value="unit">Unit</option>
                            <option value="set">Set</option>
                          </select>
                        </div>
                        <div class="col-6">
-                         <br>
                          <label for="rec_unitcost" class="form-label">Receipt Unit Cost</label>
-                   <input type="text" class="form-control" id="rec_unitcost" v-model="rec_unitcost" placeholder="0.00" disabled>
-                 </div>
-                 <div class="col-6">
-                   <br>
-                   <label for="rec_totalcost" class="form-label">Receipt Total Cost</label>
-                   <input type="text" class="form-control" id="rec_totalcost" :value="totalCostFormatted" placeholder="0.00" disabled>
-                   <br>
-                 </div>
-               </div>
-<hr>
-               <!-- Navigation Buttons -->
-               <div style="display: flex; justify-content: flex-end;">
-                         <button class="nextbtn" @click="nextPage">
-                           <span>Next</span>
-                         </button>
+                         <input type="text" class="form-control" id="rec_unitcost" v-model="rec_unitcost" placeholder="0.00" disabled required>
                        </div>
+                       <div class="col-6">
+                         <label for="rec_totalcost" class="form-label">Receipt Total Cost</label>
+                         <input type="text" class="form-control" id="rec_totalcost" :value="totalCostFormatted" placeholder="0.00" disabled required>
                        </div>
+                     </div>
+                   </div>
+       
+ 
+                   <!-- Second Column with Image Preview -->
+                   <div class="col-md-4">
+                     <div class="form-group">
+                       <div class="col-12">
+                         <label class="card-title text-center" style="font-size: 20px">IMAGE PREVIEW</label>
+                         <div class="image-container" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 200px; border: 1px solid #ccc; border-radius: 50%;">
+                           <img 
+                             :src="image ? `${image}` : 'path/to/default-image.png'" 
+                             alt="Image Preview" 
+                             class="img-fluid" 
+                             style="max-width: 100%; max-height: 100%; border-radius: 35px" 
+                           >
+                         </div>
+                       </div>
+                     </div>
+                     
+ 
+ 
+                     <!-- Upload Image Name -->
+                     <div class="form-group">
+                       <input type="text" class="form-control mt-2" id="image" v-model="image" placeholder="Enter or upload image file name" required>
+                     </div>
+ 
+                     <label class="card-title text-center" style="font-size: 20px; margin-bottom: 10px">Additional Information</label>
+                     <div class="form-group row">
+                       <div class="col-6">
+                         <label for="icsnumber" class="form-label">ICS NO.</label>
+                         <input type="text" class="form-control" id="icsnumber" v-model="icsnumber" required>
+                       </div>
+                       <div class="col-6">
+                         <label for="jevnumber" class="form-label">JEV NO.</label>
+                         <input type="date" class="form-control" id="jevnumber" v-model="jevnumber" required>
+                       </div>
+                       <label class="card-title text-center" style="font-size: 20px; margin-bottom: 10px">Issue</label>
+                       <div class="col-6">
+                         <label for="issue_date" class="form-label">Issue Item Date</label>
+                         <input type="date" class="form-control" id="issue_date" v-model="issue_date" required>
+                       </div>
+                       <div class="col-6">
+                         <label for="remarks" class="form-label">Remarks</label>
+                         <select class="form-select" id="remarks" v-model="remarks" required>
+                           <option value="SERVICEABLE">SERVICEABLE</option>
+                           <option value="UNSERVICEABLE">UNSERVICEABLE</option>
+                         </select>
+                       </div>
+                       <div class="col-8">
+                         <label for="issue_officeofficer" class="form-label">Issue Office/Officer</label>
+                         <input type="text" class="form-control" id="issue_officeofficer" v-model="issue_officeofficer" placeholder="Base sa nagamit ng system" required>
+                       </div>
+                       <div class="col-4">
+                         <label for="estimatedlife" class="form-label">Est. Useful Life</label>
+                         <input type="text" class="form-control" id="estimatedlife" v-model="estimatedlife" required>
+                       </div>
+                     </div>
+                   </div>
+       
+                   <!-- Third Column -->
+                   <div class="col-md-4">
+                     <div class="form-group row">
+                       <label class="card-title text-center" style="font-size: 17px; margin-bottom: 5px">Issued Information</label>
+                       <div class="col-12">
+                         <label for="issued_officer" class="form-label">Issued Officer</label>
+                         <input type="text" class="form-control" id="issued_officer" v-model="issued_officer" required>
+                       </div>
+                       <div class="col-6">
+                         <label for="issued_offposition" class="form-label">Issued Position</label>
+                         <input type="text" class="form-control" id="issued_offposition" v-model="issued_offposition" required>
+                       </div>
+                       <div class="col-6">
+                         <label for="issued_date" class="form-label">Issued Date</label>
+                         <input type="date" class="form-control" id="issued_date" v-model="issued_date" required>
+                       </div>
+                       <label class="card-title text-center" style="font-size: 17px; margin-bottom: 5px">Accountable Information</label>
+                       <div class="col-6">
+                         <label for="acc_officer" class="form-label">Accountable Officer</label>
+                         <select class="form-select" id="acc_officer" v-model="acc_officer" required>
+                           <option value="" disabled>Select Employee</option>
+                           <option v-for="employee in employees" :key="employee.empid" :value="employee.empfullname">{{ employee.empfullname }}</option>
+                         </select>
+                       </div>
+                       <div class="col-6">
+                         <label for="acc_empposition" class="form-label">Accountable Position</label>
+                         <select class="form-select" id="acc_empposition" v-model="acc_empposition" required>
+                           <option value="" disabled>Select Position</option>
+                           <option v-for="employee in employees" :key="employee.empid" :value="employee.empposition">{{ employee.empposition }}</option>
+                         </select>
+                       </div>
+                       <div class="col-6">
+                         <label for="acc_date" class="form-label">Accountable Date</label>
+                         <input type="date" class="form-control" id="acc_date" v-model="acc_date" required>
+                       </div>
+                       <div class="col-6">
+                         <label for="reg_remarks" class="form-label">Remarks</label>
+                         <select class="form-select" id="reg_remarks" v-model="reg_remarks" required>
+                           <option value="SERVICEABLE">SERVICEABLE</option>
+                           <option value="UNSERVICEABLE">UNSERVICEABLE</option>
+                         </select>
+                       </div>
+                       <label class="card-title text-center" style="font-size: 17px; margin-bottom: 5px">Witnessed By:</label>
+                       <div class="col-6">
+                         <label for="property_officer" class="form-label">Property Officer</label>
+                         <input type="text" class="form-control" id="property_officer" v-model="property_officer" placeholder="nakabase sa nagamit" required>
+                       </div>
+                       <div class="col-6">
+                         <label for="approving_authority" class="form-label">Head of Office</label>
+                         <input type="text" class="form-control" id="approving_authority" v-model="approving_authority" required>
+                       </div>
+                     </div>
+       
+                     <br>
+                     <!-- Reset and Submit Buttons -->
+                     <div class="d-flex justify-content-between">
+                       <!-- Reset Button -->
+                       <button class="button1 me-2" @click="confirmReset" type="reset" style="width: 120px; height: 40px;">
+                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                           <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"></path>
+                           <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"></path>
+                         </svg>
+                         Reset Form
+                       </button>
+                     
+                       <!-- Submit / Update Button -->
+                       <div class="d-flex">
+                        <button @click="updatePPE" type="submit" class="button">Update</button>
+                       </div>
+                     </div>                    
                    </div>
                  </div>
-             
-
-
-                    <div class="container-fluid">
-                  <div class="row justify-content-center">
-                    <div class="col-lg-14">
-                      <div class="card-body">
-                      
-                          <!-- Page 2 Content -->
-                          <div v-if="currentFormPage === 2">
-                            <!-- Others -->
-                            <div class="row g-1">
-                              <label class="card-title text-center" style="font-size: 100%">Others</label>
-                              <div class="col-12">
-                                <br>
-                                <label for="isstranadjamount" class="form-label">Issue/ Transfer/ Adjustments (Amount)</label>
-                                <input type="text" class="form-control" id="isstranadjamount" v-model="isstranadjamount" placeholder="0.00">
-                              </div>
-                              <div class="col-6">
-                                <label for="accimploss" class="form-label">Acc Imp Loss</label>
-                                <input type="text" class="form-control" id="accimploss" v-model="accimploss">
-                              </div>
-                              <div class="col-6">
-                                <label for="adjustedcost" class="form-label">Adjusted Cost</label>
-                                <input type="text" class="form-control" id="adjustedcost" v-model="adjustedcost" placeholder="0.00">
-                                <br>
-                              </div>
-                            </div>
-
-                            <div class="section-divider"></div> <!-- Custom Divider -->
-
-                            <!-- History of Repair -->
-                            <div class="row g-1">
-                              <label class="card-title text-center" style="font-size: 100%">History of Repair</label>
-                              <div class="col-6">
-                                <br>
-                                <label for="repair_nature" class="form-label">Nature of Repair</label>
-                                <input type="text" class="form-control" id="repair_nature" v-model="repair_nature">
-                              </div>
-                              <div class="col-6">
-                                <br>
-                                <label for="repair_amount" class="form-label">Repair Amount</label>
-                                <input type="text" class="form-control" id="repair_amount" v-model="repair_amount">
-                                <br>
-                              </div>
-                            </div>
-
-                            <div class="section-divider"></div> <!-- Custom Divider -->
-
-                            <!-- Issue -->
-                            <div class="row g-1">
-                              <label class="card-title text-center" style="font-size: 100%">Issue</label>
-                              <div class="col-12">
-                                <br>
-                                <label for="issue_date" class="form-label">Issue Item Date</label>
-                                <input type="date" class="form-control" id="issue_date" v-model="issue_date" required>
-                              </div>
-                              <div class="col-12">
-                                <label for="issue_officeofficer" class="form-label">Issue Office/Officer</label>
-                                <input type="text" class="form-control" id="issue_officeofficer" v-model="issue_officeofficer" placeholder="Base sa nagamit ng system" required>
-                              </div>
-                            </div>
-
-                            <div class="section-divider"></div> <!-- Custom Divider -->
-
-                            <!-- Transfer -->
-                            <div class="row g-1">
-                              <label class="card-title text-center" style="font-size: 100%">Transfer</label>
-                              <div class="col-6">
-                                <br>
-                                <label for="transfer_date" class="form-label">Transfer Date</label>
-                                <input type="date" class="form-control" id="transfer_date" v-model="transfer_date" required>
-                              </div>
-                              <div class="col-6">
-                                <br>
-                                <label for="transfer_quantity" class="form-label">Transfer Quantity</label>
-                                <input type="text" class="form-control" id="transfer_quantity" v-model="transfer_quantity" required>
-                              </div>
-                              <div class="col-12">
-                                <br>
-                                <label for="transfer_officeofficer" class="form-label">Transfer Office/Officer</label>
-                                <input type="text" class="form-control" id="transfer_officeofficer" v-model="transfer_officeofficer" required>
-                              </div>
-                            </div>
-
-                            <div class="section-divider"></div> <!-- Custom Divider -->
-
-                            <!-- Disposal -->
-                            <div class="row g-1">
-                              <label class="card-title text-center" style="font-size: 100%">Disposal</label>
-                              <div class="col-6">
-                                <br>
-                                <label for="disposal_date" class="form-label">Disposal Date</label>
-                                <input type="date" class="form-control" id="disposal_date" v-model="disposal_date" required>
-                              </div>
-                              <div class="col-6">
-                                <br>
-                                <label for="disposal_quantity" class="form-label">Disposal Quantity</label>
-                                <input type="text" class="form-control" id="disposal_quantity" v-model="disposal_quantity" required>
-                              </div>
-                              <div class="col-12">
-                                <br>
-                                <label for="disposal_officeofficer" class="form-label">Disposal Officer</label>
-                                <input type="text" class="form-control" id="disposal_officeofficer" v-model="disposal_officeofficer" required>
-                              </div>
-                            </div>
-                            <br>
-                <hr>
-                            <!-- Navigation Buttons -->
-
-                            <div class="d-flex justify-content-between mt-4">
-                              <button class="backbtn" @click="prevPage" :disabled="currentFormPage === 1">
-                              <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
-                                <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z"></path>
-                              </svg>
-                              <span>Back</span>
-                            </button>
-                            <button class="nextbtn" @click="nextPage">
-                                          <span>Next</span>
-                                        </button>
-                            </div>
-                            </div>
-                            </div>
-                            </div>
-                            </div>
-                            </div>
-                                
-                            <div class="container-fluid">
-                  <div class="row justify-content-center">
-                    <div class="col-lg-14">
-                      <!-- <div class="card">
-                        <div class="card-body"> -->
-                          <!-- Page 3 Content -->
-                          <div v-if="currentFormPage === 3">
-                            <!-- Balance Quantity -->
-                            <div class="row g-1">
-                              <label class="card-title text-center" style="font-size: 100%">Balance Quantity</label>
-                              <div class="col-12">
-                                <br>
-                                <label for="remarks" class="form-label">Remarks</label>
-                                <select class="form-select" id="remarks" v-model="remarks">
-                                  <option value="SERVICEABLE">SERVICEABLE</option>
-                                  <option value="UNSERVICEABLE">UNSERVICEABLE</option>
-                                </select>
-                              </div>
-                              <div class="col-12">
-                                <label for="estimatedlife" class="form-label">Estimated Useful Life</label>
-                                <input type="text" class="form-control" id="estimatedlife" v-model="estimatedlife" required>
-                              </div>
-                            </div>
-
-                            <div class="section-divider"></div> <!-- Custom Divider -->
-
-                            <!-- Received from: (Issued by) -->
-                            <div class="row g-1">
-                              <label class="card-title text-center" style="font-size: 100%">Received from: (Issued by)</label>
-                              <div class="col-12">
-                                <br>
-                                <label for="issued_officer" class="form-label">Issued Officer</label>
-                                <input type="text" class="form-control" id="issued_officer" v-model="issued_officer" placeholder="Nakabase din sa nagamit" required>
-                              </div>
-                              <div class="col-6">
-                                <br>
-                                <label for="issued_offposition" class="form-label">Issued Position</label>
-                                <input type="text" class="form-control" id="issued_offposition" v-model="issued_offposition" required>
-                              </div>
-                              <div class="col-6">
-                                <br>
-                                <label for="issued_date" class="form-label">Issued Date</label>
-                                <input type="date" class="form-control" id="issued_date" v-model="issued_date" required>
-                                <br>
-                              </div>
-                            </div>
-
-                            <div class="section-divider"></div> <!-- Custom Divider -->
-
-                            <!-- Received by: (Accountable Officer) -->
-                            <div class="row g-3">
-                              <label class="card-title text-center" style="font-size: 100%">Received by: (Accountable Officer)</label>
-                              <div class="col-12">
-                                <br>
-                                <label for="acc_officer" class="form-label">Accountable Officer</label>
-                                <select class="form-select" id="acc_officer" v-model="acc_officer" required>
-                                  <option value="" disabled>Select Employee</option>
-                                  <option v-for="employee in employees" :key="employee.empid" :value="employee.empfullname">{{ employee.empfullname }}</option>
-                                </select>
-                              </div>
-                              <div class="col-12">
-                                <label for="acc_empposition" class="form-label">Accountable Position</label>
-                                <select class="form-select" id="acc_empposition" v-model="acc_empposition" required>
-                                  <option value="" disabled>Select Position</option>
-                                  <option v-for="employee in employees" :key="employee.empid" :value="employee.empposition">{{ employee.empposition }}</option>
-                                </select>
-                              </div>
-                              <div class="col-12">
-                                <label for="acc_date" class="form-label">Accountable Date</label>
-                                <input type="date" class="form-control" id="acc_date" v-model="acc_date" required>
-                                <br>
-                              </div>
-                            </div>
-
-                            <div class="section-divider"></div> <!-- Custom Divider -->
-
-                            <!-- Inventory Transfer Report -->
-                            <div class="row g-1">
-                              <label class="card-title text-center" style="font-size: 100%">Inventory Transfer Report</label>
-                              <div class="col-6">
-                                <br>
-                                <label for="itr_no" class="form-label">ITR Number</label>
-                                <input type="text" class="form-control" id="itr_no" v-model="itr_no" required>
-                              </div>
-                              <div class="col-6">
-                                <br>
-                                <label for="itr_date" class="form-label">ITR Date</label>
-                                <input type="date" class="form-control" id="itr_date" v-model="itr_date" required>
-                              </div>
-                              <div class="col-6">
-                                <label for="rrsp_no" class="form-label">RRSP No.</label>
-                                <input type="text" class="form-control" id="rrsp_no" v-model="rrsp_no" required>
-                              </div>
-                              <div class="col-6">
-                                <label for="rrsp_date" class="form-label">RRSP Date</label>
-                                <input type="date" class="form-control" id="rrsp_date" v-model="rrsp_date" required>
-                              </div>
-                              <div class="col-12">
-                                <label for="reasonfortrans" class="form-label">Reason for Transfer</label>
-                                <textarea class="form-control" id="reasonfortrans" v-model="reasonfortrans" required></textarea>
-                              </div>
-                            </div>
-                              <hr>
-                            <!-- Navigation Buttons -->
-                            <div class="d-flex justify-content-between mt-4">
-                              <button class="backbtn" @click="prevPage" :disabled="currentFormPage === 1">
-                              <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
-                                <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z"></path>
-                              </svg>
-                              <span>Back</span>
-                            </button>
-                            <button class="nextbtn" @click="nextPage">
-                                          <span>Next</span>
-                                        </button>
-                            </div>
-                          </div>
-                    </div>
-                  </div>
-                </div>
-
-
-                <div class="container-fluid">
-                  <div class="row justify-content-center">
-                    <div class="col-lg-12">
-                      
-                    <!-- REGISTRY OF SEMI-EXPENDABLE PROPERTY ISSUED -->
-                    <div v-if="currentFormPage === 4">
-                    <div class="row g-1">
-                      <label class="card-title text-center" style="font-size: 100%">REGISTRY OF SEMI-EXPENDABLE PROPERTY ISSUED</label>
-                      <div class="section-divider"></div> <!-- Custom Divider -->
-                      
-                      <!-- Returned -->
-                      <label class="card-title" style="font-size: 100%">Returned</label>
-                      <div class="col-6">
-                        <br>
-                        <label for="reg_semiissuedserialno" class="form-label">SERIAL NO.:</label>
-                        <input type="text" class="form-control" id="reg_semiissuedserialno" v-model="reg_semiissuedserialno" required>
-                      </div>
-                      <div class="col-6">
-                        <br>
-                        <label for="reg_returned_qty" class="form-label">Returned Quantity</label>
-                        <input type="text" class="form-control" id="reg_returned_qty" v-model="reg_returned_qty" required>
-                      </div>
-
-                      <div class="section-divider"></div> <!-- Custom Divider -->
-
-                      <!-- Re-issued -->
-                      <label class="card-title text-center" style="font-size: 100%">Re-issued</label>
-                      <div class="col-12">
-                        <br>
-                        <label for="reg_reissued_qty" class="form-label">Re-issued Quantity</label>
-                        <input type="text" class="form-control" id="reg_reissued_qty" v-model="reg_reissued_qty" required>
-                      </div>
-                      <div class="col-12">
-                        <label for="reg_reissued_off" class="form-label">Re-issued Office/Officer</label>
-                        <input type="text" class="form-control" id="reg_reissued_off" v-model="reg_reissued_off" required>
-                      </div>
-
-                      <div class="section-divider"></div> <!-- Custom Divider -->
-
-                      <!-- Disposed -->
-                      <label class="card-title text-center" style="font-size: 100%">Disposed</label>
-                      <div class="col-12">
-                        <br>
-                        <label for="reg_disposed_qty" class="form-label">Disposed Quantity</label>
-                        <input type="text" class="form-control" id="reg_disposed_qty" v-model="reg_disposed_qty" required>
-                      </div>
-                      <div class="col-12">
-                        <label for="reg_balance_quantity" class="form-label">Balance Quantity</label>
-                        <input type="text" class="form-control" id="reg_balance_quantity" v-model="reg_balance_quantity" required>
-                      </div>
-                      <div class="col-12">
-                        <label for="reg_amount" class="form-label">Amount</label>
-                        <input type="text" class="form-control" id="reg_amount" v-model="reg_amount" required>
-                      </div>
-                      <div class="col-12">
-                        <label for="reg_remarks" class="form-label">Remarks</label>
-                        <select class="form-select" id="reg_remarks" v-model="reg_remarks" required>
-                          <option value="SERVICEABLE">SERVICEABLE</option>
-                          <option value="UNSERVICEABLE">UNSERVICEABLE</option>
-                        </select>
-                      </div>
-
-                      <div class="section-divider"></div> <!-- Custom Divider -->
-
-                      <!-- ASSIGNED OFFICER -->
-                      <label class="card-title text-center" style="font-size: 100%">ASSIGNED OFFICER</label>
-                      <br>
-                      <div class="col-12">
-                        <br>
-                        <label for="property_officer" class="form-label">Property Officer</label>
-                        <input type="text" class="form-control" id="property_officer" v-model="property_officer" placeholder="nakabase sa nagamit" required>
-                      </div>
-                      <div class="col-12">
-                        <br>
-                        <label for="approving_authority" class="form-label">Head of Office/ Approving Authority</label>
-                        <input type="text" class="form-control" id="approving_authority" v-model="approving_authority" placeholder="magbase sa position" required>
-                      </div>
-
-                      <!-- Buttons -->
-                      <br><br><br><br><br><br>
-                
-                      <hr>
-                      
-       <div class="d-flex justify-content-between align-items-center">
-         <button class="backbtn" @click="prevPage" :disabled="currentFormPage === 1">
-               <svg height="16" width="16" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1024 1024">
-                 <path d="M874.690416 495.52477c0 11.2973-9.168824 20.466124-20.466124 20.466124l-604.773963 0 188.083679 188.083679c7.992021 7.992021 7.992021 20.947078 0 28.939099-4.001127 3.990894-9.240455 5.996574-14.46955 5.996574-5.239328 0-10.478655-1.995447-14.479783-5.996574l-223.00912-223.00912c-3.837398-3.837398-5.996574-9.046027-5.996574-14.46955 0-5.433756 2.159176-10.632151 5.996574-14.46955l223.019353-223.029586c7.992021-7.992021 20.957311-7.992021 28.949332 0 7.992021 8.002254 7.992021 20.957311 0 28.949332l-188.073446 188.073446 604.753497 0C865.521592 475.058646 874.690416 484.217237 874.690416 495.52477z"></path>
-               </svg>
-               <span>Back</span>
-             </button>
-
-                <button class="button1" @click="confirmReset" type="reset" style="width: 120px; height: 40px;">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-                    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"></path>
-                    <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"></path>
-                  </svg>
-                  Reset Form
-                </button>
-
-                <div class="d-flex">
-                  <button @click="updatePPE" type="submit" class="button">Update</button>
-                </div>
-                </div>
-
-                      <br><br><br>
-                    </div>
-                  </div>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div>
-                </div> 
-                </div>
        
-                    </form>
+               </div>
+             </div>
+           </div>
+         </div>
+       </form>
                         </transition>
                                 </section>
                         
               </div>
+            </div>
             </div>
       <!-- Content for Records Tab -->
       <div class="row">
@@ -1718,40 +1215,40 @@
                   <div class="col-lg-12">
                    
                   </div>
-<br>
+                  <br>
                   <div class="d-flex justify-content-center align-items-center">
-  <div class="col-lg-4">
-    <div class="accordion w-100" id="faq-group-2">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed btn btn-outline-info" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
-            Download the records through a documented PDF
-          </button>
-        </h2>
-        <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
-          <div class="accordion-body">
-            <div class="row align-items-center justify-content-center mt-3">
-              <div class="col-lg-6 mb-2">
-                <select v-model="selectedEmployeePDF" @change="downloadEmployeeRequest" class="form-select animated-dropdown w-100">
-                  <option value="" disabled>Select Employee</option>
-                  <option v-for="empfullname in distinctReqEmployees" :key="empfullname" :value="empfullname">{{ empfullname }}</option>
-                </select>
-              </div>
-              <div class="col-lg-6 mb-2 text-end">
-                <button class="btn btn-warning w-100" @click="requestPDF"><i class="ri-download-2-line"></i> Download All</button>
-              </div>
-            </div>
-            <!-- Loading animation -->
-            <div v-if="loading" class="text-center mt-1">
-              <div class="loading-line"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-</div>
+                    <div class="col-lg-4">
+                      <div class="accordion w-100" id="faq-group-2">
+                        <div class="accordion-item">
+                          <h2 class="accordion-header">
+                            <button class="accordion-button collapsed btn btn-outline-info" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
+                              Download the records through a documented PDF
+                            </button>
+                          </h2>
+                          <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                            <div class="accordion-body">
+                              <div class="row align-items-center justify-content-center mt-3">
+                                <div class="col-lg-6 mb-2">
+                                  <select v-model="selectedEmployeePDF" @change="downloadEmployeeRequest" class="form-select animated-dropdown w-100">
+                                    <option value="" disabled>Select Employee</option>
+                                    <option v-for="empfullname in distinctReqEmployees" :key="empfullname" :value="empfullname">{{ empfullname }}</option>
+                                  </select>
+                                </div>
+                                <div class="col-lg-6 mb-2 text-end">
+                                  <button class="btn btn-warning w-100" @click="requestPDF"><i class="ri-download-2-line"></i> Download All</button>
+                                </div>
+                              </div>
+                              <!-- Loading animation -->
+                              <div v-if="loading" class="text-center mt-1">
+                                <div class="loading-line"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  </div>
 
                     <!-- Modal -->
                     <div class="modal" v-if="showModal">
@@ -1776,90 +1273,90 @@
                     </div>
 
                     <!-- Search Bar and Show Entries Dropdown -->
-<div class="d-flex justify-content-between align-items-center">
-    <!-- Show Entries Dropdown -->
-    <div class="d-flex align-items-center">
-      <span class="me-2">Show</span>
-      <div class="dropdown" style="display: inline-block;">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
-          {{ pageSize }}
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
-          <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
-          <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
-          <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
-          <!-- Add more options as needed -->
-        </ul>
-      </div>
-      <span class="ms-2">entries</span>
-    </div>
-
-    <!-- Search Bar -->
-    
-      <div class="InputContainer">
-      <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
-    </div>
-  </div>
-
-<br>
-              
-<div class="wrapper">
-  <table class="table-compact">
-                  <thead>
-                    <tr>
-                      <th scope="col">Employee</th>
-                      <th scope="col">Particulars</th>
-                      <th scope="col">Description</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Feedback</th>
-                      <th scope="col">Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr v-for="req in requests" :key="req.id">
-                      <td scope="row">{{ req.empfullname }}</td>
-                      <td scope="row">{{ req.particulars }}</td>
-                      <td scope="row">{{ req.description }}</td>
-                      <td scope="row">{{ req.status }}</td>
-                      <td scope="row">{{ req.feedback }}</td>
-                      <td>
-                        <div>
-                          <button @click="updatereqStatus(req.id, 'Approved')" class="btn btn-outline-success"><i class="ri-checkbox-circle-line"></i>Approve</button><button @click="updatereqStatus(req.id, 'Declined')" class="btn btn-outline-danger"><i class="ri-close-circle-line"></i>Decline</button>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <!-- Show Entries Dropdown -->
+                        <div class="d-flex align-items-center">
+                          <span class="me-2">Show</span>
+                          <div class="dropdown" style="display: inline-block;">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+                              {{ pageSize }}
+                            </button>
+                            <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+                              <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+                              <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+                              <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+                              <!-- Add more options as needed -->
+                            </ul>
+                          </div>
+                          <span class="ms-2">entries</span>
                         </div>
-                      </td>
-                        <!-- <td><button @click="deleteRecord(req.id)" class="btn btn-warning">Message</button></td> -->
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-                   <!-- End Table with stripped rows -->
-<br>
-                <!-- I-update ang table at idagdag ang pagination controls -->
-                <div class="card-body">
-  <!-- Iba pang content ng card... -->
-  <div class="text-center">
-    <nav aria-label="Page navigation">
-      <ul class="pagination justify-content-center mb-0"> <!-- Center pagination -->
-        <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
-          <a class="page-link" href="#" @click.prevent="currentPage = Math.max(currentPage - 1, 1)">Previous</a>
-        </li>
-        <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': currentPage === page }">
-          <a class="page-link" href="#" @click.prevent="currentPage = page">{{ page }}</a>
-        </li>
-        <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
-          <a class="page-link" href="#" @click.prevent="currentPage = Math.min(currentPage + 1, totalPages)"><b>Next</b></a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-  <div class="mt-3">
-    <p>{{ currentPageRecords }}</p> <!-- Moved current page records here -->
-  </div>
-</div>
+
+                        <!-- Search Bar -->
+                        
+                          <div class="InputContainer">
+                          <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
+                        </div>
+                      </div>
+
+                    <br>
+                                  
+                    <div class="wrapper">
+                      <table class="table-compact">
+                                      <thead>
+                                        <tr>
+                                          <th scope="col">Employee</th>
+                                          <th scope="col">Particulars</th>
+                                          <th scope="col">Description</th>
+                                          <th scope="col">Status</th>
+                                          <th scope="col">Feedback</th>
+                                          <th scope="col">Action</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr v-for="req in requests" :key="req.id">
+                                          <td scope="row">{{ req.empfullname }}</td>
+                                          <td scope="row">{{ req.particulars }}</td>
+                                          <td scope="row">{{ req.description }}</td>
+                                          <td scope="row">{{ req.status }}</td>
+                                          <td scope="row">{{ req.feedback }}</td>
+                                          <td>
+                                            <div>
+                                              <button @click="updatereqStatus(req.id, 'Approved')" class="btn btn-outline-success"><i class="ri-checkbox-circle-line"></i>Approve</button><button @click="updatereqStatus(req.id, 'Declined')" class="btn btn-outline-danger"><i class="ri-close-circle-line"></i>Decline</button>
+                                            </div>
+                                          </td>
+                                            <!-- <td><button @click="deleteRecord(req.id)" class="btn btn-warning">Message</button></td> -->
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                      <!-- End Table with stripped rows -->
+                    <br>
+                                    <!-- I-update ang table at idagdag ang pagination controls -->
+                                    <div class="card-body">
+                      <!-- Iba pang content ng card... -->
+                      <div class="text-center">
+                        <nav aria-label="Page navigation">
+                          <ul class="pagination justify-content-center mb-0"> <!-- Center pagination -->
+                            <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+                              <a class="page-link" href="#" @click.prevent="currentPage = Math.max(currentPage - 1, 1)">Previous</a>
+                            </li>
+                            <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': currentPage === page }">
+                              <a class="page-link" href="#" @click.prevent="currentPage = page">{{ page }}</a>
+                            </li>
+                            <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+                              <a class="page-link" href="#" @click.prevent="currentPage = Math.min(currentPage + 1, totalPages)"><b>Next</b></a>
+                            </li>
+                          </ul>
+                        </nav>
+                      </div>
+                      <div class="mt-3">
+                        <p>{{ currentPageRecords }}</p> <!-- Moved current page records here -->
+                      </div>
+                    </div>
 
 
-    </div>
-  </div>
+                        </div>
+                      </div>
 
 
 
@@ -1890,6 +1387,7 @@
 
 // Components
 import axios from 'axios'
+import jsQR from "jsqr";
 
 export default{
   computed: {
@@ -2032,6 +1530,11 @@ export default{
           this.modelno = selectedItem.modelno;
           this.serialno = selectedItem.serialno;
           this.rec_unitcost = selectedItem.unitcost;
+          this.propertynumber = selectedItem.propertynumber;
+          this.propertydate = selectedItem.propertydate;
+          this.rec_quantity = selectedItem.quantity;
+          this.rec_unit = selectedItem.unit;
+          this.image = selectedItem.image;
           // Add more fields if needed
         }
       }
@@ -2061,6 +1564,7 @@ export default{
     propertydate: '',
     icsnumber: '',
     jevnumber: '',
+    image: '',
     rec_quantity: '',
     rec_unit: '',
     rec_unitcost: '',
@@ -2141,6 +1645,12 @@ export default{
     imageverification: null,
     employeeReqOptions: [],
     loading: false,
+    qrCodeData: null,  // To store the scanned QR code data
+    modalIsCameraOn: false,
+    isQrScannerModalOpen: false,
+    video: null,
+    stream: null,
+    selectedItem: null
   };
 },
   created(){
@@ -2153,6 +1663,7 @@ export default{
   mounted() {
     window.addEventListener("scroll", this.hideContextMenu);
     window.addEventListener("click", this.hideContextMenu);
+    this.getInventory();
   },
   beforeDestroy() {
     window.removeEventListener("scroll", this.hideContextMenu);
@@ -2165,6 +1676,131 @@ export default{
     }
   },
   methods:{
+    // Open QR scanner modal and start the camera
+    openQrScannerModal() {
+      this.isQrScannerModalOpen = true;
+      this.$nextTick(() => {
+        this.startModalCamera();
+      });
+    },
+        // Start camera and initiate QR code scanning
+        startModalCamera() {
+        navigator.mediaDevices
+          .getUserMedia({ video: { facingMode: "environment" } })
+          .then((videoStream) => {
+            this.modalStream = videoStream;
+            const modalVideo = document.getElementById("modal-qr-video");
+            modalVideo.srcObject = this.modalStream;
+            modalVideo.play();
+            this.modalIsCameraOn = true;
+  
+            const startButton = document.getElementById("modal-start-camera");
+            const stopButton = document.getElementById("modal-stop-camera");
+            startButton.style.display = "none";
+            stopButton.style.display = "inline-block";
+            this.modalTick();
+          })
+          .catch((error) => {
+            console.error("Error accessing modal camera:", error);
+          });
+      },
+  
+      stopModalCamera() {
+        if (this.modalStream) {
+          const tracks = this.modalStream.getTracks();
+          tracks.forEach((track) => track.stop());
+          const modalVideo = document.getElementById("modal-qr-video");
+          if (modalVideo) {
+            modalVideo.pause();
+            modalVideo.srcObject = null;
+            this.modalIsCameraOn = false;
+  
+            const startButton = document.getElementById("modal-start-camera");
+            const stopButton = document.getElementById("modal-stop-camera");
+            if (startButton && startButton.style) {
+              startButton.style.display = "inline-block";
+            }
+            if (stopButton && stopButton.style) {
+              stopButton.style.display = "none";
+            }
+          }
+        }
+      },
+  
+      modalTick() {
+        const modalVideo = document.getElementById("modal-qr-video");
+        if (modalVideo && modalVideo.readyState === modalVideo.HAVE_ENOUGH_DATA) {
+          const canvasElement = document.createElement("canvas");
+          canvasElement.width = modalVideo.videoWidth;
+          canvasElement.height = modalVideo.videoHeight;
+          const canvas = canvasElement.getContext("2d");
+          canvas.drawImage(
+            modalVideo,
+            0,
+            0,
+            canvasElement.width,
+            canvasElement.height
+          );
+          const imageData = canvas.getImageData(
+            0,
+            0,
+            canvasElement.width,
+            canvasElement.height
+          );
+          const code = jsQR(imageData.data, imageData.width, imageData.height);
+
+          if (code && code.data) {
+            // Assuming the QR code contains the property number directly
+            this.fetchDataFromServer(code.data);  // Pass the scanned QR code data
+          }
+        }
+        if (this.modalIsCameraOn) {
+          requestAnimationFrame(this.modalTick);
+        }
+      },
+
+    // Fetch inventory data based on the scanned QR code
+    fetchDataFromServer(propertyNumber) {
+      const selectedItem = this.inventory.find(item => item.propertynumber === propertyNumber);
+      if (selectedItem) {
+        this.selectedItem = selectedItem;
+        this.qrCodeData = propertyNumber;
+      } else {
+        console.error("No record found for scanned property number.");
+        console.log(propertynumber);
+      }
+    },
+
+    // Populate form fields from scanned QR code
+    populateFromQr() {
+      if (this.selectedItem) {
+        this.entityname = this.selectedItem.entityname;
+        this.classification = this.selectedItem.classification;
+        this.code = this.selectedItem.code;
+        this.article = this.selectedItem.article;
+        this.modelno = this.selectedItem.modelno;
+        this.serialno = this.selectedItem.serialno;
+        this.propertynumber = this.selectedItem.propertynumber;
+        this.propertydate = this.selectedItem.propertydate;
+        this.rec_quantity = this.selectedItem.quantity;
+        this.rec_unit = this.selectedItem.unit;
+        this.image = this.selectedItem.image;
+        this.isQrScannerModalOpen = false;
+      }
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     nextPage() {
     // Increment the form page number
@@ -2372,7 +2008,7 @@ export default{
     async generatePDF(recordId) {
             try {
                 // Send HTTP request to backend
-                const response = await fetch(`http://dilg.test/backend/generatepdf/${recordId}`, {
+                const response = await fetch(`http://dilg.test/backend/generateICSPDF/${recordId}`, {
                     method: 'GET', // Adjust the method accordingly
                     headers: {
                         'Content-Type': 'application/json', // Adjust the content type if needed
@@ -2492,6 +2128,7 @@ export default{
             this.reg_remarks = record.reg_remarks;
             this.property_officer = record.property_officer;
             this.approving_authority = record.approving_authority;
+            this.image = record.image;
 
           console.log(recordId);
     },
@@ -2554,7 +2191,7 @@ export default{
 
       async getInfo() {
         try {
-          const response = await axios.get('getdata');
+          const response = await axios.get('getDataWithoutImageVerification');
           this.info = response.data;
           // Extract employee names from info and store in employeeOptions
           this.employeeOptions = this.info.map(info => info.acc_officer);
@@ -2687,6 +2324,17 @@ export default{
     //   }
     // },
 
+    validateForm() {
+      const form = document.getElementById('myForm');
+      if (form.checkValidity()) {
+        // Form is valid, call the submit function
+        this.saveOrUpdate();
+      } else {
+        // Trigger browser's native form validation UI
+        form.reportValidity();
+      }
+    },
+
     async saveOrUpdate() {
       if (this.status === "update") {
           await this.updatePPE();
@@ -2697,93 +2345,95 @@ export default{
 
 
     async save() {
-  try {
-    // Create a new FormData object
-    const formData = new FormData();
+      try {
+        // Create a new FormData object
+        const formData = new FormData();
 
-    // Append each field to the FormData object
-    formData.append('entityname', this.entityname);
-    formData.append('classification', this.classification);
-    formData.append('code', this.code);
-    formData.append('article', this.article);
-    formData.append('particulars', this.particulars);
-    formData.append('modelno', this.modelno);
-    formData.append('serialno', this.serialno);
-    formData.append('propertynumber', this.propertynumber);
-    formData.append('propertydate', this.propertydate);
-    formData.append('icsnumber', this.icsnumber);
-    formData.append('jevnumber', this.jevnumber);
-    formData.append('rec_quantity', this.rec_quantity);
-    formData.append('rec_unit', this.rec_unit);
-    formData.append('rec_unitcost', this.rec_unitcost);
-    formData.append('rec_totalcost', this.rec_totalcost);
-    formData.append('isstranadjamount', this.isstranadjamount);
-    formData.append('accimploss', this.accimploss);
-    formData.append('adjustedcost', this.adjustedcost);
-    formData.append('repair_nature', this.repair_nature);
-    formData.append('repair_amount', this.repair_amount);
-    formData.append('issue_date', this.issue_date);
-    formData.append('issue_officeofficer', this.issue_officeofficer);
-    formData.append('transfer_date', this.transfer_date);
-    formData.append('transfer_quantity', this.transfer_quantity);
-    formData.append('transfer_officeofficer', this.transfer_officeofficer);
-    formData.append('disposal_date', this.disposal_date);
-    formData.append('disposal_quantity', this.disposal_quantity);
-    formData.append('disposal_officeofficer', this.disposal_officeofficer);
-    formData.append('remarks', this.remarks);
-    formData.append('empfullname', this.empfullname);
-    formData.append('estimatedlife', this.estimatedlife);
-    formData.append('issued_officer', this.issued_officer);
-    formData.append('issued_offposition', this.issued_offposition);
-    formData.append('issued_date', this.issued_date);
-    formData.append('acc_officer', this.acc_officer);
-    formData.append('acc_empposition', this.acc_empposition);
-    formData.append('acc_date', this.acc_date);
-    formData.append('itr_no', this.itr_no);
-    formData.append('itr_date', this.itr_date);
-    formData.append('rrsp_no', this.rrsp_no);
-    formData.append('rrsp_date', this.rrsp_date);
-    formData.append('reasonfortrans', this.reasonfortrans);
-    formData.append('reg_semiissuedserialno', this.reg_semiissuedserialno);
-    formData.append('reg_returned_qty', this.reg_returned_qty);
-    formData.append('reg_returned_off', this.reg_returned_off);
-    formData.append('reg_reissued_qty', this.reg_reissued_qty);
-    formData.append('reg_reissued_off', this.reg_reissued_off);
-    formData.append('reg_disposed_qty', this.reg_disposed_qty);
-    formData.append('reg_balance_quantity', this.reg_balance_quantity);
-    formData.append('reg_amount', this.reg_amount);
-    formData.append('reg_remarks', this.reg_remarks);
-    formData.append('property_officer', this.property_officer);
-    formData.append('approving_authority', this.approving_authority);
+        // Append each field to the FormData object
+        formData.append('entityname', this.entityname);//
+        formData.append('classification', this.classification);//
+        formData.append('code', this.code);//
+        formData.append('article', this.article);//
+        formData.append('particulars', this.particulars);//
+        formData.append('modelno', this.modelno);//
+        formData.append('serialno', this.serialno);//
+        formData.append('propertynumber', this.propertynumber);//
+        formData.append('propertydate', this.propertydate);//
+        formData.append('image', this.image);// xxxxxx
+        formData.append('icsnumber', this.icsnumber);//
+        formData.append('jevnumber', this.jevnumber);//
+        formData.append('rec_quantity', this.rec_quantity);//
+        formData.append('rec_unit', this.rec_unit);//
+        formData.append('rec_unitcost', this.rec_unitcost);//
+        formData.append('rec_totalcost', this.rec_totalcost);//
+        // formData.append('isstranadjamount', this.isstranadjamount);
+        // formData.append('accimploss', this.accimploss);
+        // formData.append('adjustedcost', this.adjustedcost);
+        // formData.append('repair_nature', this.repair_nature);
+        // formData.append('repair_amount', this.repair_amount);
+        formData.append('issue_date', this.issue_date);//
+        formData.append('issue_officeofficer', this.issue_officeofficer);//
+        // formData.append('transfer_date', this.transfer_date);
+        // formData.append('transfer_quantity', this.transfer_quantity);
+        // formData.append('transfer_officeofficer', this.transfer_officeofficer);
+        // formData.append('disposal_date', this.disposal_date);
+        // formData.append('disposal_quantity', this.disposal_quantity);
+        // formData.append('disposal_officeofficer', this.disposal_officeofficer);
+        formData.append('remarks', this.remarks);//
+        formData.append('estimatedlife', this.estimatedlife);//
+        formData.append('issued_officer', this.issued_officer);//
+        formData.append('issued_offposition', this.issued_offposition);//
+        formData.append('issued_date', this.issued_date);// xxxxxx
+        formData.append('acc_officer', this.acc_officer);//
+        formData.append('acc_empposition', this.acc_empposition);//
+        formData.append('acc_date', this.acc_date);//
+        // formData.append('itr_no', this.itr_no);
+        // formData.append('itr_date', this.itr_date);
+        // formData.append('rrsp_no', this.rrsp_no);
+        // formData.append('rrsp_date', this.rrsp_date);
+        // formData.append('reasonfortrans', this.reasonfortrans);
+        // formData.append('reg_semiissuedserialno', this.reg_semiissuedserialno);
+        // formData.append('reg_returned_qty', this.reg_returned_qty);
+        // formData.append('reg_returned_off', this.reg_returned_off);
+        // formData.append('reg_reissued_qty', this.reg_reissued_qty);
+        // formData.append('reg_reissued_off', this.reg_reissued_off);
+        // formData.append('reg_disposed_qty', this.reg_disposed_qty);
+        // formData.append('reg_balance_quantity', this.reg_balance_quantity);
+        // formData.append('reg_amount', this.reg_amount);
+        formData.append('reg_remarks', this.reg_remarks);//
+        formData.append('property_officer', this.property_officer);//
+        formData.append('approving_authority', this.approving_authority);//
 
-    // Send the POST request with the FormData object
-    const response = await axios.post('save', formData, {
-      headers: {
-        'Content-Type': 'multipart/form-data' // Set content type to multipart/form-data
+        // Send the POST request with the FormData object
+        const response = await axios.post('save', formData, {
+          headers: {
+            'Content-Type': 'multipart/form-data' // Set content type to multipart/form-data
+          }
+        });
+
+        // Handle the response
+        this.message = response.data.msg;
+        if(response.data.msg === 'Cannot save data. Inventory status is inactive.') {
+          alert('Cannot save data. Inventory status is inactive.');
+        } else if(response.data.msg === 'There is no existing item with that code.') {
+          alert('There is no existing item with that code.');
+        } else {
+          alert('There is an error occured. Please check the code.')
+        }
+
+        console.log('Server response:', response.data);
+        // Clear the code only after successfully saving the record
+        this.particulars = "";
+        this.empfullname = "";
+
+        this.$emit('data-saved');
+        this.getInfo();
+      } catch (error) {
+        console.error(error);
+        this.particulars = "";
+        this.empfullname = "";
       }
-    });
-
-    // Handle the response
-    this.message = response.data.msg;
-    if(response.data.msg === 'Cannot save data. Inventory status is inactive.') {
-      alert('Cannot save data. Inventory status is inactive.');
-    } else if(response.data.msg === 'Cannot save data. No matching inventory record found.') {
-      alert('Cannot save data. No matching inventory record found.');
-    }
-
-    console.log('Server response:', response.data);
-    // Clear the code only after successfully saving the record
-    this.particulars = "";
-    this.empfullname = "";
-
-    this.$emit('data-saved');
-    this.getInfo();
-  } catch (error) {
-    console.error(error);
-    this.particulars = "";
-    this.empfullname = "";
-  }
-},
+    },
 
 
     // async save() {
@@ -2881,25 +2531,26 @@ export default{
         formData.append('serialno', this.serialno);
         formData.append('propertynumber', this.propertynumber);
         formData.append('propertydate', this.propertydate);
+        formData.append('image', this.image);
         formData.append('icsnumber', this.icsnumber);
         formData.append('jevnumber', this.jevnumber);
         formData.append('rec_quantity', this.rec_quantity);
         formData.append('rec_unit', this.rec_unit);
         formData.append('rec_unitcost', this.rec_unitcost);
-        formData.append('isstranadjamount', this.isstranadjamount);
-        formData.append('accimploss', this.accimploss);
-        formData.append('adjustedcost', this.adjustedcost);
-        formData.append('repair_nature', this.repair_nature);
-        formData.append('repair_amount', this.repair_amount);
+        // formData.append('isstranadjamount', this.isstranadjamount);
+        // formData.append('accimploss', this.accimploss);
+        // formData.append('adjustedcost', this.adjustedcost);
+        // formData.append('repair_nature', this.repair_nature);
+        // formData.append('repair_amount', this.repair_amount);
         formData.append('issue_date', this.issue_date);
         formData.append('issue_officeofficer', this.issue_officeofficer);
         formData.append('issued_date', this.issued_date);
-        formData.append('transfer_date', this.transfer_date);
-        formData.append('transfer_quantity', this.transfer_quantity);
-        formData.append('transfer_officeofficer', this.transfer_officeofficer);
-        formData.append('disposal_date', this.disposal_date);
-        formData.append('disposal_quantity', this.disposal_quantity);
-        formData.append('disposal_officeofficer', this.disposal_officeofficer);
+        // formData.append('transfer_date', this.transfer_date);
+        // formData.append('transfer_quantity', this.transfer_quantity);
+        // formData.append('transfer_officeofficer', this.transfer_officeofficer);
+        // formData.append('disposal_date', this.disposal_date);
+        // formData.append('disposal_quantity', this.disposal_quantity);
+        // formData.append('disposal_officeofficer', this.disposal_officeofficer);
         formData.append('remarks', this.remarks);
         formData.append('empfullname', this.empfullname);
         formData.append('estimatedlife', this.estimatedlife);
@@ -2908,19 +2559,19 @@ export default{
         formData.append('acc_officer', this.acc_officer);
         formData.append('acc_empposition', this.acc_empposition);
         formData.append('acc_date', this.acc_date);
-        formData.append('itr_no', this.itr_no);
-        formData.append('itr_date', this.itr_date);
-        formData.append('rrsp_no', this.rrsp_no);
-        formData.append('rrsp_date', this.rrsp_date);
-        formData.append('reasonfortrans', this.reasonfortrans);
-        formData.append('reg_semiissuedserialno', this.reg_semiissuedserialno);
-        formData.append('reg_returned_qty', this.reg_returned_qty);
-        formData.append('reg_returned_off', this.reg_returned_off);
-        formData.append('reg_reissued_qty', this.reg_reissued_qty);
-        formData.append('reg_reissued_off', this.reg_reissued_off);
-        formData.append('reg_disposed_qty', this.reg_disposed_qty);
-        formData.append('reg_balance_quantity', this.reg_balance_quantity);
-        formData.append('reg_amount', this.reg_amount);
+        // formData.append('itr_no', this.itr_no);
+        // formData.append('itr_date', this.itr_date);
+        // formData.append('rrsp_no', this.rrsp_no);
+        // formData.append('rrsp_date', this.rrsp_date);
+        // formData.append('reasonfortrans', this.reasonfortrans);
+        // formData.append('reg_semiissuedserialno', this.reg_semiissuedserialno);
+        // formData.append('reg_returned_qty', this.reg_returned_qty);
+        // formData.append('reg_returned_off', this.reg_returned_off);
+        // formData.append('reg_reissued_qty', this.reg_reissued_qty);
+        // formData.append('reg_reissued_off', this.reg_reissued_off);
+        // formData.append('reg_disposed_qty', this.reg_disposed_qty);
+        // formData.append('reg_balance_quantity', this.reg_balance_quantity);
+        // formData.append('reg_amount', this.reg_amount);
         formData.append('reg_remarks', this.reg_remarks);
         formData.append('property_officer', this.property_officer);
         formData.append('approving_authority', this.approving_authority);
@@ -3106,7 +2757,7 @@ confirmReset() {
       getImageStyle(imageUrl) {
       // Function to generate the background image style
         if (!imageUrl) {
-          return {}; // Return an empty object if imageUrl is not provided
+          return {}; // Return an empty object if image is not provided
         }
         
         // Set the background image URL

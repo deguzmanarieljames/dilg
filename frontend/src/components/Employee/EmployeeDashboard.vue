@@ -1,18 +1,19 @@
 <template>
-  <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
+  <div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
   
           <!-- ======= Header ======= -->
           <header id="header" class="header fixed-top d-flex align-items-center">
     
-        <div class="d-flex align-items-center justify-content-between">
-          <a href="/empdashboard" class="logo d-flex align-items-center">
-            <img src="./img/logo1.png" alt="">
-            <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 100%; color: rgb(42, 43, 72);">
-              <i>INVEN<sup style="font-size: 70%;">Track</sup></i>
-            </span>
-          </a>
-          <i class="bi bi-list toggle-sidebar-btn"></i>
-        </div><!-- End Logo -->
+            <div class="d-flex align-items-center justify-content-between">
+              <a href="/dashboard" class="logo d-flex align-items-center" style="position: relative;">
+                <img src="./img/dilg-logo1.png" alt="" 
+                     style="position: absolute; max-height: 220px; max-width: 220px; margin-left: -30px; z-index: 1;">
+                <span style="font-family: 'Times New Roman', Times, serif; font-size: 25px; color: rgb(42, 43, 72); padding-left: 120px; z-index: 2; position: relative;">
+                  INVENTrack
+                </span>
+              </a>
+              <i class="bi bi-list toggle-sidebar-btn"></i>
+            </div><!-- End Logo -->
     
         <nav class="header-nav ms-auto">
           <ul class="d-flex align-items-center">
@@ -126,7 +127,7 @@
           <li class="nav-heading">Home</li>
     
           <li class="nav-item">
-            <a class="nav-link active" href="/dashboard">
+            <a class="nav-link active" href="/empdashboard">
               <i class="bi bi-grid"></i>
               <span>Dashboard</span>
             </a>
@@ -198,6 +199,13 @@
               <span>Request Equipment</span>
             </a>
           </li>
+
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/empqrcode">
+              <i class="bi bi-folder-plus"></i>
+              <span>Generate QR</span>
+            </a>
+          </li>
           
           <li class="nav-heading">user</li>
     
@@ -227,43 +235,83 @@
         </div><!-- End Page Title -->
     
         <section class="section dashboard">
-      <div class="row">
-          <!-- Display each record in a separate container -->
-          <div class="col-lg-4" v-for="info in info" :key="info.id"
-              draggable="true"
-              @dragstart="dragStart($event, info)"
-              @dragover="dragOver($event)"
-              @dragleave="dragLeave($event)"
-              @drop="drop($event, info)"
-              :data-id="info.id">
+          <div class="row">
+            <h1 class="dashboard-title">SERVICEABLE</h1>
+            <!-- Display each record in a separate container -->
+            <div class="col-lg-4" v-for="infos in infor" :key="infos.id" @click="storeRecordId(infos.id)"
+                draggable="true"
+                @dragstart="dragStart($event, infos)"
+                @dragover="dragOver($event)"
+                @dragleave="dragLeave($event)"
+                @drop="drop($event, infos)"
+                :data-id="infos.id">
               <div class="card mb-3" :class="{'transition-right': transitionRight, 'transition-left': transitionLeft}">
-                  <div class="row g-0">
-                      <div class="col-md-4">
-                          <img :src="info.image" alt="Inventory Image" class="inventory-image" />
-                      </div>
-                      <div class="col-md-8">
-                          <div class="card-body">
-                              <h5 class="card-title">{{ info.particulars }}</h5>
-                              <p class="card-text">{{ info.classification }}</p>
-                              <p class="card-text">{{ info.article }}</p>
-                              <p class="card-text">
-                                <br>
-                                  <span v-if="info.status === 'Serviceable'" class="status-serviceable">
-                                      <i class="bi bi-bookmark-check">&nbsp;&nbsp;</i>
-                                      <small class="text-muted">{{ info.status }}</small>
-                                  </span>
-                                  <span v-if="info.status === 'Unserviceable'" class="status-unserviceable">
-                                      <i class="bi bi-bookmark-x">&nbsp;&nbsp;</i>
-                                      <small class="text-muted">{{ info.status }}</small>
-                                  </span>
-                              </p>
-                          </div>
-                      </div>
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img :src="infos.image" alt="Inventory Image" class="inventory-image" />
                   </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ infos.particulars }}</h5>
+                      <p class="card-text">{{ infos.classification }}</p>
+                      <p class="card-text">{{ infos.article }}</p>
+                      <p class="card-text">
+                        <br>
+                        <span v-if="infos.status === 'Serviceable'" class="status-serviceable">
+                          <i class="bi bi-bookmark-check">&nbsp;&nbsp;</i>
+                          <small class="text-muted">{{ infos.status }}</small>
+                        </span>
+                        <span v-if="infos.status === 'Unserviceable'" class="status-unserviceable">
+                          <i class="bi bi-bookmark-x">&nbsp;&nbsp;</i>
+                          <small class="text-muted">{{ infos.status }}</small>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
+            </div>
           </div>
-      </div>
-  </section>
+        
+          <div class="row">
+            <h1 class="dashboard-title">UNSERVICEABLE</h1>
+            <!-- Display each record in a separate container -->
+            <div class="col-lg-4" v-for="infos in inforunser" :key="infos.id"
+                draggable="true"
+                @dragstart="dragStart($event, infos)"
+                @dragover="dragOver($event)"
+                @dragleave="dragLeave($event)"
+                @drop="drop($event, infos)"
+                :data-id="infos.id">
+              <div class="card mb-3" :class="{'transition-right': transitionRight, 'transition-left': transitionLeft}" style=" background-color: #FFCCCB;">
+                <div class="row g-0">
+                  <div class="col-md-4">
+                    <img :src="infos.image" alt="Inventory Image" class="inventory-image" />
+                  </div>
+                  <div class="col-md-8">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ infos.particulars }}</h5>
+                      <p class="card-text">{{ infos.classification }}</p>
+                      <p class="card-text">{{ infos.article }}</p>
+                      <p class="card-text">
+                        <br>
+                        <span v-if="infos.status === 'Serviceable'" class="status-serviceable">
+                          <i class="bi bi-bookmark-check">&nbsp;&nbsp;</i>
+                          <small class="text-muted">{{ infos.status }}</small>
+                        </span>
+                        <span v-if="infos.status === 'Unserviceable'" class="status-unserviceable">
+                          <i class="bi bi-bookmark-x">&nbsp;&nbsp;</i>
+                          <small class="text-muted">{{ infos.status }}</small>
+                        </span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        
   
   
         </main><!-- End #main -->
@@ -279,7 +327,8 @@
     data() {
       return {
         infos: [],
-        info: [],
+        infor: [],
+        inforunser: [],
         empfullname: "",
         particulars: "",
         token: '',
@@ -308,6 +357,14 @@
       async initData() {
         await this.getUser();
         await this.getInfo(this.infos.fullname);
+        await this.getInfoUnser(this.infos.fullname);
+      },
+      storeRecordId(recordId) {
+        // Save the record ID to session storage
+        sessionStorage.setItem('selectedRecordId', recordId);
+        
+        // Redirect to the new page
+        this.$router.push({ path: '/empdatabaseppedocs' });
       },
       getImageStyle(imageUrl) {
         if (!imageUrl) {
@@ -340,7 +397,16 @@
       async getInfo(id) {
         try {
           const inf = await axios.get(`getDataUser?id=${id}`);
-          this.info = inf.data;
+          this.infor = inf.data;
+          this.applyCardOrder();
+        } catch (error) {
+          console.log(error);
+        }
+      },
+      async getInfoUnser(id) {
+        try {
+          const inf = await axios.get(`getDataUserUnserviceable?id=${id}`);
+          this.inforunser = inf.data;
           this.applyCardOrder();
         } catch (error) {
           console.log(error);
@@ -359,7 +425,7 @@
       },
       async logout() {
         sessionStorage.removeItem('token');
-        this.$router.push('/');
+        this.$router.push('/signin');
       },
       dragStart(event, info) {
         this.dragCardId = info.id;
@@ -448,6 +514,17 @@
   
   
   <style scoped>
+  .dashboard-title {
+    font-size: 2.5rem; /* Larger font size */
+    font-weight: bold; /* Bold text */
+    color: #343a40; /* Dark gray color */
+    margin-bottom: 20px; /* Spacing below the heading */
+    text-align: right; /* Align left */
+    border-bottom: 2px solid #7f8fa0; /* Add a blue bottom border */
+    padding-bottom: 10px; /* Padding below the text */
+    letter-spacing: 1px; /* Slight letter spacing for better readability */
+  }
+  
   
   .card {
     box-sizing: border-box;
