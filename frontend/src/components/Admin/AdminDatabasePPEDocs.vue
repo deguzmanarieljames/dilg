@@ -894,7 +894,7 @@
             }
             
             // Set the background image URL
-            const backgroundImage = `url('http://dilg.test/backend/uploads/${image}')`;
+            const backgroundImage = `url('https://inventrack.online/backend/uploads/${image}')`;
             
             // Set background size and position
             const backgroundSize = 'cover'; // Cover the entire container
@@ -914,7 +914,7 @@
           async generatePDF(recordId) {
             try {
                 // Send HTTP request to backend
-                const response = await fetch(`http://dilg.test/backend/generateICSPDF/${recordId}`, {
+                const response = await fetch(`https://inventrack.online/backend/generateICSPDF/${recordId}`, {
                     method: 'GET', // Adjust the method accordingly
                     headers: {
                         'Content-Type': 'application/json', // Adjust the content type if needed
@@ -945,7 +945,7 @@
         async generatePDFSPC() {
           try {
 
-              const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
+              const response = await fetch('https://inventrack.online/backend/employeeRecordsPDF', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
@@ -982,7 +982,7 @@
         async generatePDFSPLC() {
           try {
 
-              const response = await fetch('http://dilg.test/backend/employeeRecordsSPLC', {
+              const response = await fetch('https://inventrack.online/backend/employeeRecordsSPLC', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
@@ -1017,10 +1017,10 @@
         },
     
     
-        async logout() {
+        async logout(){
           sessionStorage.removeItem('token');
-          this.$router.push('/');
-        },
+          this.$router.push('/signin');
+         },
     
       },
     

@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use CodeIgniter\RestFul\ResourceController;
+use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\DatabasePPEModel;
 use App\Models\InventoryModel;
@@ -72,7 +72,7 @@ class ServiceController extends ResourceController
     
             // Manipulate image URLs
             foreach ($data as &$item) {
-                $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+                $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
             }
             
             return $this->respond($data, 200);
@@ -102,7 +102,7 @@ class ServiceController extends ResourceController
     
             // Manipulate image URLs
             foreach ($data as &$item) {
-                $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+                $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
             }
             
             return $this->respond($data, 200);
@@ -169,7 +169,7 @@ class ServiceController extends ResourceController
 
             // Manipulate image URLs
             foreach ($data as &$item) {
-                $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+                $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
             }
             
             return $this->respond($data, 200);
@@ -203,7 +203,7 @@ class ServiceController extends ResourceController
     
                 // Manipulate image URLs
                 foreach ($data as &$item) {
-                    $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
                 }
                 
                 return $this->respond($data, 200);

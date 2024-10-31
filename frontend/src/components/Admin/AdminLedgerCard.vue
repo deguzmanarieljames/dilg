@@ -1292,7 +1292,7 @@
            const end = this.endDate ? `&end_date=${this.endDate}` : '';
            const queryParams = start || end ? `?${start}${end}` : '';
 
-           this.pdfUrl = `http://dilg.test/backend/IIRUSP${queryParams}`;
+           this.pdfUrl = `https://inventrack.online/backend/IIRUSP${queryParams}`;
            this.showPdf = true;
          },
         async IIRUSPdownloadPDF() {
@@ -1301,7 +1301,7 @@
             const end = this.endDate ? `&end_date=${this.endDate}` : '';
             const queryParams = start || end ? `?${start}${end}` : '';
 
-            const response = await fetch(`http://dilg.test/backend/IIRUSP${queryParams}`, {
+            const response = await fetch(`https://inventrack.online/backend/IIRUSP${queryParams}`, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
@@ -1332,7 +1332,7 @@
             const end = this.endDate ? `&end_date=${this.endDate}` : '';
             const queryParams = start || end ? `?${start}${end}` : '';
 
-            const response = await axios.get(`http://dilg.test/backend/IIRUSPgetData${queryParams}`);
+            const response = await axios.get(`https://inventrack.online/backend/IIRUSPgetData${queryParams}`);
             this.unserv = response.data;
           } catch (error) {
             console.log(error);
@@ -1342,13 +1342,13 @@
 
 
       // IIRUSPshowPDF() {
-      //   this.pdfUrl = 'http://dilg.test/backend/IIRUSP'; // Set the path to your PDF file
+      //   this.pdfUrl = 'https://inventrack.online/backend/IIRUSP'; // Set the path to your PDF file
       //   this.showPdf = true;
       // },
       // async IIRUSPdownloadPDF() {
       //   try {
       //     // Send HTTP request to backend to generate PDFs for all records
-      //     const response = await fetch('http://dilg.test/backend/IIRUSP', {
+      //     const response = await fetch('https://inventrack.online/backend/IIRUSP', {
       //         method: 'GET',
       //         headers: {
       //             'Content-Type': 'application/json',
@@ -1421,7 +1421,7 @@
         const queryParams = start || end ? `?${start}${end}` : '';
 
         
-        this.RPCSPHIGHpdfUrl = `http://dilg.test/backend/RPCSPHIGH${queryParams}`; // Set the path to your PDF file
+        this.RPCSPHIGHpdfUrl = `https://inventrack.online/backend/RPCSPHIGH${queryParams}`; // Set the path to your PDF file
         this.isRPCSPHIGHPdfVisible = true;
       },
       async RPCSPHIGHdownloadPDF() {
@@ -1432,7 +1432,7 @@
 
           
           // Send HTTP request to backend to generate PDFs for all records
-          const response = await fetch(`http://dilg.test/backend/RPCSPHIGH${queryParams}`, {
+          const response = await fetch(`https://inventrack.online/backend/RPCSPHIGH${queryParams}`, {
               method: 'GET',
               headers: {
                   'Content-Type': 'application/json',
@@ -1465,7 +1465,7 @@
         const queryParams = start || end ? `?${start}${end}` : '';
 
         
-        this.RPCSPLOWpdfUrl = `http://dilg.test/backend/RPCSPLOW${queryParams}`; // Set the path to your PDF file
+        this.RPCSPLOWpdfUrl = `https://inventrack.online/backend/RPCSPLOW${queryParams}`; // Set the path to your PDF file
         this.isRPCSPLOWPdfVisible = true;
       },
       async RPCSPLOWdownloadPDF() {
@@ -1477,7 +1477,7 @@
 
           
           // Send HTTP request to backend to generate PDFs for all records
-          const response = await fetch(`http://dilg.test/backend/RPCSPLOW${queryParams}`, {
+          const response = await fetch(`https://inventrack.online/backend/RPCSPLOW${queryParams}`, {
               method: 'GET',
               headers: {
                   'Content-Type': 'application/json',
@@ -1517,7 +1517,7 @@
 
       RegSPIshowPDF() {
         const classification = this.selectedClassification || ''; // Default to all records if no classification is selected
-        this.RegSPIpdfUrl = `http://dilg.test/backend/RegSPI/${classification}`; // Set the path to your PDF file
+        this.RegSPIpdfUrl = `https://inventrack.online/backend/RegSPI/${classification}`; // Set the path to your PDF file
         this.isRegSPIPdfVisible = true;
       },
       RegSPIPdfClose() {
@@ -1529,8 +1529,8 @@
           
           // Adjust the URL based on the classification
           const url = classification 
-            ? `http://dilg.test/backend/RegSPI/${classification}` 
-            : `http://dilg.test/backend/RegSPI`;
+            ? `https://inventrack.online/backend/RegSPI/${classification}` 
+            : `https://inventrack.online/backend/RegSPI`;
           
           // Send HTTP request to backend to generate PDFs for all records
           const response = await fetch(url, {
@@ -1563,7 +1563,7 @@
 
       async fetchClassifications() {
         try {
-          const response = await fetch('http://dilg.test/backend/getClassifications');
+          const response = await fetch('https://inventrack.online/backend/getClassifications');
           this.classifications = await response.json();
         } catch (error) {
           console.error('Error fetching classifications:', error);
@@ -1574,8 +1574,8 @@
     // Adjust the URL based on the classification
     const classification = this.selectedClassification || ''; // Default to an empty string if no classification is selected
     const url = classification 
-      ? `http://dilg.test/backend/RegSPIdata/${classification}` 
-      : `http://dilg.test/backend/RegSPIdata`;
+      ? `https://inventrack.online/backend/RegSPIdata/${classification}` 
+      : `https://inventrack.online/backend/RegSPIdata`;
 
     const response = await fetch(url);
     
@@ -1598,10 +1598,10 @@ filterTableData() {
 },
 
 
-      async logout(){
-        sessionStorage.removeItem('token');
-        this.$router.push('/');
-      }
+        async logout(){
+          sessionStorage.removeItem('token');
+          this.$router.push('/signin');
+        },
     }
   }
   </script>

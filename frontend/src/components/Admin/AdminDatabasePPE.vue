@@ -751,7 +751,7 @@ export default {
       try {
           this.simulateLoading();
 
-          const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
+          const response = await fetch('https://inventrack.online/backend/employeeRecordsPDF', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
@@ -790,7 +790,7 @@ export default {
     try {
         // Send HTTP request to backend to generate PDFs for all records
         this.simulateLoading();
-        const response = await fetch('http://dilg.test/backend/recordsPDF', {
+        const response = await fetch('https://inventrack.online/backend/recordsPDF', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -819,7 +819,7 @@ export default {
 },
   updatePdfUrl() {
       if (this.selectedshowEmployeePDF) {
-        this.pdfUrl = `http://dilg.test/backend/showemployeerecordPDF/${this.selectedshowEmployeePDF}`;
+        this.pdfUrl = `https://inventrack.online/backend/showemployeerecordPDF/${this.selectedshowEmployeePDF}`;
       } else {
         this.pdfUrl = '';
       }
@@ -858,7 +858,7 @@ async getUserInfo(id){
         }
         
         // Set the background image URL
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('https://inventrack.online/backend/uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container
@@ -893,10 +893,10 @@ async getUserInfo(id){
         console.log(error);
       }
     },
-    async logout() {
-      sessionStorage.removeItem('token');
-      this.$router.push('/');
-    },
+    async logout(){
+          sessionStorage.removeItem('token');
+          this.$router.push('/signin');
+      },
     updatePageSize(size) {
       this.pageSize = size;
       this.getInfo();

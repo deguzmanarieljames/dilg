@@ -488,7 +488,7 @@
             <tbody>
               <tr v-for="inv in paginatedInfo" :key="inv.id" :class="{ 'inactive-row': inv.status === 'inactive' }">
                 <td scope="row">
-                  <img :src="`http://dilg.test/backend/uploads/${inv.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" />
+                  <img :src="`https://inventrack.online/backend/uploads/${inv.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" />
                 </td>
                 <td scope="row">{{ inv.entityname }}</td>
                 <td scope="row">{{ inv.classification }}</td>
@@ -1089,7 +1089,7 @@
       this.unit = record.unit;
       this.unitcost = record.unitcost;
       this.totalcost = record.totalcost;
-      this.imagePreview = `http://dilg.test/backend/uploads/${record.image}`;
+      this.imagePreview = `https://inventrack.online/backend/uploads/${record.image}`;
       this.showAddItemModal = true; // Ito ang nagtatakda na ipapakita ang modal
   
       console.log(recordId);
@@ -1170,7 +1170,7 @@
           }
           
           // Set the background image URL
-          const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+          const backgroundImage = `url('https://inventrack.online/backend/uploads/${imageUrl}')`;
           
           // Set background size and position
           const backgroundSize = 'cover'; // Cover the entire container
@@ -1187,10 +1187,10 @@
           };
         },
   
-      async logout(){
+        async logout(){
           sessionStorage.removeItem('token');
-          this.$router.push('/');
-      }
+          this.$router.push('/signin');
+         },
   },
   beforeDestroy() {
       if (this.mediaStream) {

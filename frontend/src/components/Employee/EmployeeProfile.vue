@@ -373,7 +373,7 @@
                            <div class="row mb-3">
                             <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                             <div class="col-md-8 col-lg-9">
-                              <img :src="'http://dilg.test/backend/uploads/' + infos.image" alt="Profile" class="rounded-circle" style="height: 100%; width: 100%">
+                              <img :src="'https://inventrack.online/backend/uploads/' + infos.image" alt="Profile" class="rounded-circle" style="height: 100%; width: 100%">
                               <div class="pt-2">
                                 <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
                                 <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
@@ -604,7 +604,7 @@ export default {
       }
       
       // Set the background image URL
-      const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+      const backgroundImage = `url('https://inventrack.online/backend/uploads/${imageUrl}')`;
       
       // Set background size and position
       const backgroundSize = 'cover'; // Cover the entire container
@@ -727,7 +727,7 @@ export default {
         }
 
         try {
-          const response = await fetch('http://dilg.test/backend/changePassword', {
+          const response = await fetch('https://inventrack.online/backend/changePassword', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'
@@ -754,8 +754,8 @@ export default {
 
 
       async logout(){
-        sessionStorage.removeItem('token');
-        this.$router.push('/');
+          sessionStorage.removeItem('token');
+          this.$router.push('/signin');
       },
       /*async created(){
         const signdata = await axios.get('user', {

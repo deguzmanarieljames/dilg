@@ -714,7 +714,7 @@
         async downloadEmployeeRecordsPDF() {
             try {
               this.simulateLoading();
-               const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
+               const response = await fetch('https://inventrack.online/backend/employeeRecordsPDF', {
                    method: 'POST',
                    headers: {
                        'Content-Type': 'application/json',
@@ -745,7 +745,7 @@
         try {
             // Send HTTP request to backend to generate PDFs for all records
             this.simulateLoading();
-            const response = await fetch('http://dilg.test/backend/unserviceablePDF', {
+            const response = await fetch('https://inventrack.online/backend/unserviceablePDF', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -963,6 +963,10 @@
               console.error("Error updating date returned:", error);
             });
           },
+          async logout(){
+          sessionStorage.removeItem('token');
+          this.$router.push('/signin');
+      },
               
       },
       computed: {

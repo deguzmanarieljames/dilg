@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use CodeIgniter\RestFul\ResourceController;
+use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\SigninModel;
 use App\Models\VerifyModel;
@@ -155,7 +155,7 @@ class SigninController extends ResourceController
             // Content
             $mail->isHTML(true);
             $mail->Subject = 'Account Verification';
-            $mail->Body    = "Click the following link to verify your account: " . ("http://dilg.test/backend/verify-account?token=$token");
+            $mail->Body    = "Click the following link to verify your account: " . ("https://inventrack.online/backend/verify-account?token=$token");
     
             // Send the email
             $mail->send();

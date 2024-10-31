@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 // use App\Controllers\BaseController;
-use CodeIgniter\RestFul\ResourceController;
+use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\OrderModel;
 use App\Models\ShopModel;
@@ -143,7 +143,7 @@ class OrderController extends ResourceController
     
         // Update receipt URL
         foreach ($data as &$item) {
-            $item['receipt'] = 'http://dilg.test/backend/uploads/' . $item['receipt'];
+            $item['receipt'] = 'https://inventrack.online/backend/uploads/' . $item['receipt'];
         }
     
         return $this->respond($data);

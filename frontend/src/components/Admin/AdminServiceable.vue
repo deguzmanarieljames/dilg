@@ -771,7 +771,7 @@ export default{
     async downloadEmployeeRecordsPDF() {
         try {
           this.simulateLoading();
-           const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
+           const response = await fetch('https://inventrack.online/backend/employeeRecordsPDF', {
                method: 'POST',
                headers: {
                    'Content-Type': 'application/json',
@@ -802,7 +802,7 @@ export default{
     try {
         // Send HTTP request to backend to generate PDFs for all records
         this.simulateLoading();
-        const response = await fetch('http://dilg.test/backend/serviceablePDF', {
+        const response = await fetch('https://inventrack.online/backend/serviceablePDF', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -892,8 +892,8 @@ export default{
           this.previousEmployee = this.selectedEmployee;
         },
         async logout(){
-              sessionStorage.removeItem('token');
-              this.$router.push('/');
+          sessionStorage.removeItem('token');
+          this.$router.push('/signin');
         },
 
 

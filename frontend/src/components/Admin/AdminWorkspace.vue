@@ -420,7 +420,7 @@
                         <label class="card-title text-center" style="font-size: 20px">IMAGE PREVIEW</label>
                         <div class="image-container" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 200px; border: 1px solid #ccc; border-radius: 50%;">
                           <img 
-                            :src="image ? `http://dilg.test/backend/uploads/${image}` : 'path/to/default-image.png'" 
+                            :src="image ? `http://inventrack.online/backend/uploads/${image}` : 'path/to/default-image.png'" 
                             alt="Image Preview" 
                             class="img-fluid" 
                             style="max-width: 100%; max-height: 100%; border-radius: 35px" 
@@ -1946,7 +1946,7 @@ export default{
         async downloadEmployeeRequest() {
         try {
           this.simulateLoading();
-           const response = await fetch('http://dilg.test/backend/employeeRequestPDF', {
+           const response = await fetch('http://inventrack.online/backend/employeeRequestPDF', {
                method: 'POST',
                headers: {
                    'Content-Type': 'application/json',
@@ -1977,7 +1977,7 @@ export default{
     try {
         // Send HTTP request to backend to generate PDFs for all records
         this.simulateLoading();
-        const response = await fetch('http://dilg.test/backend/requestPDF', {
+        const response = await fetch('http://inventrack.online/backend/requestPDF', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -2008,7 +2008,7 @@ export default{
     async generatePDF(recordId) {
             try {
                 // Send HTTP request to backend
-                const response = await fetch(`http://dilg.test/backend/generateICSPDF/${recordId}`, {
+                const response = await fetch(`http://inventrack.online/backend/generateICSPDF/${recordId}`, {
                     method: 'GET', // Adjust the method accordingly
                     headers: {
                         'Content-Type': 'application/json', // Adjust the content type if needed
@@ -2761,7 +2761,7 @@ confirmReset() {
         }
         
         // Set the background image URL
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('http://inventrack.online/backend/uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container
@@ -2791,14 +2791,14 @@ confirmReset() {
 
       async logout(){
           sessionStorage.removeItem('token');
-          this.$router.push('/');
+          this.$router.push('/signin');
       },
 
       // async fetchEmployeeDetails() {
       // // Use the CodeIgniter API endpoint to fetch employee details based on the selectedEmployee
       //   if (this.selectedEmployee) {
       //     try {
-      //       const response = await fetch(`http://dilg.test/backend/public/getEmployee/${this.selectedEmployee}`);
+      //       const response = await fetch(`http://inventrack.online/backend/public/getEmployee/${this.selectedEmployee}`);
       //       const data = await response.json();
       //       this.selectedEmployeeDetails = data;
       //     } catch (error) {

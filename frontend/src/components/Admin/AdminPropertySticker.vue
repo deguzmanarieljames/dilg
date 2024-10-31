@@ -670,9 +670,9 @@ export default {
 
   
     async logout(){
-      sessionStorage.removeItem('token');
-      this.$router.push('/');
-    },
+          sessionStorage.removeItem('token');
+          this.$router.push('/signin');
+      },
 
     checkScreenSize() {
       // Set mobile to true if screen width is below 768px

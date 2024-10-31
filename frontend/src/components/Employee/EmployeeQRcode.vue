@@ -317,7 +317,7 @@
               }
               
               // Set the background image URL
-              const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+              const backgroundImage = `url('https://inventrack.online/backend/uploads/${imageUrl}')`;
               
               // Set background size and position
               const backgroundSize = 'cover'; // Cover the entire container
@@ -379,9 +379,9 @@
             }
         },
         async logout(){
-              sessionStorage.removeItem('token');
-              this.$router.push('/');
-        },
+          sessionStorage.removeItem('token');
+          this.$router.push('/signin');
+      },
           
   }
   }

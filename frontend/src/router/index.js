@@ -47,10 +47,15 @@ const routes = [
   //   component: LandingPage2
   // },
   {
-    path: '/signin',
+    path: '/',
     name: 'SigninView',
     component: SigninView
   },
+  // {
+  //   path: '/signin',
+  //   name: 'SigninView',
+  //   component: SigninView
+  // },
   {
     path: '/signup',
     name: 'SignupView',

@@ -506,7 +506,7 @@ dataURLtoFile(dataUrl) {
         async generatePDF(recordId) {
             try {
                 // Send HTTP request to backend
-                const response = await fetch(`http://dilg.test/backend/generatepdf/${recordId}`, {
+                const response = await fetch(`https://inventrack.online/backend/generatepdf/${recordId}`, {
                     method: 'GET', // Adjust the method accordingly
                     headers: {
                         'Content-Type': 'application/json', // Adjust the content type if needed
@@ -537,7 +537,7 @@ dataURLtoFile(dataUrl) {
         async recordsPDF() {
         try {
             // Send HTTP request to backend to generate PDFs for all records
-            const response = await fetch('http://dilg.test/backend/recordsPDF', {
+            const response = await fetch('https://inventrack.online/backend/recordsPDF', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -566,7 +566,7 @@ dataURLtoFile(dataUrl) {
 
         async downloadEmployeeRecordsPDF() {
             try {
-                const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
+                const response = await fetch('https://inventrack.online/backend/employeeRecordsPDF', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',

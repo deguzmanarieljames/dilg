@@ -370,7 +370,7 @@
         if (!imageUrl) {
           return {};
         }
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('https://inventrack.online/backend/uploads/${imageUrl}')`;
         const backgroundSize = 'cover';
         const backgroundPosition = '50% 50%';
         return {

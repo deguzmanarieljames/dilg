@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
-use CodeIgniter\RestFul\ResourceController;
+use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\OfficerModel;
 use App\Models\InventoryModel;
@@ -31,7 +31,7 @@ class OfficerVerifyController extends ResourceController
                                 ->orderBy('officerverifyppe.id', 'DESC')
                                 ->findAll();
                                 foreach ($data as &$item) {
-                                    $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+                                    $item['imageverification'] = 'http://inventrack.o/backend/uploads/' . $item['imageverification'];
                                 }
 
         // Return the merged data

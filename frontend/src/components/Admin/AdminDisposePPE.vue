@@ -842,7 +842,7 @@
                 }
                 
                 // Set the background image URL
-                const backgroundImage = `url('http://dilg.test/backend/uploads/${image}')`;
+                const backgroundImage = `url('https://inventrack.online/backend/uploads/${image}')`;
                 
                 // Set background size and position
                 const backgroundSize = 'cover'; // Cover the entire container
@@ -862,7 +862,7 @@
             async generatePDF(recordId) {
                 try {
                     // Send HTTP request to backend
-                    const response = await fetch(`http://dilg.test/backend/generateITRPDF/${recordId}`, {
+                    const response = await fetch(`https://inventrack.online/backend/generateITRPDF/${recordId}`, {
                         method: 'GET', // Adjust the method accordingly
                         headers: {
                             'Content-Type': 'application/json', // Adjust the content type if needed
@@ -988,8 +988,8 @@
             },
 
             async logout(){
-                  sessionStorage.removeItem('token');
-                  this.$router.push('/');
+                sessionStorage.removeItem('token');
+                this.$router.push('/signin');
             },
     
 

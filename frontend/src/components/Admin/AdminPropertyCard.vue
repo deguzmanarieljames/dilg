@@ -761,9 +761,9 @@
 export default {
   methods: {
     async logout(){
-      sessionStorage.removeItem('token');
-      this.$router.push('/');
-    }
+          sessionStorage.removeItem('token');
+          this.$router.push('/signin');
+      },
   }
 }
 </script>

@@ -465,6 +465,10 @@ export default {
         }
       });
     },
+    async logout(){
+          sessionStorage.removeItem('token');
+          this.$router.push('/signin');
+      },
   }
 };
 </script>

@@ -3,7 +3,7 @@
 namespace App\Controllers;
 
 // use App\Controllers\RequestController;
-use CodeIgniter\RestFul\ResourceController;
+use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\DatabasePPEModel;
 use App\Models\DatabasePPETransfered;
@@ -48,8 +48,8 @@ class DatabasePPEController extends ResourceController
         $data = $databasePPEModel->orderBy('databaseppe.id', 'DESC')
                                 ->findAll();
                                 foreach ($data as &$item) {
-                                    $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
-                                    $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+                                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
                                 }
 
         // Return the merged data
@@ -70,8 +70,8 @@ class DatabasePPEController extends ResourceController
         // Check if the record exists
         if ($data) {
             // Add the correct URL for images
-            $data['image'] = 'http://dilg.test/backend/uploads/' . $data['image'];
-            $data['imageverification'] = 'http://dilg.test/backend/uploads/' . $data['imageverification'];
+            $data['image'] = 'https://inventrack.online/backend/uploads/' . $data['image'];
+            $data['imageverification'] = 'https://inventrack.online/backend/uploads/' . $data['imageverification'];
 
             // Return the record
             return $this->respond($data, 200);
@@ -95,8 +95,8 @@ class DatabasePPEController extends ResourceController
         // Check if the record exists
         if ($data) {
             // Add the correct URL for images
-            $data['image'] = 'http://dilg.test/backend/uploads/' . $data['image'];
-            $data['imageverification'] = 'http://dilg.test/backend/uploads/' . $data['imageverification'];
+            $data['image'] = 'https://inventrack.online/backend/uploads/' . $data['image'];
+            $data['imageverification'] = 'https://inventrack.online/backend/uploads/' . $data['imageverification'];
 
             // Return the record
             return $this->respond($data, 200);
@@ -118,8 +118,8 @@ class DatabasePPEController extends ResourceController
                                   ->orderBy('id', 'DESC')
                                   ->findAll();
                                   foreach ($data as &$item) {
-                                      $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
-                                      $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+                                      $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+                                      $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
                                   }
     
         // Return the data
@@ -138,8 +138,8 @@ class DatabasePPEController extends ResourceController
                                 ->orderBy('databaseppe.id', 'DESC')
                                 ->findAll();
                                 foreach ($data as &$item) {
-                                    $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
-                                    $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+                                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
                                 }
 
         // Return the merged data
@@ -159,8 +159,8 @@ class DatabasePPEController extends ResourceController
                                 ->orderBy('databaseppe.id', 'DESC')
                                 ->findAll();
                                 foreach ($data as &$item) {
-                                    $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
-                                    $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+                                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
                                 }
 
         // Return the merged data
@@ -179,8 +179,8 @@ class DatabasePPEController extends ResourceController
                                 ->orderBy('databaseppe.id', 'DESC')
                                 ->findAll();
                                 foreach ($data as &$item) {
-                                    $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
-                                    $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+                                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
                                 }
 
         // Return the merged data
@@ -200,9 +200,9 @@ class DatabasePPEController extends ResourceController
                                 ->orderBy('databaseppe.id', 'DESC')
                                 ->findAll();
                                 foreach ($data as &$item) {
-                                    $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
-                                    $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
-                                    $item['returned_image'] = 'http://dilg.test/backend/uploads/' . $item['returned_image'];
+                                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
+                                    $item['returned_image'] = 'https://inventrack.online/backend/uploads/' . $item['returned_image'];
                                 }
 
         // Return the merged data
@@ -222,9 +222,9 @@ class DatabasePPEController extends ResourceController
                                 ->orderBy('databaseppetransfered.id', 'DESC')
                                 ->findAll();
                                 foreach ($data as &$item) {
-                                    $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
-                                    $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
-                                    $item['transfered_image'] = 'http://dilg.test/backend/uploads/' . $item['transfered_image'];
+                                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
+                                    $item['transfered_image'] = 'https://inventrack.online/backend/uploads/' . $item['transfered_image'];
                                 }
 
         // Return the merged data
@@ -244,9 +244,9 @@ class DatabasePPEController extends ResourceController
                                 ->orderBy('databaseppedisposed.id', 'DESC')
                                 ->findAll();
                                 foreach ($data as &$item) {
-                                    $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
-                                    $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
-                                    $item['disposed_image'] = 'http://dilg.test/backend/uploads/' . $item['disposed_image'];
+                                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
+                                    $item['disposed_image'] = 'https://inventrack.online/backend/uploads/' . $item['disposed_image'];
                                 }
 
         // Return the merged data
@@ -858,7 +858,7 @@ class DatabasePPEController extends ResourceController
     //     $main = new InventoryModel();
     //     $data = $main->findAll();  
     //     foreach ($data as &$item) {
-    //         $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+    //         $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
     //     }
     
     //     return $this->respond($data, 200);
@@ -2288,8 +2288,8 @@ public function generateITRPDF($recordId)
         $data = $builder->findAll();
 
         foreach ($data as &$item) {
-            $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
-            $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+            $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+            $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
         }
 
         return $this->respond($data, 200);
@@ -2349,8 +2349,8 @@ public function generateITRPDF($recordId)
 
     //     // Update image paths
     //     foreach ($data as &$item) {
-    //         $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
-    //         $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+    //         $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+    //         $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
     //     }
 
     //     // Return the merged data
@@ -2503,8 +2503,8 @@ public function generateITRPDF($recordId)
 
         // Update image paths
         foreach ($data as &$item) {
-            $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
-            $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+            $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+            $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
         }
 
         // Return the merged data
@@ -2589,8 +2589,8 @@ public function generateITRPDF($recordId)
 
         // Update image paths
         foreach ($data as &$item) {
-            $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
-            $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+            $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+            $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
         }
 
         // Return the merged data
