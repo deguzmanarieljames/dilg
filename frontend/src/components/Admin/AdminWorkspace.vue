@@ -17,38 +17,51 @@
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
   
-          <li class="nav-item d-block d-lg-none">
-            <a class="nav-link nav-icon search-bar-toggle " href="#">
-              <i class="bi bi-search"></i>
-            </a>
-          </li><!-- End Search Icon-->
-  
+          <!-- Notification Icon -->
           <li class="nav-item dropdown">
-  
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <a class="nav-link nav-icon" href="#" @click="fetchNotifications" data-bs-toggle="dropdown">
               <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span>
-            </a><!-- End Notification Icon -->
-  
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-  
-            </ul><!-- End Notification Dropdown Items -->
-  
-          </li><!-- End Notification Nav -->
-  
-          <li class="nav-item dropdown">
-  
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-chat-left-text"></i>
-              <span class="badge bg-success badge-number">3</span>
-            </a><!-- End Messages Icon -->
-  
-  
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-  
-            </ul><!-- End Messages Dropdown Items -->
-  
-          </li><!-- End Messages Nav -->
+              <span class="badge bg-danger badge-number">{{ unreadCount }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" @click.stop>
+              <!-- Title and Tabs -->
+              <li class="dropdown-header">
+                <span class="notifications-title">Notifications</span>
+                <nav class="notifications-nav">
+                  <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
+                  <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
+                </nav>
+              </li>
+              <hr />
+
+              <!-- Notifications List -->
+              <li
+              v-for="notification in filteredNotifications"
+              :key="notification.id"
+              :class="['dropdown-item', notification.status === 'unread' ? 'notification-unread' : 'notification-read']"
+              @click="markAsRead(notification.id)"
+              >
+                <div class="notification-content">
+                  <!-- Icon in a white circle -->
+                  <div class="notification-icon-circle">
+                    <i :class="notification.icon"></i> <!-- Icon from the database -->
+                  </div>
+              
+                  <!-- Message and Time -->
+                  <div class="notification-details">
+                    <span class="notification-message">{{ truncateMessage(notification.message) }}</span>
+                    <span class="notification-time">{{ computeTimeAgo(notification.created_at) }}</span> <!-- Time below the message -->
+                  </div>
+              
+                  <!-- Unread Indicator Circle -->
+                  <span class="notification-indicator" v-if="notification.status === 'unread'"></span>
+                </div>
+              </li>
+            
+              <li v-if="filteredNotifications.length === 0" class="dropdown-item text-center">No notifications</li>
+            </ul>
+          </li>
+
   
           <li class="nav-item dropdown pe-3">
   
@@ -123,115 +136,121 @@
       <!-- ======= Sidebar ======= -->
       <aside id="sidebar" class="sidebar">
   
-      <ul class="sidebar-nav" id="sidebar-nav">
-  
-        
-        <li class="nav-heading">Home</li>
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/dashboard">
-            <i class="bi bi-grid"></i>
-            <span>Dashboard</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-  
-        
-        <li class="nav-heading">Pages</li>
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="databaseppe">
-            <i class="bi bi-clipboard-data"></i>
-            <span>Database PPE</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="serviceable">
-                <i class="bi bi-circle"></i><span>Serviceable</span>
-              </a>
-            </li>
-            <li>
-              <a href="unserviceable">
-                <i class="bi bi-circle"></i><span>Unserviceable</span>
-              </a>
-            </li>
-            <li>
-              <a href="returnedppe">
-                <i class="bi bi-circle"></i><span>Returned PPE</span>
-              </a>
-            </li>
-            <li>
-              <a href="transferedppe">
-                <i class="bi bi-circle"></i><span>Transfered PPE</span>
-              </a>
-           </li>
-           <li>
-            <a href="disposedppe">
-              <i class="bi bi-circle"></i><span>Disposed PPE</span>
-            </a>
-         </li>
-          </ul>
-        </li><!-- End Components Nav -->
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="propertysticker">
-                <i class="bi bi-circle"></i><span>Property Sticker</span>
-              </a>
-            </li>
-            <li>
-              <a href="ledgercard">
-                <i class="bi bi-circle"></i><span>PPE Documents</span>
-              </a>
-            </li>
-          </ul>
-        </li><!-- End Forms Nav -->
-
-        <li class="nav-heading">input</li>
-
-        <li class="nav-item">
-        <a class="nav-link active" href="/workspace"> 
-            <i class="bi bi-folder-plus"></i>
-            <span>Workspace</span>
-        </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/logbook">
-            <i class="bi bi-folder-plus"></i>
-            <span>Logbook</span>
-          </a>
-        </li><!-- End Input Nav -->
-
-        <li class="nav-heading">Stocks</li>
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/inventory">
-            <i class="bi bi-folder-plus"></i>
-            <span>Inventory</span>
-          </a>
-        </li>
-
-
-        <li class="nav-heading">Security</li>
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/userverify">
-            <i class="bi bi-folder-plus"></i>
-            <span>User Verification</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
+        <ul class="sidebar-nav" id="sidebar-nav">
     
-  
-      </ul>
-  
+          
+          <li class="nav-heading">Home</li>
+    
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/dashboard">
+              <i class="bi bi-grid"></i>
+              <span>Dashboard</span>
+            </a>
+          </li><!-- End Dashboard Nav -->
+    
+          
+          <!-- Pages Section -->
+          <li class="nav-heading">Pages</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="databaseppe">
+              <i class="bi bi-clipboard-data"></i>
+              <span>Database PPE</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <li>
+                <a href="/serviceable">
+                  <i class="bi bi-clipboard-check"></i><span>Serviceable</span>
+                </a>
+              </li>
+              <li>
+                <a href="unserviceable">
+                  <i class="bi bi-clipboard-x"></i><span>Unserviceable</span>
+                </a>
+              </li>
+              <li>
+                <a href="returnedppe">
+                  <i class="bi bi-box-arrow-left"></i><span>Returned PPE</span>
+                </a>
+              </li>
+              <li>
+                <a href="transferedppe">
+                  <i class="bi bi-box-arrow-right"></i><span>Transfered PPE</span>
+                </a>
+            </li>
+            <li>
+                <a href="disposedppe">
+                  <i class="bi bi-trash"></i><span>Disposed PPE</span>
+                </a>
+            </li>
+            </ul>
+          </li><!-- End Components Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <li>
+                <a href="propertysticker">
+                  <i class="bi bi-sticky"></i><span>Property Sticker</span>
+                </a>
+              </li>
+              <li>
+                <a href="ledgercard">
+                  <i class="bi bi-folder2-open"></i><span>PPE Documents</span>
+                </a>
+              </li>
+            </ul>
+          </li><!-- End Forms Nav -->
+          <!-- Input Section -->
+          <li class="nav-heading">input</li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/workspace">
+              <i class="bi bi-pencil-square"></i>
+              <span>Workspace</span>
+            </a>
+          </li><!-- End Input Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/logbook">
+              <i class="bi bi-calendar-check"></i>
+              <span>Logbook</span>
+            </a>
+          </li><!-- End Input Nav -->
+          <!-- Stocks Section -->
+          <li class="nav-heading">Stocks</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/inventory">
+              <i class="bi bi-box-seam"></i>
+              <span>Inventory</span>
+            </a>
+          </li><!-- End Stocks Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/supplies">
+              <i class="bi bi-stack"></i>
+              <span>Supplies</span>
+            </a>
+          </li>
+          <!-- Ordering Section -->
+          <li class="nav-heading">Ordering</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/ordering">
+              <i class="bi bi-shop"></i>
+              <span>Ordering</span>
+            </a>
+          </li><!-- End Ordering Nav -->
+          <!-- Security Section -->
+          <li class="nav-heading">Security</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/userverify">
+              <i class="bi bi-person-check"></i>
+              <span>User Verification</span>
+            </a>
+          </li><!-- End Security Nav -->
+        </ul>
       </aside><!-- End Sidebar-->
   
   
@@ -306,7 +325,7 @@
        
   
       <form enctype="multipart/form-data" id="myForm">       
-         <div class="card">
+         <div class="card" style="border-top: 30px solid #80faf4; border-bottom: 30px solid #ffa341;">
           <div class="card-body">
             <div class="container-fluid">
               <div class="row justify-content-center">
@@ -420,7 +439,7 @@
                         <label class="card-title text-center" style="font-size: 20px">IMAGE PREVIEW</label>
                         <div class="image-container" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 200px; border: 1px solid #ccc; border-radius: 50%;">
                           <img 
-                            :src="image ? `http://inventrack.online/backend/uploads/${image}` : 'path/to/default-image.png'" 
+                            :src="image ? `http://dilg.test/backend/uploads/${image}` : 'path/to/default-image.png'" 
                             alt="Image Preview" 
                             class="img-fluid" 
                             style="max-width: 100%; max-height: 100%; border-radius: 35px" 
@@ -681,7 +700,7 @@
                          <label class="card-title text-center" style="font-size: 20px">IMAGE PREVIEW</label>
                          <div class="image-container" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 200px; border: 1px solid #ccc; border-radius: 50%;">
                            <img 
-                             :src="image ? `${image}` : 'path/to/default-image.png'" 
+                            :src="image ? `http://dilg.test/backend/uploads/${image}` : 'path/to/default-image.png'" 
                              alt="Image Preview" 
                              class="img-fluid" 
                              style="max-width: 100%; max-height: 100%; border-radius: 35px" 
@@ -817,11 +836,28 @@
       <!-- Content for Records Tab -->
       <div class="row">
         <div class="col-lg-12">
-          <div class="card">
+          <div class="card" style="border-top: 30px solid #80faf4; border-bottom: 30px solid #ffa341;">
           <div class="card-body">
           <h5 class="card-title"></h5>
 
       <div class="row justify-content-center align-items-center">
+        <div class="col-lg-2">
+          <div class="d-flex align-items-center">
+            <span class="me-2">Show</span>
+            <div class="dropdown" style="display: inline-block;">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+                {{ pageSize }}
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+                <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+                <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+                <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+                <!-- Add more options as needed -->
+              </ul>
+            </div>
+            <span class="ms-2">entries</span>
+          </div>
+        </div>
         <!-- Dropdown for Employee -->
         <div class="col-lg-2">
           <select v-model="selectedEmployee" class="form-select" @change="onEmployeeChange">
@@ -857,45 +893,18 @@
 
   <!-- Status dropdown -->
   <div class="col-lg-2">
-    <select v-model="selectedStatus" class="form-select">
-      <option value="">Current Status</option>
-      <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
-    </select>
+    <div class="InputContainer">
+      <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
+    </div>
   </div>
 
 
-<br>
-<br>
-<br>
-<br>
+
 
 
 
 <!-- Search Bar and Show Entries Dropdown -->
-<div class="d-flex justify-content-between align-items-center">
-    <!-- Show Entries Dropdown -->
-    <div class="d-flex align-items-center">
-      <span class="me-2">Show</span>
-      <div class="dropdown" style="display: inline-block;">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
-          {{ pageSize }}
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
-          <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
-          <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
-          <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
-          <!-- Add more options as needed -->
-        </ul>
-      </div>
-      <span class="ms-2">entries</span>
-    </div>
-
-    <!-- Search Bar -->
-    
-      <div class="InputContainer">
-      <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
-    </div>
-  </div>
+<!--  -->
 </div>
 
 <br>
@@ -1053,8 +1062,8 @@
                   <a @click="deleteRecord(info.id)" class="btn btn-danger"><i class="ri-delete-bin-6-line"></i>Delete Record</a>
                 </div>
               </td>
-              <td scope="row"><img :src="info.imageverification" alt="Verification Image" style="max-width: 6px; max-height: 60px;" /></td>
-              <td scope="row"><img :src="info.image" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" /></td>
+              <td scope="row"><img :src="`http://dilg.test/backend/uploads/${info.imageverification}`" alt="Verification Image" style="max-width: 6px; max-height: 60px;" /></td>
+              <td scope="row"><img :src="`http://dilg.test/backend/uploads/${info.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" /></td>
               <td scope="row">{{ info.entityname }}</td>
               <td scope="row">{{ info.classification }}</td>
               <td scope="row">{{ info.code }}</td>
@@ -1151,48 +1160,56 @@
   <div class="modal" v-if="selectedRecord">
     <div class="modal-content">
       <span class="close" @click="selectedRecord = null">&times;</span>
-
-
+  
       <form class="row g-3" enctype="multipart/form-data">
         <div class="col-12">
           <label class="form-label"><h3><b>Choose Image Source:</b></h3></label>
-          <div>
-              <input type="radio" id="upload" value="upload" v-model="imageSource">
-              <label for="upload">Upload Image</label>
+          <div class="image-source-options">
+            <input type="radio" id="upload" value="upload" v-model="imageSource" class="radio-input">
+            <label for="upload" class="radio-label">Upload Image</label>
+  
+            <input type="radio" id="capture" value="capture" v-model="imageSource" class="radio-input">
+            <label for="capture" class="radio-label">Capture Image</label>
           </div>
-          <div>
-              <input type="radio" id="capture" value="capture" v-model="imageSource">
-              <label for="capture">Capture Image</label>
-          </div>
-      </div>
-
-      <div class="col-12" v-if="imageSource === 'upload'">
-          <!-- File upload input -->
+        </div>
+  
+        <div class="col-12" v-if="imageSource === 'upload'">
           <label for="image" class="form-label"><b>Upload Image</b></label>
-          <input type="file" class="form-control" id="image" @change="handleFileUpload" accept="image/*">
-      </div>
-
-      <div class="col-6" v-else-if="imageSource === 'capture'">
-          <!-- Camera capture section -->
-          <label for="camera" class="form-label"><b>Capture Image</b></label>
-          <video id="camera" width="280" height="220" autoplay></video>
-          <a @click="startCamera" class="btn btn-primary">{{ cameraStarted ? 'Stop Camera' : 'Start Camera' }}</a>
-          <a @click="captureImage" class="btn btn-success" :disabled="!cameraStarted">Capture</a>
-      </div>
-      <div class="col-6">
-          <label class="form-label text-center"><b>Preview</b></label>
-          <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" style="max-width: 280px; max-height: 220px;">
-      </div>
-      <div class="text-center">
+          <input type="file" class="form-control file-input" id="image" @change="handleFileUpload" accept="image/*">
+        </div>
+  
+        <div class="col-12 capture-section" v-else-if="imageSource === 'capture'">
+          <label for="camera" class="form-label capture-label"><b>Capture Image</b></label>
+          <div class="video-container">
+            <video id="camera" width="280" height="220" autoplay></video>
+          </div>
+          <div class="camera-controls">
+            <button type="button" @click="startCamera" class="btn btn-primary">
+              {{ cameraStarted ? 'Stop Camera' : 'Start Camera' }}
+            </button>
+            <button type="button" @click="captureImage" class="btn btn-success" :disabled="!cameraStarted">
+              Capture
+            </button>
+          </div>
+        </div>
+  
+        <div class="col-12 preview-section">
+          <label class="form-label"><b>Preview</b></label>
+          <div class="image-preview-container">
+            <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" class="image-preview">
+          </div>
+        </div>
+  
+        <div class="text-center action-buttons">
           <button @click="updateVerification" type="submit" class="btn btn-primary">Submit</button>
           <button type="reset" class="btn btn-secondary">Reset</button>
-      </div>
+        </div>
       </form>
-
-
-
     </div>
   </div>
+  
+  
+  
 
 
 
@@ -1209,7 +1226,7 @@
      
 
       <div class="col-lg-12">
-              <div class="card">
+              <div class="card" style="border-top: 30px solid #80faf4; border-bottom: 30px solid #ffa341;">
               <div class="card-body">
                 <div class="row">
                   <div class="col-lg-12">
@@ -1391,6 +1408,15 @@ import jsQR from "jsqr";
 
 export default{
   computed: {
+      filteredNotifications() {
+        if (this.filter === 'unread') {
+          return this.notifications.filter(notification => notification.status === 'unread');
+        }
+        return this.notifications;
+      },
+      unreadCount() {
+        return this.notifications.filter(notification => notification.status === 'unread').length;
+      },
       rec_totalCost() {
             return this.rec_quantity * this.rec_unitcost;
           },
@@ -1403,7 +1429,7 @@ export default{
 
       // Filter based on selected employee
       if (this.selectedEmployee !== '') {
-        filteredData = filteredData.filter(info => info.empfullname.toLowerCase() === this.selectedEmployee.toLowerCase());
+        filteredData = filteredData.filter(info => info.acc_officer.toLowerCase() === this.selectedEmployee.toLowerCase());
       }
 
       // Filter based on selected classification
@@ -1430,7 +1456,7 @@ export default{
         const keyword = this.searchKeyword.toLowerCase();
         filteredData = filteredData.filter(info => 
           (info.entityname && info.entityname.toLowerCase().includes(keyword)) ||
-          (info.empfullname && info.empfullname.toLowerCase().includes(keyword)) ||
+          (info.acc_officer && info.acc_officer.toLowerCase().includes(keyword)) ||
           (info.classification && info.classification.toLowerCase().includes(keyword)) ||
           (info.article && info.article.toLowerCase().includes(keyword)) ||
           (info.code && info.code.toLowerCase().includes(keyword)) ||
@@ -1542,6 +1568,8 @@ export default{
   },
   data() {
   return {
+    notifications: [],
+    filter: 'all',
     currentFormPage: 1,
     activeTab: 'inputs', // Default active tab
     searchKeyword: '',
@@ -1659,6 +1687,8 @@ export default{
       this.getInventory()
       this.user();
       this.getUserInfo(this.infos.fullname);
+      this.fetchEmployeeNames();
+      this.fetchNotifications();
   },
   mounted() {
     window.addEventListener("scroll", this.hideContextMenu);
@@ -1676,6 +1706,43 @@ export default{
     }
   },
   methods:{
+    async fetchNotifications() {
+        try {
+          const response = await axios.get('notification');
+          this.notifications = response.data; // Set notifications to the fetched data
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      computeTimeAgo(dateString) {
+        const now = Date.now(); // Current time in milliseconds
+        const notificationDate = new Date(dateString).getTime(); // Convert dateString to milliseconds
+        const secondsAgo = Math.floor((now - notificationDate) / 1000); // Difference in seconds
+
+        if (secondsAgo < 60) return `${secondsAgo}s ago`;
+        if (secondsAgo < 3600) return `${Math.floor(secondsAgo / 60)}m ago`;
+        if (secondsAgo < 86400) return `${Math.floor(secondsAgo / 3600)}h ago`;
+        if (secondsAgo < 2592000) return `${Math.floor(secondsAgo / 86400)}d ago`;
+        return `${Math.floor(secondsAgo / 2592000)}mo ago`;
+      },
+      truncateMessage(message) {
+        return message.length > 70 ? message.substring(0, 67) + '...' : message;
+      },
+      filterNotifications(type) {
+        this.filter = type;
+      },
+
+      async markAsRead(notificationId) {
+        try {
+          const response = await axios.post(`/markAsRead/${notificationId}`);
+          console.log(response.data.msg); // Log the success message
+
+          // Re-fetch notifications after marking one as read
+          this.fetchNotifications();
+        } catch (error) {
+          console.error('Network error:', error.message);
+        }
+      },
     // Open QR scanner modal and start the camera
     openQrScannerModal() {
       this.isQrScannerModalOpen = true;
@@ -1946,7 +2013,7 @@ export default{
         async downloadEmployeeRequest() {
         try {
           this.simulateLoading();
-           const response = await fetch('http://inventrack.online/backend/employeeRequestPDF', {
+           const response = await fetch('http://dilg.test/backend/employeeRequestPDF', {
                method: 'POST',
                headers: {
                    'Content-Type': 'application/json',
@@ -1977,7 +2044,7 @@ export default{
     try {
         // Send HTTP request to backend to generate PDFs for all records
         this.simulateLoading();
-        const response = await fetch('http://inventrack.online/backend/requestPDF', {
+        const response = await fetch('http://dilg.test/backend/requestPDF', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -2008,7 +2075,7 @@ export default{
     async generatePDF(recordId) {
             try {
                 // Send HTTP request to backend
-                const response = await fetch(`http://inventrack.online/backend/generateICSPDF/${recordId}`, {
+                const response = await fetch(`http://dilg.test/backend/generateICSPDF/${recordId}`, {
                     method: 'GET', // Adjust the method accordingly
                     headers: {
                         'Content-Type': 'application/json', // Adjust the content type if needed
@@ -2761,7 +2828,7 @@ confirmReset() {
         }
         
         // Set the background image URL
-        const backgroundImage = `url('http://inventrack.online/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container
@@ -2798,7 +2865,7 @@ confirmReset() {
       // // Use the CodeIgniter API endpoint to fetch employee details based on the selectedEmployee
       //   if (this.selectedEmployee) {
       //     try {
-      //       const response = await fetch(`http://inventrack.online/backend/public/getEmployee/${this.selectedEmployee}`);
+      //       const response = await fetch(`http://dilg.test/backend/public/getEmployee/${this.selectedEmployee}`);
       //       const data = await response.json();
       //       this.selectedEmployeeDetails = data;
       //     } catch (error) {
@@ -2950,6 +3017,10 @@ confirmReset() {
 
 <style scoped>
 
+.page-link {
+  z-index: 0;
+}
+
 .layout {
   width: 500px; /* Smaller width for the layout */
   height: 1380px; /* Smaller height for the layout */
@@ -3049,64 +3120,121 @@ confirmReset() {
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto;
-  background-color: rgba(148, 203, 255, 0.5);
-  animation-name: modal-animation;
-  animation-duration: 0.5s;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
 }
 
 .modal-content {
   background-color: #ffffff;
-  margin: 10% auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 90%; /* Adjust the width to fit smaller screens */
-  max-width: 600px; /* Max width to ensure readability on larger screens */
-  animation-name: modal-content-animation;
-  animation-duration: 0.5s;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 600px;
+  animation: modal-content-animation 0.5s ease-out;
 }
 
 .close {
-  color: #aaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
+  color: #333;
+  font-size: 24px;
+  position: absolute;
+  right: 16px;
+  top: 8px;
   cursor: pointer;
 }
 
-@keyframes modal-animation {
-  from {
-    top: -100%;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
+.image-source-options {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.radio-input {
+  display: none;
+}
+
+.radio-label {
+  display: inline-block;
+  padding: 8px 20px;
+  margin: 5px;
+  border: 1px solid #007bff;
+  border-radius: 20px;
+  color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.radio-input:checked + .radio-label {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.file-input {
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.capture-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.capture-label {
+  margin-bottom: 10px;
+}
+
+.video-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.camera-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.preview-section {
+  text-align: center;
+}
+
+.image-preview-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 220px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.action-buttons {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
 }
 
 @keyframes modal-content-animation {
   from {
-    transform: translateY(-100%);
+    transform: scale(0.8);
+    opacity: 0;
   }
   to {
-    transform: translateY(0);
+    transform: scale(1);
+    opacity: 1;
   }
 }
 
-@media (max-width: 768px) { /* Adjust for smaller screens */
-  .modal-content {
-    width: 90%;
-    margin: 20px auto;
-    padding: 10px;
-  }
-}
+
+
 
 .pagination .page-item {
   display: inline-block;
@@ -3411,7 +3539,7 @@ table {
 }
 
 th, td {
-  border: 1px solid black;
+  border: 1px solid #dee2e6;
   padding: 3px 9px; /* Adjust padding for better readability */
   text-align: center;
   white-space: nowrap; /* Prevent line breaks in cells */

@@ -1,6 +1,6 @@
 <template>
-  <div id="app" style="background-image: url('./img/good.png'); background-size: cover; background-attachment: fixed;">
-      <main>
+    <div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
+        <main>
           <div class="container">
 
           <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">

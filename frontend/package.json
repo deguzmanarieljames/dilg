@@ -7,6 +7,8 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^43.3.1",
+    "@ckeditor/ckeditor5-vue": "^7.2.0",
     "@fullcalendar/core": "^6.1.11",
     "@fullcalendar/daygrid": "^6.1.11",
     "@fullcalendar/interaction": "^6.1.11",
@@ -15,12 +17,16 @@
     "@tinymce/tinymce-vue": "^6.1.0",
     "axios": "^1.7.7",
     "chart.js": "^4.4.4",
+    "ckeditor5": "^43.3.1",
+    "ckeditor5-premium-features": "^43.3.1",
     "core-js": "^3.8.3",
+    "firebase": "^11.0.1",
     "flatpickr": "^4.6.13",
     "html2canvas": "^1.4.1",
     "html2pdf.js": "^0.10.2",
     "js-cookie": "^3.0.5",
     "jsqr": "^1.4.0",
+    "qr-code-styling": "^1.8.4",
     "qrcode-generator": "^1.4.4",
     "quill": "^2.0.2",
     "register-service-worker": "^1.7.2",
@@ -32,11 +38,20 @@
     "webfontloader": "^1.0.0"
   },
   "devDependencies": {
+    "@babel/plugin-transform-class-static-block": "^7.26.0",
     "@vue/cli-plugin-babel": "~5.0.0",
     "@vue/cli-plugin-pwa": "~5.0.0",
     "@vue/cli-plugin-router": "~5.0.0",
     "@vue/cli-service": "~5.0.0",
     "vue-cli-plugin-vuetify": "~2.5.8",
     "webpack-plugin-vuetify": "^2.0.0-alpha.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-class-static-block"
+    ]
   }
 }

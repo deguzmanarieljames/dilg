@@ -18,50 +18,66 @@
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
   
-          <li class="nav-item d-block d-lg-none">
-            <a class="nav-link nav-icon search-bar-toggle " href="#">
-              <i class="bi bi-search"></i>
-            </a>
-          </li><!-- End Search Icon-->
-  
+          <!-- Notification Icon -->
           <li class="nav-item dropdown">
-  
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <a class="nav-link nav-icon" href="#" @click="fetchNotifications" data-bs-toggle="dropdown">
               <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span>
-            </a><!-- End Notification Icon -->
+              <span class="badge bg-danger badge-number">{{ unreadCount }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" @click.stop>
+              <!-- Title and Tabs -->
+              <li class="dropdown-header">
+                <span class="notifications-title">Notifications</span>
+                <nav class="notifications-nav">
+                  <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
+                  <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
+                </nav>
+              </li>
+              <hr />
+
+              <!-- Notifications List -->
+              <li
+              v-for="notification in filteredNotifications"
+              :key="notification.id"
+              :class="['dropdown-item', notification.status === 'unread' ? 'notification-unread' : 'notification-read']"
+              @click="markAsRead(notification.id)"
+              >
+                <div class="notification-content">
+                  <!-- Icon in a white circle -->
+                  <div class="notification-icon-circle">
+                    <i :class="notification.icon"></i> <!-- Icon from the database -->
+                  </div>
+              
+                  <!-- Message and Time -->
+                  <div class="notification-details">
+                    <span class="notification-message">{{ truncateMessage(notification.message) }}</span>
+                    <span class="notification-time">{{ computeTimeAgo(notification.created_at) }}</span> <!-- Time below the message -->
+                  </div>
+              
+                  <!-- Unread Indicator Circle -->
+                  <span class="notification-indicator" v-if="notification.status === 'unread'"></span>
+                </div>
+              </li>
+            
+              <li v-if="filteredNotifications.length === 0" class="dropdown-item text-center">No notifications</li>
+            </ul>
+          </li>
+
   
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-  
-            </ul><!-- End Notification Dropdown Items -->
-  
-          </li><!-- End Notification Nav -->
-  
-          <li class="nav-item dropdown">
-  
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-chat-left-text"></i>
-              <span class="badge bg-success badge-number">3</span>
-            </a><!-- End Messages Icon -->
-  
-  
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-  
-            </ul><!-- End Messages Dropdown Items -->
-  
-          </li><!-- End Messages Nav -->
-  
+          <!-- Profile Nav -->
           <li class="nav-item dropdown pe-3">
   
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <img src="./img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <span class="d-none d-md-block dropdown-toggle ps-2">A. De Guzman</span>
-            </a><!-- End Profile Iamge Icon -->
-  
+              <div style="width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
+                <div :style="getImageStyle(infos.image)"></div>
+              </div>
+              <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
+            </a><!-- End Profile Image Icon -->
+
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>Ariel James De Guzman</h6>
-                <span>Web Designer</span>
+                <h6>{{ infos.fullname }}</h6>
+                <span>{{ infos.position }}</span>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -122,117 +138,121 @@
       <!-- ======= Sidebar ======= -->
       <aside id="sidebar" class="sidebar">
   
-      <ul class="sidebar-nav" id="sidebar-nav">
-  
-        
-        <li class="nav-heading">Home</li>
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/dashboard">
-            <i class="bi bi-grid"></i>
-            <span>Dashboard</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-  
-        
-        <li class="nav-heading">Pages</li>
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="databaseppe">
-            <i class="bi bi-clipboard-data"></i>
-            <span>Database PPE</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="serviceable">
-                <i class="bi bi-circle"></i><span>Serviceable</span>
-              </a>
-            </li>
-            <li>
-              <a href="unserviceable">
-                <i class="bi bi-circle"></i><span>Unserviceable</span>
-              </a>
-            </li>
-            <li>
-              <a href="returnedppe">
-                <i class="bi bi-circle"></i><span>Returned PPE</span>
-              </a>
-            </li>
-            <li>
-              <a href="transferedppe">
-                <i class="bi bi-circle"></i><span>Transfered PPE</span>
-              </a>
-           </li>
-           <li>
-            <a href="disposedppe">
-              <i class="bi bi-circle"></i><span>Disposed PPE</span>
+        <ul class="sidebar-nav" id="sidebar-nav">
+    
+          
+          <li class="nav-heading">Home</li>
+    
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/dashboard">
+              <i class="bi bi-grid"></i>
+              <span>Dashboard</span>
             </a>
-         </li>
-          </ul>
-        </li><!-- End Components Nav -->
-  
-        <li class="nav-item">
-          <a class="nav-link " data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="forms-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
-            <li>
-              <a class="nav-link active" href="propertysticker">
-                <i class="bi bi-circle"></i><span>Property Sticker</span>
-              </a>
+          </li><!-- End Dashboard Nav -->
+    
+          
+          <!-- Pages Section -->
+          <li class="nav-heading">Pages</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="databaseppe">
+              <i class="bi bi-clipboard-data"></i>
+              <span>Database PPE</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <li>
+                <a href="/serviceable">
+                  <i class="bi bi-clipboard-check"></i><span>Serviceable</span>
+                </a>
+              </li>
+              <li>
+                <a href="unserviceable">
+                  <i class="bi bi-clipboard-x"></i><span>Unserviceable</span>
+                </a>
+              </li>
+              <li>
+                <a href="returnedppe">
+                  <i class="bi bi-box-arrow-left"></i><span>Returned PPE</span>
+                </a>
+              </li>
+              <li>
+                <a href="transferedppe">
+                  <i class="bi bi-box-arrow-right"></i><span>Transfered PPE</span>
+                </a>
             </li>
             <li>
-              <a href="ledgercard">
-                <i class="bi bi-circle"></i><span>PPE Documents</span>
-              </a>
+                <a href="disposedppe">
+                  <i class="bi bi-trash"></i><span>Disposed PPE</span>
+                </a>
             </li>
-          </ul>
-        </li><!-- End Forms Nav -->
-
-        <li class="nav-heading">input</li>
-
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="/workspace">
-            <i class="bi bi-folder-plus"></i>
-            <span>Workspace</span>
-        </a>
-        </li>
-
-        <li class="nav-heading">Stocks</li>
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/inventory">
-            <i class="bi bi-folder-plus"></i>
-            <span>Inventory</span>
-          </a>
-        </li>
-
-        <li class="nav-heading">Ordering</li>
-    
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/ordering">
-            <i class="bi bi-folder-plus"></i>
-            <span>Ordering</span>
-          </a>
-        </li>
-
-        <li class="nav-heading">Security</li>
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/userverify">
-            <i class="bi bi-folder-plus"></i>
-            <span>User Verification</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-    
-  
-      </ul>
-  
+            </ul>
+          </li><!-- End Components Nav -->
+          <li class="nav-item">
+            <a class="nav-link" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav" class="nav-content " data-bs-parent="#sidebar-nav">
+              <li>
+                <a class="nav-link active" href="propertysticker">
+                  <i class="bi bi-sticky"></i><span>Property Sticker</span>
+                </a>
+              </li>
+              <li>
+                <a href="ledgercard">
+                  <i class="bi bi-folder2-open"></i><span>PPE Documents</span>
+                </a>
+              </li>
+            </ul>
+          </li><!-- End Forms Nav -->
+          <!-- Input Section -->
+          <li class="nav-heading">input</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/workspace">
+              <i class="bi bi-pencil-square"></i>
+              <span>Workspace</span>
+            </a>
+          </li><!-- End Input Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/logbook">
+              <i class="bi bi-calendar-check"></i>
+              <span>Logbook</span>
+            </a>
+          </li><!-- End Input Nav -->
+          <!-- Stocks Section -->
+          <li class="nav-heading">Stocks</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/inventory">
+              <i class="bi bi-box-seam"></i>
+              <span>Inventory</span>
+            </a>
+          </li><!-- End Stocks Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/supplies">
+              <i class="bi bi-stack"></i>
+              <span>Supplies</span>
+            </a>
+          </li>
+          <!-- Ordering Section -->
+          <li class="nav-heading">Ordering</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/ordering">
+              <i class="bi bi-shop"></i>
+              <span>Ordering</span>
+            </a>
+          </li><!-- End Ordering Nav -->
+          <!-- Security Section -->
+          <li class="nav-heading">Security</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/userverify">
+              <i class="bi bi-person-check"></i>
+              <span>User Verification</span>
+            </a>
+          </li><!-- End Security Nav -->
+        </ul>
       </aside><!-- End Sidebar-->
 
 
@@ -408,7 +428,7 @@
               <!-- The container of the actual HTML to capture (hidden but rendered offscreen) -->
               <div ref="captureArea" style="position: absolute; top: -9999px;">
                 <div class="container" style="width: 70%; max-width: 600px; margin: 0 auto; border: 1px solid #ccc; padding: 20px; background-color: #fff; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
-                  <div class="header" style="text-align: center; margin-bottom: 20px;">
+                  <div style="text-align: center; margin-bottom: 20px;">
                     <p>Republic of the Philippines
                       <br>
                       <b>Department of the Interior and Local Government</b>
@@ -426,7 +446,17 @@
                       <br>
                       Model No.: <b style="color: blue;">{{selectedInfo.modelno}}</b>
                       <br>
-                      Serial No.: <b style="color: blue;">{{selectedInfo.serialno}}</b><img :src="generateQRCodeUrl(selectedInfo.id)" alt="" style="width: 20%; height: auto; float: right;">
+                      Serial No.: <b style="color: blue;">{{selectedInfo.serialno}}</b>
+                      
+                      <QRCodeGenerator 
+                      class="qr-img" 
+                      :src="QrCodeData(selectedInfo.propertynumber)" 
+                      :data="qrCodeData" 
+                      :logoUrl="logoImageUrl" 
+                      style="transform: scale(0.3); width: 300px; height: 300px; float: right; margin: -100px -100px -100px -100px;" />
+                    
+                    
+                    
                       <br>
                       Acquisition Date/Cost: <b style="color: blue;">{{selectedInfo.propertydate}} {{selectedInfo.rec_unitcost}}</b>
                       <br>
@@ -457,6 +487,9 @@
               </div>
             </div>
           </div>
+
+          <!--  ADD BUTTON HERE THAT WILL LEAD TO /editsps  -->
+          <button @click="navigateToEditSPS" class="navigate-button">Go to Edit SPS</button>
         </div>
       </section>
   
@@ -470,11 +503,18 @@
 <script>
 import axios from 'axios';
 import html2canvas from 'html2canvas';
+import QRCodeGenerator from "../../components/QRCodeGenerator.vue";
 
 export default {
+  components: {
+     QRCodeGenerator,
+  },
   data() {
     return {
+      notifications: [],
+      filter: 'all',
       info: [],
+      infos:[],
       selectedInfo: null,
       imageData: [],
       loading: false, 
@@ -485,6 +525,8 @@ export default {
       currentlyDragging: null,
       downloadSuccessMessage: false,
       isMobile: false,
+      qrCodeData: null, // Replace with your dynamic ID or data
+      logoImageUrl: "./img/dilg-logo.png", // Local or external logo URL
     }
   },
   watch: {
@@ -512,7 +554,17 @@ export default {
         return this.items; // Return all items if no filter is selected
       }
       return this.items.filter(item => item.acc_officer === this.selectedAccountable);
+    },
+    filteredNotifications() {
+      if (this.filter === 'unread') {
+        return this.notifications.filter(notification => notification.status === 'unread');
+      }
+      return this.notifications;
+    },
+    unreadCount() {
+      return this.notifications.filter(notification => notification.status === 'unread').length;
     }
+
   },
   mounted() {
     this.fetchItems();
@@ -525,9 +577,57 @@ export default {
 
   created(){
       this.getInfo();
+      this.fetchNotifications();
+      this.user();
+      this.getUserInfo(this.infos.fullname);
   },
 
   methods: {
+    QrCodeData() {
+      const id = this.selectedInfo.propertynumber; // Replace with dynamic data if necessary
+      this.qrCodeData = id;
+      console.log(this.qrCodeData);
+    },
+    navigateToEditSPS() {
+      this.$router.push('/editsps');
+    },
+    async fetchNotifications() {
+        try {
+          const response = await axios.get('notification');
+          this.notifications = response.data; // Set notifications to the fetched data
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      computeTimeAgo(dateString) {
+        const now = Date.now(); // Current time in milliseconds
+        const notificationDate = new Date(dateString).getTime(); // Convert dateString to milliseconds
+        const secondsAgo = Math.floor((now - notificationDate) / 1000); // Difference in seconds
+
+        if (secondsAgo < 60) return `${secondsAgo}s ago`;
+        if (secondsAgo < 3600) return `${Math.floor(secondsAgo / 60)}m ago`;
+        if (secondsAgo < 86400) return `${Math.floor(secondsAgo / 3600)}h ago`;
+        if (secondsAgo < 2592000) return `${Math.floor(secondsAgo / 86400)}d ago`;
+        return `${Math.floor(secondsAgo / 2592000)}mo ago`;
+      },
+      truncateMessage(message) {
+        return message.length > 70 ? message.substring(0, 67) + '...' : message;
+      },
+      filterNotifications(type) {
+        this.filter = type;
+      },
+
+      async markAsRead(notificationId) {
+        try {
+          const response = await axios.post(`/markAsRead/${notificationId}`);
+          console.log(response.data.msg); // Log the success message
+
+          // Re-fetch notifications after marking one as read
+          this.fetchNotifications();
+        } catch (error) {
+          console.error('Network error:', error.message);
+        }
+      },
     async getInfo() {
       try {
         const response = await axios.get('getdata');
@@ -668,6 +768,54 @@ export default {
       console.log(info);
     },
 
+    async getUserInfo(id){
+              try {
+                  const inf = await axios.get(`getDataUser?id=${id}`);
+                  this.info = inf.data;
+              } catch (error) {
+                  console.log(error);
+              }
+          },
+
+      async user(){
+        try{
+          const id= sessionStorage.getItem("token")
+          const response = await axios.get(`/users/${id}`, {
+            id:id
+          })
+          this.infos = response.data;
+
+        }catch(error){
+          console.log(error);
+        }
+      },
+
+
+    getImageStyle(imageUrl) {
+      // Function to generate the background image style
+        if (!imageUrl) {
+          return {}; // Return an empty object if imageUrl is not provided
+        }
+        
+        // Set the background image URL
+        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        
+        // Set background size and position
+        const backgroundSize = 'cover'; // Cover the entire container
+        const backgroundPosition = '50% 50%'; // Center the image
+        
+        // Return the style object
+        return {
+          width: '100%',
+          height: '100%',
+          backgroundImage,
+          backgroundSize,
+          backgroundPosition,
+          borderRadius: '50%' // Make the background circular
+        };
+      },
+
+
   
     async logout(){
           sessionStorage.removeItem('token');
@@ -683,6 +831,21 @@ export default {
 </script>
 
 <style scoped>
+
+
+.navigate-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.navigate-button:hover {
+  background-color: #0056b3;
+}
 
 
 

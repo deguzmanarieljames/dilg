@@ -17,38 +17,52 @@
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
   
-          <li class="nav-item d-block d-lg-none">
-            <a class="nav-link nav-icon search-bar-toggle " href="#">
-              <i class="bi bi-search"></i>
-            </a>
-          </li><!-- End Search Icon-->
   
+          <!-- Notification Icon -->
           <li class="nav-item dropdown">
-  
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <a class="nav-link nav-icon" href="#" @click="fetchNotifications" data-bs-toggle="dropdown">
               <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span>
-            </a><!-- End Notification Icon -->
-  
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-  
-            </ul><!-- End Notification Dropdown Items -->
-  
-          </li><!-- End Notification Nav -->
-  
-          <li class="nav-item dropdown">
-  
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-chat-left-text"></i>
-              <span class="badge bg-success badge-number">3</span>
-            </a><!-- End Messages Icon -->
-  
-  
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-  
-            </ul><!-- End Messages Dropdown Items -->
-  
-          </li><!-- End Messages Nav -->
+              <span class="badge bg-danger badge-number">{{ unreadCount }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" @click.stop>
+              <!-- Title and Tabs -->
+              <li class="dropdown-header">
+                <span class="notifications-title">Notifications</span>
+                <nav class="notifications-nav">
+                  <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
+                  <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
+                </nav>
+              </li>
+              <hr />
+
+              <!-- Notifications List -->
+              <li
+              v-for="notification in filteredNotifications"
+              :key="notification.id"
+              :class="['dropdown-item', notification.status === 'unread' ? 'notification-unread' : 'notification-read']"
+              @click="markAsRead(notification.id)"
+              >
+                <div class="notification-content">
+                  <!-- Icon in a white circle -->
+                  <div class="notification-icon-circle">
+                    <i :class="notification.icon"></i> <!-- Icon from the database -->
+                  </div>
+              
+                  <!-- Message and Time -->
+                  <div class="notification-details">
+                    <span class="notification-message">{{ truncateMessage(notification.message) }}</span>
+                    <span class="notification-time">{{ computeTimeAgo(notification.created_at) }}</span> <!-- Time below the message -->
+                  </div>
+              
+                  <!-- Unread Indicator Circle -->
+                  <span class="notification-indicator" v-if="notification.status === 'unread'"></span>
+                </div>
+              </li>
+            
+              <li v-if="filteredNotifications.length === 0" class="dropdown-item text-center">No notifications</li>
+            </ul>
+          </li>
+
   
           <li class="nav-item dropdown pe-3">
   
@@ -123,122 +137,121 @@
       <!-- ======= Sidebar ======= -->
       <aside id="sidebar" class="sidebar">
   
-      <ul class="sidebar-nav" id="sidebar-nav">
-  
-        
-        <li class="nav-heading">Home</li>
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/dashboard">
-            <i class="bi bi-grid"></i>
-            <span>Dashboard</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-  
-        
-        <li class="nav-heading">Pages</li>
-  
-        <li class="nav-item">
-          <a class="nav-link active" href="databaseppe">
-            <i class="bi bi-clipboard-data"></i>
-            <span>Database PPE</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="serviceable">
-                <i class="bi bi-circle"></i><span>Serviceable</span>
-              </a>
-            </li>
-            <li>
-              <a href="unserviceable">
-                <i class="bi bi-circle"></i><span>Unserviceable</span>
-              </a>
-            </li>
-            <li>
-              <a href="returnedppe">
-                <i class="bi bi-circle"></i><span>Returned PPE</span>
-              </a>
-            </li>
-            <li>
-              <a href="transferedppe">
-                <i class="bi bi-circle"></i><span>Transfered PPE</span>
-              </a>
-           </li>
-           <li>
-            <a href="disposedppe">
-              <i class="bi bi-circle"></i><span>Disposed PPE</span>
-            </a>
-         </li>
-          </ul>
-        </li><!-- End Components Nav -->
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="propertysticker">
-                <i class="bi bi-circle"></i><span>Property Sticker</span>
-              </a>
-            </li>
-            <li>
-              <a href="ledgercard">
-                <i class="bi bi-circle"></i><span>PPE Documents</span>
-              </a>
-            </li>
-          </ul>
-        </li><!-- End Forms Nav -->
-  
-        <li class="nav-heading">input</li>
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/workspace">
-              <i class="bi bi-folder-plus"></i>
-              <span>Workspace</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/logbook">
-            <i class="bi bi-folder-plus"></i>
-            <span>Logbook</span>
-          </a>
-        </li><!-- End Input Nav -->
-
-        <li class="nav-heading">Stocks</li>
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/inventory">
-            <i class="bi bi-folder-plus"></i>
-            <span>Inventory</span>
-          </a>
-        </li>
-
-        <li class="nav-heading">Ordering</li>
+        <ul class="sidebar-nav" id="sidebar-nav">
     
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/ordering">
-            <i class="bi bi-folder-plus"></i>
-            <span>Ordering</span>
-          </a>
-        </li>
-
-        <li class="nav-heading">Security</li>
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/userverify">
-            <i class="bi bi-folder-plus"></i>
-            <span>User Verification</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-  
-      </ul>
-  
+          
+          <li class="nav-heading">Home</li>
+    
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/dashboard">
+              <i class="bi bi-grid"></i>
+              <span>Dashboard</span>
+            </a>
+          </li><!-- End Dashboard Nav -->
+    
+          
+          <!-- Pages Section -->
+          <li class="nav-heading">Pages</li>
+          <li class="nav-item">
+            <a class="nav-link active" href="databaseppe">
+              <i class="bi bi-clipboard-data"></i>
+              <span>Database PPE</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <li>
+                <a href="/serviceable">
+                  <i class="bi bi-clipboard-check"></i><span>Serviceable</span>
+                </a>
+              </li>
+              <li>
+                <a href="unserviceable">
+                  <i class="bi bi-clipboard-x"></i><span>Unserviceable</span>
+                </a>
+              </li>
+              <li>
+                <a href="returnedppe">
+                  <i class="bi bi-box-arrow-left"></i><span>Returned PPE</span>
+                </a>
+              </li>
+              <li>
+                <a href="transferedppe">
+                  <i class="bi bi-box-arrow-right"></i><span>Transfered PPE</span>
+                </a>
+            </li>
+            <li>
+                <a href="disposedppe">
+                  <i class="bi bi-trash"></i><span>Disposed PPE</span>
+                </a>
+            </li>
+            </ul>
+          </li><!-- End Components Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <li>
+                <a href="propertysticker">
+                  <i class="bi bi-sticky"></i><span>Property Sticker</span>
+                </a>
+              </li>
+              <li>
+                <a href="ledgercard">
+                  <i class="bi bi-folder2-open"></i><span>PPE Documents</span>
+                </a>
+              </li>
+            </ul>
+          </li><!-- End Forms Nav -->
+          <!-- Input Section -->
+          <li class="nav-heading">input</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/workspace">
+              <i class="bi bi-pencil-square"></i>
+              <span>Workspace</span>
+            </a>
+          </li><!-- End Input Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/logbook">
+              <i class="bi bi-calendar-check"></i>
+              <span>Logbook</span>
+            </a>
+          </li><!-- End Input Nav -->
+          <!-- Stocks Section -->
+          <li class="nav-heading">Stocks</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/inventory">
+              <i class="bi bi-box-seam"></i>
+              <span>Inventory</span>
+            </a>
+          </li><!-- End Stocks Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/supplies">
+              <i class="bi bi-stack"></i>
+              <span>Supplies</span>
+            </a>
+          </li>
+          <!-- Ordering Section -->
+          <li class="nav-heading">Ordering</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/ordering">
+              <i class="bi bi-shop"></i>
+              <span>Ordering</span>
+            </a>
+          </li><!-- End Ordering Nav -->
+          <!-- Security Section -->
+          <li class="nav-heading">Security</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/userverify">
+              <i class="bi bi-person-check"></i>
+              <span>User Verification</span>
+            </a>
+          </li><!-- End Security Nav -->
+        </ul>
       </aside><!-- End Sidebar-->
   
   
@@ -260,12 +273,30 @@
         
         <div class="row justify-content-center">
   <div class="col-lg-12">
-    <div class="card">
+    <div class="card" style="border-top: 30px solid #80faf4; border-bottom: 30px solid #ffa341;">
       <div class="card-body">
 
 <!-- HTML Template -->
 <div class="row justify-content-center align-items-center">
   <!-- Dropdown for Employee -->
+  <div class="col-lg-2">
+    <!-- Show Entries Dropdown -->
+    <div class="d-flex align-items-center">
+      <span class="me-2">Show</span>
+      <div class="dropdown" style="display: inline-block;">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+          {{ pageSize }}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+          <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+          <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+          <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+          <!-- Add more options as needed -->
+        </ul>
+      </div>
+      <span class="ms-2">entries</span>
+    </div>
+  </div>
   <div class="col-lg-2">
     <select v-model="selectedEmployee" class="form-select" @change="onEmployeeChange">
       <option value="">Select Employee</option>
@@ -298,14 +329,17 @@
   </div>
 
   <!-- Status dropdown -->
-  <div class="col-lg-1">
-    <select v-model="selectedStatus" class="form-select">
-      <option value="">Status</option>
-      <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
-    </select>
+  <div class="col-lg-2">
+    <!-- <select v-model="selectedRemarks" class="form-select">
+      <option value="">Remarks</option>
+      <option v-for="remarks in distinctRemarks" :key="remarks" :value="remarks">{{ remarks }}</option>
+    </select> -->
+    <div class="InputContainer">
+      <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
+    </div>
   </div>
 
-  <div class="col-lg-3">
+  <!-- <div class="col-lg-3">
     <div class="accordion" id="faq-group-2">
       <div class="accordion-item">
         <h2 class="accordion-header">
@@ -326,14 +360,13 @@
               <button class="btn btn-warning w-100" @click="recordsPDF"><i class="ri-download-2-line"></i> Download All</button>
             </div>
           </div>
-          <!-- Loading animation -->
           <div v-if="loading" class="text-center mt-1">
             <div class="loading-line"></div>
           </div>
         </div>
       </div> 
     </div> 
-  </div>
+  </div> -->
 
 
 
@@ -346,34 +379,9 @@
 
 
 <!-- Search Bar and Show Entries Dropdown -->
-<div class="d-flex justify-content-between align-items-center">
-    <!-- Show Entries Dropdown -->
-    <div class="d-flex align-items-center">
-      <span class="me-2">Show</span>
-      <div class="dropdown" style="display: inline-block;">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
-          {{ pageSize }}
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
-          <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
-          <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
-          <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
-          <!-- Add more options as needed -->
-        </ul>
-      </div>
-      <span class="ms-2">entries</span>
-    </div>
 
-    <!-- Search Bar -->
-    
-      <div class="InputContainer">
-      <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
-    </div>
-  </div>
 </div>
 
-
-<br>
 
 <div class="wrapper">
   <table class="table-compact">
@@ -496,7 +504,7 @@
                   <!-- Table rows -->
                   <tr v-for="info in paginatedInfo" :key="info.id" @click="storeRecordId(info.id)">
                   
-                    <td scope="row"><img :src="info.image" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" /></td>
+                    <td scope="row"><img :src="`http://dilg.test/backend/uploads/${info.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" /></td>
                     <td scope="row">{{ info.entityname }}</td>
                     <td scope="row">{{ info.classification }}</td>
                     <td scope="row">{{ info.code }}</td>
@@ -588,7 +596,7 @@
         </div>
         </div>
 
-        <div class="row">
+        <!-- <div class="row">
           <div class="col-lg-12">
             <div class="card">
               <div class="card-body">
@@ -609,7 +617,7 @@
               </div>
             </div>
           </div>
-      </div>
+      </div> -->
 
           <!-- Modal component to display selected record -->
           <div class="modal" v-if="selectedInfo">
@@ -693,6 +701,8 @@ import html2pdf from 'html2pdf.js';
 export default {
   data() {
     return {
+      notifications: [],
+      filter: 'all',
       info: [],
       employeeOptions: [], // Array to store employee names
       selectedEmployee: '', // Selected employee from dropdown
@@ -701,7 +711,7 @@ export default {
       selectedClassification: '', // Selected classification from dropdown
       selectedArticle: '', // Selected article from dropdown
       selectedParticular: '', // Selected particular from dropdown
-      selectedStatus: '', // Selected status from dropdown
+      selectedRemarks: '', // Selected status from dropdown
       video: null,
       resultElement: null,
       startButton: null,
@@ -723,21 +733,67 @@ export default {
     }
   },
   mounted() {
-
+    this.fetchNotifications();
   },
   created() {
     this.getInfo();
     this.user();
     this.getUserInfo(this.infos.fullname);
+    this.fetchNotifications();
   },
   methods: {
-    storeRecordId(recordId) {
-    // Save the record ID to session storage
-    sessionStorage.setItem('selectedRecordId', recordId);
-    
-    // Redirect to the new page
-    this.$router.push({ path: '/databaseppedocs' });
-  },
+    async fetchNotifications() {
+        try {
+          const response = await axios.get('notification');
+          this.notifications = response.data; // Set notifications to the fetched data
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      computeTimeAgo(dateString) {
+        const now = Date.now(); // Current time in milliseconds
+        const notificationDate = new Date(dateString).getTime(); // Convert dateString to milliseconds
+        const secondsAgo = Math.floor((now - notificationDate) / 1000); // Difference in seconds
+
+        if (secondsAgo < 60) return `${secondsAgo}s ago`;
+        if (secondsAgo < 3600) return `${Math.floor(secondsAgo / 60)}m ago`;
+        if (secondsAgo < 86400) return `${Math.floor(secondsAgo / 3600)}h ago`;
+        if (secondsAgo < 2592000) return `${Math.floor(secondsAgo / 86400)}d ago`;
+        return `${Math.floor(secondsAgo / 2592000)}mo ago`;
+      },
+      truncateMessage(message) {
+        return message.length > 70 ? message.substring(0, 67) + '...' : message;
+      },
+      filterNotifications(type) {
+        this.filter = type;
+      },
+
+      async markAsRead(notificationId) {
+        try {
+          const response = await axios.post(`/markAsRead/${notificationId}`);
+          console.log(response.data.msg); // Log the success message
+
+          // Re-fetch notifications after marking one as read
+          this.fetchNotifications();
+        } catch (error) {
+          console.error('Network error:', error.message);
+        }
+      },
+      storeRecordId(recordId) {
+        // Prompt the user for confirmation
+        const isConfirmed = window.confirm(`Are you sure you want to open record?`);
+
+        if (isConfirmed) {
+            // Save the record ID to session storage
+            sessionStorage.setItem('selectedRecordId', recordId);
+            
+            // Redirect to the new page
+            this.$router.push({ path: '/databaseppedocs' });
+        } else {
+            // If the user cancels, you can handle it here if needed
+            console.log('User canceled the action.');
+        }
+    },
     simulateLoading() {
     this.loading = true;
   },
@@ -751,7 +807,7 @@ export default {
       try {
           this.simulateLoading();
 
-          const response = await fetch('https://inventrack.online/backend/employeeRecordsPDF', {
+          const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
@@ -790,7 +846,7 @@ export default {
     try {
         // Send HTTP request to backend to generate PDFs for all records
         this.simulateLoading();
-        const response = await fetch('https://inventrack.online/backend/recordsPDF', {
+        const response = await fetch('http://dilg.test/backend/recordsPDF', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -819,7 +875,7 @@ export default {
 },
   updatePdfUrl() {
       if (this.selectedshowEmployeePDF) {
-        this.pdfUrl = `https://inventrack.online/backend/showemployeerecordPDF/${this.selectedshowEmployeePDF}`;
+        this.pdfUrl = `http://dilg.test/backend/showemployeerecordPDF/${this.selectedshowEmployeePDF}`;
       } else {
         this.pdfUrl = '';
       }
@@ -858,7 +914,7 @@ async getUserInfo(id){
         }
         
         // Set the background image URL
-        const backgroundImage = `url('https://inventrack.online/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container
@@ -914,6 +970,15 @@ async getUserInfo(id){
   },
 
   computed: {
+    filteredNotifications() {
+      if (this.filter === 'unread') {
+        return this.notifications.filter(notification => notification.status === 'unread');
+      }
+      return this.notifications;
+    },
+    unreadCount() {
+      return this.notifications.filter(notification => notification.status === 'unread').length;
+    },
     filteredInfo() {
       let filteredData = this.info;
 
@@ -937,8 +1002,8 @@ async getUserInfo(id){
         filteredData = filteredData.filter(info => info.particulars.toLowerCase() === this.selectedParticular.toLowerCase());
       }
 
-      if (this.selectedStatus !== '') {
-    filteredData = filteredData.filter(info => info.status.toLowerCase() === this.selectedStatus.toLowerCase());
+      if (this.selectedRemarks !== '') {
+    filteredData = filteredData.filter(info => info.remarks.toLowerCase() === this.selectedRemarks.toLowerCase());
   }
 
       // Filter based on search keyword
@@ -951,7 +1016,7 @@ async getUserInfo(id){
           (info.article && info.article.toLowerCase().includes(keyword)) ||
           (info.code && info.code.toLowerCase().includes(keyword)) ||
           (info.created_at && info.created_at.toLowerCase().includes(keyword)) ||
-          (info.status && info.status.toLowerCase().includes(keyword)) ||
+          (info.remarks && info.remarks.toLowerCase().includes(keyword)) ||
           (info.particulars && info.particulars.toLowerCase().includes(keyword))
         );
       }
@@ -1018,20 +1083,23 @@ async getUserInfo(id){
       });
       return Array.from(particularSet);
     },
-    distinctStatus() {
-    const statusSet = new Set();
+    distinctRemarks() {
+    const remarksSet = new Set();
     this.info.forEach(item => {
-      if (item.status) {
-        statusSet.add(item.status);
+      if (item.remarks) {
+        remarksSet.add(item.remarks);
       }
     });
-    return Array.from(statusSet);
+    return Array.from(remarksSet);
   },
 }
 }
 </script>
 
 <style scoped>
+.page-link {
+  z-index: 0;
+}
 
 #qr-video {
   width: 500px;
@@ -1256,7 +1324,7 @@ table {
 }
 
 th, td {
-  border: 1px solid black;
+  border: 1px solid #dee2e6;
   padding: 4px 9px; /* Adjust padding for better readability */
   text-align: center;
   white-space: nowrap; /* Prevent line breaks in cells */

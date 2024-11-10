@@ -15,6 +15,8 @@ use App\Models\OfficerModel;
 use App\Models\SigninModel;
 use App\Libraries\FirebaseNotificationService;
 use Mpdf\Mpdf;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Writer\PngWriter;
 
 class DatabasePPEController extends ResourceController
 {
@@ -47,10 +49,10 @@ class DatabasePPEController extends ResourceController
         // Perform the join query
         $data = $databasePPEModel->orderBy('databaseppe.id', 'DESC')
                                 ->findAll();
-                                foreach ($data as &$item) {
-                                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
-                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
-                                }
+                                // foreach ($data as &$item) {
+                                //     $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+                                //     $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+                                // }
 
         // Return the merged data
         return $this->respond($data, 200);
@@ -66,19 +68,20 @@ class DatabasePPEController extends ResourceController
                                 ->where('imageverification IS NOT NULL')
                                 ->where('remarks', 'SERVICEABLE')
                                 ->first(); // Fetch a single record
+                                
+                                return $this->respond($data, 200);
+        // // Check if the record exists
+        // if ($data) {
+        //     // Add the correct URL for images
+        //     $data['image'] = 'http://dilg.test/backend/uploads/' . $data['image'];
+        //     $data['imageverification'] = 'http://dilg.test/backend/uploads/' . $data['imageverification'];
 
-        // Check if the record exists
-        if ($data) {
-            // Add the correct URL for images
-            $data['image'] = 'https://inventrack.online/backend/uploads/' . $data['image'];
-            $data['imageverification'] = 'https://inventrack.online/backend/uploads/' . $data['imageverification'];
-
-            // Return the record
-            return $this->respond($data, 200);
-        } else {
-            // If the record does not exist, return an error
-            return $this->failNotFound('Record not found');
-        }
+        //     // Return the record
+        //     return $this->respond($data, 200);
+        // } else {
+        //     // If the record does not exist, return an error
+        //     return $this->failNotFound('Record not found');
+        // }
     }
 
     public function getRecordByPropertynum($id)
@@ -92,18 +95,20 @@ class DatabasePPEController extends ResourceController
                                 ->where('remarks', 'SERVICEABLE')
                                 ->first(); // Fetch a single record
 
-        // Check if the record exists
-        if ($data) {
-            // Add the correct URL for images
-            $data['image'] = 'https://inventrack.online/backend/uploads/' . $data['image'];
-            $data['imageverification'] = 'https://inventrack.online/backend/uploads/' . $data['imageverification'];
+                                return $this->respond($data, 200);
 
-            // Return the record
-            return $this->respond($data, 200);
-        } else {
-            // If the record does not exist, return an error
-            return $this->failNotFound('Record not found');
-        }
+        // // Check if the record exists
+        // if ($data) {
+        //     // Add the correct URL for images
+        //     $data['image'] = 'http://dilg.test/backend/uploads/' . $data['image'];
+        //     $data['imageverification'] = 'http://dilg.test/backend/uploads/' . $data['imageverification'];
+
+        //     // Return the record
+        //     return $this->respond($data, 200);
+        // } else {
+        //     // If the record does not exist, return an error
+        //     return $this->failNotFound('Record not found');
+        // }
     }
 
 
@@ -117,10 +122,10 @@ class DatabasePPEController extends ResourceController
                                   ->where('remarks', 'SERVICEABLE')
                                   ->orderBy('id', 'DESC')
                                   ->findAll();
-                                  foreach ($data as &$item) {
-                                      $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
-                                      $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
-                                  }
+                                //   foreach ($data as &$item) {
+                                //       $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+                                //       $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+                                //   }
     
         // Return the data
         return $this->respond($data, 200);
@@ -137,10 +142,10 @@ class DatabasePPEController extends ResourceController
         $data = $databasePPEModel->where('databaseppe.imageverification IS NULL')
                                 ->orderBy('databaseppe.id', 'DESC')
                                 ->findAll();
-                                foreach ($data as &$item) {
-                                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
-                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
-                                }
+                                // foreach ($data as &$item) {
+                                //     $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+                                //     $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+                                // }
 
         // Return the merged data
         return $this->respond($data, 200);
@@ -158,10 +163,10 @@ class DatabasePPEController extends ResourceController
                                 ->where('databaseppe.remarks', 'SERVICEABLE')
                                 ->orderBy('databaseppe.id', 'DESC')
                                 ->findAll();
-                                foreach ($data as &$item) {
-                                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
-                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
-                                }
+                                // foreach ($data as &$item) {
+                                //     $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+                                //     $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+                                // }
 
         // Return the merged data
         return $this->respond($data, 200);
@@ -178,10 +183,10 @@ class DatabasePPEController extends ResourceController
                                 ->where('databaseppe.remarks', 'UNSERVICEABLE')
                                 ->orderBy('databaseppe.id', 'DESC')
                                 ->findAll();
-                                foreach ($data as &$item) {
-                                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
-                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
-                                }
+                                // foreach ($data as &$item) {
+                                //     $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+                                //     $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+                                // }
 
         // Return the merged data
         return $this->respond($data, 200);
@@ -199,11 +204,11 @@ class DatabasePPEController extends ResourceController
                                 ->where('databaseppe.remarks', 'SERVICEABLE')
                                 ->orderBy('databaseppe.id', 'DESC')
                                 ->findAll();
-                                foreach ($data as &$item) {
-                                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
-                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
-                                    $item['returned_image'] = 'https://inventrack.online/backend/uploads/' . $item['returned_image'];
-                                }
+                                // foreach ($data as &$item) {
+                                //     $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+                                //     $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+                                //     $item['returned_image'] = 'http://dilg.test/backend/uploads/' . $item['returned_image'];
+                                // }
 
         // Return the merged data
         return $this->respond($data, 200);
@@ -221,11 +226,11 @@ class DatabasePPEController extends ResourceController
                                 ->where('databaseppetransfered.remarks', 'SERVICEABLE')
                                 ->orderBy('databaseppetransfered.id', 'DESC')
                                 ->findAll();
-                                foreach ($data as &$item) {
-                                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
-                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
-                                    $item['transfered_image'] = 'https://inventrack.online/backend/uploads/' . $item['transfered_image'];
-                                }
+                                // foreach ($data as &$item) {
+                                //     $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+                                //     $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+                                //     $item['transfered_image'] = 'http://dilg.test/backend/uploads/' . $item['transfered_image'];
+                                // }
 
         // Return the merged data
         return $this->respond($data, 200);
@@ -243,11 +248,11 @@ class DatabasePPEController extends ResourceController
                                 ->where('databaseppedisposed.remarks', 'SERVICEABLE')
                                 ->orderBy('databaseppedisposed.id', 'DESC')
                                 ->findAll();
-                                foreach ($data as &$item) {
-                                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
-                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
-                                    $item['disposed_image'] = 'https://inventrack.online/backend/uploads/' . $item['disposed_image'];
-                                }
+                                // foreach ($data as &$item) {
+                                //     $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+                                //     $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+                                //     $item['disposed_image'] = 'http://dilg.test/backend/uploads/' . $item['disposed_image'];
+                                // }
 
         // Return the merged data
         return $this->respond($data, 200);
@@ -271,7 +276,6 @@ class DatabasePPEController extends ResourceController
     
 
 
-
     public function save()
     {
         // Retrieve input data
@@ -290,21 +294,10 @@ class DatabasePPEController extends ResourceController
         $rec_quantity = $this->request->getPost('rec_quantity');
         $rec_unit = $this->request->getPost('rec_unit');
         $rec_unitcost = $this->request->getPost('rec_unitcost');
-        // $isstranadjamount = $this->request->getPost('isstranadjamount');
-        // $accimploss = $this->request->getPost('accimploss');
-        // $adjustedcost = $this->request->getPost('adjustedcost');
-        // $repair_nature = $this->request->getPost('repair_nature');
-        // $repair_amount = $this->request->getPost('repair_amount');
         $issue_itemno = $this->request->getPost('propertynumber');
         $issue_date = $this->request->getPost('issue_date');
         $issue_quantity = $this->request->getPost('rec_quantity');
         $issue_officeofficer = $this->request->getPost('issue_officeofficer');
-        // $transfer_date = $this->request->getPost('transfer_date');
-        // $transfer_quantity = $this->request->getPost('transfer_quantity');
-        // $transfer_officeofficer = $this->request->getPost('transfer_officeofficer');
-        // $disposal_date = $this->request->getPost('disposal_date');
-        // $disposal_quantity = $this->request->getPost('disposal_quantity');
-        // $disposal_officeofficer = $this->request->getPost('disposal_officeofficer');
         $remarks = $this->request->getPost('remarks');
         $estimatedlife = $this->request->getPost('estimatedlife');
         $issued_officer = $this->request->getPost('issued_officer');
@@ -313,18 +306,6 @@ class DatabasePPEController extends ResourceController
         $acc_officer = $this->request->getPost('acc_officer');
         $acc_empposition = $this->request->getPost('acc_empposition');
         $acc_date = $this->request->getPost('acc_date');
-        // $itr_no = $this->request->getPost('itr_no');
-        // $itr_date = $this->request->getPost('itr_date');
-        // $rrsp_no = $this->request->getPost('rrsp_no');
-        // $rrsp_date = $this->request->getPost('rrsp_date');
-        // $reasonfortrans = $this->request->getPost('reasonfortrans');
-        // $reg_semiissuedserialno = $this->request->getPost('reg_semiissuedserialno');
-        // $reg_returned_qty = $this->request->getPost('reg_returned_qty');
-        // $reg_reissued_qty = $this->request->getPost('reg_reissued_qty');
-        // $reg_reissued_off = $this->request->getPost('reg_reissued_off');
-        // $reg_disposed_qty = $this->request->getPost('reg_disposed_qty');
-        // $reg_balance_quantity = $this->request->getPost('reg_balance_quantity');
-        // $reg_amount = $this->request->getPost('reg_amount');
         $reg_remarks = $this->request->getPost('reg_remarks');
         $property_officer = $this->request->getPost('property_officer');
         $approving_authority = $this->request->getPost('approving_authority');
@@ -346,7 +327,7 @@ class DatabasePPEController extends ResourceController
             if ($status === 'active') {
                 // Proceed with saving to the databaseppe table
 
-                // Retrieve other form fields from the input
+                // Prepare the data to be saved
                 $data = [
                     'entityname' => $entityname,
                     'classification' => $classification,
@@ -364,21 +345,10 @@ class DatabasePPEController extends ResourceController
                     'rec_unit' => $rec_unit,
                     'rec_unitcost' => $rec_unitcost,
                     'rec_totalcost' => $rec_totalcost,
-                    // 'isstranadjamount' => $isstranadjamount,
-                    // 'accimploss' => $accimploss,
-                    // 'adjustedcost' => $adjustedcost,
-                    // 'repair_nature' => $repair_nature,
-                    // 'repair_amount' => $repair_amount,
                     'issue_itemno' => $issue_itemno,
                     'issue_date' => $issue_date,
                     'issue_quantity' => $issue_quantity,
                     'issue_officeofficer' => $issue_officeofficer,
-                    // 'transfer_date' => $transfer_date,
-                    // 'transfer_quantity' => $transfer_quantity,
-                    // 'transfer_officeofficer' => $transfer_officeofficer,
-                    // 'disposal_date' => $disposal_date,
-                    // 'disposal_quantity' => $disposal_quantity,
-                    // 'disposal_officeofficer' => $disposal_officeofficer,
                     'balancequantity' => $balancequantity,
                     'balanceamount' => $rec_totalcost,
                     'remarks' => $remarks,
@@ -389,19 +359,6 @@ class DatabasePPEController extends ResourceController
                     'acc_officer' => $acc_officer,
                     'acc_empposition' => $acc_empposition,
                     'acc_date' => $acc_date,
-                    // 'itr_no' => $itr_no,
-                    // 'itr_date' => $itr_date,
-                    // 'rrsp_no' => $rrsp_no,
-                    // 'rrsp_date' => $rrsp_date,
-                    // 'reasonfortrans' => $reasonfortrans,
-                    // 'reg_semiissuedserialno' => $reg_semiissuedserialno,
-                    // 'reg_returned_qty' => $reg_returned_qty,
-                    // 'reg_returned_off' => $acc_officer,
-                    // 'reg_reissued_qty' => $reg_reissued_qty,
-                    // 'reg_reissued_off' => $reg_reissued_off,
-                    // 'reg_disposed_qty' => $reg_disposed_qty,
-                    // 'reg_balance_quantity' => $reg_balance_quantity,
-                    // 'reg_amount' => $reg_amount,
                     'reg_remarks' => $reg_remarks,
                     'property_officer' => $property_officer,
                     'approving_authority' => $approving_authority,
@@ -411,17 +368,189 @@ class DatabasePPEController extends ResourceController
                 $databasePPEModel = new DatabasePPEModel();
                 $result = $databasePPEModel->save($data);
 
+                // If successfully saved, check status again
+                if ($result) {
+                    // Re-check the status of the 'particulars' in the inventory model
+                    $statusRows = $inventoryModel->where('particulars', $particulars)->findAll();
+                    if (!empty($statusRows) && $statusRows[0]['status'] === 'inactive') {
+                        // Send notification if the status is now 'inactive'
+                        $particular = $this->request->getPost('particulars'); // Example, adjust based on how the name is structured
+                        $icon = 'ri-dropbox-fill';  // Set the icon you want to use here
+
+                        $notificationController = new NotificationController();
+                        $notificationController->addNotification("A particular named {$particular} is now inactive!", $icon);
+                    }
+                }
+
                 return $this->respond($result, 200);
             } else {
                 // If inactive, do not save and respond accordingly
+                $particular = $this->request->getPost('particulars'); // Example, adjust based on how the name is structured
+                $icon = 'ri-dropbox-fill';  // Set the icon you want to use here
+
+                $notificationController = new NotificationController();
+                $notificationController->addNotification("A particular named {$particular} is inactive!", $icon);
                 return $this->respond(['msg' => 'Cannot save data. Inventory status is inactive.'], 200);
             }
-        }
-         else {
+        } else {
             // Handle the case where no matching row was found
             return $this->respond(['msg' => 'There is no existing item with that code.'], 200);
         }
     }
+
+
+
+
+    // public function save()
+    // {
+    //     // Retrieve input data
+    //     $entityname = $this->request->getPost('entityname');
+    //     $classification = $this->request->getPost('classification');
+    //     $code = $this->request->getPost('code');
+    //     $article = $this->request->getPost('article');
+    //     $particulars = $this->request->getPost('particulars');
+    //     $modelno = $this->request->getPost('modelno');
+    //     $serialno = $this->request->getPost('serialno');
+    //     $propertynumber = $this->request->getPost('propertynumber');
+    //     $propertydate = $this->request->getPost('propertydate');
+    //     $image = $this->request->getPost('image');
+    //     $icsnumber = $this->request->getPost('icsnumber');
+    //     $jevnumber = $this->request->getPost('jevnumber');
+    //     $rec_quantity = $this->request->getPost('rec_quantity');
+    //     $rec_unit = $this->request->getPost('rec_unit');
+    //     $rec_unitcost = $this->request->getPost('rec_unitcost');
+    //     // $isstranadjamount = $this->request->getPost('isstranadjamount');
+    //     // $accimploss = $this->request->getPost('accimploss');
+    //     // $adjustedcost = $this->request->getPost('adjustedcost');
+    //     // $repair_nature = $this->request->getPost('repair_nature');
+    //     // $repair_amount = $this->request->getPost('repair_amount');
+    //     $issue_itemno = $this->request->getPost('propertynumber');
+    //     $issue_date = $this->request->getPost('issue_date');
+    //     $issue_quantity = $this->request->getPost('rec_quantity');
+    //     $issue_officeofficer = $this->request->getPost('issue_officeofficer');
+    //     // $transfer_date = $this->request->getPost('transfer_date');
+    //     // $transfer_quantity = $this->request->getPost('transfer_quantity');
+    //     // $transfer_officeofficer = $this->request->getPost('transfer_officeofficer');
+    //     // $disposal_date = $this->request->getPost('disposal_date');
+    //     // $disposal_quantity = $this->request->getPost('disposal_quantity');
+    //     // $disposal_officeofficer = $this->request->getPost('disposal_officeofficer');
+    //     $remarks = $this->request->getPost('remarks');
+    //     $estimatedlife = $this->request->getPost('estimatedlife');
+    //     $issued_officer = $this->request->getPost('issued_officer');
+    //     $issued_offposition = $this->request->getPost('issued_offposition');
+    //     $issued_date = $this->request->getPost('issued_date');
+    //     $acc_officer = $this->request->getPost('acc_officer');
+    //     $acc_empposition = $this->request->getPost('acc_empposition');
+    //     $acc_date = $this->request->getPost('acc_date');
+    //     // $itr_no = $this->request->getPost('itr_no');
+    //     // $itr_date = $this->request->getPost('itr_date');
+    //     // $rrsp_no = $this->request->getPost('rrsp_no');
+    //     // $rrsp_date = $this->request->getPost('rrsp_date');
+    //     // $reasonfortrans = $this->request->getPost('reasonfortrans');
+    //     // $reg_semiissuedserialno = $this->request->getPost('reg_semiissuedserialno');
+    //     // $reg_returned_qty = $this->request->getPost('reg_returned_qty');
+    //     // $reg_reissued_qty = $this->request->getPost('reg_reissued_qty');
+    //     // $reg_reissued_off = $this->request->getPost('reg_reissued_off');
+    //     // $reg_disposed_qty = $this->request->getPost('reg_disposed_qty');
+    //     // $reg_balance_quantity = $this->request->getPost('reg_balance_quantity');
+    //     // $reg_amount = $this->request->getPost('reg_amount');
+    //     $reg_remarks = $this->request->getPost('reg_remarks');
+    //     $property_officer = $this->request->getPost('property_officer');
+    //     $approving_authority = $this->request->getPost('approving_authority');
+
+    //     // Calculate the total cost
+    //     $rec_totalcost = $rec_quantity * $rec_unitcost;
+    //     $balancequantity = $rec_quantity - $issue_quantity;
+
+    //     // Check the status in the inventoryppe table based on particulars
+    //     $inventoryModel = new InventoryModel();
+    //     $statusRows = $inventoryModel->where('particulars', $particulars)->findAll();
+
+    //     // Check if any rows were found
+    //     if (!empty($statusRows)) {
+    //         // Assuming 'status' is a field in the inventory table
+    //         $status = $statusRows[0]['status'];
+
+    //         // Check if the status is active
+    //         if ($status === 'active') {
+    //             // Proceed with saving to the databaseppe table
+
+    //             // Retrieve other form fields from the input
+    //             $data = [
+    //                 'entityname' => $entityname,
+    //                 'classification' => $classification,
+    //                 'code' => $code,
+    //                 'article' => $article,
+    //                 'particulars' => $particulars,
+    //                 'modelno' => $modelno,
+    //                 'serialno' => $serialno,
+    //                 'propertynumber' => $propertynumber,
+    //                 'propertydate' => $propertydate,
+    //                 'image' => $image,
+    //                 'icsnumber' => $icsnumber,
+    //                 'jevnumber' => $jevnumber,
+    //                 'rec_quantity' => $rec_quantity,
+    //                 'rec_unit' => $rec_unit,
+    //                 'rec_unitcost' => $rec_unitcost,
+    //                 'rec_totalcost' => $rec_totalcost,
+    //                 // 'isstranadjamount' => $isstranadjamount,
+    //                 // 'accimploss' => $accimploss,
+    //                 // 'adjustedcost' => $adjustedcost,
+    //                 // 'repair_nature' => $repair_nature,
+    //                 // 'repair_amount' => $repair_amount,
+    //                 'issue_itemno' => $issue_itemno,
+    //                 'issue_date' => $issue_date,
+    //                 'issue_quantity' => $issue_quantity,
+    //                 'issue_officeofficer' => $issue_officeofficer,
+    //                 // 'transfer_date' => $transfer_date,
+    //                 // 'transfer_quantity' => $transfer_quantity,
+    //                 // 'transfer_officeofficer' => $transfer_officeofficer,
+    //                 // 'disposal_date' => $disposal_date,
+    //                 // 'disposal_quantity' => $disposal_quantity,
+    //                 // 'disposal_officeofficer' => $disposal_officeofficer,
+    //                 'balancequantity' => $balancequantity,
+    //                 'balanceamount' => $rec_totalcost,
+    //                 'remarks' => $remarks,
+    //                 'estimatedlife' => $estimatedlife,
+    //                 'issued_officer' => $issued_officer,
+    //                 'issued_offposition' => $issued_offposition,
+    //                 'issued_date' => $issued_date,
+    //                 'acc_officer' => $acc_officer,
+    //                 'acc_empposition' => $acc_empposition,
+    //                 'acc_date' => $acc_date,
+    //                 // 'itr_no' => $itr_no,
+    //                 // 'itr_date' => $itr_date,
+    //                 // 'rrsp_no' => $rrsp_no,
+    //                 // 'rrsp_date' => $rrsp_date,
+    //                 // 'reasonfortrans' => $reasonfortrans,
+    //                 // 'reg_semiissuedserialno' => $reg_semiissuedserialno,
+    //                 // 'reg_returned_qty' => $reg_returned_qty,
+    //                 // 'reg_returned_off' => $acc_officer,
+    //                 // 'reg_reissued_qty' => $reg_reissued_qty,
+    //                 // 'reg_reissued_off' => $reg_reissued_off,
+    //                 // 'reg_disposed_qty' => $reg_disposed_qty,
+    //                 // 'reg_balance_quantity' => $reg_balance_quantity,
+    //                 // 'reg_amount' => $reg_amount,
+    //                 'reg_remarks' => $reg_remarks,
+    //                 'property_officer' => $property_officer,
+    //                 'approving_authority' => $approving_authority,
+    //             ];
+
+    //             // Save data to the database
+    //             $databasePPEModel = new DatabasePPEModel();
+    //             $result = $databasePPEModel->save($data);
+
+    //             return $this->respond($result, 200);
+    //         } else {
+    //             // If inactive, do not save and respond accordingly
+    //             return $this->respond(['msg' => 'Cannot save data. Inventory status is inactive.'], 200);
+    //         }
+    //     }
+    //      else {
+    //         // Handle the case where no matching row was found
+    //         return $this->respond(['msg' => 'There is no existing item with that code.'], 200);
+    //     }
+    // }
 
     public function updateppe($statusId)
     {
@@ -858,7 +987,7 @@ class DatabasePPEController extends ResourceController
     //     $main = new InventoryModel();
     //     $data = $main->findAll();  
     //     foreach ($data as &$item) {
-    //         $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+    //         $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
     //     }
     
     //     return $this->respond($data, 200);
@@ -1457,7 +1586,7 @@ class DatabasePPEController extends ResourceController
                         'reg_remarks' => $this->request->getPost('reg_remarks'),
                         'property_officer' => $this->request->getPost('property_officer'),
                         'approving_authority' => $this->request->getPost('approving_authority'),
-                        'image' => $newName ?? $this->request->getPost('image'), // Use uploaded image if available
+                        'image' => $this->request->getPost('image'),
                     ];
     
                     if ($model->insert($insertDataNew)) {
@@ -1921,19 +2050,51 @@ public function generateITRPDF($recordId)
     }
 }
 
+public function generateIDRPDF($recordId)
+{
+    // Ensure recordId is provided
+    if (!$recordId) {
+        die("Record ID is required.");
+    }
+
+    $databaseppemodel = new DatabasePPEModel();
+
+    // Fetch the data based on the provided recordId
+    $data = $databaseppemodel->where('id', $recordId)->first();
+
+    if ($data) {
+        // Load the MPDF library
+        $mpdf = new \Mpdf\Mpdf(['orientation' => 'P', 'format' => 'A4']);
+
+        // Generate HTML content dynamically based on record data
+        $htmlContent = view('IDR', ['data' => [$data]]); // Pass the record to the view
+
+        // Write HTML content to PDF
+        $mpdf->WriteHTML($htmlContent);
+
+        // Output the PDF
+        $mpdf->Output('generated_pdf.pdf', 'D'); // 'D' to force download
+
+        exit(); // End script execution after downloading the PDF
+    } else {
+        // Handle the case where the record is not found
+        die("Record with ID $recordId not found.");
+    }
+}
+
 
 
     public function employeeRecordsPDF()
     {
         // Get the selected employee name from the request
         $requestData = $this->request->getJSON();
-        $selectedEmployee = $requestData->acc_officer;
+        $id = $requestData->id;
 
         $records = [];
         $databaseppemodel = new DatabasePPEModel();  // Correct model instance
 
         // Get records for the selected employee
-        $data = $databaseppemodel->where('acc_officer', $selectedEmployee)
+        $data = $databaseppemodel->where('id', $id)
                                 ->where('imageverification IS NOT NULL')  // Condition for non-null imageverification
                                 ->where('remarks', 'SERVICEABLE')         // Condition for remarks being SERVICEABLE
                                 ->findAll();
@@ -1953,7 +2114,7 @@ public function generateITRPDF($recordId)
 
                 // Set response headers and return the PDF
                 return $this->response->setHeader('Content-Type', 'application/pdf')
-                                    ->setHeader('Content-Disposition', 'attachment; filename="' . $selectedEmployee . '_records.pdf"')
+                                    ->setHeader('Content-Disposition', 'attachment; filename="' . $id . '_records.pdf"')
                                     ->setBody($pdfOutput);
             } catch (\Mpdf\MpdfException $e) {
                 // Handle MPDF errors
@@ -1961,7 +2122,7 @@ public function generateITRPDF($recordId)
             }
         } else {
             // Handle the case where no records found
-            return $this->response->setStatusCode(404)->setBody("No records found for employee: $selectedEmployee");
+            return $this->response->setStatusCode(404)->setBody("No records found for employee: $id");
         }
     }
 
@@ -1970,13 +2131,13 @@ public function generateITRPDF($recordId)
     {
         // Get the selected employee name from the request
         $requestData = $this->request->getJSON();
-        $selectedEmployee = $requestData->acc_officer;
+        $id = $requestData->id;
 
         $records = [];
         $databaseppemodel = new DatabasePPEModel();  // Correct model instance
 
         // Get records for the selected employee
-        $data = $databaseppemodel->where('acc_officer', $selectedEmployee)
+        $data = $databaseppemodel->where('id', $id)
                                 ->where('imageverification IS NOT NULL')  // Condition for non-null imageverification
                                 ->where('remarks', 'SERVICEABLE')         // Condition for remarks being SERVICEABLE
                                 ->findAll();
@@ -1996,7 +2157,7 @@ public function generateITRPDF($recordId)
 
                 // Set response headers and return the PDF
                 return $this->response->setHeader('Content-Type', 'application/pdf')
-                                    ->setHeader('Content-Disposition', 'attachment; filename="' . $selectedEmployee . '_records.pdf"')
+                                    ->setHeader('Content-Disposition', 'attachment; filename="' . $id . '_records.pdf"')
                                     ->setBody($pdfOutput);
             } catch (\Mpdf\MpdfException $e) {
                 // Handle MPDF errors
@@ -2004,7 +2165,7 @@ public function generateITRPDF($recordId)
             }
         } else {
             // Handle the case where no records found
-            return $this->response->setStatusCode(404)->setBody("No records found for employee: $selectedEmployee");
+            return $this->response->setStatusCode(404)->setBody("No records found for employee: $id");
         }
     }
 
@@ -2162,6 +2323,55 @@ public function generateITRPDF($recordId)
         var_dump($ids);
     }
 
+
+    // Load the contents of SPS.php and capture inline CSS
+    public function loadSPSContent()
+    {
+        $path = APPPATH . 'Views/SPS.php';
+        if (file_exists($path)) {
+            $content = file_get_contents($path);
+
+            // Extract inline CSS
+            preg_match_all('/<style>(.*?)<\/style>/s', $content, $matches);
+            $cssContent = implode("\n", $matches[1]); // Combine all <style> content
+
+            // Send the content and CSS as separate properties
+            return $this->response->setJSON([
+                'content' => $content,
+                'css' => $cssContent
+            ]);
+        } else {
+            return $this->response->setStatusCode(404, 'File not found');
+        }
+    }
+
+
+    // Save edited content to SPS.php
+    public function saveSPSContent()
+    {
+        $path = APPPATH . 'Views/SPS.php';
+        $content = $this->request->getVar('content');
+        if (file_put_contents($path, $content)) {
+            return $this->response->setJSON(['status' => 'success']);
+        } else {
+            return $this->response->setStatusCode(500, 'Failed to save file');
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     // private $filePath = APPPATH . 'Views/SPS.php';
 
     // public function loadFile()
@@ -2287,10 +2497,10 @@ public function generateITRPDF($recordId)
 
         $data = $builder->findAll();
 
-        foreach ($data as &$item) {
-            $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
-            $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
-        }
+        // foreach ($data as &$item) {
+        //     $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+        //     $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+        // }
 
         return $this->respond($data, 200);
     }
@@ -2349,8 +2559,8 @@ public function generateITRPDF($recordId)
 
     //     // Update image paths
     //     foreach ($data as &$item) {
-    //         $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
-    //         $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
+    //         $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+    //         $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
     //     }
 
     //     // Return the merged data
@@ -2501,11 +2711,11 @@ public function generateITRPDF($recordId)
         
         $data = $builder->findAll();
 
-        // Update image paths
-        foreach ($data as &$item) {
-            $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
-            $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
-        }
+        // // Update image paths
+        // foreach ($data as &$item) {
+        //     $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+        //     $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+        // }
 
         // Return the merged data
         return $this->respond($data, 200);
@@ -2588,10 +2798,10 @@ public function generateITRPDF($recordId)
         $data = $builder->findAll();
 
         // Update image paths
-        foreach ($data as &$item) {
-            $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
-            $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
-        }
+        // foreach ($data as &$item) {
+        //     $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
+        //     $item['imageverification'] = 'http://dilg.test/backend/uploads/' . $item['imageverification'];
+        // }
 
         // Return the merged data
         return $this->respond($data, 200);

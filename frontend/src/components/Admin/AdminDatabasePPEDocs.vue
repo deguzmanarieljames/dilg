@@ -17,38 +17,50 @@
           <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
       
-              <li class="nav-item d-block d-lg-none">
-                <a class="nav-link nav-icon search-bar-toggle " href="#">
-                  <i class="bi bi-search"></i>
-                </a>
-              </li><!-- End Search Icon-->
-      
+              <!-- Notification Icon -->
               <li class="nav-item dropdown">
-      
-                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                <a class="nav-link nav-icon" href="#" @click="fetchNotifications" data-bs-toggle="dropdown">
                   <i class="bi bi-bell"></i>
-                  <span class="badge bg-primary badge-number">4</span>
-                </a><!-- End Notification Icon -->
-      
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-      
-                </ul><!-- End Notification Dropdown Items -->
-      
-              </li><!-- End Notification Nav -->
-      
-              <li class="nav-item dropdown">
-      
-                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                  <i class="bi bi-chat-left-text"></i>
-                  <span class="badge bg-success badge-number">3</span>
-                </a><!-- End Messages Icon -->
-      
-      
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-      
-                </ul><!-- End Messages Dropdown Items -->
-      
-              </li><!-- End Messages Nav -->
+                  <span class="badge bg-danger badge-number">{{ unreadCount }}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" @click.stop>
+                  <!-- Title and Tabs -->
+                  <li class="dropdown-header">
+                    <span class="notifications-title">Notifications</span>
+                    <nav class="notifications-nav">
+                      <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
+                      <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
+                    </nav>
+                  </li>
+                  <hr />
+
+                  <!-- Notifications List -->
+                  <li
+                  v-for="notification in filteredNotifications"
+                  :key="notification.id"
+                  :class="['dropdown-item', notification.status === 'unread' ? 'notification-unread' : 'notification-read']"
+                  @click="markAsRead(notification.id)"
+                  >
+                    <div class="notification-content">
+                      <!-- Icon in a white circle -->
+                      <div class="notification-icon-circle">
+                        <i :class="notification.icon"></i> <!-- Icon from the database -->
+                      </div>
+                  
+                      <!-- Message and Time -->
+                      <div class="notification-details">
+                        <span class="notification-message">{{ truncateMessage(notification.message) }}</span>
+                        <span class="notification-time">{{ computeTimeAgo(notification.created_at) }}</span> <!-- Time below the message -->
+                      </div>
+                  
+                      <!-- Unread Indicator Circle -->
+                      <span class="notification-indicator" v-if="notification.status === 'unread'"></span>
+                    </div>
+                  </li>
+                
+                  <li v-if="filteredNotifications.length === 0" class="dropdown-item text-center">No notifications</li>
+                </ul>
+              </li>
       
               <li class="nav-item dropdown pe-3">
       
@@ -136,8 +148,8 @@
             </li><!-- End Dashboard Nav -->
       
             
+            <!-- Pages Section -->
             <li class="nav-heading">Pages</li>
-      
             <li class="nav-item">
               <a class="nav-link active" href="databaseppe">
                 <i class="bi bi-clipboard-data"></i>
@@ -150,33 +162,32 @@
               </a>
               <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
-                  <a href="serviceable">
-                    <i class="bi bi-circle"></i><span>Serviceable</span>
+                  <a href="/serviceable">
+                    <i class="bi bi-clipboard-check"></i><span>Serviceable</span>
                   </a>
                 </li>
                 <li>
                   <a href="unserviceable">
-                    <i class="bi bi-circle"></i><span>Unserviceable</span>
+                    <i class="bi bi-clipboard-x"></i><span>Unserviceable</span>
                   </a>
                 </li>
                 <li>
                   <a href="returnedppe">
-                    <i class="bi bi-circle"></i><span>Returned PPE</span>
+                    <i class="bi bi-box-arrow-left"></i><span>Returned PPE</span>
                   </a>
                 </li>
                 <li>
                   <a href="transferedppe">
-                    <i class="bi bi-circle"></i><span>Transfered PPE</span>
+                    <i class="bi bi-box-arrow-right"></i><span>Transfered PPE</span>
                   </a>
-               </li>
-               <li>
-                <a href="disposedppe">
-                  <i class="bi bi-circle"></i><span>Disposed PPE</span>
-                </a>
-             </li>
+              </li>
+              <li>
+                  <a href="disposedppe">
+                    <i class="bi bi-trash"></i><span>Disposed PPE</span>
+                  </a>
+              </li>
               </ul>
             </li><!-- End Components Nav -->
-      
             <li class="nav-item">
               <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -184,76 +195,75 @@
               <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
                   <a href="propertysticker">
-                    <i class="bi bi-circle"></i><span>Property Sticker</span>
+                    <i class="bi bi-sticky"></i><span>Property Sticker</span>
                   </a>
                 </li>
                 <li>
                   <a href="ledgercard">
-                    <i class="bi bi-circle"></i><span>PPE Documents</span>
+                    <i class="bi bi-folder2-open"></i><span>PPE Documents</span>
                   </a>
                 </li>
               </ul>
             </li><!-- End Forms Nav -->
-      
+            <!-- Input Section -->
             <li class="nav-heading">input</li>
-    
             <li class="nav-item">
               <a class="nav-link collapsed" href="/workspace">
-                  <i class="bi bi-folder-plus"></i>
-                  <span>Workspace</span>
+                <i class="bi bi-pencil-square"></i>
+                <span>Workspace</span>
               </a>
-            </li>
+            </li><!-- End Input Nav -->
             <li class="nav-item">
               <a class="nav-link collapsed" href="/logbook">
-                <i class="bi bi-folder-plus"></i>
+                <i class="bi bi-calendar-check"></i>
                 <span>Logbook</span>
               </a>
             </li><!-- End Input Nav -->
-    
+            <!-- Stocks Section -->
             <li class="nav-heading">Stocks</li>
-    
             <li class="nav-item">
               <a class="nav-link collapsed" href="/inventory">
-                <i class="bi bi-folder-plus"></i>
+                <i class="bi bi-box-seam"></i>
                 <span>Inventory</span>
               </a>
+            </li><!-- End Stocks Nav -->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/supplies">
+                <i class="bi bi-stack"></i>
+                <span>Supplies</span>
+              </a>
             </li>
-    
+            <!-- Ordering Section -->
             <li class="nav-heading">Ordering</li>
-        
             <li class="nav-item">
               <a class="nav-link collapsed" href="/ordering">
-                <i class="bi bi-folder-plus"></i>
+                <i class="bi bi-shop"></i>
                 <span>Ordering</span>
               </a>
-            </li>
-    
+            </li><!-- End Ordering Nav -->
+            <!-- Security Section -->
             <li class="nav-heading">Security</li>
-    
             <li class="nav-item">
               <a class="nav-link collapsed" href="/userverify">
-                <i class="bi bi-folder-plus"></i>
+                <i class="bi bi-person-check"></i>
                 <span>User Verification</span>
               </a>
-            </li><!-- End Dashboard Nav -->
-      
+            </li><!-- End Security Nav -->
           </ul>
-      
-          </aside><!-- End Sidebar-->
+        </aside><!-- End Sidebar-->
       
       
           <main id="main" class="main">
     
-            <div class="pagetitle">
-            <h1>Overview</h1>
-            <nav>
-                <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/dashboard">Home</a></li>
-                <li class="breadcrumb-item">Tables</li>
-                <li class="breadcrumb-item active">Data</li>
-                </ol>
-            </nav>
-            </div><!-- End Page Title -->
+            <div class="pagetitle d-flex align-items-center justify-content-between">
+              <h1 style="font-size: 30px;">Overview</h1>
+              <button class="btn btn-primary" @click="goBack" style="padding: 5px 15px; display: inline-flex; align-items: center; transition: all 0.3s ease;">
+                <i class="bi bi-box-arrow-in-right" style="margin-right: 10px; font-size: 18px; transition: transform 0.3s ease, margin-right 0.3s ease;"></i>
+                <span style="transition: opacity 0.3s ease;">Back to Table</span>
+              </button>
+            </div><!-- End Page Title -->            
+            
+            
     
             <section class="section">
             <div v-if="record">
@@ -266,27 +276,24 @@
                           
                             <!-- Profile Image with Glow Effect -->
                             <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px 5px rgba(0, 123, 255, 0.6); margin-top: 50px;">
-                              <img :src="record.image" style="width: 100%; height: 100%; object-fit: cover;">
+                              <img :src="`http://dilg.test/backend/uploads/${record.image}`" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             
-                            <br><br>
+                            <br>
                             
                             <h3 style="color: rgb(0, 58, 218)"><b>{{ record.particulars }}</b></h3>
                             <h6>{{ record.classification }}</h6>
-                            
-                            <br>
-                             
                           </div>
 
 
                           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
                           
                             <!-- Profile Image with Glow Effect -->
-                            <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px 5px rgba(255, 200, 0, 0.6); margin-top: 50px;">
+                            <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px 5px rgba(255, 200, 0, 0.6); margin-top: 5px;">
                               <img :style="getImageStyle(infor.image)" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             
-                            <br><br>
+                            <br>
                             
                             <h3 style="color: rgb(0, 58, 218)"><b>{{ infor.fullname }}</b></h3>
                             <h6>{{ infor.position }}</h6>
@@ -326,7 +333,8 @@
                             <div class="tab-content pt-2">
               
                               <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                                <div class="procurement-details">                                
+                                <div class="procurement-details">      
+                                  <h3 class="card-title" style="text-align: center;">Equipment Details</h3>                          
                                   <div class="row">
                                     <div class="col-md-4">
                                       <h6 class="section-title">Basic Information</h6>
@@ -707,7 +715,7 @@
                                   <h3 class="card-title" style="text-align: center;">Image Verification</h3>
   
                                   <div style="overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                                    <img ref="imageverification" :src="record.imageverification" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" @click="viewImageInFullscreen">
+                                    <img ref="imageverification" :src="`http://dilg.test/backend/uploads/${record.imageverification}`" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" @click="viewImageInFullscreen">
                                   </div>                                                                   
                                   <h3 class="card-title" style="text-align: center;">Click the image to fullscreen</h3>
               
@@ -721,7 +729,8 @@
                                           <h3><b>Generate QR Code for Borrowing</b></h3>
                                           <!-- QR Code container with a fixed size -->
                                           <div class="qr-code-container">
-                                            <img class="qr-img" v-if="qrCodeVisible" :src="qrCodeUrl" alt="QR Code" />
+                                            <!-- <img class="qr-img" v-if="qrCodeVisible" :src="qrCodeUrl" alt="QR Code" /> -->
+                                            <QRCodeGenerator class="qr-img" v-if="qrCodeVisible" :data="qrCodeData" :logoUrl="logoImageUrl" />
                                           </div>
                                           <button @click="toggleQrCode" class="btn btn-primary mt-3">
                                             {{ qrCodeVisible ? 'Close' : 'Generate QR Code' }}
@@ -752,10 +761,17 @@
     import jsQR from "jsqr";
     import QRCode from 'qrcode-generator';
     import html2pdf from 'html2pdf.js';
+    import QRCodeGenerator from "../../components/QRCodeGenerator.vue";
+
     
     export default {
+      components: {
+        QRCodeGenerator,
+      },
       data() {
         return {
+            notifications: [],
+            filter: 'all',
             infos: [],
             recordId: null,
             record: null,
@@ -764,10 +780,12 @@
             infor: [],
             qrCodeVisible: false, // Tracks if QR code is displayed
             qrCodeUrl: '', // Holds the generated QR code URL
+            qrCodeData: null, // Replace with your dynamic ID or data
+            logoImageUrl: "./img/dilg-logo.png", // Local or external logo URL
         }
       },
       mounted() {
-    
+        // this.fetchNotifications();
       },
       created() {
         // Retrieve the record ID from session storage
@@ -779,17 +797,71 @@
         this.user();
         // this.getUserInfo(this.infos.fullname);
         // this.getAccOffInfo(this.record.acc_officer);
+        this.fetchNotifications();
     },
-      methods: {
+    computed: {
+      filteredNotifications() {
+        if (this.filter === 'unread') {
+          return this.notifications.filter(notification => notification.status === 'unread');
+        }
+        return this.notifications;
+      },
+      unreadCount() {
+        return this.notifications.filter(notification => notification.status === 'unread').length;
+      }
+    },
+
+    methods: {
+      goBack() {
+        // Use the browser's history API to go back to the previous page
+        this.$router.go(-1);
+      },
+        async fetchNotifications() {
+          try {
+            const response = await axios.get('notification');
+            this.notifications = response.data; // Set notifications to the fetched data
+          } catch (error) {
+            console.error(error);
+          }
+        },
+        computeTimeAgo(dateString) {
+          const now = Date.now(); // Current time in milliseconds
+          const notificationDate = new Date(dateString).getTime(); // Convert dateString to milliseconds
+          const secondsAgo = Math.floor((now - notificationDate) / 1000); // Difference in seconds
+
+          if (secondsAgo < 60) return `${secondsAgo}s ago`;
+          if (secondsAgo < 3600) return `${Math.floor(secondsAgo / 60)}m ago`;
+          if (secondsAgo < 86400) return `${Math.floor(secondsAgo / 3600)}h ago`;
+          if (secondsAgo < 2592000) return `${Math.floor(secondsAgo / 86400)}d ago`;
+          return `${Math.floor(secondsAgo / 2592000)}mo ago`;
+        },
+        truncateMessage(message) {
+          return message.length > 70 ? message.substring(0, 67) + '...' : message;
+        },
+        filterNotifications(type) {
+          this.filter = type;
+        },
+
+        async markAsRead(notificationId) {
+          try {
+            const response = await axios.post(`/markAsRead/${notificationId}`);
+            console.log(response.data.msg); // Log the success message
+
+            // Re-fetch notifications after marking one as read
+            this.fetchNotifications();
+          } catch (error) {
+            console.error('Network error:', error.message);
+          }
+        },
         toggleQrCode() {
         if (this.qrCodeVisible) {
             // If QR code is visible, hide it
             this.qrCodeVisible = false;
-            this.qrCodeUrl = '';
+            this.qrCodeData = '';
         } else {
             // If not visible, generate and show the QR code
             const id = this.record.propertynumber; // Replace with dynamic data if necessary
-            this.qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${id}`
+            this.qrCodeData = id;
             this.qrCodeVisible = true;
         }
         },
@@ -894,7 +966,7 @@
             }
             
             // Set the background image URL
-            const backgroundImage = `url('https://inventrack.online/backend/uploads/${image}')`;
+            const backgroundImage = `url('http://dilg.test/backend/uploads/${image}')`;
             
             // Set background size and position
             const backgroundSize = 'cover'; // Cover the entire container
@@ -914,7 +986,7 @@
           async generatePDF(recordId) {
             try {
                 // Send HTTP request to backend
-                const response = await fetch(`https://inventrack.online/backend/generateICSPDF/${recordId}`, {
+                const response = await fetch(`http://dilg.test/backend/generateICSPDF/${recordId}`, {
                     method: 'GET', // Adjust the method accordingly
                     headers: {
                         'Content-Type': 'application/json', // Adjust the content type if needed
@@ -945,12 +1017,12 @@
         async generatePDFSPC() {
           try {
 
-              const response = await fetch('https://inventrack.online/backend/employeeRecordsPDF', {
+              const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
                   },
-                  body: JSON.stringify({ acc_officer: this.record.acc_officer }),
+                  body: JSON.stringify({ id: this.record.id }),
               });
 
               if (response.ok) {
@@ -982,12 +1054,12 @@
         async generatePDFSPLC() {
           try {
 
-              const response = await fetch('https://inventrack.online/backend/employeeRecordsSPLC', {
+              const response = await fetch('http://dilg.test/backend/employeeRecordsSPLC', {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
                   },
-                  body: JSON.stringify({ acc_officer: this.record.acc_officer }),
+                  body: JSON.stringify({ id: this.record.id }),
               });
 
               if (response.ok) {
@@ -1072,6 +1144,32 @@
       width: 300px;
       height: 300px;
     }
+    
+    .btn:hover {
+      cursor: pointer;
+    }
+  
+  .btn:hover i {
+    margin-right: 0;
+    transform: translateX(50px);
+  }
+  
+  .btn:hover span {
+    opacity: 0;
+  }
+  
+  .btn:hover {
+    cursor: pointer;
+  }
+  
+  .btn:hover i {
+    margin-right: 0;
+    transform: translateX(50px);
+  }
+  
+  .btn:hover span {
+    opacity: 0;
+  }
     </style>
     
     

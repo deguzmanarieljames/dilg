@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Controllers\NotificationController;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\SigninModel;
@@ -48,7 +49,7 @@ class SigninController extends ResourceController
     { 
       $user = new SigninModel(); 
       $username = $this->request->getVar('username');
-      $fullname = $this->request->getVar('fullname');
+    //   $fullname = $this->request->getVar('fullname');
       $position = $this->request->getVar('position');
       $usertpye = $this->request->getVar('usertype');
       $password = $this->request->getVar('password'); 
@@ -60,6 +61,14 @@ class SigninController extends ResourceController
         $pass = $data['password']; 
         $authenticatePassword = password_verify($password, $pass); 
         if($authenticatePassword){ 
+          // Notify about the new user signup using the addNotification method
+
+          $fullname = $data['fullname'];
+          $icon = 'ri-user-received-fill';  // Set the icon you want to use here
+      
+          $notificationController = new NotificationController();
+          $notificationController->addNotification("A user signed in: {$fullname}", $icon);
+          
           return $this->respond(['msg' => 'okay', 'token' => $data['token'], 'fullname' => $data['fullname'], 'position' => $data['position'], 'usertype' => $data['usertype'], 'status' => $data['status'], 'verify' => $data['verify']]);
         }else{ 
           return $this->respond(['msg' => 'Incorrect Pasword']);
@@ -69,35 +78,74 @@ class SigninController extends ResourceController
       }
     }
 
+    // public function signup()
+    // {
+    //   $user = new SigninModel(); 
+    //   $token = $this->verification(50);
+    // //   $image = $this->request->getFile('image');
+    // //   $newName = null;
+
+    // //   // Check if an image was uploaded
+    // //   if ($image->isValid() && !$image->hasMoved()) {
+    // //       $newName = $image->getRandomName();
+    // //       $image->move(ROOTPATH . '../uploads', $newName);
+    // //   }
+
+    //   $data = [ 
+    //     'username' => $this->request->getVar('username'),
+    //     'fullname' => $this->request->getVar('fullname'),
+    //     'position' => $this->request->getVar('position'),
+    //     'email' => $this->request->getVar('email'),
+    //     // 'image' => $newName,
+    //     'password' => password_hash($this->request->getVar('password'),PASSWORD_DEFAULT), 
+    //     'token' => $token
+    //   ]; 
+    //   $u = $user->save($data); 
+    //   if($u){ 
+    //     return $this->respond(['msg' => 'okay', 'token' =>$token]); 
+    //   }else{ 
+    //     return $this->respond(['msg' => 'failed']); 
+    //   } 
+    // } 
+
+
     public function signup()
     {
-      $user = new SigninModel(); 
-      $token = $this->verification(50);
-    //   $image = $this->request->getFile('image');
-    //   $newName = null;
+        $image = $this->request->getFile('image');
+        $user = new SigninModel(); 
+        $token = $this->verification(50);
+    
+        // Check if an image was uploaded
+        if ($image && $image->isValid() && !$image->hasMoved()) {
+            $newName = $image->getRandomName();
+            $image->move(ROOTPATH . '../uploads', $newName);
+        }
+    
+        $data = [ 
+            'username' => $this->request->getPost('username'),
+            'fullname' => $this->request->getPost('fullname'),
+            'position' => $this->request->getPost('position'),
+            'email' => $this->request->getPost('email'),
+            'password' => password_hash($this->request->getPost('password'), PASSWORD_DEFAULT), 
+            'token' => $token,
+            'image' => isset($newName) ? $newName : null, // Store the image filename if uploaded
+        ]; 
+    
+        $u = $user->save($data); 
+    
+        if ($u) { 
+            // Notify about the new user signup using the addNotification method
+            $notificationController = new NotificationController();
+            $fullname = $this->request->getPost('fullname');
+            $notificationController->addNotification("New user signed up: {$fullname}");
+    
+            return $this->respond(['msg' => 'okay', 'token' => $token]); 
+        } else { 
+            return $this->respond(['msg' => 'failed']); 
+        } 
+    }
+    
 
-    //   // Check if an image was uploaded
-    //   if ($image->isValid() && !$image->hasMoved()) {
-    //       $newName = $image->getRandomName();
-    //       $image->move(ROOTPATH . '../uploads', $newName);
-    //   }
-
-      $data = [ 
-        'username' => $this->request->getVar('username'),
-        'fullname' => $this->request->getVar('fullname'),
-        'position' => $this->request->getVar('position'),
-        'email' => $this->request->getVar('email'),
-        // 'image' => $newName,
-        'password' => password_hash($this->request->getVar('password'),PASSWORD_DEFAULT), 
-        'token' => $token
-      ]; 
-      $u = $user->save($data); 
-      if($u){ 
-        return $this->respond(['msg' => 'okay', 'token' =>$token]); 
-      }else{ 
-        return $this->respond(['msg' => 'failed']); 
-      } 
-    } 
 
     public function verification($length){ 
         $str_result = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz'; 
@@ -224,6 +272,31 @@ class SigninController extends ResourceController
         return $this->respond(['msg' => 'passwordChanged'], 200);
     }
     
+
+
+    public function verifyPassword()
+    {
+        $user = new SigninModel();
+        $token = $this->request->getVar('token');
+        $password = $this->request->getVar('password');
+        
+        // Find the user based on the token
+        $data = $user->where('token', $token)->first();
+    
+        if ($data) {
+            $pass = $data['password'];
+            $authenticatePassword = password_verify($password, $pass);
+            
+            if ($authenticatePassword) {
+                return $this->respond(['msg' => 'Password verified']);
+            } else {
+                return $this->respond(['msg' => 'Incorrect Password']);
+            }
+        } else {
+            return $this->respond(['msg' => 'User not found']);
+        }
+    }    
+
     
 
 }

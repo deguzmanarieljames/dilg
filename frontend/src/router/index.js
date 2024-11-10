@@ -8,6 +8,7 @@ import AdDatabasePPEDocs from '../views/AdminView/AdDatabasePPEDocs.vue'
 import AdLedgerCard from '../views/AdminView/AdLedgerCard.vue'
 import AdPropertyCard from '../views/AdminView/AdPropertyCard.vue'
 import AdPropertySticker from '../views/AdminView/AdPropertySticker.vue'
+import AdEditSPS from '../views/AdminView/AdEditSPS.vue'
 import AdRLSDDP from '../views/AdminView/AdRLSDDP.vue'
 import AdServiceable from '../views/AdminView/AdServiceable.vue'
 import AdServiceableReturn from '../views/AdminView/AdServiceableReturn.vue'
@@ -22,12 +23,13 @@ import AdWorkspace from '../views/AdminView/AdWorkspace.vue'
 import AdLogbook from '../views/AdminView/AdLogbook.vue'
 import AdUserverify from '../views/AdminView/AdUserverify.vue'
 import AdInventory from '../views/AdminView/AdInventory.vue'
+import AdSupplies from '../views/AdminView/AdSupplies.vue'
 import AdOrdering from '../views/AdminView/AdOrdering.vue'
 import AdOrderPending from '../views/AdminView/AdOrderPending.vue'
 import AdOrderIncoming from '../views/AdminView/AdOrderIncoming.vue'
 import SignupView from '../views/SignupView.vue'
 import SigninView from '../views/SigninView.vue'
-// import LandingPage2 from '../views/Interface/LandingPage2.vue'
+import LandingPage from '../views/LandingPage.vue'
 
 
 //EMPLOYEE
@@ -41,21 +43,21 @@ import EmpProfile from '../views/EmpView/EmpProfile.vue'
 
 const routes = [
   //ADMIN ROUTES
-  // {
-  //   path: '/',
-  //   name: 'LandingPage2',
-  //   component: LandingPage2
-  // },
   {
     path: '/',
-    name: 'SigninView',
-    component: SigninView
+    name: 'LandingPage',
+    component: LandingPage
   },
   // {
-  //   path: '/signin',
+  //   path: '/',
   //   name: 'SigninView',
   //   component: SigninView
   // },
+  {
+    path: '/signin',
+    name: 'SigninView',
+    component: SigninView
+  },
   {
     path: '/signup',
     name: 'SignupView',
@@ -134,6 +136,12 @@ const routes = [
     meta: {requireAuth: true}
   },
   {
+    path: '/editsps',
+    name: 'AdEditSPS',
+    component: AdEditSPS,
+    meta: {requireAuth: true}
+  },
+  {
     path: '/ledgercard',
     name: 'AdLedgerCard',
     component: AdLedgerCard,
@@ -179,6 +187,12 @@ const routes = [
     path: '/inventory',
     name: 'AdInventory',
     component: AdInventory,
+    meta: {requireAuth: true}
+  },
+  {
+    path: '/supplies',
+    name: 'AdSupplies',
+    component: AdSupplies,
     meta: {requireAuth: true}
   },
   {
@@ -272,6 +286,7 @@ router.beforeEach((to, from, next) =>{
     next();
   }
 });
+
 
 function checkUserLogin() {
   const userToken = sessionStorage.getItem("token");

@@ -148,6 +148,23 @@ class OrderController extends ResourceController
     
         return $this->respond($data);
     }
+
+    public function getOrderReceived()
+    {
+        $equipmentOrdered = new OrderModel();
+        
+        // Fetch orders where status is 'Ordered' and number_rating is not equal to 0
+        $data = $equipmentOrdered->where('status', 'Ordered')
+                                 ->where('number_rating !=', 0)
+                                 ->findAll();
+    
+        // Update receipt URL
+        foreach ($data as &$item) {
+            $item['receipt'] = 'https://inventrack.online/backend/uploads/' . $item['receipt'];
+        }
+    
+        return $this->respond($data);
+    }    
     
 
     public function getShop(){
@@ -158,10 +175,10 @@ class OrderController extends ResourceController
     public function getArticles()
     {
         $model = new ShopModel();
-        $query = $this->request->getVar('query');
-        $data = $model->like('article', $query)->findAll();
+        $data = $model->select('article')->distinct()->findAll();
         return $this->response->setJSON($data);
     }
+    
     public function getShopsByArticle()
     {
         $model = new ShopModel();
@@ -170,6 +187,42 @@ class OrderController extends ResourceController
         return $this->response->setJSON($data);
     }
 
+    public function delOrder(){
+        $json = $this->request->getJSON();  
+        $id = $json->id;
+        
+        // Retrieve the image file name associated with the record
+        $main = new OrderModel();
+        $record = $main->find($id);
+        $imageName = $record['receipt']; // Assuming 'image' is the column name storing the image file name
+        
+        // Delete the record
+        $ron = $main->delete($id);
+        
+        // Delete the corresponding image file from the uploads folder
+        if (!empty($imageName)) {
+            $uploadsPath = ROOTPATH . '../uploads/'; // Adjust the path to your uploads folder
+            $imagePath = $uploadsPath . $imageName; 
+            
+            // Check if the file exists before attempting deletion
+            if (file_exists($imagePath)) {
+                // Attempt to delete the file
+                if (unlink($imagePath)) {
+                    // File deletion successful
+                    return $this->respond($ron, 200);
+                } else {
+                    // File deletion failed
+                    return $this->respond(['status' => 'error', 'message' => 'Failed to delete file'], 500);
+                }
+            } else {
+                // File does not exist
+                return $this->respond(['status' => 'error', 'message' => 'File not found'], 404);
+            }
+        } else {
+            // No image associated with the record
+            return $this->respond($ron, 200);
+        }
+    }
 
 
 

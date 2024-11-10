@@ -1,5 +1,77 @@
 <style scoped>
+.edit {
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
+.edits {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center; /* Center text */
+  height: 100%; /* Ensures the card takes full height for centering */
+}
+
+.video-container {
+  position: relative;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  background-color: #ffffff;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.video-display {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+button {
+  width: 150px;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button i {
+  margin-right: 8px;
+}
+
+button:focus {
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+
+
+/* Modal Background */
 .modal {
   display: flex;
   position: fixed;
@@ -9,27 +81,50 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(148, 203, 255, 0.5);
-  animation-name: modal-animation;
-  animation-duration: 0.5s;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  animation: modal-animation 0.3s ease-in-out;
 }
 
+@keyframes modal-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Modal Content */
 .modal-content {
-  background-color: #ffffff;
-  margin: 10% auto;
+  background-color: #fff;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 600px;
   padding: 20px;
-  border: 1px solid #888;
-  width: 90%; /* Adjust the width to fit smaller screens */
-  max-width: 600px; /* Max width to ensure readability on larger screens */
-  animation-name: modal-content-animation;
-  animation-duration: 0.5s;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  animation: modal-content-animation 0.3s ease-in-out;
 }
 
+@keyframes modal-content-animation {
+  from {
+    transform: translateY(-50px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* Close Button */
 .close {
   color: #aaa;
-  float: right;
   font-size: 28px;
   font-weight: bold;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
 }
 
 .close:hover,
@@ -39,33 +134,90 @@
   cursor: pointer;
 }
 
-@keyframes modal-animation {
-  from {
-    top: -100%;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
+/* Card Design */
+.modal-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-@keyframes modal-content-animation {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(0);
-  }
+/* Video Container */
+.video-container {
+  position: relative;
+  width: 80%;
+  height: 300px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  background-color: #000;
+  overflow: hidden;
+  margin-bottom: 20px;
 }
 
-@media (max-width: 768px) { /* Adjust for smaller screens */
+.video-display {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* QR Result Section */
+.qr-result {
+  width: 100%;
+  margin: 10px 0;
+  text-align: center;
+  font-size: 16px;
+  color: #333;
+}
+
+/* Button Container */
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+button {
+  width: 150px;
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+}
+
+button i {
+  margin-right: 8px;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
   .modal-content {
-    width: 90%;
-    margin: 20px auto;
-    padding: 10px;
+    padding: 15px;
+  }
+
+  .video-container {
+    height: 200px;
+  }
+
+  button {
+    width: 100%;
+  }
+
+  .button-container {
+    flex-direction: column;
+    gap: 10px;
   }
 }
+
 
 .selected {
   border: 2px solid #007bff;
@@ -85,47 +237,79 @@
   height: auto;
   padding: 20px 0 0 20px;
 }
-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
+/* General Styling */
+.card {
+  border-radius: 10px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    th, td {
-      border: 1px solid #ddd;
-      padding: 8px;
-      text-align: left;
-    }
+/* Table Styling */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
 
-    th {
-      background-color: #f2f2f2;
-    }
+.table th, .table td {
+  text-align: left;
+  padding: 12px 15px;
+  font-size: 16px;
+}
 
-    /* Responsive styles */
-    @media screen and (max-width: 600px) {
-      table, tr, td {
-        display: block;
-      }
+.table thead {
+  background-color: #007bff;
+  color: white;
+}
 
-      td {
-        border: none;
-        position: relative;
-      }
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
 
-      td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, 0);
-      }
+.table-hover tbody tr:hover {
+  background-color: #f1f1f1;
+}
 
-      /* Make the table scrollable on smaller screens */
-      table {
-        overflow-y: auto;
-      }
-    }
+.table td, .table th {
+  border-bottom: 1px solid #ddd;
+}
+
+/* Button Styling */
+.btn {
+  padding: 8px 16px;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border: none;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .table th, .table td {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .card-body {
+    padding: 20px;
+  }
+
+  .card-title {
+    font-size: 20px;
+  }
+
+  .card-text {
+    font-size: 14px;
+  }
+}
+
 
     .calendar {
   background-color: #fff; 
@@ -223,13 +407,6 @@ table {
   padding-right: 20px; /* Add padding to the right if needed */
 }
 
-.body {
-  display: flex;
-  justify-content: flex-end; /* Align tabs to the right */
-  width: 100%;
-  padding-right: 20px;
-}
-
 .radio-input {
   --container_width: 640px; /* Adjust width for four tabs */
   position: relative;
@@ -323,38 +500,50 @@ table {
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
   
-          <li class="nav-item d-block d-lg-none">
-            <a class="nav-link nav-icon search-bar-toggle " href="#">
-              <i class="bi bi-search"></i>
-            </a>
-          </li><!-- End Search Icon-->
-  
+          <!-- Notification Icon -->
           <li class="nav-item dropdown">
-  
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <a class="nav-link nav-icon" href="#" @click="fetchNotifications" data-bs-toggle="dropdown">
               <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span>
-            </a><!-- End Notification Icon -->
-  
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-  
-            </ul><!-- End Notification Dropdown Items -->
-  
-          </li><!-- End Notification Nav -->
-  
-          <li class="nav-item dropdown">
-  
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-chat-left-text"></i>
-              <span class="badge bg-success badge-number">3</span>
-            </a><!-- End Messages Icon -->
-  
-  
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-  
-            </ul><!-- End Messages Dropdown Items -->
-  
-          </li><!-- End Messages Nav -->
+              <span class="badge bg-danger badge-number">{{ unreadCount }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" @click.stop>
+              <!-- Title and Tabs -->
+              <li class="dropdown-header">
+                <span class="notifications-title">Notifications</span>
+                <nav class="notifications-nav">
+                  <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
+                  <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
+                </nav>
+              </li>
+              <hr />
+
+              <!-- Notifications List -->
+              <li
+              v-for="notification in filteredNotifications"
+              :key="notification.id"
+              :class="['dropdown-item', notification.status === 'unread' ? 'notification-unread' : 'notification-read']"
+              @click="markAsRead(notification.id)"
+              >
+                <div class="notification-content">
+                  <!-- Icon in a white circle -->
+                  <div class="notification-icon-circle">
+                    <i :class="notification.icon"></i> <!-- Icon from the database -->
+                  </div>
+              
+                  <!-- Message and Time -->
+                  <div class="notification-details">
+                    <span class="notification-message">{{ truncateMessage(notification.message) }}</span>
+                    <span class="notification-time">{{ computeTimeAgo(notification.created_at) }}</span> <!-- Time below the message -->
+                  </div>
+              
+                  <!-- Unread Indicator Circle -->
+                  <span class="notification-indicator" v-if="notification.status === 'unread'"></span>
+                </div>
+              </li>
+            
+              <li v-if="filteredNotifications.length === 0" class="dropdown-item text-center">No notifications</li>
+            </ul>
+          </li>
   
           <li class="nav-item dropdown pe-3">
   
@@ -452,30 +641,30 @@ table {
             </a>
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
               <li>
-                <a href="serviceable">
-                  <i class="bi bi-circle"></i><span>Serviceable</span>
+                <a href="/serviceable">
+                  <i class="bi bi-clipboard-check"></i><span>Serviceable</span>
                 </a>
               </li>
               <li>
                 <a href="unserviceable">
-                  <i class="bi bi-circle"></i><span>Unserviceable</span>
+                  <i class="bi bi-clipboard-x"></i><span>Unserviceable</span>
                 </a>
               </li>
               <li>
                 <a href="returnedppe">
-                  <i class="bi bi-circle"></i><span>Returned PPE</span>
+                  <i class="bi bi-box-arrow-left"></i><span>Returned PPE</span>
                 </a>
               </li>
               <li>
                 <a href="transferedppe">
-                  <i class="bi bi-circle"></i><span>Transfered PPE</span>
+                  <i class="bi bi-box-arrow-right"></i><span>Transfered PPE</span>
                 </a>
-             </li>
-             <li>
-              <a href="disposedppe">
-                <i class="bi bi-circle"></i><span>Disposed PPE</span>
-              </a>
-           </li>
+            </li>
+            <li>
+                <a href="disposedppe">
+                  <i class="bi bi-trash"></i><span>Disposed PPE</span>
+                </a>
+            </li>
             </ul>
           </li><!-- End Components Nav -->
           <li class="nav-item">
@@ -485,12 +674,12 @@ table {
             <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
               <li>
                 <a href="propertysticker">
-                  <i class="bi bi-circle"></i><span>Property Sticker</span>
+                  <i class="bi bi-sticky"></i><span>Property Sticker</span>
                 </a>
               </li>
               <li>
                 <a href="ledgercard">
-                  <i class="bi bi-circle"></i><span>PPE Documents</span>
+                  <i class="bi bi-folder2-open"></i><span>PPE Documents</span>
                 </a>
               </li>
             </ul>
@@ -499,13 +688,13 @@ table {
           <li class="nav-heading">input</li>
           <li class="nav-item">
             <a class="nav-link collapsed" href="/workspace">
-              <i class="bi bi-folder-plus"></i>
+              <i class="bi bi-pencil-square"></i>
               <span>Workspace</span>
             </a>
           </li><!-- End Input Nav -->
           <li class="nav-item">
             <a class="nav-link active" href="/logbook">
-              <i class="bi bi-folder-plus"></i>
+              <i class="bi bi-calendar-check"></i>
               <span>Logbook</span>
             </a>
           </li><!-- End Input Nav -->
@@ -513,16 +702,29 @@ table {
           <li class="nav-heading">Stocks</li>
           <li class="nav-item">
             <a class="nav-link collapsed" href="/inventory">
-              <i class="bi bi-folder-plus"></i>
+              <i class="bi bi-box-seam"></i>
               <span>Inventory</span>
             </a>
           </li><!-- End Stocks Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/supplies">
+              <i class="bi bi-stack"></i>
+              <span>Supplies</span>
+            </a>
+          </li>
           <!-- Ordering Section -->
+          <li class="nav-heading">Ordering</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/ordering">
+              <i class="bi bi-shop"></i>
+              <span>Ordering</span>
+            </a>
+          </li><!-- End Ordering Nav -->
           <!-- Security Section -->
           <li class="nav-heading">Security</li>
           <li class="nav-item">
             <a class="nav-link collapsed" href="/userverify">
-              <i class="bi bi-folder-plus"></i>
+              <i class="bi bi-person-check"></i>
               <span>User Verification</span>
             </a>
           </li><!-- End Security Nav -->
@@ -544,58 +746,58 @@ table {
         </div><!-- End Page Title -->
      
         <div class="body">
-  <div class="radio-input">
-    <label>
-      <input
-        value="calendar"
-        name="value-radio"
-        id="calendar"
-        type="radio"
-        v-model="activeTab"
-      />
-      <span>Calendar</span>
-    </label>
+          <div class="radio-input">
+            <label>
+              <input
+                value="calendar"
+                name="value-radio"
+                id="calendar"
+                type="radio"
+                v-model="activeTab"
+              />
+              <span>Calendar</span>
+            </label>
 
-    <label>
-      <input
-        value="scan"
-        name="value-radio"
-        id="scan"
-        type="radio"
-        v-model="activeTab"
-      />
-      <span>Scan</span>
-    </label>
+            <label>
+              <input
+                value="scan"
+                name="value-radio"
+                id="scan"
+                type="radio"
+                v-model="activeTab"
+              />
+              <span>Scan</span>
+            </label>
 
-    <label>
-      <input
-        value="borrowed"
-        name="value-radio"
-        id="borrowed"
-        type="radio"
-        v-model="activeTab"
-      />
-      <span>Borrowed</span>
-    </label>
+            <label>
+              <input
+                value="borrowed"
+                name="value-radio"
+                id="borrowed"
+                type="radio"
+                v-model="activeTab"
+              />
+              <span>Borrowed</span>
+            </label>
 
-    <label>
-      <input
-        value="returned"
-        name="value-radio"
-        id="returned"
-        type="radio"
-        v-model="activeTab"
-      />
-      <span>Returned</span>
-    </label>
+            <label>
+              <input
+                value="returned"
+                name="value-radio"
+                id="returned"
+                type="radio"
+                v-model="activeTab"
+              />
+              <span>Returned</span>
+            </label>
 
-    <span class="selection"></span>
-  </div>
-</div>
-
+            <span class="selection"></span>
+          </div>
+        </div>
+<br>
 <!-- Calendar Component -->
-<div v-if="activeTab === 'calendar'">
-  <full-calendar ref="fullCalendar" :options="calendarOptions" class="calendar" />
+<div v-if="activeTab === 'calendar'" >
+  <full-calendar ref="fullCalendar" :options="calendarOptions" class="calendar" style="border-left: solid 30px #b8ffb4;"/>
   <div v-if="selectedEvent" 
        :class="['side-panel', { visible: sidePanelVisible }]" 
        :style="sidePanelPosition">
@@ -618,17 +820,29 @@ table {
   <section class="section">
     <div class="row">
       <div class="col-lg-4">
-        <div class="card">
-          <div class="card-body">
-            <video id="qr-video" playsinline></video>
-            <button class="btn btn-success" id="start-camera" @click="startCamera" v-show="!isCameraOn">Scan</button>
-            <button class="btn btn-danger" id="stop-camera" @click="stopCamera" v-show="isCameraOn">Stop</button>
+        <div class="card edit">
+          <div class="card-body edits text-center">
+            <!-- Video Display -->
+            <div class="video-container">
+              <video id="qr-video" class="video-display" playsinline></video>
+            </div>
+      
+            <!-- Camera Control Buttons -->
+            <div class="button-container mt-3">
+              <button class="btn btn-success" id="start-camera" @click="startCamera" v-show="!isCameraOn">
+                <i class="bi bi-camera"></i> Start Camera
+              </button>
+              <button class="btn btn-danger" id="stop-camera" @click="stopCamera" v-show="isCameraOn">
+                <i class="bi bi-stop-circle"></i> Stop Camera
+              </button>
+            </div>
           </div>
         </div>
       </div>
       
+      
       <div class="col-lg-8" align="center">
-        <div class="card">
+        <div class="card" style="border-top: 30px solid #80faf4; border-bottom: 30px solid #ffa341;">
           <div class="card-body">
             <hr>
             <h2>Scan Result</h2>
@@ -649,7 +863,7 @@ table {
                             :class="{ 'selected': selectedParticular === inv.particulars }">
                           <div class="row g-0">
                             <div class="col-md-4">
-                              <img :src="inv.image" alt="Inventory Image" class="inventory-image" />
+                              <img :src="`http://dilg.test/backend/uploads/${inv.image}`" alt="Inventory Image" class="inventory-image" />
                             </div>
                             <div class="col-md-8">
                               <div class="card-body">
@@ -678,11 +892,11 @@ table {
 <div v-if="activeTab === 'borrowed'">
   <div class="row">
     <div class="col-lg-12">
-      <div class="card">
+      <div class="card shadow-sm" style="border-left: 30px solid #ffa341;">
         <div class="card-body">
-          <h5 class="card-title">Borrowed Log</h5>
-          <p>Please see all the borrowed logs of equipment inside the office.</p>
-          <table class="table">
+          <h5 class="card-title mb-4">Borrowed Log</h5>
+          <p class="card-text mb-4">Please see all the borrowed logs of equipment inside the office.</p>
+          <table class="table table-striped table-hover">
             <thead>
               <tr>
                 <th>Equipment</th>
@@ -710,15 +924,16 @@ table {
   </div>
 </div>
 
+
 <!-- Returned Log Section -->
 <div v-if="activeTab === 'returned'">
   <div class="row">
     <div class="col-lg-12">
-      <div class="card">
+      <div class="card shadow-sm" style="border-left: 30px solid #80faf4;">
         <div class="card-body">
-          <h5 class="card-title">Returned Log</h5>
-          <p>Please see all the returned logs of equipment inside the office.</p>
-          <table class="table">
+          <h5 class="card-title mb-4">Returned Log</h5>
+          <p class="card-text mb-4">Please see all the returned logs of equipment inside the office.</p>
+          <table class="table table-striped table-hover">
             <thead>
               <tr>
                 <th>Equipment</th>
@@ -742,16 +957,34 @@ table {
   </div>
 </div>
 
+
 <!-- Modal for Scanning -->
 <div class="modal" v-if="selectedRecord">
   <div class="modal-content">
     <span class="close" @click="selectedRecord = null">&times;</span>
-    <video id="modal-qr-video" playsinline></video>
-    <div id="modal-qr-result"></div>
-    <button class="btn btn-success" id="modal-start-camera" @click="startModalCamera" v-show="!modalIsCameraOn">Scan</button>
-    <button class="btn btn-danger" id="modal-stop-camera" @click="stopModalCamera" v-show="modalIsCameraOn">Stop</button>
+
+    <div class="modal-card">
+      <!-- Video Display for QR Scanning -->
+      <div class="video-container">
+        <video id="modal-qr-video" class="video-display" playsinline></video>
+      </div>
+      
+      <!-- QR Result Display -->
+      <div id="modal-qr-result" class="qr-result"></div>
+
+      <!-- Camera Control Buttons -->
+      <div class="button-container mt-3">
+        <button class="btn btn-success" id="modal-start-camera" @click="startModalCamera" v-show="!modalIsCameraOn">
+          <i class="bi bi-camera"></i> Start Camera
+        </button>
+        <button class="btn btn-danger" id="modal-stop-camera" @click="stopModalCamera" v-show="modalIsCameraOn">
+          <i class="bi bi-stop-circle"></i> Stop Camera
+        </button>
+      </div>
+    </div>
   </div>
 </div>
+
 
 
         </main><!-- End #main -->
@@ -777,6 +1010,8 @@ table {
     },
     data() {
       return {
+        notifications: [],
+        filter: 'all',
         activeTab: 'calendar', // Set the default active tab
         info: [],
         infos:[],
@@ -825,6 +1060,15 @@ table {
       };
     },
     computed: {
+      filteredNotifications() {
+        if (this.filter === 'unread') {
+          return this.notifications.filter(notification => notification.status === 'unread');
+        }
+        return this.notifications;
+      },
+      unreadCount() {
+        return this.notifications.filter(notification => notification.status === 'unread').length;
+      },
       calendarEvents() {
         const events = [];
         this.info.forEach(log => {
@@ -934,6 +1178,7 @@ table {
       this.getInventory();
       this.user();
       this.getUserInfo(this.infos.fullname);
+      this.fetchNotifications();
     },
 
     watch: {
@@ -948,6 +1193,43 @@ table {
     }
   },
     methods: {
+      async fetchNotifications() {
+        try {
+          const response = await axios.get('notification');
+          this.notifications = response.data; // Set notifications to the fetched data
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      computeTimeAgo(dateString) {
+        const now = Date.now(); // Current time in milliseconds
+        const notificationDate = new Date(dateString).getTime(); // Convert dateString to milliseconds
+        const secondsAgo = Math.floor((now - notificationDate) / 1000); // Difference in seconds
+
+        if (secondsAgo < 60) return `${secondsAgo}s ago`;
+        if (secondsAgo < 3600) return `${Math.floor(secondsAgo / 60)}m ago`;
+        if (secondsAgo < 86400) return `${Math.floor(secondsAgo / 3600)}h ago`;
+        if (secondsAgo < 2592000) return `${Math.floor(secondsAgo / 86400)}d ago`;
+        return `${Math.floor(secondsAgo / 2592000)}mo ago`;
+      },
+      truncateMessage(message) {
+        return message.length > 70 ? message.substring(0, 67) + '...' : message;
+      },
+      filterNotifications(type) {
+        this.filter = type;
+      },
+
+      async markAsRead(notificationId) {
+        try {
+          const response = await axios.post(`/markAsRead/${notificationId}`);
+          console.log(response.data.msg); // Log the success message
+
+          // Re-fetch notifications after marking one as read
+          this.fetchNotifications();
+        } catch (error) {
+          console.error('Network error:', error.message);
+        }
+      },
       updateCalendarEvents() {
         // Generate calendar events from borrowedLogs array
         const events = [];
@@ -983,7 +1265,7 @@ table {
         }
         
         // Set the background image URL
-        const backgroundImage = `url('https://inventrack.online/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container
@@ -1304,27 +1586,27 @@ table {
       },
   
       goReturn() {
-    const borrowedItem = this.selectedEvent;
-  
-    axios.put(`/updateBorrowedItem/${borrowedItem.id}`, borrowedItem)
-      .then(response => {
-        console.log('Item returned successfully:', response.data);
-        const calendar = this.$refs.fullCalendar.getApi();
-        const event = calendar.getEventById(borrowedItem.id);
-        if (event) {
-          const eventElement = event.el;
-          if (eventElement) {
-            eventElement.style.backgroundColor = 'green';
-            const changeEvent = new CustomEvent('eventChange', { bubbles: true });
-            eventElement.dispatchEvent(changeEvent);
-          }
-        }
-        location.reload();
-      })
-      .catch(error => {
-        console.error('Error returning item:', error);
-      });
-  },
+        const borrowedItem = this.selectedEvent;
+      
+        axios.put(`/updateBorrowedItem/${borrowedItem.id}`, borrowedItem)
+          .then(response => {
+            console.log('Item returned successfully:', response.data);
+            const calendar = this.$refs.fullCalendar.getApi();
+            const event = calendar.getEventById(borrowedItem.id);
+            if (event) {
+              const eventElement = event.el;
+              if (eventElement) {
+                eventElement.style.backgroundColor = 'green';
+                const changeEvent = new CustomEvent('eventChange', { bubbles: true });
+                eventElement.dispatchEvent(changeEvent);
+              }
+            }
+            location.reload();
+          })
+          .catch(error => {
+            console.error('Error returning item:', error);
+          });
+      },
   
       showSidePanel(eventElement) {
         const rect = eventElement.getBoundingClientRect();

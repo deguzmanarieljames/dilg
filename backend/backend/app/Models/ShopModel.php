@@ -13,7 +13,7 @@ class ShopModel extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['article', 'shop', 'shop_rate'];
+    protected $allowedFields    = ['article', 'shop', 'shop_rate', 'times_detected', 'number_rating', 'shop_rate'];
 
     // Dates
     protected $useTimestamps = false;

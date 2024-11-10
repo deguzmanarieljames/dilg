@@ -18,38 +18,51 @@
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
   
-          <li class="nav-item d-block d-lg-none">
-            <a class="nav-link nav-icon search-bar-toggle " href="#">
-              <i class="bi bi-search"></i>
-            </a>
-          </li><!-- End Search Icon-->
-  
+          <!-- Notification Icon -->
           <li class="nav-item dropdown">
-  
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <a class="nav-link nav-icon" href="#" @click="fetchNotifications" data-bs-toggle="dropdown">
               <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span>
-            </a><!-- End Notification Icon -->
-  
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-  
-            </ul><!-- End Notification Dropdown Items -->
-  
-          </li><!-- End Notification Nav -->
-  
-          <li class="nav-item dropdown">
-  
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-chat-left-text"></i>
-              <span class="badge bg-success badge-number">3</span>
-            </a><!-- End Messages Icon -->
-  
-  
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-  
-            </ul><!-- End Messages Dropdown Items -->
-  
-          </li><!-- End Messages Nav -->
+              <span class="badge bg-danger badge-number">{{ unreadCount }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" @click.stop>
+              <!-- Title and Tabs -->
+              <li class="dropdown-header">
+                <span class="notifications-title">Notifications</span>
+                <nav class="notifications-nav">
+                  <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
+                  <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
+                </nav>
+              </li>
+              <hr />
+
+              <!-- Notifications List -->
+              <li
+              v-for="notification in filteredNotifications"
+              :key="notification.id"
+              :class="['dropdown-item', notification.status === 'unread' ? 'notification-unread' : 'notification-read']"
+              @click="markAsRead(notification.id)"
+              >
+                <div class="notification-content">
+                  <!-- Icon in a white circle -->
+                  <div class="notification-icon-circle">
+                    <i :class="notification.icon"></i> <!-- Icon from the database -->
+                  </div>
+              
+                  <!-- Message and Time -->
+                  <div class="notification-details">
+                    <span class="notification-message">{{ truncateMessage(notification.message) }}</span>
+                    <span class="notification-time">{{ computeTimeAgo(notification.created_at) }}</span> <!-- Time below the message -->
+                  </div>
+              
+                  <!-- Unread Indicator Circle -->
+                  <span class="notification-indicator" v-if="notification.status === 'unread'"></span>
+                </div>
+              </li>
+            
+              <li v-if="filteredNotifications.length === 0" class="dropdown-item text-center">No notifications</li>
+            </ul>
+          </li>
+
   
           <li class="nav-item dropdown pe-3">
   
@@ -124,114 +137,121 @@
       <!-- ======= Sidebar ======= -->
       <aside id="sidebar" class="sidebar">
   
-      <ul class="sidebar-nav" id="sidebar-nav">
-  
-        
-        <li class="nav-heading">Home</li>
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/dashboard">
-            <i class="bi bi-grid"></i>
-            <span>Dashboard</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-  
-        
-        <li class="nav-heading">Pages</li>
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="databaseppe">
-            <i class="bi bi-clipboard-data"></i>
-            <span>Database PPE</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="serviceable">
-                <i class="bi bi-circle"></i><span>Serviceable</span>
-              </a>
-            </li>
-            <li>
-              <a href="unserviceable">
-                <i class="bi bi-circle"></i><span>Unserviceable</span>
-              </a>
-            </li>
-            <li>
-              <a href="returnedppe">
-                <i class="bi bi-circle"></i><span>Returned PPE</span>
-              </a>
-            </li>
-            <li>
-              <a href="transferedppe">
-                <i class="bi bi-circle"></i><span>Transfered PPE</span>
-              </a>
-           </li>
-           <li>
-            <a href="disposedppe">
-              <i class="bi bi-circle"></i><span>Disposed PPE</span>
-            </a>
-         </li>
-          </ul>
-        </li><!-- End Components Nav -->
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="propertysticker">
-                <i class="bi bi-circle"></i><span>Property Sticker</span>
-              </a>
-            </li>
-            <li>
-              <a href="ledgercard">
-                <i class="bi bi-circle"></i><span>PPE Documents</span>
-              </a>
-            </li>
-          </ul>
-        </li><!-- End Forms Nav -->
-  
-        <li class="nav-heading">input</li>
-  
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="/workspace">
-            <i class="bi bi-folder-plus"></i>
-            <span>Workspace</span>
-        </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/logbook">
-            <i class="bi bi-folder-plus"></i>
-            <span>Logbook</span>
-          </a>
-        </li><!-- End Input Nav -->
-  
-        <li class="nav-heading">Stocks</li>
-  
-        <li class="nav-item">
-          <a class="nav-link active" href="/inventory">
-            <i class="bi bi-folder-plus"></i>
-            <span>Inventory</span>
-          </a>
-        </li>
-  
-        <li class="nav-heading">Security</li>
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/userverify">
-            <i class="bi bi-folder-plus"></i>
-            <span>User Verification</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
+        <ul class="sidebar-nav" id="sidebar-nav">
     
-  
-      </ul>
-  
+          
+          <li class="nav-heading">Home</li>
+    
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/dashboard">
+              <i class="bi bi-grid"></i>
+              <span>Dashboard</span>
+            </a>
+          </li><!-- End Dashboard Nav -->
+    
+          
+          <!-- Pages Section -->
+          <li class="nav-heading">Pages</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="databaseppe">
+              <i class="bi bi-clipboard-data"></i>
+              <span>Database PPE</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <li>
+                <a href="/serviceable">
+                  <i class="bi bi-clipboard-check"></i><span>Serviceable</span>
+                </a>
+              </li>
+              <li>
+                <a href="unserviceable">
+                  <i class="bi bi-clipboard-x"></i><span>Unserviceable</span>
+                </a>
+              </li>
+              <li>
+                <a href="returnedppe">
+                  <i class="bi bi-box-arrow-left"></i><span>Returned PPE</span>
+                </a>
+              </li>
+              <li>
+                <a href="transferedppe">
+                  <i class="bi bi-box-arrow-right"></i><span>Transfered PPE</span>
+                </a>
+            </li>
+            <li>
+                <a href="disposedppe">
+                  <i class="bi bi-trash"></i><span>Disposed PPE</span>
+                </a>
+            </li>
+            </ul>
+          </li><!-- End Components Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <li>
+                <a href="propertysticker">
+                  <i class="bi bi-sticky"></i><span>Property Sticker</span>
+                </a>
+              </li>
+              <li>
+                <a href="ledgercard">
+                  <i class="bi bi-folder2-open"></i><span>PPE Documents</span>
+                </a>
+              </li>
+            </ul>
+          </li><!-- End Forms Nav -->
+          <!-- Input Section -->
+          <li class="nav-heading">input</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/workspace">
+              <i class="bi bi-pencil-square"></i>
+              <span>Workspace</span>
+            </a>
+          </li><!-- End Input Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/logbook">
+              <i class="bi bi-calendar-check"></i>
+              <span>Logbook</span>
+            </a>
+          </li><!-- End Input Nav -->
+          <!-- Stocks Section -->
+          <li class="nav-heading">Stocks</li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/inventory">
+              <i class="bi bi-box-seam"></i>
+              <span>Inventory</span>
+            </a>
+          </li><!-- End Stocks Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/supplies">
+              <i class="bi bi-stack"></i>
+              <span>Supplies</span>
+            </a>
+          </li>
+          <!-- Ordering Section -->
+          <li class="nav-heading">Ordering</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/ordering">
+              <i class="bi bi-shop"></i>
+              <span>Ordering</span>
+            </a>
+          </li><!-- End Ordering Nav -->
+          <!-- Security Section -->
+          <li class="nav-heading">Security</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/userverify">
+              <i class="bi bi-person-check"></i>
+              <span>User Verification</span>
+            </a>
+          </li><!-- End Security Nav -->
+        </ul>
       </aside><!-- End Sidebar-->
   
   
@@ -258,7 +278,7 @@
           <div class="col-lg-12" style="font-size: medium;">
 
             <div class="card">
-              <div class="card-body">
+              <div class="card-body" style="border-left: 30px solid #80faf4;">
         
       <br>
       <!-- Add Item Button -->
@@ -328,126 +348,132 @@
 
       <!-- Add Item Modal -->
       <transition name="modal-slide">
-        
-      <div v-if="showAddItemModal" class="modal fade show d-block" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="addItemModalLabel">Add Item</h5>
-              <button type="button" class="btn-close" @click="showAddItemModal = false" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-              <form class="row g-3" enctype="multipart/form-data">
-                <!-- Form fields here -->
-                <div class="col-md-6">
-                  <label for="entityname" class="form-label">Entity Name</label>
-                  <input type="text" class="form-control" id="entityname" v-model="entityname" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="classification" class="form-label">Classification</label>
-                  <input type="text" class="form-control" id="classification" v-model="classification" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="code" class="form-label">Code</label>
-                  <input type="text" class="form-control" id="code" v-model="code" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="article" class="form-label">Article</label>
-                  <input type="text" class="form-control" id="article" v-model="article" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="particulars" class="form-label">Particulars</label>
-                  <input type="text" class="form-control" id="particulars" v-model="particulars" required>
-                </div>
-                <div class="col-md-6">
-                  <label for="modelno" class="form-label">Model No.</label>
-                  <input type="text" class="form-control" id="modelno" v-model="modelno">
-                </div>
-                <div class="col-md-6">
-                  <label for="serialno" class="form-label">Serial No.</label>
-                  <input type="text" class="form-control" id="serialno" v-model="serialno">
-                </div>
-                <div class="col-md-6">
-                  <label for="propertynumber" class="form-label">Semi Expendable Property No.</label>
-                  <input type="text" class="form-control" id="propertynumber" v-model="propertynumber">
-                </div>
-                <div class="col-md-6">
-                  <label for="propertydate" class="form-label">Date Arrived:</label>
-                  <input type="date" class="form-control" id="propertydate" v-model="propertydate">
-                </div>
-                <div class="col-md-6">
-                  <label for="quantity" class="form-label">Quantity</label>
-                  <input type="text" class="form-control" id="quantity" v-model="quantity" required placeholder="0">
-                </div>
-                <div class="col-md-6">
-                  <label for="unit" class="form-label">Unit</label>
-                  <select class="form-select" id="unit" v-model="unit" required>
-                    <option value="unit">Unit</option>
-                    <option value="set">Set</option>
-                  </select>
-                </div>
-                <div class="col-md-6">
-                  <label for="unitcost" class="form-label">Unit Cost</label>
-                  <input type="text" class="form-control" id="unitcost" v-model="unitcost" required placeholder="0">
-                </div>
-                <div class="col-md-6">
-                  <label for="totalcost" class="form-label">Total Cost</label>
-                  <input type="text" class="form-control" id="totalcost" :value="totalCostFormatted" required disabled placeholder="0">
-                </div>
-      
-                <div class="col-md-12">
-                  <label class="form-label">Choose Image Source:</label>
-                  <div>
-                    <input type="radio" id="upload" value="upload" v-model="imageSource">
-                    <label for="upload">Upload Image</label>
-                  </div>
-                  <div>
-                    <input type="radio" id="capture" value="capture" v-model="imageSource">
-                    <label for="capture">Capture Image</label>
-                  </div>
-                </div>
-      
-                <div class="col-md-6" v-if="imageSource === 'upload'">
-                  <!-- File upload input -->
-                  <label for="image" class="form-label">Upload Image</label>
-                  <input type="file" class="form-control" id="image" @change="handleFileUpload" accept="image/*">
-                </div>
-      
-                <div class="col-md-6" v-else-if="imageSource === 'capture'">
-                  <!-- Camera capture section -->
-                  <label for="camera" class="form-label">Capture Image</label>
-                  <video id="camera" width="100%" height="auto" autoplay></video>
-                  <a @click="startCamera" class="btn btn-primary mt-2">{{ cameraStarted ? 'Stop Camera' : 'Start Camera' }}</a>
-                  <a @click="captureImage" class="btn btn-success mt-2" :disabled="!cameraStarted">Capture</a>
-                </div>
-      
+        <div v-if="showAddItemModal" class="modal fade show d-block" tabindex="-1" role="dialog" aria-labelledby="addItemModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addItemModalLabel">Add Item</h5>
+                        <button type="button" class="btn-close" @click="showAddItemModal = false" aria-label="Close"></button>
+                    </div>
+                      <div class="modal-body">
+                        <form class="row g-3" enctype="multipart/form-data">
+                          <!-- Form fields here -->
+                          <div class="col-md-6">
+                            <label for="entityname" class="form-label">Entity Name</label>
+                            <input type="text" class="form-control" id="entityname" v-model="entityname" required>
+                          </div>
+                          <div class="col-md-6">
+                            <label for="classification" class="form-label">Classification</label>
+                            <input type="text" class="form-control" id="classification" v-model="classification" required>
+                          </div>
+                          <div class="col-md-6">
+                            <label for="code" class="form-label">Code</label>
+                            <input type="text" class="form-control" id="code" v-model="code" required>
+                          </div>
+                          <div class="col-md-6">
+                            <label for="article" class="form-label">Article</label>
+                            <input type="text" class="form-control" id="article" v-model="article" required>
+                          </div>
+                          <div class="col-md-6">
+                            <label for="particulars" class="form-label">Particulars</label>
+                            <input type="text" class="form-control" id="particulars" v-model="particulars" required>
+                          </div>
+                          <div class="col-md-6">
+                            <label for="modelno" class="form-label">Model No.</label>
+                            <input type="text" class="form-control" id="modelno" v-model="modelno">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="serialno" class="form-label">Serial No.</label>
+                            <input type="text" class="form-control" id="serialno" v-model="serialno">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="propertynumber" class="form-label">Semi Expendable Property No.</label>
+                            <input type="text" class="form-control" id="propertynumber" v-model="propertynumber">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="propertydate" class="form-label">Date Arrived:</label>
+                            <input type="date" class="form-control" id="propertydate" v-model="propertydate">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="quantity" class="form-label">Quantity</label>
+                            <input type="text" class="form-control" id="quantity" v-model="quantity" required placeholder="0">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="unit" class="form-label">Unit</label>
+                            <select class="form-select" id="unit" v-model="unit" required>
+                              <option value="unit">Unit</option>
+                              <option value="set">Set</option>
+                            </select>
+                          </div>
+                          <div class="col-md-6">
+                            <label for="unitcost" class="form-label">Unit Cost</label>
+                            <input type="text" class="form-control" id="unitcost" v-model="unitcost" required placeholder="0">
+                          </div>
+                          <div class="col-md-6">
+                            <label for="totalcost" class="form-label">Total Cost</label>
+                            <input type="text" class="form-control" id="totalcost" :value="totalCostFormatted" required disabled placeholder="0">
+                          </div>
+                          <div class="row">
+                            <!-- Left Column: Upload and Capture -->
+                            <div class="col-md-6">
+                              <label class="form-label"><strong>Choose Image Source:</strong></label>
+                              <div class="image-source-options d-flex justify-content-around">
+                                <input type="radio" id="upload" value="upload" v-model="imageSource" class="radio-input">
+                                <label for="upload" class="radio-label">Upload Image</label>
+                          
+                                <input type="radio" id="capture" value="capture" v-model="imageSource" class="radio-input">
+                                <label for="capture" class="radio-label">Capture Image</label>
+                              </div>
+                          
+                              <!-- File Upload Section -->
+                              <div v-if="imageSource === 'upload'" class="mt-3">
+                                <label for="image" class="form-label"><strong>Upload Image</strong></label>
+                                <input type="file" class="form-control file-input" id="image" @change="handleFileUpload" accept="image/*">
+                              </div>
+                          
+                              <!-- Camera Capture Section -->
+                              <div v-else-if="imageSource === 'capture'" class="mt-3">
+                                <label for="camera" class="form-label"><strong>Capture Image</strong></label>
+                                <div class="video-container">
+                                  <video id="camera" width="100%" height="auto" autoplay></video>
+                                  <div class="camera-controls mt-2">
+                                    <button type="button" @click="startCamera" class="btn btn-primary">
+                                      {{ cameraStarted ? 'Stop Camera' : 'Start Camera' }}
+                                    </button>
+                                    <button type="button" @click="captureImage" class="btn btn-success" :disabled="!cameraStarted">
+                                      Capture
+                                    </button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          
+                            <!-- Right Column: Preview Section -->
+                            <div class="col-md-6 text-center">
+                              <label class="form-label"><strong>Image Preview:</strong></label>
+                              <div class="preview-container mt-2">
+                                <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" class="img-fluid image-preview">
+                              </div>
+                            </div>
+                          </div>
+                          
+                          
+                <br>
+                <hr>
+                          <div class="button-group mt-6">
                 
-                <div class="col-md-6">
-                  <label class="form-label">Image Preview:</label>
-                  <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" class="img-fluid">
-                  <br>
+                            <button class="button1" @click="resetForm" type="reset" style="width: 120px; height: 40px;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                    <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"></path>
+                    <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"></path>
+                  </svg>
+                  Reset
+                </button>
+                  <button @click="saveOrUpdate" v-if="status !== 'update'" type="submit" class="button">Submit</button>
+                  <button @click="saveOrUpdate" v-if="status === 'update'" type="submit" class="button">Update</button>
+                
+                
                 </div>
-      <br>
-      <hr>
-                <div class="button-group mt-6">
-      
-                  <button class="button1" @click="resetForm" type="reset" style="width: 120px; height: 40px;">
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
-          <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41zm-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9z"></path>
-          <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5.002 5.002 0 0 0 8 3zM3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9H3.1z"></path>
-        </svg>
-        Reset
-      </button>
-        <button @click="saveOrUpdate" v-if="status !== 'update'" type="submit" class="button">Submit</button>
-        <button @click="saveOrUpdate" v-if="status === 'update'" type="submit" class="button">Update</button>
-      
-       
-      </div>
-      
-      
-      
-      
-      
       
               </form>
             </div>
@@ -486,9 +512,9 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="inv in paginatedInfo" :key="inv.id" :class="{ 'inactive-row': inv.status === 'inactive' }">
+              <tr v-for="inv in paginatedInfo.filter(item => item.status === 'active')">
                 <td scope="row">
-                  <img :src="`https://inventrack.online/backend/uploads/${inv.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" />
+                  <img :src="`http://dilg.test/backend/uploads/${inv.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" />
                 </td>
                 <td scope="row">{{ inv.entityname }}</td>
                 <td scope="row">{{ inv.classification }}</td>
@@ -504,7 +530,36 @@
                 <td scope="row">{{ inv.totalcost }}</td>
                 <td scope="row">{{ inv.status }}</td>
                 <td scope="row" class="sticky-col">
-                  <button v-if="inv.availability === 'yes'" @click="updateAvailability(inv.id, 'no')" class="btn btn-outline-success" style="width: 120px">Available</button>
+                  <button v-if="inv.availability === 'yes'" @click="updateAvailability(inv.id, 'no')" class="link btn btn-outline-success" style="width: 120px">Available</button>
+                  <button v-else-if="inv.availability === 'no' || inv.availability === ''" @click="updateAvailability(inv.id, 'yes')" class="btn btn-outline-danger">Not Available</button>
+                </td>
+                <td class="sticky-col">
+                  <button class="btn btn-outline-success" @click="selectRecord(inv)"><i class="bx ri-file-list-line"></i></button>
+                  <button @click="placeRecord(inv.id)" class="btn btn-warning"><i class="bx bxs-arrow-from-right"></i></button>
+                  <button @click="deleteRecord(inv.id)" class="btn btn-danger"><i class="ri-delete-bin-6-line"></i></button>
+                </td>
+              </tr>
+            </tbody>
+            <tbody>
+              <tr v-for="inv in paginatedInfo.filter(item => item.status === 'inactive')" :class="{ 'inactive-row': inv.status === 'inactive' }">
+                <td scope="row">
+                  <img :src="`http://dilg.test/backend/uploads/${inv.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" />
+                </td>
+                <td scope="row">{{ inv.entityname }}</td>
+                <td scope="row">{{ inv.classification }}</td>
+                <td scope="row">{{ inv.code }}</td>
+                <td scope="row">{{ inv.article }}</td>
+                <td scope="row">{{ inv.particulars }}</td>
+                <td scope="row">{{ inv.modelno }}</td>
+                <td scope="row">{{ inv.serialno }}</td>
+                <td scope="row">{{ inv.fulldescription }}</td>
+                <td scope="row">{{ inv.quantity }}</td>
+                <td scope="row">{{ inv.unit }}</td>
+                <td scope="row">{{ inv.unitcost }}</td>
+                <td scope="row">{{ inv.totalcost }}</td>
+                <td scope="row">{{ inv.status }}</td>
+                <td scope="row" class="sticky-col">
+                  <button v-if="inv.availability === 'yes'" @click="updateAvailability(inv.id, 'no')" class="link btn btn-outline-success" style="width: 120px">Available</button>
                   <button v-else-if="inv.availability === 'no' || inv.availability === ''" @click="updateAvailability(inv.id, 'yes')" class="btn btn-outline-danger">Not Available</button>
                 </td>
                 <td class="sticky-col">
@@ -633,6 +688,15 @@
   export default{
   
   computed:{
+    filteredNotifications() {
+      if (this.filter === 'unread') {
+        return this.notifications.filter(notification => notification.status === 'unread');
+      }
+      return this.notifications;
+    },
+    unreadCount() {
+      return this.notifications.filter(notification => notification.status === 'unread').length;
+    },
     imagePreview() {
           if (this.imageSource === 'upload') {
               return this.uploadedImage;
@@ -651,18 +715,18 @@
           },
 
           paginatedInfo() {
-    const startIndex = (this.currentPage - 1) * this.pageSize;
-    const endIndex = startIndex + this.pageSize;
-    return this.filteredInventory.slice(startIndex, endIndex);
-  },
-  totalPages() {
-    return Math.ceil(this.filteredInventory.length / this.pageSize);
-  },
-  currentPageRecords() {
-    const startIndex = (this.currentPage - 1) * this.pageSize + 1;
-    const endIndex = Math.min(startIndex + this.pageSize - 1, this.filteredInventory.length);
-    return `Showing ${startIndex} - ${endIndex} of ${this.filteredInventory.length} records`;
-  },
+          const startIndex = (this.currentPage - 1) * this.pageSize;
+          const endIndex = startIndex + this.pageSize;
+          return this.filteredInventory.slice(startIndex, endIndex);
+        },
+        totalPages() {
+          return Math.ceil(this.filteredInventory.length / this.pageSize);
+        },
+        currentPageRecords() {
+          const startIndex = (this.currentPage - 1) * this.pageSize + 1;
+          const endIndex = Math.min(startIndex + this.pageSize - 1, this.filteredInventory.length);
+          return `Showing ${startIndex} - ${endIndex} of ${this.filteredInventory.length} records`;
+        },
   
       distinctClassification() {
         return [...new Set(this.inventory.map(inv => inv.classification))];
@@ -714,6 +778,8 @@
   },
   data(){
       return{
+          notifications: [],
+          filter: 'all',
           showAddItemModal: false,  // Para ipakita o itago ang Add Item modal
           id: "",
           inventory:[],
@@ -761,9 +827,47 @@
       this.user();
       this.getUserInfo(this.infos.fullname);
       this.getInfo();
+      this.fetchNotifications();
   },
   
   methods:{
+    async fetchNotifications() {
+        try {
+          const response = await axios.get('notification');
+          this.notifications = response.data; // Set notifications to the fetched data
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      computeTimeAgo(dateString) {
+        const now = Date.now(); // Current time in milliseconds
+        const notificationDate = new Date(dateString).getTime(); // Convert dateString to milliseconds
+        const secondsAgo = Math.floor((now - notificationDate) / 1000); // Difference in seconds
+
+        if (secondsAgo < 60) return `${secondsAgo}s ago`;
+        if (secondsAgo < 3600) return `${Math.floor(secondsAgo / 60)}m ago`;
+        if (secondsAgo < 86400) return `${Math.floor(secondsAgo / 3600)}h ago`;
+        if (secondsAgo < 2592000) return `${Math.floor(secondsAgo / 86400)}d ago`;
+        return `${Math.floor(secondsAgo / 2592000)}mo ago`;
+      },
+      truncateMessage(message) {
+        return message.length > 70 ? message.substring(0, 67) + '...' : message;
+      },
+      filterNotifications(type) {
+        this.filter = type;
+      },
+
+      async markAsRead(notificationId) {
+        try {
+          const response = await axios.post(`/markAsRead/${notificationId}`);
+          console.log(response.data.msg); // Log the success message
+
+          // Re-fetch notifications after marking one as read
+          this.fetchNotifications();
+        } catch (error) {
+          console.error('Network error:', error.message);
+        }
+      },
     selectRecord(inventory) {
       this.selectedInfo = inventory;
     },
@@ -1089,7 +1193,7 @@
       this.unit = record.unit;
       this.unitcost = record.unitcost;
       this.totalcost = record.totalcost;
-      this.imagePreview = `https://inventrack.online/backend/uploads/${record.image}`;
+      this.imagePreview = `http://dilg.test/backend/uploads/${record.image}`;
       this.showAddItemModal = true; // Ito ang nagtatakda na ipapakita ang modal
   
       console.log(recordId);
@@ -1170,7 +1274,7 @@
           }
           
           // Set the background image URL
-          const backgroundImage = `url('https://inventrack.online/backend/uploads/${imageUrl}')`;
+          const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
           
           // Set background size and position
           const backgroundSize = 'cover'; // Cover the entire container
@@ -1204,7 +1308,84 @@
 
  
 <style scoped>
+.page-link {
+  z-index: 0;
+}
 
+.form-group {
+  padding: 20px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.form-label {
+  font-weight: bold;
+  color: #333;
+}
+
+.image-source-options {
+  gap: 20px;
+}
+
+.radio-label {
+  display: inline-block;
+  padding: 10px 20px;
+  border: 2px solid #007bff;
+  border-radius: 20px;
+  color: #007bff;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.radio-input {
+  display: none;
+}
+
+.radio-input:checked + .radio-label {
+  background-color: #007bff;
+  color: #ffffff;
+}
+
+.file-input {
+  padding: 8px;
+  border-radius: 6px;
+}
+
+.video-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #dee2e6;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #e9ecef;
+}
+
+.camera-controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.preview-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #dee2e6;
+  padding: 15px;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  height: 85%;
+}
+
+.image-preview {
+  max-width: 100%;
+  max-height: 250px;
+  border-radius: 8px;
+  border: 1px solid #ced4da;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
 
 /* Backdrop for darkening effect */
@@ -1531,7 +1712,7 @@ button.noselect:active .icon svg {
   position: sticky;
   right: 0;
   background-color: white; /* Set background color to white */
-  z-index: 1; /* Ensure it stays on top of scrolling content */
+  z-index: 0; /* Ensure it stays on top of scrolling content */
   border-left: 2px solid #ccc; /* Add left border for the sticky column */
 }
 
@@ -1546,7 +1727,7 @@ button.noselect:active .icon svg {
 /* Additional styles for header cells in sticky columns */
 th.sticky-col {
   background-color: white; /* Background for header of sticky columns */
-  z-index: 2; /* Ensure headers are above body rows */
+  z-index: 0; /* Ensure headers are above body rows */
   box-shadow: -3px 0 6px rgba(0, 0, 0, 0.25); /* Slightly stronger shadow for headers */
   border-left: 2px solid #ccc; /* Add left border for sticky header */
 }

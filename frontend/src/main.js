@@ -7,7 +7,7 @@ import axios from 'axios'
 
 
 // axios.defaults.baseURL="http://192.168.254.189:8081/"
-axios.defaults.baseURL="https://inventrack.online/backend/"
+axios.defaults.baseURL="http://dilg.test/backend/"
 
 loadFonts()
 

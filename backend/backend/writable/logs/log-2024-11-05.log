@@ -1,0 +1,126 @@
+CRITICAL - 2024-11-05 10:32:20 --> syntax error, unexpected token "==", expecting ")"
+in APPPATH\Controllers\SupplyController.php on line 21.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SupplyController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\SupplyController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\SupplyController')
+ 4 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\SupplyController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 11:05:58 --> Array to string conversion
+in APPPATH\Controllers\SupplyController.php on line 28.
+ 1 APPPATH\Controllers\SupplyController.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SupplyController.php', 28)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->predictSupplyUsage()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 11:06:01 --> Array to string conversion
+in APPPATH\Controllers\SupplyController.php on line 28.
+ 1 APPPATH\Controllers\SupplyController.php(28): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SupplyController.php', 28)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->predictSupplyUsage()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 11:06:21 --> escapeshellarg(): Argument #1 ($arg) must be of type string, array given
+in APPPATH\Controllers\SupplyController.php on line 31.
+ 1 APPPATH\Controllers\SupplyController.php(31): escapeshellarg([...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->predictSupplyUsage()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 11:09:32 --> Call to undefined function App\Controllers\json()
+in APPPATH\Controllers\SupplyController.php on line 25.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->predictSupplyUsage()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 11:16:13 --> syntax error, unexpected token ","
+in APPPATH\Controllers\SupplyController.php on line 46.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(285): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SupplyController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(263): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\SupplyController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\SupplyController')
+ 4 SYSTEMPATH\CodeIgniter.php(877): class_exists('\\App\\Controllers\\SupplyController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(481): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 12:09:49 --> Array to string conversion
+in APPPATH\Controllers\SupplyController.php on line 37.
+ 1 APPPATH\Controllers\SupplyController.php(37): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Array to string conversion', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SupplyController.php', 37)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->predictSupplyUsage()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 12:10:25 --> escapeshellarg(): Argument #1 ($arg) must be of type string, array given
+in APPPATH\Controllers\SupplyController.php on line 37.
+ 1 APPPATH\Controllers\SupplyController.php(37): escapeshellarg([...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->predictSupplyUsage()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 13:06:52 --> Undefined variable $data
+in APPPATH\Controllers\SupplyController.php on line 74.
+ 1 APPPATH\Controllers\SupplyController.php(74): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SupplyController.php', 74)
+ 2 APPPATH\Controllers\SupplyController.php(58): App\Controllers\SupplyController->simulateForecast([...])
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->predictSupplyUsage()
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 13:08:07 --> Class "App\Controllers\Exception" not found
+in APPPATH\Controllers\SupplyController.php on line 75.
+ 1 APPPATH\Controllers\SupplyController.php(58): App\Controllers\SupplyController->simulateForecast([...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->predictSupplyUsage()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 13:08:19 --> Class "App\Controllers\Exception" not found
+in APPPATH\Controllers\SupplyController.php on line 75.
+ 1 APPPATH\Controllers\SupplyController.php(58): App\Controllers\SupplyController->simulateForecast([...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->predictSupplyUsage()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 13:09:10 --> Class "App\Controllers\Exception" not found
+in APPPATH\Controllers\SupplyController.php on line 74.
+ 1 APPPATH\Controllers\SupplyController.php(58): App\Controllers\SupplyController->simulateForecast([...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->predictSupplyUsage()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 13:09:29 --> Class "App\Controllers\Exception" not found
+in APPPATH\Controllers\SupplyController.php on line 91.
+ 1 APPPATH\Controllers\SupplyController.php(70): App\Controllers\SupplyController->simulateForecast([...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->predictSupplyUsage()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 13:10:38 --> Class "App\Controllers\Exception" not found
+in APPPATH\Controllers\SupplyController.php on line 75.
+ 1 APPPATH\Controllers\SupplyController.php(58): App\Controllers\SupplyController->simulateForecast([...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->predictSupplyUsage()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 13:11:29 --> Class "App\Controllers\Exception" not found
+in APPPATH\Controllers\SupplyController.php on line 75.
+ 1 APPPATH\Controllers\SupplyController.php(58): App\Controllers\SupplyController->simulateForecast([...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->predictSupplyUsage()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 13:12:22 --> Class "App\Controllers\Exception" not found
+in APPPATH\Controllers\SupplyController.php on line 75.
+ 1 APPPATH\Controllers\SupplyController.php(58): App\Controllers\SupplyController->simulateForecast([...])
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->predictSupplyUsage()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 13:16:03 --> Trying to access array offset on value of type null
+in APPPATH\Controllers\SupplyController.php on line 350.
+ 1 APPPATH\Controllers\SupplyController.php(350): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SupplyController.php', 350)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SupplyController->delEmployeeSupplies()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SupplyController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-05 14:07:15 --> Declaration of App\Controllers\NotificationController::create($message) must be compatible with CodeIgniter\RESTful\ResourceController::create()
+in APPPATH\Controllers\NotificationController.php on line 12.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->shutdownHandler()

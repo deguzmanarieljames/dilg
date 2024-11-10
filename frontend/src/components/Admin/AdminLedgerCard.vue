@@ -18,50 +18,65 @@
         <nav class="header-nav ms-auto">
           <ul class="d-flex align-items-center">
     
-            <li class="nav-item d-block d-lg-none">
-              <a class="nav-link nav-icon search-bar-toggle " href="#">
-                <i class="bi bi-search"></i>
-              </a>
-            </li><!-- End Search Icon-->
-    
+            <!-- Notification Icon -->
             <li class="nav-item dropdown">
-    
-              <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+              <a class="nav-link nav-icon" href="#" @click="fetchNotifications" data-bs-toggle="dropdown">
                 <i class="bi bi-bell"></i>
-                <span class="badge bg-primary badge-number">4</span>
-              </a><!-- End Notification Icon -->
+                <span class="badge bg-danger badge-number">{{ unreadCount }}</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" @click.stop>
+                <!-- Title and Tabs -->
+                <li class="dropdown-header">
+                  <span class="notifications-title">Notifications</span>
+                  <nav class="notifications-nav">
+                    <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
+                    <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
+                  </nav>
+                </li>
+                <hr />
+
+                <!-- Notifications List -->
+                <li
+                v-for="notification in filteredNotifications"
+                :key="notification.id"
+                :class="['dropdown-item', notification.status === 'unread' ? 'notification-unread' : 'notification-read']"
+                @click="markAsRead(notification.id)"
+                >
+                  <div class="notification-content">
+                    <!-- Icon in a white circle -->
+                    <div class="notification-icon-circle">
+                      <i :class="notification.icon"></i> <!-- Icon from the database -->
+                    </div>
+                
+                    <!-- Message and Time -->
+                    <div class="notification-details">
+                      <span class="notification-message">{{ truncateMessage(notification.message) }}</span>
+                      <span class="notification-time">{{ computeTimeAgo(notification.created_at) }}</span> <!-- Time below the message -->
+                    </div>
+                
+                    <!-- Unread Indicator Circle -->
+                    <span class="notification-indicator" v-if="notification.status === 'unread'"></span>
+                  </div>
+                </li>
+              
+                <li v-if="filteredNotifications.length === 0" class="dropdown-item text-center">No notifications</li>
+              </ul>
+            </li>
     
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-    
-              </ul><!-- End Notification Dropdown Items -->
-    
-            </li><!-- End Notification Nav -->
-    
-            <li class="nav-item dropdown">
-    
-              <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                <i class="bi bi-chat-left-text"></i>
-                <span class="badge bg-success badge-number">3</span>
-              </a><!-- End Messages Icon -->
-    
-    
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-    
-              </ul><!-- End Messages Dropdown Items -->
-    
-            </li><!-- End Messages Nav -->
-    
+            <!-- Profile Nav -->
             <li class="nav-item dropdown pe-3">
     
               <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                <img src="./img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                <span class="d-none d-md-block dropdown-toggle ps-2">A. De Guzman</span>
-              </a><!-- End Profile Iamge Icon -->
-    
+                <div style="width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
+                  <div :style="getImageStyle(infos.image)"></div>
+                </div>
+                <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
+              </a><!-- End Profile Image Icon -->
+
               <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                 <li class="dropdown-header">
-                  <h6>Ariel James De Guzman</h6>
-                  <span>Web Designer</span>
+                  <h6>{{ infos.fullname }}</h6>
+                  <span>{{ infos.position }}</span>
                 </li>
                 <li>
                   <hr class="dropdown-divider">
@@ -122,119 +137,121 @@
         <!-- ======= Sidebar ======= -->
         <aside id="sidebar" class="sidebar">
     
-        <ul class="sidebar-nav" id="sidebar-nav">
-    
-          
-          <li class="nav-heading">Home</li>
-    
-          <li class="nav-item">
-            <a class="nav-link collapsed" href="/dashboard">
-              <i class="bi bi-grid"></i>
-              <span>Dashboard</span>
-            </a>
-          </li><!-- End Dashboard Nav -->
-    
-          
-          <li class="nav-heading">Pages</li>
-    
-          <li class="nav-item">
-            <a class="nav-link collapsed" href="databaseppe">
-              <i class="bi bi-clipboard-data"></i>
-              <span>Database PPE</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-              <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-              <li>
-                <a href="serviceable">
-                  <i class="bi bi-circle"></i><span>Serviceable</span>
-                </a>
-              </li>
-              <li>
-                <a href="unserviceable">
-                  <i class="bi bi-circle"></i><span>Unserviceable</span>
-                </a>
-              </li>
-              <li>
-                <a href="returnedppe">
-                  <i class="bi bi-circle"></i><span>Returned PPE</span>
-                </a>
-              </li>
-              <li>
-                <a href="transferedppe">
-                  <i class="bi bi-circle"></i><span>Transfered PPE</span>
-                </a>
-             </li>
-             <li>
-              <a href="disposedppe">
-                <i class="bi bi-circle"></i><span>Disposed PPE</span>
+          <ul class="sidebar-nav" id="sidebar-nav">
+      
+            
+            <li class="nav-heading">Home</li>
+      
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/dashboard">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
               </a>
-           </li>
-            </ul>
-          </li><!-- End Components Nav -->
-    
-          <li class="nav-item">
-            <a class="nav-link " data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-              <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
-            </a>
-            <ul id="forms-nav" class="nav-content " data-bs-parent="#sidebar-nav">
-              <li>
-                <a href="propertysticker">
-                  <i class="bi bi-circle"></i><span>Property Sticker</span>
-                </a>
+            </li><!-- End Dashboard Nav -->
+      
+            
+            <!-- Pages Section -->
+            <li class="nav-heading">Pages</li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="databaseppe">
+                <i class="bi bi-clipboard-data"></i>
+                <span>Database PPE</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
+              </a>
+              <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                  <a href="/serviceable">
+                    <i class="bi bi-clipboard-check"></i><span>Serviceable</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="unserviceable">
+                    <i class="bi bi-clipboard-x"></i><span>Unserviceable</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="returnedppe">
+                    <i class="bi bi-box-arrow-left"></i><span>Returned PPE</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="transferedppe">
+                    <i class="bi bi-box-arrow-right"></i><span>Transfered PPE</span>
+                  </a>
               </li>
               <li>
-                <a class="nav-link active" href="ledgercard">
-                  <i class="bi bi-circle"></i><span>PPE Documents</span>
-                </a>
+                  <a href="disposedppe">
+                    <i class="bi bi-trash"></i><span>Disposed PPE</span>
+                  </a>
               </li>
-             
-            </ul>
-          </li><!-- End Forms Nav -->
-  
-          <li class="nav-heading">input</li>
-  
-          <li class="nav-item">
-          <a class="nav-link collapsed" href="/workspace">
-              <i class="bi bi-folder-plus"></i>
-              <span>Workspace</span>
-          </a>
-          </li>
-  
-          <li class="nav-heading">Stocks</li>
-  
-          <li class="nav-item">
-            <a class="nav-link collapsed" href="/inventory">
-              <i class="bi bi-folder-plus"></i>
-              <span>Inventory</span>
-            </a>
-          </li>
-  
-          <li class="nav-heading">Ordering</li>
-      
-          <li class="nav-item">
-            <a class="nav-link collapsed" href="/ordering">
-              <i class="bi bi-folder-plus"></i>
-              <span>Ordering</span>
-            </a>
-          </li>
-  
-          <li class="nav-heading">Security</li>
-  
-          <li class="nav-item">
-            <a class="nav-link collapsed" href="/userverify">
-              <i class="bi bi-folder-plus"></i>
-              <span>User Verification</span>
-            </a>
-          </li><!-- End Dashboard Nav -->
-    
-      
-    
-        </ul>
-    
+              </ul>
+            </li><!-- End Components Nav -->
+            <li class="nav-item">
+              <a class="nav-link" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
+              </a>
+              <ul id="forms-nav" class="nav-content " data-bs-parent="#sidebar-nav">
+                <li>
+                  <a href="propertysticker">
+                    <i class="bi bi-sticky"></i><span>Property Sticker</span>
+                  </a>
+                </li>
+                <li>
+                  <a class="nav-link active" href="ledgercard">
+                    <i class="bi bi-folder2-open"></i><span>PPE Documents</span>
+                  </a>
+                </li>
+              </ul>
+            </li><!-- End Forms Nav -->
+            <!-- Input Section -->
+            <li class="nav-heading">input</li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/workspace">
+                <i class="bi bi-pencil-square"></i>
+                <span>Workspace</span>
+              </a>
+            </li><!-- End Input Nav -->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/logbook">
+                <i class="bi bi-calendar-check"></i>
+                <span>Logbook</span>
+              </a>
+            </li><!-- End Input Nav -->
+            <!-- Stocks Section -->
+            <li class="nav-heading">Stocks</li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/inventory">
+                <i class="bi bi-box-seam"></i>
+                <span>Inventory</span>
+              </a>
+            </li><!-- End Stocks Nav -->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/supplies">
+                <i class="bi bi-stack"></i>
+                <span>Supplies</span>
+              </a>
+            </li>
+            <!-- Ordering Section -->
+            <li class="nav-heading">Ordering</li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/ordering">
+                <i class="bi bi-shop"></i>
+                <span>Ordering</span>
+              </a>
+            </li><!-- End Ordering Nav -->
+            <!-- Security Section -->
+            <li class="nav-heading">Security</li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/userverify">
+                <i class="bi bi-person-check"></i>
+                <span>User Verification</span>
+              </a>
+            </li><!-- End Security Nav -->
+          </ul>
         </aside><!-- End Sidebar-->
     
     
@@ -257,49 +274,50 @@
     
         <section class="section dashboard">
           <div class="row">
-            <!-- Card 1 -->
-            <div class="col-lg-4" @click="openModal(1)">
-              <div class="card text-center h-100">
-                <div class="card-body">
-                  <div class="image-container">
-                    <img src="./img/IIRUSP.png" class="img-fluid zoom-on-hover" alt="Document 1 Image">
-                  </div>
-                  <div class="mt-3">
-                    <h5 class="card-title mt-2">INVENTORY AND INSPECTION REPORT OF UNSERVICEABLE SEMI-EXPENDABLE PROPERTY</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
-        
-            <!-- Card 2 -->
-            <div class="col-lg-4" @click="openModal(2)">
-              <div class="card text-center h-100">
-                <div class="card-body">
-                  <div class="image-container">
-                    <img src="./img/RPCSP.png" class="img-fluid zoom-on-hover" alt="Document 2 Image">
-                  </div>
-                  <div class="mt-3">
-                    <h5 class="card-title mt-2">REPORT ON THE PHYSICAL COUNT OF SEMI-EXPENDABLE PROPERTY</h5>
+          
+                          <!-- Card 1 -->
+                <div class="col-lg-4" @click="openModal(1)">
+                  <div class="card info-card inventory-card">
+                    <div class="card-body">
+                      <div class="image-container">
+                        <img src="./img/IIRUSP.png" class="img-fluid zoom-on-hover" alt="Document 1 Image">
+                      </div>
+                      <div class="mt-3">
+                        <h5 class="card-title mt-2">INVENTORY AND INSPECTION REPORT OF UNSERVICEABLE SEMI-EXPENDABLE PROPERTY</h5>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-             
-        
-            <!-- Card 3 -->
-            <div class="col-lg-4" @click="openModal(3)">
-              <div class="card text-center h-100">
-                <div class="card-body">
-                  <div class="image-container">
-                    <img src="./img/RegSPI.png" class="img-fluid zoom-on-hover" alt="Document 3 Image">
-                  </div>
-                  <div class="mt-3">
-                    <h5 class="card-title mt-2">REGISTRY OF SEMI-EXPENDABLE PROPERTY ISSUED</h5>
+
+                <!-- Card 2 -->
+                <div class="col-lg-4" @click="openModal(2)">
+                  <div class="card info-card report-card">
+                    <div class="card-body">
+                      <div class="image-container">
+                        <img src="./img/RPCSP.png" class="img-fluid zoom-on-hover" alt="Document 2 Image">
+                      </div>
+                      <div class="mt-3">
+                        <h5 class="card-title mt-2">REPORT ON THE PHYSICAL COUNT OF SEMI-EXPENDABLE PROPERTY</h5>
+                      </div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </div>
-          </div>
+
+                <!-- Card 3 -->
+                <div class="col-lg-4" @click="openModal(3)">
+                  <div class="card info-card registry-card">
+                    <div class="card-body">
+                      <div class="image-container">
+                        <img src="./img/RegSPI.png" class="img-fluid zoom-on-hover" alt="Document 3 Image">
+                      </div>
+                      <div class="mt-3">
+                        <h5 class="card-title mt-2">REGISTRY OF SEMI-EXPENDABLE PROPERTY ISSUED</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                  </div>
       
           <!-- Modal 1 -->
           <div :class="{ 'modal-open': isModalOpen && modalIndex === 1 }">
@@ -311,11 +329,12 @@
     <h5 class="modal-title text-white" style="background-color: seagreen; padding: 5px 15px; border-radius: 5px; text-transform: capitalize; flex-grow: 1; display: flex; justify-content: center; align-items: center;">
         Inventory and inspection report of unserviceable semi-expendable property
     </h5>
-    <button class="closebtn" type="button" @click="closeModal" style="background: transparent; border: none; position: relative; z-index: 1;">
-        <span class="X"></span>
-        <span class="Y"></span>
-        <div class="close" style="font-size: 12px; color: white;">Close</div>
-    </button>
+   
+    <button class="closebtn" type="button" @click="closeModal">
+                    <span class="X"></span>
+                    <span class="Y"></span>
+                    <div class="close">Close</div>
+                  </button>
 </div>
 
 
@@ -425,10 +444,29 @@
           <br>        
                   <div class="modal-body">
                     <!-- Responsive Container -->
-                    <div class="d-flex flex-column flex-lg-row">
-                      <!-- Table Content -->
+                      <div class="d-flex justify-content-between align-items-center">
+                      <!-- Show Entries Dropdown -->
+  
                       <div class="table-responsive w-100">
                         <div v-show="currentTab === 'view'" id="view-tab">
+                          <div class="d-flex flex-column flex-lg-row">
+                            <!-- Table Content -->
+                            <div class="d-flex align-items-center">
+                              <span class="me-2">Show</span>
+                              <div class="dropdown" style="display: inline-block;">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+                                  {{ pageSize }}
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+                                  <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+                                  <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+                                  <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+                                  <!-- Add more options as needed -->
+                                </ul>
+                              </div>
+                              <span class="ms-2">entries</span>
+                            </div>
+                            </div>
                           <table class="office-table">
                             <thead>
                               <tr>
@@ -447,7 +485,10 @@
                               </tr>
                             </thead>
                             <tbody>
-                              <tr v-for="unservice in unserv" :key="unservice.id" @click="openUpdateTab(unservice.id)">
+
+                         
+                              <tr v-for="unservice in unserv" :key="unservice.id" @click="openUpdateTab(unservice.id)">                              
+
                                 <td>{{ unservice.issue_date }}</td>
                                 <td>{{ unservice.fulldescription }}</td>
                                 <td>{{ unservice.propertynumber }}</td>
@@ -458,9 +499,38 @@
                                 <td>{{ unservice.rec_totalcost }}</td>
                                 <td>{{ unservice.remarks }}</td>
                               </tr>
+
+
+                        
+
+                        
+                        
                             </tbody>
                           </table>
+                                        <!-- Pagination... -->
+                    <div class="card-body">
+                      <div class="text-center">
+                        <nav aria-label="Page navigation">
+                          <ul class="pagination justify-content-center mb-0"> <!-- Center pagination -->
+                            <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+                              <a class="page-link" href="#" @click.prevent="currentPage = Math.max(currentPage - 1, 1)">Previous</a>
+                            </li>
+                            <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': currentPage === page }">
+                              <a class="page-link" href="#" @click.prevent="currentPage = page">{{ page }}</a>
+                            </li>
+                            <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+                              <a class="page-link" href="#" @click.prevent="currentPage = Math.min(currentPage + 1, totalPages)"><b>Next</b></a>
+                            </li>
+                          </ul>
+                        </nav>
+                      </div>
+                      <div class="mt-3">
+                        <p>{{ currentPageRecords }}</p> <!-- Moved current page records here -->
+                      </div>
+                    </div>
                         </div>
+                        <hr>
+
           
                         <div v-show="currentTab === 'update'" id="update-tab">
                           <div class="modal-content">
@@ -580,7 +650,9 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">REPORT ON THE PHYSICAL COUNT OF SEMI-EXPENDABLE PROPERTY</h5>
+                    <h5 class="modal-title text-white" style="background-color: seagreen; padding: 5px 15px; border-radius: 5px; text-transform: capitalize; flex-grow: 1; display: flex; justify-content: center; align-items: center;">
+                      Report on the Physical Count of Semi-Expendable Property
+                    </h5>
                    
                   <button class="closebtn" type="button" @click="closeModal">
                     <span class="X"></span>
@@ -906,11 +978,6 @@
             </div>
           </div>
 
-
-
-
-
-  
       
           <!-- Modal 3 -->
           <div :class="{ 'modal-open': isModalOpen && modalIndex === 3 }">
@@ -918,7 +985,9 @@
               <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <h5 class="modal-title">REGISTRY OF SEMI-EXPENDABLE PROPERTY ISSUED</h5>
+                    <h5 class="modal-title text-white" style="background-color: seagreen; padding: 5px 15px; border-radius: 5px; text-transform: capitalize; flex-grow: 1; display: flex; justify-content: center; align-items: center;">
+                      Registry of Semi-Expendable Property Issued
+                    </h5>
                     <button class="closebtn" type="button" @click="closeModal">
                     <span class="X"></span>
                     <span class="Y"></span>
@@ -928,75 +997,75 @@
                   <hr>
                   <div class="modal-body">
                     <div class="d-flex justify-content-start">
-  <div class="col-lg-3">
-    <select v-model="selectedClassification" class="form-select" @change="fetchFilteredData">
-      <option value="">All Classifications</option>
-      <option v-for="classification in classifications" :key="classification" :value="classification.classification">
-        {{ classification.classification }}
-      </option>
-    </select>
-  </div>
+                        <div class="col-lg-3">
+                          <select v-model="selectedClassification" class="form-select" @change="fetchFilteredData">
+                            <option value="">All Classifications</option>
+                            <option v-for="classification in classifications" :key="classification" :value="classification.classification">
+                              {{ classification.classification }}
+                            </option>
+                          </select>
+                        </div>
 
-  <div class="ml-auto d-flex align-items-center">
-    <button 
-      v-if="!isRegSPIPdfVisible"
-      class="showbtn me-4" 
-      @click="RegSPIshowPDF"
-    >
-      <span class="transition"></span>
-      <span class="gradient"></span>
-      <span class="label">
-        <i class="fas fa-file-pdf"></i> Show PDF
-      </span>
-    </button>
+                        <div class="ml-auto d-flex align-items-center">
+                          <button 
+                            v-if="!isRegSPIPdfVisible"
+                            class="showbtn me-4" 
+                            @click="RegSPIshowPDF"
+                          >
+                            <span class="transition"></span>
+                            <span class="gradient"></span>
+                            <span class="label">
+                              <i class="fas fa-file-pdf"></i> Show PDF
+                            </span>
+                          </button>
 
-    <!-- Close PDF Button -->
-    <button 
-      v-if="isRegSPIPdfVisible"
-      class="closepdfbtn me-4" 
-      @click="RegSPIPdfClose" 
-    >
-      <span class="transition"></span>
-      <span class="gradient"></span>
-      <span class="label">
-        <i class="fas fa-times"></i> Close PDF
-      </span>
-    </button>
+                          <!-- Close PDF Button -->
+                          <button 
+                            v-if="isRegSPIPdfVisible"
+                            class="closepdfbtn me-4" 
+                            @click="RegSPIPdfClose" 
+                          >
+                            <span class="transition"></span>
+                            <span class="gradient"></span>
+                            <span class="label">
+                              <i class="fas fa-times"></i> Close PDF
+                            </span>
+                          </button>
 
-    <!-- Download PDF Button -->
-    <button 
-      class="downloadbtn" 
-      @click="RegSPIdownloadPDF"
-    >
-      <div class="button-wrapper">
-        <div class="text">Download PDF</div>
-        <span class="icon">
-          <svg 
-            xmlns="http://www.w3.org/2000/svg" 
-            aria-hidden="true" 
-            role="img" 
-            width="2em" 
-            height="2em" 
-            preserveAspectRatio="xMidYMid meet" 
-            viewBox="0 0 24 24"
-          >
-            <path 
-              fill="none" 
-              stroke="currentColor" 
-              stroke-linecap="round" 
-              stroke-linejoin="round" 
-              stroke-width="2" 
-              d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"
-            ></path>
-          </svg>
-        </span>
-      </div>
-    </button>
-  </div>
-</div>
+                          <!-- Download PDF Button -->
+                          <button 
+                            class="downloadbtn" 
+                            @click="RegSPIdownloadPDF"
+                          >
+                            <div class="button-wrapper">
+                              <div class="text">Download PDF</div>
+                              <span class="icon">
+                                <svg 
+                                  xmlns="http://www.w3.org/2000/svg" 
+                                  aria-hidden="true" 
+                                  role="img" 
+                                  width="2em" 
+                                  height="2em" 
+                                  preserveAspectRatio="xMidYMid meet" 
+                                  viewBox="0 0 24 24"
+                                >
+                                  <path 
+                                    fill="none" 
+                                    stroke="currentColor" 
+                                    stroke-linecap="round" 
+                                    stroke-linejoin="round" 
+                                    stroke-width="2" 
+                                    d="M12 15V3m0 12l-4-4m4 4l4-4M2 17l.621 2.485A2 2 0 0 0 4.561 21h14.878a2 2 0 0 0 1.94-1.515L22 17"
+                                  ></path>
+                                </svg>
+                              </span>
+                            </div>
+                          </button>
+                        </div>
+                      </div>
 
-<hr>
-                    
+                      <hr>
+    
                     <div class="content-wrapper">
                       <table class="office-table">
                         <thead>
@@ -1089,7 +1158,10 @@
   export default {
     data() {
       return {
+        notifications: [],
+        filter: 'all',
         info: [],
+        infos:[],
         unserv: [],
         highdata: [],
         lowdata: [],
@@ -1130,37 +1202,40 @@
       };
     },
     watch: {
-    startDate() {
-      this.IIRUSPgetData();
-      this.IIRUSPshowPDF();
+      startDate() {
+        this.IIRUSPgetData();
+        this.IIRUSPshowPDF();
+      },
+      endDate() {
+        this.IIRUSPgetData();
+        this.IIRUSPshowPDF();
+      },
+      RPCSPHIGHstartDate() {
+        this.RPCSPHIGHgetData();
+        this.RPCSPHIGHshowPDF();
+      },
+      RPCSPHIGHendDate() {
+        this.RPCSPHIGHgetData();
+        this.RPCSPHIGHshowPDF();
+      },
+      RPCSPLOWstartDate() {
+        this.RPCSPLOWgetData();
+        this.RPCSPLOWshowPDF();
+      },
+      RPCSPLOWendDate() {
+        this.RPCSPLOWgetData();
+        this.RPCSPLOWshowPDF();
+      },
     },
-    endDate() {
-      this.IIRUSPgetData();
-      this.IIRUSPshowPDF();
-    },
-    RPCSPHIGHstartDate() {
-      this.RPCSPHIGHgetData();
-      this.RPCSPHIGHshowPDF();
-    },
-    RPCSPHIGHendDate() {
-      this.RPCSPHIGHgetData();
-      this.RPCSPHIGHshowPDF();
-    },
-    RPCSPLOWstartDate() {
-      this.RPCSPLOWgetData();
-      this.RPCSPLOWshowPDF();
-    },
-    RPCSPLOWendDate() {
-      this.RPCSPLOWgetData();
-      this.RPCSPLOWshowPDF();
-    },
-  },
     created() {
       this.getInfo();
       this.IIRUSPgetData();
       this.RPCSPHIGHgetData();
       this.RPCSPLOWgetData();
       this.fetchFilteredData();
+      this.fetchNotifications();
+      this.user();
+      this.getUserInfo(this.infos.fullname);
     },
     mounted() {
       flatpickr('.custom-datepicker', {
@@ -1185,7 +1260,56 @@
     this.fetchFilteredData(); // Fetch all data initially
   },
 
-    methods: {
+  computed: {
+    filteredNotifications() {
+      if (this.filter === 'unread') {
+        return this.notifications.filter(notification => notification.status === 'unread');
+      }
+      return this.notifications;
+    },
+    unreadCount() {
+      return this.notifications.filter(notification => notification.status === 'unread').length;
+    }
+  },
+
+  methods: {
+      async fetchNotifications() {
+        try {
+          const response = await axios.get('notification');
+          this.notifications = response.data; // Set notifications to the fetched data
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      computeTimeAgo(dateString) {
+        const now = Date.now(); // Current time in milliseconds
+        const notificationDate = new Date(dateString).getTime(); // Convert dateString to milliseconds
+        const secondsAgo = Math.floor((now - notificationDate) / 1000); // Difference in seconds
+
+        if (secondsAgo < 60) return `${secondsAgo}s ago`;
+        if (secondsAgo < 3600) return `${Math.floor(secondsAgo / 60)}m ago`;
+        if (secondsAgo < 86400) return `${Math.floor(secondsAgo / 3600)}h ago`;
+        if (secondsAgo < 2592000) return `${Math.floor(secondsAgo / 86400)}d ago`;
+        return `${Math.floor(secondsAgo / 2592000)}mo ago`;
+      },
+      truncateMessage(message) {
+        return message.length > 70 ? message.substring(0, 67) + '...' : message;
+      },
+      filterNotifications(type) {
+        this.filter = type;
+      },
+
+      async markAsRead(notificationId) {
+        try {
+          const response = await axios.post(`/markAsRead/${notificationId}`);
+          console.log(response.data.msg); // Log the success message
+
+          // Re-fetch notifications after marking one as read
+          this.fetchNotifications();
+        } catch (error) {
+          console.error('Network error:', error.message);
+        }
+      },
 
       addCustomButtons(flatpickrInstance) {
       // Create 'Reset' button
@@ -1292,7 +1416,7 @@
            const end = this.endDate ? `&end_date=${this.endDate}` : '';
            const queryParams = start || end ? `?${start}${end}` : '';
 
-           this.pdfUrl = `https://inventrack.online/backend/IIRUSP${queryParams}`;
+           this.pdfUrl = `http://dilg.test/backend/IIRUSP${queryParams}`;
            this.showPdf = true;
          },
         async IIRUSPdownloadPDF() {
@@ -1301,7 +1425,7 @@
             const end = this.endDate ? `&end_date=${this.endDate}` : '';
             const queryParams = start || end ? `?${start}${end}` : '';
 
-            const response = await fetch(`https://inventrack.online/backend/IIRUSP${queryParams}`, {
+            const response = await fetch(`http://dilg.test/backend/IIRUSP${queryParams}`, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
@@ -1332,7 +1456,7 @@
             const end = this.endDate ? `&end_date=${this.endDate}` : '';
             const queryParams = start || end ? `?${start}${end}` : '';
 
-            const response = await axios.get(`https://inventrack.online/backend/IIRUSPgetData${queryParams}`);
+            const response = await axios.get(`http://dilg.test/backend/IIRUSPgetData${queryParams}`);
             this.unserv = response.data;
           } catch (error) {
             console.log(error);
@@ -1342,13 +1466,13 @@
 
 
       // IIRUSPshowPDF() {
-      //   this.pdfUrl = 'https://inventrack.online/backend/IIRUSP'; // Set the path to your PDF file
+      //   this.pdfUrl = 'http://dilg.test/backend/IIRUSP'; // Set the path to your PDF file
       //   this.showPdf = true;
       // },
       // async IIRUSPdownloadPDF() {
       //   try {
       //     // Send HTTP request to backend to generate PDFs for all records
-      //     const response = await fetch('https://inventrack.online/backend/IIRUSP', {
+      //     const response = await fetch('http://dilg.test/backend/IIRUSP', {
       //         method: 'GET',
       //         headers: {
       //             'Content-Type': 'application/json',
@@ -1421,7 +1545,7 @@
         const queryParams = start || end ? `?${start}${end}` : '';
 
         
-        this.RPCSPHIGHpdfUrl = `https://inventrack.online/backend/RPCSPHIGH${queryParams}`; // Set the path to your PDF file
+        this.RPCSPHIGHpdfUrl = `http://dilg.test/backend/RPCSPHIGH${queryParams}`; // Set the path to your PDF file
         this.isRPCSPHIGHPdfVisible = true;
       },
       async RPCSPHIGHdownloadPDF() {
@@ -1432,7 +1556,7 @@
 
           
           // Send HTTP request to backend to generate PDFs for all records
-          const response = await fetch(`https://inventrack.online/backend/RPCSPHIGH${queryParams}`, {
+          const response = await fetch(`http://dilg.test/backend/RPCSPHIGH${queryParams}`, {
               method: 'GET',
               headers: {
                   'Content-Type': 'application/json',
@@ -1465,7 +1589,7 @@
         const queryParams = start || end ? `?${start}${end}` : '';
 
         
-        this.RPCSPLOWpdfUrl = `https://inventrack.online/backend/RPCSPLOW${queryParams}`; // Set the path to your PDF file
+        this.RPCSPLOWpdfUrl = `http://dilg.test/backend/RPCSPLOW${queryParams}`; // Set the path to your PDF file
         this.isRPCSPLOWPdfVisible = true;
       },
       async RPCSPLOWdownloadPDF() {
@@ -1477,7 +1601,7 @@
 
           
           // Send HTTP request to backend to generate PDFs for all records
-          const response = await fetch(`https://inventrack.online/backend/RPCSPLOW${queryParams}`, {
+          const response = await fetch(`http://dilg.test/backend/RPCSPLOW${queryParams}`, {
               method: 'GET',
               headers: {
                   'Content-Type': 'application/json',
@@ -1517,7 +1641,7 @@
 
       RegSPIshowPDF() {
         const classification = this.selectedClassification || ''; // Default to all records if no classification is selected
-        this.RegSPIpdfUrl = `https://inventrack.online/backend/RegSPI/${classification}`; // Set the path to your PDF file
+        this.RegSPIpdfUrl = `http://dilg.test/backend/RegSPI/${classification}`; // Set the path to your PDF file
         this.isRegSPIPdfVisible = true;
       },
       RegSPIPdfClose() {
@@ -1529,8 +1653,8 @@
           
           // Adjust the URL based on the classification
           const url = classification 
-            ? `https://inventrack.online/backend/RegSPI/${classification}` 
-            : `https://inventrack.online/backend/RegSPI`;
+            ? `http://dilg.test/backend/RegSPI/${classification}` 
+            : `http://dilg.test/backend/RegSPI`;
           
           // Send HTTP request to backend to generate PDFs for all records
           const response = await fetch(url, {
@@ -1563,7 +1687,7 @@
 
       async fetchClassifications() {
         try {
-          const response = await fetch('https://inventrack.online/backend/getClassifications');
+          const response = await fetch('http://dilg.test/backend/getClassifications');
           this.classifications = await response.json();
         } catch (error) {
           console.error('Error fetching classifications:', error);
@@ -1574,8 +1698,8 @@
     // Adjust the URL based on the classification
     const classification = this.selectedClassification || ''; // Default to an empty string if no classification is selected
     const url = classification 
-      ? `https://inventrack.online/backend/RegSPIdata/${classification}` 
-      : `https://inventrack.online/backend/RegSPIdata`;
+      ? `http://dilg.test/backend/RegSPIdata/${classification}` 
+      : `http://dilg.test/backend/RegSPIdata`;
 
     const response = await fetch(url);
     
@@ -1598,16 +1722,163 @@ filterTableData() {
 },
 
 
-        async logout(){
+async getUserInfo(id){
+              try {
+                  const inf = await axios.get(`getDataUser?id=${id}`);
+                  this.info = inf.data;
+              } catch (error) {
+                  console.log(error);
+              }
+          },
+
+      async user(){
+        try{
+          const id= sessionStorage.getItem("token")
+          const response = await axios.get(`/users/${id}`, {
+            id:id
+          })
+          this.infos = response.data;
+
+        }catch(error){
+          console.log(error);
+        }
+      },
+
+
+    getImageStyle(imageUrl) {
+      // Function to generate the background image style
+        if (!imageUrl) {
+          return {}; // Return an empty object if imageUrl is not provided
+        }
+        
+        // Set the background image URL
+        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        
+        // Set background size and position
+        const backgroundSize = 'cover'; // Cover the entire container
+        const backgroundPosition = '50% 50%'; // Center the image
+        
+        // Return the style object
+        return {
+          width: '100%',
+          height: '100%',
+          backgroundImage,
+          backgroundSize,
+          backgroundPosition,
+          borderRadius: '50%' // Make the background circular
+        };
+      },
+
+
+
+      async logout(){
           sessionStorage.removeItem('token');
           this.$router.push('/signin');
-        },
+      },
     }
   }
   </script>
   
   <style scoped>
-  
+
+/* Center the h5 titles */
+.card.info-card h5.card-title {
+  text-align: center; /* Center the title */
+  font-size: 16px; /* You can adjust this size if needed */
+  line-height: 1.2;
+}
+
+/* Adjust the height of each card */
+.card.info-card {
+  margin-bottom: 20px;
+  padding: 15px; /* Reduce the padding to reduce the overall height */
+  max-height: 350px; /* You can adjust the max-height if needed */
+  overflow: hidden; /* Ensures content doesn't spill over */
+}
+
+/* Optional: You can also adjust the image size slightly to fit the new height */
+.card.info-card .image-container img {
+  max-height: 200px; /* Reduce image size */
+  object-fit: contain; /* Ensure the image maintains its aspect ratio */
+}
+
+
+/* Specific styles for each card */
+.card.info-card.inventory-card { 
+  background-color: #F6FFE7; /* Soft mint */
+  color: #223A3F; /* Deep teal */
+  border-bottom: 20px solid #B9E8C7; /* Mint green */
+}
+
+.card.info-card.report-card { 
+  background-color: #FFEEDD; /* Light coral */
+  color: #2C2E40; /* Dark gray */
+  border-bottom: 20px solid #F7BFB4; /* Coral pink */
+}
+
+.card.info-card.registry-card { 
+  background-color: #D3E0F5; /* Soft medium blue */
+  color: #0F1A3C; /* Dark navy */
+  border-bottom: 20px solid #97B4D6; /* Muted blue */
+}
+
+.card.info-card {
+  margin-bottom: 20px;
+}
+
+.card.info-card.inventory-tracking-card {
+  background-color: #FFFAE5; /* Warm light yellow */
+  color: #47392B; /* Dark brown */
+  border-bottom: 17px solid #F3DFA6; /* Soft gold */
+}
+
+
+
+.pagination .page-item {
+  display: inline-block;
+  margin-right: 5px; /* Paggalang sa espasyo sa pagitan ng mga button */
+}
+
+.pagination .page-link {
+  border: 1px solid #ced4da; /* Bawasan ang lapad ng border */
+  color: #343a40; /* Itim na kulay ng text */
+  border-radius: 0; /* Alisin ang radius ng border */
+}
+
+.pagination .page-link:hover {
+  background-color: transparent; /* Alisin ang background color sa hover */
+}
+
+.pagination .page-item.disabled .page-link {
+  pointer-events: none; /* Huwag pahintulutan ang pag-click kung ang button ay hindi aktibo */
+}
+
+.pagination .page-item.active .page-link {
+  background-color: transparent; /* Alisin ang background color ng active button */
+  border-color: #ced4da; /* Bawasan ang lapad ng border ng active button */
+}
+
+.pagination .page-link:focus {
+  box-shadow: none; /* Alisin ang focus border */
+}
+
+.pagination .page-link.prev, .pagination .page-link.next {
+  padding: 0; /* Alisin ang padding */
+  border: none; /* Alisin ang border */
+  background: none; /* Alisin ang background */
+  font-size: 1.5rem; /* Taasan ang laki ng font */
+  color: #343a40; /* Itim na kulay ng text */
+}
+
+.pagination .page-link.prev::after, .pagination .page-link.next::after {
+  content: '\2190'; /* Isama ang Unicode character para sa arrow (left arrow) */
+}
+
+.pagination .page-link.next::after {
+  content: '\2192'; /* Isama ang Unicode character para sa arrow (right arrow) */
+}
+
+
   /* Modal Overlay */
   .modal-overlay {
     position: fixed;
@@ -1753,24 +2024,21 @@ filterTableData() {
   }
   .closebtn {
   position: relative;
-  width: 2em; /* Size */
-  height: 2em; /* Size */
+  width: 2.6em; /* Slightly reduced width */
+  height: 2.5em; /* Slightly reduced height */
   border: none;
-  background: transparent; /* Transparent background */
-  border-radius: 5px;
-  transition: background 0.3s;
+  background: none;
 }
 
 .X, .Y {
-  content: "";
+  content: '';
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 1.5em; /* Size */
-  height: 2px; /* Thickness */
-  background-color: rgb(0, 0, 0); /* Default color */
-  transform: translate(-50%, -50%); /* Centering */
-  transition: background-color 0.1s ease-in;
+  width: 1.5em; /* Reduced line width */
+  height: 1.5px;
+  background-color: black;
+  transform-origin: center;
 }
 
 .X {
@@ -1781,50 +2049,37 @@ filterTableData() {
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.closebtn:hover {
-  background-color: red; /* Change to red on hover */
-}
-
-.closebtn:hover .X,
-.closebtn:hover .Y {
-  background-color: white; /* Change lines to white on hover */
-}
-
 .close {
   position: absolute;
   display: flex;
-  padding: 0.5rem 1rem; /* Adjusted padding */
   align-items: center;
   justify-content: center;
-  top: -70%;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: -40%;
+  left: 70%;
   width: 3em;
   height: 1.7em;
-  font-size: 12px;
-  color: white; /* Text color */
-  border: none;
-  border-radius: 3px;
+  font-size: 16px;
+  background-color: black;
+  color: #000;
+  border: 1px solid #000;
   pointer-events: none;
   opacity: 0;
 }
 
-
 .closebtn:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Light hover effect */
+  background-color: rgb(210, 0, 0);
+}
+
+.closebtn:hover .X, .closebtn:hover .Y {
+  background-color: white; /* 'X' color changes to white on hover */
 }
 
 .closebtn:active {
-  background-color: rgba(255, 255, 255, 0.4); /* Active state */
-}
-
-.closebtn:hover .X,
-.closebtn:hover .Y {
-  background-color: white; /* Darken lines on hover */
+  background-color: rgb(130, 0, 0);
 }
 
 .closebtn:hover > .close {
-  animation: close 0.2s forwards 0.25s;
+  animation: close 0.2s forwards 1.25s;
 }
 
 @keyframes close {
@@ -1832,6 +2087,9 @@ filterTableData() {
     opacity: 1;
   }
 }
+
+
+
 
 .custom-datepicker {
   padding: 0.4rem 0.8rem;
@@ -2115,5 +2373,3 @@ filterTableData() {
 }
 
   </style>
-  
-  

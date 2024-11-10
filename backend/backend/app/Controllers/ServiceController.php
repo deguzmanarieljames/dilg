@@ -147,12 +147,12 @@ class ServiceController extends ResourceController
     //     }
     // }
 
-    public function getUserDataServiceable()
+    public function getUserDataServiceable($id)
     {
         // Retrieve user data to get the fullname
-        $id = $this->request->getVar('id');
+        $ids = $id;
         $user = new SigninModel();
-        $userData = $user->where('fullname', $id)->first();
+        $userData = $user->where('fullname', $ids)->first();
         
         if ($userData) {
             $fullname = $userData['fullname'];
@@ -160,12 +160,11 @@ class ServiceController extends ResourceController
             $main = new DatabasePPEModel();
             
             // Perform the join query
-            $data = $main->select('databaseppe.*, inventoryppe.entityname, inventoryppe.classification, inventoryppe.code, inventoryppe.article, inventoryppe.modelno, inventoryppe.serialno, inventoryppe.fulldescription, inventoryppe.image')
-                        ->join('inventoryppe', 'inventoryppe.particulars = databaseppe.particulars', 'left')
-                        ->where('databaseppe.empfullname', $fullname)
-                        ->where('databaseppe.status', 'Serviceable')
-                        ->orderBy('databaseppe.id', 'DESC')
-                        ->findAll();
+            $data = $main->where('databaseppe.imageverification IS NOT NULL')
+            ->where('databaseppe.remarks', 'SERVICEABLE')
+            ->where('databaseppe.acc_officer', $fullname)
+            ->orderBy('databaseppe.id', 'DESC')
+            ->findAll();
 
             // Manipulate image URLs
             foreach ($data as &$item) {
@@ -180,13 +179,13 @@ class ServiceController extends ResourceController
 
 
 
-    public function getUserDataUnserviceable()
+    public function getUserDataUnserviceable($id)
     {
         {
             // Retrieve user data to get the fullname
-            $id = $this->request->getVar('id');
+            $ids = $id;
             $user = new SigninModel();
-            $userData = $user->where('fullname', $id)->first();
+            $userData = $user->where('fullname', $ids)->first();
             
             if ($userData) {
                 $fullname = $userData['fullname'];
@@ -194,12 +193,11 @@ class ServiceController extends ResourceController
                 $main = new DatabasePPEModel();
                 
                 // Perform the join query
-                $data = $main->select('databaseppe.*, inventoryppe.entityname, inventoryppe.classification, inventoryppe.code, inventoryppe.article, inventoryppe.modelno, inventoryppe.serialno, inventoryppe.fulldescription, inventoryppe.image')
-                            ->join('inventoryppe', 'inventoryppe.particulars = databaseppe.particulars', 'left')
-                            ->where('databaseppe.empfullname', $fullname)
-                            ->where('databaseppe.status', 'Unserviceable')
-                            ->orderBy('databaseppe.id', 'DESC')
-                            ->findAll();
+                $data = $main->where('databaseppe.imageverification IS NOT NULL')
+                ->where('databaseppe.remarks', 'UNSERVICEABLE')
+                ->where('databaseppe.acc_officer', $fullname)
+                ->orderBy('databaseppe.id', 'DESC')
+                ->findAll();
     
                 // Manipulate image URLs
                 foreach ($data as &$item) {

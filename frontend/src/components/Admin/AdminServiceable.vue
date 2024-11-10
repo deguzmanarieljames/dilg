@@ -17,50 +17,66 @@
       <nav class="header-nav ms-auto">
         <ul class="d-flex align-items-center">
   
-          <li class="nav-item d-block d-lg-none">
-            <a class="nav-link nav-icon search-bar-toggle " href="#">
-              <i class="bi bi-search"></i>
-            </a>
-          </li><!-- End Search Icon-->
-  
+          <!-- Notification Icon -->
           <li class="nav-item dropdown">
-  
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+            <a class="nav-link nav-icon" href="#" @click="fetchNotifications" data-bs-toggle="dropdown">
               <i class="bi bi-bell"></i>
-              <span class="badge bg-primary badge-number">4</span>
-            </a><!-- End Notification Icon -->
+              <span class="badge bg-danger badge-number">{{ unreadCount }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" @click.stop>
+              <!-- Title and Tabs -->
+              <li class="dropdown-header">
+                <span class="notifications-title">Notifications</span>
+                <nav class="notifications-nav">
+                  <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
+                  <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
+                </nav>
+              </li>
+              <hr />
+
+              <!-- Notifications List -->
+              <li
+              v-for="notification in filteredNotifications"
+              :key="notification.id"
+              :class="['dropdown-item', notification.status === 'unread' ? 'notification-unread' : 'notification-read']"
+              @click="markAsRead(notification.id)"
+              >
+                <div class="notification-content">
+                  <!-- Icon in a white circle -->
+                  <div class="notification-icon-circle">
+                    <i :class="notification.icon"></i> <!-- Icon from the database -->
+                  </div>
+              
+                  <!-- Message and Time -->
+                  <div class="notification-details">
+                    <span class="notification-message">{{ truncateMessage(notification.message) }}</span>
+                    <span class="notification-time">{{ computeTimeAgo(notification.created_at) }}</span> <!-- Time below the message -->
+                  </div>
+              
+                  <!-- Unread Indicator Circle -->
+                  <span class="notification-indicator" v-if="notification.status === 'unread'"></span>
+                </div>
+              </li>
+            
+              <li v-if="filteredNotifications.length === 0" class="dropdown-item text-center">No notifications</li>
+            </ul>
+          </li>
+
   
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-  
-            </ul><!-- End Notification Dropdown Items -->
-  
-          </li><!-- End Notification Nav -->
-  
-          <li class="nav-item dropdown">
-  
-            <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-              <i class="bi bi-chat-left-text"></i>
-              <span class="badge bg-success badge-number">3</span>
-            </a><!-- End Messages Icon -->
-  
-  
-            <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-  
-            </ul><!-- End Messages Dropdown Items -->
-  
-          </li><!-- End Messages Nav -->
-  
+          <!-- Profile Nav -->
           <li class="nav-item dropdown pe-3">
   
             <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-              <img src="./img/profile-img.jpg" alt="Profile" class="rounded-circle">
-              <span class="d-none d-md-block dropdown-toggle ps-2">A. De Guzman</span>
-            </a><!-- End Profile Iamge Icon -->
-  
+              <div style="width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
+                <div :style="getImageStyle(infos.image)"></div>
+              </div>
+              <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
+            </a><!-- End Profile Image Icon -->
+
             <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
               <li class="dropdown-header">
-                <h6>Ariel James De Guzman</h6>
-                <span>Web Designer</span>
+                <h6>{{ infos.fullname }}</h6>
+                <span>{{ infos.position }}</span>
               </li>
               <li>
                 <hr class="dropdown-divider">
@@ -121,108 +137,121 @@
       <!-- ======= Sidebar ======= -->
       <aside id="sidebar" class="sidebar">
   
-      <ul class="sidebar-nav" id="sidebar-nav">
-  
-        
-        <li class="nav-heading">Home</li>
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/dashboard">
-            <i class="bi bi-grid"></i>
-            <span>Dashboard</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-  
-        
-        <li class="nav-heading">Pages</li>
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="databaseppe">
-            <i class="bi bi-clipboard-data"></i>
-            <span>Database PPE</span>
-          </a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="components-nav" class="nav-content " data-bs-parent="#sidebar-nav">
-            <li>
-              <a class="nav-link active" href="serviceable">
-                <i class="bi bi-circle"></i><span>Serviceable</span>
-              </a>
-            </li>
-            <li>
-              <a href="unserviceable">
-                <i class="bi bi-circle"></i><span>Unserviceable</span>
-              </a>
-            </li>
-            <li>
-              <a href="returnedppe">
-                <i class="bi bi-circle"></i><span>Returned PPE</span>
-              </a>
-            </li>
-            <li>
-              <a href="transferedppe">
-                <i class="bi bi-circle"></i><span>Transfered PPE</span>
-              </a>
-           </li>
-           <li>
-            <a href="disposedppe">
-              <i class="bi bi-circle"></i><span>Disposed PPE</span>
+        <ul class="sidebar-nav" id="sidebar-nav">
+    
+          
+          <li class="nav-heading">Home</li>
+    
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/dashboard">
+              <i class="bi bi-grid"></i>
+              <span>Dashboard</span>
             </a>
-         </li>
-          </ul>
-        </li><!-- End Components Nav -->
-  
-        <li class="nav-item">
-          <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-            <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
-          </a>
-          <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-            <li>
-              <a href="propertysticker">
-                <i class="bi bi-circle"></i><span>Property Sticker</span>
-              </a>
+          </li><!-- End Dashboard Nav -->
+    
+          
+          <!-- Pages Section -->
+          <li class="nav-heading">Pages</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="databaseppe">
+              <i class="bi bi-clipboard-data"></i>
+              <span>Database PPE</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="components-nav" class="nav-content " data-bs-parent="#sidebar-nav">
+              <li>
+                <a class="nav-link active" href="/serviceable">
+                  <i class="bi bi-clipboard-check"></i><span>Serviceable</span>
+                </a>
+              </li>
+              <li>
+                <a href="unserviceable">
+                  <i class="bi bi-clipboard-x"></i><span>Unserviceable</span>
+                </a>
+              </li>
+              <li>
+                <a href="returnedppe">
+                  <i class="bi bi-box-arrow-left"></i><span>Returned PPE</span>
+                </a>
+              </li>
+              <li>
+                <a href="transferedppe">
+                  <i class="bi bi-box-arrow-right"></i><span>Transfered PPE</span>
+                </a>
             </li>
             <li>
-              <a href="ledgercard">
-                <i class="bi bi-circle"></i><span>PPE Documents</span>
-              </a>
+                <a href="disposedppe">
+                  <i class="bi bi-trash"></i><span>Disposed PPE</span>
+                </a>
             </li>
-          </ul>
-        </li><!-- End Forms Nav -->
-  
-        <li class="nav-heading">input</li>
-
-        <li class="nav-item">
-        <a class="nav-link collapsed" href="/workspace">
-            <i class="bi bi-folder-plus"></i>
-            <span>Workspace</span>
-        </a>
-        </li>
-
-        <li class="nav-heading">Stocks</li>
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/inventory">
-            <i class="bi bi-folder-plus"></i>
-            <span>Inventory</span>
-          </a>
-        </li>
-
-
-        <li class="nav-heading">Security</li>
-
-        <li class="nav-item">
-          <a class="nav-link collapsed" href="/userverify">
-            <i class="bi bi-folder-plus"></i>
-            <span>User Verification</span>
-          </a>
-        </li><!-- End Dashboard Nav -->
-  
-      </ul>
-  
+            </ul>
+          </li><!-- End Components Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+              <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
+            </a>
+            <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+              <li>
+                <a href="propertysticker">
+                  <i class="bi bi-sticky"></i><span>Property Sticker</span>
+                </a>
+              </li>
+              <li>
+                <a href="ledgercard">
+                  <i class="bi bi-folder2-open"></i><span>PPE Documents</span>
+                </a>
+              </li>
+            </ul>
+          </li><!-- End Forms Nav -->
+          <!-- Input Section -->
+          <li class="nav-heading">input</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/workspace">
+              <i class="bi bi-pencil-square"></i>
+              <span>Workspace</span>
+            </a>
+          </li><!-- End Input Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/logbook">
+              <i class="bi bi-calendar-check"></i>
+              <span>Logbook</span>
+            </a>
+          </li><!-- End Input Nav -->
+          <!-- Stocks Section -->
+          <li class="nav-heading">Stocks</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/inventory">
+              <i class="bi bi-box-seam"></i>
+              <span>Inventory</span>
+            </a>
+          </li><!-- End Stocks Nav -->
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/supplies">
+              <i class="bi bi-stack"></i>
+              <span>Supplies</span>
+            </a>
+          </li>
+          <!-- Ordering Section -->
+          <li class="nav-heading">Ordering</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/ordering">
+              <i class="bi bi-shop"></i>
+              <span>Ordering</span>
+            </a>
+          </li><!-- End Ordering Nav -->
+          <!-- Security Section -->
+          <li class="nav-heading">Security</li>
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="/userverify">
+              <i class="bi bi-person-check"></i>
+              <span>User Verification</span>
+            </a>
+          </li><!-- End Security Nav -->
+        </ul>
       </aside><!-- End Sidebar-->
   
   
@@ -249,15 +278,15 @@
         
         <div class="row">
           <div class="col-lg-12">
-            <div class="card">
+            <div class="card" style="background-color: transparent;">
             <div class="card-body">
-            <h3 class="card-title">Serviceable PPE</h3>
           <br>
 
           <div class="row"> 
             <div class="col-lg-4">
               <div class="card">
                 <div class="card-body">
+                  <br>
                   <div class="box">
                     <video id="qr-video" playsinline></video>
                   </div>
@@ -273,258 +302,236 @@
               <div class="card">
                 <div class="card-body">
                   <hr>
-                  <h3><b>Result</b></h3>
+                  <h3><b>Scanned Data Result</b></h3>
                   <hr>
-                  <div id="display-data"></div>
-            
-                  <!-- Show these buttons once a QR code is scanned -->
-                  <div v-if="qrCodeData" style="display: flex; justify-content: center; gap: 10px;">
-                    <button  @click="storeRecordId()" style="background-color: green; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Return</button>
-                    <!-- <button @click="handleTransfer" style="background-color: blue; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Transfer</button>
-                    <button @click="handleDispose" style="background-color: red; color: white; padding: 10px 20px; border: none; border-radius: 5px;">Dispose</button> -->
+                  
+                  <!-- Display each field label with a placeholder for fetched data -->
+                  <div id="display-data" class="result-display">
+                    <div class="data-row">
+                      <span class="data-label">ENTITY NAME:</span>
+                      <span id="entityname" class="data-value">-</span>
+                    </div>
+                    <div class="data-row">
+                      <span class="data-label">PARTICULARS:</span>
+                      <span id="particulars" class="data-value">-</span>
+                    </div>
+                    <div class="data-row">
+                      <span class="data-label">CLASSIFICATION:</span>
+                      <span id="classification" class="data-value">-</span>
+                    </div>
+                    <div class="data-row">
+                      <span class="data-label">CODE:</span>
+                      <span id="code" class="data-value">-</span>
+                    </div>
+                    <div class="data-row">
+                      <span class="data-label">ACCOUNTABLE OFFICER:</span>
+                      <span id="acc_officer" class="data-value">-</span>
+                    </div>
+                    <div class="data-row">
+                      <span class="data-label">ISSUE QUANTITY:</span>
+                      <span id="issue_quantity" class="data-value">-</span>
+                    </div>
+                    <div class="data-row">
+                      <span class="data-label">REMARKS:</span>
+                      <span id="remarks" class="data-value">-</span>
+                    </div>
+                    <div class="data-row">
+                      <span class="data-label">CREATED AT:</span>
+                      <span id="created_at" class="data-value">-</span>
+                    </div>
                   </div>
             
-                  <!-- Message Display -->
-                  <div v-if="message" :class="messageClass">
-                    {{ message }}
-                  </div>
-            
-                  <!-- Countdown Display -->
-                  <div v-if="countdown > 0" class="countdown-message">
-                    Page will refresh in {{ countdown }} seconds...
+                  <!-- Show the Return button once a QR code is scanned -->
+                  <div v-if="qrCodeData" style="display: flex; justify-content: center; margin-top: 20px;">
+                    <button @click="storeRecordId()" class="btn btn-success">Return</button>
                   </div>
                 </div>
               </div>
-            </div>                      
+            </div>            
           </div>
           
-
-           <hr>
-                <!-- Dropdowns and Search Bar at the Top -->
-            <div class="row align-items-center">
-              <!-- Dropdown for Employee -->
-              <div class="col-lg-2">
-                <select v-model="selectedEmployee" class="form-select" @change="onEmployeeChange">
-                  <option value="">Select Employee</option>
-                  <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
-                </select>
-              </div>
-
-              <!-- Dropdown for Classification -->
-              <div class="col-lg-2">
-                <select v-model="selectedClassification" class="form-select" :disabled="!selectedEmployee" @change="onEmployeeChange">
-                  <option value="">Select Classification</option>
-                  <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
-                </select>
-              </div>
-
-              <!-- Dropdown for Article -->
-              <div class="col-lg-2">
-                <select v-model="selectedArticle" class="form-select" :disabled="!selectedEmployee || !selectedClassification" @change="onEmployeeChange">
-                  <option value="">Select Article</option>
-                  <option v-for="article in distinctArticle" :key="article" :value="article">{{ article }}</option>
-                </select>
-              </div>
-
-              <!-- Dropdown for Particular -->
-              <div class="col-lg-2">
-                <select v-model="selectedParticular" class="form-select" :disabled="!selectedEmployee || !selectedClassification || !selectedArticle">
-                  <option value="">Select Particular</option>
-                  <option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
-                </select>
-              </div>
-
-              <!-- Status dropdown centered -->
-              <div class="col-lg-2">
-                <select v-model="selectedStatus" class="form-select">
-                  <option value="">Current Status</option>
-                  <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
-                </select>
-              </div>
-
-              <!-- Search Bar -->
-              <div class="col-lg-2 d-flex justify-content-end">
-                <div class="InputContainer">
-                  <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
-                </div>
-              </div>
-            </div>
-
-            <hr>
-            <!-- Show Entries and Download Serviceable Document at the Bottom -->
-            <div class="row align-items-center">
-              <!-- Show Entries -->
-              <div class="col-lg-6">
-                <span class="me-2">Show</span> <!-- Added margin to the right -->
-                <div class="dropdown" style="display: inline-block;">
-                  <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
-                    {{ pageSize }}
-                  </button>
-                  <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
-                    <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
-                    <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
-                    <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
-                    <!-- Add more options as needed -->
-                  </ul>
-                </div>
-                <span class="ms-2">entries</span> <!-- Added margin to the left -->
-              </div>
-
-              <!-- Download Serviceable Document -->
-              <div class="col-lg-6 d-flex justify-content-end">
-                <div class="accordion accordion-body text-end" id="faq-group-2">
-                  <div class="accordion-item">
-                    <h2 class="accordion-header">
-                      <button class="accordion-button btn btn-outline-info collapsed" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
-                        Download Serviceable Documents
-                      </button>
-                    </h2>
-                    <!-- Loading animation -->
-                    <div v-if="loading" class="text-center mt-1">
-                      <div class="loading-line"></div>
-                    </div>
-                    <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
-                      <div class="row mt-3">
-                        <div class="col-lg-12 align-items-center">
-                          <button class="download" type="button" @click="serviceablePDF">
-                            <span class="button__text">Download</span>
-                            <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-
-            <div style="overflow-y: auto;">
-
-              <table class="table-compact">
-                <!-- Table header -->
-                <thead>
-                  <tr>
-                    <th rowspan="2"><b>Image</b></th>
-                    <th rowspan="2"><b>Entity Name</b></th>
-                    <th rowspan="2"><b>Semi-expendable</b><br><b>Property Classification</b></th>
-                    <th rowspan="2"><b>UACS</b><br><b>Object Code:</b></th>
-                    <th colspan="4"><b>Description</b></th>
-                    <th rowspan="2"><b>Full Description</b></th>
-                    <th rowspan="2"><b>Semi-expendable</b><br><b>Property Number:</b></th>
-                    <th rowspan="2"><b>Date</b></th>
-                    <th rowspan="2"><b>View All</b></th> <!-- View All button column -->
-                  </tr>
-                  <tr>
-                    <th><b>Article</b></th>
-                    <th><b>Particulars</b></th>
-                    <th><b>Model No.</b></th>
-                    <th><b>Serial No.</b></th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <!-- Table rows -->
-                  <tr v-for="info in paginatedInfo" :key="info.id">
-                    <td><img :src="info.image" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" /></td>
-                    <td>{{ info.entityname }}</td>
-                    <td>{{ info.classification }}</td>
-                    <td>{{ info.code }}</td>
-                    <td>{{ info.article }}</td>
-                    <td>{{ info.particulars }}</td>
-                    <td>{{ info.modelno }}</td>
-                    <td>{{ info.serialno }}</td>
-                    <td>{{ info.fulldescription }}</td>
-                    <td>{{ info.propertynumber }}</td>
-                    <td>{{ info.propertydate }}</td>
-                    <td>
-                      <button @click="toggleRowVisibility(info)">View All</button>
-                    </td>
-                  </tr>
-                  <tr v-if="info.showDetails" v-for="info in paginatedInfo" :key="info.id + '-details'">
-                    <!-- Detailed row with additional information -->
-                    <td colspan="12">
-                      <div>
-                        <p><b>ICS No:</b> {{ info.icsnumber }}</p>
-                        <p><b>JEV No:</b> {{ info.jevnumber }}</p>
-                        <p><b>Quantity:</b> {{ info.rec_quantity }}</p>
-                        <p><b>Unit:</b> {{ info.rec_unit }}</p>
-                        <p><b>Unit Cost:</b> {{ info.rec_unitcost }}</p>
-                        <p><b>Total Cost:</b> {{ info.rec_totalcost }}</p>
-                        <p><b>Issue/ Transfer/ Adjustments (Amount):</b> {{ info.isstranadjamount }}</p>
-                        <p><b>Accummulated Impairment Loss:</b> {{ info.accimploss }}</p>
-                        <p><b>Adjusted Cost:</b> {{ info.adjustedcost }}</p>
-                        <p><b>Nature of Repair:</b> {{ info.repair_nature }}</p>
-                        <p><b>Repair Amount:</b> {{ info.repair_amount }}</p>
-                        <p><b>Issue Item No:</b> {{ info.issue_itemno }}</p>
-                        <p><b>Issue Date:</b> {{ info.issue_date }}</p>
-                        <p><b>Issue Quantity:</b> {{ info.issue_quantity }}</p>
-                        <p><b>Issue Office/Officer:</b> {{ info.issue_officeofficer }}</p>
-                        <p><b>Transfer Date:</b> {{ info.transfer_date }}</p>
-                        <p><b>Transfer Quantity:</b> {{ info.transfer_quantity }}</p>
-                        <p><b>Transfer Office/Officer:</b> {{ info.transfer_officeofficer }}</p>
-                        <p><b>Disposal Date:</b> {{ info.disposal_date }}</p>
-                        <p><b>Disposal Quantity:</b> {{ info.disposal_quantity }}</p>
-                        <p><b>Disposal Office/Officer:</b> {{ info.disposal_officeofficer }}</p>
-                        <p><b>Balance Quantity:</b> {{ info.balancequantity }}</p>
-                        <p><b>Balance Amount:</b> {{ info.balanceamount }}</p>
-                        <p><b>Remarks:</b> {{ info.remarks }}</p>
-                        <p><b>Estimated Useful Life:</b> {{ info.estimatedlife }}</p>
-                        <p><b>Issued Officer:</b> {{ info.issued_officer }}</p>
-                        <p><b>Issued Position/Office:</b> {{ info.issued_offposition }}</p>
-                        <p><b>Issued Date:</b> {{ info.issued_date }}</p>
-                        <p><b>Accountable Officer:</b> {{ info.acc_officer }}</p>
-                        <p><b>Accountable Position:</b> {{ info.acc_empposition }}</p>
-                        <p><b>Accountable Date:</b> {{ info.acc_date }}</p>
-                        <p><b>ITR No:</b> {{ info.itr_no }}</p>
-                        <p><b>ITR Date:</b> {{ info.itr_date }}</p>
-                        <p><b>RRSP No:</b> {{ info.rrsp_no }}</p>
-                        <p><b>RRSP Date:</b> {{ info.rrsp_date }}</p>
-                        <p><b>Reason for Transfer:</b> {{ info.reasonfortrans }}</p>
-                        <p><b>Returned Quantity:</b> {{ info.reg_returned_qty }}</p>
-                        <p><b>Returned Office:</b> {{ info.reg_returned_off }}</p>
-                        <p><b>Re-issued Quantity:</b> {{ info.reg_reissued_qty }}</p>
-                        <p><b>Re-issued Office:</b> {{ info.reg_reissued_off }}</p>
-                        <p><b>Disposed Quantity:</b> {{ info.reg_disposed_qty }}</p>
-                        <p><b>Balance Quantity:</b> {{ info.reg_balance_quantity }}</p>
-                        <p><b>Amount:</b> {{ info.reg_amount }}</p>
-                        <p><b>Remarks:</b> {{ info.reg_remarks }}</p>
-                        <p><b>Property Officer:</b> {{ info.property_officer }}</p>
-                        <p><b>Head of Office/ Approving Authority:</b> {{ info.approving_authority }}</p>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-                        <!-- End Table with stripped rows -->
-            <br>
-            <!-- I-update ang table at idagdag ang pagination controls -->
-            <div class="card-body">
-              <!-- Iba pang content ng card... -->
-              <div class="text-center">
-              <nav aria-label="Page navigation">
-                <ul class="pagination justify-content-center mb-0"> <!-- Center pagination -->
-                  <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
-                    <a class="page-link" href="#" @click.prevent="currentPage = Math.max(currentPage - 1, 1)">Previous</a>
-                  </li>
-                  <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': currentPage === page }">
-                    <a class="page-link" href="#" @click.prevent="currentPage = page">{{ page }}</a>
-                  </li>
-                  <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
-                    <a class="page-link" href="#" @click.prevent="currentPage = Math.min(currentPage + 1, totalPages)"><b>Next</b></a>
-                  </li>
-                </ul>
-              </nav>
-              </div>
-              <div class="mt-3">
-              <p>{{ currentPageRecords }}</p> <!-- Moved current page records here -->
-              </div>
-              </div>
-            </div>
+        </div>
         </div>
     </div>
     </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="card" style="border-top: solid 30px #b8ffb4; border-bottom: solid 30px #b8ffb4;">
+        <div class="card-body">
+          <br>
+            <!-- Dropdowns and Search Bar at the Top -->
+        <div class="row align-items-center">
+          <!-- Dropdown for Employee -->
+          <div class="col-lg-2">
+            <select v-model="selectedEmployee" class="form-select" @change="onEmployeeChange">
+              <option value="">Select Employee</option>
+              <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
+            </select>
+          </div>
+
+          <!-- Dropdown for Classification -->
+          <div class="col-lg-2">
+            <select v-model="selectedClassification" class="form-select" :disabled="!selectedEmployee" @change="onEmployeeChange">
+              <option value="">Select Classification</option>
+              <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
+            </select>
+          </div>
+
+          <!-- Dropdown for Article -->
+          <div class="col-lg-2">
+            <select v-model="selectedArticle" class="form-select" :disabled="!selectedEmployee || !selectedClassification" @change="onEmployeeChange">
+              <option value="">Select Article</option>
+              <option v-for="article in distinctArticle" :key="article" :value="article">{{ article }}</option>
+            </select>
+          </div>
+
+          <!-- Dropdown for Particular -->
+          <div class="col-lg-2">
+            <select v-model="selectedParticular" class="form-select" :disabled="!selectedEmployee || !selectedClassification || !selectedArticle">
+              <option value="">Select Particular</option>
+              <option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
+            </select>
+          </div>
+
+          <!-- Status dropdown centered -->
+          <div class="col-lg-2">
+            <select v-model="selectedStatus" class="form-select">
+              <option value="">Current Status</option>
+              <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
+            </select>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="col-lg-2 d-flex justify-content-end">
+            <div class="InputContainer">
+              <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
+            </div>
+          </div>
+        </div>
+
+        <hr>
+        <!-- Show Entries and Download Serviceable Document at the Bottom -->
+        <div class="row align-items-center">
+          <!-- Show Entries -->
+          <div class="col-lg-6">
+            <span class="me-2">Show</span> <!-- Added margin to the right -->
+            <div class="dropdown" style="display: inline-block;">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+                {{ pageSize }}
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+                <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+                <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+                <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+                <!-- Add more options as needed -->
+              </ul>
+            </div>
+            <span class="ms-2">entries</span> <!-- Added margin to the left -->
+          </div>
+
+          <!-- Download Serviceable Document -->
+          <div class="col-lg-6 d-flex justify-content-end">
+            <div class="accordion accordion-body text-end" id="faq-group-2">
+              <div class="accordion-item">
+                <h2 class="accordion-header">
+                  <button class="accordion-button btn btn-outline-info collapsed" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
+                    Download Serviceable Documents
+                  </button>
+                </h2>
+                <!-- Loading animation -->
+                <div v-if="loading" class="text-center mt-1">
+                  <div class="loading-line"></div>
+                </div>
+                <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                  <div class="row mt-3">
+                    <div class="col-lg-12 align-items-center">
+                      <button class="download" type="button" @click="serviceablePDF">
+                        <span class="button__text">Download</span>
+                        <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+        <div style="overflow-y: auto;">
+
+          <table class="table-compact">
+            <!-- Table header -->
+            <thead>
+              <tr>
+                <th rowspan="2"><b>Image</b></th>
+                <th rowspan="2"><b>Entity Name</b></th>
+                <th rowspan="2"><b>Semi-expendable</b><br><b>Property Classification</b></th>
+                <th rowspan="2"><b>UACS</b><br><b>Object Code:</b></th>
+                <th colspan="4"><b>Description</b></th>
+                <th rowspan="2"><b>Full Description</b></th>
+                <th rowspan="2"><b>Semi-expendable</b><br><b>Property Number:</b></th>
+                <th rowspan="2"><b>Date</b></th>
+                <th rowspan="2"><b>View All</b></th> <!-- View All button column -->
+              </tr>
+              <tr>
+                <th><b>Article</b></th>
+                <th><b>Particulars</b></th>
+                <th><b>Model No.</b></th>
+                <th><b>Serial No.</b></th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <!-- Table rows -->
+              <tr v-for="info in paginatedInfo" :key="info.id">
+                <td><img :src="`http://dilg.test/backend/uploads/${info.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" /></td>
+                <td>{{ info.entityname }}</td>
+                <td>{{ info.classification }}</td>
+                <td>{{ info.code }}</td>
+                <td>{{ info.article }}</td>
+                <td>{{ info.particulars }}</td>
+                <td>{{ info.modelno }}</td>
+                <td>{{ info.serialno }}</td>
+                <td>{{ info.fulldescription }}</td>
+                <td>{{ info.propertynumber }}</td>
+                <td>{{ info.propertydate }}</td>
+                <td>
+                  <button @click="toggleRowVisibility(info)">View All</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+                    <!-- End Table with stripped rows -->
+        <br>
+        <!-- I-update ang table at idagdag ang pagination controls -->
+        <div class="card-body">
+          <!-- Iba pang content ng card... -->
+          <div class="text-center">
+          <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center mb-0"> <!-- Center pagination -->
+              <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+                <a class="page-link" href="#" @click.prevent="currentPage = Math.max(currentPage - 1, 1)">Previous</a>
+              </li>
+              <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': currentPage === page }">
+                <a class="page-link" href="#" @click.prevent="currentPage = page">{{ page }}</a>
+              </li>
+              <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+                <a class="page-link" href="#" @click.prevent="currentPage = Math.min(currentPage + 1, totalPages)"><b>Next</b></a>
+              </li>
+            </ul>
+          </nav>
+          </div>
+          <div class="mt-3">
+          <p>{{ currentPageRecords }}</p> <!-- Moved current page records here -->
+          </div>
+          </div>
+        </div>
+        </div>
+        </div>
+        </div>
 
                         <!-- Form inside the modal for the actions (hidden initially) -->
                         <div class="modal" v-if="showFormReturn">
@@ -629,7 +636,10 @@ export default{
   },
   data(){
       return{
+          notifications: [],
+          filter: 'all',
           info:[],
+          infos:[],
           particulars: "",
           empfullname: "",
           status: "",
@@ -729,7 +739,7 @@ export default{
           transfer_quantity: 0,
           reg_returned_off: '',
 
-
+          showDetails: false,
 
 
           message: '', // Message for displaying success or error
@@ -745,16 +755,72 @@ export default{
     this.stopButton = document.getElementById("stop-camera");
   },
   created(){
-      this.getInfo()
+      this.getInfo();
+      this.fetchNotifications();
+      this.user();
+      this.getUserInfo(this.infos.fullname);
   },
   methods:{
-    storeRecordId() {
-    // Save the record ID to session storage
-    sessionStorage.setItem('selectedRecordId', this.qrCodeData);
+    async fetchNotifications() {
+        try {
+          const response = await axios.get('notification');
+          this.notifications = response.data; // Set notifications to the fetched data
+        } catch (error) {
+          console.error(error);
+        }
+      },
+      computeTimeAgo(dateString) {
+        const now = Date.now(); // Current time in milliseconds
+        const notificationDate = new Date(dateString).getTime(); // Convert dateString to milliseconds
+        const secondsAgo = Math.floor((now - notificationDate) / 1000); // Difference in seconds
+
+        if (secondsAgo < 60) return `${secondsAgo}s ago`;
+        if (secondsAgo < 3600) return `${Math.floor(secondsAgo / 60)}m ago`;
+        if (secondsAgo < 86400) return `${Math.floor(secondsAgo / 3600)}h ago`;
+        if (secondsAgo < 2592000) return `${Math.floor(secondsAgo / 86400)}d ago`;
+        return `${Math.floor(secondsAgo / 2592000)}mo ago`;
+      },
+      truncateMessage(message) {
+        return message.length > 70 ? message.substring(0, 67) + '...' : message;
+      },
+      filterNotifications(type) {
+        this.filter = type;
+      },
+
+      async markAsRead(notificationId) {
+        try {
+          const response = await axios.post(`/markAsRead/${notificationId}`);
+          console.log(response.data.msg); // Log the success message
+
+          // Re-fetch notifications after marking one as read
+          this.fetchNotifications();
+        } catch (error) {
+          console.error('Network error:', error.message);
+        }
+      },
+  //   storeRecordId() {
+  //   // Save the record ID to session storage
+  //   sessionStorage.setItem('selectedRecordId', this.qrCodeData);
     
-    // Redirect to the new page
-    this.$router.push({ path: '/serviceablereturn' });
-  },
+  //   // Redirect to the new page
+  //   this.$router.push({ path: '/serviceablereturn' });
+  // },
+
+  storeRecordId() {
+        // Prompt the user for confirmation
+        const isConfirmed = window.confirm(`Are you sure you want to open record?`);
+
+        if (isConfirmed) {
+            // Save the record ID to session storage
+            sessionStorage.setItem('selectedRecordId', this.qrCodeData);
+            
+            // Redirect to the new page
+            this.$router.push({ path: '/serviceablereturn' });
+        } else {
+            // If the user cancels, you can handle it here if needed
+            console.log('User canceled the action.');
+        }
+    },
   simulateLoading() {
     this.loading = true;
   },
@@ -765,13 +831,13 @@ export default{
       this.selectedInfo = info;
     },
     toggleRowVisibility(info) {
-      info.showDetails = !info.showDetails;
+      this.showDetails = true;
     },
 
     async downloadEmployeeRecordsPDF() {
         try {
           this.simulateLoading();
-           const response = await fetch('https://inventrack.online/backend/employeeRecordsPDF', {
+           const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
                method: 'POST',
                headers: {
                    'Content-Type': 'application/json',
@@ -802,7 +868,7 @@ export default{
     try {
         // Send HTTP request to backend to generate PDFs for all records
         this.simulateLoading();
-        const response = await fetch('https://inventrack.online/backend/serviceablePDF', {
+        const response = await fetch('http://dilg.test/backend/serviceablePDF', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -1273,35 +1339,25 @@ export default{
 
       fetchDataFromServer() {
         axios.get(`/fetch_data/${this.qrCodeData}`)
-        .then((response) => {
-          const data = response.data;
-          this.fetchedData = data; // Initialize fetchedData
+          .then((response) => {
+            const data = response.data;
+            this.fetchedData = data; // Initialize fetchedData
 
-          // Populate display element
-          const displayElement = document.getElementById("display-data");
-          if (data && Object.keys(data).length > 0) {
-            const fields = [
-              'entityname',
-              'particulars',
-              'classification',
-              'code',
-              'acc_officer',
-              'issue_quantity',
-              'remarks',
-              'created_at'
-            ];
-            
-            const htmlContent = fields.map(field => `<p>${field.replace('_', ' ').toUpperCase()}: ${data[field]}</p>`).join('');
-            displayElement.innerHTML = htmlContent;
-          } else {
-            displayElement.innerHTML = `<p>No data found for ID: ${this.qrCodeData}</p>`;
-          }
-        })
-        .catch((error) => {
-          console.error("Error fetching data:", error);
-        });
-
+            // Update each field with the fetched data or fallback to "-"
+            document.getElementById("entityname").textContent = data.entityname || "-";
+            document.getElementById("particulars").textContent = data.particulars || "-";
+            document.getElementById("classification").textContent = data.classification || "-";
+            document.getElementById("code").textContent = data.code || "-";
+            document.getElementById("acc_officer").textContent = data.acc_officer || "-";
+            document.getElementById("issue_quantity").textContent = data.issue_quantity || "-";
+            document.getElementById("remarks").textContent = data.remarks || "-";
+            document.getElementById("created_at").textContent = data.created_at || "-";
+          })
+          .catch((error) => {
+            console.error("Error fetching data:", error);
+          });
       },
+
 
 
       updateDateReturned() {
@@ -1317,9 +1373,66 @@ export default{
           console.error("Error updating date returned:", error);
         });
       },
+
+      async getUserInfo(id){
+              try {
+                  const inf = await axios.get(`getDataUser?id=${id}`);
+                  this.info = inf.data;
+              } catch (error) {
+                  console.log(error);
+              }
+          },
+
+      async user(){
+        try{
+          const id= sessionStorage.getItem("token")
+          const response = await axios.get(`/users/${id}`, {
+            id:id
+          })
+          this.infos = response.data;
+
+        }catch(error){
+          console.log(error);
+        }
+      },
+
+
+    getImageStyle(imageUrl) {
+      // Function to generate the background image style
+        if (!imageUrl) {
+          return {}; // Return an empty object if imageUrl is not provided
+        }
+        
+        // Set the background image URL
+        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        
+        // Set background size and position
+        const backgroundSize = 'cover'; // Cover the entire container
+        const backgroundPosition = '50% 50%'; // Center the image
+        
+        // Return the style object
+        return {
+          width: '100%',
+          height: '100%',
+          backgroundImage,
+          backgroundSize,
+          backgroundPosition,
+          borderRadius: '50%' // Make the background circular
+        };
+      },
+
           
   },
   computed: {
+    filteredNotifications() {
+      if (this.filter === 'unread') {
+        return this.notifications.filter(notification => notification.status === 'unread');
+      }
+      return this.notifications;
+    },
+    unreadCount() {
+      return this.notifications.filter(notification => notification.status === 'unread').length;
+    },
     filteredInfo() {
       let filteredData = this.info;
 
@@ -1437,6 +1550,9 @@ export default{
 
 
 <style scoped>
+.page-link {
+  z-index: 0;
+}
 
 .success {
   color: green;
@@ -1701,7 +1817,7 @@ export default{
   .box {
   position: relative; /* Create a positioning context */
   width: 100%; /* Full width of its container */
-  height: 300px; /* Set a specific height; adjust as needed */
+  height: 365px; /* Set a specific height; adjust as needed */
   overflow: hidden; /* Hide overflow to ensure clean edges */
   display: flex; /* Use flexbox for centering */
   justify-content: center; /* Center horizontally */
@@ -1790,7 +1906,7 @@ table {
 }
 
 th, td {
-  border: 1px solid black;
+  border: 1px solid #dee2e6;
   padding: 4px 9px; /* Adjust padding for better readability */
   text-align: center;
   white-space: nowrap; /* Prevent line breaks in cells */
@@ -1868,7 +1984,29 @@ img {
   font-size: 13.8px;
 }
 
+.result-display {
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  margin-top: 15px;
+}
 
+.data-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #e1e1e1;
+}
 
+.data-label {
+  font-weight: bold;
+  color: #555;
+}
+
+.data-value {
+  color: #333;
+  text-align: right;
+}
 </style>
 

@@ -231,6 +231,13 @@
           </a>
         </li>
 
+        <li class="nav-item">
+          <a class="nav-link collapsed" href="/supplies">
+            <i class="bi bi-folder-plus"></i>
+            <span>Supplies</span>
+          </a>
+        </li>
+
         <li class="nav-heading">Ordering</li>
     
         <li class="nav-item">
@@ -760,7 +767,7 @@
 
 export default {
   methods: {
-    async logout(){
+      async logout(){
           sessionStorage.removeItem('token');
           this.$router.push('/signin');
       },

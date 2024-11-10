@@ -386,8 +386,9 @@ h6 {
   transition: all 0.5s;
   z-index: 997;
   height: 60px;
-  box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
-  background-color: #fff;
+  background: linear-gradient(90deg, #80faf4, #ffffff); /* Orange to blue-green gradient */
+  color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   padding-left: 20px;
   /* Toggle Sidebar Button */
   /* Search Bar */
@@ -499,6 +500,166 @@ h6 {
   font-size: 12px;
   padding: 3px 6px;
 }
+
+
+
+
+.notifications-title {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 10px;
+  color: #333;
+}
+
+.notifications-nav {
+  display: flex;
+  justify-content: center;
+  padding: 5px 10px;
+}
+
+.notifications-nav button {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  padding: 5px 10px;
+}
+
+.notifications-nav button.active {
+  font-weight: bold;
+  color: #0056b3;
+  border-bottom: 2px solid #0056b3;
+}
+
+.notifications-nav button:hover {
+  color: #0056b3;
+}
+
+.notifications {
+  width: 350px;
+  max-height: 400px;
+  overflow-y: auto;
+  background: linear-gradient(180deg, #ffffff, #80faf4);
+}
+
+.notification-content {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  white-space: normal;
+  word-break: break-word;
+  border-radius: 5px;
+  background: linear-gradient(90deg, #ffffff, #ffffff, #ffd9cb);
+  position: relative;
+}
+
+/* Icon Circle */
+.notification-icon-circle {
+  width: 30px; /* Circle size */
+  height: 30px; /* Circle size */
+  border-radius: 50%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px; /* Space between icon and message */
+  padding-left: 10px;
+  font-size: 16px; /* Adjust icon size */
+  color: #333; /* Icon color */
+  border: 1px solid #ccc; /* Optional border for circle */
+}
+
+.notification-details {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+/* Styles for notification message */
+.notification-message {
+  font-size: 12px;
+  line-height: 1.4;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  margin-bottom: 5px; /* Space between message and time */
+}
+
+/* Styles for notification time */
+.notification-time {
+  font-weight: 500;
+  color: #004c8f;
+  font-size: 10px;
+}
+
+/* Circle indicator for unread notifications */
+.notification-indicator {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #007bff;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+/* Styles for Unread Notifications */
+.notification-read .notification-content {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.notification-read .notification-message {
+  color: #333;
+}
+
+.notification-unread .notification-content {
+  background-color: #ffffff;
+  color: #333;
+}
+
+.notification-unread .notification-message {
+  color: #333;
+}
+
+.notification-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  color: #6c757d;
+}
+
+/* Notification Time Styling */
+
+
+/* Scrollbar styling for Webkit (rounded corners) */
+.notifications::-webkit-scrollbar {
+  width: 8px;
+}
+
+.notifications::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.notifications::-webkit-scrollbar-thumb {
+  background-color: #c0c0c0;
+  border-radius: 10px;
+}
+
+.notifications::-webkit-scrollbar-thumb:hover {
+  background-color: #a0a0a0;
+}
+
+
+
+
+
+
+
+
+
 
 .header-nav .notifications {
   inset: 8px -15px auto auto !important;
@@ -680,14 +841,15 @@ h6 {
 
 .sidebar .sidebar-nav .nav-link.active {
   background: linear-gradient(to right, #1b2f47, #3e5b77);
-  color: white !important;
-  border-left: 4px solid #FFF;
-  transition: all 0.3s ease; 
+  color: aquamarine !important;
+  border-left: 4px solid aquamarine;
+  transition: all 0.3s ease;
+  font-size: 17px;
 }
 
 .sidebar .sidebar-nav .nav-link:hover {
   background: linear-gradient(to right, #1b2f47, #3e5b77);
-  color: white !important;
+  color: aquamarine !important;
   transform: translateX(5px); 
   transition: all 0.3s ease;
 }
@@ -806,7 +968,7 @@ h6 {
 }
 
 .sidebar-nav .nav-content a i {
-  font-size: 6px;
+  font-size: 15px;
   margin-right: 8px;
   line-height: 0;
   border-radius: 50%;

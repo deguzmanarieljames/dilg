@@ -17,38 +17,50 @@
           <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
       
-              <li class="nav-item d-block d-lg-none">
-                <a class="nav-link nav-icon search-bar-toggle " href="#">
-                  <i class="bi bi-search"></i>
-                </a>
-              </li><!-- End Search Icon-->
-      
+              <!-- Notification Icon -->
               <li class="nav-item dropdown">
-      
-                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                <a class="nav-link nav-icon" href="#" @click="fetchNotifications" data-bs-toggle="dropdown">
                   <i class="bi bi-bell"></i>
-                  <span class="badge bg-primary badge-number">4</span>
-                </a><!-- End Notification Icon -->
-      
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-      
-                </ul><!-- End Notification Dropdown Items -->
-      
-              </li><!-- End Notification Nav -->
-      
-              <li class="nav-item dropdown">
-      
-                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                  <i class="bi bi-chat-left-text"></i>
-                  <span class="badge bg-success badge-number">3</span>
-                </a><!-- End Messages Icon -->
-      
-      
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-      
-                </ul><!-- End Messages Dropdown Items -->
-      
-              </li><!-- End Messages Nav -->
+                  <span class="badge bg-danger badge-number">{{ unreadCount }}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" @click.stop>
+                  <!-- Title and Tabs -->
+                  <li class="dropdown-header">
+                    <span class="notifications-title">Notifications</span>
+                    <nav class="notifications-nav">
+                      <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
+                      <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
+                    </nav>
+                  </li>
+                  <hr />
+
+                  <!-- Notifications List -->
+                  <li
+                  v-for="notification in filteredNotifications"
+                  :key="notification.id"
+                  :class="['dropdown-item', notification.status === 'unread' ? 'notification-unread' : 'notification-read']"
+                  @click="markAsRead(notification.id)"
+                  >
+                    <div class="notification-content">
+                      <!-- Icon in a white circle -->
+                      <div class="notification-icon-circle">
+                        <i :class="notification.icon"></i> <!-- Icon from the database -->
+                      </div>
+                  
+                      <!-- Message and Time -->
+                      <div class="notification-details">
+                        <span class="notification-message">{{ truncateMessage(notification.message) }}</span>
+                        <span class="notification-time">{{ computeTimeAgo(notification.created_at) }}</span> <!-- Time below the message -->
+                      </div>
+                  
+                      <!-- Unread Indicator Circle -->
+                      <span class="notification-indicator" v-if="notification.status === 'unread'"></span>
+                    </div>
+                  </li>
+                
+                  <li v-if="filteredNotifications.length === 0" class="dropdown-item text-center">No notifications</li>
+                </ul>
+              </li>
       
               <li class="nav-item dropdown pe-3">
       
@@ -136,8 +148,8 @@
             </li><!-- End Dashboard Nav -->
       
             
+            <!-- Pages Section -->
             <li class="nav-heading">Pages</li>
-      
             <li class="nav-item">
               <a class="nav-link collapsed" href="databaseppe">
                 <i class="bi bi-clipboard-data"></i>
@@ -150,33 +162,32 @@
               </a>
               <ul id="components-nav" class="nav-content " data-bs-parent="#sidebar-nav">
                 <li>
-                  <a href="serviceable">
-                    <i class="bi bi-circle"></i><span>Serviceable</span>
+                  <a href="/serviceable">
+                    <i class="bi bi-clipboard-check"></i><span>Serviceable</span>
                   </a>
                 </li>
                 <li>
                   <a href="unserviceable">
-                    <i class="bi bi-circle"></i><span>Unserviceable</span>
+                    <i class="bi bi-clipboard-x"></i><span>Unserviceable</span>
                   </a>
                 </li>
                 <li>
-                  <a class="nav-link active" href="returnedppe">
-                    <i class="bi bi-circle"></i><span>Returned PPE</span>
+                  <a href="returnedppe">
+                    <i class="bi bi-box-arrow-left"></i><span>Returned PPE</span>
                   </a>
                 </li>
                 <li>
                   <a href="transferedppe">
-                    <i class="bi bi-circle"></i><span>Transfered PPE</span>
+                    <i class="bi bi-box-arrow-right"></i><span>Transfered PPE</span>
                   </a>
-               </li>
-               <li>
-                <a href="disposedppe">
-                  <i class="bi bi-circle"></i><span>Disposed PPE</span>
-                </a>
-             </li>
+              </li>
+              <li>
+                  <a class="nav-link active" href="disposedppe">
+                    <i class="bi bi-trash"></i><span>Disposed PPE</span>
+                  </a>
+              </li>
               </ul>
             </li><!-- End Components Nav -->
-      
             <li class="nav-item">
               <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
                 <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -184,48 +195,62 @@
               <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
                 <li>
                   <a href="propertysticker">
-                    <i class="bi bi-circle"></i><span>Property Sticker</span>
+                    <i class="bi bi-sticky"></i><span>Property Sticker</span>
                   </a>
                 </li>
                 <li>
                   <a href="ledgercard">
-                    <i class="bi bi-circle"></i><span>PPE Documents</span>
+                    <i class="bi bi-folder2-open"></i><span>PPE Documents</span>
                   </a>
                 </li>
               </ul>
             </li><!-- End Forms Nav -->
-      
+            <!-- Input Section -->
             <li class="nav-heading">input</li>
-    
             <li class="nav-item">
-            <a class="nav-link collapsed" href="/workspace">
-                <i class="bi bi-folder-plus"></i>
+              <a class="nav-link collapsed" href="/workspace">
+                <i class="bi bi-pencil-square"></i>
                 <span>Workspace</span>
-            </a>
-            </li>
-    
+              </a>
+            </li><!-- End Input Nav -->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/logbook">
+                <i class="bi bi-calendar-check"></i>
+                <span>Logbook</span>
+              </a>
+            </li><!-- End Input Nav -->
+            <!-- Stocks Section -->
             <li class="nav-heading">Stocks</li>
-    
             <li class="nav-item">
               <a class="nav-link collapsed" href="/inventory">
-                <i class="bi bi-folder-plus"></i>
+                <i class="bi bi-box-seam"></i>
                 <span>Inventory</span>
               </a>
+            </li><!-- End Stocks Nav -->
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/supplies">
+                <i class="bi bi-stack"></i>
+                <span>Supplies</span>
+              </a>
             </li>
-    
-    
+            <!-- Ordering Section -->
+            <li class="nav-heading">Ordering</li>
+            <li class="nav-item">
+              <a class="nav-link collapsed" href="/ordering">
+                <i class="bi bi-shop"></i>
+                <span>Ordering</span>
+              </a>
+            </li><!-- End Ordering Nav -->
+            <!-- Security Section -->
             <li class="nav-heading">Security</li>
-    
             <li class="nav-item">
               <a class="nav-link collapsed" href="/userverify">
-                <i class="bi bi-folder-plus"></i>
+                <i class="bi bi-person-check"></i>
                 <span>User Verification</span>
               </a>
-            </li><!-- End Dashboard Nav -->
-      
+            </li><!-- End Security Nav -->
           </ul>
-      
-          </aside><!-- End Sidebar-->
+        </aside><!-- End Sidebar-->
       
       
       
@@ -257,7 +282,7 @@
                             
                               <!-- Profile Image with Glow Effect -->
                               <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px 5px rgba(0, 123, 255, 0.6); margin-top: 50px;">
-                                <img :src="record.image" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img :src="`http://dilg.test/backend/uploads/${record.image}`" style="width: 100%; height: 100%; object-fit: cover;">
                               </div>
                               
                               <br><br>
@@ -723,6 +748,8 @@
       },
       data(){
           return{
+              notifications: [],
+              filter: 'all',
               infos:[],
               infor: [],
               employees: [],
@@ -760,7 +787,16 @@
           } else {
               return null; // or a default placeholder image
           }
-      },
+        },
+        filteredNotifications() {
+          if (this.filter === 'unread') {
+            return this.notifications.filter(notification => notification.status === 'unread');
+          }
+          return this.notifications;
+        },
+        unreadCount() {
+          return this.notifications.filter(notification => notification.status === 'unread').length;
+        }
       },
       created(){
           this.getInfo();
@@ -771,8 +807,46 @@
             // this.getAccOffInfo(this.recordId);
           };
           this.user();
+          this.fetchNotifications();
       },
       methods:{
+            async fetchNotifications() {
+              try {
+                const response = await axios.get('notification');
+                this.notifications = response.data; // Set notifications to the fetched data
+              } catch (error) {
+                console.error(error);
+              }
+            },
+            computeTimeAgo(dateString) {
+              const now = Date.now(); // Current time in milliseconds
+              const notificationDate = new Date(dateString).getTime(); // Convert dateString to milliseconds
+              const secondsAgo = Math.floor((now - notificationDate) / 1000); // Difference in seconds
+
+              if (secondsAgo < 60) return `${secondsAgo}s ago`;
+              if (secondsAgo < 3600) return `${Math.floor(secondsAgo / 60)}m ago`;
+              if (secondsAgo < 86400) return `${Math.floor(secondsAgo / 3600)}h ago`;
+              if (secondsAgo < 2592000) return `${Math.floor(secondsAgo / 86400)}d ago`;
+              return `${Math.floor(secondsAgo / 2592000)}mo ago`;
+            },
+            truncateMessage(message) {
+              return message.length > 70 ? message.substring(0, 67) + '...' : message;
+            },
+            filterNotifications(type) {
+              this.filter = type;
+            },
+
+            async markAsRead(notificationId) {
+              try {
+                const response = await axios.post(`/markAsRead/${notificationId}`);
+                console.log(response.data.msg); // Log the success message
+
+                // Re-fetch notifications after marking one as read
+                this.fetchNotifications();
+              } catch (error) {
+                console.error('Network error:', error.message);
+              }
+            },
             async getInfo() {
               try {
                 const response = await axios.get('getDataServiceable');
@@ -842,7 +916,7 @@
                 }
                 
                 // Set the background image URL
-                const backgroundImage = `url('https://inventrack.online/backend/uploads/${image}')`;
+                const backgroundImage = `url('http://dilg.test/backend/uploads/${image}')`;
                 
                 // Set background size and position
                 const backgroundSize = 'cover'; // Cover the entire container
@@ -862,7 +936,7 @@
             async generatePDF(recordId) {
                 try {
                     // Send HTTP request to backend
-                    const response = await fetch(`https://inventrack.online/backend/generateITRPDF/${recordId}`, {
+                    const response = await fetch(`http://dilg.test/backend/generateIDRPDF/${recordId}`, {
                         method: 'GET', // Adjust the method accordingly
                         headers: {
                             'Content-Type': 'application/json', // Adjust the content type if needed

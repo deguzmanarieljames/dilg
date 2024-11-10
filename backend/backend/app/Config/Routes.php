@@ -8,6 +8,20 @@ use CodeIgniter\Router\RouteCollection;
 $routes->get('/', 'Home::index');
 $routes->match(['get', 'post'], 'check-email', 'DatabasePPEController::checkEmail');
 
+
+
+// NOTIFICATION
+
+$routes->get('/notification', 'NotificationController::getNotification');
+$routes->post('/markAsRead/(:num)', 'NotificationController::markAsRead/$1');
+
+$routes->get('/notificationEmp', 'NotificationController::getNotificationEmp');
+$routes->post('/markAsReadEmp/(:num)', 'NotificationController::markAsReadEmp/$1');
+
+
+
+
+
 // DATABASE PPE
 $routes->get('/getdata', 'DatabasePPEController::getData');
 $routes->match(['get', 'post'], 'getRecordById/(:any)', 'DatabasePPEController::getRecordById/$1');
@@ -46,6 +60,10 @@ $routes->match(['get', 'post'], '/recordsPDF', 'DatabasePPEController::recordsPD
 $routes->match(['get', 'post'], '/showemployeerecordPDF/(:any)', 'DatabasePPEController::showemployeerecordPDF/$1');
 
 $routes->match(['get', 'post'], '/stickerPDF', 'DatabasePPEController::stickerPDF');
+
+$routes->get('/api/load-sps-content', 'DatabasePPEController::loadSPSContent');
+$routes->post('/api/save-sps-content', 'DatabasePPEController::saveSPSContent');
+
 // $routes->get('editor/load', 'DatabasePPEController::loadFile');
 // $routes->post('editor/save', 'DatabasePPEController::saveFile');
 // $routes->get('getSpsHtml', 'DatabasePPEController::getSpsHtml');
@@ -71,6 +89,7 @@ $routes->match(['get', 'post'], '/requestPDF', 'DatabasePPEController::requestPD
 $routes->match(['get', 'post'], '/generateICSPDF/(:any)', 'DatabasePPEController::generateICSPDF/$1');
 $routes->match(['get', 'post'], '/generateRRSPPDF/(:any)', 'DatabasePPEController::generateRRSPPDF/$1');
 $routes->match(['get', 'post'], '/generateITRPDF/(:any)', 'DatabasePPEController::generateITRPDF/$1');
+$routes->match(['get', 'post'], '/generateIDRPDF/(:any)', 'DatabasePPEController::generateIDRPDF/$1');
 $routes->match(['get', 'post'], '/updateVerification/(:any)', 'DatabasePPEController::updateVerification/$1');
 
 
@@ -84,11 +103,36 @@ $routes->match(['get', 'post'], '/updateInventory/(:any)', 'DatabasePPEControlle
 $routes->match(['get', 'post'], '/updateAvailability', 'DatabasePPEController::updateAvailability');
 
 
+
+// SUPPLIES
+$routes->get('/getSupplies', 'SupplyController::getSupplies');
+$routes->get('/getEmployeesSup', 'SupplyController::getEmployees');
+$routes->get('/getEmployeeSupplies', 'SupplyController::getEmployeeSupplies');
+$routes->post('/issueSupply', 'SupplyController::issueSupply');
+$routes->get('/getEmployeeSuppliesByFullname/(:any)', 'SupplyController::getEmployeeSuppliesByFullname/$1');
+$routes->post('/delEmployeeSupplies', 'SupplyController::delEmployeeSupplies');
+
+
+// $routes->get('api/supply-prediction/(:any)', 'SupplyController::predictSupplyUsage/$1');
+$routes->get('api/supply-prediction', 'SupplyController::predictSupplyUsage');
+
+
+$routes->post('/saveSupplies', 'SupplyController::saveSupplies');
+$routes->post('/delSupplies', 'SupplyController::delSupplies');
+$routes->match(['get', 'post'], '/updateSupplies/(:any)', 'SupplyController::updateSupplies/$1');
+
+
+
+
+
+
 // SECURITY SIGNIN/SIGNUP
 $routes->match(['post', 'get'],'/signin', 'SigninController::signin');
 $routes->match(['post', 'get'],'/signup', 'SigninController::signup');
 
 $routes->match(['post', 'get'],'/changePassword', 'SigninController::changePassword');
+
+$routes->post('verifyPassword', 'SigninController::verifyPassword');
 
 
 $routes->get('/getVerify', 'SigninController::getVerify');
@@ -118,8 +162,8 @@ $routes->get('/getEmployees', 'DatabasePPEController::getEmployees');
 # SERVICEABLE?UNSERVICEABLE
 $routes->get('/getDataServiceable', 'ServiceController::getDataServiceable');
 $routes->get('/getDataUnserviceable', 'ServiceController::getDataUnserviceable');
-$routes->get('/getUserDataServiceable', 'ServiceController::getuserDataServiceable');
-$routes->get('/getUserDataUnserviceable', 'ServiceController::getUserDataUnserviceable');
+$routes->get('/getUserDataServiceable/(:any)', 'ServiceController::getuserDataServiceable/$1');
+$routes->get('/getUserDataUnserviceable/(:any)', 'ServiceController::getUserDataUnserviceable/$1');
 $routes->get('/getDataUser', 'ServiceController::getDataUser');
 $routes->get('/getDataUserUnserviceable', 'ServiceController::getDataUserUnserviceable');
 $routes->match(['get', 'post'], '/serviceablePDF', 'ServiceController::serviceablePDF');
@@ -165,8 +209,10 @@ $routes->get('/getEmployeeCount', 'DatabasePPEController::getEmployeeCount');
 // ORDERING EQUIPMENT
 $routes->post('/saveOrder', 'OrderController::saveOrder');
 $routes->get('/getOrder', 'OrderController::getOrder');
+$routes->get('/getOrderReceived', 'OrderController::getOrderReceived');
 $routes->get('/getShop', 'OrderController::getShop');
 $routes->get('/getArticles', 'OrderController::getArticles');
 $routes->get('/getShopsByArticle', 'OrderController::getShopsByArticle');
+$routes->post('/delOrder', 'OrderController::delOrder');
 $routes->match(['get', 'post'], '/updateReceipt/(:any)', 'OrderController::updateReceipt/$1');
 $routes->match(['get', 'post'], '/updateRating/(:segment)/(:segment)', 'OrderController::updateRating/$1/$2');

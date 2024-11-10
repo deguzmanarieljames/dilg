@@ -17,50 +17,66 @@
           <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
       
-              <li class="nav-item d-block d-lg-none">
-                <a class="nav-link nav-icon search-bar-toggle " href="#">
-                  <i class="bi bi-search"></i>
-                </a>
-              </li><!-- End Search Icon-->
-      
+              <!-- Notification Icon -->
               <li class="nav-item dropdown">
-      
-                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                <a class="nav-link nav-icon" href="#" @click="fetchNotifications" data-bs-toggle="dropdown">
                   <i class="bi bi-bell"></i>
-                  <span class="badge bg-primary badge-number">4</span>
-                </a><!-- End Notification Icon -->
+                  <span class="badge bg-danger badge-number">{{ unreadCount }}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" @click.stop>
+                  <!-- Title and Tabs -->
+                  <li class="dropdown-header">
+                    <span class="notifications-title">Notifications</span>
+                    <nav class="notifications-nav">
+                      <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
+                      <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
+                    </nav>
+                  </li>
+                  <hr />
+
+                  <!-- Notifications List -->
+                  <li
+                  v-for="notification in filteredNotifications"
+                  :key="notification.id"
+                  :class="['dropdown-item', notification.status === 'unread' ? 'notification-unread' : 'notification-read']"
+                  @click="markAsRead(notification.id)"
+                  >
+                    <div class="notification-content">
+                      <!-- Icon in a white circle -->
+                      <div class="notification-icon-circle">
+                        <i :class="notification.icon"></i> <!-- Icon from the database -->
+                      </div>
+                  
+                      <!-- Message and Time -->
+                      <div class="notification-details">
+                        <span class="notification-message">{{ truncateMessage(notification.message) }}</span>
+                        <span class="notification-time">{{ computeTimeAgo(notification.created_at) }}</span> <!-- Time below the message -->
+                      </div>
+                  
+                      <!-- Unread Indicator Circle -->
+                      <span class="notification-indicator" v-if="notification.status === 'unread'"></span>
+                    </div>
+                  </li>
+                
+                  <li v-if="filteredNotifications.length === 0" class="dropdown-item text-center">No notifications</li>
+                </ul>
+              </li>
+
       
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-      
-                </ul><!-- End Notification Dropdown Items -->
-      
-              </li><!-- End Notification Nav -->
-      
-              <li class="nav-item dropdown">
-      
-                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                  <i class="bi bi-chat-left-text"></i>
-                  <span class="badge bg-success badge-number">3</span>
-                </a><!-- End Messages Icon -->
-      
-      
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-      
-                </ul><!-- End Messages Dropdown Items -->
-      
-              </li><!-- End Messages Nav -->
-      
+              <!-- Profile Nav -->
               <li class="nav-item dropdown pe-3">
       
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                  <img src="./img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                  <span class="d-none d-md-block dropdown-toggle ps-2">A. De Guzman</span>
-                </a><!-- End Profile Iamge Icon -->
-      
+                  <div style="width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
+                    <div :style="getImageStyle(infos.image)"></div>
+                  </div>
+                  <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
+                </a><!-- End Profile Image Icon -->
+
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                   <li class="dropdown-header">
-                    <h6>Ariel James De Guzman</h6>
-                    <span>Web Designer</span>
+                    <h6>{{ infos.fullname }}</h6>
+                    <span>{{ infos.position }}</span>
                   </li>
                   <li>
                     <hr class="dropdown-divider">
@@ -121,108 +137,121 @@
           <!-- ======= Sidebar ======= -->
           <aside id="sidebar" class="sidebar">
       
-          <ul class="sidebar-nav" id="sidebar-nav">
-      
-            
-            <li class="nav-heading">Home</li>
-      
-            <li class="nav-item">
-              <a class="nav-link collapsed" href="/dashboard">
-                <i class="bi bi-grid"></i>
-                <span>Dashboard</span>
-              </a>
-            </li><!-- End Dashboard Nav -->
-      
-            
-            <li class="nav-heading">Pages</li>
-      
-            <li class="nav-item">
-              <a class="nav-link collapsed" href="databaseppe">
-                <i class="bi bi-clipboard-data"></i>
-                <span>Database PPE</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
-              </a>
-              <ul id="components-nav" class="nav-content " data-bs-parent="#sidebar-nav">
-                <li>
-                  <a href="serviceable">
-                    <i class="bi bi-circle"></i><span>Serviceable</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="unserviceable">
-                    <i class="bi bi-circle"></i><span>Unserviceable</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="returnedppe">
-                    <i class="bi bi-circle"></i><span>Returned PPE</span>
-                  </a>
-                </li>
-                <li>
-                   <a class="nav-link active" href="transferedppe">
-                     <i class="bi bi-circle"></i><span>Transfered PPE</span>
-                   </a>
+            <ul class="sidebar-nav" id="sidebar-nav">
+        
+              
+              <li class="nav-heading">Home</li>
+        
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="/dashboard">
+                  <i class="bi bi-grid"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li><!-- End Dashboard Nav -->
+        
+              
+              <!-- Pages Section -->
+              <li class="nav-heading">Pages</li>
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="databaseppe">
+                  <i class="bi bi-clipboard-data"></i>
+                  <span>Database PPE</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                  <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components-nav" class="nav-content " data-bs-parent="#sidebar-nav">
+                  <li>
+                    <a href="/serviceable">
+                      <i class="bi bi-clipboard-check"></i><span>Serviceable</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="unserviceable">
+                      <i class="bi bi-clipboard-x"></i><span>Unserviceable</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="returnedppe">
+                      <i class="bi bi-box-arrow-left"></i><span>Returned PPE</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a class="nav-link active" href="transferedppe">
+                      <i class="bi bi-box-arrow-right"></i><span>Transfered PPE</span>
+                    </a>
                 </li>
                 <li>
                     <a href="disposedppe">
-                      <i class="bi bi-circle"></i><span>Disposed PPE</span>
+                      <i class="bi bi-trash"></i><span>Disposed PPE</span>
                     </a>
-                 </li>
-              </ul>
-            </li><!-- End Components Nav -->
-      
-            <li class="nav-item">
-              <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
-              </a>
-              <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                  <a href="propertysticker">
-                    <i class="bi bi-circle"></i><span>Property Sticker</span>
-                  </a>
                 </li>
-                <li>
-                  <a href="ledgercard">
-                    <i class="bi bi-circle"></i><span>PPE Documents</span>
-                  </a>
-                </li>
-              </ul>
-            </li><!-- End Forms Nav -->
-      
-            <li class="nav-heading">input</li>
-    
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="/workspace">
-                <i class="bi bi-folder-plus"></i>
-                <span>Workspace</span>
-            </a>
-            </li>
-    
-            <li class="nav-heading">Stocks</li>
-    
-            <li class="nav-item">
-              <a class="nav-link collapsed" href="/inventory">
-                <i class="bi bi-folder-plus"></i>
-                <span>Inventory</span>
-              </a>
-            </li>
-    
-    
-            <li class="nav-heading">Security</li>
-    
-            <li class="nav-item">
-              <a class="nav-link collapsed" href="/userverify">
-                <i class="bi bi-folder-plus"></i>
-                <span>User Verification</span>
-              </a>
-            </li><!-- End Dashboard Nav -->
-      
-          </ul>
-      
+                </ul>
+              </li><!-- End Components Nav -->
+              <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                  <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                  <li>
+                    <a href="propertysticker">
+                      <i class="bi bi-sticky"></i><span>Property Sticker</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="ledgercard">
+                      <i class="bi bi-folder2-open"></i><span>PPE Documents</span>
+                    </a>
+                  </li>
+                </ul>
+              </li><!-- End Forms Nav -->
+              <!-- Input Section -->
+              <li class="nav-heading">input</li>
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="/workspace">
+                  <i class="bi bi-pencil-square"></i>
+                  <span>Workspace</span>
+                </a>
+              </li><!-- End Input Nav -->
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="/logbook">
+                  <i class="bi bi-calendar-check"></i>
+                  <span>Logbook</span>
+                </a>
+              </li><!-- End Input Nav -->
+              <!-- Stocks Section -->
+              <li class="nav-heading">Stocks</li>
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="/inventory">
+                  <i class="bi bi-box-seam"></i>
+                  <span>Inventory</span>
+                </a>
+              </li><!-- End Stocks Nav -->
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="/supplies">
+                  <i class="bi bi-stack"></i>
+                  <span>Supplies</span>
+                </a>
+              </li>
+              <!-- Ordering Section -->
+              <li class="nav-heading">Ordering</li>
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="/ordering">
+                  <i class="bi bi-shop"></i>
+                  <span>Ordering</span>
+                </a>
+              </li><!-- End Ordering Nav -->
+              <!-- Security Section -->
+              <li class="nav-heading">Security</li>
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="/userverify">
+                  <i class="bi bi-person-check"></i>
+                  <span>User Verification</span>
+                </a>
+              </li><!-- End Security Nav -->
+            </ul>
           </aside><!-- End Sidebar-->
       
       
@@ -249,12 +278,29 @@
             
             <div class="row">
               <div class="col-lg-12">
-                <div class="card">
+                <div class="card" style="border-top: solid 30px #fffdb4; border-bottom: solid 30px #fffdb4;">
                 <div class="card-body">
                     <br>
   
                             <!-- Dropdowns and Search Bar at the Top -->
                     <div class="row align-items-center">
+                        <!-- Dropdown for Employee -->
+                        <div class="col-lg-2">
+                          <!-- Show Entries -->
+                            <span class="me-2">Show</span> <!-- Added margin to the right -->
+                            <div class="dropdown" style="display: inline-block;">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+                                {{ pageSize }}
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+                                <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+                                <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+                                <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+                                <!-- Add more options as needed -->
+                                </ul>
+                            </div>
+                            <span class="ms-2">entries</span> <!-- Added margin to the left -->
+                        </div>
                         <!-- Dropdown for Employee -->
                         <div class="col-lg-2">
                         <select v-model="selectedEmployee" class="form-select" @change="onEmployeeChange">
@@ -286,14 +332,7 @@
                             <option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
                         </select>
                         </div>
-                    
-                        <!-- Status dropdown centered -->
-                        <div class="col-lg-2">
-                        <select v-model="selectedStatus" class="form-select">
-                            <option value="">Current Status</option>
-                            <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
-                        </select>
-                        </div>
+        
                     
                         <!-- Search Bar -->
                         <div class="col-lg-2 d-flex justify-content-end">
@@ -303,53 +342,7 @@
                         </div>
                     </div>
                     
-                    <hr>
-                    <!-- Show Entries and Download Serviceable Document at the Bottom -->
-                    <div class="row align-items-center">
-                        <!-- Show Entries -->
-                        <div class="col-lg-6">
-                        <span class="me-2">Show</span> <!-- Added margin to the right -->
-                        <div class="dropdown" style="display: inline-block;">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
-                            {{ pageSize }}
-                            </button>
-                            <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
-                            <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
-                            <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
-                            <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
-                            <!-- Add more options as needed -->
-                            </ul>
-                        </div>
-                        <span class="ms-2">entries</span> <!-- Added margin to the left -->
-                        </div>
-                    
-                        <!-- Download Serviceable Document -->
-                        <div class="col-lg-6 d-flex justify-content-end">
-                        <div class="accordion accordion-body text-end" id="faq-group-2">
-                            <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button btn btn-outline-info collapsed" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
-                                Download Serviceable Documents
-                                </button>
-                            </h2>
-                            <!-- Loading animation -->
-                            <div v-if="loading" class="text-center mt-1">
-                                <div class="loading-line"></div>
-                            </div>
-                            <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
-                                <div class="row mt-3">
-                                <div class="col-lg-12 align-items-center">
-                                    <button class="download" type="button" @click="unserviceablePDF">
-                                    <span class="button__text">Download</span>
-                                    <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
-                                    </button>
-                                </div>
-                                </div>
-                            </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
+
                         
                         <br>
                         
@@ -381,7 +374,7 @@
                             <tbody>
                             <!-- Table rows -->
                             <tr v-for="info in paginatedInfo" :key="info.id" @click="selectRecord(info)">
-                                <td><img :src="info.image" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
+                                <td><img :src="`http://dilg.test/backend/uploads/${info.image}`" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
                                 <td>{{ info.entityname }}</td>
                                 <td>{{ info.classification }}</td>
                                 <td>{{ info.code }}</td>
@@ -448,14 +441,14 @@
                         <div class="info-group">
                           <label>Equipment</label>
                         </div>
-                        <img :src="selectedInfo.image" alt="Original Image" class="img-large img-thumbnail" />
+                        <img :src="`http://dilg.test/backend/uploads/${selectedInfo.image}`" alt="Original Image" class="img-large img-thumbnail" />
                       </div>
                       <!-- Transferred Image -->
                       <div class="col-md-6 text-center">
                         <div class="info-group">
                           <label>Transfer Document</label>
                         </div>
-                        <img :src="selectedInfo.transfered_image" alt="Transferred Image" class="img-large img-thumbnail" />
+                        <img :src="`http://dilg.test/backend/uploads/${selectedInfo.transfered_image}`" alt="Transferred Image" class="img-large img-thumbnail" />
                       </div>
                     </div>
         
@@ -642,7 +635,10 @@
       },
       data(){
           return{
+              notifications: [],
+              filter: 'all',
               info:[],
+              infos:[],
               // entityname: "",
               // particulars: "",
               // classification: "",
@@ -686,9 +682,49 @@
         this.stopButton = document.getElementById("stop-camera");
       },
       created(){
-          this.getInfo()
+          this.getInfo();
+          this.fetchNotifications();
+          this.user();
+          this.getUserInfo(this.infos.fullname);
       },
       methods:{
+        async fetchNotifications() {
+          try {
+            const response = await axios.get('notification');
+            this.notifications = response.data; // Set notifications to the fetched data
+          } catch (error) {
+            console.error(error);
+          }
+        },
+        computeTimeAgo(dateString) {
+          const now = Date.now(); // Current time in milliseconds
+          const notificationDate = new Date(dateString).getTime(); // Convert dateString to milliseconds
+          const secondsAgo = Math.floor((now - notificationDate) / 1000); // Difference in seconds
+
+          if (secondsAgo < 60) return `${secondsAgo}s ago`;
+          if (secondsAgo < 3600) return `${Math.floor(secondsAgo / 60)}m ago`;
+          if (secondsAgo < 86400) return `${Math.floor(secondsAgo / 3600)}h ago`;
+          if (secondsAgo < 2592000) return `${Math.floor(secondsAgo / 86400)}d ago`;
+          return `${Math.floor(secondsAgo / 2592000)}mo ago`;
+        },
+        truncateMessage(message) {
+          return message.length > 70 ? message.substring(0, 67) + '...' : message;
+        },
+        filterNotifications(type) {
+          this.filter = type;
+        },
+
+        async markAsRead(notificationId) {
+          try {
+            const response = await axios.post(`/markAsRead/${notificationId}`);
+            console.log(response.data.msg); // Log the success message
+
+            // Re-fetch notifications after marking one as read
+            this.fetchNotifications();
+          } catch (error) {
+            console.error('Network error:', error.message);
+          }
+        },
         // transferItem() {
         //   // Save the record ID to session storage
         //   sessionStorage.setItem('selectedRecordId', this.selectedInfo.propertynumber);
@@ -715,7 +751,7 @@
         async downloadEmployeeRecordsPDF() {
             try {
               this.simulateLoading();
-               const response = await fetch('https://inventrack.online/backend/employeeRecordsPDF', {
+               const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
                    method: 'POST',
                    headers: {
                        'Content-Type': 'application/json',
@@ -746,7 +782,7 @@
         try {
             // Send HTTP request to backend to generate PDFs for all records
             this.simulateLoading();
-            const response = await fetch('https://inventrack.online/backend/unserviceablePDF', {
+            const response = await fetch('http://dilg.test/backend/unserviceablePDF', {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -964,9 +1000,66 @@
               console.error("Error updating date returned:", error);
             });
           },
+
+          async getUserInfo(id){
+              try {
+                  const inf = await axios.get(`getDataUser?id=${id}`);
+                  this.info = inf.data;
+              } catch (error) {
+                  console.log(error);
+              }
+          },
+
+      async user(){
+        try{
+          const id= sessionStorage.getItem("token")
+          const response = await axios.get(`/users/${id}`, {
+            id:id
+          })
+          this.infos = response.data;
+
+        }catch(error){
+          console.log(error);
+        }
+      },
+
+
+    getImageStyle(imageUrl) {
+      // Function to generate the background image style
+        if (!imageUrl) {
+          return {}; // Return an empty object if imageUrl is not provided
+        }
+        
+        // Set the background image URL
+        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        
+        // Set background size and position
+        const backgroundSize = 'cover'; // Cover the entire container
+        const backgroundPosition = '50% 50%'; // Center the image
+        
+        // Return the style object
+        return {
+          width: '100%',
+          height: '100%',
+          backgroundImage,
+          backgroundSize,
+          backgroundPosition,
+          borderRadius: '50%' // Make the background circular
+        };
+      },
+
               
       },
       computed: {
+        filteredNotifications() {
+          if (this.filter === 'unread') {
+            return this.notifications.filter(notification => notification.status === 'unread');
+          }
+          return this.notifications;
+        },
+        unreadCount() {
+          return this.notifications.filter(notification => notification.status === 'unread').length;
+        },
         filteredInfo() {
           let filteredData = this.info;
     
@@ -1084,6 +1177,9 @@
     
     
   <style scoped>
+  .page-link {
+    z-index: 0;
+  }
 
   .img-large {
     max-width: 100%;
@@ -1465,7 +1561,7 @@
   }
   
   th, td {
-    border: 1px solid black;
+    border: 1px solid #dee2e6;
     padding: 4px 9px; /* Adjust padding for better readability */
     text-align: center;
     white-space: nowrap; /* Prevent line breaks in cells */

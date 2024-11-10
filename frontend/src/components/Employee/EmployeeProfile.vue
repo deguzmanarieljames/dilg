@@ -14,102 +14,85 @@
               <i class="bi bi-list toggle-sidebar-btn"></i>
             </div><!-- End Logo -->
     
-        <nav class="header-nav ms-auto">
-          <ul class="d-flex align-items-center">
-    
-            <li class="nav-item d-block d-lg-none">
-              <a class="nav-link nav-icon search-bar-toggle " href="#">
-                <i class="bi bi-search"></i>
-              </a>
-            </li><!-- End Search Icon-->
-    
-            <li class="nav-item dropdown">
-    
-              <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                <i class="bi bi-bell"></i>
-                <span class="badge bg-primary badge-number">4</span>
-              </a><!-- End Notification Icon -->
-    
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-    
-              </ul><!-- End Notification Dropdown Items -->
-    
-            </li><!-- End Notification Nav -->
-    
-            <li class="nav-item dropdown">
-    
-              <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                <i class="bi bi-chat-left-text"></i>
-                <span class="badge bg-success badge-number">3</span>
-              </a><!-- End Messages Icon -->
-    
-    
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-    
-              </ul><!-- End Messages Dropdown Items -->
-    
-            </li><!-- End Messages Nav -->
-    
-            <li class="nav-item dropdown pe-3">
-    
-              <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                <div style="width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
-                  <div :style="getImageStyle(infos.image)"></div>
-                </div>
-                <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
-              </a><!-- End Profile Image Icon -->
-  
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-                <li class="dropdown-header">
-                  <h6>{{ infos.fullname }}</h6>
-                  <span>{{ infos.position }}</span>
-                </li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-    
-                <li>
-                  <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                    <i class="bi bi-person"></i>
-                    <span>My Profile</span>
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-    
-                <li>
-                  <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                    <i class="bi bi-gear"></i>
-                    <span>Account Settings</span>
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-    
-                <li>
-                  <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                    <i class="bi bi-question-circle"></i>
-                    <span>Need Help?</span>
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-    
-                <li>
-                  <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)" @click="logout">
-                    <i class="bi bi-box-arrow-right"></i>
-                    <span>Sign Out</span>
-                  </a>
-                </li>
-    
-              </ul><!-- End Profile Dropdown Items -->
-            </li><!-- End Profile Nav -->
-    
-          </ul>
-        </nav><!-- End Icons Navigation -->
+            <nav class="header-nav ms-auto">
+              <ul class="d-flex align-items-center">
+        
+        
+                <li class="nav-item dropdown">
+        
+                  <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                    <i class="bi bi-bell"></i>
+                    <span class="badge bg-primary badge-number">4</span>
+                  </a><!-- End Notification Icon -->
+        
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
+        
+                  </ul><!-- End Notification Dropdown Items -->
+        
+                </li><!-- End Notification Nav -->
+        
+      
+        
+                <li class="nav-item dropdown pe-3">
+        
+                  <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+                    <div style="width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
+                      <div :style="getImageStyle(infos.image)"></div>
+                    </div>
+                    <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
+                  </a><!-- End Profile Image Icon -->
+      
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+                    <li class="dropdown-header">
+                      <h6>{{ infos.fullname }}</h6>
+                      <span>{{ infos.position }}</span>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+        
+                    <li>
+                      <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                        <i class="bi bi-person"></i>
+                        <span>My Profile</span>
+                      </a>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+        
+                    <li>
+                      <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                        <i class="bi bi-gear"></i>
+                        <span>Account Settings</span>
+                      </a>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+        
+                    <li>
+                      <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
+                        <i class="bi bi-question-circle"></i>
+                        <span>Need Help?</span>
+                      </a>
+                    </li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+        
+                    <li>
+                      <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)" @click="logout">
+                        <i class="bi bi-box-arrow-right"></i>
+                        <span>Sign Out</span>
+                      </a>
+                    </li>
+        
+                  </ul><!-- End Profile Dropdown Items -->
+                </li><!-- End Profile Nav -->
+        
+              </ul>
+            </nav><!-- End Icons Navigation -->
     
         </header><!-- End Header -->
     
@@ -322,10 +305,6 @@
                       </li>
       
                       <li class="nav-item">
-                        <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-settings">Settings</button>
-                      </li>
-      
-                      <li class="nav-item">
                         <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-change-password">Change Password</button>
                       </li>
       
@@ -333,9 +312,6 @@
                     <div class="tab-content pt-2">
       
                       <div class="tab-pane fade show active profile-overview" id="profile-overview">
-                        <h5 class="card-title">About</h5>
-                        <p class="">Serves as a detailed overview of an individual's professional journey within the organization. 
-                          It provides insights into their role and responsibilities.</p>
       
                         <h5 class="card-title">Profile Details</h5>
       
@@ -373,7 +349,7 @@
                            <div class="row mb-3">
                             <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Profile Image</label>
                             <div class="col-md-8 col-lg-9">
-                              <img :src="'https://inventrack.online/backend/uploads/' + infos.image" alt="Profile" class="rounded-circle" style="height: 100%; width: 100%">
+                              <img :src="'http://dilg.test/backend/uploads/' + infos.image" alt="Profile" class="rounded-circle" style="height: 100%; width: 100%">
                               <div class="pt-2">
                                 <a href="#" class="btn btn-primary btn-sm" title="Upload new profile image"><i class="bi bi-upload"></i></a>
                                 <a href="#" class="btn btn-danger btn-sm" title="Remove my profile image"><i class="bi bi-trash"></i></a>
@@ -460,49 +436,6 @@
                               <button @click="updateEmployee" type="submit" class="button" style= "margin-right: 140px;">Save Changes</button>
                           </div>
                         </form><!-- Vertical Form -->
-      
-                      </div>
-      
-                      <div class="tab-pane fade pt-3" id="profile-settings">
-      
-                        <!-- Settings Form -->
-                        <form>
-                            <br>
-                          <div class="row mb-3">
-                            <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Email Notifications</label>
-                            <div class="col-md-8 col-lg-9">
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="changesMade" checked>
-                                <label class="form-check-label" for="changesMade">
-                                  Changes made to your account
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="newProducts" checked>
-                                <label class="form-check-label" for="newProducts">
-                                  Information on new products and services
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="proOffers">
-                                <label class="form-check-label" for="proOffers">
-                                  Marketing and promo offers
-                                </label>
-                              </div>
-                              <div class="form-check">
-                                <input class="form-check-input" type="checkbox" id="securityNotify" checked disabled>
-                                <label class="form-check-label" for="securityNotify">
-                                  Security alerts
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-      
-                          <div class="text-center">
-                            <br>
-                            <button type="submit" class="button" style= "margin-right: 200px;">Save Changes</button>
-                          </div>
-                        </form><!-- End settings Form -->
       
                       </div>
       
@@ -604,7 +537,7 @@ export default {
       }
       
       // Set the background image URL
-      const backgroundImage = `url('https://inventrack.online/backend/uploads/${imageUrl}')`;
+      const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
       
       // Set background size and position
       const backgroundSize = 'cover'; // Cover the entire container
@@ -727,7 +660,7 @@ export default {
         }
 
         try {
-          const response = await fetch('https://inventrack.online/backend/changePassword', {
+          const response = await fetch('http://dilg.test/backend/changePassword', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

@@ -1,0 +1,103 @@
+CRITICAL - 2024-11-10 15:36:01 --> Undefined variable $particularName
+in APPPATH\Controllers\DatabasePPEController.php on line 780.
+ 1 APPPATH\Controllers\DatabasePPEController.php(780): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $particularName', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 780)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->saveInventory()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-10 15:51:30 --> Too few arguments to function App\Controllers\DatabasePPEController::databaseListener(), 0 passed in C:\laragon\www\dilg\backend\backend\system\CodeIgniter.php on line 919 and exactly 1 expected
+in APPPATH\Controllers\DatabasePPEController.php on line 1839.
+ 1 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->databaseListener()
+ 2 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 3 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-10 15:54:05 --> Unsupported operand types: string - string
+in APPPATH\Views\IIRUSP.php on line 157.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('IIRUSP', [], true)
+ 4 APPPATH\Controllers\ServiceController.php(236): view('IIRUSP', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->serviceablePDF()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-10 16:18:27 --> Unsupported operand types: string - string
+in APPPATH\Views\IIRUSP.php on line 157.
+ 1 SYSTEMPATH\View\View.php(226): include()
+ 2 SYSTEMPATH\View\View.php(229): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1188): CodeIgniter\View\View->render('IIRUSP', [], true)
+ 4 APPPATH\Controllers\ServiceController.php(236): view('IIRUSP', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\ServiceController->serviceablePDF()
+ 6 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\ServiceController))
+ 7 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-10 18:13:29 --> Undefined variable $image
+in APPPATH\Controllers\SigninController.php on line 118.
+ 1 APPPATH\Controllers\SigninController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $image', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->signup()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-10 18:13:34 --> Undefined variable $image
+in APPPATH\Controllers\SigninController.php on line 118.
+ 1 APPPATH\Controllers\SigninController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $image', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->signup()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-10 18:15:31 --> Undefined variable $image
+in APPPATH\Controllers\SigninController.php on line 118.
+ 1 APPPATH\Controllers\SigninController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $image', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->signup()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-10 18:15:35 --> Undefined variable $image
+in APPPATH\Controllers\SigninController.php on line 118.
+ 1 APPPATH\Controllers\SigninController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $image', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->signup()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-10 18:15:42 --> Undefined variable $image
+in APPPATH\Controllers\SigninController.php on line 118.
+ 1 APPPATH\Controllers\SigninController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $image', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->signup()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-10 18:16:03 --> Undefined variable $image
+in APPPATH\Controllers\SigninController.php on line 118.
+ 1 APPPATH\Controllers\SigninController.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $image', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\SigninController.php', 118)
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->signup()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-10 18:19:29 --> Too few arguments to function App\Controllers\NotificationController::addNotification(), 1 passed in C:\laragon\www\dilg\backend\backend\app\Controllers\SigninController.php on line 140 and exactly 2 expected
+in APPPATH\Controllers\NotificationController.php on line 12.
+ 1 APPPATH\Controllers\SigninController.php(140): App\Controllers\NotificationController->addNotification('New user signed up: Genriel V. Del Mundo')
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->signup()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-10 18:19:36 --> Too few arguments to function App\Controllers\NotificationController::addNotification(), 1 passed in C:\laragon\www\dilg\backend\backend\app\Controllers\SigninController.php on line 140 and exactly 2 expected
+in APPPATH\Controllers\NotificationController.php on line 12.
+ 1 APPPATH\Controllers\SigninController.php(140): App\Controllers\NotificationController->addNotification('New user signed up: Genriel V. Del Mundo')
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->signup()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-10 18:22:46 --> Too few arguments to function App\Controllers\NotificationController::addNotification(), 1 passed in C:\laragon\www\dilg\backend\backend\app\Controllers\SigninController.php on line 140 and exactly 2 expected
+in APPPATH\Controllers\NotificationController.php on line 12.
+ 1 APPPATH\Controllers\SigninController.php(140): App\Controllers\NotificationController->addNotification('New user signed up: Ronel O. Cacho')
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->signup()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()
+CRITICAL - 2024-11-10 18:24:45 --> Too few arguments to function App\Controllers\NotificationController::addNotification(), 1 passed in C:\laragon\www\dilg\backend\backend\app\Controllers\SigninController.php on line 140 and exactly 2 expected
+in APPPATH\Controllers\NotificationController.php on line 12.
+ 1 APPPATH\Controllers\SigninController.php(140): App\Controllers\NotificationController->addNotification('New user signed up: Lorna A. Santos')
+ 2 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\SigninController->signup()
+ 3 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\SigninController))
+ 4 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

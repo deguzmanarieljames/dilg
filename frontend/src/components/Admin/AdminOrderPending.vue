@@ -43,16 +43,202 @@
 }
 
 
+
+
+
+.navbar {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa; /* Light background */
+  border-radius: 10px;
+  padding: 10px; /* Add some padding */
+  max-width: 100%;
+  background: linear-gradient(90deg, #faab80, #ffffff, #80faf4); /* Orange to blue-green gradient */
+}
+
+.navbar-nav {
+  display: contents; /* Use flexbox to align items */
+  justify-content: center; /* Center items horizontally */
+  flex-wrap: nowrap; /* Prevent wrapping on smaller screens */
+  padding-left: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+.nav-link1 {
+  font-size: 1.1rem;
+  padding: 10px 15px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link1:hover {
+  background-color: #e2e6ea; /* Light background on hover */
+  color: #007bff; /* Change text color on hover */
+}
+
+.nav-link1.active {
+  background-color: #ff4d00; /* Active background color */
+  color: #fff; /* Active text color */
+  border-radius: 5px; /* Rounded corners for active link */
+}
+
+.divider {
+  height: 40px; /* Divider height to center align */
+  width: 1px; /* Divider width */
+  background-color: #dee2e6; /* Light grey color */
+  margin: 0 10px; /* Spacing around the divider */
+}
+
+@media (max-width: 576px) {
+  .navbar-nav {
+    justify-content: center; /* Keep items centered on mobile */
+    flex-wrap: nowrap; /* Ensure items stay horizontal */
+  }
+
+  .nav-link1 {
+    font-size: 1rem; /* Smaller font size for mobile */
+  }
+
+  .divider {
+    display: none; /* Hide dividers on mobile for simplicity */
+  }
+}
+
+
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  color: #212529;
+  border-collapse: collapse;
+}
+
+.table thead th {
+  background: linear-gradient(180deg, #ffffff, #80faf4);
+  color: #000000;
+  text-align: center;
+  padding: 12px;
+}
+
+.table tbody tr {
+  transition: background-color 0.3s;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.table td {
+  padding: 12px;
+  text-align: center;
+  border: 1px solid #dee2e6;
+}
+
+/* Mobile Styles */
+.mobile-card-view {
+  display: none; /* Hide by default */
+}
+
+@media (max-width: 768px) {
+  .table-responsive {
+    display: none; /* Hide the table on mobile */
+  }
+
+  .mobile-card-view {
+    display: block; /* Show mobile card view on smaller screens */
+    margin-bottom: 1rem; /* Spacing between cards */
+    border: 1px solid #dee2e6; /* Card border */
+    border-radius: 5px; /* Rounded corners */
+    background: #f9f9f9; /* Background color */
+    padding: 1rem; /* Inner padding */
+  }
+
+  .mobile-card-view h5 {
+    margin-top: 0; /* Remove top margin for card title */
+  }
+}
+
+.section-title {
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 10px;
+  padding-top: 20px;
+}
+
+.info-group {
+  margin-bottom: 3px; /* Space between info groups */
+}
+
+.info-group label {
+  font-weight: bold; /* Bold labels */
+  font-size: 13px; /* Set label font size */
+  color: #666; /* Label color */
+  display: inline-block; /* Inline display for labels */
+  width: 45%; /* Fixed width for labels */
+}
+
+.info-group p {
+  color: #1e7abf; /* Value text color */
+  font-size: 13px; /* Set value font size */
+  text-transform: uppercase; /* Uppercase transformation */
+  display: inline-block; /* Inline display for values */
+}
+
+
+.status-pending {
+  background-color: yellow; /* Yellow background for Pending */
+  color: #333; /* Dark text color */
+  padding: 5px 10px; /* Padding for button-like appearance */
+  border-radius: 20px; /* Rounded corners */
+  display: inline-block; /* Display inline */
+  font-weight: bold; /* Bold text */
+}
+
+.status-ordered {
+  background-color: green; /* Green background for Ordered */
+  color: white; /* White text color */
+  padding: 5px 10px; /* Padding for button-like appearance */
+  border-radius: 20px; /* Rounded corners */
+  display: inline-block; /* Display inline */
+  font-weight: bold; /* Bold text */
+}
+
+.status-canceled {
+  background-color: red; /* Red background for Canceled */
+  color: white; /* White text color */
+  padding: 5px 10px; /* Padding for button-like appearance */
+  border-radius: 20px; /* Rounded corners */
+  display: inline-block; /* Display inline */
+  font-weight: bold; /* Bold text */
+}
+
+.button-group {
+  display: flex; /* Use flexbox to align buttons */
+  gap: 10px; /* Add some space between buttons */
+  justify-content: flex-start; /* Align buttons to the start */
+  margin-top: 10px; /* Space above the button group */
+}
+
+@media (max-width: 768px) {
+  .button-group {
+    flex-direction: row; /* Keep buttons in a row for mobile */
+    justify-content:center; /* Space buttons evenly */
+  }
+}
+
 </style>
 <template>
-    <div id="app" style="background-image: url('./img/bg.png'); background-size: cover; background-attachment: fixed; height: 100%;">
-            <!-- ======= Header ======= -->
+  <div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
+    <!-- ======= Header ======= -->
             <header id="header" class="header fixed-top d-flex align-items-center">
       
               <div class="d-flex align-items-center justify-content-between">
-                <a href="/dashboard" class="logo d-flex align-items-center">
-                  <img src="./img/dilg-logo1.png" alt="" style="max-height: 92px; max-width: 92px">
-                  <span class="d-none d-lg-block" style="font-family: Times New Roman, Times, serif; font-size: 25px; color: rgb(42, 43, 72);padding-left: 10px">
+                <a href="/dashboard" class="logo d-flex align-items-center" style="position: relative;">
+                  <img src="./img/dilg-logo1.png" alt="" 
+                       style="position: absolute; max-height: 220px; max-width: 220px; margin-left: -30px; z-index: 1;">
+                  <span style="font-family: 'Times New Roman', Times, serif; font-size: 25px; color: rgb(42, 43, 72); padding-left: 120px; z-index: 2; position: relative;">
                     INVENTrack
                   </span>
                 </a>
@@ -62,50 +248,66 @@
           <nav class="header-nav ms-auto">
             <ul class="d-flex align-items-center">
       
-              <li class="nav-item d-block d-lg-none">
-                <a class="nav-link nav-icon search-bar-toggle " href="#">
-                  <i class="bi bi-search"></i>
-                </a>
-              </li><!-- End Search Icon-->
-      
+              <!-- Notification Icon -->
               <li class="nav-item dropdown">
-      
-                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
+                <a class="nav-link nav-icon" href="#" @click="fetchNotifications" data-bs-toggle="dropdown">
                   <i class="bi bi-bell"></i>
-                  <span class="badge bg-primary badge-number">4</span>
-                </a><!-- End Notification Icon -->
+                  <span class="badge bg-danger badge-number">{{ unreadCount }}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications" @click.stop>
+                  <!-- Title and Tabs -->
+                  <li class="dropdown-header">
+                    <span class="notifications-title">Notifications</span>
+                    <nav class="notifications-nav">
+                      <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
+                      <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
+                    </nav>
+                  </li>
+                  <hr />
+
+                  <!-- Notifications List -->
+                  <li
+                  v-for="notification in filteredNotifications"
+                  :key="notification.id"
+                  :class="['dropdown-item', notification.status === 'unread' ? 'notification-unread' : 'notification-read']"
+                  @click="markAsRead(notification.id)"
+                  >
+                    <div class="notification-content">
+                      <!-- Icon in a white circle -->
+                      <div class="notification-icon-circle">
+                        <i :class="notification.icon"></i> <!-- Icon from the database -->
+                      </div>
+                  
+                      <!-- Message and Time -->
+                      <div class="notification-details">
+                        <span class="notification-message">{{ truncateMessage(notification.message) }}</span>
+                        <span class="notification-time">{{ computeTimeAgo(notification.created_at) }}</span> <!-- Time below the message -->
+                      </div>
+                  
+                      <!-- Unread Indicator Circle -->
+                      <span class="notification-indicator" v-if="notification.status === 'unread'"></span>
+                    </div>
+                  </li>
+                
+                  <li v-if="filteredNotifications.length === 0" class="dropdown-item text-center">No notifications</li>
+                </ul>
+              </li>
+
       
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
-      
-                </ul><!-- End Notification Dropdown Items -->
-      
-              </li><!-- End Notification Nav -->
-      
-              <li class="nav-item dropdown">
-      
-                <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                  <i class="bi bi-chat-left-text"></i>
-                  <span class="badge bg-success badge-number">3</span>
-                </a><!-- End Messages Icon -->
-      
-      
-                <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-      
-                </ul><!-- End Messages Dropdown Items -->
-      
-              </li><!-- End Messages Nav -->
-      
+              <!-- Profile Nav -->
               <li class="nav-item dropdown pe-3">
       
                 <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-                  <img src="./img/profile-img.jpg" alt="Profile" class="rounded-circle">
-                  <span class="d-none d-md-block dropdown-toggle ps-2">A. De Guzman</span>
-                </a><!-- End Profile Iamge Icon -->
-      
+                  <div style="width: 50px; height: 50px; overflow: hidden; border-radius: 50%;">
+                    <div :style="getImageStyle(infos.image)"></div>
+                  </div>
+                  <span class="d-none d-md-block dropdown-toggle ps-2">{{ infos.fullname }}</span>
+                </a><!-- End Profile Image Icon -->
+
                 <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                   <li class="dropdown-header">
-                    <h6>Ariel James De Guzman</h6>
-                    <span>Web Designer</span>
+                    <h6>{{ infos.fullname }}</h6>
+                    <span>{{ infos.position }}</span>
                   </li>
                   <li>
                     <hr class="dropdown-divider">
@@ -166,122 +368,121 @@
           <!-- ======= Sidebar ======= -->
           <aside id="sidebar" class="sidebar">
       
-          <ul class="sidebar-nav" id="sidebar-nav">
-      
-            
-            <li class="nav-heading">Home</li>
-      
-            <li class="nav-item">
-              <a class="nav-link collapsed" href="/dashboard">
-                <i class="bi bi-grid"></i>
-                <span>Dashboard</span>
-              </a>
-            </li><!-- End Dashboard Nav -->
-      
-            
-            <li class="nav-heading">Pages</li>
-      
-            <li class="nav-item">
-              <a class="nav-link collapsed" href="databaseppe">
-                <i class="bi bi-clipboard-data"></i>
-                <span>Database PPE</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
-              </a>
-              <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                  <a href="serviceable">
-                    <i class="bi bi-circle"></i><span>Serviceable</span>
-                  </a>
+            <ul class="sidebar-nav" id="sidebar-nav">
+        
+              
+              <li class="nav-heading">Home</li>
+        
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="/dashboard">
+                  <i class="bi bi-grid"></i>
+                  <span>Dashboard</span>
+                </a>
+              </li><!-- End Dashboard Nav -->
+        
+              
+              <!-- Pages Section -->
+              <li class="nav-heading">Pages</li>
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="databaseppe">
+                  <i class="bi bi-clipboard-data"></i>
+                  <span>Database PPE</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
+                  <i class="bi bi-menu-button-wide"></i><span>PROPERTY, PLANT AND EQUIPMENT</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                  <li>
+                    <a href="/serviceable">
+                      <i class="bi bi-clipboard-check"></i><span>Serviceable</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="unserviceable">
+                      <i class="bi bi-clipboard-x"></i><span>Unserviceable</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="returnedppe">
+                      <i class="bi bi-box-arrow-left"></i><span>Returned PPE</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="transferedppe">
+                      <i class="bi bi-box-arrow-right"></i><span>Transfered PPE</span>
+                    </a>
                 </li>
                 <li>
-                  <a href="unserviceable">
-                    <i class="bi bi-circle"></i><span>Unserviceable</span>
-                  </a>
+                    <a href="disposedppe">
+                      <i class="bi bi-trash"></i><span>Disposed PPE</span>
+                    </a>
                 </li>
-              </ul>
-            </li><!-- End Components Nav -->
-      
-            <li class="nav-item">
-              <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-                <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
-              </a>
-              <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-                <li>
-                  <a href="propertysticker">
-                    <i class="bi bi-circle"></i><span>Property Sticker</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="ledgercard">
-                    <i class="bi bi-circle"></i><span>Ledger Card</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="propertycard">
-                    <i class="bi bi-circle"></i><span>Property Card</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="ackreceipt">
-                    <i class="bi bi-circle"></i><span>Acknowledgement Receipt</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="transferreport">
-                    <i class="bi bi-circle"></i><span>Transfer Report</span>
-                  </a>
-                </li>
-                <li>
-                  <a href="rlsddp">
-                    <i class="bi bi-circle"></i><span>RLSDDP</span>
-                  </a>
-                </li>
-              </ul>
-            </li><!-- End Forms Nav -->
-    
-            <li class="nav-heading">input</li>
-    
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="/workspace">
-                <i class="bi bi-folder-plus"></i>
-                <span>Workspace</span>
-            </a>
-            </li>
-    
-            <li class="nav-heading">Stocks</li>
-    
-            <li class="nav-item">
-              <a class="nav-link collapsed" href="/inventory">
-                <i class="bi bi-folder-plus"></i>
-                <span>Inventory</span>
-              </a>
-            </li>
-
-            <li class="nav-heading">Ordering</li>
-    
-            <li class="nav-item">
-              <a class="nav-link" href="/ordering">
-                <i class="bi bi-folder-plus"></i>
-                <span>Ordering</span>
-              </a>
-            </li>
-            
-            <li class="nav-heading">Security</li>
-    
-            <li class="nav-item">
-            <a class="nav-link collapsed" href="/userverify">
-                <i class="bi bi-folder-plus"></i>
-                <span>User Verification</span>
-            </a>
-            </li>
-                    
-      
-          </ul>
-      
+                </ul>
+              </li><!-- End Components Nav -->
+              <li class="nav-item">
+                <a class="nav-link collapsed" data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
+                  <i class="bi bi-journal-text"></i><span>Documents</span><i class="bi bi-chevron-down ms-auto"></i>
+                </a>
+                <ul id="forms-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                  <li>
+                    <a href="propertysticker">
+                      <i class="bi bi-sticky"></i><span>Property Sticker</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a href="ledgercard">
+                      <i class="bi bi-folder2-open"></i><span>PPE Documents</span>
+                    </a>
+                  </li>
+                </ul>
+              </li><!-- End Forms Nav -->
+              <!-- Input Section -->
+              <li class="nav-heading">input</li>
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="/workspace">
+                  <i class="bi bi-pencil-square"></i>
+                  <span>Workspace</span>
+                </a>
+              </li><!-- End Input Nav -->
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="/logbook">
+                  <i class="bi bi-calendar-check"></i>
+                  <span>Logbook</span>
+                </a>
+              </li><!-- End Input Nav -->
+              <!-- Stocks Section -->
+              <li class="nav-heading">Stocks</li>
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="/inventory">
+                  <i class="bi bi-box-seam"></i>
+                  <span>Inventory</span>
+                </a>
+              </li><!-- End Stocks Nav -->
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="/supplies">
+                  <i class="bi bi-stack"></i>
+                  <span>Supplies</span>
+                </a>
+              </li>
+              <!-- Ordering Section -->
+              <li class="nav-heading">Ordering</li>
+              <li class="nav-item">
+                <a class="nav-link active" href="/ordering">
+                  <i class="bi bi-shop"></i>
+                  <span>Ordering</span>
+                </a>
+              </li><!-- End Ordering Nav -->
+              <!-- Security Section -->
+              <li class="nav-heading">Security</li>
+              <li class="nav-item">
+                <a class="nav-link collapsed" href="/userverify">
+                  <i class="bi bi-person-check"></i>
+                  <span>User Verification</span>
+                </a>
+              </li><!-- End Security Nav -->
+            </ul>
           </aside><!-- End Sidebar-->
       
       
@@ -301,23 +502,32 @@
               </ol>
             </nav>
           </div><!-- End Page Title -->
-      <header>
-        <nav>
-          <ul style="list-style-type: none">
-            <div class="row" >
-              <div class="col-lg-4" align="center">
-                <li class="nav-item"><a class="nav-link-collapsed" href="/ordering"><i class="bi bi-folder-plus"><span>Orders</span></i></a></li>
+          <header>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+              <div class="container-fluid justify-content-center">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link1 " href="/ordering">
+                      <i class="bi bi-cart-plus"></i> <span>Orders</span>
+                    </a>
+                  </li>
+                  <div class="divider"></div>
+                  <li class="nav-item">
+                    <a class="nav-link1 active" href="/orderpending">
+                      <i class="bi bi-truck"></i> <span>Incoming</span>
+                    </a>
+                  </li>
+                  <div class="divider"></div>
+                  <li class="nav-item">
+                    <a class="nav-link1" href="/orderincoming">
+                      <i class="bi bi-cart-check"></i> <span>Ordered</span>
+                    </a>
+                  </li>
+                </ul>
               </div>
-              <div class="col-lg-4" align="center">
-                <li class="nav-item"><a class="nav-link" href="/orderpending"><i class="bi bi-folder-plus"><span>Pending</span></i></a></li>
-              </div>
-              <div class="col-lg-4" align="center">
-                <li class="nav-item"><a class="nav-link-collapsed" href="/orderincoming"><i class="bi bi-folder-plus"><span>Incoming</span></i></a></li>
-              </div>
-            </div>
-          </ul>
-        </nav>
-      </header>
+            </nav>
+          </header>
+          <br><br>
       <section class="section">
         <div class="row">
             <div class="col-lg-12">
@@ -327,51 +537,128 @@
                 <div class="col-lg-12">
                   <div class="card">
                     <div class="card-body">
-                      <h5 class="card-title">Pending Orders</h5>
-                      <!-- Table with stripped rows -->
-                      <table class="table">
-                        <thead>
-                          <tr>
-                            <th>Article</th>
-                            <th>Particulars</th>
-                            <th>Shop</th>
-                            <th>Quantity</th>
-                            <th>Total Amount</th>
-                            <th datatype="date" data-format="YYYY/DD/MM">Date Ordered</th>
-                            <th>Status</th>
-                            <th>Receipt Verification</th>
-                            <th>Action</th>
-                            <th>Rating</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr v-for="ord in order" :key="ord.id">
-                            <td>{{ ord.article }}</td>
-                            <td>{{ ord.particulars }}</td>
-                            <td>{{ ord.shop }}</td>
-                            <td>{{ ord.quantity }}</td>
-                            <td>{{ ord.totalamount }}</td>
-                            <td>{{ ord.date_ordered }}</td>
-                            <td>{{ ord.status }}</td>
-                            <td>
-                              <img :src="ord.receipt" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" />
-                            </td>
-                            <td>
-                              <a class="btn btn-warning" @click="selectRecord(ord)">
-                                <i class="bx bxs-camera"></i>
-                              </a>
-                            </td>
-                            <td>
-                              <button class="btn btn-primary" @click="openModal(ord)">Rate</button>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                      <!-- End Table with stripped rows -->
+                      <h5 class="section-title text-center">Pending Orders</h5>
+                      <div class="table-responsive">
+                        <table class="table">
+                          <thead>
+                            <tr>
+                              <th>Article</th>
+                              <th>Particulars</th>
+                              <th>Shop</th>
+                              <th>Quantity</th>
+                              <th>Total Amount</th>
+                              <th>Date Ordered</th>
+                              <th>Status</th>
+                              <th>Receipt Verification</th>
+                              <th>Action</th>
+                              <th>Rating</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr v-for="ord in order" :key="ord.id" class="table-row">
+                              <td>{{ ord.article }}</td>
+                              <td>{{ ord.particulars }}</td>
+                              <td>{{ ord.shop }}</td>
+                              <td>{{ ord.quantity }}</td>
+                              <td>{{ ord.totalamount }}</td>
+                              <td>{{ ord.date_ordered }}</td>
+                              <td>
+                                <span :class="getStatusClass(ord.status)">
+                                  {{ ord.status }}
+                                </span>
+                              </td>                              
+                              <td>
+                                <img :src="ord.receipt" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" />
+                              </td>
+                              <td>
+                                <div class="button-group">
+                                  <a class="btn btn-warning" @click="selectRecord(ord)">
+                                    <i class="bx bxs-camera"></i>
+                                  </a>
+                                  <a class="btn btn-danger" @click="deleteRecord(ord.id)">
+                                    <i class="bx bxs-trash"></i>
+                                  </a>
+                                </div>
+                              </td>                              
+                              <td>
+                                <template v-if="ord.receipt && isValidImage(ord.receipt)">
+                                  <button class="btn btn-primary" @click="openModal(ord)">Rate</button>
+                                </template>
+                                <template v-else>
+                                  <span class="text-danger">Verify Receipt First!</span>
+                                </template>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
+              
+              <!-- Mobile Card View -->
+              <div class="mobile-card-view" v-for="ord in order" :key="ord.id">
+                <div class="card">
+                  <div class="card-body">
+                    <h5 class="section-title">{{ ord.particulars }}</h5>
+                    <div class="info-group">
+                      <label>Article:</label>
+                      <p>{{ ord.article }}</p>
+                    </div>
+                    <div class="info-group">
+                      <label>Shop:</label>
+                      <p>{{ ord.shop }}</p>
+                    </div>
+                    <div class="info-group">
+                      <label>Quantity:</label>
+                      <p>{{ ord.quantity }}</p>
+                    </div>
+                    <div class="info-group">
+                      <label>Total Amount:</label>
+                      <p>{{ ord.totalamount }}</p>
+                    </div>
+                    <div class="info-group">
+                      <label>Date Ordered:</label>
+                      <p>{{ ord.date_ordered }}</p>
+                    </div>
+                    <div class="info-group">
+                      <label>Status:</label>
+                      <span :class="getStatusClass(ord.status)">
+                        {{ ord.status }}
+                      </span>
+                    </div>                    
+                    <div class="info-group">
+                      <label>Receipt:</label>
+                      <img :src="ord.receipt" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" />
+                    </div>
+                    <div class="info-group">
+                      <br><label>Action:</label>
+                      <div class="button-group">
+                        <a class="btn btn-warning" @click="selectRecord(ord)">
+                          <i class="bx bxs-camera"></i>
+                        </a>
+                        <a class="btn btn-danger" @click="deleteRecord(ord.id)">
+                          <i class="bx bxs-trash"></i>
+                        </a>
+                      </div>
+                    </div>
+                    <br>                    
+                    <div class="info-group text-center">
+                      <template v-if="ord.receipt && isValidImage(ord.receipt)">
+                        <button class="btn btn-primary" @click="openModal(ord)">Rate</button>
+                      </template>
+                      <template v-else>
+                        <span class="text-danger">Verify Receipt First!</span>
+                      </template>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              
+              
+              
               
               <div v-if="showRatingModal" class="modal" tabindex="-1" role="dialog" style="display: block;">
                 <div class="modal-dialog" role="document">
@@ -486,6 +773,9 @@
       },
       data(){
           return{
+              infos:[],
+              notifications: [],
+              filter: 'all',
               id: "",
               inventory:[],
               order:[],
@@ -517,7 +807,10 @@
           }
       },
       created(){
-          this.getOrder()
+          this.getOrder();
+          this.fetchNotifications();
+          this.user();
+          this.getUserInfo(this.infos.fullname);
       },
       mounted() {
         this.order.forEach(ord => {
@@ -526,7 +819,71 @@
           ord.confirmRating = false;
         });
       },
-      methods:{
+      computed: {
+        filteredNotifications() {
+          if (this.filter === 'unread') {
+            return this.notifications.filter(notification => notification.status === 'unread');
+          }
+          return this.notifications;
+        },
+        unreadCount() {
+          return this.notifications.filter(notification => notification.status === 'unread').length;
+        }
+      },
+
+      methods: {
+          async fetchNotifications() {
+            try {
+              const response = await axios.get('notification');
+              this.notifications = response.data; // Set notifications to the fetched data
+            } catch (error) {
+              console.error(error);
+            }
+          },
+          computeTimeAgo(dateString) {
+            const now = Date.now(); // Current time in milliseconds
+            const notificationDate = new Date(dateString).getTime(); // Convert dateString to milliseconds
+            const secondsAgo = Math.floor((now - notificationDate) / 1000); // Difference in seconds
+
+            if (secondsAgo < 60) return `${secondsAgo}s ago`;
+            if (secondsAgo < 3600) return `${Math.floor(secondsAgo / 60)}m ago`;
+            if (secondsAgo < 86400) return `${Math.floor(secondsAgo / 3600)}h ago`;
+            if (secondsAgo < 2592000) return `${Math.floor(secondsAgo / 86400)}d ago`;
+            return `${Math.floor(secondsAgo / 2592000)}mo ago`;
+          },
+          truncateMessage(message) {
+            return message.length > 70 ? message.substring(0, 67) + '...' : message;
+          },
+          filterNotifications(type) {
+            this.filter = type;
+          },
+
+          async markAsRead(notificationId) {
+            try {
+              const response = await axios.post(`/markAsRead/${notificationId}`);
+              console.log(response.data.msg); // Log the success message
+
+              // Re-fetch notifications after marking one as read
+              this.fetchNotifications();
+            } catch (error) {
+              console.error('Network error:', error.message);
+            }
+          },
+        isValidImage(imageUrl) {
+          // A simple check for common image file extensions
+          const validExtensions = ['.jpg', '.jpeg', '.png', '.gif'];
+          return validExtensions.some(ext => imageUrl.endsWith(ext));
+        },
+        getStatusClass(status) {
+          if (status === 'Pending') {
+            return 'status-pending'; // Class for Pending status
+          } else if (status === 'Ordered') {
+            return 'status-ordered'; // Class for Ordered status
+          } else if (status === 'Canceled') {
+            return 'status-canceled'; // Class for Canceled status
+          }
+          return ''; // Default class (optional)
+        },
         async getOrder() {
           try {
             const ord = await axios.get('getOrder');
@@ -722,6 +1079,65 @@
             this.capturedImage = imageDataUrl;
             this.imagePreview = this.capturedImage;
           },
+
+          async deleteRecord(recordId){
+            const confirm = window.confirm("Are you sure that you want to delete this record?");
+            if(confirm){
+              const ins = await axios.post('delOrder', {
+                id: recordId,
+            });
+            this.getOrder();
+            }
+          },
+
+
+          async getUserInfo(id){
+              try {
+                  const inf = await axios.get(`getDataUser?id=${id}`);
+                  this.info = inf.data;
+              } catch (error) {
+                  console.log(error);
+              }
+          },
+
+      async user(){
+        try{
+          const id= sessionStorage.getItem("token")
+          const response = await axios.get(`/users/${id}`, {
+            id:id
+          })
+          this.infos = response.data;
+
+        }catch(error){
+          console.log(error);
+        }
+      },
+
+
+    getImageStyle(imageUrl) {
+      // Function to generate the background image style
+        if (!imageUrl) {
+          return {}; // Return an empty object if imageUrl is not provided
+        }
+        
+        // Set the background image URL
+        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        
+        // Set background size and position
+        const backgroundSize = 'cover'; // Cover the entire container
+        const backgroundPosition = '50% 50%'; // Center the image
+        
+        // Return the style object
+        return {
+          width: '100%',
+          height: '100%',
+          backgroundImage,
+          backgroundSize,
+          backgroundPosition,
+          borderRadius: '50%' // Make the background circular
+        };
+      },
+
 
 
 

@@ -18,11 +18,6 @@
         <nav class="header-nav ms-auto">
           <ul class="d-flex align-items-center">
     
-            <li class="nav-item d-block d-lg-none">
-              <a class="nav-link nav-icon search-bar-toggle " href="#">
-                <i class="bi bi-search"></i>
-              </a>
-            </li><!-- End Search Icon-->
     
             <li class="nav-item dropdown">
     
@@ -37,19 +32,7 @@
     
             </li><!-- End Notification Nav -->
     
-            <li class="nav-item dropdown">
-    
-              <a class="nav-link nav-icon" href="#" data-bs-toggle="dropdown">
-                <i class="bi bi-chat-left-text"></i>
-                <span class="badge bg-success badge-number">3</span>
-              </a><!-- End Messages Icon -->
-    
-    
-              <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
-    
-              </ul><!-- End Messages Dropdown Items -->
-    
-            </li><!-- End Messages Nav -->
+  
     
             <li class="nav-item dropdown pe-3">
     
@@ -142,12 +125,12 @@
             <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
               <li>
                 <a href="empserviceable">
-                  <i class="bi bi-circle"></i><span>Serviceable</span>
+                  <i class="bi bi-clipboard-check"></i><span>Serviceable</span>
                 </a>
               </li>
               <li>
                 <a href="empunserviceable">
-                  <i class="bi bi-circle"></i><span>Unserviceable</span>
+                  <i class="bi bi-clipboard-x"></i><span>Unserviceable</span>
                 </a>
               </li>
             </ul>
@@ -195,14 +178,14 @@
     
           <li class="nav-item">
             <a class="nav-link collapsed" href="/emprequest">
-              <i class="bi bi-folder-plus"></i>
+              <i class="bi bi-send"></i>
               <span>Request Equipment</span>
             </a>
           </li>
 
           <li class="nav-item">
             <a class="nav-link collapsed" href="/empqrcode">
-              <i class="bi bi-folder-plus"></i>
+              <i class="bi bi-qr-code"></i>
               <span>Generate QR</span>
             </a>
           </li>
@@ -211,7 +194,7 @@
     
           <li class="nav-item">
             <a class="nav-link collapsed" href="/empprofile">
-              <i class="bi bi-folder-plus"></i>
+              <i class="bi bi-person"></i>
               <span>Employee Profile</span>
             </a>
           </li><!-- End Dashboard Nav -->
@@ -236,74 +219,108 @@
     
         <section class="section dashboard">
           <div class="row">
-            <h1 class="dashboard-title">SERVICEABLE</h1>
-            <!-- Display each record in a separate container -->
-            <div class="col-lg-4" v-for="infos in infor" :key="infos.id" @click="storeRecordId(infos.id)"
-                draggable="true"
-                @dragstart="dragStart($event, infos)"
-                @dragover="dragOver($event)"
-                @dragleave="dragLeave($event)"
-                @drop="drop($event, infos)"
-                :data-id="infos.id">
-              <div class="card mb-3" :class="{'transition-right': transitionRight, 'transition-left': transitionLeft}">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img :src="infos.image" alt="Inventory Image" class="inventory-image" />
-                  </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">{{ infos.particulars }}</h5>
-                      <p class="card-text">{{ infos.classification }}</p>
-                      <p class="card-text">{{ infos.article }}</p>
-                      <p class="card-text">
-                        <br>
-                        <span v-if="infos.status === 'Serviceable'" class="status-serviceable">
-                          <i class="bi bi-bookmark-check">&nbsp;&nbsp;</i>
-                          <small class="text-muted">{{ infos.status }}</small>
-                        </span>
-                        <span v-if="infos.status === 'Unserviceable'" class="status-unserviceable">
-                          <i class="bi bi-bookmark-x">&nbsp;&nbsp;</i>
-                          <small class="text-muted">{{ infos.status }}</small>
-                        </span>
-                      </p>
+            <!-- First Column: Employee Supplies -->
+            <div class="col-lg-4">
+              <h1 class="dashboard-title">EMPLOYEE SUPPLIES</h1>
+              <div class="col-lg-12" v-for="supply in employeeSupplies" :key="supply.id">
+                <div class="card mb-3" :class="{'transition-right': transitionRight, 'transition-left': transitionLeft}" style="background-color: #FFF9CC;">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <div class="inventory-image-container">
+                        <img :src="supply.image" alt="Inventory Image" class="inventory-image" />
+                      </div>
+                    </div>                    
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <p class="card-title" style="font-size: 20px; margin-bottom: -5px;">{{ supply.item }}</p>
+                        <p class="card-text">{{ supply.description }}</p>
+                        <p class="card-text" style="font-size: 15px; margin-bottom: -5px;">Quantity: {{ supply.issue_quantity }}</p>
+                        <p class="card-text" style="font-size: 15px;">No. of days to spent: {{ supply.no_days }}</p>
+                        
+                        <!-- Countdown Timer -->
+                        <p class="card-text">
+                          <span v-if="supply.status === 'Currently Consuming'" class="status-serviceable">
+                            <i class="bi bi-bookmark-check">&nbsp;&nbsp;</i>
+                            <small class="text-muted">{{ supply.status }}</small>
+                            <br />
+                            <small class="text-muted">Time Remaining: <br>{{ supply.countdown }}</small>
+                          </span>
+                          <span v-if="supply.status === 'Consumed'" class="status-unserviceable">
+                            <i class="bi bi-bookmark-x">&nbsp;&nbsp;</i>
+                            <small class="text-muted">{{ supply.status }}</small>
+                          </span>
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+
+
+            
+            <!-- Divider -->
+            <div class="divider"></div>
         
-          <div class="row">
-            <h1 class="dashboard-title">UNSERVICEABLE</h1>
-            <!-- Display each record in a separate container -->
-            <div class="col-lg-4" v-for="infos in inforunser" :key="infos.id"
-                draggable="true"
-                @dragstart="dragStart($event, infos)"
-                @dragover="dragOver($event)"
-                @dragleave="dragLeave($event)"
-                @drop="drop($event, infos)"
-                :data-id="infos.id">
-              <div class="card mb-3" :class="{'transition-right': transitionRight, 'transition-left': transitionLeft}" style=" background-color: #FFCCCB;">
-                <div class="row g-0">
-                  <div class="col-md-4">
-                    <img :src="infos.image" alt="Inventory Image" class="inventory-image" />
+            <!-- Second Column: Serviceable and Unserviceable -->
+            <div class="col-lg-7">
+              <h1 class="dashboard-title">SERVICEABLE</h1>
+              <div class="row">
+                <div class="col-lg-6" v-for="infos in infor" :key="infos.id" @click="storeRecordId(infos.id)">
+                  <div class="card mb-3" :class="{'transition-right': transitionRight, 'transition-left': transitionLeft}">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <div class="inventory-image-container">
+                          <img :src="infos.image" alt="Inventory Image" class="inventory-image" />
+                        </div>
+                      </div>                      
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <p class="card-title" style="font-size: 20px; margin-bottom: -10px;">{{ infos.particulars }}</p>
+                          <p>{{ infos.classification }}</p>
+                          <p class="card-text">
+                            <span v-if="infos.remarks === 'SERVICEABLE'" class="status-serviceable">
+                              <i class="bi bi-bookmark-check">&nbsp;&nbsp;</i>
+                              <small class="text-muted">{{ infos.remarks }}</small>
+                            </span>
+                            <span v-if="infos.remarks === 'UNSERVICEABLE'" class="status-unserviceable">
+                              <i class="bi bi-bookmark-x">&nbsp;&nbsp;</i>
+                              <small class="text-muted">{{ infos.remarks }}</small>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="col-md-8">
-                    <div class="card-body">
-                      <h5 class="card-title">{{ infos.particulars }}</h5>
-                      <p class="card-text">{{ infos.classification }}</p>
-                      <p class="card-text">{{ infos.article }}</p>
-                      <p class="card-text">
-                        <br>
-                        <span v-if="infos.status === 'Serviceable'" class="status-serviceable">
-                          <i class="bi bi-bookmark-check">&nbsp;&nbsp;</i>
-                          <small class="text-muted">{{ infos.status }}</small>
-                        </span>
-                        <span v-if="infos.status === 'Unserviceable'" class="status-unserviceable">
-                          <i class="bi bi-bookmark-x">&nbsp;&nbsp;</i>
-                          <small class="text-muted">{{ infos.status }}</small>
-                        </span>
-                      </p>
+                </div>
+              </div>
+        
+              <h1 class="dashboard-title">UNSERVICEABLE</h1>
+              <div class="row">
+                <div class="col-lg-6" v-for="infos in inforunser" :key="infos.id">
+                  <div class="card mb-3" :class="{'transition-right': transitionRight, 'transition-left': transitionLeft}" style="background-color: #FFCCCB;">
+                    <div class="row g-0">
+                      <div class="col-md-4">
+                        <div class="inventory-image-container">
+                          <img :src="infos.image" alt="Inventory Image" class="inventory-image" />
+                        </div>
+                      </div>                      
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <p class="card-title">{{ infos.particulars }}</p>
+                          <p>{{ infos.classification }}</p>
+                          <p class="card-text">
+                            <span v-if="infos.remarks === 'SERVICEABLE'" class="status-serviceable">
+                              <i class="bi bi-bookmark-check">&nbsp;&nbsp;</i>
+                              <small class="text-muted">{{ infos.remarks }}</small>
+                            </span>
+                            <span v-if="infos.remarks === 'UNSERVICEABLE'" class="status-unserviceable">
+                              <i class="bi bi-bookmark-x">&nbsp;&nbsp;</i>
+                              <small class="text-muted">{{ infos.remarks }}</small>
+                            </span>
+                          </p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -311,6 +328,8 @@
             </div>
           </div>
         </section>
+        
+        
         
   
   
@@ -329,6 +348,7 @@
         infos: [],
         infor: [],
         inforunser: [],
+        employeeSupplies: [],
         empfullname: "",
         particulars: "",
         token: '',
@@ -348,16 +368,58 @@
         dragCardId: null,
         transitionRight: false,
         transitionLeft: false,
+        countdownInterval: null
       };
     },
     created() {
       this.initData();
     },
+    mounted() {
+      this.startCountdown();
+    },
+    beforeDestroy() {
+      clearInterval(this.countdownInterval);
+    },
     methods: {
+      startCountdown() {
+        this.countdownInterval = setInterval(() => {
+          this.updateCountdowns();
+        }, 1000); // Update every second
+      },
+      updateCountdowns() {
+        // Loop through each supply and calculate the remaining time
+        this.employeeSupplies.forEach(supply => {
+          if (supply.status === 'Currently Consuming') {
+            supply.countdown = this.calculateCountdown(supply.end_date);
+          }
+        });
+      },
+      calculateCountdown(endDate) {
+        const now = new Date();
+        const end = new Date(endDate);
+
+        // Get the difference in milliseconds
+        const diff = end - now;
+
+        if (diff <= 0) {
+          return "Expired"; // If the countdown is over
+        }
+
+        // Calculate days, months, hours, minutes, and seconds
+        const months = end.getMonth() - now.getMonth() + (12 * (end.getFullYear() - now.getFullYear()));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        // Return the formatted countdown
+        return `${months}m ${days}d ${hours}h ${minutes}m ${seconds}s`;
+      },
       async initData() {
         await this.getUser();
         await this.getInfo(this.infos.fullname);
         await this.getInfoUnser(this.infos.fullname);
+        await this.getEmployeeSupplies(this.infos.fullname); // Fetch supplies based on the employee's fullname
       },
       storeRecordId(recordId) {
         // Save the record ID to session storage
@@ -370,7 +432,7 @@
         if (!imageUrl) {
           return {};
         }
-        const backgroundImage = `url('https://inventrack.online/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
         const backgroundSize = 'cover';
         const backgroundPosition = '50% 50%';
         return {
@@ -403,6 +465,14 @@
           console.log(error);
         }
       },
+      async getEmployeeSupplies(fullname) {
+        try {
+          const response = await axios.get(`getEmployeeSuppliesByFullname/${fullname}`); // Modify this endpoint as needed
+          this.employeeSupplies = response.data;
+        } catch (error) {
+          console.log(error);
+        }
+      },
       async getInfoUnser(id) {
         try {
           const inf = await axios.get(`getDataUserUnserviceable?id=${id}`);
@@ -427,85 +497,6 @@
         sessionStorage.removeItem('token');
         this.$router.push('/signin');
       },
-      dragStart(event, info) {
-        this.dragCardId = info.id;
-        event.dataTransfer.setData('text/plain', '');
-        event.currentTarget.classList.add('dragging');
-      },
-      dragOver(event) {
-        event.preventDefault();
-        event.dataTransfer.dropEffect = 'move';
-        const dropTarget = event.currentTarget;
-        dropTarget.classList.add('dragging-over');
-        const draggedIndex = this.info.findIndex(item => item.id === this.dragCardId);
-        const dropTargetIndex = this.info.findIndex(item => item.id === dropTarget.getAttribute('data-id'));
-        if (draggedIndex !== dropTargetIndex) {
-          const draggedInfo = this.info[draggedIndex];
-          this.info.splice(draggedIndex, 1);
-          this.info.splice(dropTargetIndex, 0, draggedInfo);
-          this.triggerTransition(draggedIndex, dropTargetIndex);
-        }
-      },
-      dragLeave(event) {
-        event.currentTarget.classList.remove('dragging-over');
-      },
-      drop(event, info) {
-        event.preventDefault();
-        const draggedInfoIndex = this.info.findIndex(item => item.id === this.dragCardId);
-        const droppedInfoIndex = this.info.findIndex(item => item.id === info.id);
-        const draggedInfo = this.info[draggedInfoIndex];
-        document.querySelectorAll('.card').forEach(card => card.classList.remove('dragging', 'dragging-over'));
-        if (draggedInfoIndex !== droppedInfoIndex) {
-          this.info.splice(draggedInfoIndex, 1);
-          this.info.splice(droppedInfoIndex, 0, draggedInfo);
-          this.triggerTransition(draggedInfoIndex, droppedInfoIndex);
-        }
-        this.dragCardId = null;
-        this.saveCardOrder();
-      },
-      triggerTransition(draggedIndex, dropTargetIndex) {
-        if (draggedIndex < dropTargetIndex) {
-          this.transitionRight = true;
-          this.transitionLeft = false;
-        } else {
-          this.transitionRight = false;
-          this.transitionLeft = true;
-        }
-        setTimeout(() => {
-          this.transitionRight = false;
-          this.transitionLeft = false;
-        }, 300); // The duration should match the CSS animation duration
-      },
-      saveCardOrder() {
-        const cardOrder = this.info.map(item => item.id);
-        localStorage.setItem('cardOrder', JSON.stringify(cardOrder));
-      },
-      loadCardOrder() {
-        const cardOrder = JSON.parse(localStorage.getItem('cardOrder'));
-        if (cardOrder) {
-          const orderedInfo = [];
-          cardOrder.forEach(id => {
-            const item = this.info.find(infoItem => infoItem.id === id);
-            if (item) {
-              orderedInfo.push(item);
-            }
-          });
-          this.info = orderedInfo;
-        }
-      },
-      applyCardOrder() {
-        const cardOrder = JSON.parse(localStorage.getItem('cardOrder'));
-        if (cardOrder) {
-          const orderedInfo = [];
-          cardOrder.forEach(id => {
-            const item = this.info.find(infoItem => infoItem.id === id);
-            if (item) {
-              orderedInfo.push(item);
-            }
-          });
-          this.info = orderedInfo;
-        }
-      }
     }
   };
   
@@ -514,13 +505,22 @@
   
   
   <style scoped>
+  .countdown {
+    font-size: 14px;
+    font-weight: bold;
+    color: #e74c3c; /* Red color for countdown */
+    margin-bottom: 10px;
+  }  
+
+
+
   .dashboard-title {
-    font-size: 2.5rem; /* Larger font size */
+    font-size: 1.5rem; /* Larger font size */
     font-weight: bold; /* Bold text */
     color: #343a40; /* Dark gray color */
     margin-bottom: 20px; /* Spacing below the heading */
-    text-align: right; /* Align left */
-    border-bottom: 2px solid #7f8fa0; /* Add a blue bottom border */
+    text-align: left; /* Align left */
+    border-bottom: 2px solid #939ca5; /* Add a blue bottom border */
     padding-bottom: 10px; /* Padding below the text */
     letter-spacing: 1px; /* Slight letter spacing for better readability */
   }
@@ -528,8 +528,8 @@
   
   .card {
     box-sizing: border-box;
-    width: 500px;
-    height: 300px;
+    width: 400px;
+    height: 250px;
     background-color: lightblue;
     border: 2px;
     border-color: #BED0EB;
@@ -543,7 +543,8 @@
     align-items: center;
     justify-content: center;
     user-select: none;
-    font-weight: bolder;
+    font-weight: bold;
+    font-size: 15px;
     color: black;
     margin-left: 22px; 
     margin-bottom: 23px !important;
@@ -559,32 +560,6 @@
     transform: scale(0.95) rotateZ(1.7deg);
   }
   
-  .card.dragging {
-    opacity: 0.7;
-    transition: none;
-  }
-  
-  .card.dragging-over {
-    border: 2px dashed #ff6347;
-    animation: pulse 0.3s ease-in-out;
-  }
-  
-  .transition-right {
-    animation: slide-right 0.3s forwards;
-  }
-  
-  .transition-left {
-    animation: slide-left 0.3s forwards;
-  }
-  
-  @keyframes pulse {
-    0%, 100% {
-      transform: scale(1);
-    }
-    50% {
-      transform: scale(1.05);
-    }
-  }
   .status-serviceable {
     background-color: #dff8d0; /* Light green color */
     border: 1px solid #4CAF50; /* Green border */
@@ -610,12 +585,37 @@
     opacity: 0.9; /* Reduce opacity on hover */
   }
   
+  .inventory-image-container {
+    width: 120px; /* Fixed size for the circular container */
+    height: 120px;
+    border-radius: 50%; /* Makes the container a circle */
+    overflow: hidden; /* Ensures the image stays within the circle */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0; /* Optional: background color for better visibility */
+    margin: 10px auto; /* Centers the container within the column */
+    
+    border-style: solid;
+    border-color: lightgray; /* Change to desired border color */
+    border-width: 3px; /* Adjust thickness of the border */
+  }
+  
+  
   .inventory-image {
-    max-width: 150px; /* Adjust as needed */
-    max-height: 150px; /* Adjust as needed */
-    width: auto;
-    height: auto;
-    padding: 20px 0 0 20px;
+    width: 100%; /* Makes the image cover the container */
+    height: 100%;
+    object-fit: cover; /* Ensures the image fits within the circle without distortion */
+  }
+  
+  
+
+  .divider {
+    width: 2px; /* Adjust the width of the divider */
+    background: linear-gradient(180deg, #80faf4, #ff9900); /* Orange to blue-green gradient */
+    height: auto; /* Set to auto or a fixed height */
+    display: inline-block; /* Align it with columns */
+    margin: 0 2px; /* Spacing around the divider */
   }
   
   /* Sidebar background color */
