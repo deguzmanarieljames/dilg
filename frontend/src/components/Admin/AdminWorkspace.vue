@@ -31,7 +31,15 @@
                   <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                   <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                 </nav>
-              </li>
+                <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                <button
+                  v-if="filter === 'unread' && filteredNotifications.length > 0"
+                  class="mark-all-read-btn-sm"
+                  @click="markAllAsRead"
+                >
+                  Mark All as Read
+                </button>
+              </li>              
               <hr />
 
               <!-- Notifications List -->
@@ -339,30 +347,33 @@
                     <label class="card-title text-center" style="font-size: 20px">INVENTORY ITEM</label>
                     <div class="form-group row">
                       <label for="particulars" class="form-label">Particulars</label>
-                      <div class="col-6">
-                        <select class="form-select" id="particulars" v-model="formselectedParticular" @change="populateRecords" required>
-                          <option value="" disabled>Select Particular</option>
-                          <option v-for="item in inventory" :value="item.id" :key="item.id">{{ item.particulars }}</option>
-                        </select>
-                      </div>
-                      <div class="col-6">
-                        <button class="btn btn-outline-success" @click="openQrScannerModal">Scan QR Code</button>
+                      <div class="col-12 position-relative">
+                        <!-- Custom Dropdown Trigger -->
+                        <button class="form-control dropdown-toggle" @click="toggleDropdown">
+                          {{ selectedItem ? `${selectedItem.propertynumber} (${selectedItem.particulars})` : "Select Particular" }}
+                        </button>
+                  
+                        <!-- Custom Dropdown List -->
+                        <div>
+                          <div v-show="dropdownOpen" class="custom-dropdown-list">
+                            <div 
+                              v-for="item in filteredInventory" 
+                              :key="item.id" 
+                              @click="selectItem(item)"
+                              class="dropdown-item"
+                            >
+                              <div class="item-particulars">
+                                <strong>{{ item.propertynumber }} ({{ item.particulars }})</strong>
+                              </div>
+                              <div class="item-description">
+                                {{ item.fulldescription }}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
-      
-                    <!-- Modal for QR scanner -->
-                    <div v-if="isQrScannerModalOpen" class="modal">
-                      <div class="modal-content">
-                        <h3>QR Scanner</h3>
-                        <span class="close" @click="selectedRecord = null">&times;</span>
-                        <video id="modal-qr-video" playsinline></video>
-                        <div id="modal-qr-result"></div>
-                        <button class="btn btn-success" id="modal-start-camera" @click="startModalCamera" v-show="!modalIsCameraOn">Scan</button>
-                        <button class="btn btn-danger" id="modal-stop-camera" @click="stopModalCamera" v-show="modalIsCameraOn">Stop</button>
-                        <button v-if="qrCodeData" @click="populateFromQr">Populate from QR</button>
-                        <p v-if="qrCodeData">Scanned QR Code: {{ qrCodeData }}</p>
-                      </div>
-                    </div>
+                    <br>
       
                     <!-- Disabled Inputs Section -->
                     <div class="form-group row">
@@ -439,7 +450,7 @@
                         <label class="card-title text-center" style="font-size: 20px">IMAGE PREVIEW</label>
                         <div class="image-container" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 200px; border: 1px solid #ccc; border-radius: 50%;">
                           <img 
-                            :src="image ? `http://dilg.test/backend/uploads/${image}` : 'path/to/default-image.png'" 
+                            :src="image ? `${this.baseURL}/uploads/${image}` : 'path/to/default-image.png'" 
                             alt="Image Preview" 
                             class="img-fluid" 
                             style="max-width: 100%; max-height: 100%; border-radius: 35px" 
@@ -507,17 +518,14 @@
                       <label class="card-title text-center" style="font-size: 17px; margin-bottom: 5px">Accountable Information</label>
                       <div class="col-6">
                         <label for="acc_officer" class="form-label">Accountable Officer</label>
-                        <select class="form-select" id="acc_officer" v-model="acc_officer" required>
+                        <select class="form-select" id="acc_officer" v-model="acc_officer" @change="updatePosition" required>
                           <option value="" disabled>Select Employee</option>
-                          <option v-for="employee in employees" :key="employee.empid" :value="employee.empfullname">{{ employee.empfullname }}</option>
+                          <option v-for="employee in employees" :key="employee.id" :value="employee.fullname">{{ employee.fullname }}</option>
                         </select>
                       </div>
                       <div class="col-6">
-                        <label for="acc_empposition" class="form-label">Accountable Position</label>
-                        <select class="form-select" id="acc_empposition" v-model="acc_empposition" required>
-                          <option value="" disabled>Select Position</option>
-                          <option v-for="employee in employees" :key="employee.empid" :value="employee.empposition">{{ employee.empposition }}</option>
-                        </select>
+                        <label for="position" class="form-label">Accountable Position</label>
+                        <input type="text" class="form-control" id="position" v-model="position" readonly>
                       </div>
                       <div class="col-6">
                         <label for="acc_date" class="form-label">Accountable Date</label>
@@ -598,35 +606,14 @@
                    <!-- First Column -->
                    <div class="col-md-4">
                      <label class="card-title text-center" style="font-size: 20px">INVENTORY ITEM</label>
-                     <div class="form-group row">
-                       <label for="particulars" class="form-label">Particulars</label>
-                       <div class="col-6">
-                         <select class="form-select" id="particulars" v-model="formselectedParticular" @change="populateRecords" required>
-                           <option value="" disabled>Select Particular</option>
-                           <option v-for="item in inventory" :value="item.id" :key="item.id">{{ item.particulars }}</option>
-                         </select>
-                       </div>
-                       <div class="col-6">
-                         <button class="btn btn-outline-success" @click="openQrScannerModal">Scan QR Code</button>
-                       </div>
-                     </div>
-       
-                     <!-- Modal for QR scanner -->
-                     <div v-if="isQrScannerModalOpen" class="modal">
-                       <div class="modal-content">
-                         <h3>QR Scanner</h3>
-                         <span class="close" @click="selectedRecord = null">&times;</span>
-                         <video id="modal-qr-video" playsinline></video>
-                         <div id="modal-qr-result"></div>
-                         <button class="btn btn-success" id="modal-start-camera" @click="startModalCamera" v-show="!modalIsCameraOn">Scan</button>
-                         <button class="btn btn-danger" id="modal-stop-camera" @click="stopModalCamera" v-show="modalIsCameraOn">Stop</button>
-                         <button v-if="qrCodeData" @click="populateFromQr">Populate from QR</button>
-                         <p v-if="qrCodeData">Scanned QR Code: {{ qrCodeData }}</p>
-                       </div>
-                     </div>
+
        
                      <!-- Disabled Inputs Section -->
                      <div class="form-group row">
+                      <div class="col-12">
+                        <label for="particulars" class="form-label">Particulars</label>
+                        <input type="text" disabled class="form-control" id="particulars" v-model="particulars" required>
+                      </div>
                        <div class="col-12">
                          <label for="entityname" class="form-label">Entity Name</label>
                          <input type="text" disabled class="form-control" id="entityname" v-model="entityname" required>
@@ -700,7 +687,7 @@
                          <label class="card-title text-center" style="font-size: 20px">IMAGE PREVIEW</label>
                          <div class="image-container" style="display: flex; justify-content: center; align-items: center; width: 100%; height: 200px; border: 1px solid #ccc; border-radius: 50%;">
                            <img 
-                            :src="image ? `http://dilg.test/backend/uploads/${image}` : 'path/to/default-image.png'" 
+                            :src="image ? `${this.baseURL}/uploads/${image}` : 'path/to/default-image.png'" 
                              alt="Image Preview" 
                              class="img-fluid" 
                              style="max-width: 100%; max-height: 100%; border-radius: 35px" 
@@ -766,20 +753,32 @@
                          <input type="date" class="form-control" id="issued_date" v-model="issued_date" required>
                        </div>
                        <label class="card-title text-center" style="font-size: 17px; margin-bottom: 5px">Accountable Information</label>
-                       <div class="col-6">
+                       <!-- <div class="col-6">
                          <label for="acc_officer" class="form-label">Accountable Officer</label>
                          <select class="form-select" id="acc_officer" v-model="acc_officer" required>
                            <option value="" disabled>Select Employee</option>
-                           <option v-for="employee in employees" :key="employee.empid" :value="employee.empfullname">{{ employee.empfullname }}</option>
+                           <option v-for="employee in employees" :key="employee.id" :value="employee.fullname">{{ employee.fullname }}</option>
                          </select>
                        </div>
                        <div class="col-6">
-                         <label for="acc_empposition" class="form-label">Accountable Position</label>
-                         <select class="form-select" id="acc_empposition" v-model="acc_empposition" required>
+                         <label for="position" class="form-label">Accountable Position</label>
+                         <select class="form-select" id="position" v-model="position" required>
                            <option value="" disabled>Select Position</option>
-                           <option v-for="employee in employees" :key="employee.empid" :value="employee.empposition">{{ employee.empposition }}</option>
+                           <option v-for="employee in employees" :key="employee.id" :value="employee.position">{{ employee.position }}</option>
                          </select>
-                       </div>
+                       </div> -->
+                       <div class="col-6">
+                        <label for="acc_officer" class="form-label">Accountable Officer</label>
+                        <select class="form-select" id="acc_officer" v-model="acc_officer" @change="updatePosition" required>
+                          <option value="" disabled>Select Employee</option>
+                          <option v-for="employee in employees" :key="employee.id" :value="employee.fullname">{{ employee.fullname }}</option>
+                        </select>
+                      </div>
+                      <div class="col-6">
+                        <label for="position" class="form-label">Accountable Position</label>
+                        <input type="text" class="form-control" id="position" v-model="position" readonly>
+                      </div>
+                      
                        <div class="col-6">
                          <label for="acc_date" class="form-label">Accountable Date</label>
                          <input type="date" class="form-control" id="acc_date" v-model="acc_date" required>
@@ -1062,8 +1061,8 @@
                   <a @click="deleteRecord(info.id)" class="btn btn-danger"><i class="ri-delete-bin-6-line"></i>Delete Record</a>
                 </div>
               </td>
-              <td scope="row"><img :src="`http://dilg.test/backend/uploads/${info.imageverification}`" alt="Verification Image" style="max-width: 6px; max-height: 60px;" /></td>
-              <td scope="row"><img :src="`http://dilg.test/backend/uploads/${info.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" /></td>
+              <td scope="row"><img :src="`${this.baseURL}/uploads/${info.imageverification}`" alt="Verification Image" style="max-width: 6px; max-height: 60px;" /></td>
+              <td scope="row"><img :src="`${this.baseURL}/uploads/${info.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" /></td>
               <td scope="row">{{ info.entityname }}</td>
               <td scope="row">{{ info.classification }}</td>
               <td scope="row">{{ info.code }}</td>
@@ -1157,56 +1156,65 @@
 
 
 
+  <!-- <div class="modal" v-if="selectedRecord">
+    <div class="modal-content">
+      <span class="close" @click="selectedRecord = null">&times;</span>
+  
+      <form class="row g-3" enctype="multipart/form-data">
+        <div class="col-12">
+          <label for="image" class="form-label"><h3><b>Upload Image or PDF:</b></h3></label>
+          <input type="file" class="form-control file-input" id="image" @change="handleFileUpload" accept="image/*,.pdf">
+        </div>
+  
+        <div class="col-12 preview-section" v-if="imagePreview">
+          <label class="form-label"><b>Preview</b></label>
+          <div class="image-preview-container">
+            <img :src="imagePreview" v-if="isImageFile" alt="Image Preview" class="image-preview">
+            <p v-else><b>PDF Uploaded:</b> {{ selectedImageFile.name }}</p>
+          </div>
+        </div>
+  
+        <div class="text-center action-buttons">
+          <button @click.prevent="updateVerification" type="submit" class="btn btn-primary">Submit</button>
+          <button type="reset" class="btn btn-secondary" @click="resetForm">Reset</button>
+        </div>
+      </form>
+    </div>
+  </div> -->
+
   <div class="modal" v-if="selectedRecord">
     <div class="modal-content">
       <span class="close" @click="selectedRecord = null">&times;</span>
   
       <form class="row g-3" enctype="multipart/form-data">
         <div class="col-12">
-          <label class="form-label"><h3><b>Choose Image Source:</b></h3></label>
-          <div class="image-source-options">
-            <input type="radio" id="upload" value="upload" v-model="imageSource" class="radio-input">
-            <label for="upload" class="radio-label">Upload Image</label>
-  
-            <input type="radio" id="capture" value="capture" v-model="imageSource" class="radio-input">
-            <label for="capture" class="radio-label">Capture Image</label>
-          </div>
+          <label for="file" class="form-label"><h3><b>Upload Image or PDF:</b></h3></label>
+          <input type="file" class="form-control file-input" id="file" @change="handleFileUpload" accept="image/*,.pdf">
         </div>
   
-        <div class="col-12" v-if="imageSource === 'upload'">
-          <label for="image" class="form-label"><b>Upload Image</b></label>
-          <input type="file" class="form-control file-input" id="image" @change="handleFileUpload" accept="image/*">
-        </div>
-  
-        <div class="col-12 capture-section" v-else-if="imageSource === 'capture'">
-          <label for="camera" class="form-label capture-label"><b>Capture Image</b></label>
-          <div class="video-container">
-            <video id="camera" width="280" height="220" autoplay></video>
-          </div>
-          <div class="camera-controls">
-            <button type="button" @click="startCamera" class="btn btn-primary">
-              {{ cameraStarted ? 'Stop Camera' : 'Start Camera' }}
-            </button>
-            <button type="button" @click="captureImage" class="btn btn-success" :disabled="!cameraStarted">
-              Capture
-            </button>
-          </div>
-        </div>
-  
-        <div class="col-12 preview-section">
+        <div class="col-12 preview-section" v-if="filePreview">
           <label class="form-label"><b>Preview</b></label>
-          <div class="image-preview-container">
-            <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" class="image-preview">
+          <div class="file-preview-container">
+            <!-- Image Preview -->
+            <img :src="filePreview" v-if="isImageFile" alt="Image Preview" class="image-preview">
+            
+            <!-- PDF Preview -->
+            <div v-else>
+              <b>PDF Uploaded:</b> {{ selectedFile.name }}
+              <iframe :src="filePreview" width="100%" height="400px" class="pdf-preview"></iframe>
+            </div>
           </div>
         </div>
   
         <div class="text-center action-buttons">
-          <button @click="updateVerification" type="submit" class="btn btn-primary">Submit</button>
-          <button type="reset" class="btn btn-secondary">Reset</button>
+          <button @click.prevent="updateVerification" type="submit" class="btn btn-primary">Submit</button>
+          <button type="reset" class="btn btn-secondary" @click="resetForm">Reset</button>
         </div>
       </form>
     </div>
   </div>
+  
+  
   
   
   
@@ -1337,7 +1345,7 @@
                                           <td scope="row">{{ req.status }}</td>
                                           <td scope="row">{{ req.feedback }}</td>
                                           <td>
-                                            <div>
+                                            <div v-if="req.status == 'Pending'">
                                               <button @click="updatereqStatus(req.id, 'Approved')" class="btn btn-outline-success"><i class="ri-checkbox-circle-line"></i>Approve</button><button @click="updatereqStatus(req.id, 'Declined')" class="btn btn-outline-danger"><i class="ri-close-circle-line"></i>Decline</button>
                                             </div>
                                           </td>
@@ -1408,6 +1416,12 @@ import jsQR from "jsqr";
 
 export default{
   computed: {
+    baseURL() {
+      return axios.defaults.baseURL;
+    },
+    filteredInventory() {
+      return this.inventory.filter(item => item.status === 'active');
+    },
       filteredNotifications() {
         if (this.filter === 'unread') {
           return this.notifications.filter(notification => notification.status === 'unread');
@@ -1621,6 +1635,7 @@ export default{
     issued_date: '',
     acc_officer: '',
     acc_empposition: '',
+    position: '',
     acc_date: '',
     itr_no: '',
     itr_date: '',
@@ -1667,9 +1682,10 @@ export default{
     capturedImage: null,
     imageDataUrl: "",
     cameraButtonText: 'Start Camera',
-    selectedImageFile: null,
     imageSource: 'upload',
-    imagePreview: '',
+    selectedImageFile: null,
+    imagePreview: null,
+    // isImageFile: true,
     imageverification: null,
     employeeReqOptions: [],
     loading: false,
@@ -1678,7 +1694,13 @@ export default{
     isQrScannerModalOpen: false,
     video: null,
     stream: null,
-    selectedItem: null
+    selectedItem: null,
+    dropdownOpen: false,
+    formselectedParticular: '',
+    selectedRecord: null,
+    selectedFile: null,         // Uploaded file (image or PDF)
+    isImageFile: false,         // Flag to determine if the file is an image
+    filePreview: null 
   };
 },
   created(){
@@ -1706,6 +1728,20 @@ export default{
     }
   },
   methods:{
+    updatePosition() {
+      // Find the employee with the selected fullname and set the position
+      const selectedEmployee = this.employees.find(emp => emp.fullname === this.acc_officer);
+      this.position = selectedEmployee ? selectedEmployee.position : '';
+    },
+    toggleDropdown() {
+      this.dropdownOpen = !this.dropdownOpen;
+    },
+    selectItem(item) {
+      this.selectedItem = item;
+      this.formselectedParticular = item.id; // Update the model
+      this.dropdownOpen = false;
+      this.populateRecords;
+    },
     async fetchNotifications() {
         try {
           const response = await axios.get('notification');
@@ -1738,6 +1774,17 @@ export default{
           console.log(response.data.msg); // Log the success message
 
           // Re-fetch notifications after marking one as read
+          this.fetchNotifications();
+        } catch (error) {
+          console.error('Network error:', error.message);
+        }
+      },
+      async markAllAsRead() {
+        try {
+          const response = await axios.post('/markAllAsRead'); // Adjust the endpoint as needed
+          console.log(response.data.msg); // Log the success message
+
+          // Re-fetch notifications after marking all as read
           this.fetchNotifications();
         } catch (error) {
           console.error('Network error:', error.message);
@@ -1905,14 +1952,14 @@ export default{
       setTimeout() {
     this.loading = false;
   },
-    handleFileUpload(event) {
-        const file = event.target.files[0];
-        if (file) {
-            this.uploadedImage = URL.createObjectURL(file);
-            this.selectedImageFile = file;
-            this.imagePreview = this.uploadedImage;
-        }
-    },
+    // handleFileUpload(event) {
+    //     const file = event.target.files[0];
+    //     if (file) {
+    //         this.uploadedImage = URL.createObjectURL(file);
+    //         this.selectedImageFile = file;
+    //         this.imagePreview = this.uploadedImage;
+    //     }
+    // },
       async startCamera() {
     const videoElement = document.getElementById('camera');
     if (!this.cameraStarted) {
@@ -1959,42 +2006,40 @@ export default{
     },
 
 
+    handleFileUpload(event) {
+      const file = event.target.files[0];
+      this.selectedFile = file;
+      this.isImageFile = file.type.startsWith('image');
+
+      // Generate a preview URL for the file
+      this.filePreview = URL.createObjectURL(file);
+    },
     async updateVerification() {
       try {
-          const formData = new FormData();
-          // formData.append('id', this.selectedRecord);
+        const formData = new FormData();
+        formData.append('file', this.selectedFile);
 
-          // Always append the image field, even if it's not changed
-          if (this.capturedImage) {
-              const blob = await fetch(this.capturedImage).then(res => res.blob());
-              const file = new File([blob], `image_${Date.now()}.png`, { type: 'image/png' });
-              formData.append('imageverification', file);
-          } else if (this.selectedImageFile) {
-              formData.append('imageverification', this.selectedImageFile);
-          } else {
-              // If the image is not changed, you can append the existing image data
-              formData.append('imageverification', this.imagePreview);
-          }
+        const response = await axios.post(`/updateVerification/${this.selectedRecord}`, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' }
+        });
 
-          const response = await axios.post(`/updateVerification/${this.selectedRecord}`, formData, {
-              headers: {
-                  'Content-Type': 'multipart/form-data'
-              }
-          });
-
-          if (response.data.status === 'success') {
-              this.resetForm();
-              this.status = ""; // reset status after update
-              this.getInventory();
-              console.log("Record updated successfully");
-          } else {
-              console.error("Failed to update record:", response.data.message);
-          }
+        if (response.data.status === 'success') {
+          alert('File uploaded and record updated successfully');
+          this.selectedRecord = null;
+          this.getInfo();
+        } else {
+          alert('Failed to upload file');
+        }
       } catch (error) {
-          console.error("Error updating record:", error);
+        console.error("Error uploading file:", error);
       }
-      console.log(this.imagePreview);
     },
+    resetForm() {
+      this.selectedFile = null;
+      this.filePreview = null;
+      this.isImageFile = false;
+    },
+
       dataURLtoFile(dataUrl) {
           const binary = atob(dataUrl.split(',')[1]);
           const array = [];
@@ -2013,7 +2058,7 @@ export default{
         async downloadEmployeeRequest() {
         try {
           this.simulateLoading();
-           const response = await fetch('http://dilg.test/backend/employeeRequestPDF', {
+           const response = await fetch(`${this.baseURL}/employeeRequestPDF`, {
                method: 'POST',
                headers: {
                    'Content-Type': 'application/json',
@@ -2044,7 +2089,7 @@ export default{
     try {
         // Send HTTP request to backend to generate PDFs for all records
         this.simulateLoading();
-        const response = await fetch('http://dilg.test/backend/requestPDF', {
+        const response = await fetch(`${this.baseURL}/requestPDF`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -2075,7 +2120,7 @@ export default{
     async generatePDF(recordId) {
             try {
                 // Send HTTP request to backend
-                const response = await fetch(`http://dilg.test/backend/generateICSPDF/${recordId}`, {
+                const response = await fetch(`${this.baseURL}/generateICSPDF/${recordId}`, {
                     method: 'GET', // Adjust the method accordingly
                     headers: {
                         'Content-Type': 'application/json', // Adjust the content type if needed
@@ -2177,7 +2222,7 @@ export default{
             this.issued_offposition = record.issued_offposition;
             this.issued_date = record.issued_date;
             this.acc_officer = record.acc_officer;
-            this.acc_empposition = record.acc_empposition;
+            this.position = record.acc_empposition;
             this.acc_date = record.acc_date;
             this.itr_no = record.itr_no;
             this.itr_date = record.itr_date;
@@ -2413,94 +2458,72 @@ export default{
 
     async save() {
       try {
-        // Create a new FormData object
         const formData = new FormData();
+        formData.append('entityname', this.entityname);
+        formData.append('classification', this.classification);
+        formData.append('code', this.code);
+        formData.append('article', this.article);
+        formData.append('particulars', this.particulars);
+        formData.append('modelno', this.modelno);
+        formData.append('serialno', this.serialno);
+        formData.append('propertynumber', this.propertynumber);
+        formData.append('propertydate', this.propertydate);
+        formData.append('image', this.image);
+        formData.append('icsnumber', this.icsnumber);
+        formData.append('jevnumber', this.jevnumber);
+        formData.append('rec_quantity', this.rec_quantity);
+        formData.append('rec_unit', this.rec_unit);
+        formData.append('rec_unitcost', this.rec_unitcost);
+        formData.append('rec_totalcost', this.rec_totalcost);
+        formData.append('issue_date', this.issue_date);
+        formData.append('issue_officeofficer', this.issue_officeofficer);
+        formData.append('remarks', this.remarks);
+        formData.append('estimatedlife', this.estimatedlife);
+        formData.append('issued_officer', this.issued_officer);
+        formData.append('issued_offposition', this.issued_offposition);
+        formData.append('issued_date', this.issued_date);
+        formData.append('acc_officer', this.acc_officer);
+        formData.append('acc_empposition', this.position);
+        formData.append('acc_date', this.acc_date);
+        formData.append('reg_remarks', this.reg_remarks);
+        formData.append('property_officer', this.property_officer);
+        formData.append('approving_authority', this.approving_authority);
 
-        // Append each field to the FormData object
-        formData.append('entityname', this.entityname);//
-        formData.append('classification', this.classification);//
-        formData.append('code', this.code);//
-        formData.append('article', this.article);//
-        formData.append('particulars', this.particulars);//
-        formData.append('modelno', this.modelno);//
-        formData.append('serialno', this.serialno);//
-        formData.append('propertynumber', this.propertynumber);//
-        formData.append('propertydate', this.propertydate);//
-        formData.append('image', this.image);// xxxxxx
-        formData.append('icsnumber', this.icsnumber);//
-        formData.append('jevnumber', this.jevnumber);//
-        formData.append('rec_quantity', this.rec_quantity);//
-        formData.append('rec_unit', this.rec_unit);//
-        formData.append('rec_unitcost', this.rec_unitcost);//
-        formData.append('rec_totalcost', this.rec_totalcost);//
-        // formData.append('isstranadjamount', this.isstranadjamount);
-        // formData.append('accimploss', this.accimploss);
-        // formData.append('adjustedcost', this.adjustedcost);
-        // formData.append('repair_nature', this.repair_nature);
-        // formData.append('repair_amount', this.repair_amount);
-        formData.append('issue_date', this.issue_date);//
-        formData.append('issue_officeofficer', this.issue_officeofficer);//
-        // formData.append('transfer_date', this.transfer_date);
-        // formData.append('transfer_quantity', this.transfer_quantity);
-        // formData.append('transfer_officeofficer', this.transfer_officeofficer);
-        // formData.append('disposal_date', this.disposal_date);
-        // formData.append('disposal_quantity', this.disposal_quantity);
-        // formData.append('disposal_officeofficer', this.disposal_officeofficer);
-        formData.append('remarks', this.remarks);//
-        formData.append('estimatedlife', this.estimatedlife);//
-        formData.append('issued_officer', this.issued_officer);//
-        formData.append('issued_offposition', this.issued_offposition);//
-        formData.append('issued_date', this.issued_date);// xxxxxx
-        formData.append('acc_officer', this.acc_officer);//
-        formData.append('acc_empposition', this.acc_empposition);//
-        formData.append('acc_date', this.acc_date);//
-        // formData.append('itr_no', this.itr_no);
-        // formData.append('itr_date', this.itr_date);
-        // formData.append('rrsp_no', this.rrsp_no);
-        // formData.append('rrsp_date', this.rrsp_date);
-        // formData.append('reasonfortrans', this.reasonfortrans);
-        // formData.append('reg_semiissuedserialno', this.reg_semiissuedserialno);
-        // formData.append('reg_returned_qty', this.reg_returned_qty);
-        // formData.append('reg_returned_off', this.reg_returned_off);
-        // formData.append('reg_reissued_qty', this.reg_reissued_qty);
-        // formData.append('reg_reissued_off', this.reg_reissued_off);
-        // formData.append('reg_disposed_qty', this.reg_disposed_qty);
-        // formData.append('reg_balance_quantity', this.reg_balance_quantity);
-        // formData.append('reg_amount', this.reg_amount);
-        formData.append('reg_remarks', this.reg_remarks);//
-        formData.append('property_officer', this.property_officer);//
-        formData.append('approving_authority', this.approving_authority);//
-
-        // Send the POST request with the FormData object
         const response = await axios.post('save', formData, {
           headers: {
-            'Content-Type': 'multipart/form-data' // Set content type to multipart/form-data
+            'Content-Type': 'multipart/form-data'
           }
         });
 
-        // Handle the response
         this.message = response.data.msg;
-        if(response.data.msg === 'Cannot save data. Inventory status is inactive.') {
+
+        if (response.data.msg === 'Cannot save data. Inventory status is inactive.') {
           alert('Cannot save data. Inventory status is inactive.');
-        } else if(response.data.msg === 'There is no existing item with that code.') {
+        } else if (response.data.msg === 'There is no existing item with that code.') {
           alert('There is no existing item with that code.');
+        } else if (response.status === 200) {
+          alert('Record saved successfully!');
+          this.particulars = "";
+          this.empfullname = "";
+          this.$emit('data-saved');
+          this.getInfo();
         } else {
-          alert('There is an error occured. Please check the code.')
+          alert('There was an error. Please check the code.');
+        }
+
+        // Display the notification if propertynumber is now inactive
+        if (response.data.notification) {
+          alert(response.data.notification); // Show the inactivation notification
         }
 
         console.log('Server response:', response.data);
-        // Clear the code only after successfully saving the record
-        this.particulars = "";
-        this.empfullname = "";
-
-        this.$emit('data-saved');
-        this.getInfo();
-      } catch (error) {
+        } catch (error) {
         console.error(error);
+        alert('There was an error in saving the record.');
         this.particulars = "";
         this.empfullname = "";
-      }
-    },
+        }
+      },
 
 
     // async save() {
@@ -2624,7 +2647,7 @@ export default{
         formData.append('issued_officer', this.issued_officer);
         formData.append('issued_offposition', this.issued_offposition);
         formData.append('acc_officer', this.acc_officer);
-        formData.append('acc_empposition', this.acc_empposition);
+        formData.append('acc_empposition', this.position);
         formData.append('acc_date', this.acc_date);
         // formData.append('itr_no', this.itr_no);
         // formData.append('itr_date', this.itr_date);
@@ -2822,26 +2845,19 @@ confirmReset() {
         }
       },
       getImageStyle(imageUrl) {
-      // Function to generate the background image style
         if (!imageUrl) {
-          return {}; // Return an empty object if image is not provided
+          return {};
         }
-        
-        // Set the background image URL
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
-        
-        // Set background size and position
-        const backgroundSize = 'cover'; // Cover the entire container
-        const backgroundPosition = '50% 50%'; // Center the image
-        
-        // Return the style object
+        const backgroundImage = `url('${this.baseURL}/uploads/${imageUrl}')`;
+        const backgroundSize = 'cover';
+        const backgroundPosition = '50% 50%';
         return {
           width: '100%',
           height: '100%',
           backgroundImage,
           backgroundSize,
           backgroundPosition,
-          borderRadius: '50%' // Make the background circular
+          borderRadius: '50%'
         };
       },
       
@@ -2865,7 +2881,7 @@ confirmReset() {
       // // Use the CodeIgniter API endpoint to fetch employee details based on the selectedEmployee
       //   if (this.selectedEmployee) {
       //     try {
-      //       const response = await fetch(`http://dilg.test/backend/public/getEmployee/${this.selectedEmployee}`);
+      //       const response = await fetch(`${this.baseURL}/public/getEmployee/${this.selectedEmployee}`);
       //       const data = await response.json();
       //       this.selectedEmployeeDetails = data;
       //     } catch (error) {
@@ -3706,5 +3722,145 @@ th {
 }
 
 
+
+
+
+
+
+
+
+
+
+/* Button to display selected item */
+button.form-control.dropdown-toggle {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.position-relative {
+  position: relative;
+}
+
+/* Custom Dropdown List */
+.custom-dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 8px;
+  z-index: 10;
+  padding: 10px;
+}
+
+/* Dropdown item style */
+.dropdown-item {
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-item:hover {
+  background-color: #f9f9f9;
+}
+
+/* Larger, bold text for particulars and property number */
+.item-particulars {
+  font-weight: bold;
+  font-size: 16px;
+  color: #333;
+  font-size: 12px;
+}
+
+/* Styled description text */
+.item-description {
+  font-size: 14px;
+  color: #666;
+  margin-top: 4px;
+  font-size: 10px;
+}
+
+/* Transition styles */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+
+
+/* Scrollbar styles */
+.custom-dropdown-list {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  max-height: 200px;
+  overflow-y: auto;
+  border-radius: 8px;
+  z-index: 10;
+  padding: 10px;
+
+  /* Firefox scrollbar width */
+  scrollbar-width: thin; /* Makes scrollbar thinner */
+  scrollbar-color: #bbb #f0f0f0; /* Colors scrollbar thumb and track */
+}
+
+/* Webkit-based browsers */
+.custom-dropdown-list::-webkit-scrollbar {
+  width: 8px; /* Width of the scrollbar */
+  border-radius: 10px; /* Rounded edges */
+}
+
+.custom-dropdown-list::-webkit-scrollbar-thumb {
+  background-color: #bbb; /* Thumb color */
+  border-radius: 10px; /* Rounded edges for thumb */
+}
+
+.custom-dropdown-list::-webkit-scrollbar-track {
+  background-color: #f0f0f0; /* Track color */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.mark-all-read-btn-sm {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px; /* Adds a little spacing */
+  float: middle; /* Aligns to the right for a cleaner look */
+}
+
+.mark-all-read-btn-sm:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+}
 
 </style>

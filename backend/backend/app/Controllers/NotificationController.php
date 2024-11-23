@@ -51,6 +51,28 @@ class NotificationController extends ResourceController
         }
     }
 
+    public function markAllAsRead()
+    {
+        $notificationModel = new NotificationModel();
+
+        try {
+            // Update all notifications to "read" status
+            $updated = $notificationModel->where('status', 'unread')
+                                        ->set(['status' => 'read'])
+                                        ->update();
+
+            if ($updated) {
+                return $this->response->setJSON(['msg' => 'All notifications marked as read']);
+            } else {
+                return $this->response->setJSON(['msg' => 'No notifications to update'], 200);
+            }
+        } catch (\Exception $e) {
+            return $this->response->setStatusCode(500)
+                                ->setJSON(['msg' => 'Failed to mark all notifications as read', 'error' => $e->getMessage()]);
+        }
+    }
+
+
 
     public function addNotificationEmp($message, $icon)
     {

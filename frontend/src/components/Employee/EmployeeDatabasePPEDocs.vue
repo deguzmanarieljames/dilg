@@ -231,7 +231,7 @@
                           
                             <!-- Profile Image with Glow Effect -->
                             <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px 5px rgba(0, 123, 255, 0.6); margin-top: 50px;">
-                              <img :src="`http://dilg.test/backend/uploads/${record.image}`" style="width: 100%; height: 100%; object-fit: cover;">
+                              <img :src="`${this.baseURL}/uploads/${record.image}`" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             
                             <br><br>
@@ -672,7 +672,7 @@
                                 <h3 class="card-title" style="text-align: center;">Image Verification</h3>
 
                                 <div style="overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                                  <img ref="imageverification" :src="`http://dilg.test/backend/uploads/${record.imageverification}`" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" @click="viewImageInFullscreen">
+                                  <img ref="imageverification" :src="`${this.baseURL}/uploads/${record.imageverification}`" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" @click="viewImageInFullscreen">
                                 </div>                                                                   
                                 <h3 class="card-title" style="text-align: center;">Click the image to fullscreen</h3>
             
@@ -740,6 +740,11 @@
       },
       mounted() {
     
+      },
+      computed: {
+        baseURL() {
+          return axios.defaults.baseURL;
+        },
       },
       created() {
         // Retrieve the record ID from session storage
@@ -866,7 +871,7 @@
             }
             
             // Set the background image URL
-            const backgroundImage = `url('http://dilg.test/backend/uploads/${image}')`;
+            const backgroundImage = `url('${this.baseURL}/uploads/${image}')`;
             
             // Set background size and position
             const backgroundSize = 'cover'; // Cover the entire container
@@ -886,7 +891,7 @@
           async generatePDF(recordId) {
             try {
                 // Send HTTP request to backend
-                const response = await fetch(`http://dilg.test/backend/generateICSPDF/${recordId}`, {
+                const response = await fetch(`${this.baseURL}/generateICSPDF/${recordId}`, {
                     method: 'GET', // Adjust the method accordingly
                     headers: {
                         'Content-Type': 'application/json', // Adjust the content type if needed
@@ -917,7 +922,7 @@
         async generatePDFSPC() {
           try {
 
-              const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
+              const response = await fetch(`${this.baseURL}/employeeRecordsPDF`, {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
@@ -954,7 +959,7 @@
         async generatePDFSPLC() {
           try {
 
-              const response = await fetch('http://dilg.test/backend/employeeRecordsSPLC', {
+              const response = await fetch(`${this.baseURL}/employeeRecordsSPLC`, {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',

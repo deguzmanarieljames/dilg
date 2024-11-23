@@ -1,0 +1,8 @@
+CRITICAL - 2024-11-15 06:47:56 --> unlink(C:\laragon\www\dilg\backend\backend\../uploads/1731512820_d871f945f64e40c22caa.jpg): No such file or directory
+in APPPATH\Controllers\DatabasePPEController.php on line 981.
+ 1 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'unlink(C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1731512820_d871f945f64e40c22caa.jpg): No such file or directory', 'C:\\laragon\\www\\dilg\\backend\\backend\\app\\Controllers\\DatabasePPEController.php', 981)
+ 2 APPPATH\Controllers\DatabasePPEController.php(981): unlink('C:\\laragon\\www\\dilg\\backend\\backend\\../uploads/1731512820_d871f945f64e40c22caa.jpg')
+ 3 SYSTEMPATH\CodeIgniter.php(919): App\Controllers\DatabasePPEController->updateInventory('430')
+ 4 SYSTEMPATH\CodeIgniter.php(494): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DatabasePPEController))
+ 5 SYSTEMPATH\CodeIgniter.php(353): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 FCPATH\index.php(86): CodeIgniter\CodeIgniter->run()

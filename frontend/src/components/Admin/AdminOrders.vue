@@ -197,7 +197,22 @@
     }
   }
   
+  .mark-all-read-btn-sm {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px; /* Adds a little spacing */
+    float: middle; /* Aligns to the right for a cleaner look */
+  }
   
+  .mark-all-read-btn-sm:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+  }
 
 
 </style>
@@ -234,7 +249,15 @@
                       <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                       <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                     </nav>
-                  </li>
+                    <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                    <button
+                      v-if="filter === 'unread' && filteredNotifications.length > 0"
+                      class="mark-all-read-btn-sm"
+                      @click="markAllAsRead"
+                    >
+                      Mark All as Read
+                    </button>
+                  </li>        
                   <hr />
 
                   <!-- Notifications List -->
@@ -642,6 +665,9 @@
       export default{
       
       computed:{
+        baseURL() {
+          return axios.defaults.baseURL;
+        },
         totalAmount() {
           return this.quantity * this.unitcost;
         },
@@ -914,7 +940,7 @@
         }
         
         // Set the background image URL
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('${this.baseURL}/uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container

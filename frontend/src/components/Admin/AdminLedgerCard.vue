@@ -32,7 +32,15 @@
                     <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                     <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                   </nav>
-                </li>
+                  <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                  <button
+                    v-if="filter === 'unread' && filteredNotifications.length > 0"
+                    class="mark-all-read-btn-sm"
+                    @click="markAllAsRead"
+                  >
+                    Mark All as Read
+                  </button>
+                </li>        
                 <hr />
 
                 <!-- Notifications List -->
@@ -444,50 +452,54 @@
           <br>        
                   <div class="modal-body">
                     <!-- Responsive Container -->
+                    <div class="d-flex flex-column flex-lg-row">
+                      <!-- Table Content -->
+                      <div class="d-flex align-items-center">
+      <span class="me-2">Show</span>
+      <div class="dropdown" style="display: inline-block;">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+          {{ pageSize }}
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+          <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+          <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+          <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+          <!-- Add more options as needed -->
+        </ul>
+      </div>
+      <span class="ms-2">entries</span>
+    </div>
+    </div>
+    <hr>
                       <div class="d-flex justify-content-between align-items-center">
-                      <!-- Show Entries Dropdown -->
+    <!-- Show Entries Dropdown -->
   
                       <div class="table-responsive w-100">
                         <div v-show="currentTab === 'view'" id="view-tab">
-                          <div class="d-flex flex-column flex-lg-row">
-                            <!-- Table Content -->
-                            <div class="d-flex align-items-center">
-                              <span class="me-2">Show</span>
-                              <div class="dropdown" style="display: inline-block;">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
-                                  {{ pageSize }}
-                                </button>
-                                <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
-                                  <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
-                                  <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
-                                  <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
-                                  <!-- Add more options as needed -->
-                                </ul>
-                              </div>
-                              <span class="ms-2">entries</span>
-                            </div>
-                            </div>
                           <table class="office-table">
                             <thead>
-                              <tr>
-                                <th colspan="9" class="header-title"><b>Inventory Inspection and Disposal</b></th>
-                              </tr>
-                              <tr>
-                                <th rowspan="2"><b>Date Acquired</b></th>
-                                <th rowspan="2"><b>Particulars/Articles</b></th>
-                                <th rowspan="2"><b>Semi-Expendable Property No.</b></th>
-                                <th rowspan="2"><b>Quantity</b></th>
-                                <th rowspan="2"><b>Unit Cost</b></th>
-                                <th rowspan="2"><b>Total Cost</b></th>
-                                <th rowspan="2"><b>Accumulated Impairment</b></th>
-                                <th rowspan="2"><b>Carrying Amount</b></th>
-                                <th rowspan="2"><b>Remarks</b></th>
-                              </tr>
-                            </thead>
+  <tr>
+    <th colspan="9" class="header-title" style="background-color: #123C5D ; color: white; font-size: 13px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;font-weight: normal;">INVENTORY INSPECTON AND DISPOSAL</th>
+  </tr>
+  <tr>
+    <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;">Date Acquired</th>
+    <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;">Particulars/Articles</th>
+    <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;">Semi-Expendable<br>Property No.</th>
+    <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;">Quantity</th>
+    <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;">Unit <br>Cost</th>
+    <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;">Total <br>Cost</th>
+    <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;">Accumulated<br>Impairment</th>
+    <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;">Carrying <br>Amount</th>
+    <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;">Remarks</th>
+</tr>
+
+</thead>
                             <tbody>
 
                          
-                              <tr v-for="unservice in unserv" :key="unservice.id" @click="openUpdateTab(unservice.id)">                              
+                             
+                                <tr v-for="unservice in paginatedInfo" :key="unservice.id" @click="openUpdateTab(unservice.id)">
+                              
 
                                 <td>{{ unservice.issue_date }}</td>
                                 <td>{{ unservice.fulldescription }}</td>
@@ -499,37 +511,37 @@
                                 <td>{{ unservice.rec_totalcost }}</td>
                                 <td>{{ unservice.remarks }}</td>
                               </tr>
+                             
 
 
-                        
-
-                        
+        
                         
                             </tbody>
                           </table>
-                                        <!-- Pagination... -->
-                    <div class="card-body">
-                      <div class="text-center">
-                        <nav aria-label="Page navigation">
-                          <ul class="pagination justify-content-center mb-0"> <!-- Center pagination -->
-                            <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
-                              <a class="page-link" href="#" @click.prevent="currentPage = Math.max(currentPage - 1, 1)">Previous</a>
-                            </li>
-                            <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': currentPage === page }">
-                              <a class="page-link" href="#" @click.prevent="currentPage = page">{{ page }}</a>
-                            </li>
-                            <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
-                              <a class="page-link" href="#" @click.prevent="currentPage = Math.min(currentPage + 1, totalPages)"><b>Next</b></a>
-                            </li>
-                          </ul>
-                        </nav>
-                      </div>
-                      <div class="mt-3">
-                        <p>{{ currentPageRecords }}</p> <!-- Moved current page records here -->
-                      </div>
-                    </div>
                         </div>
                         <hr>
+
+              <!-- Pagination... -->
+                    <div class="card-body">
+                        <div class="text-center">
+                          <nav aria-label="Page navigation">
+                            <ul class="pagination justify-content-center mb-0"> <!-- Center pagination -->
+                              <li class="page-item" :class="{ 'disabled': currentPage === 1 }">
+                                <a class="page-link" href="#" @click.prevent="currentPage = Math.max(currentPage - 1, 1)">Previous</a>
+                              </li>
+                              <li class="page-item" v-for="page in totalPages" :key="page" :class="{ 'active': currentPage === page }">
+                                <a class="page-link" href="#" @click.prevent="currentPage = page">{{ page }}</a>
+                              </li>
+                              <li class="page-item" :class="{ 'disabled': currentPage === totalPages }">
+                                <a class="page-link" href="#" @click.prevent="currentPage = Math.min(currentPage + 1, totalPages)"><b>Next</b></a>
+                              </li>
+                            </ul>
+                          </nav>
+                        </div>
+                        <div class="mt-3">
+                          <p>{{ currentPageRecords }}</p> <!-- Moved current page records here -->
+                        </div>
+                      </div>
 
           
                         <div v-show="currentTab === 'update'" id="update-tab">
@@ -788,26 +800,29 @@
             
                         </div>
                           <hr>
-                        <div class="content-wrapper">
-                          <table class="office-table">
-                            <thead>
+                              <div class="content-wrapper">
+                                <table class="office-table">
+                              <thead>
                               <tr>
-                                <th colspan="11" class="header-title"><b>Inventory Inspection and Disposal</b></th>
+                                <th colspan="11" style="background-color: #123C5D; color: white; font-size: 13px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: 400;">
+                                  <b>Inventory Inspection and Disposal</b>
+                                </th>
                               </tr>
                               <tr>
-                                <th rowspan="2"><b>Article</b></th>
-                                <th rowspan="2"><b>Description</b></th>
-                                <th rowspan="2"><b>Semi-Expendable Property No.</b></th>
-                                <th rowspan="2"><b>Unit Measures</b></th>
-                                <th rowspan="2"><b>Unit Value</b></th>
-                                <th rowspan="2"><b>Date Acquired</b></th>
-                                <th rowspan="2"><b>Balance Per Card</b></th>
-                                <th rowspan="2"><b>On Hand Per Card</b></th>
-                                <th rowspan="2"><b>Shortage/Overage Quantity</b></th>
-                                <th rowspan="2"><b>Shortage/Overage Value</b></th>
-                                <th rowspan="2"><b>Remarks</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Article</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Description</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Semi-Expendable <br> Property No.</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Unit <br> Measures</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Unit <br>Value</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Date <br>Acquired</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Balance <br> Per Card</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>On Hand <br> Per Card</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Shortage/<br>Overage <br>Quantity</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Shortage/<br>Overage <br>Value</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Remarks</b></th>
                               </tr>
                             </thead>
+
                             <tbody>
                               <tr v-for="highval in highdata" :key="highval.id">
                                 <td>{{ highval.article }}</td>
@@ -928,20 +943,22 @@
                           <table class="office-table">
                             <thead>
                               <tr>
-                                <th colspan="11" class="header-title"><b>Inventory Inspection and Disposal</b></th>
+                                <th colspan="11" style="background-color: #123C5D; color: white; font-size: 13px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: 400;">
+                                  <b>Inventory Inspection and Disposal</b>
+                                </th>
                               </tr>
                               <tr>
-                                <th rowspan="2"><b>Article</b></th>
-                                <th rowspan="2"><b>Description</b></th>
-                                <th rowspan="2"><b>Semi-Expendable Property No.</b></th>
-                                <th rowspan="2"><b>Unit Measures</b></th>
-                                <th rowspan="2"><b>Unit Value</b></th>
-                                <th rowspan="2"><b>Date Acquired</b></th>
-                                <th rowspan="2"><b>Balance Per Card</b></th>
-                                <th rowspan="2"><b>On Hand Per Card</b></th>
-                                <th rowspan="2"><b>Shortage/Overage Quantity</b></th>
-                                <th rowspan="2"><b>Shortage/Overage Value</b></th>
-                                <th rowspan="2"><b>Remarks</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Article</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Description</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Semi-Expendable <br> Property No.</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Unit <br> Measures</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Unit <br>Value</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Date <br>Acquired</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Balance <br> Per Card</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>On Hand <br> Per Card</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Shortage/<br>Overage <br>Quantity</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Shortage/<br>Overage <br>Value</b></th>
+                                <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px; font-weight: normal;"><b>Remarks</b></th>
                               </tr>
                             </thead>
                             <tbody>
@@ -1070,32 +1087,33 @@
                       <table class="office-table">
                         <thead>
                           <tr>
-                            <th colspan="15" class="header-title"><b>Inventory Inspection and Disposal</b></th>
+                            <th colspan="15" style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"> <b>Inventory Inspection and Disposal</b></th>
                           </tr>
                           <tr>
-                            <th rowspan="2"><b>Date</b></th>
-                            <th colspan="2"><b>Reference</b></th>
-                            <th rowspan="2"><b>Item Description</b></th>
-                            <th rowspan="2"><b>Estimated Useful Life</b></th>
-                            <th colspan="2"><b>Issued</b></th>
-                            <th colspan="2"><b>Returned</b></th>
-                            <th colspan="2"><b>Re-issued</b></th>
-                            <th rowspan="2"><b>Disposed</b></th>
-                            <th rowspan="2"><b>Balance</b></th>
-                            <th rowspan="2"><b>Amount</b></th>
-                            <th rowspan="2"><b>Remarks</b></th>
+                            <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Date</b></th>
+                            <th colspan="2" style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Reference</b></th>
+                            <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Item Description</b></th>
+                            <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Estimated Useful Life</b></th>
+                            <th colspan="2" style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Issued</b></th>
+                            <th colspan="2" style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Returned</b></th>
+                            <th colspan="2" style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Re-issued</b></th>
+                            <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Disposed</b></th>
+                            <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Balance</b></th>
+                            <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Amount</b></th>
+                            <th rowspan="2" style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Remarks</b></th>
                           </tr>
                           <tr>
-                            <th><b>ICS/RRSP No.</b></th>
-                            <th><b>Semi-expendable Property No.</b></th>
-                            <th><b>Quantity</b></th>
-                            <th><b>Office/Officer</b></th>
-                            <th><b>Quantity</b></th>
-                            <th><b>Office/Officer</b></th>
-                            <th><b>Quantity</b></th>
-                            <th><b>Office/Officer</b></th>
+                            <th style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>ICS/RRSP No.</b></th>
+                            <th style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Semi-expendable Property No.</b></th>
+                            <th style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Quantity</b></th>
+                            <th style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Office/Officer</b></th>
+                            <th style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Quantity</b></th>
+                            <th style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Office/Officer</b></th>
+                            <th style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Quantity</b></th>
+                            <th style="background-color: #123C5D; color: white; font-size: 11px; font-weight: normal; letter-spacing: 1px; font-family: 'Roboto', sans-serif; padding: 5px 8px;"><b>Office/Officer</b></th>
                           </tr>
                         </thead>
+
                         <tbody>
                           <tr v-for="regspi in filteredInfo" :key="regspi.id">
                             <td>{{ regspi.propertydate }}</td>
@@ -1148,7 +1166,6 @@
   
   <script>
   import axios from 'axios'
-
   import flatpickr from 'flatpickr';
   import 'flatpickr/dist/flatpickr.min.css';
 
@@ -1199,6 +1216,9 @@
         RPCSPHIGHendDate: '',
         RPCSPLOWstartDate: '',
         RPCSPLOWendDate: '',
+        searchKeyword: '',
+        currentPage: 1,
+        pageSize: 10
       };
     },
     watch: {
@@ -1261,6 +1281,9 @@
   },
 
   computed: {
+    baseURL() {
+      return axios.defaults.baseURL;
+    },
     filteredNotifications() {
       if (this.filter === 'unread') {
         return this.notifications.filter(notification => notification.status === 'unread');
@@ -1269,7 +1292,45 @@
     },
     unreadCount() {
       return this.notifications.filter(notification => notification.status === 'unread').length;
-    }
+    },
+
+    paginatedInfo() {
+      const startIndex = (this.currentPage - 1) * this.pageSize;
+      const endIndex = startIndex + this.pageSize;
+      return this.filteredInfos.slice(startIndex, endIndex);
+    },
+
+    totalPages() {
+      return Math.ceil(this.filteredInfos.length / this.pageSize);
+    },
+
+    currentPageRecords() {
+      const startIndex = (this.currentPage - 1) * this.pageSize + 1;
+      const endIndex = Math.min(startIndex + this.pageSize - 1, this.filteredInfos.length);
+      return `Showing ${startIndex} - ${endIndex} of ${this.filteredInfos.length} records`;
+    },
+    filteredInfos() {
+      let filteredData = this.unserv;
+
+      // Filtering logic (optional based on employee, classification, etc.)
+      if (this.searchKeyword !== '') {
+        const keyword = this.searchKeyword.toLowerCase();
+        filteredData = filteredData.filter(unserv => 
+          (unserv.entityname && unserv.entityname.toLowerCase().includes(keyword)) ||
+          (unserv.acc_officer && unserv.acc_officer.toLowerCase().includes(keyword)) ||
+          (unserv.classification && unserv.classification.toLowerCase().includes(keyword)) ||
+          (unserv.article && unserv.article.toLowerCase().includes(keyword)) ||
+          (unserv.code && unserv.code.toLowerCase().includes(keyword)) ||
+          (unserv.created_at && unserv.created_at.toLowerCase().includes(keyword)) ||
+          (unserv.status && unserv.status.toLowerCase().includes(keyword)) ||
+          (unserv.particulars && unserv.particulars.toLowerCase().includes(keyword))
+        );
+      }
+
+      return filteredData;
+    },
+
+    
   },
 
   methods: {
@@ -1309,6 +1370,14 @@
         } catch (error) {
           console.error('Network error:', error.message);
         }
+      },
+
+      updatePageSize(size) {
+        this.pageSize = size;
+        this.currentPage = 1; // Reset to page 1 whenever page size changes
+      },
+      goToPage(pageNumber) {
+        this.currentPage = pageNumber;
       },
 
       addCustomButtons(flatpickrInstance) {
@@ -1416,7 +1485,7 @@
            const end = this.endDate ? `&end_date=${this.endDate}` : '';
            const queryParams = start || end ? `?${start}${end}` : '';
 
-           this.pdfUrl = `http://dilg.test/backend/IIRUSP${queryParams}`;
+           this.pdfUrl = `${this.baseURL}/IIRUSP${queryParams}`;
            this.showPdf = true;
          },
         async IIRUSPdownloadPDF() {
@@ -1425,7 +1494,7 @@
             const end = this.endDate ? `&end_date=${this.endDate}` : '';
             const queryParams = start || end ? `?${start}${end}` : '';
 
-            const response = await fetch(`http://dilg.test/backend/IIRUSP${queryParams}`, {
+            const response = await fetch(`${this.baseURL}/IIRUSP${queryParams}`, {
               method: 'GET',
               headers: {
                 'Content-Type': 'application/json',
@@ -1456,7 +1525,7 @@
             const end = this.endDate ? `&end_date=${this.endDate}` : '';
             const queryParams = start || end ? `?${start}${end}` : '';
 
-            const response = await axios.get(`http://dilg.test/backend/IIRUSPgetData${queryParams}`);
+            const response = await axios.get(`${this.baseURL}/IIRUSPgetData${queryParams}`);
             this.unserv = response.data;
           } catch (error) {
             console.log(error);
@@ -1466,13 +1535,13 @@
 
 
       // IIRUSPshowPDF() {
-      //   this.pdfUrl = 'http://dilg.test/backend/IIRUSP'; // Set the path to your PDF file
+      //   this.pdfUrl = `${this.baseURL}/IIRUSP`; // Set the path to your PDF file
       //   this.showPdf = true;
       // },
       // async IIRUSPdownloadPDF() {
       //   try {
       //     // Send HTTP request to backend to generate PDFs for all records
-      //     const response = await fetch('http://dilg.test/backend/IIRUSP', {
+      //     const response = await fetch(`${this.baseURL}/IIRUSP`, {
       //         method: 'GET',
       //         headers: {
       //             'Content-Type': 'application/json',
@@ -1545,7 +1614,7 @@
         const queryParams = start || end ? `?${start}${end}` : '';
 
         
-        this.RPCSPHIGHpdfUrl = `http://dilg.test/backend/RPCSPHIGH${queryParams}`; // Set the path to your PDF file
+        this.RPCSPHIGHpdfUrl = `${this.baseURL}/RPCSPHIGH${queryParams}`; // Set the path to your PDF file
         this.isRPCSPHIGHPdfVisible = true;
       },
       async RPCSPHIGHdownloadPDF() {
@@ -1556,7 +1625,7 @@
 
           
           // Send HTTP request to backend to generate PDFs for all records
-          const response = await fetch(`http://dilg.test/backend/RPCSPHIGH${queryParams}`, {
+          const response = await fetch(`${this.baseURL}/RPCSPHIGH${queryParams}`, {
               method: 'GET',
               headers: {
                   'Content-Type': 'application/json',
@@ -1589,7 +1658,7 @@
         const queryParams = start || end ? `?${start}${end}` : '';
 
         
-        this.RPCSPLOWpdfUrl = `http://dilg.test/backend/RPCSPLOW${queryParams}`; // Set the path to your PDF file
+        this.RPCSPLOWpdfUrl = `${this.baseURL}/RPCSPLOW${queryParams}`; // Set the path to your PDF file
         this.isRPCSPLOWPdfVisible = true;
       },
       async RPCSPLOWdownloadPDF() {
@@ -1601,7 +1670,7 @@
 
           
           // Send HTTP request to backend to generate PDFs for all records
-          const response = await fetch(`http://dilg.test/backend/RPCSPLOW${queryParams}`, {
+          const response = await fetch(`${this.baseURL}/RPCSPLOW${queryParams}`, {
               method: 'GET',
               headers: {
                   'Content-Type': 'application/json',
@@ -1641,7 +1710,7 @@
 
       RegSPIshowPDF() {
         const classification = this.selectedClassification || ''; // Default to all records if no classification is selected
-        this.RegSPIpdfUrl = `http://dilg.test/backend/RegSPI/${classification}`; // Set the path to your PDF file
+        this.RegSPIpdfUrl = `${this.baseURL}/RegSPI/${classification}`; // Set the path to your PDF file
         this.isRegSPIPdfVisible = true;
       },
       RegSPIPdfClose() {
@@ -1653,8 +1722,8 @@
           
           // Adjust the URL based on the classification
           const url = classification 
-            ? `http://dilg.test/backend/RegSPI/${classification}` 
-            : `http://dilg.test/backend/RegSPI`;
+            ? `${this.baseURL}/RegSPI/${classification}` 
+            : `${this.baseURL}/RegSPI`;
           
           // Send HTTP request to backend to generate PDFs for all records
           const response = await fetch(url, {
@@ -1687,7 +1756,7 @@
 
       async fetchClassifications() {
         try {
-          const response = await fetch('http://dilg.test/backend/getClassifications');
+          const response = await fetch(`${this.baseURL}/getClassifications`);
           this.classifications = await response.json();
         } catch (error) {
           console.error('Error fetching classifications:', error);
@@ -1698,8 +1767,8 @@
     // Adjust the URL based on the classification
     const classification = this.selectedClassification || ''; // Default to an empty string if no classification is selected
     const url = classification 
-      ? `http://dilg.test/backend/RegSPIdata/${classification}` 
-      : `http://dilg.test/backend/RegSPIdata`;
+      ? `${this.baseURL}/RegSPIdata/${classification}` 
+      : `${this.baseURL}/RegSPIdata`;
 
     const response = await fetch(url);
     
@@ -1752,7 +1821,7 @@ async getUserInfo(id){
         }
         
         // Set the background image URL
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('${this.baseURL}/uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container
@@ -1881,45 +1950,47 @@ async getUserInfo(id){
 
   /* Modal Overlay */
   .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1050;
-    opacity: 0; /* Start hidden */
-    visibility: hidden; /* Hide from view */
-    transition: opacity 0.3s ease, visibility 0.3s ease;
-  }
-  
-  /* Modal Open State */
-  .modal-open .modal-overlay {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  /* Modal Dialog */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1050;
+  opacity: 0; /* Start hidden */
+  visibility: hidden; /* Hide from view */
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Modal Open State */
+.modal-open .modal-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Modal Dialog */
+.modal-dialog {
+  max-width: 80%; /* Adjusted to accommodate the table */
+  max-height: 100%; /* Adjusted for larger content */
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  overflow-y: auto; /* Allows scrolling if content overflows vertically */
+  overflow-x: hidden; /* Prevents horizontal scrolling */
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+}
+
+/* Responsive Modal */
+@media (max-width: 768px) {
   .modal-dialog {
-    max-width: 80%; /* Adjusted to accommodate the table */
-    max-height: 100%; /* Adjusted for larger content */
-    background-color: white;
-    padding: 20px;
-    border-radius: 5px;
-    overflow-y: auto; /* Allows scrolling if content overflows */
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); /* Add a subtle shadow */
+    max-width: 95%; /* More responsive for smaller screens */
+    max-height: 90%;
   }
-  
-  /* Responsive Modal */
-  @media (max-width: 768px) {
-    .modal-dialog {
-      max-width: 95%; /* More responsive for smaller screens */
-      max-height: 90%;
-    }
-  }
+}
+
   
   /* Ensure all cards have the same height */
   .card {
@@ -1992,12 +2063,14 @@ async getUserInfo(id){
   }
   
   .office-table th {
-    border-right: 1px solid #bbb;
-  }
-  
-  .office-table td {
-    border-right: 1px solid #eee;
-  }
+  font-weight: normal;  /* Ensure normal font weight for table headers */
+  border-right: 1px solid #bbb;
+}
+
+.office-table td {
+  font-weight: normal;  /* Ensure normal font weight for table data */
+}
+
   
   .office-table th:last-child, 
   .office-table td:last-child {
@@ -2352,8 +2425,8 @@ async getUserInfo(id){
 
 /* Align the datepickers to the left and add spacing */
 .datepicker-start {
-  margin-left: 0;   /* Make sure the start date is fully left aligned */
-  margin-right: 15px; /* Add space between start and end date */
+  margin-left: 160px;   /* Make sure the start date is fully left aligned */
+  margin-right: 20px; /* Add space between start and end date */
 }
 
 .datepicker-end {
@@ -2364,12 +2437,29 @@ async getUserInfo(id){
 /* Align the datepickers to the left and add spacing */
 .datepicker-start2 {
   margin-left: 0;   /* Make sure the start date is fully left aligned */
-  margin-right: 15px; /* Add space between start and end date */
+  margin-right: 20px; /* Add space between start and end date */
 }
 
 .datepicker-end2 {
-  margin-left: 0; /* Align the end date next to the start date */
-  margin-right: 850px; /* Add space between start and end date */
+  margin-left: 10px; /* Align the end date next to the start date */
+  margin-right: 830px; /* Add space between start and end date */
 }
 
+
+.mark-all-read-btn-sm {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px; /* Adds a little spacing */
+  float: middle; /* Aligns to the right for a cleaner look */
+}
+
+.mark-all-read-btn-sm:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+}
   </style>

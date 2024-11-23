@@ -352,6 +352,23 @@
   padding: 0.5rem 1rem; /* Adjust as needed */
 }
 
+
+.mark-all-read-btn-sm {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px; /* Adds a little spacing */
+  float: middle; /* Aligns to the right for a cleaner look */
+}
+
+.mark-all-read-btn-sm:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+}
 </style>
 <template>
   <div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
@@ -386,7 +403,15 @@
                       <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                       <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                     </nav>
-                  </li>
+                    <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                    <button
+                      v-if="filter === 'unread' && filteredNotifications.length > 0"
+                      class="mark-all-read-btn-sm"
+                      @click="markAllAsRead"
+                    >
+                      Mark All as Read
+                    </button>
+                  </li>        
                   <hr />
 
                   <!-- Notifications List -->
@@ -692,13 +717,28 @@
                                 </span>
                               </td>                              
                               <td>
-                                <img :src="ord.receipt" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" />
+                                <div v-if="ord.receipt">
+                                  <template v-if="ord.receipt.endsWith('.pdf')">
+                                    <div class="pdf-box" @click="openPdfInBlank(ord.receipt)">
+                                      <i class="bx bxs-file-pdf pdf-icon"></i>
+                                      <span class="pdf-text">Open PDF</span>
+                                    </div>
+                                  </template>
+                                  <template v-else>
+                                    <img ref="receiptverify" :src="`${this.baseURL}/uploads/${ord.receipt}`" @click="viewImageInFullscreen" class="img-large img-thumbnail" />
+                                  </template>
+                                </div>
+                                <div v-else>
+                                  <!-- Display the Button if `ord.receipt` is null -->
+                                  <div class="button-group">
+                                    <a class="btn btn-warning" @click="selectRecord(ord)">
+                                      <i class="bx bxs-camera"></i>
+                                    </a>
+                                  </div>
+                                </div>
                               </td>
                               <td>
                                 <div class="button-group">
-                                  <a class="btn btn-warning" @click="selectRecord(ord)">
-                                    <i class="bx bxs-camera"></i>
-                                  </a>
                                   <a class="btn btn-danger" @click="deleteRecord(ord.id)">
                                     <i class="bx bxs-trash"></i>
                                   </a>
@@ -749,14 +789,29 @@
                     </div>                    
                     <div class="info-group">
                       <label>Receipt:</label>
-                      <img :src="ord.receipt" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" />
+                      <div v-if="ord.receipt">
+                        <template v-if="ord.receipt.endsWith('.pdf')">
+                          <div class="pdf-box" @click="openPdfInBlank(ord.receipt)">
+                            <i class="bx bxs-file-pdf pdf-icon"></i>
+                            <span class="pdf-text">Open PDF</span>
+                          </div>
+                        </template>
+                        <template v-else>
+                          <img ref="receiptverify" :src="`${this.baseURL}/uploads/${ord.receipt}`" style="max-height: 5px; max-width: 5px;" @click="viewImageInFullscreen" alt="Returned Image" class="img-large img-thumbnail" />
+                        </template>
+                      </div>
+                      <div v-else>
+                        <!-- Display the Button if `ord.receipt` is null -->
+                        <div class="button-group">
+                          <a class="btn btn-warning" @click="selectRecord(ord)">
+                            <i class="bx bxs-camera"></i>
+                          </a>
+                        </div>
+                      </div>                    
                     </div>
                     <div class="info-group">
                       <br><label>Action:</label>
                       <div class="button-group">
-                        <a class="btn btn-warning" @click="selectRecord(ord)">
-                          <i class="bx bxs-camera"></i>
-                        </a>
                         <a class="btn btn-danger" @click="deleteRecord(ord.id)">
                           <i class="bx bxs-trash"></i>
                         </a>
@@ -925,6 +980,9 @@
       export default{
       
       computed:{
+        baseURL() {
+          return axios.defaults.baseURL;
+        },
         totalCost() {
           return this.quantity * this.unitcost;
         },
@@ -997,6 +1055,28 @@
         });
       },
       methods:{
+        openPdfInBlank(fileName) {
+          const pdfUrl = `${this.baseURL}/pdfFiles/${fileName}`;
+          const newTab = window.open('about:blank', '_blank');
+          if (newTab) {
+            newTab.document.write(
+              `<html><body style="margin:0;padding:0;overflow:hidden;">
+                <iframe src="${pdfUrl}" frameborder="0" style="width:100%;height:100%;"></iframe>
+              </body></html>`
+            );
+            newTab.document.close();
+          }
+        },
+
+        viewImageInFullscreen() {
+          // Logic for viewing image in fullscreen
+          const imageElement = this.$refs.receiptverify;
+          if (imageElement) {
+            const newWindow = window.open("", "_blank");
+            newWindow.document.write(`<img src="${imageElement.src}" style="width: 100%; height: 100%; object-fit: contain;">`);
+            newWindow.document.close();
+          }
+        },
         async fetchNotifications() {
           try {
             const response = await axios.get('notification');
@@ -1297,7 +1377,7 @@
         }
         
         // Set the background image URL
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('${this.baseURL}/uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container

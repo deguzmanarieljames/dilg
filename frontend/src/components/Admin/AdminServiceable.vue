@@ -31,7 +31,15 @@
                   <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                   <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                 </nav>
-              </li>
+                <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                <button
+                  v-if="filter === 'unread' && filteredNotifications.length > 0"
+                  class="mark-all-read-btn-sm"
+                  @click="markAllAsRead"
+                >
+                  Mark All as Read
+                </button>
+              </li>  
               <hr />
 
               <!-- Notifications List -->
@@ -360,104 +368,140 @@
         <div class="card" style="border-top: solid 30px #b8ffb4; border-bottom: solid 30px #b8ffb4;">
         <div class="card-body">
           <br>
-            <!-- Dropdowns and Search Bar at the Top -->
-        <div class="row align-items-center">
-          <!-- Dropdown for Employee -->
-          <div class="col-lg-2">
-            <select v-model="selectedEmployee" class="form-select" @change="onEmployeeChange">
-              <option value="">Select Employee</option>
-              <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
-            </select>
-          </div>
-
-          <!-- Dropdown for Classification -->
-          <div class="col-lg-2">
-            <select v-model="selectedClassification" class="form-select" :disabled="!selectedEmployee" @change="onEmployeeChange">
-              <option value="">Select Classification</option>
-              <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
-            </select>
-          </div>
-
-          <!-- Dropdown for Article -->
-          <div class="col-lg-2">
-            <select v-model="selectedArticle" class="form-select" :disabled="!selectedEmployee || !selectedClassification" @change="onEmployeeChange">
-              <option value="">Select Article</option>
-              <option v-for="article in distinctArticle" :key="article" :value="article">{{ article }}</option>
-            </select>
-          </div>
-
-          <!-- Dropdown for Particular -->
-          <div class="col-lg-2">
-            <select v-model="selectedParticular" class="form-select" :disabled="!selectedEmployee || !selectedClassification || !selectedArticle">
-              <option value="">Select Particular</option>
-              <option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
-            </select>
-          </div>
-
-          <!-- Status dropdown centered -->
-          <div class="col-lg-2">
-            <select v-model="selectedStatus" class="form-select">
-              <option value="">Current Status</option>
-              <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
-            </select>
-          </div>
-
-          <!-- Search Bar -->
-          <div class="col-lg-2 d-flex justify-content-end">
-            <div class="InputContainer">
-              <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
-            </div>
-          </div>
-        </div>
-
-        <hr>
-        <!-- Show Entries and Download Serviceable Document at the Bottom -->
-        <div class="row align-items-center">
-          <!-- Show Entries -->
-          <div class="col-lg-6">
-            <span class="me-2">Show</span> <!-- Added margin to the right -->
-            <div class="dropdown" style="display: inline-block;">
-              <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
-                {{ pageSize }}
-              </button>
-              <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
-                <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
-                <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
-                <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
-                <!-- Add more options as needed -->
-              </ul>
-            </div>
-            <span class="ms-2">entries</span> <!-- Added margin to the left -->
-          </div>
-
-          <!-- Download Serviceable Document -->
-          <div class="col-lg-6 d-flex justify-content-end">
-            <div class="accordion accordion-body text-end" id="faq-group-2">
-              <div class="accordion-item">
-                <h2 class="accordion-header">
-                  <button class="accordion-button btn btn-outline-info collapsed" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
-                    Download Serviceable Documents
+          <div class="row justify-content-center align-items-center">
+            <!-- Dropdown for Employee -->
+            <div class="col-lg-2">
+              <!-- Show Entries Dropdown -->
+              <div class="d-flex align-items-center">
+                <span class="me-2">Show</span>
+                <div class="dropdown" style="display: inline-block;">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+                    {{ pageSize }}
                   </button>
-                </h2>
-                <!-- Loading animation -->
-                <div v-if="loading" class="text-center mt-1">
-                  <div class="loading-line"></div>
+                  <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+                    <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+                    <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+                    <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+                    <!-- Add more options as needed -->
+                  </ul>
                 </div>
-                <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
-                  <div class="row mt-3">
-                    <div class="col-lg-12 align-items-center">
-                      <button class="download" type="button" @click="serviceablePDF">
-                        <span class="button__text">Download</span>
-                        <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
+                <span class="ms-2">entries</span>
               </div>
             </div>
+            <div class="col-lg-2">
+          
+            </div>
+          
+            <!-- Dropdown for Classification -->
+            <div class="col-lg-2">
+          
+            </div>
+          
+            <!-- Dropdown for Article -->
+            <div class="col-lg-2">
+          
+            </div>
+          
+          
+              <!-- Dropdown for Particular -->
+            <div class="col-lg-2">
+              <!-- Filter Data Button with Dropdowns inside -->
+              <div class="dropdown me-3">
+                <button class="btn btn-primary dropdown-toggle filter-button" type="button" id="filterDropdownButton" data-bs-toggle="dropdown" aria-expanded="false" style="width: 180px;">
+                  Filter Data
+                </button>
+                <ul class="dropdown-menu p-3" aria-labelledby="filterDropdownButton">
+                  <!-- Select Filters inside Dropdown -->
+          
+          
+                  <li>
+                    <select v-model="selectedEmployee" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" @change="onEmployeeChange">
+                      <option value="">Select Employee</option>
+                      <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
+                    </select>
+                  </li>
+                
+                  <!-- Dropdown for Classification -->
+                  <li>
+                    <select v-model="selectedClassification" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" :disabled="!selectedEmployee" @change="onEmployeeChange">
+                      <option value="">Select Classification</option>
+                      <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
+                    </select>
+                  </li>
+                
+                  <!-- Dropdown for Article -->
+                  <li>
+                    <select v-model="selectedArticle" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" :disabled="!selectedEmployee || !selectedClassification" @change="onEmployeeChange">
+                      <option value="">Select Article</option>
+                      <option v-for="article in distinctArticle" :key="article" :value="article">{{ article }}</option>
+                    </select>
+                  </li>
+                
+                  <!-- Dropdown for Particular -->
+                  <li>
+                    <select v-model="selectedParticular" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" :disabled="!selectedEmployee || !selectedClassification || !selectedArticle">
+                      <option value="">Select Particular</option>
+                      <option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
+                    </select>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          
+          
+            <!-- Status dropdown -->
+            <div class="col-lg-2">
+              <!-- <select v-model="selectedRemarks" class="form-select">
+                <option value="">Remarks</option>
+                <option v-for="remarks in distinctRemarks" :key="remarks" :value="remarks">{{ remarks }}</option>
+              </select> -->
+              <div class="InputContainer">
+                <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
+              </div>
+            </div>
+          
+            <!-- <div class="col-lg-3">
+              <div class="accordion" id="faq-group-2">
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed btn btn-outline-info" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
+                      Download
+                    </button>
+                  </h2>
+                  
+                  <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
+                    <div class="row align-items-center mt-3">
+                      <div class="col-lg-6">
+                        <select v-model="selectedEmployeePDF" @change="downloadEmployeeRecordsPDF" class="form-select animated-dropdown w-100">
+                          <option value="" disabled>Select Employee</option>
+                          <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
+                        </select>
+                      </div>
+                      <div class="col-lg-6">
+                        <button class="btn btn-warning w-100" @click="recordsPDF"><i class="ri-download-2-line"></i> Download All</button>
+                      </div>
+                    </div>
+                    <div v-if="loading" class="text-center mt-1">
+                      <div class="loading-line"></div>
+                    </div>
+                  </div>
+                </div> 
+              </div> 
+            </div> -->
+          
+          
+          
+          
+          <br>
+          <br>
+          <br>
+          <br>
+          
+          
+          
+          <!-- Search Bar and Show Entries Dropdown -->
+          
           </div>
-        </div>
-
 
         <div style="overflow-y: auto;">
 
@@ -486,7 +530,7 @@
             <tbody>
               <!-- Table rows -->
               <tr v-for="info in paginatedInfo" :key="info.id">
-                <td><img :src="`http://dilg.test/backend/uploads/${info.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" /></td>
+                <td><img :src="`${this.baseURL}/uploads/${info.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" /></td>
                 <td>{{ info.entityname }}</td>
                 <td>{{ info.classification }}</td>
                 <td>{{ info.code }}</td>
@@ -837,7 +881,7 @@ export default{
     async downloadEmployeeRecordsPDF() {
         try {
           this.simulateLoading();
-           const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
+           const response = await fetch(`${this.baseURL}/employeeRecordsPDF`, {
                method: 'POST',
                headers: {
                    'Content-Type': 'application/json',
@@ -868,7 +912,7 @@ export default{
     try {
         // Send HTTP request to backend to generate PDFs for all records
         this.simulateLoading();
-        const response = await fetch('http://dilg.test/backend/serviceablePDF', {
+        const response = await fetch(`${this.baseURL}/serviceablePDF`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -1404,7 +1448,7 @@ export default{
         }
         
         // Set the background image URL
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('${this.baseURL}/uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container
@@ -1424,6 +1468,9 @@ export default{
           
   },
   computed: {
+    baseURL() {
+      return axios.defaults.baseURL;
+    },
     filteredNotifications() {
       if (this.filter === 'unread') {
         return this.notifications.filter(notification => notification.status === 'unread');
@@ -2007,6 +2054,140 @@ img {
 .data-value {
   color: #333;
   text-align: right;
+}
+
+
+
+
+
+
+
+.filter-button {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  padding: 7px 27px; /* Smaller padding for a smaller button */
+  text-align: center;
+  font-size: 15px; /* Smaller font size */
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  color: #4A3781;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid #725AC1;
+  border-radius: 8px; /* Slightly smaller border radius */
+  box-shadow: inset 0 0 0 0 #725AC1;
+}
+
+.filter-button:hover {
+  color: white;
+  box-shadow: inset 0 -100px 0 0 #725AC1;
+}
+
+.filter-button:active {
+  transform: scale(1);
+}
+
+/* Dropdown Menu initial state */
+.dropdown-menu {
+width: 300px;
+background-color: #fafafa;
+border-radius: 10px;
+box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+border: 1px solid #ddd;
+opacity: 0;
+transform: translateY(-10px);
+transition: opacity 0.3s, transform 0.3s ease-in-out;
+}
+
+/* Apply when dropdown is shown */
+.dropdown.show .dropdown-menu {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* Individual Item Animation */
+.animated-item {
+opacity: 0;
+transform: translateY(-10px);
+animation: fadeInUp 0.5s ease-in-out forwards;
+}
+
+/* Keyframes for fade-in and move-up */
+@keyframes fadeInUp {
+from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+to {
+  opacity: 1;
+  transform: translateY(0);
+}
+}
+
+/* Keyframes for fade-out */
+@keyframes fadeOutDown {
+from {
+  opacity: 1;
+  transform: translateY(0);
+}
+to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+}
+
+/* Adding Delay for Sequential Animations */
+.animated-item:nth-child(1) {
+animation-delay: 0.1s;
+}
+
+.animated-item:nth-child(2) {
+animation-delay: 0.2s;
+}
+
+.animated-item:nth-child(3) {
+animation-delay: 0.3s;
+}
+
+.animated-item:nth-child(4) {
+animation-delay: 0.4s;
+}
+
+.animated-item:nth-child(5) {
+animation-delay: 0.5s;
+}
+
+/* When dropdown is hidden, apply fade-out animation */
+.dropdown-menu.fade-out .animated-item {
+animation: fadeOutDown 0.5s ease-in-out forwards;
+}
+
+/* Applying transition effect on the dropdown for fade-out */
+.dropdown-menu.fade-out {
+opacity: 0;
+transform: translateY(10px);
+transition: opacity 0.3s, transform 0.3s ease-in-out;
+}
+
+
+.mark-all-read-btn-sm {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px; /* Adds a little spacing */
+  float: middle; /* Aligns to the right for a cleaner look */
+}
+
+.mark-all-read-btn-sm:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
 }
 </style>
 

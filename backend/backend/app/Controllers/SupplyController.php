@@ -8,6 +8,7 @@ use CodeIgniter\API\ResponseTrait;
 use App\Models\SupplyModel;
 use App\Models\SigninModel;
 use App\Models\EmployeeSuppliesModel;
+use Mpdf\Mpdf;
 
 class SupplyController extends ResourceController
 {
@@ -66,18 +67,43 @@ class SupplyController extends ResourceController
 
     private function simulateForecast($data)
     {
-        // This function simulates data, replace with actual ARIMA forecasting
+        // Ensure the data is sorted by month
+        ksort($data);
+    
         $forecast = [];
-        $currentMonth = end(array_keys($data)); // Get the last month
-        for ($i = 1; $i <= 3; $i++) {
-            $newMonth = date('Y-m', strtotime("+$i month", strtotime($currentMonth)));
-            $forecast[] = [
-                'month' => $newMonth,
-                'predicted_issue' => rand(40, 50) // Simulated prediction
-            ];
+        $totalMonths = count($data);
+    
+        // Calculate moving average (e.g., over the last 3 months)
+        $movingAverageWindow = min(3, $totalMonths); // Use available data if less than 3 months
+    
+        if ($totalMonths > 0) {
+            // Get the keys (months) and values (total issued)
+            $months = array_keys($data);
+            $values = array_values($data);
+    
+            // Iterate over the next 3 months
+            $currentMonth = end($months);
+            for ($i = 1; $i <= 3; $i++) {
+                // Predict the next month
+                $newMonth = date('Y-m', strtotime("+$i month", strtotime($currentMonth)));
+    
+                // Use moving average of the last 3 months to predict
+                $movingAverage = array_sum(array_slice($values, -$movingAverageWindow)) / $movingAverageWindow;
+    
+                // Add prediction
+                $forecast[] = [
+                    'month' => $newMonth,
+                    'predicted_issue' => round($movingAverage) // Round to nearest integer
+                ];
+    
+                // Simulate the moving average for future months
+                $values[] = $movingAverage; // Add the predicted value for the next calculation
+            }
         }
+    
         return $forecast;
     }
+    
     
 
     public function getDistinctEmployeeSupplies()
@@ -119,6 +145,21 @@ class SupplyController extends ResourceController
         return $this->respond($data, 200);
     }
 
+    public function searchItemCode($query)
+    {
+        $inventoryModel = new SupplyModel();
+    
+        // Perform the search directly in the controller using the model's query builder
+        $result = $inventoryModel->select('item_code')
+                                 ->like('item_code', $query, 'both')
+                                 ->orderBy('id', 'DESC')
+                                 ->findAll();
+    
+        return $this->response->setJSON($result);
+    }
+
+
+
     public function getEmployees()
     {
       $employees = new SigninModel();
@@ -136,7 +177,7 @@ class SupplyController extends ResourceController
             ->findAll();
 
             foreach ($data as &$item) {
-                $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+                $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
             }
     
         return $this->respond($data, 200);
@@ -154,7 +195,7 @@ class SupplyController extends ResourceController
             ->findAll();
 
             foreach ($data as &$item) {
-                $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+                $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
             }
 
         return $this->respond($data, 200);
@@ -340,17 +381,79 @@ class SupplyController extends ResourceController
     }
 
 
-    public function delEmployeeSupplies(){
+    public function delEmployeeSupplies()
+    {
         $json = $this->request->getJSON();  
         $id = $json->id;
         
-        // Retrieve the image file name associated with the record
         $main = new EmployeeSuppliesModel();
+        $supplyModel = new SupplyModel(); // Load the SupplyModel
+    
+        // Retrieve the record to be deleted
         $record = $main->find($id);
-        
-        // Delete the record
-        $ron = $main->delete($id);
-        
+        if ($record) {
+            $itemCode = $record['item_code'];
+            $issueQuantity = $record['issue_quantity'];
+    
+            // Update the balance quantity in the SupplyModel
+            $supply = $supplyModel->where('item_code', $itemCode)->first();
+            if ($supply) {
+                $newBalance = $supply['bal_quantity'] + $issueQuantity;
+                $supplyModel->update($supply['id'], ['bal_quantity' => $newBalance]);
+            }
+    
+            // Delete the record from EmployeeSuppliesModel
+            $main->delete($id);
+    
+            return $this->response->setJSON(['status' => 'success', 'message' => 'Record deleted and balance updated']);
+        }
+    
+        return $this->response->setJSON(['status' => 'error', 'message' => 'Record not found']);
+    }
+    
+
+
+
+
+
+
+
+
+
+
+
+    // PDF GENERATION
+
+    public function generateStockCard($recordId)
+    {
+        // Ensure recordId is provided
+        if (!$recordId) {
+            die("Record ID is required.");
+        }
+
+        $databaseppemodel = new SupplyModel();
+
+        // Fetch the data based on the provided recordId
+        $data = $databaseppemodel->where('id', $recordId)->first();
+
+        if ($data) {
+            // Load the MPDF library
+            $mpdf = new \Mpdf\Mpdf(['orientation' => 'P', 'format' => 'A4']);
+
+            // Generate HTML content dynamically based on record data
+            $htmlContent = view('StockCard', ['data' => [$data]]); // Pass the record to the view
+
+            // Write HTML content to PDF
+            $mpdf->WriteHTML($htmlContent);
+
+            // Output the PDF
+            $mpdf->Output('generated_pdf.pdf', 'D'); // 'D' to force download
+
+            exit(); // End script execution after downloading the PDF
+        } else {
+            // Handle the case where the record is not found
+            die("Record with ID $recordId not found.");
+        }
     }
     
 }

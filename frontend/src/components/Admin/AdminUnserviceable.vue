@@ -31,7 +31,15 @@
                     <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                     <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                   </nav>
-                </li>
+                  <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                  <button
+                    v-if="filter === 'unread' && filteredNotifications.length > 0"
+                    class="mark-all-read-btn-sm"
+                    @click="markAllAsRead"
+                  >
+                    Mark All as Read
+                  </button>
+                </li>  
                 <hr />
 
                 <!-- Notifications List -->
@@ -284,102 +292,103 @@
   <br>
 
       <!-- Dropdowns and Search Bar at the Top -->
-<div class="row align-items-center">
-  <!-- Dropdown for Employee -->
-  <div class="col-lg-2">
-    <select v-model="selectedEmployee" class="form-select" @change="onEmployeeChange">
-      <option value="">Select Employee</option>
-      <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
-    </select>
-  </div>
-
-  <!-- Dropdown for Classification -->
-  <div class="col-lg-2">
-    <select v-model="selectedClassification" class="form-select" :disabled="!selectedEmployee" @change="onEmployeeChange">
-      <option value="">Select Classification</option>
-      <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
-    </select>
-  </div>
-
-  <!-- Dropdown for Article -->
-  <div class="col-lg-2">
-    <select v-model="selectedArticle" class="form-select" :disabled="!selectedEmployee || !selectedClassification" @change="onEmployeeChange">
-      <option value="">Select Article</option>
-      <option v-for="article in distinctArticle" :key="article" :value="article">{{ article }}</option>
-    </select>
-  </div>
-
-  <!-- Dropdown for Particular -->
-  <div class="col-lg-2">
-    <select v-model="selectedParticular" class="form-select" :disabled="!selectedEmployee || !selectedClassification || !selectedArticle">
-      <option value="">Select Particular</option>
-      <option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
-    </select>
-  </div>
-
-  <!-- Status dropdown centered -->
-  <div class="col-lg-2">
-    <select v-model="selectedStatus" class="form-select">
-      <option value="">Current Status</option>
-      <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
-    </select>
-  </div>
-
-  <!-- Search Bar -->
-  <div class="col-lg-2 d-flex justify-content-end">
-    <div class="InputContainer">
-      <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
-    </div>
-  </div>
-</div>
-
-<hr>
-<!-- Show Entries and Download Serviceable Document at the Bottom -->
-<div class="row align-items-center">
-  <!-- Show Entries -->
-  <div class="col-lg-6">
-    <span class="me-2">Show</span> <!-- Added margin to the right -->
-    <div class="dropdown" style="display: inline-block;">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
-        {{ pageSize }}
-      </button>
-      <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
-        <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
-        <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
-        <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
-        <!-- Add more options as needed -->
-      </ul>
-    </div>
-    <span class="ms-2">entries</span> <!-- Added margin to the left -->
-  </div>
-
-  <!-- Download Serviceable Document -->
-  <div class="col-lg-6 d-flex justify-content-end">
-    <div class="accordion accordion-body text-end" id="faq-group-2">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button btn btn-outline-info collapsed" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
-            Download Serviceable Documents
-          </button>
-        </h2>
-        <!-- Loading animation -->
-        <div v-if="loading" class="text-center mt-1">
-          <div class="loading-line"></div>
-        </div>
-        <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
-          <div class="row mt-3">
-            <div class="col-lg-12 align-items-center">
-              <button class="download" type="button" @click="unserviceablePDF">
-                <span class="button__text">Download</span>
-                <span class="button__icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 35 35" id="bdd05811-e15d-428c-bb53-8661459f9307" data-name="Layer 2" class="svg"><path d="M17.5,22.131a1.249,1.249,0,0,1-1.25-1.25V2.187a1.25,1.25,0,0,1,2.5,0V20.881A1.25,1.25,0,0,1,17.5,22.131Z"></path><path d="M17.5,22.693a3.189,3.189,0,0,1-2.262-.936L8.487,15.006a1.249,1.249,0,0,1,1.767-1.767l6.751,6.751a.7.7,0,0,0,.99,0l6.751-6.751a1.25,1.25,0,0,1,1.768,1.767l-6.752,6.751A3.191,3.191,0,0,1,17.5,22.693Z"></path><path d="M31.436,34.063H3.564A3.318,3.318,0,0,1,.25,30.749V22.011a1.25,1.25,0,0,1,2.5,0v8.738a.815.815,0,0,0,.814.814H31.436a.815.815,0,0,0,.814-.814V22.011a1.25,1.25,0,1,1,2.5,0v8.738A3.318,3.318,0,0,1,31.436,34.063Z"></path></svg></span>
+      <div class="row justify-content-center align-items-center">
+        <!-- Dropdown for Employee -->
+        <div class="col-lg-2">
+          <!-- Show Entries Dropdown -->
+          <div class="d-flex align-items-center">
+            <span class="me-2">Show</span>
+            <div class="dropdown" style="display: inline-block;">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+                {{ pageSize }}
               </button>
+              <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+                <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+                <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+                <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+                <!-- Add more options as needed -->
+              </ul>
             </div>
+            <span class="ms-2">entries</span>
           </div>
         </div>
+        <div class="col-lg-2">
+      
+        </div>
+      
+        <!-- Dropdown for Classification -->
+        <div class="col-lg-2">
+      
+        </div>
+      
+        <!-- Dropdown for Article -->
+        <div class="col-lg-2">
+      
+        </div>
+      
+      
+          <!-- Dropdown for Particular -->
+        <div class="col-lg-2">
+          <!-- Filter Data Button with Dropdowns inside -->
+          <div class="dropdown me-3">
+            <button class="btn btn-primary dropdown-toggle filter-button" type="button" id="filterDropdownButton" data-bs-toggle="dropdown" aria-expanded="false" style="width: 180px;">
+              Filter Data
+            </button>
+            <ul class="dropdown-menu p-3" aria-labelledby="filterDropdownButton">
+              <!-- Select Filters inside Dropdown -->
+      
+      
+              <li>
+                <select v-model="selectedEmployee" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" @change="onEmployeeChange">
+                  <option value="">Select Employee</option>
+                  <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
+                </select>
+              </li>
+            
+              <!-- Dropdown for Classification -->
+              <li>
+                <select v-model="selectedClassification" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" :disabled="!selectedEmployee" @change="onEmployeeChange">
+                  <option value="">Select Classification</option>
+                  <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
+                </select>
+              </li>
+            
+              <!-- Dropdown for Article -->
+              <li>
+                <select v-model="selectedArticle" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" :disabled="!selectedEmployee || !selectedClassification" @change="onEmployeeChange">
+                  <option value="">Select Article</option>
+                  <option v-for="article in distinctArticle" :key="article" :value="article">{{ article }}</option>
+                </select>
+              </li>
+            
+              <!-- Dropdown for Particular -->
+              <li>
+                <select v-model="selectedParticular" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" :disabled="!selectedEmployee || !selectedClassification || !selectedArticle">
+                  <option value="">Select Particular</option>
+                  <option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
+                </select>
+              </li>
+            </ul>
+          </div>
+        </div>
+      
+      
+        <!-- Status dropdown -->
+        <div class="col-lg-2">
+          <div class="InputContainer">
+            <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
+          </div>
+        </div>
+      
+      
+      
+      
+      <br>
+      <br>
+      <br>
+      <br>
+      
       </div>
-    </div>
-  </div>
-</div>
   
   <br>
   
@@ -411,8 +420,8 @@
   
       <tbody>
         <!-- Table rows -->
-        <tr v-for="info in paginatedInfo" :key="info.id">
-          <td><img :src="`http://dilg.test/backend/uploads/${info.image}`" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
+        <tr v-for="info in paginatedInfo" :key="info.id" @click="selectRecord(info)">
+          <td><img :src="`${this.baseURL}/uploads/${info.image}`" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
           <td>{{ info.entityname }}</td>
           <td>{{ info.classification }}</td>
           <td>{{ info.code }}</td>
@@ -425,59 +434,6 @@
           <td>{{ info.propertydate }}</td>
           <td>
             <button @click="toggleRowVisibility(info)">View All</button>
-          </td>
-        </tr>
-        <tr v-if="info.showDetails" v-for="info in paginatedInfo" :key="info.id + '-details'">
-          <!-- Detailed row with additional information -->
-          <td colspan="12">
-            <div>
-              <p><b>ICS No:</b> {{ info.icsnumber }}</p>
-              <p><b>JEV No:</b> {{ info.jevnumber }}</p>
-              <p><b>Quantity:</b> {{ info.rec_quantity }}</p>
-              <p><b>Unit:</b> {{ info.rec_unit }}</p>
-              <p><b>Unit Cost:</b> {{ info.rec_unitcost }}</p>
-              <p><b>Total Cost:</b> {{ info.rec_totalcost }}</p>
-              <p><b>Issue/ Transfer/ Adjustments (Amount):</b> {{ info.isstranadjamount }}</p>
-              <p><b>Accummulated Impairment Loss:</b> {{ info.accimploss }}</p>
-              <p><b>Adjusted Cost:</b> {{ info.adjustedcost }}</p>
-              <p><b>Nature of Repair:</b> {{ info.repair_nature }}</p>
-              <p><b>Repair Amount:</b> {{ info.repair_amount }}</p>
-              <p><b>Issue Item No:</b> {{ info.issue_itemno }}</p>
-              <p><b>Issue Date:</b> {{ info.issue_date }}</p>
-              <p><b>Issue Quantity:</b> {{ info.issue_quantity }}</p>
-              <p><b>Issue Office/Officer:</b> {{ info.issue_officeofficer }}</p>
-              <p><b>Transfer Date:</b> {{ info.transfer_date }}</p>
-              <p><b>Transfer Quantity:</b> {{ info.transfer_quantity }}</p>
-              <p><b>Transfer Office/Officer:</b> {{ info.transfer_officeofficer }}</p>
-              <p><b>Disposal Date:</b> {{ info.disposal_date }}</p>
-              <p><b>Disposal Quantity:</b> {{ info.disposal_quantity }}</p>
-              <p><b>Disposal Office/Officer:</b> {{ info.disposal_officeofficer }}</p>
-              <p><b>Balance Quantity:</b> {{ info.balancequantity }}</p>
-              <p><b>Balance Amount:</b> {{ info.balanceamount }}</p>
-              <p><b>Remarks:</b> {{ info.remarks }}</p>
-              <p><b>Estimated Useful Life:</b> {{ info.estimatedlife }}</p>
-              <p><b>Issued Officer:</b> {{ info.issued_officer }}</p>
-              <p><b>Issued Position/Office:</b> {{ info.issued_offposition }}</p>
-              <p><b>Issued Date:</b> {{ info.issued_date }}</p>
-              <p><b>Accountable Officer:</b> {{ info.acc_officer }}</p>
-              <p><b>Accountable Position:</b> {{ info.acc_empposition }}</p>
-              <p><b>Accountable Date:</b> {{ info.acc_date }}</p>
-              <p><b>ITR No:</b> {{ info.itr_no }}</p>
-              <p><b>ITR Date:</b> {{ info.itr_date }}</p>
-              <p><b>RRSP No:</b> {{ info.rrsp_no }}</p>
-              <p><b>RRSP Date:</b> {{ info.rrsp_date }}</p>
-              <p><b>Reason for Transfer:</b> {{ info.reasonfortrans }}</p>
-              <p><b>Returned Quantity:</b> {{ info.reg_returned_qty }}</p>
-              <p><b>Returned Office:</b> {{ info.reg_returned_off }}</p>
-              <p><b>Re-issued Quantity:</b> {{ info.reg_reissued_qty }}</p>
-              <p><b>Re-issued Office:</b> {{ info.reg_reissued_off }}</p>
-              <p><b>Disposed Quantity:</b> {{ info.reg_disposed_qty }}</p>
-              <p><b>Balance Quantity:</b> {{ info.reg_balance_quantity }}</p>
-              <p><b>Amount:</b> {{ info.reg_amount }}</p>
-              <p><b>Remarks:</b> {{ info.reg_remarks }}</p>
-              <p><b>Property Officer:</b> {{ info.property_officer }}</p>
-              <p><b>Head of Office/ Approving Authority:</b> {{ info.approving_authority }}</p>
-            </div>
           </td>
         </tr>
       </tbody>
@@ -507,6 +463,220 @@
   <p>{{ currentPageRecords }}</p> <!-- Moved current page records here -->
   </div>
   </div>
+
+
+
+        <!-- Modal component to display selected record -->
+        <div class="modal-backdrop" v-if="selectedInfo">
+          <div class="modal fade show d-block">
+            <div class="modal-dialog modal-xl" role="document">
+              <div class="modal-content modal-custom">
+                <!-- Close button -->
+                <span class="close" @click="selectedInfo = null">&times;</span>
+        
+                <!-- Header Section -->
+                <div class="modal-header">
+                  <h5 class="modal-title">Inventory Details</h5>
+                </div>
+        
+                <!-- Body Content -->
+                <div class="modal-body">
+                  <div class="row">
+                    <!-- Image Column -->
+                    <div class="row justify-content-center mb-4">
+                      <!-- Original Equipment Image -->
+                      <div class="col-md-6 text-center">
+                        <div class="info-group">
+                          <label>Equipment</label>
+                        </div>
+                        <img :src="`${this.baseURL}/uploads/${selectedInfo.image}`" alt="Original Image" class="img-large img-thumbnail" />
+                      </div>
+                      
+                      <!-- Returned Document -->
+                      <div class="col-md-6 text-center">
+                        <div class="info-group">
+                          <label>Returned Document</label>
+                        </div>
+                        <template v-if="selectedInfo.returned_image.endsWith('.pdf')">
+                          <div class="pdf-box" @click="openPdfInBlank(selectedInfo.returned_image)">
+                            <i class="bx bxs-file-pdf pdf-icon"></i>
+                            <span class="pdf-text">Open PDF</span>
+                          </div>
+                        </template>
+                        <template v-else>
+                          <img :src="`${this.baseURL}/uploads/${selectedInfo.returned_image}`" ref="returned_image" @click="viewImageInFullscreen" alt="Returned Image" class="img-large img-thumbnail" />
+                        </template>
+                      </div>
+                    </div>
+        
+                    <!-- Left Column -->
+                    <div class="col-md-6">
+                      <h6 class="section-title">Basic Information</h6>
+                      <div class="info-group">
+                        <label>Entity Name</label>
+                        <p>{{ selectedInfo.entityname }}</p>
+                      </div>
+                      <div class="info-group">
+                        <label>Code</label>
+                        <p>{{ selectedInfo.code }}</p>
+                      </div>
+                      <div class="info-group">
+                        <label>Article</label>
+                        <p>{{ selectedInfo.article }}</p>
+                      </div>
+                      <div class="info-group">
+                        <label>Model No</label>
+                        <p>{{ selectedInfo.modelno }}</p>
+                      </div>
+                      <div class="info-group">
+                        <label>Serial No</label>
+                        <p>{{ selectedInfo.serialno }}</p>
+                      </div>
+                      <div class="info-group">
+                        <label>Property Date</label>
+                        <p>{{ selectedInfo.propertynumber }}</p>
+                      </div>
+                      <div class="info-group">
+                        <label>Property Date</label>
+                        <p>{{ selectedInfo.propertydate }}</p>
+                      </div>
+                      <!-- Received Quantity -->
+                      <div class="info-group">
+                        <label>Received Quantity</label>
+                        <p>{{ selectedInfo.rec_quantity }}</p>
+                      </div>
+                      <!-- Received Unit -->
+                      <div class="info-group">
+                        <label>Received Unit</label>
+                        <p>{{ selectedInfo.rec_unit }}</p>
+                      </div>
+                      <!-- Received Unit Cost -->
+                      <div class="info-group">
+                        <label>Received Unit Cost</label>
+                        <p>{{ selectedInfo.rec_unitcost }}</p>
+                      </div>
+                      <!-- Received Total Cost -->
+                      <div class="info-group">
+                        <label>Received Total Cost</label>
+                        <p>{{ selectedInfo.rec_totalcost }}</p>
+                      </div>
+                      <!-- Accounting Officer -->
+                      <div class="info-group">
+                        <label>Accounting Officer</label>
+                        <p>{{ selectedInfo.acc_officer }}</p>
+                      </div>
+                      <!-- Accounting Officer Position -->
+                      <div class="info-group">
+                        <label>Accounting Officer Position</label>
+                        <p>{{ selectedInfo.acc_empposition }}</p>
+                      </div>
+
+                    </div>
+        
+                    <!-- Right Column -->
+                    <div class="col-md-6">
+                      <h6 class="section-title">Other</h6>
+                      <div class="info-group">
+                        <label>Classification</label>
+                        <p>{{ selectedInfo.classification }}</p>
+                      </div>
+                  
+                      <!-- Particulars -->
+                      <div class="info-group">
+                        <label>Particulars</label>
+                        <p>{{ selectedInfo.particulars }}</p>
+                      </div>
+                  
+                      <!-- ICS Number -->
+                      <div class="info-group">
+                        <label>ICS Number</label>
+                        <p>{{ selectedInfo.icsnumber }}</p>
+                      </div>
+                  
+                      <!-- JEV Number -->
+                      <div class="info-group">
+                        <label>JEV Number</label>
+                        <p>{{ selectedInfo.jevnumber }}</p>
+                      </div>
+                  
+                      <!-- Issue Item No -->
+                      <div class="info-group">
+                        <label>Issue Item No</label>
+                        <p>{{ selectedInfo.issue_itemno }}</p>
+                      </div>
+                  
+                      <!-- Issue Date -->
+                      <div class="info-group">
+                        <label>Issue Date</label>
+                        <p>{{ selectedInfo.issue_date }}</p>
+                      </div>
+                  
+                      <!-- Issued Officer -->
+                      <div class="info-group">
+                        <label>Issued Officer</label>
+                        <p>{{ selectedInfo.issued_officer }}</p>
+                      </div>
+                  
+                      <!-- Issued Officer Position -->
+                      <div class="info-group">
+                        <label>Issued Officer Position</label>
+                        <p>{{ selectedInfo.issued_offposition }}</p>
+                      </div>
+                  
+                      <!-- Property Officer -->
+                      <div class="info-group">
+                        <label>Property Officer</label>
+                        <p>{{ selectedInfo.property_officer }}</p>
+                      </div>
+                  
+                      <!-- Approving Authority -->
+                      <div class="info-group">
+                        <label>Approving Authority</label>
+                        <p>{{ selectedInfo.approving_authority }}</p>
+                      </div>
+                      <br>
+                      <!-- Transfer Button -->
+                      <div class="text-center mt-2">
+                        <button class="btn btn-primary" @click="disposeItem">Dispose</button>
+                      </div>
+                      <br>
+                      <!-- Transfer Instruction -->
+                      <div class="text-center info-group">
+                        <label>Click the button to Transfer</label>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
               </div>
           </div>
@@ -625,6 +795,40 @@
           console.error('Network error:', error.message);
         }
       },
+
+      disposeItem() {
+          // Save the record ID to session storage
+          sessionStorage.setItem('selectedRecordId', this.selectedInfo.propertynumber);
+          
+          // Redirect to the new page
+          this.$router.push({ path: '/disposeppe' });
+        },
+
+        openPdfInBlank(fileName) {
+          const pdfUrl = `${this.baseURL}/pdfFiles/${fileName}`;
+          const newTab = window.open('about:blank', '_blank');
+          if (newTab) {
+            newTab.document.write(
+              `<html><body style="margin:0;padding:0;overflow:hidden;">
+                <iframe src="${pdfUrl}" frameborder="0" style="width:100%;height:100%;"></iframe>
+              </body></html>`
+            );
+            newTab.document.close();
+          }
+        },
+
+        viewImageInFullscreen() {
+          // Logic for viewing image in fullscreen
+          const imageElement = this.$refs.returned_image;
+          if (imageElement) {
+            const newWindow = window.open("", "_blank");
+            newWindow.document.write(`<img src="${imageElement.src}" style="width: 100%; height: 100%; object-fit: contain;">`);
+            newWindow.document.close();
+          }
+        },
+
+
+
     simulateLoading() {
       this.loading = true;
     },
@@ -641,7 +845,7 @@
       async downloadEmployeeRecordsPDF() {
           try {
             this.simulateLoading();
-             const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
+             const response = await fetch(`${this.baseURL}/employeeRecordsPDF`, {
                  method: 'POST',
                  headers: {
                      'Content-Type': 'application/json',
@@ -672,7 +876,7 @@
       try {
           // Send HTTP request to backend to generate PDFs for all records
           this.simulateLoading();
-          const response = await fetch('http://dilg.test/backend/unserviceablePDF', {
+          const response = await fetch(`${this.baseURL}/unserviceablePDF`, {
               method: 'GET',
               headers: {
                   'Content-Type': 'application/json',
@@ -920,7 +1124,7 @@
         }
         
         // Set the background image URL
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('${this.baseURL}/uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container
@@ -940,6 +1144,9 @@
             
     },
     computed: {
+      baseURL() {
+        return axios.defaults.baseURL;
+      },
       filteredNotifications() {
         if (this.filter === 'unread') {
           return this.notifications.filter(notification => notification.status === 'unread');
@@ -1069,6 +1276,151 @@
 .page-link {
   z-index: 0;
 }
+
+
+
+
+
+
+  /* Backdrop for darkening effect */
+  .modal-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+  
+    max-width: 100%;
+    max-height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay with opacity */
+    z-index: 1040; /* Ensure it sits behind the modal */
+  }
+  
+  /* Adjust z-index of modal for stacking */
+  .modal {
+    z-index: 1050; /* Ensure the modal is on top of the backdrop */
+  }
+  
+  /* Slide transition (if needed) */
+  .modal-slide-enter-active {
+    animation: slide-down 0.5s ease-out forwards;
+  }
+  
+  .modal-slide-leave-active {
+    animation: slide-up 0.5s ease-in forwards;
+  }
+  
+  .modal-custom {
+    width: 1400px;
+    font-family: Calibri, sans-serif;
+    font-size: 14px;
+    color: #333;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: relative;
+  }
+  
+  /* Close Button */
+  .modal-custom .close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 24px;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  /* Section Title */
+  .section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #555;
+    margin-top: 10px;
+    margin-bottom: 5px;
+    border-bottom: 2px solid #e0e0e0;
+    padding-bottom: 4px;
+  }
+  
+  /* Information Group */
+  .info-group {
+    margin-bottom: 3px;
+  }
+  
+  .info-group label {
+    font-weight: bold;
+    font-size: 13px;
+    color: #666;
+    display: inline-block;
+    width: 45%;
+  }
+  
+  .info-group p {
+    color: #1e7abf;
+    font-size: 13px;
+    text-transform: uppercase;
+    display: inline-block;
+  }
+  
+  /* Image Styling */
+  .img-thumbnail {
+    max-width: 200px;
+    max-height: 200px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  /* Header Styling */
+  .modal-header {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  
+  /* Content alignment */
+  .modal-body {
+    margin-top: 10px;
+  }
+  
+  
+  /* Keyframes for slide down and slide up */
+  @keyframes slide-down {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slide-up {
+    0% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+  }
+  
+  
+  @media (max-width: 767px) {
+    .modal-dialog {
+      width: 100%; /* Full width on smaller screens */
+      height: auto; /* Allow height to adjust based on content */
+    }
+  }
+
+
+
+
+
+
+
+
+
+
 
 #qr-video {
   width: 300px;
@@ -1391,4 +1743,134 @@ img {
 
 
 
+
+
+
+
+.filter-button {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  padding: 7px 27px; /* Smaller padding for a smaller button */
+  text-align: center;
+  font-size: 15px; /* Smaller font size */
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  color: #4A3781;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid #725AC1;
+  border-radius: 8px; /* Slightly smaller border radius */
+  box-shadow: inset 0 0 0 0 #725AC1;
+}
+
+.filter-button:hover {
+  color: white;
+  box-shadow: inset 0 -100px 0 0 #725AC1;
+}
+
+.filter-button:active {
+  transform: scale(1);
+}
+
+/* Dropdown Menu initial state */
+.dropdown-menu {
+width: 300px;
+background-color: #fafafa;
+border-radius: 10px;
+box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+border: 1px solid #ddd;
+opacity: 0;
+transform: translateY(-10px);
+transition: opacity 0.3s, transform 0.3s ease-in-out;
+}
+
+/* Apply when dropdown is shown */
+.dropdown.show .dropdown-menu {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* Individual Item Animation */
+.animated-item {
+opacity: 0;
+transform: translateY(-10px);
+animation: fadeInUp 0.5s ease-in-out forwards;
+}
+
+/* Keyframes for fade-in and move-up */
+@keyframes fadeInUp {
+from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+to {
+  opacity: 1;
+  transform: translateY(0);
+}
+}
+
+/* Keyframes for fade-out */
+@keyframes fadeOutDown {
+from {
+  opacity: 1;
+  transform: translateY(0);
+}
+to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+}
+
+/* Adding Delay for Sequential Animations */
+.animated-item:nth-child(1) {
+animation-delay: 0.1s;
+}
+
+.animated-item:nth-child(2) {
+animation-delay: 0.2s;
+}
+
+.animated-item:nth-child(3) {
+animation-delay: 0.3s;
+}
+
+.animated-item:nth-child(4) {
+animation-delay: 0.4s;
+}
+
+.animated-item:nth-child(5) {
+animation-delay: 0.5s;
+}
+
+/* When dropdown is hidden, apply fade-out animation */
+.dropdown-menu.fade-out .animated-item {
+animation: fadeOutDown 0.5s ease-in-out forwards;
+}
+
+/* Applying transition effect on the dropdown for fade-out */
+.dropdown-menu.fade-out {
+opacity: 0;
+transform: translateY(10px);
+transition: opacity 0.3s, transform 0.3s ease-in-out;
+}
+
+.mark-all-read-btn-sm {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px; /* Adds a little spacing */
+  float: middle; /* Aligns to the right for a cleaner look */
+}
+
+.mark-all-read-btn-sm:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+}
 </style>

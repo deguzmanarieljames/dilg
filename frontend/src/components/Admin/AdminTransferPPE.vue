@@ -31,7 +31,15 @@
                       <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                       <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                     </nav>
-                  </li>
+                    <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                    <button
+                      v-if="filter === 'unread' && filteredNotifications.length > 0"
+                      class="mark-all-read-btn-sm"
+                      @click="markAllAsRead"
+                    >
+                      Mark All as Read
+                    </button>
+                  </li>  
                   <hr />
 
                   <!-- Notifications List -->
@@ -283,7 +291,7 @@
                             
                               <!-- Profile Image with Glow Effect -->
                               <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px 5px rgba(0, 123, 255, 0.6); margin-top: 50px;">
-                                <img :src="`http://dilg.test/backend/uploads/${record.image}`" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img :src="`${this.baseURL}/uploads/${record.image}`" style="width: 100%; height: 100%; object-fit: cover;">
                               </div>
                               
                               <br><br>
@@ -627,24 +635,21 @@
                                       <!-- Officer Name Field -->
                                       <div class="mb-3">
                                         <label for="transfer_officeofficer" class="form-label">Officer</label>
-                                        <select class="form-select" id="transfer_officeofficer" v-model="transfer_officeofficer" required>
+                                        <select class="form-select" id="transfer_officeofficer" v-model="transfer_officeofficer" @change="updatePosition" required>
                                           <option value="" disabled>Select Employee</option>
-                                          <option v-for="employee in employees" :key="employee.empid" :value="employee.empfullname">{{ employee.empfullname }}</option>
+                                          <option v-for="employee in employees" :key="employee.id" :value="employee.fullname">{{ employee.fullname }}</option>
                                         </select>
                                       </div>
 
                                       <div class="mb-3">
                                         <label for="acc_position" class="form-label">Position</label>
-                                        <select class="form-select" id="acc_position" v-model="acc_empposition" required>
-                                          <option value="" disabled>Select Employee</option>
-                                          <option v-for="employee in employees" :key="employee.empid" :value="employee.empposition">{{ employee.empposition }}</option>
-                                        </select>
+                                        <input type="text" class="form-control" id="position" v-model="position" readonly>
                                       </div>
                             
                                       <!-- Quantity Field -->
                                       <div class="mb-3">
                                         <label for="transfer_quantity" class="form-label">Quantity</label>
-                                        <input type="number" class="form-control" id="transfer_quantity" v-model="transfer_quantity" required>
+                                        <input type="number" class="form-control" id="transfer_quantity" v-model="record.issue_quantity" required>
                                       </div>
 
                                       <!-- Remarks Field -->
@@ -659,35 +664,23 @@
                                     <div class="col-md-6">
                                       <div class="col-md-12">
                                         <label class="form-label">Choose Image Source:</label>
-                                        <div>
-                                          <input type="radio" id="upload" value="upload" v-model="imageSource" required>
-                                          <label for="upload">Upload Image</label>
-                                        </div>
-                                        <div>
-                                          <input type="radio" id="capture" value="capture" v-model="imageSource" required>
-                                          <label for="capture">Capture Image</label>
-                                        </div>
-                                      </div>
-                            
-                                      <div class="col-md-6" v-if="imageSource === 'upload'">
-                                        <!-- File upload input -->
-                                        <label for="image" class="form-label">Upload Image</label>
-                                        <input type="file" class="form-control" id="image" @change="handleFileUpload" accept="image/*" required>
-                                      </div>
-                            
-                                      <div class="col-md-6" v-else-if="imageSource === 'capture'">
-                                        <!-- Camera capture section -->
-                                        <label for="camera" class="form-label">Capture Image</label>
-                                        <video id="camera" width="100%" height="auto" autoplay></video>
-                                        <a @click="startCamera" class="btn btn-primary mt-2">{{ cameraStarted ? 'Stop Camera' : 'Start Camera' }}</a>
-                                        <a @click="captureImage" class="btn btn-success mt-2" :disabled="!cameraStarted">Capture</a>
-                                      </div>
-                            
-                                      
-                                      <div class="col-md-6">
-                                        <label class="form-label">Image Preview:</label>
-                                        <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" class="img-fluid">
-                                        <br>
+                                        <div class="col-md-12">
+                                          <div class="col-md-12">
+                                            <label for="file" class="form-label"><h3><b>Upload File:</b></h3></label>
+                                            <input type="file" class="form-control" id="file" @change="handleFileUpload" accept="image/*, .pdf">
+                                          </div>
+                                        
+                                          <div class="col-md-12 mt-3" v-if="filePreview">
+                                            <label class="form-label"><b>File Preview:</b></label>
+                                            <div v-if="isPdf">
+                                              <b>Uploaded PDF:</b> {{ selectedFile.name }}
+                                              <iframe :src="filePreview" width="100%" height="400px" class="pdf-preview"></iframe>
+                                            </div>
+                                            <div v-else>
+                                              <img :src="filePreview" alt="Image Preview" class="img-fluid" />
+                                            </div>
+                                          </div>
+                                        </div>                                    
                                       </div>
                                     </div>
                                   </div>
@@ -757,6 +750,7 @@
               recordPropertynum: null,
               record: null,
               recordId: null,
+              position: '',
               image: '',
               showAllDetails: false,
               qrCodeVisible: false, // Tracks if QR code is displayed
@@ -774,6 +768,9 @@
               transfer_quantity: '',
               transfer_date: '',
               acc_empposition: '',
+              selectedFile: null,
+              filePreview: null,
+              isPdf: false,
             }
       },
       
@@ -781,6 +778,9 @@
 
       },
       computed: {
+        baseURL() {
+          return axios.defaults.baseURL;
+        },
         filteredNotifications() {
           if (this.filter === 'unread') {
             return this.notifications.filter(notification => notification.status === 'unread');
@@ -812,6 +812,11 @@
           this.fetchNotifications();
       },
       methods:{
+        updatePosition() {
+          // Find the employee with the selected fullname and set the position
+          const selectedEmployee = this.employees.find(emp => emp.fullname === this.transfer_officeofficer);
+          this.position = selectedEmployee ? selectedEmployee.position : '';
+        },
         async fetchNotifications() {
           try {
             const response = await axios.get('notification');
@@ -863,7 +868,7 @@
             async fetchRecord(id) {
             // Fetch the record from your API using the id
                 try {
-                    const response = await axios.get(`getRecordByPropertynum/${id}`);
+                    const response = await axios.get(`getTransferRecordByPropertynum/${id}`);
                     this.record = response.data;
                     console.log("This is ", this.record.acc_officer);
                     
@@ -918,7 +923,7 @@
                 }
                 
                 // Set the background image URL
-                const backgroundImage = `url('http://dilg.test/backend/uploads/${image}')`;
+                const backgroundImage = `url('${this.baseURL}/uploads/${image}')`;
                 
                 // Set background size and position
                 const backgroundSize = 'cover'; // Cover the entire container
@@ -938,7 +943,7 @@
             async generatePDF(recordId) {
                 try {
                     // Send HTTP request to backend
-                    const response = await fetch(`http://dilg.test/backend/generateITRPDF/${recordId}`, {
+                    const response = await fetch(`${this.baseURL}/generateITRPDF/${recordId}`, {
                         method: 'GET', // Adjust the method accordingly
                         headers: {
                             'Content-Type': 'application/json', // Adjust the content type if needed
@@ -970,11 +975,15 @@
                 try {
                     const formData = new FormData();
                     
+                    if (this.selectedFile) {
+                      formData.append('file', this.selectedFile);
+                    }
+
                     // Append the updated data
                     formData.append('transfer_officeofficer', this.transfer_officeofficer);
-                    formData.append('transfer_quantity', this.transfer_quantity);
+                    formData.append('transfer_quantity', this.record.issue_quantity);
                     formData.append('transfer_date', this.transfer_date);
-                    formData.append('acc_empposition', this.acc_empposition);
+                    formData.append('acc_empposition', this.position);
 
 
                     formData.append('entityname', this.record.entityname);
@@ -992,11 +1001,11 @@
                     formData.append('rec_quantity', this.record.rec_quantity);
                     formData.append('rec_unitcost', this.record.rec_unitcost);
                     formData.append('rec_totalcost', this.record.rec_totalcost);
-                    formData.append('isstranadjamount', this.record.isstranadjamount);
-                    formData.append('accimploss', this.record.accimploss);
-                    formData.append('adjustedcost', this.record.adjustedcost);
-                    formData.append('repair_nature', this.record.repair_nature);
-                    formData.append('repair_amount', this.record.repair_amount);
+                    // formData.append('isstranadjamount', this.record.isstranadjamount);
+                    // formData.append('accimploss', this.record.accimploss);
+                    // formData.append('adjustedcost', this.record.adjustedcost);
+                    // formData.append('repair_nature', this.record.repair_nature);
+                    // formData.append('repair_amount', this.record.repair_amount);
                     formData.append('issue_itemno', this.record.issue_itemno);
                     // formData.append('issue_date', this.record.issue_date);
                     // formData.append('issue_quantity', this.record.issue_quantity);
@@ -1013,30 +1022,30 @@
                     formData.append('acc_officer', this.record.officer);
                     // formData.append('acc_empposition', this.record.acc_empposition);
                     // formData.append('acc_date', this.record.acc_date);
-                    formData.append('itr_no', this.record.itr_no);
-                    formData.append('itr_date', this.record.itr_date);
-                    formData.append('rrsp_no', this.record.rrsp_no);
-                    formData.append('rrsp_date', this.record.rrsp_date);
-                    formData.append('reasonfortrans', this.record.reasonfortrans);
-                    formData.append('reg_semiissuedserialno', this.record.reg_semiissuedserialno);
+                    // formData.append('itr_no', this.record.itr_no);
+                    // formData.append('itr_date', this.record.itr_date);
+                    // formData.append('rrsp_no', this.record.rrsp_no);
+                    // formData.append('rrsp_date', this.record.rrsp_date);
+                    // formData.append('reasonfortrans', this.record.reasonfortrans);
+                    // formData.append('reg_semiissuedserialno', this.record.reg_semiissuedserialno);
                     formData.append('reg_reissued_qty', this.record.reg_reissued_qty);
                     formData.append('reg_reissued_off', this.record.reg_reissued_off);
                     formData.append('reg_disposed_qty', this.record.reg_disposed_qty);
-                    formData.append('reg_balance_quantity', this.record.reg_balance_quantity);
-                    formData.append('reg_amount', this.record.reg_amount);
+                    // formData.append('reg_balance_quantity', this.record.reg_balance_quantity);
+                    // formData.append('reg_amount', this.record.reg_amount);
                     formData.append('reg_remarks', this.record.reg_remarks);
                     formData.append('property_officer', this.record.property_officer);
                     formData.append('approving_authority', this.record.approving_authority);
                     formData.append('image', this.record.image);
 
                     // Append the image if available
-                    if (this.selectedImageFile) {
-                      formData.append('transfered_image', this.selectedImageFile);
-                    } else if (this.capturedImage) {
-                      const blob = await fetch(this.capturedImage).then(res => res.blob());
-                      const file = new File([blob], `image_${Date.now()}.png`, { type: 'image/png' });
-                      formData.append('transfered_image', file);
-                    }
+                    // if (this.selectedImageFile) {
+                    //   formData.append('transfered_image', this.selectedImageFile);
+                    // } else if (this.capturedImage) {
+                    //   const blob = await fetch(this.capturedImage).then(res => res.blob());
+                    //   const file = new File([blob], `image_${Date.now()}.png`, { type: 'image/png' });
+                    //   formData.append('transfered_image', file);
+                    // }
 
                     const response = await axios.post(`/update_transfer/${this.record.propertynumber}`, formData, {
                       headers: {
@@ -1062,14 +1071,21 @@
 
 
 
-            handleFileUpload(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    this.uploadedImage = URL.createObjectURL(file);
-                    this.selectedImageFile = file;
-                    this.imagePreview = this.uploadedImage;
-                }
-            },
+                handleFileUpload(event) {
+                  const file = event.target.files[0];
+                  if (file) {
+                    this.selectedFile = file;
+                    if (file.type === "application/pdf") {
+                      this.isPdf = true;
+                      this.filePreview = URL.createObjectURL(file);
+                    } else if (file.type.startsWith("image/")) {
+                      this.isPdf = false;
+                      this.filePreview = URL.createObjectURL(file);
+                    } else {
+                      alert("Please upload a valid image or PDF file.");
+                    }
+                  }
+                },
 
 
             async startCamera() {
@@ -1160,6 +1176,23 @@
         font-size: 13px;
         text-transform: uppercase;
         display: inline-block;
+      }
+
+      .mark-all-read-btn-sm {
+        background-color: #007bff;
+        color: white;
+        border: none;
+        font-size: 12px;
+        padding: 4px 8px;
+        border-radius: 4px;
+        cursor: pointer;
+        margin-top: 5px; /* Adds a little spacing */
+        float: middle; /* Aligns to the right for a cleaner look */
+      }
+      
+      .mark-all-read-btn-sm:hover {
+        background-color: #0056b3;
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
       }
     </style>
     

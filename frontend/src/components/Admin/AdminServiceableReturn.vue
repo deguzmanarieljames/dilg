@@ -31,7 +31,15 @@
                       <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                       <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                     </nav>
-                  </li>
+                    <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                    <button
+                      v-if="filter === 'unread' && filteredNotifications.length > 0"
+                      class="mark-all-read-btn-sm"
+                      @click="markAllAsRead"
+                    >
+                      Mark All as Read
+                    </button>
+                  </li>  
                   <hr />
 
                   <!-- Notifications List -->
@@ -280,7 +288,7 @@
                             
                               <!-- Profile Image with Glow Effect -->
                               <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px 5px rgba(0, 123, 255, 0.6); margin-top: 50px;">
-                                <img :src="`http://dilg.test/backend/uploads/${record.image}`" style="width: 100%; height: 100%; object-fit: cover;">
+                                <img :src="`${this.baseURL}/uploads/${record.image}`" style="width: 100%; height: 100%; object-fit: cover;">
                               </div>
                               
                               <br><br>
@@ -600,6 +608,12 @@
                                         <input type="number" class="form-control" id="reg_returned_qty" v-model="record.issue_quantity" required>
                                       </div>
 
+                                      <!-- Quantity Field -->
+                                      <div class="mb-3">
+                                        <label for="reg_returned_date" class="form-label">Return Date</label>
+                                        <input type="date" class="form-control" id="reg_returned_date" v-model="reg_returned_date" required>
+                                      </div>
+
                                       <!-- Remarks Field -->
                                       <div class="mb-3">
                                         <label for="remarks" class="form-label">Remarks</label>
@@ -612,35 +626,23 @@
                                     <div class="col-md-6">
                                       <div class="col-md-12">
                                         <label class="form-label">Choose Image Source:</label>
-                                        <div>
-                                          <input type="radio" id="upload" value="upload" v-model="imageSource">
-                                          <label for="upload">Upload Image</label>
-                                        </div>
-                                        <div>
-                                          <input type="radio" id="capture" value="capture" v-model="imageSource">
-                                          <label for="capture">Capture Image</label>
-                                        </div>
-                                      </div>
-                            
-                                      <div class="col-md-6" v-if="imageSource === 'upload'">
-                                        <!-- File upload input -->
-                                        <label for="image" class="form-label">Upload Image</label>
-                                        <input type="file" class="form-control" id="image" @change="handleFileUpload" accept="image/*">
-                                      </div>
-                            
-                                      <div class="col-md-6" v-else-if="imageSource === 'capture'">
-                                        <!-- Camera capture section -->
-                                        <label for="camera" class="form-label">Capture Image</label>
-                                        <video id="camera" width="100%" height="auto" autoplay></video>
-                                        <a @click="startCamera" class="btn btn-primary mt-2">{{ cameraStarted ? 'Stop Camera' : 'Start Camera' }}</a>
-                                        <a @click="captureImage" class="btn btn-success mt-2" :disabled="!cameraStarted">Capture</a>
-                                      </div>
-                            
-                                      
-                                      <div class="col-md-6">
-                                        <label class="form-label">Image Preview:</label>
-                                        <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" class="img-fluid">
-                                        <br>
+                                        <div class="col-md-12">
+                                          <div class="col-md-12">
+                                            <label for="file" class="form-label"><h3><b>Upload File:</b></h3></label>
+                                            <input type="file" class="form-control" id="file" @change="handleFileUpload" accept="image/*, .pdf">
+                                          </div>
+                                        
+                                          <div class="col-md-12 mt-3" v-if="filePreview">
+                                            <label class="form-label"><b>File Preview:</b></label>
+                                            <div v-if="isPdf">
+                                              <b>Uploaded PDF:</b> {{ selectedFile.name }}
+                                              <iframe :src="filePreview" width="100%" height="400px" class="pdf-preview"></iframe>
+                                            </div>
+                                            <div v-else>
+                                              <img :src="filePreview" alt="Image Preview" class="img-fluid" />
+                                            </div>
+                                          </div>
+                                        </div>                                    
                                       </div>
                                     </div>
                                   </div>
@@ -727,7 +729,12 @@
                 issue_quantity: '',
                 remarks: '',
                 uploadedImage: ''
-              }
+              },
+              reg_returned_date: '',
+              selectedFile: null,
+              filePreview: null,
+              isPdf: false,
+              
             }
       },
       
@@ -735,6 +742,9 @@
 
       },
       computed: {
+        baseURL() {
+          return axios.defaults.baseURL;
+        },
         imagePreview() {
           if (this.imageSource === 'upload') {
               return this.uploadedImage;
@@ -865,7 +875,7 @@
                 }
                 
                 // Set the background image URL
-                const backgroundImage = `url('http://dilg.test/backend/uploads/${image}')`;
+                const backgroundImage = `url('${this.baseURL}/uploads/${image}')`;
                 
                 // Set background size and position
                 const backgroundSize = 'cover'; // Cover the entire container
@@ -885,7 +895,7 @@
             async generatePDF(recordId) {
                 try {
                     // Send HTTP request to backend
-                    const response = await fetch(`http://dilg.test/backend/generateRRSPPDF/${recordId}`, {
+                    const response = await fetch(`${this.baseURL}/generateRRSPPDF/${recordId}`, {
                         method: 'GET', // Adjust the method accordingly
                         headers: {
                             'Content-Type': 'application/json', // Adjust the content type if needed
@@ -913,62 +923,55 @@
                 }
             },
 
+
+            
+            handleFileUpload(event) {
+              const file = event.target.files[0];
+              if (file) {
+                this.selectedFile = file;
+                if (file.type === "application/pdf") {
+                  this.isPdf = true;
+                  this.filePreview = URL.createObjectURL(file);
+                } else if (file.type.startsWith("image/")) {
+                  this.isPdf = false;
+                  this.filePreview = URL.createObjectURL(file);
+                } else {
+                  alert("Please upload a valid image or PDF file.");
+                }
+              }
+            },
             async updateReturnRecord() {
               try {
                 const formData = new FormData();
 
-                // Append the updated data
-                formData.append('reg_returned_off', this.record.acc_officer);
+                // Append the uploaded file
+                if (this.selectedFile) {
+                  formData.append('file', this.selectedFile);
+                }
+
+                // Additional data fields (optional)
                 formData.append('reg_returned_qty', this.record.issue_quantity);
+                formData.append('reg_returned_off', this.record.acc_officer);
+                formData.append('reg_returned_date', this.reg_returned_date);
                 formData.append('remarks', this.record.remarks);
                 formData.append('reg_remarks', this.record.remarks);
 
-                // Append the image if available
-                if (this.selectedImageFile) {
-                  formData.append('returned_image', this.selectedImageFile);
-                } else if (this.capturedImage) {
-                  // Convert captured image to file
-                  const blob = await fetch(this.capturedImage).then(res => res.blob());
-                  const file = new File([blob], `image_${Date.now()}.png`, { type: 'image/png' });
-                  formData.append('returned_image', file);
-                }
-
-                // Use `record.propertynumber` directly in the URL
+                // Send request
                 const response = await axios.post(`/update_return/${this.record.propertynumber}`, formData, {
-                  headers: {
-                    'Content-Type': 'multipart/form-data'
-                  }
+                  headers: { 'Content-Type': 'multipart/form-data' },
                 });
 
                 // Handle response
                 if (response.data.status === 'success') {
-                  console.log(response.data.message);
                   alert(response.data.message);
                   window.location.href = response.data.redirect_url;
                 } else {
-                  console.error("Error updating record:", response.data.error);
                   alert(response.data.error);
-                  window.location.href = response.data.redirect_url;
                 }
               } catch (error) {
                 console.error("Error updating record:", error.response ? error.response.data.error : error.message);
                 alert("Error updating record. Please try again.");
-                window.location.href = '/returnppe';
               }
-            },
-
-
-
-
-
-
-            handleFileUpload(event) {
-                const file = event.target.files[0];
-                if (file) {
-                    this.uploadedImage = URL.createObjectURL(file);
-                    this.selectedImageFile = file;
-                    this.imagePreview = this.uploadedImage;
-                }
             },
 
 
@@ -1086,6 +1089,24 @@
   
   .btn:hover span {
     opacity: 0;
+  }
+
+
+  .mark-all-read-btn-sm {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px; /* Adds a little spacing */
+    float: middle; /* Aligns to the right for a cleaner look */
+  }
+  
+  .mark-all-read-btn-sm:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
   }
     </style>
     

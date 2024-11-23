@@ -32,7 +32,15 @@
                   <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                   <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                 </nav>
-              </li>
+                <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                <button
+                  v-if="filter === 'unread' && filteredNotifications.length > 0"
+                  class="mark-all-read-btn-sm"
+                  @click="markAllAsRead"
+                >
+                  Mark All as Read
+                </button>
+              </li>  
               <hr />
 
               <!-- Notifications List -->
@@ -298,76 +306,73 @@
     </div>
   </div>
   <div class="col-lg-2">
-    <select v-model="selectedEmployee" class="form-select" @change="onEmployeeChange">
-      <option value="">Select Employee</option>
-      <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
-    </select>
+
   </div>
 
   <!-- Dropdown for Classification -->
   <div class="col-lg-2">
-    <select v-model="selectedClassification" class="form-select" :disabled="!selectedEmployee" @change="onEmployeeChange">
-      <option value="">Select Classification</option>
-      <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
-    </select>
+
   </div>
 
   <!-- Dropdown for Article -->
   <div class="col-lg-2">
-    <select v-model="selectedArticle" class="form-select" :disabled="!selectedEmployee || !selectedClassification" @change="onEmployeeChange">
-      <option value="">Select Article</option>
-      <option v-for="article in distinctArticle" :key="article" :value="article">{{ article }}</option>
-    </select>
+
   </div>
 
-  <!-- Dropdown for Particular -->
+
+    <!-- Dropdown for Particular -->
   <div class="col-lg-2">
-    <select v-model="selectedParticular" class="form-select" :disabled="!selectedEmployee || !selectedClassification || !selectedArticle">
-      <option value="">Select Particular</option>
-      <option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
-    </select>
+    <!-- Filter Data Button with Dropdowns inside -->
+    <div class="dropdown me-3">
+      <button class="btn btn-primary dropdown-toggle filter-button" type="button" id="filterDropdownButton" data-bs-toggle="dropdown" aria-expanded="false" style="width: 180px;">
+        Filter Data
+      </button>
+      <ul class="dropdown-menu p-3" aria-labelledby="filterDropdownButton">
+        <!-- Select Filters inside Dropdown -->
+
+
+        <li>
+          <select v-model="selectedEmployee" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" @change="onEmployeeChange">
+            <option value="">Select Employee</option>
+            <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
+          </select>
+        </li>
+      
+        <!-- Dropdown for Classification -->
+        <li>
+          <select v-model="selectedClassification" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" :disabled="!selectedEmployee" @change="onEmployeeChange">
+            <option value="">Select Classification</option>
+            <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
+          </select>
+        </li>
+      
+        <!-- Dropdown for Article -->
+        <li>
+          <select v-model="selectedArticle" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" :disabled="!selectedEmployee || !selectedClassification" @change="onEmployeeChange">
+            <option value="">Select Article</option>
+            <option v-for="article in distinctArticle" :key="article" :value="article">{{ article }}</option>
+          </select>
+        </li>
+      
+        <!-- Dropdown for Particular -->
+        <li>
+          <select v-model="selectedParticular" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" :disabled="!selectedEmployee || !selectedClassification || !selectedArticle">
+            <option value="">Select Particular</option>
+            <option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
+          </select>
+        </li>
+      </ul>
+    </div>
   </div>
+
 
   <!-- Status dropdown -->
   <div class="col-lg-2">
-    <!-- <select v-model="selectedRemarks" class="form-select">
-      <option value="">Remarks</option>
-      <option v-for="remarks in distinctRemarks" :key="remarks" :value="remarks">{{ remarks }}</option>
-    </select> -->
     <div class="InputContainer">
       <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
     </div>
   </div>
 
-  <!-- <div class="col-lg-3">
-    <div class="accordion" id="faq-group-2">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button class="accordion-button collapsed btn btn-outline-info" data-bs-target="#faqsTwo-1" type="button" data-bs-toggle="collapse">
-            Download
-          </button>
-        </h2>
-        
-        <div id="faqsTwo-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-2">
-          <div class="row align-items-center mt-3">
-            <div class="col-lg-6">
-              <select v-model="selectedEmployeePDF" @change="downloadEmployeeRecordsPDF" class="form-select animated-dropdown w-100">
-                <option value="" disabled>Select Employee</option>
-                <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
-              </select>
-            </div>
-            <div class="col-lg-6">
-              <button class="btn btn-warning w-100" @click="recordsPDF"><i class="ri-download-2-line"></i> Download All</button>
-            </div>
-          </div>
-          <div v-if="loading" class="text-center mt-1">
-            <div class="loading-line"></div>
-          </div>
-        </div>
-      </div> 
-    </div> 
-  </div> -->
-
 
 
 
@@ -375,15 +380,11 @@
 <br>
 <br>
 <br>
-
-
-
-<!-- Search Bar and Show Entries Dropdown -->
 
 </div>
 
 
-<div class="wrapper">
+<div class="wrapper-table">
   <table class="table-compact">
                 <!-- Table header -->
                 <thead>
@@ -431,7 +432,7 @@
 
         <th rowspan="2" style="background-color: blue; color: white;"><b>"REPORT OF SEMI-EXP PROP ISSUEDSERIAL NO.:"</b></th>
 
-        <th colspan="2" style="background-color: blue; color: white;"><b>Returned</b></th>
+        <th colspan="3" style="background-color: blue; color: white;"><b>Returned</b></th>
         <th colspan="2" style="background-color: blue; color: white;"><b>Re-issued</b></th>
         <th colspan="1" style="background-color: blue; color: white;"><b>Disposed</b></th>
         <th colspan="1" style="background-color: blue; color: white;"><b>Balance</b></th>
@@ -492,6 +493,7 @@
 
         <th style="background-color: blue; color: white;"><b>Quantity</b></th>
         <th style="background-color: blue; color: white;"><b>Office/Officer</b></th>
+        <th style="background-color: blue; color: white;"><b>Date</b></th>
         <th style="background-color: blue; color: white;"><b>Quantity</b></th>
         <th style="background-color: blue; color: white;"><b>Office/Officer</b></th>
         <th style="background-color: blue; color: white;"><b>Quantity</b></th>
@@ -504,7 +506,7 @@
                   <!-- Table rows -->
                   <tr v-for="info in paginatedInfo" :key="info.id" @click="storeRecordId(info.id)">
                   
-                    <td scope="row"><img :src="`http://dilg.test/backend/uploads/${info.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" /></td>
+                    <td scope="row"><img :src="`${baseURL}uploads/${info.image}`" alt="Inventory Image" style="max-width: 100%; max-height: 100%;" /></td>
                     <td scope="row">{{ info.entityname }}</td>
                     <td scope="row">{{ info.classification }}</td>
                     <td scope="row">{{ info.code }}</td>
@@ -554,6 +556,7 @@
                     <td scope="row">{{ info.reg_semiissuedserialno }}</td>
                     <td scope="row">{{ info.reg_returned_qty }}</td>
                     <td scope="row">{{ info.reg_returned_off }}</td>
+                    <td scope="row">{{ info.reg_returned_date }}</td>
                     <td scope="row">{{ info.reg_reissued_qty }}</td>
                     <td scope="row">{{ info.reg_reissued_off }}</td>
                     <td scope="row">{{ info.reg_disposed_qty }}</td>
@@ -699,6 +702,7 @@ import QRCode from 'qrcode-generator';
 import html2pdf from 'html2pdf.js';
 
 export default {
+
   data() {
     return {
       notifications: [],
@@ -807,7 +811,7 @@ export default {
       try {
           this.simulateLoading();
 
-          const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
+          const response = await fetch(`${this.baseURL}employeeRecordsPDF`, {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
@@ -846,7 +850,7 @@ export default {
     try {
         // Send HTTP request to backend to generate PDFs for all records
         this.simulateLoading();
-        const response = await fetch('http://dilg.test/backend/recordsPDF', {
+        const response = await fetch(`${this.baseURL}recordsPDF`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -875,7 +879,7 @@ export default {
 },
   updatePdfUrl() {
       if (this.selectedshowEmployeePDF) {
-        this.pdfUrl = `http://dilg.test/backend/showemployeerecordPDF/${this.selectedshowEmployeePDF}`;
+        this.pdfUrl = `${this.baseURL}showemployeerecordPDF/${this.selectedshowEmployeePDF}`;
       } else {
         this.pdfUrl = '';
       }
@@ -914,7 +918,7 @@ async getUserInfo(id){
         }
         
         // Set the background image URL
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('${this.baseURL}uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container
@@ -970,6 +974,14 @@ async getUserInfo(id){
   },
 
   computed: {
+    baseURL() {
+      return axios.defaults.baseURL;
+    },
+
+    // ${this.baseURL}
+
+
+
     filteredNotifications() {
       if (this.filter === 'unread') {
         return this.notifications.filter(notification => notification.status === 'unread');
@@ -1338,39 +1350,236 @@ th {
 }
 
 /* Optional: Add a wrapper for horizontal scrolling */
-.wrapper {
+/* General table styling */
+.wrapper-table {
+  width: 100%;
   overflow-x: auto;
-  -webkit-overflow-scrolling: touch; /* Enable smooth scrolling on mobile */
+}
+
+.table-compact {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: auto; /* Allows the table to automatically adjust column sizes */
+}
+
+.table-compact th, .table-compact td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+/* Image size adjustment for responsiveness */
+.table-compact img {
+  max-width: 50px;
+  max-height: 50px;
+}
+
+@media (max-width: 600px) {
+  .table-compact th, .table-compact td {
+    font-size: 10px; /* Even smaller font size for mobile */
+    padding: 2px;
+    text-align: center;
+  }
+  
+  .table-compact img {
+    max-width: 25px; /* Further reduce image size */
+    max-height: 25px; /* Further reduce image size */
+  }
+  .me-2{
+    font-size: 15px;
+    margin-right: 1px;
+  }
+
+  
+  .input{
+    width: 90px;
+    height: 35px;
+    border: none;
+    outline: none;
+    caret-color: rgb(255, 81, 0);
+    background-color: rgb(255, 255, 255);
+    border-radius: 27px;
+    padding-left: 12px;
+    letter-spacing: 0.7px;
+    color: rgb(19, 19, 19);
+    font-size: 10.8px;
+  }
+  .InputContainer {
+    width: 100px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to bottom, rgb(227, 213, 255), rgb(255, 231, 231));
+    border-radius: 27px;
+    overflow: hidden;
+    cursor: pointer;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.075);
+    text-align: center;
+}
+#showEntriesDropdown{
+  font-size: 10px;
+  padding: 6px;
+}
+}
+
+.btn:hover {
+    cursor: pointer;
+  }
+
+.btn:hover i {
+  margin-right: 0;
+  transform: translateX(50px);
+}
+
+.btn:hover span {
+  opacity: 0;
+}
+
+.btn:hover {
+  cursor: pointer;
+}
+
+.btn:hover i {
+  margin-right: 0;
+  transform: translateX(50px);
+}
+
+.btn:hover span {
+  opacity: 0;
 }
 
 
-    /* Responsive styles */
-    @media screen and (max-width: 600px) {
-      table, tr, td {
-        display: block;
-      }
 
-      td {
-        border: none;
-        position: relative;
-      }
+.filter-button {
+  position: relative;
+  display: inline-block;
+  margin: 10px;
+  padding: 7px 27px; /* Smaller padding for a smaller button */
+  text-align: center;
+  font-size: 15px; /* Smaller font size */
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  color: #4A3781;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: ease-out 0.5s;
+  border: 2px solid #725AC1;
+  border-radius: 8px; /* Slightly smaller border radius */
+  box-shadow: inset 0 0 0 0 #725AC1;
+}
 
-      td::before {
-        content: attr(data-label);
-        font-weight: bold;
-        position: absolute;
-        top: 0;
-        left: 50%;
-        transform: translate(-50%, 0);
-      }
+.filter-button:hover {
+  color: white;
+  box-shadow: inset 0 -100px 0 0 #725AC1;
+}
 
-      /* Make the table scrollable on smaller screens */
-      table {
-        overflow-y: auto;
-      }
-    }
+.filter-button:active {
+  transform: scale(1);
+}
+
+/* Dropdown Menu initial state */
+.dropdown-menu {
+width: 300px;
+background-color: #fafafa;
+border-radius: 10px;
+box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+border: 1px solid #ddd;
+opacity: 0;
+transform: translateY(-10px);
+transition: opacity 0.3s, transform 0.3s ease-in-out;
+}
+
+/* Apply when dropdown is shown */
+.dropdown.show .dropdown-menu {
+opacity: 1;
+transform: translateY(0);
+}
+
+/* Individual Item Animation */
+.animated-item {
+opacity: 0;
+transform: translateY(-10px);
+animation: fadeInUp 0.5s ease-in-out forwards;
+}
+
+/* Keyframes for fade-in and move-up */
+@keyframes fadeInUp {
+from {
+  opacity: 0;
+  transform: translateY(10px);
+}
+to {
+  opacity: 1;
+  transform: translateY(0);
+}
+}
+
+/* Keyframes for fade-out */
+@keyframes fadeOutDown {
+from {
+  opacity: 1;
+  transform: translateY(0);
+}
+to {
+  opacity: 0;
+  transform: translateY(10px);
+}
+}
+
+/* Adding Delay for Sequential Animations */
+.animated-item:nth-child(1) {
+animation-delay: 0.1s;
+}
+
+.animated-item:nth-child(2) {
+animation-delay: 0.2s;
+}
+
+.animated-item:nth-child(3) {
+animation-delay: 0.3s;
+}
+
+.animated-item:nth-child(4) {
+animation-delay: 0.4s;
+}
+
+.animated-item:nth-child(5) {
+animation-delay: 0.5s;
+}
+
+/* When dropdown is hidden, apply fade-out animation */
+.dropdown-menu.fade-out .animated-item {
+animation: fadeOutDown 0.5s ease-in-out forwards;
+}
+
+/* Applying transition effect on the dropdown for fade-out */
+.dropdown-menu.fade-out {
+opacity: 0;
+transform: translateY(10px);
+transition: opacity 0.3s, transform 0.3s ease-in-out;
+}
 
 
+
+
+.mark-all-read-btn-sm {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px; /* Adds a little spacing */
+  float: middle; /* Aligns to the right for a cleaner look */
+}
+
+.mark-all-read-btn-sm:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+}
 </style>
 
 

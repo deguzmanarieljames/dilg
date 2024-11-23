@@ -87,34 +87,37 @@ class OrderController extends ResourceController
         // Load the model
         $model = new OrderModel();
         $id = $selectedRecord;
+        $data = [];
 
-        $existingRecord = $model->find($id);
-        $existingImage = $existingRecord['receipt'];
-
-        if($existingImage) {
-            $uploadsPath = ROOTPATH . '../uploads/'; 
-            unlink($uploadsPath . $existingImage);
+        $file = $this->request->getFile('file');
+        if ($file && $file->isValid()) {
+            $existingRecord = $model->find($id);
+            $existingFile = $existingRecord['receipt'];
+            
+            // Delete existing file if it exists
+            $uploadsPath = ROOTPATH . '../uploads/';
+            $pdfPath = ROOTPATH . '../pdfFiles/';
+            if ($existingFile) {
+                if (file_exists($uploadsPath . $existingFile)) {
+                    unlink($uploadsPath . $existingFile);
+                } elseif (file_exists($pdfPath . $existingFile)) {
+                    unlink($pdfPath . $existingFile);
+                }
+            }
+            
+            $newName = $file->getRandomName();
+            if ($file->getClientMimeType() === 'application/pdf') {
+                $file->move('./pdfFiles', $newName);
+            } else {
+                $file->move('./uploads', $newName);
+            }
+            
+            $data['receipt'] = $newName;
         }
 
-
-
-        // Check if an image is uploaded
-        if ($this->request->getFile('receipt') && $this->request->getFile('receipt')->isValid()) {
-            // $uploadsPath = ROOTPATH . '../uploads/'; 
-            // unlink($uploadsPath . $existingImage);
-            $image = $this->request->getFile('receipt');
-            $newName = $image->getRandomName();
-            $image->move('./uploads', $newName);
-            $data['receipt'] = $newName; // Update the image field with the new image name
-        }
-        
-        // Perform the update operation
-        $result = $model->update($id, $data);
-        
-        if ($result) {
-            return $this->respond(['status' => 'success', 'message' => 'Record updated successfully']);
+        if ($model->update($id, $data)) {
+            return $this->respond(['status' => 'success', 'message' => 'File uploaded and record updated successfully']);
         } else {
-            // Handle the case where the update fails
             return $this->respond(['status' => 'error', 'message' => 'Failed to update record'], 500);
         }
     }
@@ -141,10 +144,6 @@ class OrderController extends ResourceController
         // Fetch orders where number_rating is not equal to 0
         $data = $equipmentOrdered->where('number_rating', 0)->findAll();
     
-        // Update receipt URL
-        foreach ($data as &$item) {
-            $item['receipt'] = 'https://inventrack.online/backend/uploads/' . $item['receipt'];
-        }
     
         return $this->respond($data);
     }
@@ -158,10 +157,6 @@ class OrderController extends ResourceController
                                  ->where('number_rating !=', 0)
                                  ->findAll();
     
-        // Update receipt URL
-        foreach ($data as &$item) {
-            $item['receipt'] = 'https://inventrack.online/backend/uploads/' . $item['receipt'];
-        }
     
         return $this->respond($data);
     }    
@@ -242,99 +237,37 @@ class OrderController extends ResourceController
 
 
 
+    // PDF GENERATION
 
-
-
-
-    public function getCalBorrowed(){
-        $equipmentborrowed = new LogbookModel();
-        $data = $equipmentborrowed->findAll();
-        return $this->respond($data);
-    }
-
-    public function fetchEmployee($empfullname)
+    public function generatePurchaseRequest($recordId)
     {
-        $user = new EmployeeModel();
-        $data = $user->where('empfullname', $empfullname)->first();
-        return $this->respond($data, 200);
-    }
-
-    // public function saveBorrowed()
-    // {
-    //     $main = new LogbookModel();
-    
-    //     $data = [
-    //         'employee' => $this->request->getPost('employee'),
-    //         'particulars' => $this->request->getPost('particulars'),
-    //     ];
-    
-    //     $rin = $main->save($data);
-    
-    //     return $this->respond($rin, 200);
-    //     // var_dump($data);
-    // }
-
-    public function saveBorrowed()
-    {
-        // Retrieve particulars from input
-        $particulars = $this->request->getPost('particulars');
-    
-        // Check the status in the inventoryppe table based on particulars
-        $inventoryModel = new InventoryModel();
-        $statusRows = $inventoryModel->where('particulars', $particulars)->findAll();
-    
-        // Check if any rows were found
-        if (!empty($statusRows)) {
-            // Assuming 'status' is a field in the inventory table
-            $status = $statusRows[0]['status'];
-    
-            // Check if the status is active
-            if ($status === 'active') {
-                // If active, proceed with saving to the databaseppe table
-                $data = [
-                    'employee' => $this->request->getPost('employee'),
-                    'particulars' => $particulars,
-                ];
-    
-                $logbookModel = new LogbookModel();
-                $result = $logbookModel->save($data);
-    
-                return $this->respond($result, 200);
-            } else {
-                // If inactive, do not save and respond accordingly
-                return $this->respond(['msg' => 'Cannot save data. Inventory status is inactive.'], 200);
-            }
-        } else {
-            // Handle the case where no matching row was found
-            return $this->respond(['msg' => 'Cannot save data. No matching inventory record found.'], 200);
+        // Ensure recordId is provided
+        if (!$recordId) {
+            die("Record ID is required.");
         }
-    }
-    
 
+        $databaseppemodel = new OrderModel();
 
-    public function updateLogbookDateReturned($id, $employee, $datetime)
-    {
-        $model = new LogbookModel();
-        
-        // Find the record by ID and employee
-        $data = $model->where('id', $id)
-                      ->where('employee', $employee)
-                      ->first();
-    
+        // Fetch the data based on the provided recordId
+        $data = $databaseppemodel->where('id', $recordId)->first();
+
         if ($data) {
-            // Modify the date_returned field
-            $data['date_returned'] = $datetime;
-    
-            // Attempt to update the record in the database
-            $updated = $model->update($id, $data);
-    
-            if ($updated) {
-                return $this->respond(['message' => 'Date returned updated successfully']);
-            } else {
-                return $this->failServerError('Failed to update the record');
-            }
+            // Load the MPDF library
+            $mpdf = new \Mpdf\Mpdf(['orientation' => 'P', 'format' => 'A4']);
+
+            // Generate HTML content dynamically based on record data
+            $htmlContent = view('PurchaseRequest', ['data' => [$data]]); // Pass the record to the view
+
+            // Write HTML content to PDF
+            $mpdf->WriteHTML($htmlContent);
+
+            // Output the PDF
+            $mpdf->Output('generated_pdf.pdf', 'D'); // 'D' to force download
+
+            exit(); // End script execution after downloading the PDF
         } else {
-            return $this->failNotFound('Data not found');
+            // Handle the case where the record is not found
+            die("Record with ID $recordId not found.");
         }
     }
     

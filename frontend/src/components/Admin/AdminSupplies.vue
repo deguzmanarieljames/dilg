@@ -32,7 +32,15 @@
                     <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                     <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                   </nav>
-                </li>
+                  <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                  <button
+                    v-if="filter === 'unread' && filteredNotifications.length > 0"
+                    class="mark-all-read-btn-sm"
+                    @click="markAllAsRead"
+                  >
+                    Mark All as Read
+                  </button>
+                </li>  
                 <hr />
 
                 <!-- Notifications List -->
@@ -376,7 +384,18 @@
                                     </div>
                                     <div class="col-md-6">
                                         <label for="item_code" class="form-label">Code</label>
-                                        <input type="text" class="form-control" id="item_code" v-model="item_code" required>
+                                        <input type="text" class="form-control" id="item_code" v-model="item_code" @input="checkPropertyNumber" autocomplete="off" required>
+
+                                        <!-- Transition Wrapper for Suggestions Box -->
+                                        <transition name="fade">
+                                          <div v-if="suggestions.length" class="suggestions-box">
+                                            <ul>
+                                              <li v-for="suggestion in suggestions" :key="suggestion.item_code">
+                                                {{ suggestion.item_code }}
+                                              </li>
+                                            </ul>
+                                          </div>
+                                        </transition>
                                     </div>
                                     <div class="col-md-6">
                                         <label for="rec_quantity" class="form-label">Receipt Quantity</label>
@@ -478,6 +497,7 @@
                       <thead style="width: 100%;">
                         <tr>
                           <th scope="col">Image</th>
+                          <th scope="col">Available Quantity</th>
                           <th scope="col">Date</th>
                           <th scope="col">Supplier</th>
                           <th scope="col">Item</th>
@@ -499,10 +519,15 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr v-for="sup in paginatedInfo" :key="sup.id" :class="{ 'inactive-row': sup.status === 'inactive' }">
+                        <tr v-for="sup in paginatedInfo" :key="sup.id">
                           <td scope="row">
-                            <img :src="`http://dilg.test/backend/uploads/${sup.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" />
+                            <img :src="`${this.baseURL}/uploads/${sup.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" />
                           </td>
+                          <td scope="row">
+                            <b :class="sup.bal_quantity == 0 ? 'text-red' : 'text-blue'">
+                              {{ sup.bal_quantity }}
+                            </b>
+                          </td>                                                 
                           <td scope="row">{{ sup.date }}</td>
                           <td scope="row">{{ sup.supplier }}</td>
                           <td scope="row">{{ sup.item }}</td>
@@ -520,7 +545,7 @@
                           <td scope="row">{{ sup.bal_totalcost }}</td>
                           <td scope="row">{{ sup.no_days }}</td>
                           <td class="sticky-col">
-                            <button class="btn btn-outline-success" @click="selectRecord(sup)"><i class="bx ri-file-list-line"></i></button>
+                            <button class="btn btn-outline-success" @click="generateStockCard(sup.id)"><i class="bx ri-file-list-line"></i></button>
                             <button @click="placeRecord(sup.id)" class="btn btn-warning"><i class="bx bxs-arrow-from-right"></i></button>
                             <button @click="deleteRecord(sup.id)" class="btn btn-danger"><i class="ri-delete-bin-6-line"></i></button>
                           </td>
@@ -561,6 +586,27 @@
       </div>
     </div>
 
+    <div class="pagetitle" style="display: flex; justify-content: space-between; align-items: center;">
+      <!-- Left Side: Title and Breadcrumb -->
+      <div>
+        <h1>Employees</h1>
+        <nav>
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/supplies">Stocks</a></li>
+            <li class="breadcrumb-item active">Employees</li>
+          </ol>
+        </nav>
+      </div>
+      
+      <!-- Right Side: Button -->
+      <div>
+        <button 
+          @click="openIssueModal" 
+          style="padding: 10px 20px; background-color: #004466; color: white; border: none; border-radius: 4px; font-size: 1em; cursor: pointer;">
+          Issue Supply
+        </button>
+      </div>
+    </div>
 
 
 
@@ -608,9 +654,6 @@
     
 
     <div>
-      <div style="display: flex; justify-content: center; margin-top: 20px;">
-        <button @click="openIssueModal" style="padding: 10px 20px; background-color: #004466; color: white; border: none; border-radius: 4px; font-size: 1em; cursor: pointer;">Issue Supply</button>
-      </div>      
     
       <!-- Issue Supply Modal -->
       <div v-if="showIssueModal" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background-color: rgba(0, 0, 0, 0.5); display: flex; justify-content: center; align-items: center; z-index: 1000;">
@@ -737,6 +780,9 @@
     export default{
     
     computed:{
+      baseURL() {
+        return axios.defaults.baseURL;
+      },
       filteredNotifications() {
         if (this.filter === 'unread') {
           return this.notifications.filter(notification => notification.status === 'unread');
@@ -870,7 +916,7 @@
                 selectedStatus: '',
                 currentPage: 1, // Current page number
                 pageSize: 10, // Default page size
-        
+                suggestions: [],
             }
         },
         created(){
@@ -885,6 +931,21 @@
         },
         
         methods:{
+          async checkPropertyNumber() {
+            if (this.item_code.length >= 4) { // Fetch suggestions after 3 characters
+              try {
+                const response = await fetch(`${this.baseURL}/search-item-number/${this.item_code}`);
+                if (response.ok) {
+                  const data = await response.json();
+                  this.suggestions = data;
+                }
+              } catch (error) {
+                console.error('Error fetching suggestions:', error);
+              }
+            } else {
+              this.suggestions = []; // Clear suggestions if input is too short
+            }
+          },
           async fetchNotifications() {
             try {
               const response = await axios.get('notification');
@@ -1113,6 +1174,43 @@
             },
 
 
+            async generateStockCard(recordId) {
+              try {
+
+                  const response = await fetch(`${this.baseURL}/generateStockCard/${recordId}`, {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json',
+                      },
+                  });
+
+                  if (response.ok) {
+                      const blob = await response.blob();
+                      const filename = `Stock_Card_Record.pdf`;
+                      const url = window.URL.createObjectURL(blob);
+                      
+                      // Create a link element and trigger the download
+                      const link = document.createElement('a');
+                      link.href = url;
+                      link.setAttribute('download', filename);
+                      document.body.appendChild(link);
+                      link.click();
+
+                      // Cleanup
+                      document.body.removeChild(link);
+                      window.URL.revokeObjectURL(url);
+                      console.log('PDF generated successfully');
+                  } else {
+                      console.error('Failed to generate PDF');
+                  }
+                  
+                  this.setTimeout();  // If this is meant to stop the loading animation
+              } catch (error) {
+                  console.error('Error generating PDF:', error);
+              }
+          },
+
+
             
 
 
@@ -1290,7 +1388,7 @@
             // this.bal_totalcost = record.bal_totalcost;
             this.no_days = record.no_days;
             
-            this.imagePreview = `http://dilg.test/backend/uploads/${record.image}`;
+            this.imagePreview = `${this.baseURL}/uploads/${record.image}`;
             this.showAddItemModal = true; // Ito ang nagtatakda na ipapakita ang modal
         
             console.log(recordId);
@@ -1385,7 +1483,7 @@
                 }
                 
                 // Set the background image URL
-                const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+                const backgroundImage = `url('${this.baseURL}/uploads/${imageUrl}')`;
                 
                 // Set background size and position
                 const backgroundSize = 'cover'; // Cover the entire container
@@ -2107,6 +2205,134 @@
     color: #a9a9a9; /* Darker gray text */
     opacity: 0.6; /* Optional: slightly faded appearance */
   }
+
+
+
+  .col-md-6 {
+    position: relative; /* Make this element the positioning context for the suggestions box */
+  }
+
+  .suggestions-box {
+    position: absolute;
+    top: 100%; /* Position directly below the input field */
+    left: 0;
+    width: 100%; /* Match the width of the input field */
+    background-color: #ffffff; /* Clean white background */
+    border: 1px solid #ddd; /* Light border for separation */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+    margin-top: 8px; /* Space between input and suggestions */
+    font-size: 14px;
+    z-index: 10;
+    animation: pop-in 0.3s ease-out;
+
+    /* Fixed size and scroll */
+    max-height: 250px; /* Limit height */
+    max-width: 150px; /* Limit height */
+    overflow-y: auto; /* Scroll when content overflows */
+}
+
+/* Styling for the unordered list */
+.suggestions-box ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
+}
+
+/* Styling for each list item */
+.suggestions-box li {
+    padding: 10px 15px; /* Comfortable padding */
+    color: #333; /* Neutral text color */
+    cursor: pointer; /* Indicate clickability */
+    transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+}
+
+/* Hover and active states */
+.suggestions-box li:hover {
+    background-color: #f0f8ff; /* Soft blue hover background */
+    color: #0078d4; /* Brand blue text color */
+}
+
+/* Selected item (optional for keyboard navigation) */
+.suggestions-box li.selected {
+    background-color: #0078d4; /* Active blue */
+    color: #ffffff; /* White text */
+}
+
+/* Custom Scrollbar */
+.suggestions-box::-webkit-scrollbar {
+    width: 10px; /* Width of the scrollbar */
+}
+
+.suggestions-box::-webkit-scrollbar-thumb {
+    background: #d1d1d1; /* Scrollbar thumb color */
+    border-radius: 10px; /* Rounded edges for scrollbar */
+}
+
+.suggestions-box::-webkit-scrollbar-thumb:hover {
+    background: #b0b0b0; /* Darker color on hover */
+}
+
+.suggestions-box::-webkit-scrollbar-track {
+    background: #f9f9f9; /* Light track color */
+}
+
+/* Pop-in animation for smooth appearance */
+@keyframes pop-in {
+    0% {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+  /* Fade Transition */
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 0.3s ease;
+  }
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
   
+  /* Pop-in animation */
+  @keyframes pop-in {
+    0% {
+      transform: scale(0.9);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .text-red {
+    color: red;
+  }
+  
+  .text-blue {
+    color: blue;
+  }
+  
+
+  .mark-all-read-btn-sm {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px; /* Adds a little spacing */
+    float: middle; /* Aligns to the right for a cleaner look */
+  }
+  
+  .mark-all-read-btn-sm:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+  }
   </style>
   

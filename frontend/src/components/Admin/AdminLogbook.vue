@@ -478,6 +478,25 @@ button:focus {
 
 
 
+
+
+.mark-all-read-btn-sm {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px; /* Adds a little spacing */
+  float: middle; /* Aligns to the right for a cleaner look */
+}
+
+.mark-all-read-btn-sm:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+}
+
 </style>
 
 
@@ -514,7 +533,15 @@ button:focus {
                   <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                   <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                 </nav>
-              </li>
+                <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                <button
+                  v-if="filter === 'unread' && filteredNotifications.length > 0"
+                  class="mark-all-read-btn-sm"
+                  @click="markAllAsRead"
+                >
+                  Mark All as Read
+                </button>
+              </li>        
               <hr />
 
               <!-- Notifications List -->
@@ -842,14 +869,14 @@ button:focus {
       
       
       <div class="col-lg-8" align="center">
-        <div class="card" style="border-top: 30px solid #80faf4; border-bottom: 30px solid #ffa341;">
+        <div class="card">
           <div class="card-body">
             <hr>
             <h2>Scan Result</h2>
             <hr>
             <div id="display-data">
               <div v-if="employee">
-                <form @submit.prevent="saveBorrowed" enctype="multipart/form-data">
+                <form @submit.prevent="saveBorrowed" method="POST" enctype="multipart/form-data">
                   <h4><label for="employee"><b>Welcome!</b> </label>
                   <input type="text" id="employee" v-model="employee"></h4>
                   <hr>
@@ -863,7 +890,7 @@ button:focus {
                             :class="{ 'selected': selectedParticular === inv.particulars }">
                           <div class="row g-0">
                             <div class="col-md-4">
-                              <img :src="`http://dilg.test/backend/uploads/${inv.image}`" alt="Inventory Image" class="inventory-image" />
+                              <img :src="`${this.baseURL}/uploads/${inv.image}`" alt="Inventory Image" class="inventory-image" />
                             </div>
                             <div class="col-md-8">
                               <div class="card-body">
@@ -1060,6 +1087,9 @@ button:focus {
       };
     },
     computed: {
+      baseURL() {
+        return axios.defaults.baseURL;
+      },
       filteredNotifications() {
         if (this.filter === 'unread') {
           return this.notifications.filter(notification => notification.status === 'unread');
@@ -1265,7 +1295,7 @@ button:focus {
         }
         
         // Set the background image URL
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('${this.baseURL}/uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container
@@ -1386,7 +1416,7 @@ button:focus {
   
             if (data && Object.keys(data).length > 0) {
               // Update employee with fetched data
-              this.employee = data.empfullname;
+              this.employee = data.fullname;
             } else {
               // Clear employee data if no data found
               this.employee = "";
@@ -1471,38 +1501,72 @@ button:focus {
         }
       },
   
-    async handleModalQRCode(qrCodeData) {
-      const modalVideo = document.getElementById("modal-qr-video");
-      if (modalVideo.readyState >= modalVideo.HAVE_ENOUGH_DATA) {
-        if (this.selectedRecord) { // Use the selectedRecordId as recordId
-          // Update the 'date_returned' column with the selected record ID and QR code data
-          try {
-            const currentDate = new Date().toISOString().split('T')[0]; // Get the current date in YYYY-MM-DD format
-            const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false }); // Get the current time in HH:MM:SS format (24-hour)
+    // async handleModalQRCode(qrCodeData) {
+    //   const modalVideo = document.getElementById("modal-qr-video");
+    //   if (modalVideo.readyState >= modalVideo.HAVE_ENOUGH_DATA) {
+    //     if (this.selectedRecord) { // Use the selectedRecordId as recordId
+    //       // Update the 'date_returned' column with the selected record ID and QR code data
+    //       try {
+    //         const currentDate = new Date().toISOString().split('T')[0]; // Get the current date in YYYY-MM-DD format
+    //         const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false }); // Get the current time in HH:MM:SS format (24-hour)
 
-            const datetime = `${currentDate} ${currentTime}`; // Combine date and time
+    //         const datetime = `${currentDate} ${currentTime}`; // Combine date and time
 
-            const response = await axios.post(`/update_logbook_date_returned/${this.selectedRecord}/${qrCodeData}/${datetime}`, {
-              // Pass the datetime obtained from the client-side
-              date_returned: datetime,
-            });
+    //         const response = await axios.post(`/update_logbook_date_returned/${this.selectedRecord}/${qrCodeData}/${datetime}`, {
+    //           // Pass the datetime obtained from the client-side
+    //           date_returned: datetime,
+    //         });
 
-            console.log(response.data);
-            console.log("Date returned updated successfully");
+    //         console.log(response.data);
+    //         console.log("Date returned updated successfully");
 
-            // Disable further scanning
-            this.selectedRecord = null;
+    //         // Disable further scanning
+    //         this.selectedRecord = null;
 
-            // Reload the page using Vue Router
-            this.$router.go();
-          } catch (error) {
-            console.error("Error updating date returned:", error);
+    //         // Reload the page using Vue Router
+    //         this.$router.go();
+    //       } catch (error) {
+    //         console.error("Error updating date returned:", error);
+    //       }
+    //     } else {
+    //       console.error("No record ID provided to update date returned.");
+    //     }
+    //   }
+    // },
+
+        async handleModalQRCode(qrCodeData) {
+          const modalVideo = document.getElementById("modal-qr-video");
+          if (modalVideo.readyState >= modalVideo.HAVE_ENOUGH_DATA) {
+              if (this.selectedRecord) {
+                  try {
+                      const currentDate = new Date().toISOString().split('T')[0]; // Get current date
+                      const currentTime = new Date().toLocaleTimeString('en-US', { hour12: false }); // Get current time
+                      const datetime = `${currentDate} ${currentTime}`; // Combine date and time
+
+                      const response = await axios.post(`/update_logbook_date_returned/${this.selectedRecord}/${qrCodeData}/${datetime}`, {
+                          date_returned: datetime,
+                      });
+
+                      if (response.data.message === 'Successfully returned') {
+                          // alert('Successfully returned!');
+                      } else if (response.data.message === 'Scanned employee does not match the one who borrowed the equipment') {
+                          alert('Error: The scanned employee is not the one who borrowed the equipment.');
+                      }
+
+                      // Disable further scanning and reload the page
+                      this.selectedRecord = null;
+                      this.$router.go();
+                  } catch (error) {
+                      console.error("Error updating date returned:", error);
+                      alert('An error occurred while updating the record.');
+                  }
+              } else {
+                  console.error("No record ID provided to update date returned.");
+                  alert('No record selected for return.');
+              }
           }
-        } else {
-          console.error("No record ID provided to update date returned.");
-        }
-      }
-    },
+      },
+
 
   
       async selectRecord(selectedEvent) {
@@ -1510,20 +1574,59 @@ button:focus {
         console.log(this.selectedRecord);
         this.goBack();
       },
+      // async saveBorrowed() {
+      //   try {
+      //     console.log(this.employee);
+      //     console.log(this.particulars);
+      //     const formData = new FormData();
+      //     formData.append('employee', this.employee);
+      //     formData.append('particulars', this.particulars);
+  
+      //     const response = await axios.post('/saveBorrowed', formData, {
+      //       headers: {
+      //         'Content-Type': 'multipart/form-data'
+      //       }
+      //     });
+  
+      //     console.log('Server response:', response.data);
+  
+      //     this.employee = "";
+      //     this.particulars = "";
+      //     this.stopCamera(); // Stop the camera after saving
+      //     this.$emit('data-saved');
+      //     this.getInfo();
+      //     this.getInventory();
+      //     this.qrCodeData = "";
+      //   } catch (error) {
+      //     console.error(error);
+      //     this.employee = "";
+      //     this.particulars = "";
+      //   }
+      // },
+
       async saveBorrowed() {
         try {
+          console.log(this.employee);
+          console.log(this.particulars);
+
           const formData = new FormData();
           formData.append('employee', this.employee);
           formData.append('particulars', this.particulars);
-  
+
           const response = await axios.post('/saveBorrowed', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
           });
-  
+
           console.log('Server response:', response.data);
-  
+
+          if (response.data.success) {
+            alert('Record saved successfully!');
+          } else {
+            alert(response.data.msg || 'Failed to save record.');
+          }
+
           this.employee = "";
           this.particulars = "";
           this.stopCamera(); // Stop the camera after saving
@@ -1533,16 +1636,19 @@ button:focus {
           this.qrCodeData = "";
         } catch (error) {
           console.error(error);
+          // alert('An error occurred while saving the record.');
+          alert('An error has occured.');
           this.employee = "";
           this.particulars = "";
         }
       },
+
   
       async getInventory(){
         try {
-            const inv = await axios.get('getInventory');
+            const inv = await axios.get('getInventoryBorrow');
             this.inventory = inv.data;
-            console.log(this.inventory);
+            console.log(this.inv.data);
         } catch (error) {
             console.log(error);
         }

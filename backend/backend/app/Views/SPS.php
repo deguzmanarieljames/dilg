@@ -17,7 +17,7 @@
             padding: <?= isset($containerStyles['padding']) ? $containerStyles['padding'] : '20px' ?>;
             background-color: <?= isset($containerStyles['backgroundColor']) ? $containerStyles['backgroundColor'] : '#fff' ?>;
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            width: <?= isset($containerStyles['width']) ? $containerStyles['width'] : '90%' ?>;
+            width: <?= isset($containerStyles['width']) ? $containerStyles['width'] : '40%' ?>;
             height: <?= isset($containerStyles['height']) ? $containerStyles['height'] : 'auto' ?>;
             background-image: <?= isset($containerStyles['backgroundImage']) ? $containerStyles['backgroundImage'] : 'none' ?>;
             background-size: cover;
@@ -60,6 +60,8 @@
                 </p>
             </div>
         </div>
+
+        <br><br><br><br><br>
 
         <?php if ($index % 2 == 1): ?>
             </div>

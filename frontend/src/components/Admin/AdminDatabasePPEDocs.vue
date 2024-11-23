@@ -31,7 +31,15 @@
                       <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                       <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                     </nav>
-                  </li>
+                    <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                    <button
+                      v-if="filter === 'unread' && filteredNotifications.length > 0"
+                      class="mark-all-read-btn-sm"
+                      @click="markAllAsRead"
+                    >
+                      Mark All as Read
+                    </button>
+                  </li>        
                   <hr />
 
                   <!-- Notifications List -->
@@ -276,7 +284,7 @@
                           
                             <!-- Profile Image with Glow Effect -->
                             <div style="width: 200px; height: 200px; overflow: hidden; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 0 15px 5px rgba(0, 123, 255, 0.6); margin-top: 50px;">
-                              <img :src="`http://dilg.test/backend/uploads/${record.image}`" style="width: 100%; height: 100%; object-fit: cover;">
+                              <img :src="`${this.baseURL}/uploads/${record.image}`" style="width: 100%; height: 100%; object-fit: cover;">
                             </div>
                             
                             <br>
@@ -460,6 +468,18 @@
                                         <label>Approving Authority</label>
                                         <p>{{ record.approving_authority }}</p>
                                       </div>
+
+                                      <div class="info-group">
+                                        <label>Remarks</label>
+                                        <p>{{ record.remarks }}</p>
+                                      </div>
+
+                                      <div class="info-group" v-if="record.disposed_image">
+                                        <label>Remove Disposed?</label>
+                                        <button @click="deleteRecord(record.id)" class="btn btn-danger">
+                                            <i class="ri-delete-bin-6-line"></i>
+                                        </button>
+                                    </div>                                    
                 
                                     </div>
                                   </div>
@@ -711,16 +731,41 @@
                   
                                   </div>
                                 </div>
+
+
+
+                                
                                 <div class="tab-pane fade pt-3" id="profile-settings">
-                                  <h3 class="card-title" style="text-align: center;">Image Verification</h3>
-  
+                                  <h3 class="card-title" style="text-align: center;">File Verification</h3>
+                                
                                   <div style="overflow: hidden; display: flex; align-items: center; justify-content: center;">
-                                    <img ref="imageverification" :src="`http://dilg.test/backend/uploads/${record.imageverification}`" style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;" @click="viewImageInFullscreen">
-                                  </div>                                                                   
+                                    <!-- Conditional rendering based on file type -->
+                                    <template v-if="isImage(record.imageverification)">
+                                      <!-- Image preview -->
+                                      <img
+                                        ref="imageverification"
+                                        :src="`${this.baseURL}/uploads/${record.imageverification}`"
+                                        style="width: 100%; height: 100%; object-fit: cover; cursor: pointer;"
+                                        @click="viewImageInFullscreen"
+                                      />
+                                    </template>
+                                    <template v-else-if="isPDF(record.imageverification)">
+                                      <!-- PDF preview -->
+                                      <iframe
+                                        :src="`${this.baseURL}/pdfFiles/${record.imageverification}`"
+                                        style="width: 100%; height: 500px; border: none;"
+                                        title="PDF Viewer"
+                                      ></iframe>
+                                    </template>
+                                    <template v-else>
+                                      <!-- Unsupported file type -->
+                                      <p style="text-align: center;">Unsupported file format</p>
+                                    </template>
+                                  </div>
+                                  
                                   <h3 class="card-title" style="text-align: center;">Click the image to fullscreen</h3>
-              
-                
                                 </div>
+                                
                 
                                 <div class="tab-pane fade pt-3" id="profile-change-password">
                                   <div class="row justify-content-center">
@@ -800,6 +845,9 @@
         this.fetchNotifications();
     },
     computed: {
+      baseURL() {
+        return axios.defaults.baseURL;
+      },
       filteredNotifications() {
         if (this.filter === 'unread') {
           return this.notifications.filter(notification => notification.status === 'unread');
@@ -865,51 +913,71 @@
             this.qrCodeVisible = true;
         }
         },
-        viewImageInFullscreen() {
-          const img = this.$refs.imageverification; // Access the image via ref
 
-          // Save original styles
-          const originalStyles = {
-            width: img.style.width,
-            height: img.style.height,
-            objectFit: img.style.objectFit
-          };
-
-          // Apply fullscreen mode styles (original size)
-          img.style.width = 'auto';
-          img.style.height = 'auto';
-          img.style.objectFit = 'contain';
-
-          // Request fullscreen
-          if (img.requestFullscreen) {
-            img.requestFullscreen();
-          } else if (img.mozRequestFullScreen) { // Firefox
-            img.mozRequestFullScreen();
-          } else if (img.webkitRequestFullscreen) { // Chrome, Safari, and Opera
-            img.webkitRequestFullscreen();
-          } else if (img.msRequestFullscreen) { // IE/Edge
-            img.msRequestFullscreen();
-          }
-
-          // Event listener for exiting fullscreen and restoring original styles
-          const exitHandler = () => {
-            // Restore original styles when exiting fullscreen
-            img.style.width = originalStyles.width;
-            img.style.height = originalStyles.height;
-            img.style.objectFit = originalStyles.objectFit;
-
-            document.removeEventListener('fullscreenchange', exitHandler);
-            document.removeEventListener('webkitfullscreenchange', exitHandler);
-            document.removeEventListener('mozfullscreenchange', exitHandler);
-            document.removeEventListener('MSFullscreenChange', exitHandler);
-          };
-
-          // Listen for exit from fullscreen
-          document.addEventListener('fullscreenchange', exitHandler);
-          document.addEventListener('webkitfullscreenchange', exitHandler);
-          document.addEventListener('mozfullscreenchange', exitHandler);
-          document.addEventListener('MSFullscreenChange', exitHandler);
+        isImage(fileName) {
+          const imageExtensions = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+          const fileExtension = fileName.split('.').pop().toLowerCase();
+          return imageExtensions.includes(fileExtension);
         },
+        isPDF(fileName) {
+          const pdfExtension = 'pdf';
+          const fileExtension = fileName.split('.').pop().toLowerCase();
+          return fileExtension === pdfExtension;
+        },
+        viewImageInFullscreen() {
+          // Logic for viewing image in fullscreen
+          const imageElement = this.$refs.imageverification;
+          if (imageElement) {
+            const newWindow = window.open("", "_blank");
+            newWindow.document.write(`<img src="${imageElement.src}" style="width: 100%; height: 100%; object-fit: contain;">`);
+            newWindow.document.close();
+          }
+        },
+        // viewImageInFullscreen() {
+        //   const img = this.$refs.imageverification; // Access the image via ref
+
+        //   // Save original styles
+        //   const originalStyles = {
+        //     width: img.style.width,
+        //     height: img.style.height,
+        //     objectFit: img.style.objectFit
+        //   };
+
+        //   // Apply fullscreen mode styles (original size)
+        //   img.style.width = 'auto';
+        //   img.style.height = 'auto';
+        //   img.style.objectFit = 'contain';
+
+        //   // Request fullscreen
+        //   if (img.requestFullscreen) {
+        //     img.requestFullscreen();
+        //   } else if (img.mozRequestFullScreen) { // Firefox
+        //     img.mozRequestFullScreen();
+        //   } else if (img.webkitRequestFullscreen) { // Chrome, Safari, and Opera
+        //     img.webkitRequestFullscreen();
+        //   } else if (img.msRequestFullscreen) { // IE/Edge
+        //     img.msRequestFullscreen();
+        //   }
+
+        //   // Event listener for exiting fullscreen and restoring original styles
+        //   const exitHandler = () => {
+        //     // Restore original styles when exiting fullscreen
+        //     img.style.width = originalStyles.width;
+        //     img.style.height = originalStyles.height;
+        //     img.style.objectFit = originalStyles.objectFit;
+
+        //     document.removeEventListener('fullscreenchange', exitHandler);
+        //     document.removeEventListener('webkitfullscreenchange', exitHandler);
+        //     document.removeEventListener('mozfullscreenchange', exitHandler);
+        //     document.removeEventListener('MSFullscreenChange', exitHandler);
+        //   };
+
+        //   // Listen for exit from fullscreen
+        //   document.addEventListener('fullscreenchange', exitHandler);
+        //   document.addEventListener('webkitfullscreenchange', exitHandler);
+        //   document.addEventListener('mozfullscreenchange', exitHandler);
+        //   document.addEventListener('MSFullscreenChange', exitHandler);
+        // },
         async fetchRecord(id) {
         // Fetch the record from your API using the id
             try {
@@ -966,7 +1034,7 @@
             }
             
             // Set the background image URL
-            const backgroundImage = `url('http://dilg.test/backend/uploads/${image}')`;
+            const backgroundImage = `url('${this.baseURL}/uploads/${image}')`;
             
             // Set background size and position
             const backgroundSize = 'cover'; // Cover the entire container
@@ -986,7 +1054,7 @@
           async generatePDF(recordId) {
             try {
                 // Send HTTP request to backend
-                const response = await fetch(`http://dilg.test/backend/generateICSPDF/${recordId}`, {
+                const response = await fetch(`${this.baseURL}/generateICSPDF/${recordId}`, {
                     method: 'GET', // Adjust the method accordingly
                     headers: {
                         'Content-Type': 'application/json', // Adjust the content type if needed
@@ -1017,7 +1085,7 @@
         async generatePDFSPC() {
           try {
 
-              const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
+              const response = await fetch(`${this.baseURL}/employeeRecordsPDF`, {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
@@ -1054,7 +1122,7 @@
         async generatePDFSPLC() {
           try {
 
-              const response = await fetch('http://dilg.test/backend/employeeRecordsSPLC', {
+              const response = await fetch(`${this.baseURL}/employeeRecordsSPLC`, {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',
@@ -1085,6 +1153,32 @@
               this.setTimeout();  // If this is meant to stop the loading animation
           } catch (error) {
               console.error('Error generating PDF:', error);
+          }
+        },
+
+        async deleteRecord(recordId) {
+          const confirm = window.confirm("Are you sure that you want to delete this record?");
+          if (confirm) {
+            try {
+              const response = await axios.post('delDisposed', {
+                id: recordId,
+              });
+
+              // Check the response status
+              if (response.status === 200) {
+                // Success response from the backend
+                alert(response.data.message || 'Record deleted successfully!');
+                // Redirect to /databaseppe
+                window.location.href = '/databaseppe';
+              } else {
+                // Error response from the backend
+                alert(response.data.message || 'An unexpected error occurred.');
+              }
+            } catch (error) {
+              console.error("Error deleting the record:", error);
+              // Show error message if request fails
+              alert(error.response?.data?.message || 'An error occurred while deleting the record.');
+            }
           }
         },
     
@@ -1169,6 +1263,25 @@
   
   .btn:hover span {
     opacity: 0;
+  }
+
+
+
+  .mark-all-read-btn-sm {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px; /* Adds a little spacing */
+    float: middle; /* Aligns to the right for a cleaner look */
+  }
+  
+  .mark-all-read-btn-sm:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
   }
     </style>
     

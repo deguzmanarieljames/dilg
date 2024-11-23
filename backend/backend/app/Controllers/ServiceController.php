@@ -72,7 +72,7 @@ class ServiceController extends ResourceController
     
             // Manipulate image URLs
             foreach ($data as &$item) {
-                $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+                $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
             }
             
             return $this->respond($data, 200);
@@ -102,7 +102,7 @@ class ServiceController extends ResourceController
     
             // Manipulate image URLs
             foreach ($data as &$item) {
-                $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+                $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
             }
             
             return $this->respond($data, 200);
@@ -168,7 +168,7 @@ class ServiceController extends ResourceController
 
             // Manipulate image URLs
             foreach ($data as &$item) {
-                $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+                $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
             }
             
             return $this->respond($data, 200);
@@ -201,7 +201,7 @@ class ServiceController extends ResourceController
     
                 // Manipulate image URLs
                 foreach ($data as &$item) {
-                    $item['image'] = 'https://inventrack.online/backend/uploads/' . $item['image'];
+                    $item['image'] = 'http://dilg.test/backend/uploads/' . $item['image'];
                 }
                 
                 return $this->respond($data, 200);

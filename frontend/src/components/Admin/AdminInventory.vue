@@ -32,7 +32,15 @@
                   <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                   <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                 </nav>
-              </li>
+                <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                <button
+                  v-if="filter === 'unread' && filteredNotifications.length > 0"
+                  class="mark-all-read-btn-sm"
+                  @click="markAllAsRead"
+                >
+                  Mark All as Read
+                </button>
+              </li>        
               <hr />
 
               <!-- Notifications List -->
@@ -296,50 +304,61 @@
       <!-- Search Bar and Show Entries Dropdown -->
       <div class="d-flex justify-content-between align-items-center container-inventory" >
         <!-- Show Entries Dropdown -->
-        <div class="d-flex align-items-center">
-          <span class="me-2">Show</span>
-          <div class="dropdown" style="display: inline-block;">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
-              {{ pageSize }}
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
-              <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
-              <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
-              <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
-              <!-- Add more options as needed -->
-            </ul>
-          </div>
-          <span class="ms-2">entries</span>
-        </div>
+
 
         <!-- Centered Dropdowns -->
-        <div class="filters-container d-flex align-items-center">
+        <div class="row justify-content-center align-items-center">
           <!-- Filters: Select Classification, Article, Particulars, Current Status -->
-          <select v-model="selectedClassification" class="form-select me-2" @change="handleClassificationChange">
-            <option value="">Select Classification</option>
-            <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
-          </select>
-
-          <select v-model="selectedArticle" class="form-select me-2" :disabled="!selectedClassification" @change="handleArticleChange">
-            <option value="">Select Article</option>
-            <option v-for="article in filteredArticles" :key="article" :value="article">{{ article }}</option>
-          </select>
-
-          <select v-model="selectedParticular" class="form-select me-2" :disabled="!selectedArticle">
-            <option value="">Select Particular</option>
-            <option v-for="particular in filteredParticulars" :key="particular" :value="particular">{{ particular }}</option>
-          </select>
-
-          <select v-model="selectedStatus" class="form-select">
-            <option value="">Current Status</option>
-            <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
-          </select>
+            <div class="col-lg-2">
+              <div class="d-flex align-items-center">
+                <span class="me-2">Show</span>
+                <div class="dropdown" style="display: inline-block;">
+                  <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+                    {{ pageSize }}
+                  </button>
+                  <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+                    <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+                    <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+                    <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+                    <!-- Add more options as needed -->
+                  </ul>
+                </div>
+                <span class="ms-2">entries</span>
+              </div>
+            </div>
+            <div class="col-lg-2">
+                      <select v-model="selectedClassification" class="form-select" @change="handleClassificationChange">
+                        <option value="">Select Classification</option>
+                        <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
+                      </select>
+            </div>
+            <div class="col-lg-2">
+                      <select v-model="selectedArticle" class="form-select" :disabled="!selectedClassification" @change="handleArticleChange">
+                        <option value="">Select Article</option>
+                        <option v-for="article in filteredArticles" :key="article" :value="article">{{ article }}</option>
+                      </select>
+            </div>
+            <div class="col-lg-2">
+                      <select v-model="selectedParticular" class="form-select" :disabled="!selectedArticle">
+                        <option value="">Select Particular</option>
+                        <option v-for="particular in filteredParticulars" :key="particular" :value="particular">{{ particular }}</option>
+                      </select>
+            </div>
+            <div class="col-lg-2">
+                      <select v-model="selectedStatus" class="form-select">
+                        <option value="">Current Status</option>
+                        <option v-for="status in distinctStatus" :key="status" :value="status">{{ status }}</option>
+                      </select>
+            </div>
+            <div class="col-lg-2">
+              <div class="InputContainer">
+                <input placeholder="Search..." id="input" class="input" name="text" type="text" v-model="searchQuery">
+              </div>
+            </div>
         </div>
 
         <!-- Search Bar -->
-        <div class="InputContainer">
-          <input placeholder="Search..." id="input" class="input" name="text" type="text" v-model="searchQuery">
-        </div>
+
       </div>
 
 
@@ -356,7 +375,7 @@
                         <button type="button" class="btn-close" @click="showAddItemModal = false" aria-label="Close"></button>
                     </div>
                       <div class="modal-body">
-                        <form class="row g-3" enctype="multipart/form-data">
+                        <form class="row g-3" enctype="multipart/form-data" @submit.prevent="saveOrUpdate" >
                           <!-- Form fields here -->
                           <div class="col-md-6">
                             <label for="entityname" class="form-label">Entity Name</label>
@@ -388,8 +407,19 @@
                           </div>
                           <div class="col-md-6">
                             <label for="propertynumber" class="form-label">Semi Expendable Property No.</label>
-                            <input type="text" class="form-control" id="propertynumber" v-model="propertynumber">
-                          </div>
+                            <input type="text" class="form-control" id="propertynumber" v-model="propertynumber" @input="checkPropertyNumber" autocomplete="off" required>
+                            
+                            <!-- Transition Wrapper for Suggestions Box -->
+                            <transition name="fade">
+                              <div v-if="suggestions.length" class="suggestions-box">
+                                <ul>
+                                  <li v-for="suggestion in suggestions" :key="suggestion.propertynumber">
+                                    {{ suggestion.propertynumber }}
+                                  </li>
+                                </ul>
+                              </div>
+                            </transition>
+                          </div>                                                                                                
                           <div class="col-md-6">
                             <label for="propertydate" class="form-label">Date Arrived:</label>
                             <input type="date" class="form-control" id="propertydate" v-model="propertydate">
@@ -469,8 +499,8 @@
                   </svg>
                   Reset
                 </button>
-                  <button @click="saveOrUpdate" v-if="status !== 'update'" type="submit" class="button">Submit</button>
-                  <button @click="saveOrUpdate" v-if="status === 'update'" type="submit" class="button">Update</button>
+                  <button v-if="status !== 'update'" type="submit" class="button">Submit</button>
+                  <button v-if="status === 'update'" type="submit" class="button">Update</button>
                 
                 
                 </div>
@@ -499,6 +529,7 @@
                 <th scope="col">Code</th>
                 <th scope="col">Article</th>
                 <th scope="col">Particulars</th>
+                <th scope="col">Property No.</th>
                 <th scope="col">Model No.</th>
                 <th scope="col">Serial No.</th>
                 <th scope="col">Full Description</th>
@@ -514,13 +545,14 @@
             <tbody>
               <tr v-for="inv in paginatedInfo.filter(item => item.status === 'active')">
                 <td scope="row">
-                  <img :src="`http://dilg.test/backend/uploads/${inv.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" />
+                  <img :src="`${this.baseURL}/uploads/${inv.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" />
                 </td>
                 <td scope="row">{{ inv.entityname }}</td>
                 <td scope="row">{{ inv.classification }}</td>
                 <td scope="row">{{ inv.code }}</td>
                 <td scope="row">{{ inv.article }}</td>
                 <td scope="row">{{ inv.particulars }}</td>
+                <td scope="row">{{ inv.propertynumber }}</td>
                 <td scope="row">{{ inv.modelno }}</td>
                 <td scope="row">{{ inv.serialno }}</td>
                 <td scope="row">{{ inv.fulldescription }}</td>
@@ -534,8 +566,7 @@
                   <button v-else-if="inv.availability === 'no' || inv.availability === ''" @click="updateAvailability(inv.id, 'yes')" class="btn btn-outline-danger">Not Available</button>
                 </td>
                 <td class="sticky-col">
-                  <button class="btn btn-outline-success" @click="selectRecord(inv)"><i class="bx ri-file-list-line"></i></button>
-                  <button @click="placeRecord(inv.id)" class="btn btn-warning"><i class="bx bxs-arrow-from-right"></i></button>
+                  <button @click="placeRecord(inv.id)" class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
                   <button @click="deleteRecord(inv.id)" class="btn btn-danger"><i class="ri-delete-bin-6-line"></i></button>
                 </td>
               </tr>
@@ -543,13 +574,14 @@
             <tbody>
               <tr v-for="inv in paginatedInfo.filter(item => item.status === 'inactive')" :class="{ 'inactive-row': inv.status === 'inactive' }">
                 <td scope="row">
-                  <img :src="`http://dilg.test/backend/uploads/${inv.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" />
+                  <img :src="`${this.baseURL}/uploads/${inv.image}`" alt="Inventory Image" style="max-width: 60px; max-height: 60px;" />
                 </td>
                 <td scope="row">{{ inv.entityname }}</td>
                 <td scope="row">{{ inv.classification }}</td>
                 <td scope="row">{{ inv.code }}</td>
                 <td scope="row">{{ inv.article }}</td>
                 <td scope="row">{{ inv.particulars }}</td>
+                <td scope="row">{{ inv.propertynumber }}</td>
                 <td scope="row">{{ inv.modelno }}</td>
                 <td scope="row">{{ inv.serialno }}</td>
                 <td scope="row">{{ inv.fulldescription }}</td>
@@ -563,8 +595,7 @@
                   <button v-else-if="inv.availability === 'no' || inv.availability === ''" @click="updateAvailability(inv.id, 'yes')" class="btn btn-outline-danger">Not Available</button>
                 </td>
                 <td class="sticky-col">
-                  <button class="btn btn-outline-success" @click="selectRecord(inv)"><i class="bx ri-file-list-line"></i></button>
-                  <button @click="placeRecord(inv.id)" class="btn btn-warning"><i class="bx bxs-arrow-from-right"></i></button>
+                  <button @click="placeRecord(inv.id)" class="btn btn-warning"><i class="bi bi-pencil-square"></i></button>
                   <button @click="deleteRecord(inv.id)" class="btn btn-danger"><i class="ri-delete-bin-6-line"></i></button>
                 </td>
               </tr>
@@ -619,51 +650,23 @@
             background-color: #f9f9f9;
             padding: 20px;">
         <span class="close" @click="selectedInfo = null">&times;</span>
-        <div class="col-lg-16">
-          <div>
-            <p style="text-align: right; margin-right: 30px; font-family: Arial, sans-serif;">
-              <i>Annex A.3</i>
-            </p>
-            <div style="max-width: 800px; margin: 0 auto; padding: 20px; font-family: Arial, sans-serif;">
-              <div style="text-align: center; font-size: 23px; font-weight: bold; margin-bottom: 20px;">
-                Inventory Custodian Slip
-              </div>
-              <div style="margin-bottom: 8px;">
-                <p>Entity Name: <u>D{{selectedInfo.entityname}}</u></p>
-                <p>Fund Cluster: <u>'1</u></p>
-              </div>
-              <div style="overflow-x: auto;">
-                <table style="width: 100%; border-collapse: collapse; font-size: 10px;">
-                  <thead>
-                    <tr>
-                      <th rowspan="2" style="border: 0.5px solid #000; padding: 7px; text-align: center;">Quantity</th>
-                      <th rowspan="2" style="border: 0.5px solid #000; padding: 7px; text-align: center;">Unit</th>
-                      <th colspan="2" style="border: 0.5px solid #000; padding: 7px; text-align: center;">Amount</th>
-                      <th rowspan="2" style="border: 0.5px solid #000; padding: 7px; text-align: center;">Description</th>
-                      <th rowspan="2" style="border: 0.5px solid #000; padding: 7px; text-align: center;">Item No.</th>
-                      <th rowspan="2" style="border: 0.5px solid #000; padding: 7px; text-align: center;">Estimated Useful Life</th>
-                    </tr>
-                    <tr>
-                      <th style="border: 0.5px solid #000; padding: 7px; text-align: center;">Unit Cost</th>
-                      <th style="border: 0.5px solid #000; padding: 7px; text-align: center;">Total Cost</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td style="border: 0.5px solid #000; padding: 7px; text-align: center;">{{ selectedInfo.quantity }}</td>
-                      <td style="border: 0.5px solid #000; padding: 7px; text-align: center;">{{ selectedInfo.unit }}</td>
-                      <td style="border: 0.5px solid #000; padding: 7px; text-align: center;">{{ selectedInfo.unitcost }}</td>
-                      <td style="border: 0.5px solid #000; padding: 7px; text-align: center;">{{ selectedInfo.totalcost }}</td>
-                      <td style="border: 0.5px solid #000; padding: 7px; text-align: center;">{{ selectedInfo.fulldescription }}</td>
-                      <td style="border: 0.5px solid #000; padding: 7px; text-align: center;">{{ selectedInfo.propertynumber }}</td>
-                      <td style="border: 0.5px solid #000; padding: 7px; text-align: center;">{{ selectedInfo.estimatedlife }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
+
+        <div class="row justify-content-center">
+          <div class="col-lg-6 text-center">
+                <br>
+                <h3><b>Generate QR Code for Workspace</b></h3>
+                <!-- QR Code container with a fixed size -->
+                <div class="qr-code-container">
+                  <!-- <img class="qr-img" v-if="qrCodeVisible" :src="qrCodeUrl" alt="QR Code" /> -->
+                  <QRCodeGenerator class="qr-img" v-if="qrCodeVisible" :data="qrCodeData" :logoUrl="logoImageUrl" />
+                </div>
+                <button @click="toggleQrCode" class="btn btn-primary mt-3">
+                  {{ qrCodeVisible ? 'Close' : 'Generate QR Code' }}
+                </button>
           </div>
         </div>
+
+
       </div>
     </div>
   </div>
@@ -683,11 +686,17 @@
   
   // Components
   import axios from 'axios'
-  
+  import QRCodeGenerator from "../../components/QRCodeGenerator.vue";
   
   export default{
+    components: {
+        QRCodeGenerator,
+      },
   
   computed:{
+    baseURL() {
+      return axios.defaults.baseURL;
+    },
     filteredNotifications() {
       if (this.filter === 'unread') {
         return this.notifications.filter(notification => notification.status === 'unread');
@@ -819,7 +828,11 @@
           selectedStatus: '',
           currentPage: 1, // Current page number
           pageSize: 10, // Default page size
-  
+          qrCodeVisible: false, // Tracks if QR code is displayed
+          qrCodeUrl: '', // Holds the generated QR code URL
+          qrCodeData: null, // Replace with your dynamic ID or data
+          logoImageUrl: "./img/dilg-logo.png", // Local or external logo URL
+          suggestions: [],
       }
   },
   created(){
@@ -831,6 +844,37 @@
   },
   
   methods:{
+    async checkPropertyNumber() {
+      if (this.propertynumber.length >= 5) { // Fetch suggestions after 3 characters
+        try {
+          const response = await fetch(`${this.baseURL}/search-property-number/${this.propertynumber}`);
+          if (response.ok) {
+            const data = await response.json();
+            this.suggestions = data;
+          }
+        } catch (error) {
+          console.error('Error fetching suggestions:', error);
+        }
+      } else {
+        this.suggestions = []; // Clear suggestions if input is too short
+      }
+    },
+    selectSuggestion(suggestion) {
+      this.propertynumber = suggestion; // Fill input with selected suggestion
+      this.suggestions = []; // Clear suggestions after selection
+    },
+    toggleQrCode() {
+        if (this.qrCodeVisible) {
+            // If QR code is visible, hide it
+            this.qrCodeVisible = false;
+            this.qrCodeData = '';
+        } else {
+            // If not visible, generate and show the QR code
+            const id = this.selectedInfo.propertynumber; // Replace with dynamic data if necessary
+            this.qrCodeData = id;
+            this.qrCodeVisible = true;
+        }
+        },
     async fetchNotifications() {
         try {
           const response = await axios.get('notification');
@@ -970,62 +1014,63 @@
         console.log(error);
       }
     },
-      async save() {
+    async save() {
         try {
-          // Compute totalcost
-  
-          // Create a FormData object and append the computed totalcost
-          const formData = new FormData();
-          if (this.selectedImageFile) {
-              formData.append('image', this.selectedImageFile);
-          }
-          else if (this.capturedImage) {
-              // Convert the captured image to a file
-              const blob = await fetch(this.capturedImage).then(res => res.blob());
-              const file = new File([blob], `image_${Date.now()}.png`, { type: 'image/png' });
-              formData.append('image', file);
-          }
-  
-          // Append other form data including the computed totalcost
-          formData.append('entityname', this.entityname);
-          formData.append('classification', this.classification);
-          formData.append('code', this.code);
-          formData.append('article', this.article);
-          formData.append('particulars', this.particulars);
-          formData.append('modelno', this.modelno);
-          formData.append('serialno', this.serialno);
-          formData.append('propertynumber', this.propertynumber);
-          formData.append('propertydate', this.propertydate);
-          formData.append('quantity', this.quantity);
-          formData.append('unit', this.unit);
-          formData.append('unitcost', this.unitcost);
-          formData.append('totalcost', this.quantity * this.unitcost); // Ensure totalcost is included
-  
-          // Now you can submit the formData to your backend endpoint using Axios or any other method
-          await axios.post('/saveInventory', formData, {
-            headers: {
-              'Content-Type': 'multipart/form-data'
+            // Prepare the formData
+            const formData = new FormData();
+            if (this.selectedImageFile) {
+                formData.append('image', this.selectedImageFile);
+            } else if (this.capturedImage) {
+                const blob = await fetch(this.capturedImage).then(res => res.blob());
+                const file = new File([blob], `image_${Date.now()}.png`, { type: 'image/png' });
+                formData.append('image', file);
             }
-          });
-  
-          // Reset the form and emit the 'data-saved' event
-          this.resetForm();
-          this.$emit('data-saved');
-  
-          // Trigger notification
-          await axios.post('/triggerNotification')
-            .then(response => {
-              console.log('Notification triggered successfully');
-            })
-            .catch(error => {
-              console.error('Error triggering notification:', error);
+
+            formData.append('entityname', this.entityname);
+            formData.append('classification', this.classification);
+            formData.append('code', this.code);
+            formData.append('article', this.article);
+            formData.append('particulars', this.particulars);
+            formData.append('modelno', this.modelno);
+            formData.append('serialno', this.serialno);
+            formData.append('propertynumber', this.propertynumber);
+            formData.append('propertydate', this.propertydate);
+            formData.append('quantity', this.quantity);
+            formData.append('unit', this.unit);
+            formData.append('unitcost', this.unitcost);
+            formData.append('totalcost', this.quantity * this.unitcost);
+
+            // Send formData to the backend
+            const response = await axios.post('/saveInventory', formData, {
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                }
             });
-  
+
+            // Display the success message from backend response
+            alert(response.data.message);
+            this.resetForm();
+            this.status = "";
+            this.$emit('data-saved');
+            this.getInventory();
+
         } catch (error) {
-          console.error('Error saving:', error);
+            // Log the error for debugging
+            console.error('Error saving:', error);
+
+            // Show a generic error message if no response message is available
+            const errorMessage = error.response && error.response.data && error.response.data.message
+                ? error.response.data.message
+                : "An error occurred while saving the equipment. Please try again.";
+
+            alert(errorMessage);
+            this.resetForm();
+            this.status = "";
+            this.$emit('data-saved');
+            this.getInventory();
         }
-      },
-  
+    },
+
       dataURLtoFile(dataUrl) {
         const binary = atob(dataUrl.split(',')[1]);
         const array = [];
@@ -1193,7 +1238,7 @@
       this.unit = record.unit;
       this.unitcost = record.unitcost;
       this.totalcost = record.totalcost;
-      this.imagePreview = `http://dilg.test/backend/uploads/${record.image}`;
+      this.imagePreview = `${this.baseURL}/uploads/${record.image}`;
       this.showAddItemModal = true; // Ito ang nagtatakda na ipapakita ang modal
   
       console.log(recordId);
@@ -1218,6 +1263,7 @@
               this.capturedImage = null;
               this.uploadedImage = null;
               this.imagePreview = "";
+              this.showAddItemModal = false;
           },
   
       
@@ -1274,7 +1320,7 @@
           }
           
           // Set the background image URL
-          const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+          const backgroundImage = `url('${this.baseURL}/uploads/${imageUrl}')`;
           
           // Set background size and position
           const backgroundSize = 'cover'; // Cover the entire container
@@ -1311,6 +1357,23 @@
 .page-link {
   z-index: 0;
 }
+
+
+.qr-code-container {
+  width: 300px;
+  height: 300px;
+  margin: 0 auto; /* Center the QR code */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px dashed #ccc; /* To show a border when QR code is not visible */
+}
+
+.qr-img {
+  width: 300px;
+  height: 300px;
+}
+
 
 .form-group {
   padding: 20px;
@@ -1869,4 +1932,124 @@ tbody tr:hover {
   opacity: 0.6; /* Optional: slightly faded appearance */
 }
 
+
+
+
+.col-md-6 {
+  position: relative; /* Make this element the positioning context for the suggestions box */
+}
+
+.suggestions-box {
+  position: absolute;
+  top: 100%; /* Position directly below the input field */
+  left: 0;
+  width: 100%; /* Match the width of the input field */
+  background-color: #ffffff; /* Clean white background */
+  border: 1px solid #ddd; /* Light border for separation */
+  border-radius: 12px; /* Rounded corners */
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Soft shadow for depth */
+  margin-top: 8px; /* Space between input and suggestions */
+  font-size: 14px;
+  z-index: 10;
+  animation: pop-in 0.3s ease-out;
+
+  /* Fixed size and scroll */
+  max-height: 250px; /* Limit height */
+  max-width: 150px; /* Limit height */
+  overflow-y: auto; /* Scroll when content overflows */
+}
+
+/* Styling for the unordered list */
+.suggestions-box ul {
+  list-style-type: none; /* Remove bullet points */
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+}
+
+/* Styling for each list item */
+.suggestions-box li {
+  padding: 10px 15px; /* Comfortable padding */
+  color: #333; /* Neutral text color */
+  cursor: pointer; /* Indicate clickability */
+  transition: background-color 0.3s, color 0.3s; /* Smooth hover effect */
+}
+
+/* Hover and active states */
+.suggestions-box li:hover {
+  background-color: #f0f8ff; /* Soft blue hover background */
+  color: #0078d4; /* Brand blue text color */
+}
+
+/* Selected item (optional for keyboard navigation) */
+.suggestions-box li.selected {
+  background-color: #0078d4; /* Active blue */
+  color: #ffffff; /* White text */
+}
+
+/* Custom Scrollbar */
+.suggestions-box::-webkit-scrollbar {
+  width: 10px; /* Width of the scrollbar */
+}
+
+.suggestions-box::-webkit-scrollbar-thumb {
+  background: #d1d1d1; /* Scrollbar thumb color */
+  border-radius: 10px; /* Rounded edges for scrollbar */
+}
+
+.suggestions-box::-webkit-scrollbar-thumb:hover {
+  background: #b0b0b0; /* Darker color on hover */
+}
+
+.suggestions-box::-webkit-scrollbar-track {
+  background: #f9f9f9; /* Light track color */
+}
+
+/* Pop-in animation for smooth appearance */
+@keyframes pop-in {
+  0% {
+      transform: scale(0.9);
+      opacity: 0;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+/* Fade Transition */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.3s ease;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+/* Pop-in animation */
+@keyframes pop-in {
+  0% {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.mark-all-read-btn-sm {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px; /* Adds a little spacing */
+  float: middle; /* Aligns to the right for a cleaner look */
+}
+
+.mark-all-read-btn-sm:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+}
 </style>

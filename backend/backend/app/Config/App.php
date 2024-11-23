@@ -18,8 +18,8 @@ class App extends BaseConfig
      */
 
     //  public string $baseURL = 'http://192.168.254.189:8081/';
-    // public string $baseURL = 'http://localhost:8080/';
-    public string $baseURL = 'https://inventrack.online/backend/';
+    public string $baseURL = 'http://localhost:8080/';
+    // public string $baseURL = 'https://inventrack.online/backend/';
 
     /**
      * Allowed Hostnames in the Site URL other than the hostname in the baseURL.

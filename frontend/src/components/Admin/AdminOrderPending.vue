@@ -37,9 +37,40 @@
 }
 
 .modal-content {
-  background: white;
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
+  max-width: 600px;
+  margin: auto;
+  background: #f8f9fa;
+}
+
+.modal .close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.form-label, h3 {
+  color: #333;
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-2 {
+  margin-top: 10px;
+}
+
+.mb-3 {
+  margin-bottom: 15px;
 }
 
 
@@ -228,6 +259,24 @@
   }
 }
 
+
+
+.mark-all-read-btn-sm {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px; /* Adds a little spacing */
+  float: middle; /* Aligns to the right for a cleaner look */
+}
+
+.mark-all-read-btn-sm:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+}
 </style>
 <template>
   <div id="app" style="background-image: url('./img/color.jpg'); background-size: cover; background-attachment: fixed; height: 100%;">
@@ -262,7 +311,15 @@
                       <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                       <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                     </nav>
-                  </li>
+                    <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                    <button
+                      v-if="filter === 'unread' && filteredNotifications.length > 0"
+                      class="mark-all-read-btn-sm"
+                      @click="markAllAsRead"
+                    >
+                      Mark All as Read
+                    </button>
+                  </li>        
                   <hr />
 
                   <!-- Notifications List -->
@@ -549,7 +606,7 @@
                               <th>Total Amount</th>
                               <th>Date Ordered</th>
                               <th>Status</th>
-                              <th>Receipt Verification</th>
+                              <th>Purchase Request</th>
                               <th>Action</th>
                               <th>Rating</th>
                             </tr>
@@ -568,12 +625,32 @@
                                 </span>
                               </td>                              
                               <td>
-                                <img :src="ord.receipt" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" />
+                                <!-- Conditional Rendering -->
+                                <div v-if="ord.receipt">
+                                  <template v-if="ord.receipt.endsWith('.pdf')">
+                                    <div class="pdf-box" @click="openPdfInBlank(ord.receipt)">
+                                      <i class="bx bxs-file-pdf pdf-icon"></i>
+                                      <span class="pdf-text">Open PDF</span>
+                                    </div>
+                                  </template>
+                                  <template v-else>
+                                    <img ref="receiptverify" :src="`${this.baseURL}/uploads/${ord.receipt}`" @click="viewImageInFullscreen" alt="Returned Image" class="img-large img-thumbnail" />
+                                  </template>
+                                </div>
+                                <div v-else>
+                                  <!-- Display the Button if `ord.receipt` is null -->
+                                  <div class="button-group">
+                                    <a class="btn btn-warning" @click="selectRecord(ord)">
+                                      <i class="bx bxs-camera"></i>
+                                    </a>
+                                  </div>
+                                </div>
                               </td>
+                              
                               <td>
                                 <div class="button-group">
-                                  <a class="btn btn-warning" @click="selectRecord(ord)">
-                                    <i class="bx bxs-camera"></i>
+                                  <a class="btn btn-success" @click="generatePurchaseRequest(ord.id)">
+                                    <i class="bx ri-file-list-line"></i>
                                   </a>
                                   <a class="btn btn-danger" @click="deleteRecord(ord.id)">
                                     <i class="bx bxs-trash"></i>
@@ -581,7 +658,7 @@
                                 </div>
                               </td>                              
                               <td>
-                                <template v-if="ord.receipt && isValidImage(ord.receipt)">
+                                <template v-if="ord.receipt">
                                   <button class="btn btn-primary" @click="openModal(ord)">Rate</button>
                                 </template>
                                 <template v-else>
@@ -629,14 +706,32 @@
                       </span>
                     </div>                    
                     <div class="info-group">
-                      <label>Receipt:</label>
-                      <img :src="ord.receipt" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" />
+                      <label>Purchase Request:</label>
+                      <div v-if="ord.receipt">
+                        <template v-if="ord.receipt.endsWith('.pdf')">
+                          <div class="pdf-box" @click="openPdfInBlank(ord.receipt)">
+                            <i class="bx bxs-file-pdf pdf-icon"></i>
+                            <span class="pdf-text">Open PDF</span>
+                          </div>
+                        </template>
+                        <template v-else>
+                          <img ref="receiptverify" :src="`${this.baseURL}/uploads/${ord.receipt}`" @click="viewImageInFullscreen" alt="Returned Image" class="img-large img-thumbnail" />
+                        </template>
+                      </div>
+                      <div v-else>
+                        <!-- Display the Button if `ord.receipt` is null -->
+                        <div class="button-group">
+                          <a class="btn btn-warning" @click="selectRecord(ord)">
+                            <i class="bx bxs-camera"></i>
+                          </a>
+                        </div>
+                      </div>
                     </div>
                     <div class="info-group">
                       <br><label>Action:</label>
                       <div class="button-group">
-                        <a class="btn btn-warning" @click="selectRecord(ord)">
-                          <i class="bx bxs-camera"></i>
+                        <a class="btn btn-success" @click="generatePurchaseRequest(ord.id)">
+                          <i class="bx ri-file-list-line"></i>
                         </a>
                         <a class="btn btn-danger" @click="deleteRecord(ord.id)">
                           <i class="bx bxs-trash"></i>
@@ -645,7 +740,7 @@
                     </div>
                     <br>                    
                     <div class="info-group text-center">
-                      <template v-if="ord.receipt && isValidImage(ord.receipt)">
+                      <template v-if="ord.receipt">
                         <button class="btn btn-primary" @click="openModal(ord)">Rate</button>
                       </template>
                       <template v-else>
@@ -693,52 +788,86 @@
               
 
 
-
-          <div class="modal" v-if="selectedRecord">
-            <div class="modal-content">
-              <span class="close" @click="selectedRecord = null">&times;</span>
-
-
-              <form class="row g-3" enctype="multipart/form-data">
-                <div class="col-12">
-                  <label class="form-label"><h3><b>Choose Image Source:</b></h3></label>
-                  <div>
-                      <input type="radio" id="upload" value="upload" v-model="imageSource">
-                      <label for="upload">Upload Image</label>
-                  </div>
-                  <div>
-                      <input type="radio" id="capture" value="capture" v-model="imageSource">
-                      <label for="capture">Capture Image</label>
-                  </div>
+              <div class="modal" v-if="selectedRecord">
+                <div class="modal-content">
+                  <span class="close" @click="selectedRecord = null">&times;</span>
+              
+                  <form class="row g-3" enctype="multipart/form-data">
+                    <div class="col-12">
+                      <label for="file" class="form-label"><h3><b>Upload Image or PDF:</b></h3></label>
+                      <input type="file" class="form-control file-input" id="file" @change="handleFileUpload" accept="image/*,.pdf">
+                    </div>
+              
+                    <div class="col-12 preview-section" v-if="filePreview">
+                      <label class="form-label"><b>Preview</b></label>
+                      <div class="file-preview-container">
+                        <!-- Image Preview -->
+                        <img :src="filePreview" v-if="isImageFile" alt="Image Preview" class="image-preview">
+                        
+                        <!-- PDF Preview -->
+                        <div v-else>
+                          <b>PDF Uploaded:</b> {{ selectedFile.name }}
+                          <iframe :src="filePreview" width="100%" height="400px" class="pdf-preview"></iframe>
+                        </div>
+                      </div>
+                    </div>
+              
+                    <div class="text-center action-buttons">
+                      <button @click.prevent="updateVerification" type="submit" class="btn btn-primary">Submit</button>
+                      <button type="reset" class="btn btn-secondary" @click="resetForm">Reset</button>
+                    </div>
+                  </form>
+                </div>
               </div>
 
-              <div class="col-12" v-if="imageSource === 'upload'">
-                  <!-- File upload input -->
-                  <label for="image" class="form-label"><b>Upload Image</b></label>
-                  <input type="file" class="form-control" id="image" @change="handleFileUpload" accept="image/*">
-              </div>
-
-              <div class="col-6" v-else-if="imageSource === 'capture'">
-                  <!-- Camera capture section -->
-                  <label for="camera" class="form-label"><b>Capture Image</b></label>
-                  <video id="camera" width="280" height="220" autoplay></video>
-                  <a @click="startCamera" class="btn btn-primary">{{ cameraStarted ? 'Stop Camera' : 'Start Camera' }}</a>
-                  <a @click="captureImage" class="btn btn-success" :disabled="!cameraStarted">Capture</a>
-              </div>
-              <div class="col-6">
-                  <label class="form-label text-center"><b>Preview</b></label>
-                  <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" style="max-width: 280px; max-height: 220px;">
-              </div>
-              <div class="text-center">
-                  <button @click="updateReceipt" type="submit" class="btn btn-primary">Submit</button>
-                  <button type="reset" class="btn btn-secondary">Reset</button>
-              </div>
-              </form>
 
 
-
-            </div>
-          </div>
+              <!-- <div class="modal" v-if="selectedRecord">
+                <div class="modal-content">
+                  <span class="close" @click="selectedRecord = null">&times;</span>
+              
+                  <form class="row g-3" enctype="multipart/form-data">
+                    <div class="col-12 text-center mb-3">
+                      <h3><b>Select Image Source</b></h3>
+                    </div>
+              
+                    <div class="col-12 mb-3">
+                      <div class="d-flex justify-content-center">
+                        <input type="radio" id="upload" value="upload" v-model="imageSource" class="me-2">
+                        <label for="upload" class="me-3">Upload Image</label>
+                        
+                        <input type="radio" id="capture" value="capture" v-model="imageSource" class="me-2">
+                        <label for="capture">Capture Image</label>
+                      </div>
+                    </div>
+              
+                    <div class="col-12" v-if="imageSource === 'upload'">
+                      <label for="image" class="form-label"><b>Upload Image</b></label>
+                      <input type="file" class="form-control" id="image" @change="handleFileUpload" accept="image/*">
+                    </div>
+              
+                    <div class="col-6" v-else-if="imageSource === 'capture'">
+                      <label for="camera" class="form-label"><b>Capture Image</b></label>
+                      <video id="camera" width="280" height="220" autoplay></video>
+                      <div class="d-flex justify-content-between mt-2">
+                        <button @click="startCamera" class="btn btn-primary">{{ cameraStarted ? 'Stop Camera' : 'Start Camera' }}</button>
+                        <button @click="captureImage" class="btn btn-success" :disabled="!cameraStarted">Capture</button>
+                      </div>
+                    </div>
+              
+                    <div class="col-6 d-flex flex-column align-items-center">
+                      <label class="form-label"><b>Preview</b></label>
+                      <img :src="imagePreview" v-if="imagePreview" alt="Image Preview" class="border rounded" style="max-width: 280px; max-height: 220px;">
+                    </div>
+              
+                    <div class="col-12 text-center mt-4">
+                      <button @click="updateReceipt" type="submit" class="btn btn-primary me-2">Submit</button>
+                      <button type="reset" class="btn btn-secondary">Reset</button>
+                    </div>
+                  </form>
+                </div>
+              </div> -->
+              
 
 
 
@@ -763,6 +892,9 @@
       export default{
       
       computed:{
+        baseURL() {
+          return axios.defaults.baseURL;
+        },
         totalAmount() {
           return this.quantity * this.unitcost;
         },
@@ -791,7 +923,6 @@
               date_ordered: "",
               number_rating: "",
               status: "",
-              receipt: null,
               mediaStream: null,
               cameraStarted: false,
               capturedImage: null,
@@ -820,6 +951,9 @@
         });
       },
       computed: {
+        baseURL() {
+          return axios.defaults.baseURL;
+        },
         filteredNotifications() {
           if (this.filter === 'unread') {
             return this.notifications.filter(notification => notification.status === 'unread');
@@ -840,6 +974,30 @@
               console.error(error);
             }
           },
+
+          openPdfInBlank(fileName) {
+          const pdfUrl = `${this.baseURL}/pdfFiles/${fileName}`;
+          const newTab = window.open('about:blank', '_blank');
+          if (newTab) {
+            newTab.document.write(
+              `<html><body style="margin:0;padding:0;overflow:hidden;">
+                <iframe src="${pdfUrl}" frameborder="0" style="width:100%;height:100%;"></iframe>
+              </body></html>`
+            );
+            newTab.document.close();
+          }
+        },
+
+        viewImageInFullscreen() {
+          // Logic for viewing image in fullscreen
+          const imageElement = this.$refs.receiptverify;
+          if (imageElement) {
+            const newWindow = window.open("", "_blank");
+            newWindow.document.write(`<img src="${imageElement.src}" style="width: 100%; height: 100%; object-fit: contain;">`);
+            newWindow.document.close();
+          }
+        },
+
           computeTimeAgo(dateString) {
             const now = Date.now(); // Current time in milliseconds
             const notificationDate = new Date(dateString).getTime(); // Convert dateString to milliseconds
@@ -1028,13 +1186,80 @@
 
 
           handleFileUpload(event) {
-        const file = event.target.files[0];
-        if (file) {
-            this.uploadedImage = URL.createObjectURL(file);
-            this.selectedImageFile = file;
-            this.imagePreview = this.uploadedImage;
-        }
-    },
+            const file = event.target.files[0];
+            this.selectedFile = file;
+            this.isImageFile = file.type.startsWith('image');
+
+            // Generate a preview URL for the file
+            this.filePreview = URL.createObjectURL(file);
+          },
+          async updateVerification() {
+            try {
+              const formData = new FormData();
+              formData.append('file', this.selectedFile);
+
+              const response = await axios.post(`/updateReceipt/${this.selectedRecord}`, formData, {
+                headers: { 'Content-Type': 'multipart/form-data' }
+              });
+
+              if (response.data.status === 'success') {
+                alert('File uploaded and record updated successfully');
+                this.selectedRecord = null;
+                this.getOrder();
+              } else {
+                alert('Failed to upload file');
+              }
+            } catch (error) {
+              console.error("Error uploading file:", error);
+            }
+          },
+          resetForm() {
+            this.selectedFile = null;
+            this.filePreview = null;
+            this.isImageFile = false;
+          },
+
+
+          async generatePurchaseRequest(recordId) {
+              try {
+
+                  const response = await fetch(`${this.baseURL}/generatePurchaseRequest/${recordId}`, {
+                      method: 'POST',
+                      headers: {
+                          'Content-Type': 'application/json',
+                      },
+                  });
+
+                  if (response.ok) {
+                      const blob = await response.blob();
+                      const filename = `Purchase_Request.pdf`;
+                      const url = window.URL.createObjectURL(blob);
+                      
+                      // Create a link element and trigger the download
+                      const link = document.createElement('a');
+                      link.href = url;
+                      link.setAttribute('download', filename);
+                      document.body.appendChild(link);
+                      link.click();
+
+                      // Cleanup
+                      document.body.removeChild(link);
+                      window.URL.revokeObjectURL(url);
+                      console.log('PDF generated successfully');
+                  } else {
+                      console.error('Failed to generate PDF');
+                  }
+                  
+                  this.setTimeout();  // If this is meant to stop the loading animation
+              } catch (error) {
+                  console.error('Error generating PDF:', error);
+              }
+          },
+
+
+
+
+
         async startCamera() {
           const videoElement = document.getElementById('camera');
           if (!this.cameraStarted) {
@@ -1121,7 +1346,7 @@
         }
         
         // Set the background image URL
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('${this.baseURL}/uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container

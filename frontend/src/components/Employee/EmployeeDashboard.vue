@@ -277,7 +277,7 @@
                       <div class="col-md-8">
                         <div class="card-body">
                           <p class="card-title" style="font-size: 20px; margin-bottom: -10px;">{{ infos.particulars }}</p>
-                          <p>{{ infos.classification }}</p>
+                          <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">{{ infos.classification }}</p>
                           <p class="card-text">
                             <span v-if="infos.remarks === 'SERVICEABLE'" class="status-serviceable">
                               <i class="bi bi-bookmark-check">&nbsp;&nbsp;</i>
@@ -289,11 +289,12 @@
                             </span>
                           </p>
                         </div>
-                      </div>
+                      </div>                      
                     </div>
                   </div>
                 </div>
               </div>
+              <br>
         
               <h1 class="dashboard-title">UNSERVICEABLE</h1>
               <div class="row">
@@ -307,8 +308,8 @@
                       </div>                      
                       <div class="col-md-8">
                         <div class="card-body">
-                          <p class="card-title">{{ infos.particulars }}</p>
-                          <p>{{ infos.classification }}</p>
+                          <p class="card-title" style="font-size: 20px; margin-bottom: -10px;">{{ infos.particulars }}</p>
+                          <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px;">{{ infos.classification }}</p>
                           <p class="card-text">
                             <span v-if="infos.remarks === 'SERVICEABLE'" class="status-serviceable">
                               <i class="bi bi-bookmark-check">&nbsp;&nbsp;</i>
@@ -320,7 +321,7 @@
                             </span>
                           </p>
                         </div>
-                      </div>
+                      </div>                      
                     </div>
                   </div>
                 </div>
@@ -370,6 +371,11 @@
         transitionLeft: false,
         countdownInterval: null
       };
+    },
+    computed: {
+      baseURL() {
+        return axios.defaults.baseURL;
+      },
     },
     created() {
       this.initData();
@@ -432,7 +438,7 @@
         if (!imageUrl) {
           return {};
         }
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('${this.baseURL}/uploads/${imageUrl}')`;
         const backgroundSize = 'cover';
         const backgroundPosition = '50% 50%';
         return {
@@ -529,7 +535,7 @@
   .card {
     box-sizing: border-box;
     width: 400px;
-    height: 250px;
+    
     background-color: lightblue;
     border: 2px;
     border-color: #BED0EB;
@@ -560,6 +566,49 @@
     transform: scale(0.95) rotateZ(1.7deg);
   }
   
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Ensure proper spacing between elements */
+    height: 100%; /* Ensure the card body occupies the full height */
+  }
+  
+  .card-title {
+    font-size: 20px;
+    margin-bottom: -10px;
+    white-space: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add triple dots for overflowed content */
+    max-width: 200px; /* Set a maximum width to limit the text size */
+  }
+  
+  .card-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .card.mb-3 {
+    display: flex;
+    align-items: center;
+    height: 100%; /* Fix card height */
+    flex-wrap: nowrap; /* Prevent wrapping */
+  }
+  
+  .row.g-0 {
+    display: flex;
+    flex-wrap: nowrap; /* Ensure fixed positioning of columns */
+    align-items: center;
+  }
+  
+  .col-md-4, .col-md-8 {
+    flex-basis: auto; /* Maintain consistent size for columns */
+    display: flex;
+    align-items: center;
+  }
+
+
   .status-serviceable {
     background-color: #dff8d0; /* Light green color */
     border: 1px solid #4CAF50; /* Green border */
@@ -568,6 +617,11 @@
     padding: 5px 10px; /* Add padding */
     display: inline-block; /* Display as inline-block for rectangular shape */
     transition: background-color 0.3s ease; /* Smooth transition for background color */
+    white-space: nowrap; /* Prevent status text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add triple dots for long text */
+    max-width: 150px; /* Limit status size */
+    text-align: center; /* Center align the text */
   }
   
   .status-unserviceable {
@@ -578,6 +632,11 @@
     padding: 5px 10px; /* Add padding */
     display: inline-block; /* Display as inline-block for rectangular shape */
     transition: background-color 0.3s ease; /* Smooth transition for background color */
+    white-space: nowrap; /* Prevent status text from wrapping */
+    overflow: hidden;
+    text-overflow: ellipsis; /* Add triple dots for long text */
+    max-width: 150px; /* Limit status size */
+    text-align: center; /* Center align the text */
   }
   
   .status-serviceable:hover,
@@ -586,27 +645,57 @@
   }
   
   .inventory-image-container {
-    width: 120px; /* Fixed size for the circular container */
+    width: 120px;
     height: 120px;
-    border-radius: 50%; /* Makes the container a circle */
-    overflow: hidden; /* Ensures the image stays within the circle */
+    border-radius: 50%;
+    overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f0f0f0; /* Optional: background color for better visibility */
-    margin: 10px auto; /* Centers the container within the column */
-    
+    background-color: #f0f0f0;
+    margin: auto;
     border-style: solid;
-    border-color: lightgray; /* Change to desired border color */
-    border-width: 3px; /* Adjust thickness of the border */
+    border-color: lightgray;
+    border-width: 3px;
+    flex-shrink: 0; /* Prevent shrinking */
   }
-  
-  
+
   .inventory-image {
-    width: 100%; /* Makes the image cover the container */
+    width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image fits within the circle without distortion */
+    object-fit: cover;
   }
+
+  @media (max-width: 768px) {
+    .row.g-0 {
+      flex-direction: column; /* Stack items vertically */
+      align-items: center; /* Center-align items */
+    }
+  
+    .card {
+      width: 100%; /* Make the card take the full width on smaller screens */
+      max-width: 400px; /* Add a max-width to prevent it from being too wide */
+      margin: 10px auto; /* Center the card and add spacing */
+    }
+  
+    .inventory-image-container {
+      width: 80px; /* Reduce image size for mobile */
+      height: 80px;
+      margin-bottom: 10px; /* Add spacing below the image */
+    }
+  
+    .status-serviceable, .status-unserviceable {
+      font-size: 14px; /* Reduce font size for mobile */
+      max-width: 100%; /* Allow full width for text */
+      text-align: center; /* Center-align text */
+    }
+  
+    .card-body {
+      padding: 10px; /* Reduce padding for a compact layout */
+      text-align: center; /* Center-align text for better readability */
+    }
+  }
+  
   
   
 

@@ -30,6 +30,14 @@
                   <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                   <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                 </nav>
+                <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                <button
+                  v-if="filter === 'unread' && filteredNotifications.length > 0"
+                  class="mark-all-read-btn-sm"
+                  @click="markAllAsRead"
+                >
+                  Mark All as Read
+                </button>
               </li>
               <hr />
 
@@ -468,6 +476,9 @@ export default {
     
   },
   computed: {
+    baseURL() {
+      return axios.defaults.baseURL;
+    },
     filteredNotifications() {
       if (this.filter === 'unread') {
         return this.notifications.filter(notification => notification.status === 'unread');
@@ -521,7 +532,7 @@ export default {
 
       async fetchPrediction() {
         try {
-            const response = await fetch(`http://dilg.test/backend/api/supply-prediction`);
+            const response = await fetch(`${this.baseURL}/api/supply-prediction`);
             const data = await response.json();
 
             // Initialize chart data
@@ -614,11 +625,11 @@ export default {
       try {
         const response = await axios.get('/getInventoryCount');
         const data = response.data;
-        const particulars = data.particulars;
+        const propertynumber = data.propertynumber;
         const counts = data.counts;
         // Render charts for both BorrowChart and ReturnChart
-        this.renderInventoryChart('BorrowChart', particulars, counts);
-        this.renderInventoryChart('ReturnChart', particulars, counts); // Second graph
+        this.renderInventoryChart('BorrowChart', propertynumber, counts);
+        this.renderInventoryChart('ReturnChart', propertynumber, counts); // Second graph
       } catch (error) {
         console.error('Error fetching inventory count:', error);
       }
@@ -680,12 +691,12 @@ export default {
               'rgba(128, 128, 0, 0.9)'
             ],
             borderWidth: 2,
-            barThickness: 40,
+            barThickness: 20,
             maxBarThickness: 70
           }]
         },
         options: {
-          indexAxis: 'y',
+          indexAxis: 'x',
           responsive: true,
           plugins: {
             legend: {
@@ -755,7 +766,7 @@ export default {
         }
         
         // Set the background image URL
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('${this.baseURL}/uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container
@@ -991,5 +1002,22 @@ border-bottom: 17px solid #A3CD98;
 
 }
 
+
+.mark-all-read-btn-sm {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 5px; /* Adds a little spacing */
+  float: middle; /* Aligns to the right for a cleaner look */
+}
+
+.mark-all-read-btn-sm:hover {
+  background-color: #0056b3;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+}
 </style>
 

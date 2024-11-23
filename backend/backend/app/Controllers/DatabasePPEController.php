@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 // use App\Controllers\RequestController;
+use App\Controllers\NotificationController;
 use CodeIgniter\RESTful\ResourceController;
 use CodeIgniter\API\ResponseTrait;
 use App\Models\DatabasePPEModel;
@@ -66,7 +67,7 @@ class DatabasePPEController extends ResourceController
         // Fetch the record by ID
         $data = $databasePPEModel->where('id', $id)
                                 ->where('imageverification IS NOT NULL')
-                                ->where('remarks', 'SERVICEABLE')
+                                // ->where('remarks', 'SERVICEABLE')
                                 ->first(); // Fetch a single record
                                 
                                 return $this->respond($data, 200);
@@ -92,23 +93,43 @@ class DatabasePPEController extends ResourceController
         // Fetch the record by ID
         $data = $databasePPEModel->where('propertynumber', $id)
                                 ->where('imageverification IS NOT NULL')
-                                ->where('remarks', 'SERVICEABLE')
+                                ->where('returned_image IS NULL')
+                                // ->where('remarks', 'SERVICEABLE')
                                 ->first(); // Fetch a single record
 
-                                return $this->respond($data, 200);
+        return $this->respond($data, 200);
+    }
 
-        // // Check if the record exists
-        // if ($data) {
-        //     // Add the correct URL for images
-        //     $data['image'] = 'http://dilg.test/backend/uploads/' . $data['image'];
-        //     $data['imageverification'] = 'http://dilg.test/backend/uploads/' . $data['imageverification'];
+    public function getTransferRecordByPropertynum($id)
+    {
+        // Load the necessary model
+        $databasePPEModel = new DatabasePPEModel();
 
-        //     // Return the record
-        //     return $this->respond($data, 200);
-        // } else {
-        //     // If the record does not exist, return an error
-        //     return $this->failNotFound('Record not found');
-        // }
+        // Fetch the record by ID
+        $data = $databasePPEModel->where('propertynumber', $id)
+                                ->where('imageverification IS NOT NULL')
+                                ->where('returned_image IS NOT NULL')
+                                ->where('transfered_image IS NULL')
+                                // ->where('remarks', 'SERVICEABLE')
+                                ->first(); // Fetch a single record
+
+        return $this->respond($data, 200);
+    }
+
+    public function getDisposeRecordByPropertynum($id)
+    {
+        // Load the necessary model
+        $databasePPEModel = new DatabasePPEModel();
+
+        // Fetch the record by ID
+        $data = $databasePPEModel->where('propertynumber', $id)
+                                ->where('imageverification IS NOT NULL')
+                                ->where('returned_image IS NOT NULL')
+                                ->where('disposed_image IS NULL')
+                                ->where('remarks', 'UNSERVICEABLE')
+                                ->first(); // Fetch a single record
+
+        return $this->respond($data, 200);
     }
 
 
@@ -119,7 +140,6 @@ class DatabasePPEController extends ResourceController
     
         // Select all records from 'databaseppe' table
         $data = $databasePPEModel->where('imageverification IS NOT NULL')
-                                  ->where('remarks', 'SERVICEABLE')
                                   ->orderBy('id', 'DESC')
                                   ->findAll();
                                 //   foreach ($data as &$item) {
@@ -181,6 +201,7 @@ class DatabasePPEController extends ResourceController
         // Perform the join query
         $data = $databasePPEModel->where('databaseppe.imageverification IS NOT NULL')
                                 ->where('databaseppe.remarks', 'UNSERVICEABLE')
+                                ->where('databaseppe.disposed_image IS NULL')
                                 ->orderBy('databaseppe.id', 'DESC')
                                 ->findAll();
                                 // foreach ($data as &$item) {
@@ -201,6 +222,7 @@ class DatabasePPEController extends ResourceController
         // Perform the join query
         $data = $databasePPEModel->where('databaseppe.imageverification IS NOT NULL')
                                 ->where('databaseppe.returned_image IS NOT NULL')
+                                ->where('databaseppe.transfered_image IS NULL')
                                 ->where('databaseppe.remarks', 'SERVICEABLE')
                                 ->orderBy('databaseppe.id', 'DESC')
                                 ->findAll();
@@ -245,7 +267,7 @@ class DatabasePPEController extends ResourceController
         // Perform the join query
         $data = $databasePPEModel->where('databaseppedisposed.imageverification IS NOT NULL')
                                 ->where('databaseppedisposed.returned_image IS NOT NULL')
-                                ->where('databaseppedisposed.remarks', 'SERVICEABLE')
+                                ->where('databaseppedisposed.disposed_image IS NOT NULL')
                                 ->orderBy('databaseppedisposed.id', 'DESC')
                                 ->findAll();
                                 // foreach ($data as &$item) {
@@ -258,24 +280,7 @@ class DatabasePPEController extends ResourceController
         return $this->respond($data, 200);
     }
 
-    // public function save()
-    // {
-    //     $json = $this->request->getJSON();
-    //     $code = $this->code_gen(8);
-    //     $data = [
-    //         'entityname' => $json->entityname,
-    //         'particulars' => $json->particulars,
-    //         'classification' => $json->classification,
-    //         'empfullname' => $json->empfullname,
-    //         'code' => $code,
-    //     ];
-    //     $main = new DatabasePPEModel();
-    //     $rin = $main->save($data);
-    //     return $this->respond($rin, 200);
     // }
-    
-
-
     public function save()
     {
         // Retrieve input data
@@ -316,7 +321,7 @@ class DatabasePPEController extends ResourceController
 
         // Check the status in the inventoryppe table based on particulars
         $inventoryModel = new InventoryModel();
-        $statusRows = $inventoryModel->where('particulars', $particulars)->findAll();
+        $statusRows = $inventoryModel->where('propertynumber', $propertynumber)->findAll();
 
         // Check if any rows were found
         if (!empty($statusRows)) {
@@ -327,7 +332,7 @@ class DatabasePPEController extends ResourceController
             if ($status === 'active') {
                 // Proceed with saving to the databaseppe table
 
-                // Prepare the data to be saved
+                // Retrieve other form fields from the input
                 $data = [
                     'entityname' => $entityname,
                     'classification' => $classification,
@@ -368,35 +373,151 @@ class DatabasePPEController extends ResourceController
                 $databasePPEModel = new DatabasePPEModel();
                 $result = $databasePPEModel->save($data);
 
-                // If successfully saved, check status again
                 if ($result) {
                     // Re-check the status of the 'particulars' in the inventory model
-                    $statusRows = $inventoryModel->where('particulars', $particulars)->findAll();
+                    $statusRows = $inventoryModel->where('propertynumber', $propertynumber)->findAll();
                     if (!empty($statusRows) && $statusRows[0]['status'] === 'inactive') {
-                        // Send notification if the status is now 'inactive'
-                        $particular = $this->request->getPost('particulars'); // Example, adjust based on how the name is structured
-                        $icon = 'ri-dropbox-fill';  // Set the icon you want to use here
-
+                        $icon = 'ri-dropbox-fill';
                         $notificationController = new NotificationController();
-                        $notificationController->addNotification("A particular named {$particular} is now inactive!", $icon);
+                        $notificationController->addNotification("A particular named {$propertynumber} is now inactive!", $icon);
+    
+                        // Return a response with an inactive status notification
+                        return $this->respond(['msg' => 'Record saved successfully!', 'notification' => "The property number {$propertynumber} is now inactive."], 200);
                     }
                 }
-
-                return $this->respond($result, 200);
             } else {
                 // If inactive, do not save and respond accordingly
-                $particular = $this->request->getPost('particulars'); // Example, adjust based on how the name is structured
-                $icon = 'ri-dropbox-fill';  // Set the icon you want to use here
-
-                $notificationController = new NotificationController();
-                $notificationController->addNotification("A particular named {$particular} is inactive!", $icon);
                 return $this->respond(['msg' => 'Cannot save data. Inventory status is inactive.'], 200);
             }
-        } else {
+        }
+         else {
             // Handle the case where no matching row was found
             return $this->respond(['msg' => 'There is no existing item with that code.'], 200);
         }
     }
+
+
+    // public function save()
+    // {
+    //     // Retrieve input data
+    //     $entityname = $this->request->getPost('entityname');
+    //     $classification = $this->request->getPost('classification');
+    //     $code = $this->request->getPost('code');
+    //     $article = $this->request->getPost('article');
+    //     $particulars = $this->request->getPost('particulars');
+    //     $modelno = $this->request->getPost('modelno');
+    //     $serialno = $this->request->getPost('serialno');
+    //     $propertynumber = $this->request->getPost('propertynumber');
+    //     $propertydate = $this->request->getPost('propertydate');
+    //     $image = $this->request->getPost('image');
+    //     $icsnumber = $this->request->getPost('icsnumber');
+    //     $jevnumber = $this->request->getPost('jevnumber');
+    //     $rec_quantity = $this->request->getPost('rec_quantity');
+    //     $rec_unit = $this->request->getPost('rec_unit');
+    //     $rec_unitcost = $this->request->getPost('rec_unitcost');
+    //     $issue_itemno = $this->request->getPost('propertynumber');
+    //     $issue_date = $this->request->getPost('issue_date');
+    //     $issue_quantity = $this->request->getPost('rec_quantity');
+    //     $issue_officeofficer = $this->request->getPost('issue_officeofficer');
+    //     $remarks = $this->request->getPost('remarks');
+    //     $estimatedlife = $this->request->getPost('estimatedlife');
+    //     $issued_officer = $this->request->getPost('issued_officer');
+    //     $issued_offposition = $this->request->getPost('issued_offposition');
+    //     $issued_date = $this->request->getPost('issued_date');
+    //     $acc_officer = $this->request->getPost('acc_officer');
+    //     $acc_empposition = $this->request->getPost('acc_empposition');
+    //     $acc_date = $this->request->getPost('acc_date');
+    //     $reg_remarks = $this->request->getPost('reg_remarks');
+    //     $property_officer = $this->request->getPost('property_officer');
+    //     $approving_authority = $this->request->getPost('approving_authority');
+
+    //     // Calculate the total cost
+    //     $rec_totalcost = $rec_quantity * $rec_unitcost;
+    //     $balancequantity = $rec_quantity - $issue_quantity;
+
+    //     // Check the status in the inventoryppe table based on particulars
+    //     $inventoryModel = new InventoryModel();
+    //     $statusRows = $inventoryModel->where('particulars', $particulars)->findAll();
+
+    //     // Check if any rows were found
+    //     if (!empty($statusRows)) {
+    //         // Assuming 'status' is a field in the inventory table
+    //         $status = $statusRows[0]['status'];
+
+    //         // Check if the status is active
+    //         if ($status === 'active') {
+    //             // Proceed with saving to the databaseppe table
+
+    //             // Prepare the data to be saved
+    //             $data = [
+    //                 'entityname' => $entityname,
+    //                 'classification' => $classification,
+    //                 'code' => $code,
+    //                 'article' => $article,
+    //                 'particulars' => $particulars,
+    //                 'modelno' => $modelno,
+    //                 'serialno' => $serialno,
+    //                 'propertynumber' => $propertynumber,
+    //                 'propertydate' => $propertydate,
+    //                 'image' => $image,
+    //                 'icsnumber' => $icsnumber,
+    //                 'jevnumber' => $jevnumber,
+    //                 'rec_quantity' => $rec_quantity,
+    //                 'rec_unit' => $rec_unit,
+    //                 'rec_unitcost' => $rec_unitcost,
+    //                 'rec_totalcost' => $rec_totalcost,
+    //                 'issue_itemno' => $issue_itemno,
+    //                 'issue_date' => $issue_date,
+    //                 'issue_quantity' => $issue_quantity,
+    //                 'issue_officeofficer' => $issue_officeofficer,
+    //                 'balancequantity' => $balancequantity,
+    //                 'balanceamount' => $rec_totalcost,
+    //                 'remarks' => $remarks,
+    //                 'estimatedlife' => $estimatedlife,
+    //                 'issued_officer' => $issued_officer,
+    //                 'issued_offposition' => $issued_offposition,
+    //                 'issued_date' => $issued_date,
+    //                 'acc_officer' => $acc_officer,
+    //                 'acc_empposition' => $acc_empposition,
+    //                 'acc_date' => $acc_date,
+    //                 'reg_remarks' => $reg_remarks,
+    //                 'property_officer' => $property_officer,
+    //                 'approving_authority' => $approving_authority,
+    //             ];
+
+    //             // Save data to the database
+    //             $databasePPEModel = new DatabasePPEModel();
+    //             $result = $databasePPEModel->save($data);
+
+    //             // If successfully saved, check status again
+    //             if ($result) {
+    //                 // Re-check the status of the 'particulars' in the inventory model
+    //                 $statusRows = $inventoryModel->where('particulars', $particulars)->findAll();
+    //                 if (!empty($statusRows) && $statusRows[0]['status'] === 'inactive') {
+    //                     // Send notification if the status is now 'inactive'
+    //                     $particular = $this->request->getPost('particulars'); // Example, adjust based on how the name is structured
+    //                     $icon = 'ri-dropbox-fill';  // Set the icon you want to use here
+
+    //                     $notificationController = new NotificationController();
+    //                     $notificationController->addNotification("A particular named {$particular} is now inactive!", $icon);
+    //                 }
+    //             }
+
+    //             return $this->respond($result, 200);
+    //         } else {
+    //             // If inactive, do not save and respond accordingly
+    //             $particular = $this->request->getPost('particulars'); // Example, adjust based on how the name is structured
+    //             $icon = 'ri-dropbox-fill';  // Set the icon you want to use here
+
+    //             $notificationController = new NotificationController();
+    //             $notificationController->addNotification("A particular named {$particular} is inactive!", $icon);
+    //             return $this->respond(['msg' => 'Cannot save data. Inventory status is inactive.'], 200);
+    //         }
+    //     } else {
+    //         // Handle the case where no matching row was found
+    //         return $this->respond(['msg' => 'There is no existing item with that code.'], 200);
+    //     }
+    // }
 
 
 
@@ -744,16 +865,59 @@ class DatabasePPEController extends ResourceController
     //     return $this->respond(['msg' => 'The Data is not saving, there is an error'], 200);
     // }
 
+    // public function saveInventory()
+    // {
+    //     $main = new InventoryModel();
+    //     $image = $this->request->getFile('image');
+    //     $newName = null;
+
+    //     // Check if an image was uploaded
+    //     if ($image->isValid() && !$image->hasMoved()) {
+    //         $newName = $image->getRandomName();
+    //         $image->move(ROOTPATH . '../uploads', $newName);
+    //     }
+
+    //     $data = [
+    //         'entityname' => $this->request->getPost('entityname'),
+    //         'classification' => $this->request->getPost('classification'),
+    //         'code' => $this->request->getPost('code'),
+    //         'article' => $this->request->getPost('article'),
+    //         'particulars' => $this->request->getPost('particulars'),
+    //         'modelno' => $this->request->getPost('modelno'),
+    //         'serialno' => $this->request->getPost('serialno'),
+    //         'propertynumber' => $this->request->getPost('propertynumber'),
+    //         'propertydate' => $this->request->getPost('propertydate'),
+    //         'quantity' => $this->request->getPost('quantity'),
+    //         'unit' => $this->request->getPost('unit'),
+    //         'unitcost' => $this->request->getPost('unitcost'),
+    //         'totalcost' => $this->request->getPost('totalcost'),
+    //         // 'arrival' => $this->request->getPost('arrival'),
+    //         'image' => $newName, // Store the image filename
+    //     ];
+
+    //     $rin = $main->save($data);
+
+    //     // Call the databaseListener function with the particular name
+    //     $this->databaseListener($particularName);
+
+    //     return $this->respond($rin, 200);
+    //     alert("Saved Successfully");
+    // }
+
+
     public function saveInventory()
     {
         $main = new InventoryModel();
         $image = $this->request->getFile('image');
         $newName = null;
+        $imageUploadSuccess = false;
 
         // Check if an image was uploaded
-        if ($image->isValid() && !$image->hasMoved()) {
+        if ($image && $image->isValid() && !$image->hasMoved()) {
             $newName = $image->getRandomName();
-            $image->move(ROOTPATH . '../uploads', $newName);
+            if ($image->move(ROOTPATH . '../uploads', $newName)) {
+                $imageUploadSuccess = true;
+            }
         }
 
         $data = [
@@ -770,18 +934,21 @@ class DatabasePPEController extends ResourceController
             'unit' => $this->request->getPost('unit'),
             'unitcost' => $this->request->getPost('unitcost'),
             'totalcost' => $this->request->getPost('totalcost'),
-            // 'arrival' => $this->request->getPost('arrival'),
             'image' => $newName, // Store the image filename
         ];
 
         $rin = $main->save($data);
 
-        // Call the databaseListener function with the particular name
-        $this->databaseListener($particularName);
 
-        return $this->respond($rin, 200);
-        alert("Saved Successfully");
+        if ($rin && $imageUploadSuccess) {
+            return $this->respond(['message' => 'Equipment successfully added and image uploaded.'], 200);
+        } elseif ($rin) {
+            return $this->respond(['message' => 'Equipment successfully added, but image upload failed.'], 200);
+        } else {
+            return $this->respond(['message' => 'Failed to add equipment to inventory.'], 500);
+        }
     }
+
     
 
     public function code_gen($length) {
@@ -958,14 +1125,15 @@ class DatabasePPEController extends ResourceController
     }
 
     public function getEmployees(){
-        $employeeModel = new EmployeeModel();
+        $employeeModel = new SigninModel();
         $employees = $employeeModel->findAll();
         return $this->respond($employees);
     }
 
     public function getEmployee($empfullname)
     {
-        $employeeModel = new EmployeeModel();
+        $employeeModel = new SigninModel();
+        // $employeeModel = new EmployeeModel();
         $employee = $employeeModel->find($empfullname);
 
         if ($employee === null) {
@@ -1001,6 +1169,22 @@ class DatabasePPEController extends ResourceController
 
         return $this->respond($data, 200);
     }
+
+
+    public function searchPropertyNumber($query)
+    {
+        $inventoryModel = new InventoryModel();
+    
+        // Perform the search directly in the controller using the model's query builder
+        $result = $inventoryModel->select('propertynumber')
+                                 ->like('propertynumber', $query, 'both')
+                                 ->orderBy('id', 'DESC')
+                                 ->findAll();
+    
+        return $this->response->setJSON($result);
+    }
+
+
 
 
     // public function saveInventory()
@@ -1135,6 +1319,54 @@ class DatabasePPEController extends ResourceController
     }
 
 
+
+    public function delDisposed() {
+        $json = $this->request->getJSON();  
+        $id = $json->id;
+        
+        // Retrieve the image file name associated with the record
+        $main = new DatabasePPEModel();
+        $record = $main->find($id);
+        $imageName = $record['disposed_image']; // Assuming 'disposed_image' is the column name storing the image file name
+        
+        // Delete the record
+        $ron = $main->delete($id);
+        
+        // Delete the corresponding image file from the uploads folder
+        if (!empty($imageName)) {
+            $uploadsPath = ROOTPATH . '../pdfFiles/'; // Adjust the path to your uploads folder
+            $imagePath = $uploadsPath . $imageName; 
+            
+            // Check if the file exists before attempting deletion
+            if (file_exists($imagePath)) {
+                if (unlink($imagePath)) {
+                    // File deletion successful
+                    return $this->respond([
+                        'status' => 'success',
+                        'message' => 'Record and associated image deleted successfully.'
+                    ], 200);
+                } else {
+                    return $this->respond([
+                        'status' => 'error',
+                        'message' => 'Record deleted, but failed to delete associated image.'
+                    ], 500);
+                }
+            } else {
+                return $this->respond([
+                    'status' => 'error',
+                    'message' => 'Record deleted, but associated image file not found.'
+                ], 404);
+            }
+        } else {
+            return $this->respond([
+                'status' => 'success',
+                'message' => 'Record deleted successfully (no associated image).'
+            ], 200);
+        }
+    }
+    
+
+
     public function getReq()
     {
         $main = new RequestModel();
@@ -1148,6 +1380,7 @@ class DatabasePPEController extends ResourceController
     {
         $user = new DatabasePPEModel();
         $data = $user->where('propertynumber', $propertynumber)
+                    ->where('returned_image IS NULL')
                     ->first();
 
         return $this->respond($data, 200);
@@ -1203,65 +1436,137 @@ class DatabasePPEController extends ResourceController
     //     }
     // }
 
+
     public function update_return($propertynumber)
     {
-        // Initialize the model
         $model = new DatabasePPEModel();
-        $image = $this->request->getFile('returned_image');
+        $file = $this->request->getFile('file');
         $newName = null;
-
-        // Check if an image was uploaded
-        if ($image && $image->isValid() && !$image->hasMoved()) {
-            $newName = $image->getRandomName();
-            $image->move(ROOTPATH . '../uploads', $newName);
+    
+        // Handle file upload
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $newName = $file->getRandomName();
+    
+            // Check file type
+            if ($file->getClientMimeType() === 'application/pdf') {
+                $file->move(ROOTPATH . '../pdfFiles', $newName); // Save to pdfFiles folder
+            } elseif (strpos($file->getClientMimeType(), 'image/') === 0) {
+                $file->move(ROOTPATH . '../uploads', $newName); // Save to uploads folder
+            } else {
+                return $this->response->setStatusCode(400)->setJSON([
+                    'error' => 'Invalid file type. Please upload an image or PDF.',
+                    'redirect_url' => '/returnppe',
+                ]);
+            }
         }
-
-        // Get the data sent via POST request (multipart/form-data)
+    
+        // Retrieve POST data
         $reg_returned_qty = $this->request->getPost('reg_returned_qty');
         $reg_returned_off = $this->request->getPost('reg_returned_off');
+        $reg_returned_date = $this->request->getPost('reg_returned_date');
         $remarks = $this->request->getPost('remarks');
         $reg_remarks = $this->request->getPost('reg_remarks');
-        
-        // Validate incoming data
+    
+        // Validate input
         if (!$reg_returned_qty || !$reg_returned_off) {
             return $this->response->setStatusCode(400)->setJSON([
                 'error' => 'Invalid input data. Please check the quantity and officer fields.',
-                'redirect_url' => '/returnppe'
+                'redirect_url' => '/returnppe',
             ]);
         }
-
-        // Data to be updated
+    
+        // Prepare update data
         $updateData = [
             'reg_returned_qty' => $reg_returned_qty,
             'reg_returned_off' => $reg_returned_off,
+            'reg_returned_date' => $reg_returned_date,
             'remarks' => $remarks,
-            'reg_remarks' => $reg_remarks
+            'reg_remarks' => $reg_remarks,
         ];
-
-        // Add image to the update data if a new image was uploaded
+    
+        // Add file to update data
         if ($newName) {
             $updateData['returned_image'] = $newName;
         }
-
-        // Perform the update operation
-        $updated = $model->where('propertynumber', $propertynumber)
-                        ->set($updateData)
-                        ->update();
-
-        // Check if the update was successful and respond accordingly
-        if ($updated) {
+    
+        // Update the record
+        if ($model->where('propertynumber', $propertynumber)->where('returned_image IS NULL')->set($updateData)->update()) {
             return $this->response->setJSON([
                 'status' => 'success',
                 'message' => 'Record updated successfully.',
-                'redirect_url' => '/returnedppe'
+                'redirect_url' => '/returnedppe',
             ]);
         } else {
             return $this->response->setStatusCode(500)->setJSON([
                 'error' => 'Failed to update record. Please try again later.',
-                'redirect_url' => '/returnppe'
+                'redirect_url' => '/returnppe',
             ]);
         }
     }
+    
+    
+
+
+
+    // public function update_return($propertynumber)
+    // {
+    //     // Initialize the model
+    //     $model = new DatabasePPEModel();
+    //     $image = $this->request->getFile('returned_image');
+    //     $newName = null;
+
+    //     // Check if an image was uploaded
+    //     if ($image && $image->isValid() && !$image->hasMoved()) {
+    //         $newName = $image->getRandomName();
+    //         $image->move(ROOTPATH . '../uploads', $newName);
+    //     }
+
+    //     // Get the data sent via POST request (multipart/form-data)
+    //     $reg_returned_qty = $this->request->getPost('reg_returned_qty');
+    //     $reg_returned_off = $this->request->getPost('reg_returned_off');
+    //     $remarks = $this->request->getPost('remarks');
+    //     $reg_remarks = $this->request->getPost('reg_remarks');
+        
+    //     // Validate incoming data
+    //     if (!$reg_returned_qty || !$reg_returned_off) {
+    //         return $this->response->setStatusCode(400)->setJSON([
+    //             'error' => 'Invalid input data. Please check the quantity and officer fields.',
+    //             'redirect_url' => '/returnppe'
+    //         ]);
+    //     }
+
+    //     // Data to be updated
+    //     $updateData = [
+    //         'reg_returned_qty' => $reg_returned_qty,
+    //         'reg_returned_off' => $reg_returned_off,
+    //         'remarks' => $remarks,
+    //         'reg_remarks' => $reg_remarks
+    //     ];
+
+    //     // Add image to the update data if a new image was uploaded
+    //     if ($newName) {
+    //         $updateData['returned_image'] = $newName;
+    //     }
+
+    //     // Perform the update operation
+    //     $updated = $model->where('propertynumber', $propertynumber)
+    //                     ->set($updateData)
+    //                     ->update();
+
+    //     // Check if the update was successful and respond accordingly
+    //     if ($updated) {
+    //         return $this->response->setJSON([
+    //             'status' => 'success',
+    //             'message' => 'Record updated successfully.',
+    //             'redirect_url' => '/returnedppe'
+    //         ]);
+    //     } else {
+    //         return $this->response->setStatusCode(500)->setJSON([
+    //             'error' => 'Failed to update record. Please try again later.',
+    //             'redirect_url' => '/returnppe'
+    //         ]);
+    //     }
+    // }
 
     
     
@@ -1485,23 +1790,102 @@ class DatabasePPEController extends ResourceController
     // }
     
 
+    // public function update_return($propertynumber)
+    // {
+    //     $model = new DatabasePPEModel();
+    //     $file = $this->request->getFile('file');
+    //     $newName = null;
+    
+    //     // Handle file upload
+    //     if ($file && $file->isValid() && !$file->hasMoved()) {
+    //         $newName = $file->getRandomName();
+    
+    //         // Check file type
+    //         if ($file->getClientMimeType() === 'application/pdf') {
+    //             $file->move(ROOTPATH . '../pdfFiles', $newName); // Save to pdfFiles folder
+    //         } elseif (strpos($file->getClientMimeType(), 'image/') === 0) {
+    //             $file->move(ROOTPATH . '../uploads', $newName); // Save to uploads folder
+    //         } else {
+    //             return $this->response->setStatusCode(400)->setJSON([
+    //                 'error' => 'Invalid file type. Please upload an image or PDF.',
+    //                 'redirect_url' => '/returnppe',
+    //             ]);
+    //         }
+    //     }
+    
+    //     // Retrieve POST data
+    //     $reg_returned_qty = $this->request->getPost('reg_returned_qty');
+    //     $reg_returned_off = $this->request->getPost('reg_returned_off');
+    //     $remarks = $this->request->getPost('remarks');
+    //     $reg_remarks = $this->request->getPost('reg_remarks');
+    
+    //     // Validate input
+    //     if (!$reg_returned_qty || !$reg_returned_off) {
+    //         return $this->response->setStatusCode(400)->setJSON([
+    //             'error' => 'Invalid input data. Please check the quantity and officer fields.',
+    //             'redirect_url' => '/returnppe',
+    //         ]);
+    //     }
+    
+    //     // Prepare update data
+    //     $updateData = [
+    //         'reg_returned_qty' => $reg_returned_qty,
+    //         'reg_returned_off' => $reg_returned_off,
+    //         'remarks' => $remarks,
+    //         'reg_remarks' => $reg_remarks,
+    //     ];
+    
+    //     // Add file to update data
+    //     if ($newName) {
+    //         $updateData['returned_image'] = $newName;
+    //     }
+    
+    //     // Update the record
+    //     if ($model->where('propertynumber', $propertynumber)->set($updateData)->update()) {
+    //         return $this->response->setJSON([
+    //             'status' => 'success',
+    //             'message' => 'Record updated successfully.',
+    //             'redirect_url' => '/returnedppe',
+    //         ]);
+    //     } else {
+    //         return $this->response->setStatusCode(500)->setJSON([
+    //             'error' => 'Failed to update record. Please try again later.',
+    //             'redirect_url' => '/returnppe',
+    //         ]);
+    //     }
+    // }
+
+
+
+
     public function update_transfer($propertynumber)
     {
         $model = new DatabasePPEModel();
-        $image = $this->request->getFile('transfered_image');
+        $file = $this->request->getFile('file');
         $newName = null;
     
-        // Image upload handling
-        if ($image && $image->isValid() && !$image->hasMoved()) {
-            $newName = $image->getRandomName();
-            $image->move(ROOTPATH . '../uploads', $newName);
+        // Handle file upload
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $newName = $file->getRandomName();
+    
+            // Check file type
+            if ($file->getClientMimeType() === 'application/pdf') {
+                $file->move(ROOTPATH . '../pdfFiles', $newName); // Save to pdfFiles folder
+            } elseif (strpos($file->getClientMimeType(), 'image/') === 0) {
+                $file->move(ROOTPATH . '../uploads', $newName); // Save to uploads folder
+            } else {
+                return $this->response->setStatusCode(400)->setJSON([
+                    'error' => 'Invalid file type. Please upload an image or PDF.',
+                    'redirect_url' => '/transfered',
+                ]);
+            }
         }
     
         $transfer_date = $this->request->getPost('transfer_date');
         $transfer_officeofficer = $this->request->getPost('transfer_officeofficer');
         $transfer_quantity = $this->request->getPost('transfer_quantity');
         $acc_empposition = $this->request->getPost('acc_empposition');
-    
+
         // Validate required data
         if (!$transfer_quantity || !$transfer_officeofficer) {
             return $this->response->setStatusCode(400)->setJSON(['error' => 'Invalid input data']);
@@ -1520,10 +1904,10 @@ class DatabasePPEController extends ResourceController
             $updateData['transfered_image'] = $newName;
         }
     
-        if ($model->where('propertynumber', $propertynumber)->set($updateData)->update()) {
+        if ($model->where('propertynumber', $propertynumber)->where('transfered_image IS NULL')->set($updateData)->update()) {
     
             // Fetch the updated record
-            $originalData = $model->where('propertynumber', $propertynumber)->first();
+            $originalData = $model->where('propertynumber', $propertynumber)->where('transfer_officeofficer', $transfer_officeofficer)->first();
     
             if ($originalData) {
                 // Prepare insert data for DatabasePPETransfered
@@ -1556,11 +1940,11 @@ class DatabasePPEController extends ResourceController
                         'rec_quantity' => $this->request->getPost('rec_quantity'),
                         'rec_unitcost' => $this->request->getPost('rec_unitcost'),
                         'rec_totalcost' => $this->request->getPost('rec_totalcost'),
-                        'isstranadjamount' => $this->request->getPost('isstranadjamount'),
-                        'accimploss' => $this->request->getPost('accimploss'),
-                        'adjustedcost' => $this->request->getPost('adjustedcost'),
-                        'repair_nature' => $this->request->getPost('repair_nature'),
-                        'repair_amount' => $this->request->getPost('repair_amount'),
+                        //'isstranadjamount' => $this->request->getPost('isstranadjamount'),
+                        //'accimploss' => $this->request->getPost('accimploss'),
+                        //'adjustedcost' => $this->request->getPost('adjustedcost'),
+                        //'repair_nature' => $this->request->getPost('repair_nature'),
+                        //'repair_amount' => $this->request->getPost('repair_amount'),
                         'issue_itemno' => $this->request->getPost('issue_itemno'),
                         'issue_date' => $transfer_date,
                         'issue_quantity' => $transfer_quantity,
@@ -1575,14 +1959,14 @@ class DatabasePPEController extends ResourceController
                         'acc_officer' => $transfer_officeofficer,
                         'acc_empposition' => $acc_empposition,
                         'acc_date' => $transfer_date,
-                        'itr_no' => $this->request->getPost('itr_no'),
-                        'itr_date' => $transfer_date,
-                        'rrsp_no' => $this->request->getPost('rrsp_no'),
-                        'rrsp_date' => $this->request->getPost('rrsp_date'),
-                        'reasonfortrans' => $this->request->getPost('reasonfortrans'),
-                        'reg_semiissuedserialno' => $this->request->getPost('reg_semiissuedserialno'),
-                        'reg_balance_quantity' => $this->request->getPost('reg_balance_quantity'),
-                        'reg_amount' => $this->request->getPost('reg_amount'),
+                        //'itr_no' => $this->request->getPost('itr_no'),
+                        //'itr_date' => $transfer_date,
+                        //'rrsp_no' => $this->request->getPost('rrsp_no'),
+                        //'rrsp_date' => $this->request->getPost('rrsp_date'),
+                        //'reasonfortrans' => $this->request->getPost('reasonfortrans'),
+                        //'reg_semiissuedserialno' => $this->request->getPost('reg_semiissuedserialno'),
+                        //'reg_balance_quantity' => $this->request->getPost('reg_balance_quantity'),
+                        //'reg_amount' => $this->request->getPost('reg_amount'),
                         'reg_remarks' => $this->request->getPost('reg_remarks'),
                         'property_officer' => $this->request->getPost('property_officer'),
                         'approving_authority' => $this->request->getPost('approving_authority'),
@@ -1592,9 +1976,9 @@ class DatabasePPEController extends ResourceController
                     if ($model->insert($insertDataNew)) {
     
                         // Delete the original record from DatabasePPEModel
-                        $model->where('propertynumber', $propertynumber)
-                              ->where('transfer_officeofficer', $transfer_officeofficer)
-                              ->delete();
+                        // $model->where('propertynumber', $propertynumber)
+                        //       ->where('transfer_officeofficer', $transfer_officeofficer)
+                        //       ->delete();
     
                         return $this->response->setJSON([
                             'status' => 'success',
@@ -1624,13 +2008,24 @@ class DatabasePPEController extends ResourceController
     {
         $model = new DatabasePPEModel();
         $disposedModel = new DatabasePPEDisposed(); // New model for DatabasePPEDisposed table
-        $image = $this->request->getFile('disposed_image');
+        $file = $this->request->getFile('file');
         $newName = null;
     
-        // Image upload handling
-        if ($image && $image->isValid() && !$image->hasMoved()) {
-            $newName = $image->getRandomName();
-            $image->move(ROOTPATH . '../uploads', $newName);
+        // Handle file upload
+        if ($file && $file->isValid() && !$file->hasMoved()) {
+            $newName = $file->getRandomName();
+    
+            // Check file type
+            if ($file->getClientMimeType() === 'application/pdf') {
+                $file->move(ROOTPATH . '../pdfFiles', $newName); // Save to pdfFiles folder
+            } elseif (strpos($file->getClientMimeType(), 'image/') === 0) {
+                $file->move(ROOTPATH . '../uploads', $newName); // Save to uploads folder
+            } else {
+                return $this->response->setStatusCode(400)->setJSON([
+                    'error' => 'Invalid file type. Please upload an image or PDF.',
+                    'redirect_url' => '/transfered',
+                ]);
+            }
         }
     
         $disposal_date = $this->request->getPost('disposal_date');
@@ -1655,10 +2050,10 @@ class DatabasePPEController extends ResourceController
         }
     
         // Update the record in DatabasePPEModel
-        if ($model->where('propertynumber', $propertynumber)->set($updateData)->update()) {
+        if ($model->where('propertynumber', $propertynumber)->where('disposed_image IS NULL')->where('remarks', 'UNSERVICEABLE')->set($updateData)->update()) {
     
             // Fetch the updated record
-            $originalData = $model->where('propertynumber', $propertynumber)->first();
+            $originalData = $model->where('propertynumber', $propertynumber)->where('disposal_officeofficer', $disposal_officeofficer)->first();
     
             if ($originalData) {
                 // Prepare insert data for DatabasePPEDisposed
@@ -1677,18 +2072,12 @@ class DatabasePPEController extends ResourceController
                     log_message('debug', 'Insert successful, attempting to delete from DatabasePPEModel where propertynumber: ' . $propertynumber);
     
                     // Delete the record from DatabasePPEModel after insertion into DatabasePPEDisposed
-                    if ($model->where('propertynumber', $propertynumber)->delete()) {
-                        log_message('debug', 'Delete successful from DatabasePPEModel for propertynumber: ' . $propertynumber);
                         return $this->response->setJSON([
                             'status' => 'success',
                             'message' => 'Record updated, inserted into disposal table, and deleted from the main table successfully.',
                             'updated_record' => $updateData,
                             'inserted_record_disposed' => $insertDataDisposed
                         ]);
-                    } else {
-                        log_message('error', 'Failed to delete original record from DatabasePPEModel for propertynumber: ' . $propertynumber);
-                        return $this->response->setStatusCode(500)->setJSON(['error' => 'Record inserted into disposal table but failed to delete from main table']);
-                    }
                 } else {
                     log_message('error', 'Failed to insert record into DatabasePPEDisposed for propertynumber: ' . $propertynumber);
                     return $this->response->setStatusCode(500)->setJSON(['error' => 'Record updated but failed to insert into DatabasePPEDisposed']);
@@ -1936,17 +2325,17 @@ class DatabasePPEController extends ResourceController
         $inventoryppe = $main->findAll(); // Retrieve all inventory entries
         $count = count($inventoryppe); // Count all entries
     
-        // Extract particulars and quantities from inventory entries
-        $particulars = [];
+        // Extract propertynumber and quantities from inventory entries
+        $propertynumber = [];
         $counts = [];
         foreach ($inventoryppe as $item) {
-            $particulars[] = $item['particulars'];
+            $propertynumber[] = $item['propertynumber'];
             $counts[] = $item['counts'];
         }
     
         return $this->respond([
             'count' => $count,
-            'particulars' => $particulars,
+            'propertynumber' => $propertynumber,
             'counts' => $counts
         ], 200);
     }
@@ -2298,7 +2687,7 @@ public function generateIDRPDF($recordId)
         // Check if any records found
         if ($data) {
             // Load the MPDF library
-            $mpdf = new \Mpdf\Mpdf(['format' => 'Legal']);
+            $mpdf = new \Mpdf\Mpdf(['format' => 'A4']);
             
             foreach ($data as $record) {
                 // Add each record to the array
@@ -2823,7 +3212,7 @@ public function generateIDRPDF($recordId)
         if ($data) {
             $mpdf = new \Mpdf\Mpdf(['format' => 'Legal']);
             
-            $htmlContent = view('RegSPI', ['data' => $data]);
+            $htmlContent = view('RegSPI', ['data' => $data, 'classification' => $classification]);
             $mpdf->WriteHTML($htmlContent);
             
             $pdfOutput = $mpdf->Output('', 'S');
@@ -2939,47 +3328,89 @@ public function employeeRequestPDF()
 
 
 
-
-
-
-
-
-    public function updateVerification($selectedRecord)
-    {
-        // Load the model
+    public function updateVerification($selectedRecord) {
         $model = new DatabasePPEModel();
         $id = $selectedRecord;
+        $data = [];
 
-        $existingRecord = $model->find($id);
-        $existingImage = $existingRecord['imageverification'];
-
-        if($existingImage) {
-            $uploadsPath = ROOTPATH . '../uploads/'; 
-            unlink($uploadsPath . $existingImage);
+        $file = $this->request->getFile('file');
+        if ($file && $file->isValid()) {
+            $existingRecord = $model->find($id);
+            $existingFile = $existingRecord['imageverification'];
+            
+            // Delete existing file if it exists
+            $uploadsPath = ROOTPATH . '../uploads/';
+            $pdfPath = ROOTPATH . '../pdfFiles/';
+            if ($existingFile) {
+                if (file_exists($uploadsPath . $existingFile)) {
+                    unlink($uploadsPath . $existingFile);
+                } elseif (file_exists($pdfPath . $existingFile)) {
+                    unlink($pdfPath . $existingFile);
+                }
+            }
+            
+            $newName = $file->getRandomName();
+            if ($file->getClientMimeType() === 'application/pdf') {
+                $file->move('./pdfFiles', $newName);
+            } else {
+                $file->move('./uploads', $newName);
+            }
+            
+            $data['imageverification'] = $newName;
         }
 
-
-
-        // Check if an image is uploaded
-        if ($this->request->getFile('imageverification') && $this->request->getFile('imageverification')->isValid()) {
-            // $uploadsPath = ROOTPATH . '../uploads/'; 
-            // unlink($uploadsPath . $existingImage);
-            $image = $this->request->getFile('imageverification');
-            $newName = $image->getRandomName();
-            $image->move('./uploads', $newName);
-            $data['imageverification'] = $newName; // Update the image field with the new image name
-        }
-        
-        // Perform the update operation
-        $result = $model->update($id, $data);
-        
-        if ($result) {
-            return $this->respond(['status' => 'success', 'message' => 'Record updated successfully']);
+        if ($model->update($id, $data)) {
+            return $this->respond(['status' => 'success', 'message' => 'File uploaded and record updated successfully']);
         } else {
-            // Handle the case where the update fails
             return $this->respond(['status' => 'error', 'message' => 'Failed to update record'], 500);
         }
     }
+
+
+
+
+
+    // public function updateVerification($selectedRecord)
+    // {
+    //     $model = new DatabasePPEModel();
+    //     $id = $selectedRecord;
+    //     $existingRecord = $model->find($id);
+
+    //     // Get existing image path if available
+    //     $existingImage = $existingRecord['imageverification'];
+    //     $uploadsPath = ROOTPATH . 'uploads/';
+
+    //     // Delete the old image file if it exists
+    //     if ($existingImage && file_exists($uploadsPath . $existingImage)) {
+    //         unlink($uploadsPath . $existingImage);
+    //     }
+
+    //     $data = []; // Prepare data array for updates
+
+    //     // Check if an image file is uploaded and valid
+    //     if ($this->request->getFile('imageverification') && $this->request->getFile('imageverification')->isValid()) {
+    //         $image = $this->request->getFile('imageverification');
+    //         $newName = $image->getRandomName();
+
+    //         if ($image->move($uploadsPath, $newName)) {
+    //             $data['imageverification'] = $newName; // Update the image field with the new image name
+    //         } else {
+    //             return $this->respond(['status' => 'error', 'message' => 'Failed to upload the image. Please try again.'], 500);
+    //         }
+    //     } else {
+    //         return $this->respond(['status' => 'error', 'message' => 'No valid image uploaded. Please check the image and try again.'], 400);
+    //     }
+
+    //     // Perform the update operation in the database
+    //     $result = $model->update($id, $data);
+
+    //     if ($result) {
+    //         return $this->respond(['status' => 'success', 'message' => 'Record updated successfully with new image.']);
+    //     } else {
+    //         return $this->respond(['status' => 'error', 'message' => 'Failed to update record in the database.'], 500);
+    //     }
+    // }
+
 
 
     // public function checkEmail()

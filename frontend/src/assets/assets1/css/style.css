@@ -1474,3 +1474,53 @@ h6 {
   font-size: 13px;
   color: #012970;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+.pdf-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: 2px solid #007bff;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease-in-out;
+  width: fit-content;
+  margin: 0 auto;
+}
+
+.pdf-box:hover {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.pdf-icon {
+  font-size: 24px;
+  color: #e3342f; /* Red color for PDF icon */
+  margin-right: 8px;
+}
+
+.pdf-text {
+  font-size: 16px;
+  font-weight: 500;
+  color: #007bff;
+}
+
+.pdf-box:hover .pdf-text {
+  color: #fff;
+}
+
+.pdf-box:hover .pdf-icon {
+  color: #fff;
+}

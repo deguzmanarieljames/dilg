@@ -312,6 +312,11 @@
                   qrCodeData: null,
               }
           },
+          computed: {
+            baseURL() {
+              return axios.defaults.baseURL;
+            },
+          },
           created(){
               this.getInfo()
               this.user();
@@ -330,7 +335,7 @@
                     }
                     
                     // Set the background image URL
-                    const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+                    const backgroundImage = `url('${this.baseURL}/uploads/${imageUrl}')`;
                     
                     // Set background size and position
                     const backgroundSize = 'cover'; // Cover the entire container

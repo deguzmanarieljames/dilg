@@ -8,14 +8,6 @@
               <div class="row justify-content-center">
                   <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
 
-                    <div class="d-flex justify-content-center py-4">
-                      <a href="/" class="logo d-flex align-items-center w-auto">
-                      <img src="./img/logo1.png" alt="">
-                      <span class="d-none d-lg-block" style="font-family:Times New Roman, Times, serif; font-size: 210%;">
-                        <i>DILG<sup style="font-size: 70%;">ence</sup></i>
-                      </span>
-                      </a>
-                  </div><!-- End Logo -->
 
                   <div class="card mb-4">
                     <div class="card-body">
@@ -143,15 +135,7 @@
                   </div>
                   
                   
-                  
-
-                  <div class="credits">
-                      <!-- All the links in the footer should remain intact. -->
-                      <!-- You can delete the links only if you purchased the pro version. -->
-                      <!-- Licensing information: https://bootstrapmade.com/license/ -->
-                      <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/ -->
-                      Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-                  </div>
+                
 
                   </div>
               </div>
@@ -324,6 +308,17 @@
 </script>
 
 <style scoped>
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.logo-img {
+  max-height: 60px;
+  margin-right: 0.5rem;
+}
+
 /* General Form Styling */
 .card {
   border-radius: 10px;

@@ -14,6 +14,7 @@ $routes->match(['get', 'post'], 'check-email', 'DatabasePPEController::checkEmai
 
 $routes->get('/notification', 'NotificationController::getNotification');
 $routes->post('/markAsRead/(:num)', 'NotificationController::markAsRead/$1');
+$routes->post('markAllAsRead', 'NotificationController::markAllAsRead');
 
 $routes->get('/notificationEmp', 'NotificationController::getNotificationEmp');
 $routes->post('/markAsReadEmp/(:num)', 'NotificationController::markAsReadEmp/$1');
@@ -26,6 +27,8 @@ $routes->post('/markAsReadEmp/(:num)', 'NotificationController::markAsReadEmp/$1
 $routes->get('/getdata', 'DatabasePPEController::getData');
 $routes->match(['get', 'post'], 'getRecordById/(:any)', 'DatabasePPEController::getRecordById/$1');
 $routes->match(['get', 'post'], 'getRecordByPropertynum/(:any)', 'DatabasePPEController::getRecordByPropertynum/$1');
+$routes->match(['get', 'post'], 'getTransferRecordByPropertynum/(:any)', 'DatabasePPEController::getTransferRecordByPropertynum/$1');
+$routes->match(['get', 'post'], 'getDisposeRecordByPropertynum/(:any)', 'DatabasePPEController::getDisposeRecordByPropertynum/$1');
 $routes->get('/getDataWithImageVerification', 'DatabasePPEController::getDataWithImageVerification');
 $routes->get('/getDataWithoutImageVerification', 'DatabasePPEController::getDataWithoutImageVerification');
 $routes->get('/getDataServiceable', 'DatabasePPEController::getDataServiceable');
@@ -46,6 +49,9 @@ $routes->match(['get', 'post'], 'update_transfer/(:any)', 'DatabasePPEController
 $routes->match(['get', 'post'], 'update_disposal/(:any)', 'DatabasePPEController::update_disposal/$1');
 $routes->match(['get', 'post'], '/getDataById/(:any)', 'DatabasePPEController::getDataById/$1');
 $routes->match(['get', 'post'], 'update_date_returned/(:any)', 'DatabasePPEController::updateDateReturned/$1');
+
+$routes->post('/delDisposed', 'DatabasePPEController::delDisposed');
+
 
 $routes->match(['get', 'post'], '/IIRUSPgetData', 'DatabasePPEController::IIRUSPgetData');
 $routes->match(['get', 'post'], '/IIRUSPgetData/(:any)', 'DatabasePPEController::IIRUSPgetData/$1');
@@ -96,11 +102,16 @@ $routes->match(['get', 'post'], '/updateVerification/(:any)', 'DatabasePPEContro
 
 // INVENTORY
 $routes->get('/getInventory', 'DatabasePPEController::getInventory');
+
 $routes->post('/saveInventory', 'DatabasePPEController::saveInventory');
 $routes->post('/delInventory', 'DatabasePPEController::delInventory');
 $routes->get('/getReqAdmin', 'DatabasePPEController::getReq');
 $routes->match(['get', 'post'], '/updateInventory/(:any)', 'DatabasePPEController::updateInventory/$1');
 $routes->match(['get', 'post'], '/updateAvailability', 'DatabasePPEController::updateAvailability');
+
+
+$routes->get('search-property-number/(:any)', 'DatabasePPEController::searchPropertyNumber/$1');
+
 
 
 
@@ -112,6 +123,13 @@ $routes->post('/issueSupply', 'SupplyController::issueSupply');
 $routes->get('/getEmployeeSuppliesByFullname/(:any)', 'SupplyController::getEmployeeSuppliesByFullname/$1');
 $routes->post('/delEmployeeSupplies', 'SupplyController::delEmployeeSupplies');
 
+
+$routes->get('search-item-number/(:any)', 'SupplyController::searchItemCode/$1');
+
+
+// PDF GENERATION SUPPLIES
+
+$routes->match(['get', 'post'], '/generateStockCard/(:any)', 'SupplyController::generateStockCard/$1');
 
 // $routes->get('api/supply-prediction/(:any)', 'SupplyController::predictSupplyUsage/$1');
 $routes->get('api/supply-prediction', 'SupplyController::predictSupplyUsage');
@@ -190,8 +208,9 @@ $routes->match(['get', 'post'], '/triggerNotification', 'DatabasePPEController::
 $routes->get('/getOfficerVerifyPPE', 'OfficerVerifyController::getOfficerVerifyPPE');
 # OFFICER BORROWED/LOGBOOK
 $routes->get('/getBorrowed', 'LogbookController::getBorrowed');
+$routes->get('/getInventoryBorrow', 'LogbookController::getInventoryBorrow');
 $routes->match(['get', 'post'], '/fetchEmployee/(:any)', 'LogbookController::fetchEmployee/$1');
-$routes->post('/saveBorrowed', 'LogbookController::saveBorrowed');
+$routes->match(['get', 'post'], '/saveBorrowed', 'LogbookController::saveBorrowed');
 $routes->match(['get', 'post'], 'update_logbook_date_returned/(:segment)/(:segment)/(:segment)', 'LogbookController::updateLogbookDateReturned/$1/$2/$3');
 $routes->get('/getCalBorrowed', 'LogbookController::getCalBorrowed');
 
@@ -216,3 +235,7 @@ $routes->get('/getShopsByArticle', 'OrderController::getShopsByArticle');
 $routes->post('/delOrder', 'OrderController::delOrder');
 $routes->match(['get', 'post'], '/updateReceipt/(:any)', 'OrderController::updateReceipt/$1');
 $routes->match(['get', 'post'], '/updateRating/(:segment)/(:segment)', 'OrderController::updateRating/$1/$2');
+
+//PDF GENERATION ORDERING/PURCHASE
+
+$routes->match(['get', 'post'], '/generatePurchaseRequest/(:any)', 'OrderController::generatePurchaseRequest/$1');

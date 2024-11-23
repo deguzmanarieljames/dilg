@@ -31,7 +31,15 @@
                       <button @click="filterNotifications('all')" :class="{ active: filter === 'all' }">All</button>
                       <button @click="filterNotifications('unread')" :class="{ active: filter === 'unread' }">Unread</button>
                     </nav>
-                  </li>
+                    <!-- Mark All as Read Button (Visible only in Unread filter) -->
+                    <button
+                      v-if="filter === 'unread' && filteredNotifications.length > 0"
+                      class="mark-all-read-btn-sm"
+                      @click="markAllAsRead"
+                    >
+                      Mark All as Read
+                    </button>
+                  </li>        
                   <hr />
 
                   <!-- Notifications List -->
@@ -283,64 +291,103 @@
                     <br>
   
                             <!-- Dropdowns and Search Bar at the Top -->
-                    <div class="row align-items-center">
-                        <!-- Dropdown for Employee -->
-                        <div class="col-lg-2">
-                          <span class="me-2">Show</span> <!-- Added margin to the right -->
-                          <div class="dropdown" style="display: inline-block;">
-                              <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
-                              {{ pageSize }}
-                              </button>
-                              <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
-                              <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
-                              <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
-                              <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
-                              <!-- Add more options as needed -->
-                              </ul>
-                          </div>
-                          <span class="ms-2">entries</span> <!-- Added margin to the left -->
-                        </div>
-
-                        <!-- Dropdown for Employee -->
-                        <div class="col-lg-2">
-                        <select v-model="selectedEmployee" class="form-select" @change="onEmployeeChange">
-                            <option value="">Select Employee</option>
-                            <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
-                        </select>
-                        </div>
-                    
-                        <!-- Dropdown for Classification -->
-                        <div class="col-lg-2">
-                        <select v-model="selectedClassification" class="form-select" :disabled="!selectedEmployee" @change="onEmployeeChange">
-                            <option value="">Select Classification</option>
-                            <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
-                        </select>
-                        </div>
-                    
-                        <!-- Dropdown for Article -->
-                        <div class="col-lg-2">
-                        <select v-model="selectedArticle" class="form-select" :disabled="!selectedEmployee || !selectedClassification" @change="onEmployeeChange">
-                            <option value="">Select Article</option>
-                            <option v-for="article in distinctArticle" :key="article" :value="article">{{ article }}</option>
-                        </select>
-                        </div>
-                    
-                        <!-- Dropdown for Particular -->
-                        <div class="col-lg-2">
-                        <select v-model="selectedParticular" class="form-select" :disabled="!selectedEmployee || !selectedClassification || !selectedArticle">
-                            <option value="">Select Particular</option>
-                            <option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
-                        </select>
-                        </div>
-                  
-                    
-                        <!-- Search Bar -->
-                        <div class="col-lg-2 d-flex justify-content-end">
-                        <div class="InputContainer">
-                            <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
-                        </div>
-                        </div>
-                    </div>
+                            <div class="row justify-content-center align-items-center">
+                              <!-- Dropdown for Employee -->
+                              <div class="col-lg-2">
+                                <!-- Show Entries Dropdown -->
+                                <div class="d-flex align-items-center">
+                                  <span class="me-2">Show</span>
+                                  <div class="dropdown" style="display: inline-block;">
+                                    <button class="btn btn-secondary dropdown-toggle" type="button" id="showEntriesDropdown" data-bs-toggle="dropdown" aria-expanded="false" style="background-color: white; color: black;">
+                                      {{ pageSize }}
+                                    </button>
+                                    <ul class="dropdown-menu" aria-labelledby="showEntriesDropdown">
+                                      <li><a class="dropdown-item" href="#" @click="updatePageSize(10)">10</a></li>
+                                      <li><a class="dropdown-item" href="#" @click="updatePageSize(20)">20</a></li>
+                                      <li><a class="dropdown-item" href="#" @click="updatePageSize(30)">30</a></li>
+                                      <!-- Add more options as needed -->
+                                    </ul>
+                                  </div>
+                                  <span class="ms-2">entries</span>
+                                </div>
+                              </div>
+                              <div class="col-lg-2">
+                            
+                              </div>
+                            
+                              <!-- Dropdown for Classification -->
+                              <div class="col-lg-2">
+                            
+                              </div>
+                            
+                              <!-- Dropdown for Article -->
+                              <div class="col-lg-2">
+                            
+                              </div>
+                            
+                            
+                                <!-- Dropdown for Particular -->
+                              <div class="col-lg-2">
+                                <!-- Filter Data Button with Dropdowns inside -->
+                                <div class="dropdown me-3">
+                                  <button class="btn btn-primary dropdown-toggle filter-button" type="button" id="filterDropdownButton" data-bs-toggle="dropdown" aria-expanded="false" style="width: 180px;">
+                                    Filter Data
+                                  </button>
+                                  <ul class="dropdown-menu p-3" aria-labelledby="filterDropdownButton">
+                                    <!-- Select Filters inside Dropdown -->
+                            
+                            
+                                    <li>
+                                      <select v-model="selectedEmployee" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" @change="onEmployeeChange">
+                                        <option value="">Select Employee</option>
+                                        <option v-for="acc_officer in distinctEmployees" :key="acc_officer" :value="acc_officer">{{ acc_officer }}</option>
+                                      </select>
+                                    </li>
+                                  
+                                    <!-- Dropdown for Classification -->
+                                    <li>
+                                      <select v-model="selectedClassification" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" :disabled="!selectedEmployee" @change="onEmployeeChange">
+                                        <option value="">Select Classification</option>
+                                        <option v-for="classification in distinctClassification" :key="classification" :value="classification">{{ classification }}</option>
+                                      </select>
+                                    </li>
+                                  
+                                    <!-- Dropdown for Article -->
+                                    <li>
+                                      <select v-model="selectedArticle" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" :disabled="!selectedEmployee || !selectedClassification" @change="onEmployeeChange">
+                                        <option value="">Select Article</option>
+                                        <option v-for="article in distinctArticle" :key="article" :value="article">{{ article }}</option>
+                                      </select>
+                                    </li>
+                                  
+                                    <!-- Dropdown for Particular -->
+                                    <li>
+                                      <select v-model="selectedParticular" class="form-select mb-2 animated-item" style="height: 40px; font-size: 15px; border-radius: 5px; border: 1px solid #ccc;" :disabled="!selectedEmployee || !selectedClassification || !selectedArticle">
+                                        <option value="">Select Particular</option>
+                                        <option v-for="particular in distinctParticular" :key="particular" :value="particular">{{ particular }}</option>
+                                      </select>
+                                    </li>
+                                  </ul>
+                                </div>
+                              </div>
+                            
+                            
+                              <!-- Status dropdown -->
+                              <div class="col-lg-2">
+                                <div class="InputContainer">
+                                  <input placeholder="Search.." id="input" class="input" name="text" type="text" v-model="searchKeyword">
+                                </div>
+                              </div>
+                            
+                            
+                            
+                            
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            
+                            </div>
                     
                         
                         <br>
@@ -373,7 +420,7 @@
                             <tbody>
                             <!-- Table rows -->
                             <tr v-for="info in paginatedInfo" :key="info.id" @click="selectRecord(info)">
-                                <td><img :src="`http://dilg.test/backend/uploads/${info.image}`" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
+                                <td><img :src="`${this.baseURL}/uploads/${info.image}`" alt="Inventory Image" style="max-width: 100px; max-height: 100px;" /></td>
                                 <td>{{ info.entityname }}</td>
                                 <td>{{ info.classification }}</td>
                                 <td>{{ info.code }}</td>
@@ -435,20 +482,32 @@
                   <div class="row">
                     <!-- Image Column -->
                     <div class="row justify-content-center mb-4">
+                      <!-- Original Equipment Image -->
                       <div class="col-md-6 text-center">
                         <div class="info-group">
                           <label>Equipment</label>
                         </div>
-                        <img :src="`http://dilg.test/backend/uploads/${selectedInfo.image}`" alt="Original Image" class="img-large img-thumbnail" />
+                        <img :src="`${this.baseURL}/uploads/${selectedInfo.image}`" alt="Original Image" class="img-large img-thumbnail" />
                       </div>
-                      <!-- Transferred Image -->
+                      
+                      <!-- Returned Document -->
                       <div class="col-md-6 text-center">
                         <div class="info-group">
                           <label>Returned Document</label>
                         </div>
-                        <img :src="`http://dilg.test/backend/uploads/${selectedInfo.returned_image}`" alt="Transferred Image" class="img-large img-thumbnail" />
+                        <template v-if="selectedInfo.returned_image.endsWith('.pdf')">
+                          <div class="pdf-box" @click="openPdfInBlank(selectedInfo.returned_image)">
+                            <i class="bx bxs-file-pdf pdf-icon"></i>
+                            <span class="pdf-text">Open PDF</span>
+                          </div>
+                        </template>
+                        <template v-else>
+                          <img :src="`${this.baseURL}/uploads/${selectedInfo.returned_image}`" ref="returned_image" @click="viewImageInFullscreen" alt="Returned Image" class="img-large img-thumbnail" />
+                        </template>
                       </div>
                     </div>
+                    
+                    
         
                     <!-- Left Column -->
                     <div class="col-md-6">
@@ -574,6 +633,11 @@
                       <div class="info-group">
                         <label>Approving Authority</label>
                         <p>{{ selectedInfo.approving_authority }}</p>
+                      </div>
+
+                      <div class="info-group">
+                        <label>Remarks</label>
+                        <p>{{ selectedInfo.remarks }}</p>
                       </div>
                       <br>
                       <!-- Transfer Button -->
@@ -750,6 +814,36 @@
           // Redirect to the new page
           this.$router.push({ path: '/disposeppe' });
         },
+        isPDF(file) {
+          const extension = file.split('.').pop().toLowerCase();
+          return extension === 'pdf';
+        },
+        // Function to extract file name from the file path
+        getFileName(file) {
+          return file.split('/').pop();
+        },
+        openPdfInBlank(fileName) {
+          const pdfUrl = `${this.baseURL}/pdfFiles/${fileName}`;
+          const newTab = window.open('about:blank', '_blank');
+          if (newTab) {
+            newTab.document.write(
+              `<html><body style="margin:0;padding:0;overflow:hidden;">
+                <iframe src="${pdfUrl}" frameborder="0" style="width:100%;height:100%;"></iframe>
+              </body></html>`
+            );
+            newTab.document.close();
+          }
+        },
+
+        viewImageInFullscreen() {
+          // Logic for viewing image in fullscreen
+          const imageElement = this.$refs.returned_image;
+          if (imageElement) {
+            const newWindow = window.open("", "_blank");
+            newWindow.document.write(`<img src="${imageElement.src}" style="width: 100%; height: 100%; object-fit: contain;">`);
+            newWindow.document.close();
+          }
+        },
         selectRecord(info) {
           this.selectedInfo = info;
         },
@@ -769,7 +863,7 @@
         async downloadEmployeeRecordsPDF() {
             try {
               this.simulateLoading();
-               const response = await fetch('http://dilg.test/backend/employeeRecordsPDF', {
+               const response = await fetch(`${this.baseURL}/employeeRecordsPDF`, {
                    method: 'POST',
                    headers: {
                        'Content-Type': 'application/json',
@@ -800,7 +894,7 @@
         try {
             // Send HTTP request to backend to generate PDFs for all records
             this.simulateLoading();
-            const response = await fetch('http://dilg.test/backend/unserviceablePDF', {
+            const response = await fetch(`${this.baseURL}/unserviceablePDF`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -1049,7 +1143,7 @@
         }
         
         // Set the background image URL
-        const backgroundImage = `url('http://dilg.test/backend/uploads/${imageUrl}')`;
+        const backgroundImage = `url('${this.baseURL}/uploads/${imageUrl}')`;
         
         // Set background size and position
         const backgroundSize = 'cover'; // Cover the entire container
@@ -1069,6 +1163,9 @@
               
       },
       computed: {
+        baseURL() {
+          return axios.defaults.baseURL;
+        },
         filteredNotifications() {
           if (this.filter === 'unread') {
             return this.notifications.filter(notification => notification.status === 'unread');
@@ -1656,6 +1753,138 @@
   }
   
   
+
+
+
+
+
+
+
+  .filter-button {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+    padding: 7px 27px; /* Smaller padding for a smaller button */
+    text-align: center;
+    font-size: 15px; /* Smaller font size */
+    letter-spacing: 0.5px;
+    text-decoration: none;
+    color: #4A3781;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: ease-out 0.5s;
+    border: 2px solid #725AC1;
+    border-radius: 8px; /* Slightly smaller border radius */
+    box-shadow: inset 0 0 0 0 #725AC1;
+  }
   
+  .filter-button:hover {
+    color: white;
+    box-shadow: inset 0 -100px 0 0 #725AC1;
+  }
   
+  .filter-button:active {
+    transform: scale(1);
+  }
+  
+  /* Dropdown Menu initial state */
+  .dropdown-menu {
+  width: 300px;
+  background-color: #fafafa;
+  border-radius: 10px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s, transform 0.3s ease-in-out;
+  }
+  
+  /* Apply when dropdown is shown */
+  .dropdown.show .dropdown-menu {
+  opacity: 1;
+  transform: translateY(0);
+  }
+  
+  /* Individual Item Animation */
+  .animated-item {
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeInUp 0.5s ease-in-out forwards;
+  }
+  
+  /* Keyframes for fade-in and move-up */
+  @keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  }
+  
+  /* Keyframes for fade-out */
+  @keyframes fadeOutDown {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  }
+  
+  /* Adding Delay for Sequential Animations */
+  .animated-item:nth-child(1) {
+  animation-delay: 0.1s;
+  }
+  
+  .animated-item:nth-child(2) {
+  animation-delay: 0.2s;
+  }
+  
+  .animated-item:nth-child(3) {
+  animation-delay: 0.3s;
+  }
+  
+  .animated-item:nth-child(4) {
+  animation-delay: 0.4s;
+  }
+  
+  .animated-item:nth-child(5) {
+  animation-delay: 0.5s;
+  }
+  
+  /* When dropdown is hidden, apply fade-out animation */
+  .dropdown-menu.fade-out .animated-item {
+  animation: fadeOutDown 0.5s ease-in-out forwards;
+  }
+  
+  /* Applying transition effect on the dropdown for fade-out */
+  .dropdown-menu.fade-out {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s, transform 0.3s ease-in-out;
+  }
+  
+
+  .mark-all-read-btn-sm {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    font-size: 12px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 5px; /* Adds a little spacing */
+    float: middle; /* Aligns to the right for a cleaner look */
+  }
+  
+  .mark-all-read-btn-sm:hover {
+    background-color: #0056b3;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow */
+  }
   </style>

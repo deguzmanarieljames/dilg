@@ -45,11 +45,16 @@
         statusMessage: ''
       };
     },
+    computed: {
+      baseURL() {
+        return axios.defaults.baseURL;
+      },
+    },
     methods: {
       // Load content from the backend
       async loadContent() {
         try {
-          const response = await fetch('http://dilg.test/backend/api/load-sps-content');
+          const response = await fetch(`${this.baseURL}/api/load-sps-content`);
           const data = await response.json();
           if (data.content) {
             this.spsContent = data.content;
@@ -76,7 +81,7 @@
       // Save edited content to the backend
       async saveContent() {
         try {
-          const response = await fetch('http://dilg.test/backend/api/save-sps-content', {
+          const response = await fetch(`${this.baseURL}/api/save-sps-content`, {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json'

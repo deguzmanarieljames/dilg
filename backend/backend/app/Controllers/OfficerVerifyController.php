@@ -31,7 +31,7 @@ class OfficerVerifyController extends ResourceController
                                 ->orderBy('officerverifyppe.id', 'DESC')
                                 ->findAll();
                                 foreach ($data as &$item) {
-                                    $item['imageverification'] = 'https://inventrack.online/backend/uploads/' . $item['imageverification'];
+                                    $item['imageverification'] = 'htt://dilg.test/backend/uploads/' . $item['imageverification'];
                                 }
 
         // Return the merged data
